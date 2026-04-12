@@ -224,18 +224,18 @@
 
             <!-- NATIVE BITCOIN SUPPORT -->
             <div class="stress-section" style="margin-bottom:30px;">
-                <div class="stress-title" style="font-size:0.8rem;">// NATIVE BITCOIN INTEGRATION — THRESHOLD ECDSA & SCHNORR</div>
+                <div class="stress-title" data-i18n="btc-title" style="font-size:0.8rem;">// NATIVE BITCOIN INTEGRATION — THRESHOLD ECDSA & SCHNORR</div>
                 <div class="stress-card" style="border-color:rgba(204,0,0,0.3);max-width:100%;">
-                    <h4 style="font-size:1.1rem;margin-bottom:10px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);">BTC SOVEREIGN SIGNING — NO BRIDGES, NO CUSTODIANS</h4>
-                    <p style="font-size:0.75rem;color:#ccc;line-height:1.8;margin-bottom:14px;">X39Matrix integrates <span style="color:#ff3333;font-weight:700;">native Bitcoin support</span> via <span style="color:#fff;font-weight:600;">Threshold ECDSA</span> and <span style="color:#fff;font-weight:600;">Threshold Schnorr</span>, enabling BTC transaction signing and settlement <span style="color:#ff3333;font-weight:700;">without bridges or external custodians</span>.</p>
+                    <h4 data-i18n="btc-sub" style="font-size:1.1rem;margin-bottom:10px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);">BTC SOVEREIGN SIGNING — NO BRIDGES, NO CUSTODIANS</h4>
+                    <p data-i18n="btc-desc" style="font-size:0.75rem;color:#ccc;line-height:1.8;margin-bottom:14px;">X39Matrix integrates <span style="color:#ff3333;font-weight:700;">native Bitcoin support</span> via <span style="color:#fff;font-weight:600;">Threshold ECDSA</span> and <span style="color:#fff;font-weight:600;">Threshold Schnorr</span>, enabling BTC transaction signing and settlement <span style="color:#ff3333;font-weight:700;">without bridges or external custodians</span>.</p>
                     <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;margin-bottom:12px;font-size:0.75rem;line-height:1.8;">
-                        <span style="color:#ff3333;font-weight:700;">HOW IT WORKS:</span><br>
-                        <span style="color:#ccc;">The private key for signing BTC transactions is <span style="color:#fff;font-weight:600;">split across multiple ICP nodes</span> using threshold cryptography. No single entity can sign alone. Nodes coordinate to produce a valid ECDSA/Schnorr signature collectively.</span>
+                        <span data-i18n="btc-how" style="color:#ff3333;font-weight:700;">HOW IT WORKS:</span><br>
+                        <span data-i18n="btc-howdesc" style="color:#ccc;">The private key for signing BTC transactions is <span style="color:#fff;font-weight:600;">split across multiple ICP nodes</span> using threshold cryptography. No single entity can sign alone. Nodes coordinate to produce a valid ECDSA/Schnorr signature collectively.</span>
                     </div>
                     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;">
                         <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;text-align:center;">
                             <div style="font-size:1.3rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">~1.3s</div>
-                            <div style="font-size:0.5rem;color:#bbb;letter-spacing:0.1em;margin-top:4px;">p95 SIGNATURE LATENCY</div>
+                            <div style="font-size:0.5rem;color:#bbb;letter-spacing:0.1em;margin-top:4px;" data-i18n="btc-lat">p95 SIGNATURE LATENCY</div>
                         </div>
                         <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;text-align:center;">
                             <div style="font-size:1.3rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">0</div>
@@ -275,9 +275,9 @@
 
             <!-- STATE MORPHISM DEEP DIVE -->
             <div class="stress-section" style="margin-bottom:30px;">
-                <div class="stress-title" style="font-size:0.8rem;">// LAYER 9: CAUSAL DAG — STATE MORPHISM IN DEPTH</div>
+                <div class="stress-title" data-i18n="morph-title" style="font-size:0.8rem;">// LAYER 9: CAUSAL DAG — STATE MORPHISM IN DEPTH</div>
                 <div class="stress-card" style="border-color:rgba(204,0,0,0.3);max-width:100%;">
-                    <h4 style="font-size:1.1rem;margin-bottom:10px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);">MATHEMATICAL CONFLICT RESOLUTION WITHOUT LOCKS</h4>
+                    <h4 data-i18n="morph-sub" style="font-size:1.1rem;margin-bottom:10px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);">MATHEMATICAL CONFLICT RESOLUTION WITHOUT LOCKS</h4>
                     <p style="font-size:0.75rem;color:#ccc;line-height:1.8;margin-bottom:14px;">The Rust Causal DAG (Layer 9) implements <span style="color:#ff3333;font-weight:700;">State Morphism M: S → S'</span> that preserves strict event causality. For events e₁ and e₂ where e₁ causally precedes e₂:</p>
                     <div style="background:#1a1a1a;border:2px solid #ff3333;padding:18px;margin-bottom:14px;font-size:0.9rem;color:#ff3333;text-align:center;font-weight:700;letter-spacing:0.1em;text-shadow:0 0 12px rgba(255,51,51,0.5);">
                         M(e₁) ⊕ M(e₂) = M(e₁ → e₂)
@@ -592,6 +592,63 @@
             });
             if(lang==='ar')document.body.style.direction='rtl';
             else document.body.style.direction='ltr';
+            // Rebuild layer cards
+            const archGrid=document.getElementById('layersArch');
+            if(archGrid){
+                archGrid.innerHTML='';
+                const L_NAMES=layerNames[lang]||layerNames.en;
+                LAYERS.forEach((L,i)=>{
+                    const card=document.createElement('div');card.className='lcard';
+                    card.innerHTML='<div class="lcard-num">'+String(i+1).padStart(2,'0')+'</div><div class="lcard-badge">'+L.badge+'</div><h3>'+L_NAMES[i].name.toUpperCase()+'</h3><p>'+L_NAMES[i].desc+'</p><div class="lcard-blocks">'+L.blocks.map(b=>'<span class="lcard-block">'+b+'</span>').join('')+'</div>';
+                    archGrid.appendChild(card);
+                });
+            }
+        };
+        const layerNames={
+            en:[
+                {name:'Infrastructure & ICP Core',desc:'Distributed network base, execution environment, and node health monitoring.'},
+                {name:'Identity, Assets & Sovereignty',desc:'Passwordless biometric auth (WebAuthn) and immutable transaction record of native x39 token.'},
+                {name:'Deterministic Execution Flow',desc:'Sequential, impartial order resistant to MEV manipulation.'},
+                {name:'Consensus & Cryptographic Security',desc:'BFT fault tolerance and high-performance execution on ICP silicon.'},
+                {name:'Scalability & Liquidity Dynamics',desc:'Massive parallelization for 50,000+ TPS without violating sequential consistency.'},
+                {name:'Universal Omnichain Interoperability',desc:'Native BTC signing via Threshold ECDSA/Schnorr. Zero bridges, zero custodians.'},
+                {name:'Autonomous Intelligence & Governance',desc:'On-chain DeAI immune system auditing transactions and network patterns in real-time.'},
+                {name:'Sovereign Orchestrator & Backend',desc:'Central business logic orchestrator with cryptographically signed metrics pipeline.'},
+                {name:'Rust Causal DAG (State Morphism)',desc:'Causal DAG resolves concurrent state conflicts via mathematical morphism. Fokker-Planck convergence. Zero locks.'}
+            ],
+            es:[
+                {name:'Infraestructura y Nucleo ICP',desc:'Base de red distribuida, entorno de ejecucion y monitorizacion de salud de nodos.'},
+                {name:'Identidad, Activos y Soberania',desc:'Autenticacion biometrica sin contraseñas (WebAuthn) y registro inmutable de transacciones del token nativo x39.'},
+                {name:'Flujo de Ejecucion Determinista',desc:'Orden secuencial e imparcial resistente a manipulacion MEV.'},
+                {name:'Consenso y Seguridad Criptografica',desc:'Tolerancia a fallos BFT y ejecucion de alto rendimiento en silicio ICP.'},
+                {name:'Escalabilidad y Dinamica de Liquidez',desc:'Paralelizacion masiva para 50,000+ TPS sin violar consistencia secuencial.'},
+                {name:'Interoperabilidad Omnichain Universal',desc:'Firma BTC nativa via Threshold ECDSA/Schnorr. Cero puentes, cero custodios.'},
+                {name:'Inteligencia Autonoma y Gobernanza',desc:'Sistema inmune DeAI on-chain auditando transacciones y patrones de red en tiempo real.'},
+                {name:'Orquestador Soberano y Backend',desc:'Orquestador central de logica con pipeline de metricas firmadas criptograficamente.'},
+                {name:'DAG Causal Rust (Morfismo de Estado)',desc:'DAG causal resuelve conflictos de estado concurrentes via morfismo matematico. Convergencia Fokker-Planck. Cero bloqueos.'}
+            ],
+            zh:[
+                {name:'基础设施与ICP核心',desc:'分布式网络基础、执行环境和节点健康监控。'},
+                {name:'身份、资产与主权',desc:'无密码生物识别认证(WebAuthn)和原生x39代币的不可变交易记录。'},
+                {name:'确定性执行流',desc:'抗MEV操纵的顺序、公正排序。'},
+                {name:'共识与密码安全',desc:'BFT容错和ICP硅片上的高性能执行。'},
+                {name:'可扩展性与流动性动态',desc:'大规模并行化实现50,000+ TPS，不违反顺序一致性。'},
+                {name:'通用全链互操作性',desc:'通过Threshold ECDSA/Schnorr进行原生BTC签名。零桥接，零托管。'},
+                {name:'自主智能与治理',desc:'链上DeAI免疫系统实时审计交易和网络模式。'},
+                {name:'主权编排器与后端',desc:'具有密码签名指标管道的中央业务逻辑编排器。'},
+                {name:'Rust因果DAG（状态态射）',desc:'因果DAG通过数学态射解决并发状态冲突。Fokker-Planck收敛。零锁定。'}
+            ],
+            ar:[
+                {name:'البنية التحتية ونواة ICP',desc:'قاعدة شبكة موزعة، بيئة تنفيذ، ومراقبة صحة العقد.'},
+                {name:'الهوية والأصول والسيادة',desc:'مصادقة بيومترية بدون كلمة مرور (WebAuthn) وسجل معاملات غير قابل للتغيير.'},
+                {name:'تدفق التنفيذ الحتمي',desc:'ترتيب تسلسلي محايد مقاوم لتلاعب MEV.'},
+                {name:'الإجماع والأمن التشفيري',desc:'تحمل أخطاء BFT وتنفيذ عالي الأداء على سيليكون ICP.'},
+                {name:'قابلية التوسع وديناميكيات السيولة',desc:'موازاة ضخمة لأكثر من 50,000 TPS دون انتهاك الاتساق التسلسلي.'},
+                {name:'التشغيل البيني الشامل عبر السلاسل',desc:'توقيع BTC أصلي عبر Threshold ECDSA/Schnorr. صفر جسور، صفر أمناء حفظ.'},
+                {name:'الذكاء المستقل والحوكمة',desc:'نظام مناعة DeAI على السلسلة يدقق المعاملات وأنماط الشبكة في الوقت الفعلي.'},
+                {name:'المنسق السيادي والخلفية',desc:'منسق منطق أعمال مركزي مع خط أنابيب مقاييس موقعة تشفيرياً.'},
+                {name:'DAG سببي Rust (تحول الحالة)',desc:'DAG سببي يحل تعارضات الحالة المتزامنة عبر تحول رياضي. تقارب Fokker-Planck. صفر أقفال.'}
+            ]
         };
         const i18n={
             en:{
@@ -611,6 +668,12 @@
                 'stat-bridges':'VULNERABLE BRIDGES',
                 'btc-title':'// NATIVE BITCOIN INTEGRATION — THRESHOLD ECDSA & SCHNORR',
                 'btc-sub':'BTC SOVEREIGN SIGNING — NO BRIDGES, NO CUSTODIANS',
+                'btc-desc':'X39Matrix integrates <span style="color:#ff3333;font-weight:700;">native Bitcoin support</span> via <span style="color:#fff;font-weight:600;">Threshold ECDSA</span> and <span style="color:#fff;font-weight:600;">Threshold Schnorr</span>, enabling BTC transaction signing and settlement <span style="color:#ff3333;font-weight:700;">without bridges or external custodians</span>.',
+                'btc-how':'HOW IT WORKS:',
+                'btc-howdesc':'The private key for signing BTC transactions is <span style="color:#fff;font-weight:600;">split across multiple ICP nodes</span> using threshold cryptography. No single entity can sign alone. Nodes coordinate to produce a valid ECDSA/Schnorr signature collectively.',
+                'btc-lat':'p95 SIGNATURE LATENCY',
+                'morph-title':'// LAYER 9: CAUSAL DAG — STATE MORPHISM IN DEPTH',
+                'morph-sub':'MATHEMATICAL CONFLICT RESOLUTION WITHOUT LOCKS',
                 'uc-section':'// INDUSTRY APPLICATIONS',
                 'uc-title':'WHERE x39MATRIX <span style="color:#ff3333;">OPERATES</span>',
                 'uc-desc':'10 industries. Detailed technical analysis. Comparison with current solutions. Each document is independently downloadable.',
@@ -644,6 +707,12 @@
                 'stat-bridges':'PUENTES VULNERABLES',
                 'btc-title':'// INTEGRACION BITCOIN NATIVA — THRESHOLD ECDSA & SCHNORR',
                 'btc-sub':'FIRMA SOBERANA BTC — SIN PUENTES, SIN CUSTODIOS',
+                'btc-desc':'X39Matrix integra <span style="color:#ff3333;font-weight:700;">soporte nativo de Bitcoin</span> via <span style="color:#fff;font-weight:600;">Threshold ECDSA</span> y <span style="color:#fff;font-weight:600;">Threshold Schnorr</span>, permitiendo firma y liquidacion de transacciones BTC <span style="color:#ff3333;font-weight:700;">sin puentes ni custodios externos</span>.',
+                'btc-how':'COMO FUNCIONA:',
+                'btc-howdesc':'La clave privada para firmar transacciones BTC esta <span style="color:#fff;font-weight:600;">dividida entre multiples nodos ICP</span> usando criptografia de umbral. Ninguna entidad puede firmar sola. Los nodos coordinan para producir una firma ECDSA/Schnorr valida colectivamente.',
+                'btc-lat':'LATENCIA DE FIRMA p95',
+                'morph-title':'// CAPA 9: DAG CAUSAL — MORFISMO DE ESTADO EN PROFUNDIDAD',
+                'morph-sub':'RESOLUCION MATEMATICA DE CONFLICTOS SIN BLOQUEOS',
                 'uc-section':'// APLICACIONES POR INDUSTRIA',
                 'uc-title':'DONDE OPERA <span style="color:#ff3333;">x39MATRIX</span>',
                 'uc-desc':'10 industrias. Analisis tecnico detallado. Comparacion con soluciones actuales. Cada documento es descargable.',
@@ -677,6 +746,12 @@
                 'stat-bridges':'脆弱桥接',
                 'btc-title':'// 原生比特币集成 — THRESHOLD ECDSA & SCHNORR',
                 'btc-sub':'BTC主权签名 — 无桥接，无托管',
+                'btc-desc':'X39Matrix通过<span style="color:#ff3333;font-weight:700;">Threshold ECDSA</span>和<span style="color:#fff;font-weight:600;">Threshold Schnorr</span>集成<span style="color:#ff3333;font-weight:700;">原生比特币支持</span>，实现BTC交易签名和结算<span style="color:#ff3333;font-weight:700;">无需桥接或外部托管</span>。',
+                'btc-how':'工作原理：',
+                'btc-howdesc':'用于签署BTC交易的私钥通过阈值密码学<span style="color:#fff;font-weight:600;">分布在多个ICP节点</span>上。没有单一实体可以单独签名。节点协调集体产生有效的ECDSA/Schnorr签名。',
+                'btc-lat':'p95签名延迟',
+                'morph-title':'// 第9层：因果DAG — 深入状态态射',
+                'morph-sub':'无锁数学冲突解决',
                 'uc-section':'// 行业应用',
                 'uc-title':'x39MATRIX <span style="color:#ff3333;">运营领域</span>',
                 'uc-desc':'10个行业。详细技术分析。与当前解决方案对比。每份文档可独立下载。',
@@ -710,6 +785,12 @@
                 'stat-bridges':'جسور ضعيفة',
                 'btc-title':'// تكامل بيتكوين أصلي — THRESHOLD ECDSA & SCHNORR',
                 'btc-sub':'توقيع BTC سيادي — بدون جسور، بدون أمناء حفظ',
+                'btc-desc':'يدمج X39Matrix <span style="color:#ff3333;font-weight:700;">دعم بيتكوين أصلي</span> عبر <span style="color:#fff;font-weight:600;">Threshold ECDSA</span> و<span style="color:#fff;font-weight:600;">Threshold Schnorr</span>، مما يتيح توقيع وتسوية معاملات BTC <span style="color:#ff3333;font-weight:700;">بدون جسور أو أمناء حفظ خارجيين</span>.',
+                'btc-how':'كيف يعمل:',
+                'btc-howdesc':'المفتاح الخاص لتوقيع معاملات BTC <span style="color:#fff;font-weight:600;">موزع عبر عقد ICP متعددة</span> باستخدام التشفير العتبي. لا يمكن لأي كيان التوقيع وحده. العقد تنسق لإنتاج توقيع ECDSA/Schnorr صالح جماعياً.',
+                'btc-lat':'زمن التوقيع p95',
+                'morph-title':'// الطبقة 9: DAG سببي — تحول الحالة بعمق',
+                'morph-sub':'حل رياضي للنزاعات بدون أقفال',
                 'uc-section':'// تطبيقات صناعية',
                 'uc-title':'أين يعمل <span style="color:#ff3333;">x39MATRIX</span>',
                 'uc-desc':'10 صناعات. تحليل تقني مفصل. مقارنة مع الحلول الحالية. كل وثيقة قابلة للتحميل.',
@@ -909,5 +990,5 @@
         };
     })();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eb24caf9ba8cbb6',t:'MTc3NTk5NzYyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eb4b4d6781ae8b5',t:'MTc3NjAyMjg2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
