@@ -87,6 +87,7 @@
         .layers-arch{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:30px auto;padding:0 24px;}
         @media(max-width:900px){.layers-arch{grid-template-columns:repeat(2,1fr);}}
         @media(max-width:600px){.layers-arch{grid-template-columns:1fr;}}
+        @media(max-width:700px){.uc-card-grid{grid-template-columns:1fr !important;}}
         .lcard{background:#0a0a0a;border:1px solid #1a1a1a;padding:20px;transition:border-color 0.2s;}
         .lcard:hover{border-color:rgba(204,0,0,0.4);}
         .lcard-num{font-size:2.5rem;color:rgba(255,43,43,0.8);font-weight:700;margin-bottom:4px;text-shadow:0 0 15px rgba(255,43,43,0.6);}
@@ -131,6 +132,7 @@
         .footer-copy{font-size:0.5rem;color:#333;margin-top:12px;}
         .back-btn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#444;background:transparent;border:1px solid #1a1a1a;padding:8px 18px;cursor:pointer;letter-spacing:0.15em;margin-top:16px;transition:0.2s;}
         .back-btn:hover{border-color:#cc0000;color:#cc0000;}
+        .uc-card:hover{border-color:rgba(204,0,0,0.5) !important;}
         .cli-cmd-btn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:6px 14px;border:1px solid #1a1a1a;background:transparent;color:#888;cursor:pointer;transition:0.2s;letter-spacing:0.1em;}
         .cli-cmd-btn:hover{border-color:#cc0000;color:#cc0000;}
         ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#000;}::-webkit-scrollbar-thumb{background:#1a1a1a;}::-webkit-scrollbar-thumb:hover{background:#cc0000;}
@@ -362,6 +364,118 @@
                 </div>
             </div>
 
+            <!-- USE CASES SECTION -->
+            <div class="stress-section" style="margin-top:50px;margin-bottom:40px;">
+                <div class="stress-title" style="font-size:0.9rem;margin-bottom:8px;">// INDUSTRY APPLICATIONS</div>
+                <div style="text-align:center;margin-bottom:24px;">
+                    <div style="font-size:clamp(1.2rem,3vw,2rem);font-weight:700;color:#fafafa;">WHERE x39MATRIX <span style="color:#ff3333;">OPERATES</span></div>
+                    <div style="font-size:0.65rem;color:#888;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">10 industries. Detailed technical analysis. Comparison with current solutions. Each document is independently downloadable.</div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;margin:0 auto;">
+                    <div class="uc-card" onclick="openUseCase('01_defi')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">01</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DECENTRALIZED FINANCE</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Native Bitcoin. Zero bridges. $3B in bridge losses eliminated. vs Uniswap, Aave, LayerZero, THORChain.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('01_defi')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('02_banking')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">02</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">INSTITUTIONAL BANKING</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">2.5s settlement vs 1-5 days SWIFT. $274B compliance market. vs JPMorgan Onyx, R3 Corda, Ripple.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('02_banking')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('03_security')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">03</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">BLOCKCHAIN SECURITY</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">51% defense lab. 2,038 fuzzing cases, 0 escapes. vs Trail of Bits, Halborn, Forta Network.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('03_security')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('04_crosschain')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">04</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">CROSS-CHAIN INFRASTRUCTURE</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Threshold ECDSA native signing. No bridges ever. vs LayerZero, Wormhole, Cosmos IBC, Axelar.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('04_crosschain')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('05_identity')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">05</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">SOVEREIGN DIGITAL IDENTITY</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Zero passwords. Device-bound keys. 22B records breached in 2023. vs Google, Worldcoin, Microsoft ION.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('05_identity')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('06_deai')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">06</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DECENTRALIZED AI (DeAI)</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">AI Sentinel on-chain. Every decision signed. 47/47 attacks blocked. vs OpenAI, Bittensor, Ritual.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('06_deai')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('07_supply_chain')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">07</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">SUPPLY CHAIN & LOGISTICS</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">$4.2T counterfeit market. Ed25519 provenance. Concurrent updates. vs IBM Food Trust, VeChain.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('07_supply_chain')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('08_defense')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">08</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DEFENSE & GOVERNMENT</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Sovereign infrastructure. $150B cyber defense market. 51% defense lab. vs Palantir, AWS GovCloud.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('08_defense')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('09_gaming')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">09</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">GAMING & METAVERSE</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">50K+ TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('09_gaming')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                    <div class="uc-card" onclick="openUseCase('10_research')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
+                        <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">10</div>
+                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">ACADEMIC RESEARCH</div>
+                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Fokker-Planck publishable. Immutable science. Ed25519 credentials. vs Elsevier, ResearchHub, DeSci.</div>
+                        <div style="margin-top:10px;display:flex;gap:6px;">
+                            <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
+                            <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('10_research')">DOWNLOAD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- USE CASE MODAL -->
+            <div id="ucModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);overflow-y:auto;">
+                <div style="max-width:800px;margin:0 auto;padding:24px;position:relative;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:sticky;top:0;background:rgba(0,0,0,0.95);padding:12px 0;z-index:10;">
+                        <button onclick="closeUseCase()" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#cc0000;background:transparent;border:1px solid rgba(204,0,0,0.4);padding:8px 16px;cursor:pointer;letter-spacing:0.1em;">CLOSE</button>
+                        <button id="ucDownloadBtn" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#888;background:transparent;border:1px solid #333;padding:8px 16px;cursor:pointer;letter-spacing:0.1em;">DOWNLOAD</button>
+                    </div>
+                    <div id="ucContent" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#ccc;line-height:2;"></div>
+                </div>
+            </div>
+
             <!-- PDF DOWNLOAD -->
             <div class="pdf-section">
                 <div class="pdf-title" style="font-size:0.8rem;">// DOWNLOAD TECHNICAL CERTIFICATION</div>
@@ -438,9 +552,9 @@
             const L=LAYERS[idx],d=document.getElementById('layerDisplay');
             for(let i=0;i<9;i++){document.getElementById('seg'+i).className=i<idx?'progress-seg done':i===idx?'progress-seg active':'progress-seg';}
             d.innerHTML='<div class="layer-badge">LAYER '+(idx+1)+'</div><div class="layer-name">'+L.name+'</div><div class="terminal-box"><span class="term-prompt">root@x39matrix:~$</span> <span class="term-cmd" id="typeCmd"></span><span id="cursor" style="color:#cc0000">█</span></div><div id="resultArea"></div><div class="exec-status">['+(idx+1)+'/9] EXECUTING PROTOCOL...</div>';
-            typeText(L.cmd,document.getElementById('typeCmd'),0,function(){document.getElementById('cursor').style.display='none';setTimeout(function(){document.getElementById('resultArea').innerHTML='<div class="result-box">✓ '+L.result+'</div>';document.getElementById('seg'+idx).className='progress-seg done';setTimeout(function(){runLayers(idx+1);},800);},400);});
+            typeText(L.cmd,document.getElementById('typeCmd'),0,function(){document.getElementById('cursor').style.display='none';setTimeout(function(){document.getElementById('resultArea').innerHTML='<div class="result-box">✓ '+L.result+'</div>';document.getElementById('seg'+idx).className='progress-seg done';setTimeout(function(){runLayers(idx+1);},250);},150);});
         }
-        function typeText(t,el,i,cb){if(i<t.length){el.textContent+=t[i];setTimeout(function(){typeText(t,el,i+1,cb);},12);}else if(cb)cb();}
+        function typeText(t,el,i,cb){if(i<t.length){el.textContent+=t[i];setTimeout(function(){typeText(t,el,i+1,cb);},4);}else if(cb)cb();}
 
         window.showArch=function(){document.getElementById('cliView').classList.remove('active');document.getElementById('archView').classList.add('active');window.scrollTo(0,0);};
         window.goHome=function(){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('landing').classList.remove('hidden');document.getElementById('layerDisplay').innerHTML='';document.getElementById('transScreen').classList.remove('active');};
@@ -458,6 +572,59 @@
         };
 
         window.setLang=function(lang){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');};
+
+        // USE CASES
+        let currentUC='';
+        const ucFiles={
+            '01_defi':'use_cases/01_defi.md','02_banking':'use_cases/02_banking.md','03_security':'use_cases/03_security.md',
+            '04_crosschain':'use_cases/04_crosschain.md','05_identity':'use_cases/05_identity.md','06_deai':'use_cases/06_deai.md',
+            '07_supply_chain':'use_cases/07_supply_chain.md','08_defense':'use_cases/08_defense.md','09_gaming':'use_cases/09_gaming.md',
+            '10_research':'use_cases/10_research.md'
+        };
+        function mdToHtml(md){
+            return md
+                .replace(/^### (.*$)/gm,'<h3 style="color:#cc0000;font-size:0.85rem;margin-top:24px;margin-bottom:8px;">$1</h3>')
+                .replace(/^## (.*$)/gm,'<h2 style="color:#ff3333;font-size:1rem;margin-top:30px;margin-bottom:12px;border-bottom:1px solid #222;padding-bottom:8px;">$1</h2>')
+                .replace(/^# (.*$)/gm,'<h1 style="color:#ff3333;font-size:1.3rem;text-align:center;margin-bottom:16px;">$1</h1>')
+                .replace(/^\| (.+) \|$/gm,function(m){
+                    const cells=m.split('|').filter(c=>c.trim());
+                    const isHeader=cells.some(c=>c.includes('---'));
+                    if(isHeader)return '';
+                    const tag=cells[0].trim()==='Feature'?'th':'td';
+                    return '<tr>'+cells.map(c=>'<'+tag+' style="padding:6px 8px;border:1px solid #222;font-size:0.6rem;'+(tag==='th'?'background:#1a1a1a;color:#ff3333;':'color:#ccc;')+'">'+c.trim()+'</'+tag+'>').join('')+'</tr>';
+                })
+                .replace(/(<tr>.*<\/tr>\n?)+/g,function(m){return '<table style="width:100%;border-collapse:collapse;margin:12px 0;overflow-x:auto;">'+m+'</table>';})
+                .replace(/\*\*(.*?)\*\*/g,'<strong style="color:#fff;">$1</strong>')
+                .replace(/^- (.*$)/gm,'<div style="padding-left:12px;margin:4px 0;"><span style="color:#cc0000;">-</span> $1</div>')
+                .replace(/^---$/gm,'<hr style="border:none;border-top:1px solid #222;margin:24px 0;">')
+                .replace(/\n\n/g,'<br><br>');
+        }
+        window.openUseCase=async function(id){
+            currentUC=id;
+            const modal=document.getElementById('ucModal');
+            const content=document.getElementById('ucContent');
+            content.innerHTML='<div style="text-align:center;color:#cc0000;padding:40px;">LOADING...</div>';
+            modal.style.display='block';
+            document.body.style.overflow='hidden';
+            try{
+                const r=await fetch('/'+ucFiles[id]);
+                const text=await r.text();
+                content.innerHTML=mdToHtml(text);
+            }catch(e){
+                content.innerHTML='<div style="text-align:center;color:#cc0000;padding:40px;">Error loading document.</div>';
+            }
+            document.getElementById('ucDownloadBtn').onclick=function(){downloadUseCase(id);};
+        };
+        window.closeUseCase=function(){
+            document.getElementById('ucModal').style.display='none';
+            document.body.style.overflow='auto';
+        };
+        window.downloadUseCase=function(id){
+            const a=document.createElement('a');
+            a.href='/'+ucFiles[id];
+            a.download='x39matrix_'+id+'.md';
+            a.click();
+        };
 
         // LIVE CLI TERMINAL
         const CANISTER_LIST={L1:'dpu7v-2qaaa-aaaam-aivwq-cai',L2:'dgxuj-myaaa-aaaam-aivxa-cai',L3:'dbws5-baaaa-aaaam-aivxq-cai',L4:'b4l4v-siaaa-aaaam-aivya-cai',L5:'b3k2b-7qaaa-aaaam-aivyq-cai',L6:'bsjr5-jyaaa-aaaam-aivza-cai',L7:'bvixj-eaaaa-aaaam-aivzq-cai',L8:'mg4op-syaaa-aaaar-qb55q-cai',L9:'divzb-xiaaa-aaaam-aivwa-cai'};
@@ -563,5 +730,5 @@
         };
     })();
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eb22680bbe20335',t:'MTc3NTk5NjA2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
