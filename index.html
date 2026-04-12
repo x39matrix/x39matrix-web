@@ -192,17 +192,17 @@
     <div class="view" id="cliView">
         <div class="layers-header">
             <div class="layers-version">X39MATRIX CLI v11.0</div>
-            <div class="layers-subtitle">// LIVE DEMONSTRATION → 9 LAYERS</div>
+            <div class="layers-subtitle" data-i18n="cli-sub">// LIVE DEMONSTRATION → 9 LAYERS</div>
         </div>
         <div class="progress-bar" id="progressBar"></div>
         <div class="layer-display" id="layerDisplay"></div>
         <div class="transition-screen" id="transScreen">
             <div class="tri-container"><div class="triangle"></div></div>
-            <div class="see-you">Protocol is Live</div>
-            <div class="tagline">WHILE OTHERS LOOK FOR INVESTORS,</div>
-            <div class="tagline">X39MATRIX ALREADY OPERATES.</div>
-            <div class="tagline-sub">They build one by one. We already finished all 45.</div>
-            <button class="arch-btn" onclick="showArch()">VIEW THE ARCHITECTURE →</button>
+            <div class="see-you" data-i18n="proto-live">Protocol is Live</div>
+            <div class="tagline" data-i18n="tagline1">WHILE OTHERS LOOK FOR INVESTORS,</div>
+            <div class="tagline" data-i18n="tagline2">X39MATRIX ALREADY OPERATES.</div>
+            <div class="tagline-sub" data-i18n="tagline3">They build one by one. We already finished all 45.</div>
+            <button class="arch-btn" onclick="showArch()" data-i18n="arch-btn">VIEW THE ARCHITECTURE →</button>
         </div>
     </div>
 
@@ -210,15 +210,15 @@
     <div class="view" id="archView">
         <div class="arch-section">
             <div class="arch-title">
-                <p style="font-size:0.6rem;color:#cc0000;letter-spacing:0.2em;">SOVEREIGN ARCHITECTURE — TECHNICAL CERTIFICATION v11.0</p>
-                <h2>9 LAYERS.<br><span>45 BLOCKS.</span></h2>
-                <p>Each block has a unique and inexpugnable function. Not a promise. A certification.</p>
+                <p data-i18n="arch-cert" style="font-size:0.6rem;color:#cc0000;letter-spacing:0.2em;">SOVEREIGN ARCHITECTURE — TECHNICAL CERTIFICATION v11.0</p>
+                <h2 data-i18n="arch-title">9 LAYERS.<br><span>45 BLOCKS.</span></h2>
+                <p data-i18n="arch-desc">Each block has a unique and inexpugnable function. Not a promise. A certification.</p>
             </div>
             <div class="stats-row">
-                <div class="stat-box"><div class="stat-val">2.5S</div><div class="stat-lbl">BLOCK FINALITY</div></div>
-                <div class="stat-box"><div class="stat-val">50K+</div><div class="stat-lbl">NATIVE TPS</div></div>
-                <div class="stat-box"><div class="stat-val"><$0.001</div><div class="stat-lbl">PER TRANSACTION</div></div>
-                <div class="stat-box"><div class="stat-val">0</div><div class="stat-lbl">VULNERABLE BRIDGES</div></div>
+                <div class="stat-box"><div class="stat-val">2.5S</div><div class="stat-lbl" data-i18n="stat-finality">BLOCK FINALITY</div></div>
+                <div class="stat-box"><div class="stat-val">50K+</div><div class="stat-lbl" data-i18n="stat-tps">NATIVE TPS</div></div>
+                <div class="stat-box"><div class="stat-val"><$0.001</div><div class="stat-lbl" data-i18n="stat-cost">PER TRANSACTION</div></div>
+                <div class="stat-box"><div class="stat-val">0</div><div class="stat-lbl" data-i18n="stat-bridges">VULNERABLE BRIDGES</div></div>
             </div>
             <div class="layers-arch" id="layersArch"></div>
 
@@ -366,16 +366,16 @@
 
             <!-- USE CASES SECTION -->
             <div class="stress-section" style="margin-top:50px;margin-bottom:40px;">
-                <div class="stress-title" style="font-size:0.9rem;margin-bottom:8px;">// INDUSTRY APPLICATIONS</div>
+                <div class="stress-title" data-i18n="uc-section" style="font-size:0.9rem;margin-bottom:8px;">// INDUSTRY APPLICATIONS</div>
                 <div style="text-align:center;margin-bottom:24px;">
-                    <div style="font-size:clamp(1.2rem,3vw,2rem);font-weight:700;color:#fafafa;">WHERE x39MATRIX <span style="color:#ff3333;">OPERATES</span></div>
-                    <div style="font-size:0.65rem;color:#888;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">10 industries. Detailed technical analysis. Comparison with current solutions. Each document is independently downloadable.</div>
+                    <div data-i18n="uc-title" style="font-size:clamp(1.2rem,3vw,2rem);font-weight:700;color:#fafafa;">WHERE x39MATRIX <span style="color:#ff3333;">OPERATES</span></div>
+                    <div data-i18n="uc-desc" style="font-size:0.65rem;color:#888;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;">10 industries. Detailed technical analysis. Comparison with current solutions. Each document is independently downloadable.</div>
                 </div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;margin:0 auto;">
                     <div class="uc-card" onclick="openUseCase('01_defi')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">01</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DECENTRALIZED FINANCE</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Native Bitcoin. Zero bridges. $3B in bridge losses eliminated. vs Uniswap, Aave, LayerZero, THORChain.</div>
+                        <div data-i18n="uc01" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DECENTRALIZED FINANCE</div>
+                        <div data-i18n="uc01d" style="font-size:0.55rem;color:#888;line-height:1.6;">Native Bitcoin. Zero bridges. $3B in bridge losses eliminated. vs Uniswap, Aave, LayerZero, THORChain.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('01_defi')">DOWNLOAD</span>
@@ -383,8 +383,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('02_banking')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">02</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">INSTITUTIONAL BANKING</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">2.5s settlement vs 1-5 days SWIFT. $274B compliance market. vs JPMorgan Onyx, R3 Corda, Ripple.</div>
+                        <div data-i18n="uc02" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">INSTITUTIONAL BANKING</div>
+                        <div data-i18n="uc02d" style="font-size:0.55rem;color:#888;line-height:1.6;">2.5s settlement vs 1-5 days SWIFT. $274B compliance market. vs JPMorgan Onyx, R3 Corda, Ripple.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('02_banking')">DOWNLOAD</span>
@@ -392,8 +392,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('03_security')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">03</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">BLOCKCHAIN SECURITY</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">51% defense lab. 2,038 fuzzing cases, 0 escapes. vs Trail of Bits, Halborn, Forta Network.</div>
+                        <div data-i18n="uc03" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">BLOCKCHAIN SECURITY</div>
+                        <div data-i18n="uc03d" style="font-size:0.55rem;color:#888;line-height:1.6;">51% defense lab. 2,038 fuzzing cases, 0 escapes. vs Trail of Bits, Halborn, Forta Network.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('03_security')">DOWNLOAD</span>
@@ -401,8 +401,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('04_crosschain')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">04</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">CROSS-CHAIN INFRASTRUCTURE</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Threshold ECDSA native signing. No bridges ever. vs LayerZero, Wormhole, Cosmos IBC, Axelar.</div>
+                        <div data-i18n="uc04" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">CROSS-CHAIN INFRASTRUCTURE</div>
+                        <div data-i18n="uc04d" style="font-size:0.55rem;color:#888;line-height:1.6;">Threshold ECDSA native signing. No bridges ever. vs LayerZero, Wormhole, Cosmos IBC, Axelar.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('04_crosschain')">DOWNLOAD</span>
@@ -410,8 +410,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('05_identity')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">05</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">SOVEREIGN DIGITAL IDENTITY</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Zero passwords. Device-bound keys. 22B records breached in 2023. vs Google, Worldcoin, Microsoft ION.</div>
+                        <div data-i18n="uc05" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">SOVEREIGN DIGITAL IDENTITY</div>
+                        <div data-i18n="uc05d" style="font-size:0.55rem;color:#888;line-height:1.6;">Zero passwords. Device-bound keys. 22B records breached in 2023. vs Google, Worldcoin, Microsoft ION.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('05_identity')">DOWNLOAD</span>
@@ -419,8 +419,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('06_deai')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">06</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DECENTRALIZED AI (DeAI)</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">AI Sentinel on-chain. Every decision signed. 47/47 attacks blocked. vs OpenAI, Bittensor, Ritual.</div>
+                        <div data-i18n="uc06" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DECENTRALIZED AI (DeAI)</div>
+                        <div data-i18n="uc06d" style="font-size:0.55rem;color:#888;line-height:1.6;">AI Sentinel on-chain. Every decision signed. 47/47 attacks blocked. vs OpenAI, Bittensor, Ritual.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('06_deai')">DOWNLOAD</span>
@@ -428,8 +428,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('07_supply_chain')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">07</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">SUPPLY CHAIN & LOGISTICS</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">$4.2T counterfeit market. Ed25519 provenance. Concurrent updates. vs IBM Food Trust, VeChain.</div>
+                        <div data-i18n="uc07" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">SUPPLY CHAIN & LOGISTICS</div>
+                        <div data-i18n="uc07d" style="font-size:0.55rem;color:#888;line-height:1.6;">$4.2T counterfeit market. Ed25519 provenance. Concurrent updates. vs IBM Food Trust, VeChain.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('07_supply_chain')">DOWNLOAD</span>
@@ -437,8 +437,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('08_defense')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">08</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DEFENSE & GOVERNMENT</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Sovereign infrastructure. $150B cyber defense market. 51% defense lab. vs Palantir, AWS GovCloud.</div>
+                        <div data-i18n="uc08" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">DEFENSE & GOVERNMENT</div>
+                        <div data-i18n="uc08d" style="font-size:0.55rem;color:#888;line-height:1.6;">Sovereign infrastructure. $150B cyber defense market. 51% defense lab. vs Palantir, AWS GovCloud.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('08_defense')">DOWNLOAD</span>
@@ -446,8 +446,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('09_gaming')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">09</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">GAMING & METAVERSE</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">50K+ TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.</div>
+                        <div data-i18n="uc09" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">GAMING & METAVERSE</div>
+                        <div data-i18n="uc09d" style="font-size:0.55rem;color:#888;line-height:1.6;">50K+ TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('09_gaming')">DOWNLOAD</span>
@@ -455,8 +455,8 @@
                     </div>
                     <div class="uc-card" onclick="openUseCase('10_research')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">10</div>
-                        <div style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">ACADEMIC RESEARCH</div>
-                        <div style="font-size:0.55rem;color:#888;line-height:1.6;">Fokker-Planck publishable. Immutable science. Ed25519 credentials. vs Elsevier, ResearchHub, DeSci.</div>
+                        <div data-i18n="uc10" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">ACADEMIC RESEARCH</div>
+                        <div data-i18n="uc10d" style="font-size:0.55rem;color:#888;line-height:1.6;">Fokker-Planck publishable. Immutable science. Ed25519 credentials. vs Elsevier, ResearchHub, DeSci.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('10_research')">DOWNLOAD</span>
@@ -467,6 +467,18 @@
 
             <!-- USE CASE MODAL -->
             <div id="ucModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);overflow-y:auto;">
+
+            <!-- EMAIL CAPTURE MODAL -->
+            <div id="emailModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;">
+                <div style="background:#0a0a0a;border:2px solid rgba(204,0,0,0.4);padding:30px;max-width:400px;width:90%;margin:auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
+                    <div style="font-size:0.9rem;color:#ff3333;font-weight:700;text-align:center;margin-bottom:6px;letter-spacing:0.15em;">DOWNLOAD DOCUMENT</div>
+                    <div style="font-size:0.6rem;color:#888;text-align:center;margin-bottom:20px;">Enter your email to receive the document</div>
+                    <input id="emailInput" type="email" placeholder="your@email.com" style="width:100%;background:#111;border:1px solid #333;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:12px;outline:none;box-sizing:border-box;margin-bottom:12px;" onfocus="this.style.borderColor='#cc0000'" onblur="this.style.borderColor='#333'">
+                    <button onclick="submitEmailDownload()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:12px;background:rgba(204,0,0,0.8);color:#fff;border:none;cursor:pointer;letter-spacing:0.15em;margin-bottom:8px;transition:background 0.2s;" onmouseover="this.style.background='#cc0000'" onmouseout="this.style.background='rgba(204,0,0,0.8)'">SEND TO MY EMAIL</button>
+                    <div id="emailStatus" style="font-size:0.6rem;text-align:center;margin-top:8px;min-height:16px;"></div>
+                    <button onclick="closeEmailModal()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:8px;background:transparent;color:#555;border:1px solid #222;cursor:pointer;letter-spacing:0.1em;margin-top:8px;">CANCEL</button>
+                </div>
+            </div>
                 <div style="max-width:800px;margin:0 auto;padding:24px;position:relative;">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:sticky;top:0;background:rgba(0,0,0,0.95);padding:12px 0;z-index:10;">
                         <button onclick="closeUseCase()" style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:#cc0000;background:transparent;border:1px solid rgba(204,0,0,0.4);padding:8px 16px;cursor:pointer;letter-spacing:0.1em;">CLOSE</button>
@@ -478,7 +490,7 @@
 
             <!-- PDF DOWNLOAD -->
             <div class="pdf-section">
-                <div class="pdf-title" style="font-size:0.8rem;">// DOWNLOAD TECHNICAL CERTIFICATION</div>
+                <div class="pdf-title" data-i18n="pdf-title" style="font-size:0.8rem;">// DOWNLOAD TECHNICAL CERTIFICATION</div>
                 <div class="pdf-langs">
                     <button class="pdf-lang-btn active" onclick="selectPdfLang(this,'en')">ENGLISH</button>
                     <button class="pdf-lang-btn" onclick="selectPdfLang(this,'es')">ESPAÑOL</button>
@@ -571,7 +583,150 @@
             const a=document.createElement('a');a.href=urls[selectedPdfLang];a.download='x39matrix_certification_'+selectedPdfLang+'.pdf';a.target='_blank';a.click();
         };
 
-        window.setLang=function(lang){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');};
+        window.setLang=function(lang){
+            document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('[data-i18n]').forEach(el=>{
+                const key=el.getAttribute('data-i18n');
+                if(i18n[lang]&&i18n[lang][key])el.innerHTML=i18n[lang][key];
+            });
+            if(lang==='ar')document.body.style.direction='rtl';
+            else document.body.style.direction='ltr';
+        };
+        const i18n={
+            en:{
+                'cli-version':'X39MATRIX CLI v11.0',
+                'cli-sub':'// LIVE DEMONSTRATION → 9 LAYERS',
+                'proto-live':'Protocol is Live',
+                'tagline1':'WHILE OTHERS LOOK FOR INVESTORS,',
+                'tagline2':'X39MATRIX ALREADY OPERATES.',
+                'tagline3':'They build one by one. We already finished all 45.',
+                'arch-btn':'VIEW THE ARCHITECTURE →',
+                'arch-cert':'SOVEREIGN ARCHITECTURE — TECHNICAL CERTIFICATION v11.0',
+                'arch-title':'9 LAYERS.<br><span>45 BLOCKS.</span>',
+                'arch-desc':'Each block has a unique and inexpugnable function. Not a promise. A certification.',
+                'stat-finality':'BLOCK FINALITY',
+                'stat-tps':'NATIVE TPS',
+                'stat-cost':'PER TRANSACTION',
+                'stat-bridges':'VULNERABLE BRIDGES',
+                'btc-title':'// NATIVE BITCOIN INTEGRATION — THRESHOLD ECDSA & SCHNORR',
+                'btc-sub':'BTC SOVEREIGN SIGNING — NO BRIDGES, NO CUSTODIANS',
+                'uc-section':'// INDUSTRY APPLICATIONS',
+                'uc-title':'WHERE x39MATRIX <span style="color:#ff3333;">OPERATES</span>',
+                'uc-desc':'10 industries. Detailed technical analysis. Comparison with current solutions. Each document is independently downloadable.',
+                'pdf-title':'// DOWNLOAD TECHNICAL CERTIFICATION',
+                'footer-text':'9 Layers — 45 Blocks — Ed25519 — Sovereign Protocol — Internet Computer',
+                'uc01':'DECENTRALIZED FINANCE','uc01d':'Native Bitcoin. Zero bridges. $3B in bridge losses eliminated. vs Uniswap, Aave, LayerZero, THORChain.',
+                'uc02':'INSTITUTIONAL BANKING','uc02d':'2.5s settlement vs 1-5 days SWIFT. $274B compliance market. vs JPMorgan Onyx, R3 Corda, Ripple.',
+                'uc03':'BLOCKCHAIN SECURITY','uc03d':'51% defense lab. 2,038 fuzzing cases, 0 escapes. vs Trail of Bits, Halborn, Forta Network.',
+                'uc04':'CROSS-CHAIN INFRASTRUCTURE','uc04d':'Threshold ECDSA native signing. No bridges ever. vs LayerZero, Wormhole, Cosmos IBC, Axelar.',
+                'uc05':'SOVEREIGN DIGITAL IDENTITY','uc05d':'Zero passwords. Device-bound keys. 22B records breached in 2023. vs Google, Worldcoin, Microsoft ION.',
+                'uc06':'DECENTRALIZED AI (DeAI)','uc06d':'AI Sentinel on-chain. Every decision signed. 47/47 attacks blocked. vs OpenAI, Bittensor, Ritual.',
+                'uc07':'SUPPLY CHAIN & LOGISTICS','uc07d':'$4.2T counterfeit market. Ed25519 provenance. Concurrent updates. vs IBM Food Trust, VeChain.',
+                'uc08':'DEFENSE & GOVERNMENT','uc08d':'Sovereign infrastructure. $150B cyber defense market. 51% defense lab. vs Palantir, AWS GovCloud.',
+                'uc09':'GAMING & METAVERSE','uc09d':'50K+ TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.',
+                'uc10':'ACADEMIC RESEARCH','uc10d':'Fokker-Planck publishable. Immutable science. Ed25519 credentials. vs Elsevier, ResearchHub, DeSci.'
+            },
+            es:{
+                'cli-version':'X39MATRIX CLI v11.0',
+                'cli-sub':'// DEMOSTRACION EN VIVO → 9 CAPAS',
+                'proto-live':'Protocolo Activo',
+                'tagline1':'MIENTRAS OTROS BUSCAN INVERSORES,',
+                'tagline2':'X39MATRIX YA OPERA.',
+                'tagline3':'Ellos construyen de uno en uno. Nosotros ya terminamos los 45.',
+                'arch-btn':'VER LA ARQUITECTURA →',
+                'arch-cert':'ARQUITECTURA SOBERANA — CERTIFICACION TECNICA v11.0',
+                'arch-title':'9 CAPAS.<br><span>45 BLOQUES.</span>',
+                'arch-desc':'Cada bloque tiene una funcion unica e inexpugnable. No es una promesa. Es una certificacion.',
+                'stat-finality':'FINALIDAD DE BLOQUE',
+                'stat-tps':'TPS NATIVOS',
+                'stat-cost':'POR TRANSACCION',
+                'stat-bridges':'PUENTES VULNERABLES',
+                'btc-title':'// INTEGRACION BITCOIN NATIVA — THRESHOLD ECDSA & SCHNORR',
+                'btc-sub':'FIRMA SOBERANA BTC — SIN PUENTES, SIN CUSTODIOS',
+                'uc-section':'// APLICACIONES POR INDUSTRIA',
+                'uc-title':'DONDE OPERA <span style="color:#ff3333;">x39MATRIX</span>',
+                'uc-desc':'10 industrias. Analisis tecnico detallado. Comparacion con soluciones actuales. Cada documento es descargable.',
+                'pdf-title':'// DESCARGAR CERTIFICACION TECNICA',
+                'footer-text':'9 Capas — 45 Bloques — Ed25519 — Protocolo Soberano — Internet Computer',
+                'uc01':'FINANZAS DESCENTRALIZADAS','uc01d':'Bitcoin nativo. Cero puentes. $3B en perdidas de puentes eliminadas. vs Uniswap, Aave, LayerZero.',
+                'uc02':'BANCA INSTITUCIONAL','uc02d':'Liquidacion 2.5s vs 1-5 dias SWIFT. Mercado compliance $274B. vs JPMorgan Onyx, R3 Corda, Ripple.',
+                'uc03':'SEGURIDAD BLOCKCHAIN','uc03d':'Laboratorio defensa 51%. 2,038 casos fuzzing, 0 escapes. vs Trail of Bits, Halborn, Forta.',
+                'uc04':'INFRAESTRUCTURA CROSS-CHAIN','uc04d':'Firma nativa Threshold ECDSA. Sin puentes jamas. vs LayerZero, Wormhole, Cosmos IBC.',
+                'uc05':'IDENTIDAD DIGITAL SOBERANA','uc05d':'Cero contraseñas. Claves vinculadas al dispositivo. 22B registros filtrados en 2023.',
+                'uc06':'IA DESCENTRALIZADA (DeAI)','uc06d':'AI Sentinel on-chain. Cada decision firmada. 47/47 ataques bloqueados. vs OpenAI, Bittensor.',
+                'uc07':'CADENA DE SUMINISTRO','uc07d':'Mercado falsificaciones $4.2T. Proveniencia Ed25519. vs IBM Food Trust, VeChain.',
+                'uc08':'DEFENSA Y GOBIERNO','uc08d':'Infraestructura soberana. Mercado ciberdefensa $150B. Laboratorio 51%. vs Palantir, AWS GovCloud.',
+                'uc09':'GAMING Y METAVERSO','uc09d':'50K+ TPS. DAG causal para MMO. Anti-cheat AI on-chain. vs Immutable X, Ronin.',
+                'uc10':'INVESTIGACION ACADEMICA','uc10d':'Fokker-Planck publicable. Ciencia inmutable. Credenciales Ed25519. vs Elsevier, ResearchHub.'
+            },
+            zh:{
+                'cli-version':'X39MATRIX CLI v11.0',
+                'cli-sub':'// 现场演示 → 9层',
+                'proto-live':'协议已上线',
+                'tagline1':'当其他人还在寻找投资者时，',
+                'tagline2':'X39MATRIX已经在运行。',
+                'tagline3':'他们一个一个地建设。我们已经完成了全部45个。',
+                'arch-btn':'查看架构 →',
+                'arch-cert':'主权架构 — 技术认证 v11.0',
+                'arch-title':'9层。<br><span>45个区块。</span>',
+                'arch-desc':'每个区块都有独特且不可攻破的功能。不是承诺，是认证。',
+                'stat-finality':'区块最终性',
+                'stat-tps':'原生TPS',
+                'stat-cost':'每笔交易',
+                'stat-bridges':'脆弱桥接',
+                'btc-title':'// 原生比特币集成 — THRESHOLD ECDSA & SCHNORR',
+                'btc-sub':'BTC主权签名 — 无桥接，无托管',
+                'uc-section':'// 行业应用',
+                'uc-title':'x39MATRIX <span style="color:#ff3333;">运营领域</span>',
+                'uc-desc':'10个行业。详细技术分析。与当前解决方案对比。每份文档可独立下载。',
+                'pdf-title':'// 下载技术认证',
+                'footer-text':'9层 — 45区块 — Ed25519 — 主权协议 — 互联网计算机',
+                'uc01':'去中心化金融','uc01d':'原生比特币。零桥接。消除30亿美元桥接损失。对比Uniswap、Aave、LayerZero。',
+                'uc02':'机构银行业务','uc02d':'2.5秒结算 vs SWIFT 1-5天。2740亿美元合规市场。对比摩根大通Onyx。',
+                'uc03':'区块链安全','uc03d':'51%防御实验室。2,038个模糊测试用例，0逃逸。对比Trail of Bits、Halborn。',
+                'uc04':'跨链基础设施','uc04d':'Threshold ECDSA原生签名。永无桥接。对比LayerZero、Wormhole。',
+                'uc05':'主权数字身份','uc05d':'零密码。设备绑定密钥。2023年220亿记录泄露。对比Google、Worldcoin。',
+                'uc06':'去中心化AI','uc06d':'链上AI哨兵。每个决策签名。47/47攻击被阻止。对比OpenAI、Bittensor。',
+                'uc07':'供应链与物流','uc07d':'4.2万亿美元假冒市场。Ed25519溯源。对比IBM Food Trust、VeChain。',
+                'uc08':'国防与政府','uc08d':'主权基础设施。1500亿美元网络防御市场。51%防御实验室。对比Palantir。',
+                'uc09':'游戏与元宇宙','uc09d':'50K+ TPS。因果DAG用于MMO。链上AI反作弊。对比Immutable X、Ronin。',
+                'uc10':'学术研究','uc10d':'Fokker-Planck可发表。不可变科学。Ed25519凭证。对比Elsevier。'
+            },
+            ar:{
+                'cli-version':'X39MATRIX CLI v11.0',
+                'cli-sub':'// عرض مباشر ← 9 طبقات',
+                'proto-live':'البروتوكول نشط',
+                'tagline1':'بينما يبحث الآخرون عن مستثمرين،',
+                'tagline2':'X39MATRIX يعمل بالفعل.',
+                'tagline3':'هم يبنون واحداً تلو الآخر. نحن أنهينا الـ 45 جميعها.',
+                'arch-btn':'← عرض الهندسة المعمارية',
+                'arch-cert':'هندسة معمارية سيادية — شهادة تقنية v11.0',
+                'arch-title':'9 طبقات.<br><span>45 كتلة.</span>',
+                'arch-desc':'كل كتلة لها وظيفة فريدة وغير قابلة للاختراق. ليست وعداً. إنها شهادة.',
+                'stat-finality':'نهائية الكتلة',
+                'stat-tps':'TPS أصلي',
+                'stat-cost':'لكل معاملة',
+                'stat-bridges':'جسور ضعيفة',
+                'btc-title':'// تكامل بيتكوين أصلي — THRESHOLD ECDSA & SCHNORR',
+                'btc-sub':'توقيع BTC سيادي — بدون جسور، بدون أمناء حفظ',
+                'uc-section':'// تطبيقات صناعية',
+                'uc-title':'أين يعمل <span style="color:#ff3333;">x39MATRIX</span>',
+                'uc-desc':'10 صناعات. تحليل تقني مفصل. مقارنة مع الحلول الحالية. كل وثيقة قابلة للتحميل.',
+                'pdf-title':'// تحميل الشهادة التقنية',
+                'footer-text':'9 طبقات — 45 كتلة — Ed25519 — بروتوكول سيادي — حاسوب الإنترنت',
+                'uc01':'التمويل اللامركزي','uc01d':'بيتكوين أصلي. صفر جسور. إزالة 3 مليارات دولار خسائر. مقابل Uniswap، Aave.',
+                'uc02':'الخدمات المصرفية المؤسسية','uc02d':'تسوية 2.5 ثانية مقابل 1-5 أيام SWIFT. سوق الامتثال 274 مليار دولار.',
+                'uc03':'أمن سلسلة الكتل','uc03d':'مختبر دفاع 51%. 2,038 حالة تشويش، 0 هروب. مقابل Trail of Bits، Halborn.',
+                'uc04':'بنية تحتية عبر السلاسل','uc04d':'توقيع أصلي Threshold ECDSA. بدون جسور أبداً. مقابل LayerZero، Wormhole.',
+                'uc05':'الهوية الرقمية السيادية','uc05d':'صفر كلمات مرور. مفاتيح مرتبطة بالجهاز. 22 مليار سجل مخترق في 2023.',
+                'uc06':'الذكاء الاصطناعي اللامركزي','uc06d':'حارس AI على السلسلة. كل قرار موقع. 47/47 هجوم محظور.',
+                'uc07':'سلسلة التوريد واللوجستيات','uc07d':'سوق التزوير 4.2 تريليون دولار. مصدر Ed25519. مقابل IBM Food Trust، VeChain.',
+                'uc08':'الدفاع والحكومة','uc08d':'بنية تحتية سيادية. سوق الدفاع السيبراني 150 مليار دولار. مقابل Palantir.',
+                'uc09':'الألعاب والميتافيرس','uc09d':'50K+ TPS. DAG سببي لـ MMO. مكافحة غش AI على السلسلة. مقابل Immutable X.',
+                'uc10':'البحث الأكاديمي','uc10d':'Fokker-Planck قابل للنشر. علم غير قابل للتغيير. بيانات Ed25519. مقابل Elsevier.'
+            }
+        };
 
         // USE CASES
         let currentUC='';
@@ -620,10 +775,34 @@
             document.body.style.overflow='auto';
         };
         window.downloadUseCase=function(id){
-            const a=document.createElement('a');
-            a.href='/'+ucFiles[id];
-            a.download='x39matrix_'+id+'.md';
-            a.click();
+            currentUC=id;
+            document.getElementById('emailModal').style.display='block';
+            document.getElementById('emailInput').value='';
+            document.getElementById('emailStatus').textContent='';
+        };
+        window.closeEmailModal=function(){
+            document.getElementById('emailModal').style.display='none';
+        };
+        window.submitEmailDownload=async function(){
+            const email=document.getElementById('emailInput').value.trim();
+            if(!email||!email.includes('@')){document.getElementById('emailStatus').textContent='Enter a valid email';document.getElementById('emailStatus').style.color='#cc0000';return;}
+            document.getElementById('emailStatus').textContent='SENDING...';
+            document.getElementById('emailStatus').style.color='#888';
+            try{
+                const r=await fetch('https://nivel-scan.preview.emergentagent.com/api/download-usecase',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,document_id:currentUC,language:selectedPdfLang})});
+                const d=await r.json();
+                if(d.status==='ok'){
+                    document.getElementById('emailStatus').textContent='SENT. CHECK YOUR EMAIL.';
+                    document.getElementById('emailStatus').style.color='#22c55e';
+                    setTimeout(closeEmailModal,2000);
+                }else{
+                    document.getElementById('emailStatus').textContent='ERROR. TRY AGAIN.';
+                    document.getElementById('emailStatus').style.color='#cc0000';
+                }
+            }catch(e){
+                document.getElementById('emailStatus').textContent='ERROR. TRY AGAIN.';
+                document.getElementById('emailStatus').style.color='#cc0000';
+            }
         };
 
         // LIVE CLI TERMINAL
@@ -730,5 +909,5 @@
         };
     })();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eb22680bbe20335',t:'MTc3NTk5NjA2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eb24caf9ba8cbb6',t:'MTc3NTk5NzYyNg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
