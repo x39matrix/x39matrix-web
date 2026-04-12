@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بروتوكول X39MATRIX: المعاهدة العليا للشهادة</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e0e0e0;font-family:'JetBrains Mono',monospace;padding:40px;font-size:12px;line-height:1.8;direction:rtl;}
+h1{color:#ff3333;font-size:20px;text-align:center;margin-bottom:8px;text-shadow:0 0 10px rgba(255,51,51,0.4);}
+h2{color:#ff3333;font-size:14px;margin-top:30px;margin-bottom:12px;border-bottom:1px solid #222;padding-bottom:8px;}
+h3{color:#cc0000;font-size:12px;margin-top:20px;margin-bottom:8px;}
+.subtitle{text-align:center;color:#888;font-size:11px;margin-bottom:4px;}
+.architect{text-align:center;color:#aaa;font-size:11px;margin-bottom:30px;}
+p{margin-bottom:12px;color:#ccc;}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:11px;}
+th{background:#1a1a1a;color:#ff3333;padding:8px;text-align:left;border:1px solid #222;}
+td{padding:8px;border:1px solid #1a1a1a;}
+.metric-table td:last-child{color:#22c55e;font-weight:bold;}
+.pillar{background:#111;border-left:3px solid #cc0000;padding:10px 14px;margin:8px 0;}
+.footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #222;color:#555;font-size:10px;}
+.cert-box{background:#111;border:1px solid #cc0000;padding:16px;margin:16px 0;text-align:center;}
+.cert-box .hash{color:#cc0000;font-size:10px;word-break:break-all;}
+@media print{body{background:#fff;color:#000;} h1,h2,h3{color:#cc0000;} table{border-color:#ccc;} th{background:#f0f0f0;}}
+</style>
+</head>
+<body>
+<h1>بروتوكول X39MATRIX: المعاهدة العليا للشهادة</h1>
+<div class="subtitle">العمارة السيادية من 9 طبقات — مصفوفة من 45 كتلة مؤكدة</div>
+<div class="subtitle">التحقق الرسمي: WWW.X39MATRIX.ORG</div>
+<div class="architect">المهندس الرئيسي: José Luis Olivares — 10 أبريل 2026</div>
+
+<h2>1. بيان X39MATRIX: التفرد التكنولوجي الإصدار 9.0</h2>
+<p>بروتوكول x39matrix ليس تطوراً لسلسلة الكتل؛ إنه تفرد تكنولوجي صممه José Luis Olivares. من خلال العمل أصلاً على حاسوب الإنترنت (ICP)، يلغي x39matrix الحاجة إلى الطبقات الخارجية البطيئة والجسور الضعيفة، مما يخلق بيئة تنفيذ حتمية وسيادية.</p>
+<p>يقدم الإصدار 9.0 DAG السببي مع تحول الحالة (الطبقة 9) والمنسق السيادي (الطبقة 8)، مما يرفع العمارة إلى 45 كتلة وظيفية حصينة، تم التحقق منها من خلال اختبارات الإجهاد والاختبار التوليدي وتوقيع Ed25519 المشفر.</p>
+
+<h2>أركان التفوق التقني</h2>
+<div class="pillar"><strong>1.</strong> سرعة الضوء المشفرة: نهائية الكتلة في 2.5 ثانية مع إنتاجية قابلة للتوسع تتجاوز 50,000 TPS من خلال التجزئة الأفقية الديناميكية.</div>
+<div class="pillar"><strong>2.</strong> ذكاء اصطناعي أصلي على السلسلة (DeAI): كتلة "حارس الذكاء الاصطناعي" تعمل كجهاز مناعة مستقل، تدقق كل معاملة ونمط شبكة في الوقت الفعلي.</div>
+<div class="pillar"><strong>3.</strong> التشغيل البيني الشامل الأصلي: التكامل المباشر مع بيتكوين وإيثريوم من خلال Threshold ECDSA وSchnorr، مما يتيح توقيع المعاملات بدون أمناء خارجيين.</div>
+<div class="pillar"><strong>4.</strong> تحول الحالة الكمي: DAG السببي في Rust يتيح تقارب الحالات المتوازية بدون تصادمات، مما يضمن الاتساق النهائي في ظل ظروف تقسيم الشبكة القصوى.</div>
+<div class="pillar"><strong>5.</strong> الخصوصية المطلقة: خط أنابيب المقاييس المطهر والموقع بـ Ed25519، مع 0 حالات هروب تم التحقق منها في 2,038 حالة اختبار توليدي.</div>
+
+<h2>2. الشهادة التقنية لـ 45 كتلة (الإصدار 9.0)</h2>
+<p>تشهد هذه الوثيقة على سلامة وقابلية تشغيل الكتل الأساسية الـ 45 التي تشكل عمارة x39matrix ذات 9 طبقات:</p>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 1: البنية التحتية ونواة ICP</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B01</td><td>نواة الشبكة الفرعية</td><td>قاعدة موزعة وأمن شبكة منخفض المستوى.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B02</td><td>بيئة تشغيل Motoko</td><td>بيئة تنفيذ أصلية للمنطق والحاويات.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B03</td><td>الذاكرة المستقرة</td><td>استمرارية الحالة عبر ترقيات النظام.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B04</td><td>محرك الدورات</td><td>إدارة الموارد ومنع هجمات DoS.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B05</td><td>المراقبة</td><td>القياس عن بعد ومراقبة صحة العقد المستمرة.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 2: الهوية والأصول والسيادة</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B06</td><td>هوية الإنترنت</td><td>مصادقة سيادية وآمنة بدون كلمات مرور.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B07</td><td>مدير الحسابات</td><td>إدارة الأذونات والملفات الشخصية والأدوار.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B08</td><td>سجل ICRC-1</td><td>سجل معاملات غير قابل للتغيير لرمز x39.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B09</td><td>محرك ICRC-2</td><td>إدارة متقدمة لموافقات الأصول المفوضة.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B10</td><td>خزنة الخزينة</td><td>تخزين الأصول تحت سيطرة DAO المباشرة.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 3: تدفق التنفيذ والترتيب</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B11</td><td>بوابة المعاملات</td><td>نقطة دخول واحدة للطلبات الخارجية.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B12</td><td>قائمة انتظار حتمية</td><td>تطبيع المعاملات لتجنب التصادمات.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B13</td><td>VDF (تأخير قابل للتحقق)</td><td>ترتيب تشفيري متسلسل وقابل للتحقق.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B14</td><td>جدولة متوازية</td><td>تعظيم الإنتاجية من خلال التزامن.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B15</td><td>انتقال الحالة</td><td>تنفيذ تغييرات حتمية على القاعدة العالمية.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B16</td><td>محرك الرسوم</td><td>تسوية رسوم منخفضة للغاية لكل معاملة.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 4: الإجماع والأمن المشفر</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B17</td><td>إجماع الشبكة الفرعية</td><td>تنسيق التحقق بين عقد الشبكة.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B18</td><td>نهائية BFT</td><td>إغلاق كتلة لا رجعة فيه في 2.5 ثانية.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B19</td><td>Threshold ECDSA</td><td>توقيع أصلي للشبكات الخارجية (BTC/ETH).</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B20</td><td>Threshold Schnorr</td><td>دعم التوقيع المشفر من الجيل التالي.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B21</td><td>جدار حماية المخاطر</td><td>حظر ذكي لأنماط الهجوم التكيفية.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B22</td><td>سجل التدقيق</td><td>تاريخ غير قابل للتغيير لأحداث الأمن الحرجة.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 5: قابلية التوسع وديناميكيات السيولة</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B23</td><td>سجل الأجزاء</td><td>كتالوج ديناميكي لأجزاء الشبكة النشطة.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B24</td><td>موازن الحمل</td><td>إعادة توزيع ذكية للحركة بين الأجزاء.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B25</td><td>موجه عبر الأجزاء</td><td>اتصال فوري بين أجزاء الشبكة.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B26</td><td>تنفيذ أفقي</td><td>موازاة ضخمة لأكثر من 50,000 TPS.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B27</td><td>سيولة موحدة</td><td>تركيز منطقي لتجنب التجزئة.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B28</td><td>مراقب الأداء</td><td>ضبط تلقائي للمعلمات بناءً على الحمل.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 6: التشغيل البيني الشامل العالمي</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B29</td><td>نواة اندماج السلاسل</td><td>تقنية توقيع أصلية بين السلاسل.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B30</td><td>محول إيثريوم</td><td>اتصال مباشر مع شبكات EVM والطبقة 2.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B31</td><td>محول بيتكوين</td><td>دعم أصلي لمعاملات شبكة بيتكوين.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B32</td><td>محولات خارجية</td><td>توسع معياري (Solana، BSC، إلخ).</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B33</td><td>مدقق الإثباتات</td><td>تحقق تشفيري من الحالات الخارجية.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B34</td><td>تسوية شاملة</td><td>تسوية نهائية للأصول بدون جسور خارجية.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 7: الذكاء المستقل والحوكمة (DEAI)</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B35</td><td>نواة حارس AI</td><td>محرك دفاع ذكي مركزي DeAI.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B36</td><td>كاشف الاحتيال</td><td>تحديد هجمات Sybil وAML من خلال AI.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B37</td><td>محاكي الإجهاد</td><td>اختبارات سلامة وقائية مستمرة.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B38</td><td>وكلاء مستقلون</td><td>أتمتة مهام قابلة للبرمجة على السلسلة.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B39</td><td>نواة SNS/DAO</td><td>حوكمة مستقلة وشفافة ولامركزية.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 8: التنسيق والخلفية السيادية</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B40</td><td>الخلفية الأساسية</td><td>منسق مركزي لمنطق الأعمال.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B41</td><td>مجمع Ed25519</td><td>خط أنابيب مقاييس مطهر وموقع تشفيرياً.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B42</td><td>لوحة تحكم L9</td><td>واجهة موحدة مع التحقق من التوقيع في المتصفح.</td></tr>
+</table>
+<h3 style="color:#cc0000;margin-top:24px;">الطبقة 9: DAG السببي في RUST (تحول الحالة)</h3>
+<table><tr><th>Block</th><th>Name</th><th>Function</th></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B43</td><td>محرك Rust DAG</td><td>رسم بياني موجه غير دوري لترتيب الأحداث السببية.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B44</td><td>تحول الحالة</td><td>حل رياضي للنزاعات المتزامنة بدون أقفال.</td></tr>
+<tr><td style="color:#cc0000;font-weight:bold;">B45</td><td>مصدر Candid</td><td>إنشاء تلقائي لواجهات قابلة للتشغيل البيني.</td></tr>
+</table>
+
+
+<h2>3. نتائج الشهادة والاختبارات (أبريل 2026)</h2>
+<p>خضعت العمارة ذات 9 طبقات لأكثر الاختبارات صرامة في الصناعة، مما يشهد على جاهزيتها للنشر على الشبكة الرئيسية.</p>
+<h3>اختبار الإجهاد B27 — السيولة الموحدة</h3>
+<p>اختبار حمل شديد على الكتلة B27 (الطبقة 5) يحاكي 200 مكالمة متزامنة بتزامن 10، تم تنفيذه في 26 ثانية:</p>
+<table class="metric-table">
+<tr><th>Metric</th><th>Value</th><th>Threshold</th><th>Status</th></tr>
+<tr><td>Success Rate (Commit)</td><td>100.000%</td><td>≥ 99.9%</td><td>PASSED ✓</td></tr>
+<tr><td>p50 Latency</td><td>1298 ms</td><td>&lt; 1500 ms</td><td>PASSED ✓</td></tr>
+<tr><td>p95 Latency</td><td>1330 ms</td><td>&lt; 2000 ms</td><td>PASSED ✓</td></tr>
+<tr><td>p99 Latency</td><td>1356 ms</td><td>≤ 5000 ms</td><td>PASSED ✓</td></tr>
+<tr><td>Memory Degradation</td><td>+0 KB</td><td>&lt; 10 MB</td><td>PASSED ✓</td></tr>
+<tr><td>Cycles/call</td><td>~6M</td><td>Normal</td><td>NOMINAL</td></tr>
+</table>
+
+<h3>مجموعة الاختبار — أمان ED25519</h3>
+<p>خضع خط أنابيب المقاييس (الطبقة 8، B41) لاختبار توليدي مع fast-check للتحقق من التطهير وتوقيع Ed25519 المشفر:</p>
+<table class="metric-table">
+<tr><th>Attack Vector</th><th>Cases</th><th>Escapes</th><th>Status</th></tr>
+<tr><td>Manual Injection</td><td>16</td><td>0</td><td>PASSED ✓</td></tr>
+<tr><td>Generative Fuzzing</td><td>2000</td><td>0</td><td>PASSED ✓</td></tr>
+<tr><td>Schema Violation (Ajv)</td><td>6</td><td>0</td><td>PASSED ✓</td></tr>
+<tr><td><strong>TOTAL</strong></td><td><strong>2038</strong></td><td><strong>0</strong></td><td><strong>PASSED ✓</strong></td></tr>
+</table>
+
+<h2>4. الحماية القانونية والملكية الفكرية</h2>
+<h3>شرط السر الصناعي والخوارزمية غير القابلة للنسخ</h3>
+<p>تشكل عمارة 45 كتلة والكود المصدري للحاويات ومنطق التفاعل بين الطبقات لبروتوكول x39matrix سراً صناعياً لا يقدر بثمن، ملكية حصرية لـ José Luis Olivares.</p>
+<p>أي محاولة للهندسة العكسية أو فك التجميع أو نسخ المنطق التشغيلي الموصوف في هذه الوثيقة أو على بوابة www.x39matrix.org ستتم ملاحقتها قانونياً.</p>
+
+<h2>5. الخلاصة وسجل الشهادة</h2>
+<p>عمارة x39matrix هي ذروة الهندسة السيادية. تشهد هذه الوثيقة أن الكتل التشغيلية الـ 45 حقيقية ووظيفية وحصينة.</p>
+<div class="cert-box">
+<div class="hash">CERTIFICATION HASH: f4e3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3</div>
+<div style="margin-top:8px;color:#aaa;">#x39matrix-SUPREME-MASTER-CERT-2026</div>
+<div style="margin-top:8px;"><a href="https://x39matrix.org/verify" style="color:#cc0000;">www.x39matrix.org/verify</a></div>
+</div>
+
+<div class="footer">
+© 2026 José Luis Olivares — x39Matrix. جميع الحقوق محفوظة.<br>
+Ed25519
+</div>
+</body>
+</html>

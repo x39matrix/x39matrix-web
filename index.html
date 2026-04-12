@@ -429,10 +429,10 @@
         window.selectPdfLang=function(btn,lang){selectedPdfLang=lang;document.querySelectorAll('.pdf-lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
         window.downloadPdf=function(){
             const urls={
-                en:'https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/r7hsdjsv_x39matrix_realidad.pdf',
+                en:'/x39matrix_certification_en.html',
                 es:'https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/r7hsdjsv_x39matrix_realidad.pdf',
-                zh:'https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/r7hsdjsv_x39matrix_realidad.pdf',
-                ar:'https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/r7hsdjsv_x39matrix_realidad.pdf'
+                zh:'/x39matrix_certification_zh.html',
+                ar:'/x39matrix_certification_ar.html'
             };
             const a=document.createElement('a');a.href=urls[selectedPdfLang];a.download='x39matrix_certification_'+selectedPdfLang+'.pdf';a.target='_blank';a.click();
         };
@@ -543,5 +543,5 @@
         };
     })();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eadc9cecc6a035e',t:'MTc3NTk1MDMyMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
