@@ -4,69 +4,116 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import hashlib
+import random
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Create the main app without a prefix
 app = FastAPI()
-
-# Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
-
-# Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
-    
+class SimulationRun(BaseModel):
+    model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    started_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    status: str = "completed"
+    attack_detected: bool = True
+    detection_time_ms: int = Field(default_factory=lambda: random.randint(800, 1800))
+    blocks_legitimate: int = 5
+    blocks_attacker: int = 6
+    tx_reverted: bool = True
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
+class LayerStatus(BaseModel):
+    layer: str
+    name: str
+    status: str
+    canister_id: str
+    technology: str
 
-# Add your routes to the router instead of directly to app
+LAYERS = [
+    LayerStatus(layer="L1", name="Infrastructure", status="RUNNING", canister_id="b4dy7-eyaaa-aaaao-baxra-cai", technology="Motoko"),
+    LayerStatus(layer="L2", name="Identity", status="RUNNING", canister_id="b3c6l-jaaaa-aaaao-baxrq-cai", technology="Motoko"),
+    LayerStatus(layer="L3", name="Execution", status="RUNNING", canister_id="akiau-riaaa-aaaao-baxua-cai", technology="Motoko"),
+    LayerStatus(layer="L4", name="Consensus", status="RUNNING", canister_id="anjga-4qaaa-aaaao-baxuq-cai", technology="Motoko"),
+    LayerStatus(layer="L5", name="Scalability", status="RUNNING", canister_id="aekn4-kyaaa-aaaao-baxva-cai", technology="Motoko"),
+    LayerStatus(layer="L6", name="Omnichain", status="RUNNING", canister_id="adlli-haaaa-aaaao-baxvq-cai", technology="Motoko"),
+    LayerStatus(layer="L7", name="AI Governance", status="RUNNING", canister_id="awm2f-giaaa-aaaao-baxwa-cai", technology="Motoko"),
+    LayerStatus(layer="L8", name="Core Orchestrator", status="RUNNING", canister_id="bsbvx-7iaaa-aaaao-baxqa-cai", technology="Motoko"),
+    LayerStatus(layer="L9", name="x39_bases", status="RUNNING", canister_id="arn4r-lqaaa-aaaao-baxwq-cai", technology="Rust/PTU-47"),
+]
+
+def generate_block_hash():
+    return "0x" + hashlib.sha256(str(random.random()).encode()).hexdigest()[:16]
+
+def generate_tx_hash():
+    return "0x" + hashlib.sha256(str(random.random()).encode()).hexdigest()[:24]
+
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "x39Matrix — 51% Attack Detection Lab"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
+@api_router.get("/layers")
+async def get_layers():
+    return [l.model_dump() for l in LAYERS]
 
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
+@api_router.get("/simulation/blocks")
+async def generate_blocks():
+    legit_blocks = []
+    for i in range(5):
+        legit_blocks.append({
+            "height": i + 1,
+            "hash": generate_block_hash(),
+            "miner": "legit_miner_" + str(random.randint(1, 99)),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "tx_count": random.randint(150, 2500),
+            "size_kb": random.randint(800, 1200),
+        })
+    attacker_blocks = []
+    for i in range(6):
+        attacker_blocks.append({
+            "height": i + 1,
+            "hash": generate_block_hash(),
+            "miner": "ATTACKER_NODE",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "tx_count": random.randint(1, 10),
+            "size_kb": random.randint(200, 400),
+        })
+    tx = {
+        "txid": generate_tx_hash(),
+        "amount": round(random.uniform(0.001, 0.1), 4),
+        "from": "bc1q" + hashlib.sha256(str(random.random()).encode()).hexdigest()[:20],
+        "to": "x39matrix_vault",
+        "confirmations": 5,
+    }
+    return {
+        "legitimate_chain": legit_blocks,
+        "attacker_chain": attacker_blocks,
+        "transaction": tx,
+    }
 
-# Include the router in the main app
+@api_router.post("/simulation/run")
+async def save_simulation_run():
+    run = SimulationRun()
+    doc = run.model_dump()
+    await db.simulation_runs.insert_one(doc)
+    doc.pop("_id", None)
+    return doc
+
+@api_router.get("/simulation/history")
+async def get_simulation_history():
+    runs = await db.simulation_runs.find({}, {"_id": 0}).sort("started_at", -1).to_list(50)
+    return runs
+
 app.include_router(api_router)
 
 app.add_middleware(
@@ -77,11 +124,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 @app.on_event("shutdown")
