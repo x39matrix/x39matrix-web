@@ -155,37 +155,21 @@
             <div style="font-size:clamp(1.5rem,4vw,2.5rem);font-weight:900;color:#fff;letter-spacing:0.15em;margin-bottom:3rem;text-shadow:0 0 20px rgba(255,255,255,0.3);">PROTOCOLO DESCENTRALIZADO</div>
 
             <div class="ed-container" style="margin-top:0;margin-bottom:0;">
-                <svg width="380" height="350" viewBox="0 0 380 350" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;">
-                    <!-- Outer glow circle -->
-                    <circle cx="190" cy="195" r="150" fill="none" stroke="#ff2b2b" stroke-width="0.5" style="filter:drop-shadow(0 0 30px rgba(255,43,43,0.4));opacity:0.3;"/>
-                    <circle cx="190" cy="195" r="130" fill="none" stroke="#ff2b2b" stroke-width="0.8" style="filter:drop-shadow(0 0 20px rgba(255,43,43,0.5));opacity:0.4;">
-                        <animate attributeName="opacity" values="0.4;0.2;0.4" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <!-- Triangle -->
-                    <polygon points="190,30 360,310 20,310" fill="none" stroke="#ff3a2b" stroke-width="2.5" style="filter:drop-shadow(0 0 18px rgba(255,58,43,0.8));"/>
-                    <polygon points="190,50 345,300 35,300" fill="none" stroke="#ff3a2b" stroke-width="0.8" style="filter:drop-shadow(0 0 10px rgba(255,58,43,0.5));opacity:0.4;"/>
-                    <!-- Inner circles -->
-                    <circle cx="190" cy="195" r="85" fill="none" stroke="#ff2b2b" stroke-width="1.5" style="filter:drop-shadow(0 0 15px rgba(255,43,43,0.7));">
-                        <animate attributeName="r" values="83;90;83" dur="1.8s" repeatCount="indefinite"/>
-                        <animate attributeName="opacity" values="1;0.5;1" dur="1.8s" repeatCount="indefinite"/>
-                    </circle>
-                    <circle cx="190" cy="195" r="75" fill="none" stroke="#ff2b2b" stroke-width="1" style="filter:drop-shadow(0 0 10px rgba(255,43,43,0.5));opacity:0.6;">
-                        <animate attributeName="r" values="73;78;73" dur="1.5s" repeatCount="indefinite"/>
-                    </circle>
-                    <!-- Text inside triangle -->
-                    <text x="190" y="175" text-anchor="middle" fill="#ff4433" font-family="JetBrains Mono" font-size="28" font-weight="700" style="filter:drop-shadow(0 0 12px rgba(255,68,51,0.8));">ED25519</text>
-                    <text x="190" y="205" text-anchor="middle" fill="#ff4433" font-family="JetBrains Mono" font-size="20" font-weight="500" style="filter:drop-shadow(0 0 10px rgba(255,68,51,0.6));">x509</text>
-                    <text x="190" y="235" text-anchor="middle" fill="#ff4433" font-family="JetBrains Mono" font-size="18" font-weight="700" style="filter:drop-shadow(0 0 10px rgba(255,68,51,0.6));">ARQUITECTO X39</text>
-                </svg>
-                <div style="width:160px;height:160px;position:relative;z-index:2;"></div>
-            </div>
+<div class="ed-ring"></div><div class="ed-ring-2"></div><div class="ed-ring-3"></div>
+<div style="position:relative;display:flex;align-items:center;justify-content:center;z-index:5;">
+<img src="https://customer-assets.emergentagent.com/job_estado-protocolo/artifacts/kx0pfl6b_ncabezado.png" alt="x39Matrix" style="width:380px;height:350px;object-fit:contain;filter:drop-shadow(0 0 30px rgba(255,43,43,0.6));z-index:1;">
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;">
+<div style="font-size:28px;font-weight:700;color:#ff4433;text-shadow:0 0 12px rgba(255,68,51,0.8);">ED25519</div>
+<div style="font-size:20px;font-weight:500;color:#ff4433;text-shadow:0 0 10px rgba(255,68,51,0.6);">x509</div>
+<div style="font-size:18px;font-weight:700;color:#ff4433;text-shadow:0 0 10px rgba(255,68,51,0.6);">ARQUITECTO X39</div>
+</div></div></div>
 
             <div style="height:50px;"></div>
             <div style="font-size:clamp(1.2rem,3vw,2rem);font-weight:900;color:#fff;letter-spacing:0.1em;text-shadow:0 0 15px rgba(255,255,255,0.2);">VERIFICA</div>
             <button onclick="startProtocol()" style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:700;color:#fff;background:rgba(180,20,20,0.6);border:2px solid #cc0000;padding:12px 36px;cursor:pointer;letter-spacing:0.2em;margin-top:16px;transition:all 0.3s;box-shadow:0 0 15px rgba(204,0,0,0.4);" onmouseover="this.style.background='rgba(204,0,0,0.8)';this.style.boxShadow='0 0 30px rgba(204,0,0,0.6)';" onmouseout="this.style.background='rgba(180,20,20,0.6)';this.style.boxShadow='0 0 15px rgba(204,0,0,0.4)';">PULSA AQUÍ</button>
             <div style="margin-top:2rem;font-size:clamp(0.9rem,2.5vw,1.5rem);font-weight:900;color:#fff;letter-spacing:0.1em;text-shadow:0 0 15px rgba(255,255,255,0.2);">BIENVENIDO AL PROTOCOLO MÁS GRANDE</div>
         </div>
-        <div style="position:fixed;right:16px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:center;font-size:0.5rem;color:#ff2b2b;letter-spacing:0.2em;text-shadow:0 0 8px rgba(255,43,43,0.5);z-index:15;pointer-events:none;">NETWORK ACTIVATED — LIVE IN ICP MAINNET</div>
+        <div style="position:fixed;right:16px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:center;font-size:0.5rem;color:#ff2b2b;letter-spacing:0.2em;text-shadow:0 0 8px rgba(255,43,43,0.5);z-index:15;pointer-events:none;">NETWORK ACTIVATED — LIVE IN ICP MAINNET — 10 CANISTERS</div>
     </div>
 
     <!-- CLI VIEW -->
@@ -197,7 +181,7 @@
         <div class="progress-bar" id="progressBar"></div>
         <div class="layer-display" id="layerDisplay"></div>
         <div class="transition-screen" id="transScreen">
-            <div class="tri-container"><div class="triangle"></div></div>
+            <div class="tri-container"><img src="https://customer-assets.emergentagent.com/job_estado-protocolo/artifacts/kx0pfl6b_ncabezado.png" alt="x39Matrix" style="width:200px;height:200px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(204,0,0,0.6));animation:tri-glow 2s infinite alternate;"></div>
             <div class="see-you" data-i18n="proto-live">Protocol is Live</div>
             <div class="tagline" data-i18n="tagline1">WHILE OTHERS LOOK FOR INVESTORS,</div>
             <div class="tagline" data-i18n="tagline2">X39MATRIX ALREADY OPERATES.</div>
