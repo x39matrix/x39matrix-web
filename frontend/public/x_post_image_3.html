@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; font-family: 'Courier New', monospace; overflow: hidden; }
+.card {
+    width: 1536px;
+    height: 1024px;
+    background: #0a0a0a;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(204,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(204,0,0,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+.glow-circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(204,0,0,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.top-label {
+    position: absolute;
+    top: 50px;
+    font-size: 12px;
+    color: #444;
+    letter-spacing: 6px;
+    z-index: 2;
+}
+
+.hashrate-container {
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.hashrate-title {
+    font-size: 18px;
+    color: #666;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+.hashrate-value {
+    font-size: 120px;
+    font-weight: bold;
+    color: #CC0000;
+    text-shadow: 0 0 60px rgba(204,0,0,0.4);
+    line-height: 1;
+}
+.hashrate-unit {
+    font-size: 24px;
+    color: #FF4444;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+.hashrate-warning {
+    font-size: 16px;
+    color: #FF003C;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    padding: 10px 30px;
+    border: 1px solid #FF003C;
+    display: inline-block;
+    animation: blink 1.5s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.pools-bar {
+    z-index: 2;
+    display: flex;
+    gap: 3px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    height: 40px;
+    width: 900px;
+}
+.pool-segment {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+}
+.pool-labels {
+    z-index: 2;
+    display: flex;
+    gap: 25px;
+    font-size: 10px;
+    margin-bottom: 50px;
+}
+.pool-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+}
+.pool-dot {
+    width: 8px;
+    height: 8px;
+}
+
+.quote-section {
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+}
+.quote-text {
+    font-size: 18px;
+    color: #888;
+    font-style: italic;
+    line-height: 1.6;
+}
+.quote-text strong {
+    color: #CC0000;
+    font-style: normal;
+}
+
+.brand {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+.brand-line { width: 150px; height: 1px; background: #CC0000; }
+.brand-name { font-size: 16px; color: #CC0000; letter-spacing: 8px; }
+</style>
+</head>
+<body>
+<div class="card">
+    <div class="glow-circle"></div>
+    <div class="top-label">BITCOIN HASHRATE CONCENTRATION MONITOR</div>
+    
+    <div class="hashrate-container">
+        <div class="hashrate-title">UNKNOWN MINER HASHRATE</div>
+        <div class="hashrate-value">47%</div>
+        <div class="hashrate-unit">OF TOTAL NETWORK</div>
+        <div class="hashrate-warning">CRITICAL — APPROACHING 51% THRESHOLD</div>
+    </div>
+    
+    <div class="pools-bar">
+        <div class="pool-segment" style="width:47%; background:#CC0000;">UNKNOWN</div>
+        <div class="pool-segment" style="width:18%; background:#333;">Foundry</div>
+        <div class="pool-segment" style="width:12%; background:#2a2a2a;">AntPool</div>
+        <div class="pool-segment" style="width:9%; background:#222;">F2Pool</div>
+        <div class="pool-segment" style="width:7%; background:#1a1a1a;">ViaBTC</div>
+        <div class="pool-segment" style="width:7%; background:#151515;">Others</div>
+    </div>
+    <div class="pool-labels">
+        <div class="pool-label"><div class="pool-dot" style="background:#CC0000;"></div> Unknown 47%</div>
+        <div class="pool-label"><div class="pool-dot" style="background:#333;"></div> Foundry 18%</div>
+        <div class="pool-label"><div class="pool-dot" style="background:#2a2a2a;"></div> AntPool 12%</div>
+        <div class="pool-label"><div class="pool-dot" style="background:#222;"></div> F2Pool 9%</div>
+        <div class="pool-label"><div class="pool-dot" style="background:#1a1a1a;"></div> ViaBTC 7%</div>
+        <div class="pool-label"><div class="pool-dot" style="background:#151515;"></div> Others 7%</div>
+    </div>
+    
+    <div class="quote-section">
+        <div class="quote-text">"x39Matrix Layer 4 monitors <strong>hashrate distribution 24/7</strong>.<br>When concentration exceeds 33%, the alert chain activates."</div>
+    </div>
+    
+    <div class="brand">
+        <div class="brand-line"></div>
+        <div class="brand-name">x39Matrix</div>
+    </div>
+</div>
+</body>
+</html>

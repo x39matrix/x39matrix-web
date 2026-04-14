@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; font-family: 'Courier New', monospace; overflow: hidden; }
+.card {
+    width: 1536px;
+    height: 1024px;
+    background: linear-gradient(145deg, #0a0a0a 0%, #0f0f0f 50%, #0a0a0a 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 100px;
+    overflow: hidden;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(204,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(204,0,0,0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    z-index: 2;
+}
+.header-title {
+    font-size: 36px;
+    color: #CC0000;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+.header-sep {
+    width: 2px;
+    height: 40px;
+    background: #333;
+}
+.header-sub {
+    font-size: 16px;
+    color: #555;
+    letter-spacing: 3px;
+}
+
+.layers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    z-index: 2;
+    margin-bottom: 50px;
+}
+.layer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(15,15,15,0.9);
+    border: 1px solid #222;
+    padding: 18px 22px;
+    transition: all 0.3s;
+}
+.layer.active {
+    border-color: #CC0000;
+    background: rgba(204,0,0,0.06);
+}
+.layer.highlight {
+    border-color: #00FFFF;
+    background: rgba(0,255,255,0.04);
+}
+.layer-id {
+    font-size: 28px;
+    font-weight: bold;
+    color: #CC0000;
+    width: 50px;
+    text-align: center;
+}
+.layer.highlight .layer-id { color: #00FFFF; }
+.layer-info { flex: 1; }
+.layer-name {
+    font-size: 15px;
+    color: #ddd;
+    font-weight: bold;
+    margin-bottom: 3px;
+    letter-spacing: 1px;
+}
+.layer-desc {
+    font-size: 11px;
+    color: #666;
+    letter-spacing: 1px;
+}
+.layer-status {
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border: 1px solid;
+}
+.status-live {
+    color: #CC0000;
+    border-color: #CC0000;
+}
+.status-sentinel {
+    color: #00FFFF;
+    border-color: #00FFFF;
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 100px;
+    border-top: 1px solid #1a1a1a;
+    z-index: 2;
+}
+.bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.btc-eth {
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 2px;
+}
+.brand-name {
+    font-size: 18px;
+    color: #CC0000;
+    letter-spacing: 6px;
+    font-weight: bold;
+}
+.brand-tag {
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 3px;
+}
+.canister-count {
+    font-size: 40px;
+    font-weight: bold;
+    color: #CC0000;
+    text-shadow: 0 0 20px rgba(204,0,0,0.3);
+}
+.canister-label {
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 2px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="card">
+    <div class="header">
+        <div class="header-title">x39MATRIX</div>
+        <div class="header-sep"></div>
+        <div class="header-sub">9-LAYER SOVEREIGN DEFENSE ARCHITECTURE</div>
+    </div>
+    
+    <div class="layers-grid">
+        <div class="layer active">
+            <div class="layer-id">L1</div>
+            <div class="layer-info">
+                <div class="layer-name">INFRASTRUCTURE</div>
+                <div class="layer-desc">P2P Network Topology Scanning</div>
+            </div>
+            <div class="layer-status status-live">LIVE</div>
+        </div>
+        <div class="layer active">
+            <div class="layer-id">L2</div>
+            <div class="layer-info">
+                <div class="layer-name">IDENTITY</div>
+                <div class="layer-desc">Anti-Sybil & Node Authentication</div>
+            </div>
+            <div class="layer-status status-live">LIVE</div>
+        </div>
+        <div class="layer active">
+            <div class="layer-id">L3</div>
+            <div class="layer-info">
+                <div class="layer-name">EXECUTION</div>
+                <div class="layer-desc">Mempool & Double-Spend Detection</div>
+            </div>
+            <div class="layer-status status-live">LIVE</div>
+        </div>
+        <div class="layer active">
+            <div class="layer-id">L4</div>
+            <div class="layer-info">
+                <div class="layer-name">CONSENSUS</div>
+                <div class="layer-desc">Hashrate & Reorg Monitoring</div>
+            </div>
+            <div class="layer-status status-live">LIVE</div>
+        </div>
+        <div class="layer active">
+            <div class="layer-id">L5</div>
+            <div class="layer-info">
+                <div class="layer-name">SCALABILITY</div>
+                <div class="layer-desc">Auto-Scaling Under Attack</div>
+            </div>
+            <div class="layer-status status-live">LIVE</div>
+        </div>
+        <div class="layer active">
+            <div class="layer-id">L6</div>
+            <div class="layer-info">
+                <div class="layer-name">OMNICHAIN</div>
+                <div class="layer-desc">Cross-Chain BTC ↔ ETH Correlation</div>
+            </div>
+            <div class="layer-status status-live">LIVE</div>
+        </div>
+        <div class="layer highlight">
+            <div class="layer-id">L7</div>
+            <div class="layer-info">
+                <div class="layer-name">AI GOVERNANCE — L7 SENTINEL</div>
+                <div class="layer-desc">PTU-47 Category Theory Engine</div>
+            </div>
+            <div class="layer-status status-sentinel">SENTINEL</div>
+        </div>
+        <div class="layer active">
+            <div class="layer-id">DB</div>
+            <div class="layer-info">
+                <div class="layer-name">x39 BASES</div>
+                <div class="layer-desc">Immutable Security Logs</div>
+            </div>
+            <div class="layer-status status-live">LIVE</div>
+        </div>
+    </div>
+    
+    <div class="bottom-bar">
+        <div class="bottom-left">
+            <div class="brand-name">x39Matrix</div>
+            <div style="color:#333">|</div>
+            <div class="btc-eth">BITCOIN + ETHEREUM DEFENSE</div>
+        </div>
+        <div style="text-align:center">
+            <div class="canister-count">10</div>
+            <div class="canister-label">CANISTERS ON ICP MAINNET</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
