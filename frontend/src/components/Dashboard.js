@@ -45,17 +45,18 @@ function timestamp() {
 const StatusDot = ({ active, danger }) => (
   <span
     data-testid={danger ? "status-dot-danger" : "status-dot-active"}
-    className={`inline-block w-2 h-2 rounded-full ${danger ? "bg-[#FF003C] pulse-red" : active ? "bg-[#00FF41] pulse-dot" : "bg-[#52525B]"}`}
+    className={`inline-block w-2 h-2 rounded-full ${danger ? "bg-[#FF8C00] pulse-orange" : active ? "bg-[#FF003C] pulse-dot" : "bg-[#52525B]"}`}
   />
 );
 
 // ─── Block Component ────────────────────────────
 const Block = ({ block, type, index }) => {
   const isLegit = type === "legit";
-  const borderColor = isLegit ? "border-[#00FF41]/40" : "border-[#FF003C]/50";
-  const bgColor = isLegit ? "bg-[#00FF41]/5" : "bg-[#FF003C]/5";
-  const textColor = isLegit ? "text-[#00FF41]" : "text-[#FF003C]";
-  const hashColor = isLegit ? "text-[#00FFFF]/80" : "text-[#FFB000]/80";
+  const borderColor = isLegit ? "border-[#00FFFF]/40" : "border-[#FF8C00]/50";
+  const bgColor = isLegit ? "bg-[#00FFFF]/5" : "bg-[#FF8C00]/5";
+  const textColor = isLegit ? "text-[#00FFFF]" : "text-[#FF8C00]";
+  const hashColor = isLegit ? "text-[#00FFFF]/70" : "text-[#FFB000]/80";
+  const pulseClass = isLegit ? "pulse-red" : "pulse-orange";
 
   return (
     <motion.div
@@ -63,7 +64,7 @@ const Block = ({ block, type, index }) => {
       initial={{ opacity: 0, scale: 0.7, x: 30 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 20, delay: index * 0.15 }}
-      className={`flex-shrink-0 w-[120px] border ${borderColor} ${bgColor} p-3 relative ${isLegit ? "pulse-green" : "pulse-red"}`}
+      className={`flex-shrink-0 w-[120px] border ${borderColor} ${bgColor} p-3 relative ${pulseClass}`}
     >
       <div className={`text-xs font-mono font-bold ${textColor} mb-1`}>
         #{block.height}
@@ -75,7 +76,7 @@ const Block = ({ block, type, index }) => {
         {block.tx_count} txs
       </div>
       {index > 0 && (
-        <div className={`absolute left-[-14px] top-1/2 -translate-y-1/2 w-[14px] h-[2px] ${isLegit ? "bg-[#00FF41]/30" : "bg-[#FF003C]/30"}`} />
+        <div className={`absolute left-[-14px] top-1/2 -translate-y-1/2 w-[14px] h-[2px] ${isLegit ? "bg-[#00FFFF]/30" : "bg-[#FF8C00]/30"}`} />
       )}
     </motion.div>
   );
@@ -88,18 +89,18 @@ const LayerRow = ({ layer, isActive, isAlerted }) => {
     <div
       data-testid={`layer-${layer.layer}`}
       className={`flex items-center gap-2 py-1.5 px-2 transition-all duration-300 ${
-        isAlerted ? "bg-[#FF003C]/10 border-l-2 border-[#FF003C]" :
-        isActive ? "bg-[#00FF41]/5 border-l-2 border-[#00FF41]/40" :
+        isAlerted ? "bg-[#FF8C00]/10 border-l-2 border-[#FF8C00]" :
+        isActive ? "bg-[#FF003C]/5 border-l-2 border-[#FF003C]/40" :
         "border-l-2 border-transparent"
       }`}
     >
       <StatusDot active={isActive} danger={isAlerted} />
-      <Icon size={13} className={isAlerted ? "text-[#FF003C]" : isActive ? "text-[#00FF41]" : "text-[#52525B]"} />
+      <Icon size={13} className={isAlerted ? "text-[#FF8C00]" : isActive ? "text-[#FF003C]" : "text-[#52525B]"} />
       <span className="text-[11px] font-mono tracking-wider text-[#A1A1AA] w-6">{layer.layer}</span>
-      <span className={`text-[11px] font-mono ${isAlerted ? "text-[#FF003C]" : isActive ? "text-[#EDEDED]" : "text-[#52525B]"}`}>
+      <span className={`text-[11px] font-mono ${isAlerted ? "text-[#FF8C00]" : isActive ? "text-[#EDEDED]" : "text-[#52525B]"}`}>
         {layer.name}
       </span>
-      <span className={`ml-auto text-[9px] font-mono ${isAlerted ? "text-[#FF003C]" : isActive ? "text-[#00FF41]" : "text-[#52525B]"}`}>
+      <span className={`ml-auto text-[9px] font-mono ${isAlerted ? "text-[#FF8C00]" : isActive ? "text-[#FF003C]" : "text-[#52525B]"}`}>
         {isAlerted ? "ALERT" : isActive ? "ONLINE" : "STANDBY"}
       </span>
     </div>
@@ -124,11 +125,11 @@ const LogConsole = ({ logs }) => {
           >
             <span className="text-[#52525B] text-xs shrink-0">[{log.time}]</span>
             <span className={`text-xs ${
-              log.type === "danger" ? "text-[#FF003C]" :
+              log.type === "danger" ? "text-[#FF8C00]" :
               log.type === "warning" ? "text-[#FFB000]" :
-              log.type === "success" ? "text-[#00FF41]" :
+              log.type === "success" ? "text-[#FF003C]" :
               log.type === "info" ? "text-[#00FFFF]" :
-              "text-[#00FF41]"
+              "text-[#FF003C]"
             }`}>
               {log.message}
             </span>
@@ -320,9 +321,9 @@ export default function Dashboard() {
     } catch {}
   }, [addLog, activateLayer, alertLayer, resetSimulation]);
 
-  const phaseColor = phase === PHASES.REORG_DETECTED ? "text-[#FF003C]" :
+  const phaseColor = phase === PHASES.REORG_DETECTED ? "text-[#FF8C00]" :
     phase === PHASES.ATTACKER_MINING ? "text-[#FFB000]" :
-    phase === PHASES.ATTACK_BLOCKED ? "text-[#00FF41]" :
+    phase === PHASES.ATTACK_BLOCKED ? "text-[#FF003C]" :
     phase === PHASES.IDLE ? "text-[#52525B]" : "text-[#00FFFF]";
 
   return (
@@ -341,7 +342,7 @@ export default function Dashboard() {
           />
           <div>
             <h1 className="text-xl md:text-2xl font-black tracking-tighter uppercase text-white leading-none">
-              x39<span className="text-[#00FF41]">Matrix</span>
+              x39<span className="text-[#FF003C]">Matrix</span>
             </h1>
             <p className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#52525B]">
               51% Attack Detection Lab
@@ -353,7 +354,7 @@ export default function Dashboard() {
             {PHASE_LABELS[phase]}
           </div>
           <div className="flex items-center gap-1.5">
-            <span className={`w-2 h-2 rounded-full ${phase === PHASES.IDLE ? "bg-[#52525B]" : phase === PHASES.REORG_DETECTED ? "bg-[#FF003C] pulse-red" : "bg-[#00FF41] pulse-dot"}`} />
+            <span className={`w-2 h-2 rounded-full ${phase === PHASES.IDLE ? "bg-[#52525B]" : phase === PHASES.REORG_DETECTED ? "bg-[#FF8C00] pulse-orange" : "bg-[#FF003C] pulse-dot"}`} />
             <span className="text-[10px] font-mono text-[#A1A1AA]">MAINNET</span>
           </div>
         </div>
@@ -381,7 +382,7 @@ export default function Dashboard() {
           <div className="mt-4 border-t border-white/10 pt-3">
             <div className="text-[10px] font-mono text-[#52525B] mb-2">DETECTION</div>
             {detectionTime ? (
-              <div className="text-2xl font-mono font-bold text-[#00FF41] glow-text" data-testid="detection-time">
+              <div className="text-2xl font-mono font-bold text-[#FF003C] glow-text" data-testid="detection-time">
                 {detectionTime}<span className="text-sm text-[#A1A1AA]">ms</span>
               </div>
             ) : (
@@ -396,11 +397,11 @@ export default function Dashboard() {
           {/* Chain Visualizations */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Legitimate Chain */}
-            <div className={`bg-[#0A0A0A] border ${phase === PHASES.MINING_LEGIT ? "border-[#00FF41]/30" : "border-white/10"} p-4`} data-testid="legit-chain-panel">
+            <div className={`bg-[#0A0A0A] border ${phase === PHASES.MINING_LEGIT ? "border-[#00FFFF]/30" : "border-white/10"} p-4`} data-testid="legit-chain-panel">
               <div className="flex items-center gap-2 mb-3">
                 <StatusDot active={legitBlocks.length > 0} />
                 <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#A1A1AA]">Legitimate Chain</span>
-                <span className="ml-auto text-[10px] font-mono text-[#00FF41]">{legitBlocks.length} blocks</span>
+                <span className="ml-auto text-[10px] font-mono text-[#00FFFF]">{legitBlocks.length} blocks</span>
               </div>
               <div className="flex gap-3 overflow-x-auto pb-2 min-h-[80px] items-center">
                 {legitBlocks.length === 0 ? (
@@ -413,14 +414,14 @@ export default function Dashboard() {
 
             {/* Attacker Chain */}
             <div className={`bg-[#0A0A0A] border ${
-              phase === PHASES.REORG_DETECTED ? "border-[#FF003C]/50 alert-flash" :
+              phase === PHASES.REORG_DETECTED ? "border-[#FF8C00]/50 alert-flash" :
               phase === PHASES.ATTACKER_MINING ? "border-[#FFB000]/30" :
               "border-white/10"
             } p-4`} data-testid="attacker-chain-panel">
               <div className="flex items-center gap-2 mb-3">
                 <StatusDot active={attackerBlocks.length > 0} danger={attackerBlocks.length > 0} />
                 <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#A1A1AA]">Attacker Chain</span>
-                <span className="ml-auto text-[10px] font-mono text-[#FF003C]">{attackerBlocks.length} blocks</span>
+                <span className="ml-auto text-[10px] font-mono text-[#FF8C00]">{attackerBlocks.length} blocks</span>
               </div>
               <div className="flex gap-3 overflow-x-auto pb-2 min-h-[80px] items-center">
                 {attackerBlocks.length === 0 ? (
@@ -457,7 +458,7 @@ export default function Dashboard() {
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-mono text-[#52525B]">STATUS:</span>
                     <span className={`text-xs font-mono font-bold ${
-                      transaction.status === "CONFIRMED" ? "text-[#00FF41]" : "text-[#FF003C]"
+                      transaction.status === "CONFIRMED" ? "text-[#00FFFF]" : "text-[#FF8C00]"
                     }`}>
                       {transaction.status === "CONFIRMED" ? "CONFIRMED (5 blocks)" : "REVERTED — DOUBLE SPEND DETECTED"}
                     </span>
@@ -471,22 +472,22 @@ export default function Dashboard() {
             {/* L7 Sentinel Alert */}
             <div
               className={`bg-[#0A0A0A] border p-4 transition-all duration-300 ${
-                phase === PHASES.REORG_DETECTED ? "border-[#FF003C] alert-flash bg-[#FF003C]/5" :
-                phase === PHASES.ATTACK_BLOCKED ? "border-[#00FF41]/40 bg-[#00FF41]/5" :
+                phase === PHASES.REORG_DETECTED ? "border-[#FF8C00] alert-flash bg-[#FF8C00]/5" :
+                phase === PHASES.ATTACK_BLOCKED ? "border-[#FF003C]/40 bg-[#FF003C]/5" :
                 "border-white/10"
               }`}
               data-testid="sentinel-alert-panel"
             >
               <div className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#52525B] mb-3 flex items-center gap-2">
-                <AlertTriangle size={12} className={phase === PHASES.REORG_DETECTED ? "text-[#FF003C]" : ""} />
+                <AlertTriangle size={12} className={phase === PHASES.REORG_DETECTED ? "text-[#FF8C00]" : ""} />
                 L7 Sentinel Alert
               </div>
               {phase === PHASES.REORG_DETECTED ? (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  <div className="text-lg font-mono font-bold text-[#FF003C] mb-2">
+                  <div className="text-lg font-mono font-bold text-[#FF8C00] mb-2">
                     51% ATTACK DETECTED
                   </div>
-                  <div className="text-xs font-mono text-[#FF003C]/80 space-y-1">
+                  <div className="text-xs font-mono text-[#FF8C00]/80 space-y-1">
                     <div>Chain reorg: Attacker chain (6) &gt; Legitimate (5)</div>
                     <div>tip_block_hash CHANGED — UTXO compromised</div>
                     <div>Transaction {transaction?.txid?.slice(0, 12)}... REVERTED</div>
@@ -494,10 +495,10 @@ export default function Dashboard() {
                 </motion.div>
               ) : phase === PHASES.ATTACK_BLOCKED ? (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  <div className="text-lg font-mono font-bold text-[#00FF41] mb-2">
+                  <div className="text-lg font-mono font-bold text-[#FF003C] mb-2">
                     ATTACK NEUTRALIZED
                   </div>
-                  <div className="text-xs font-mono text-[#00FF41]/80 space-y-1">
+                  <div className="text-xs font-mono text-[#FF003C]/80 space-y-1">
                     <div>Attacker chain rejected</div>
                     <div>Legitimate chain restored as canonical</div>
                     <div>PTU-47 invariants verified: CHAIN VALID</div>
@@ -528,7 +529,7 @@ export default function Dashboard() {
               className={`flex items-center gap-2 px-6 py-3 font-mono text-sm font-bold tracking-wider uppercase transition-all ${
                 simRunning
                   ? "bg-[#121212] text-[#52525B] cursor-not-allowed border border-white/5"
-                  : "bg-[#00FF41] text-black hover:drop-shadow-[0_0_12px_rgba(0,255,65,0.5)] active:scale-[0.98]"
+                  : "bg-[#FF003C] text-white hover:drop-shadow-[0_0_12px_rgba(255,0,60,0.5)] active:scale-[0.98]"
               }`}
             >
               <Play size={16} />
@@ -537,7 +538,7 @@ export default function Dashboard() {
             <button
               data-testid="reset-btn"
               onClick={resetSimulation}
-              className="flex items-center gap-2 px-6 py-3 font-mono text-sm tracking-wider uppercase border border-[#00FF41]/30 text-[#00FF41] hover:bg-[#00FF41]/10 transition-all"
+              className="flex items-center gap-2 px-6 py-3 font-mono text-sm tracking-wider uppercase border border-[#FF003C]/30 text-[#FF003C] hover:bg-[#FF003C]/10 transition-all"
             >
               <RotateCcw size={16} />
               Reset
@@ -550,7 +551,7 @@ export default function Dashboard() {
       <footer className="mt-6 text-center relative z-10">
         <p className="text-[10px] font-mono text-[#52525B] tracking-widest">
           x39Matrix — Sovereign Protocol | 9 Layers | 45 Blocks | Category Theory Engine |{" "}
-          <a href="https://bvatd-sqaaa-aaaao-baxqq-cai.icp0.io/" target="_blank" rel="noopener noreferrer" className="text-[#00FFFF]/50 hover:text-[#00FFFF]">
+          <a href="https://bvatd-sqaaa-aaaao-baxqq-cai.icp0.io/" target="_blank" rel="noopener noreferrer" className="text-[#FF003C]/50 hover:text-[#FF003C]">
             Live on ICP Mainnet
           </a>
         </p>
