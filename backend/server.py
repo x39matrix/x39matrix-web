@@ -39,17 +39,19 @@ class LayerStatus(BaseModel):
     status: str
     canister_id: str
     technology: str
+    blocks: int = 5
 
 LAYERS = [
-    LayerStatus(layer="L1", name="Infrastructure", status="RUNNING", canister_id="b4dy7-eyaaa-aaaao-baxra-cai", technology="Motoko"),
-    LayerStatus(layer="L2", name="Identity", status="RUNNING", canister_id="b3c6l-jaaaa-aaaao-baxrq-cai", technology="Motoko"),
-    LayerStatus(layer="L3", name="Execution", status="RUNNING", canister_id="akiau-riaaa-aaaao-baxua-cai", technology="Motoko"),
-    LayerStatus(layer="L4", name="Consensus", status="RUNNING", canister_id="anjga-4qaaa-aaaao-baxuq-cai", technology="Motoko"),
-    LayerStatus(layer="L5", name="Scalability", status="RUNNING", canister_id="aekn4-kyaaa-aaaao-baxva-cai", technology="Motoko"),
-    LayerStatus(layer="L6", name="Omnichain", status="RUNNING", canister_id="adlli-haaaa-aaaao-baxvq-cai", technology="Motoko"),
-    LayerStatus(layer="L7", name="AI Governance", status="RUNNING", canister_id="awm2f-giaaa-aaaao-baxwa-cai", technology="Motoko"),
-    LayerStatus(layer="L8", name="Core Orchestrator", status="RUNNING", canister_id="bsbvx-7iaaa-aaaao-baxqa-cai", technology="Motoko"),
-    LayerStatus(layer="L9", name="x39_bases", status="RUNNING", canister_id="arn4r-lqaaa-aaaao-baxwq-cai", technology="Rust/PTU-47"),
+    LayerStatus(layer="L1", name="Infrastructure", status="RUNNING", canister_id="b4dy7-eyaaa-aaaao-baxra-cai", technology="Motoko", blocks=5),
+    LayerStatus(layer="L2", name="Identity & Assets", status="RUNNING", canister_id="b3c6l-jaaaa-aaaao-baxrq-cai", technology="Motoko", blocks=5),
+    LayerStatus(layer="L3", name="Execution Flow", status="RUNNING", canister_id="akiau-riaaa-aaaao-baxua-cai", technology="Motoko", blocks=6),
+    LayerStatus(layer="L4", name="Consensus & Crypto", status="RUNNING", canister_id="anjga-4qaaa-aaaao-baxuq-cai", technology="Motoko", blocks=6),
+    LayerStatus(layer="L5", name="Scalability", status="RUNNING", canister_id="aekn4-kyaaa-aaaao-baxva-cai", technology="Motoko", blocks=6),
+    LayerStatus(layer="L6", name="Omnichain", status="RUNNING", canister_id="adlli-haaaa-aaaao-baxvq-cai", technology="Motoko", blocks=6),
+    LayerStatus(layer="L7", name="AI Governance", status="RUNNING", canister_id="awm2f-giaaa-aaaao-baxwa-cai", technology="Motoko", blocks=5),
+    LayerStatus(layer="L8", name="Core Orchestrator", status="RUNNING", canister_id="bsbvx-7iaaa-aaaao-baxqa-cai", technology="Motoko", blocks=3),
+    LayerStatus(layer="L9", name="Rust DAG Engine", status="RUNNING", canister_id="arn4r-lqaaa-aaaao-baxwq-cai", technology="Rust/PTU-47", blocks=3),
+    LayerStatus(layer="L10", name="Frontend", status="RUNNING", canister_id="bvatd-sqaaa-aaaao-baxqq-cai", technology="Assets", blocks=0),
 ]
 
 def generate_block_hash():
