@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; font-family: 'Courier New', monospace; }
+.terminal {
+    width: 1536px;
+    height: 1024px;
+    background: #0c0c0c;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+.terminal-bar {
+    background: #1a1a1a;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #333;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #CC0000; }
+.dot-y { background: #FFA500; }
+.dot-g { background: #555; }
+.terminal-title {
+    color: #666;
+    font-size: 12px;
+    margin-left: 15px;
+    letter-spacing: 1px;
+}
+.content {
+    padding: 30px 40px;
+    overflow: hidden;
+}
+.line {
+    font-size: 13.5px;
+    line-height: 2.1;
+    white-space: nowrap;
+}
+.prompt { color: #CC0000; }
+.cmd { color: #00FFFF; }
+.comment { color: #555; font-style: italic; }
+.output { color: #888; }
+.warning { color: #FFA500; }
+.danger { color: #FF003C; }
+.success { color: #CC0000; }
+.highlight { color: #fff; font-weight: bold; }
+.redacted {
+    background: #CC0000;
+    color: #CC0000;
+    padding: 0 4px;
+    filter: blur(4px);
+    user-select: none;
+}
+.redacted-heavy {
+    background: #333;
+    color: #333;
+    padding: 0 8px;
+    filter: blur(6px);
+    user-select: none;
+}
+.redacted-label {
+    color: #CC0000;
+    font-size: 11px;
+    border: 1px solid #CC0000;
+    padding: 1px 6px;
+    margin-left: 8px;
+    letter-spacing: 1px;
+}
+.separator {
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 15px 0;
+}
+.brand-bottom {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.brand-text {
+    font-size: 14px;
+    color: #CC0000;
+    letter-spacing: 6px;
+}
+.brand-url {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 2px;
+}
+.section-label {
+    color: #CC0000;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin: 10px 0 5px;
+    display: block;
+}
+</style>
+</head>
+<body>
+<div class="terminal">
+    <div class="terminal-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <div class="terminal-title">x39matrix@sentinel:~/eth_monitor$</div>
+    </div>
+    <div class="content">
+        <span class="section-label">// ETHEREUM NODE SCANNING — LAYER 1</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L1:~$</span> <span class="cmd">masscan 0.0.0.0/0 -p 8545,30303 --rate</span> <span class="redacted">100000 --exclude=private</span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="output">[L1] Scanning global Ethereum network...</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L1] FOUND: 2,341 nodes with UNPROTECTED JSON-RPC (port 8545 open)</span>
+        </div>
+        <div class="line">
+            <span class="warning">[L1] 847 nodes expose eth_accounts — funds at risk</span>
+        </div>
+        
+        <hr class="separator">
+        <span class="section-label">// CROSS-CHAIN TRACKING — LAYER 6 OMNICHAIN</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L6:~$</span> <span class="cmd">python3 crosschain_tracker.py --btc --eth --bridges</span> <span class="redacted">--api-key=xxxxx</span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="output">[L6] Monitoring BTC → wBTC bridge activity...</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L6] ALERT: 850 BTC wrapped to wBTC in 2 hours — pre-attack pattern</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L6] Source wallet: <span class="redacted-heavy">bc1qxy2kgdyg...redacted...j9hs</span></span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="warning">[L6] Correlated with hashrate spike on Bitcoin — CROSS-CHAIN ATTACK PROBABLE</span>
+        </div>
+        
+        <hr class="separator">
+        <span class="section-label">// MEV & FLASH LOAN DETECTION — LAYER 3</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L3:~$</span> <span class="cmd">python3 mev_detector.py --sandwich --frontrun --flashloan</span>
+        </div>
+        <div class="line">
+            <span class="output">[L3] Connected to Ethereum txpool via WebSocket...</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L3] SANDWICH ATTACK detected on Uniswap V3:</span>
+        </div>
+        <div class="line">
+            <span class="output">[L3] &nbsp;&nbsp;Front-tx: <span class="redacted-heavy">0x4a8f...redacted</span> | Victim: <span class="redacted-heavy">0xb71c...redacted</span> | Back-tx: <span class="redacted-heavy">0x9e2d...redacted</span></span>
+        </div>
+        <div class="line">
+            <span class="danger">[L3] Profit extracted: 12.4 ETH ($41,832) in 1 block</span>
+        </div>
+        
+        <hr class="separator">
+        <span class="section-label">// WALLET CLUSTERING & TRACKING — LAYER 6</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L6:~$</span> <span class="cmd">python3 wallet_cluster.py --heuristic=common-input</span> <span class="redacted">--target=0x742d...xxxx</span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="output">[L6] Clustering wallets by common-input-ownership...</span>
+        </div>
+        <div class="line">
+            <span class="warning">[L6] Cluster found: 47 wallets controlled by SAME entity</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L6] Combined balance: <span class="redacted">$247M across BTC+ETH</span></span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L6] Pattern: funds consolidating — possible exchange hack or 51% preparation</span>
+        </div>
+        
+        <hr class="separator">
+        <div class="line" style="margin-top: 8px;">
+            <span class="comment">// Without x39Matrix, you're blind. With it, you see everything.</span>
+        </div>
+        <div class="line">
+            <span class="comment">// x39matrix.org — 9 layers defending Bitcoin & Ethereum 24/7</span>
+        </div>
+    </div>
+    
+    <div class="brand-bottom">
+        <span class="brand-url">x39matrix.org</span>
+        <span style="color:#333;">|</span>
+        <span class="brand-text">x39Matrix</span>
+    </div>
+</div>
+</body>
+</html>

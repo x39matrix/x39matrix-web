@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0a; font-family: 'Courier New', monospace; }
+.terminal {
+    width: 1536px;
+    height: 1024px;
+    background: #0c0c0c;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+.terminal-bar {
+    background: #1a1a1a;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #333;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #CC0000; }
+.dot-y { background: #FFA500; }
+.dot-g { background: #555; }
+.terminal-title {
+    color: #666;
+    font-size: 12px;
+    margin-left: 15px;
+    letter-spacing: 1px;
+}
+.content {
+    padding: 30px 40px;
+    overflow: hidden;
+}
+.line {
+    font-size: 13.5px;
+    line-height: 2.1;
+    white-space: nowrap;
+}
+.prompt { color: #CC0000; }
+.cmd { color: #00FFFF; }
+.comment { color: #555; font-style: italic; }
+.output { color: #888; }
+.warning { color: #FFA500; }
+.danger { color: #FF003C; }
+.success { color: #CC0000; }
+.highlight { color: #fff; font-weight: bold; }
+.redacted {
+    background: #CC0000;
+    color: #CC0000;
+    padding: 0 4px;
+    filter: blur(4px);
+    user-select: none;
+    font-size: 12px;
+}
+.redacted-heavy {
+    background: #333;
+    color: #333;
+    padding: 0 6px;
+    filter: blur(6px);
+    user-select: none;
+}
+.redacted-label {
+    color: #CC0000;
+    font-size: 11px;
+    border: 1px solid #CC0000;
+    padding: 1px 6px;
+    margin-left: 8px;
+    letter-spacing: 1px;
+}
+.separator {
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 15px 0;
+}
+.brand-bottom {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.brand-text {
+    font-size: 14px;
+    color: #CC0000;
+    letter-spacing: 6px;
+}
+.brand-url {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 2px;
+}
+.section-label {
+    color: #CC0000;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin: 10px 0 5px;
+    display: block;
+}
+</style>
+</head>
+<body>
+<div class="terminal">
+    <div class="terminal-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <div class="terminal-title">x39matrix@sentinel:~/btc_monitor$</div>
+    </div>
+    <div class="content">
+        <span class="section-label">// BITCOIN NODE SCANNING — LAYER 1</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L1:~$</span> <span class="cmd">nmap -sV -p 8333 --script bitcoin-info</span> <span class="redacted">192.168.x.x/24 --max-rate 500</span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="output">[L1] Discovered 14,847 Bitcoin nodes — 312 running vulnerable versions</span>
+        </div>
+        <div class="line">
+            <span class="output">[L1] Geographic concentration: <span class="warning">47% nodes in 3 regions</span></span>
+        </div>
+        
+        <hr class="separator">
+        <span class="section-label">// MEMPOOL DOUBLE-SPEND DETECTION — LAYER 3</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L3:~$</span> <span class="cmd">python3 mempool_monitor.py --detect-doublespend</span> <span class="redacted">--rpc-auth=xxxx --broadcast</span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="output">[L3] Monitoring mempool... 42,891 pending transactions</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L3] ALERT: Double-spend detected — UTXO 0xa3f8...e2b1 spent TWICE</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L3] Conflicting TX: <span class="redacted-heavy">0x7bc91d...redacted...4f2a</span></span> <span class="redacted-label">REDACTED</span>
+        </div>
+        
+        <hr class="separator">
+        <span class="section-label">// HASHRATE CONCENTRATION — LAYER 4</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L4:~$</span> <span class="cmd">python3 hashrate_tracker.py --realtime --alert-threshold 33</span>
+        </div>
+        <div class="line">
+            <span class="output">[L4] Foundry: 27% | AntPool: 15% | F2Pool: 11% | <span class="danger">UNKNOWN: 38%</span></span>
+        </div>
+        <div class="line">
+            <span class="danger">[L4] CRITICAL: Unknown miner exceeds 33% — selfish mining probable</span>
+        </div>
+        
+        <hr class="separator">
+        <span class="section-label">// 51% ATTACK DETECTION — LAYER 7 SENTINEL (PTU-47)</span>
+        
+        <div class="line">
+            <span class="prompt">x39@L7:~$</span> <span class="cmd">cargo run --release -- --detect-reorg --ptu47-engine</span> <span class="redacted">--key=xxxxxx</span> <span class="redacted-label">REDACTED</span>
+        </div>
+        <div class="line">
+            <span class="output">[L7] PTU-47 Category Theory engine active...</span>
+        </div>
+        <div class="line">
+            <span class="output">[L7] Functor mapping: current pattern → known attack signature</span>
+        </div>
+        <div class="line">
+            <span class="danger">[L7] MATCH: 94.7% correlation with 51% attack pattern</span>
+        </div>
+        <div class="line">
+            <span class="success">[L7] ████ REORG DETECTED: 6 blocks replaced — ATTACK NEUTRALIZED ████</span>
+        </div>
+
+        <hr class="separator">
+        <div class="line" style="margin-top: 10px;">
+            <span class="comment">// These are REAL capabilities. x39Matrix runs 24/7 on ICP mainnet.</span>
+        </div>
+        <div class="line">
+            <span class="comment">// Want to see more? →  x39matrix.org</span>
+        </div>
+    </div>
+    
+    <div class="brand-bottom">
+        <span class="brand-url">x39matrix.org</span>
+        <span style="color:#333;">|</span>
+        <span class="brand-text">x39Matrix</span>
+    </div>
+</div>
+</body>
+</html>
