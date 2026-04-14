@@ -1,0 +1,91 @@
+{
+  "theme": "DARK",
+  "archetype": "Archetype 7 (Electric & Neon) + Archetype 4 (Swiss & High-Contrast)",
+  "design_philosophy": "High-tech security command center. Precision, density, and real-time responsiveness. Uses deep blacks with neon accents to highlight anomalies and terminal-inspired retro-futurism for a true cyber operations aesthetic.",
+  "colors": {
+    "background": {
+      "base": "#050505",
+      "surface": "#0A0A0A",
+      "surface_elevated": "#121212"
+    },
+    "text": {
+      "primary": "#EDEDED",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B"
+    },
+    "brand": {
+      "primary": "#00FF41",
+      "primary_glow": "rgba(0, 255, 65, 0.2)",
+      "accent_cyan": "#00FFFF",
+      "danger": "#FF003C",
+      "danger_glow": "rgba(255, 0, 60, 0.4)",
+      "warning": "#FFB000"
+    },
+    "border": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "active": "rgba(0, 255, 65, 0.3)",
+      "danger": "rgba(255, 0, 60, 0.5)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Chivo",
+      "body": "Inter",
+      "mono": "JetBrains Mono"
+    },
+    "rules": {
+      "h1": "text-4xl sm:text-5xl font-black tracking-tighter uppercase text-white",
+      "h2": "text-2xl sm:text-3xl font-bold tracking-tight uppercase text-white",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight text-white",
+      "labels": "text-xs font-mono tracking-[0.2em] uppercase text-[#A1A1AA]",
+      "data": "text-base font-mono text-[#EDEDED]",
+      "logs": "text-sm font-mono leading-relaxed text-[#00FF41]"
+    }
+  },
+  "layout_and_spacing": {
+    "strategy": "The 'Control Room' Grid",
+    "container": "w-full min-h-screen bg-[#050505] p-4 md:p-6 lg:p-8 font-sans",
+    "grid": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6",
+    "panels": "bg-[#0A0A0A] border border-white/10 p-4 lg:p-6 rounded-none relative overflow-hidden flex flex-col"
+  },
+  "surfaces_and_micro_themes": {
+    "panel_style": "Retro-Futurism (Terminal Look). Solid deep black backgrounds. 1px borders. Sharp edges (rounded-none). Use neon borders for active or alerting states.",
+    "glass": "backdrop-blur-xl bg-black/60 border-b border-white/10 for any sticky headers or overlays.",
+    "scanlines": "Optional repeating-linear-gradient overlay on the log console for a CRT monitor effect."
+  },
+  "components_strategy": {
+    "buttons": "Flat, sharp edges. Primary CTA uses brand green bg with black text, hover state adds drop-shadow glow (drop-shadow-[0_0_8px_rgba(0,255,65,0.5)]). Secondary uses transparent bg, 1px green border, green text.",
+    "blocks_visualization": "Represented as rectangular nodes with hash IDs and timestamps. Connect them with lines or arrows. Mined blocks pulse green, attacker blocks pulse red. Use horizontal scrolling overflow for long chains.",
+    "log_console": "Terminal window aesthetic. bg-[#050505] inset with 1px border. font-mono, neon green text on black. Auto-scrolls to bottom. Timestamps prefixed to each log line.",
+    "alert_panel": "When L7 Sentinel detects attack, panel flashes with danger red border, heavy red text shadow, and warning icons.",
+    "status_indicators": "Small pulsing dots (green = safe, red = attack) next to panel titles or system status headers."
+  },
+  "motion_and_interactions": {
+    "blocks": "Framer motion for entry. { initial: { opacity: 0, x: 20 }, animate: { opacity: 1, x: 0 }, transition: { type: 'spring', stiffness: 200 } }",
+    "alerts": "CSS Keyframes for pulsing border or background on danger states.",
+    "hover": "Interactive items get subtle border color change to cyan or green and a tiny lift (-translate-y-px)."
+  },
+  "image_urls": {
+    "logo": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/b93719da-776c-487b-ae8c-ecf4ae684f67/images/f09629f148dfc3cb0339456b4f91329f042e714ebc688c88e53fab08b1d0e2a3.png",
+      "description": "x39Matrix protocol abstract geometric neon green logo"
+    },
+    "background_cyber": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/b93719da-776c-487b-ae8c-ecf4ae684f67/images/163fccf7edc5c9703ac5cd12ee0c959ed2f82fa045eb75f2803c5e24f7bc361c.png",
+      "description": "Abstract dark web3 cybersecurity background with neon nodes. Use at low opacity (10-20%) overlaid on the main background for texture."
+    },
+    "server_rack": {
+      "url": "https://images.unsplash.com/photo-1680992046626-418f7e910589?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjByYWNrJTIwZGFyayUyMGdsb3dpbmd8ZW58MHx8fHwxNzc2MTcwNTE1fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Dark glowing server rack for context/imagery if needed in side panels or idle state graphics."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use standard Tailwind CSS classes. Apply Shadcn primitives for logic (Dialog, Tabs, Select) but override styles to be sharp, border-radius 0, and dark-themed.",
+    "Use `lucide-react` or `phosphor-react` for technical iconography (shield, server, activity, alert-triangle).",
+    "Install and configure google fonts for Chivo and JetBrains Mono.",
+    "Use `framer-motion` for smooth block appearance in the blockchain visualizations.",
+    "MUST add `data-testid` attributes to Start Simulation Button, L7 Sentinel Alert Panel, and Log Console for automated testing.",
+    "Chain visualization: Display Legitimate Chain and Attacker Chain in parallel horizontal tracks. Use varying colors to distinguish legitimate (green/cyan) from attacker (red/orange) blocks.",
+    "Simulate real-time progression using standard React `useEffect` intervals or intervals triggered by the Start Simulation button to push new block data and log entries sequentially."
+  ]
+}
