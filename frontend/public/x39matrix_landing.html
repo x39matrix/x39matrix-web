@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>x39Matrix — 9-Layer Sovereign Defense Protocol</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: #0a0a0a;
+    color: #eee;
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+/* GRID BACKGROUND */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(204,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(204,0,0,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+/* SCANLINE */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(204,0,0,0.3), transparent);
+    animation: scanline 5s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+}
+@keyframes scanline { 0%{top:-3px} 100%{top:100vh} }
+
+/* ==================== COUNTDOWN SECTION ==================== */
+#countdown-section {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background: #0a0a0a;
+    transition: opacity 1s ease, transform 1s ease;
+}
+#countdown-section.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+.countdown-title {
+    font-size: 14px;
+    color: #555;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+.layers-countdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 500px;
+    margin-bottom: 60px;
+}
+.layer-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 20px;
+    border: 1px solid #1a1a1a;
+    opacity: 0.2;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+}
+.layer-bar.active {
+    opacity: 1;
+    transform: translateX(0);
+    border-color: #CC0000;
+    background: rgba(204,0,0,0.05);
+}
+.layer-bar.active .layer-num { color: #CC0000; }
+.layer-bar.active .layer-name-cd { color: #eee; }
+.layer-bar.active .layer-status-cd { color: #CC0000; opacity: 1; }
+.layer-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    width: 35px;
+}
+.layer-name-cd {
+    font-size: 12px;
+    color: #444;
+    letter-spacing: 2px;
+    flex: 1;
+}
+.layer-status-cd {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #333;
+    opacity: 0;
+}
+
+/* TRIANGLE */
+.triangle-container {
+    position: relative;
+    width: 200px;
+    height: 180px;
+    margin-bottom: 30px;
+    opacity: 0;
+    transition: opacity 1s ease 0.5s;
+}
+.triangle-container.visible { opacity: 1; }
+.triangle-svg {
+    width: 200px;
+    height: 180px;
+}
+.triangle-path {
+    fill: none;
+    stroke: #CC0000;
+    stroke-width: 2;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    filter: drop-shadow(0 0 10px rgba(204,0,0,0.5));
+}
+.triangle-path.drawn {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 2s ease;
+}
+.triangle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    font-size: 28px;
+    font-weight: 700;
+    color: #CC0000;
+    text-shadow: 0 0 20px rgba(204,0,0,0.5);
+}
+
+/* ENTER BUTTON */
+.enter-btn {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    cursor: pointer;
+    border: 1px solid #CC0000;
+    background: transparent;
+    color: #CC0000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 4px;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+.enter-btn.visible { opacity: 1; }
+.enter-btn:hover {
+    background: #CC0000;
+    color: #0a0a0a;
+    box-shadow: 0 0 30px rgba(204,0,0,0.4);
+}
+.enter-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+.enter-btn:hover::after { left: 100%; }
+
+/* ==================== MAIN CONTENT ==================== */
+#main-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+    position: relative;
+    z-index: 1;
+}
+#main-content.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    position: relative;
+}
+.hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(204,0,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero-title {
+    font-size: 80px;
+    font-weight: 700;
+    color: #CC0000;
+    letter-spacing: 10px;
+    text-shadow: 0 0 60px rgba(204,0,0,0.3);
+    margin-bottom: 15px;
+    z-index: 2;
+}
+.hero-sub {
+    font-size: 16px;
+    color: #666;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    z-index: 2;
+}
+.hero-stats {
+    display: flex;
+    gap: 60px;
+    z-index: 2;
+    margin-bottom: 50px;
+}
+.stat {
+    text-align: center;
+}
+.stat-value {
+    font-size: 48px;
+    font-weight: 700;
+    color: #CC0000;
+}
+.stat-label {
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+.hero-tagline {
+    font-size: 14px;
+    color: #444;
+    font-style: italic;
+    z-index: 2;
+}
+
+/* SECTIONS */
+.section {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.section-title {
+    font-size: 32px;
+    color: #CC0000;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    border-left: 4px solid #CC0000;
+    padding-left: 20px;
+}
+.section-subtitle {
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 3px;
+    margin-bottom: 50px;
+    padding-left: 24px;
+}
+.divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #CC0000, transparent);
+    margin: 0;
+}
+
+/* ARCHITECTURE GRID */
+.arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.arch-card {
+    border: 1px solid #1a1a1a;
+    padding: 30px;
+    position: relative;
+    transition: all 0.3s;
+    background: rgba(10,10,10,0.9);
+}
+.arch-card:hover {
+    border-color: #CC0000;
+    background: rgba(204,0,0,0.03);
+    transform: translateY(-2px);
+}
+.arch-card.sentinel {
+    border-color: #00FFFF;
+    background: rgba(0,255,255,0.02);
+    grid-column: span 2;
+}
+.arch-card.sentinel:hover {
+    border-color: #00FFFF;
+    background: rgba(0,255,255,0.05);
+}
+.arch-id {
+    font-size: 36px;
+    font-weight: 700;
+    color: #CC0000;
+    margin-bottom: 8px;
+}
+.sentinel .arch-id { color: #00FFFF; }
+.arch-name {
+    font-size: 16px;
+    color: #eee;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.arch-desc {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.8;
+}
+.arch-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border: 1px solid #CC0000;
+    color: #CC0000;
+}
+.sentinel .arch-status {
+    border-color: #00FFFF;
+    color: #00FFFF;
+}
+
+/* DOCUMENTS */
+.docs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+}
+.doc-card {
+    border: 1px solid #1a1a1a;
+    padding: 35px 25px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+.doc-card:hover {
+    border-color: #CC0000;
+    background: rgba(204,0,0,0.05);
+    transform: translateY(-3px);
+}
+.doc-icon {
+    font-size: 36px;
+    color: #CC0000;
+    margin-bottom: 15px;
+    display: block;
+}
+.doc-title {
+    font-size: 14px;
+    color: #eee;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.doc-desc {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.6;
+}
+.doc-badge {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    border: 1px solid #CC0000;
+    color: #CC0000;
+    margin-top: 12px;
+}
+
+/* TERMINAL PREVIEW */
+.terminal-preview {
+    background: #0c0c0c;
+    border: 1px solid #222;
+    margin-top: 50px;
+    overflow: hidden;
+}
+.terminal-bar-p {
+    background: #1a1a1a;
+    padding: 8px 15px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    border-bottom: 1px solid #222;
+}
+.tdot { width: 10px; height: 10px; border-radius: 50%; }
+.tdot-r { background: #CC0000; }
+.tdot-y { background: #FFA500; }
+.tdot-g { background: #444; }
+.terminal-content {
+    padding: 25px 30px;
+    font-size: 13px;
+    line-height: 2;
+}
+.t-prompt { color: #CC0000; }
+.t-cmd { color: #00FFFF; }
+.t-output { color: #666; }
+.t-alert { color: #FF003C; }
+.t-redacted {
+    background: #CC0000;
+    color: #CC0000;
+    filter: blur(4px);
+    padding: 0 4px;
+}
+.t-tag {
+    font-size: 10px;
+    border: 1px solid #CC0000;
+    color: #CC0000;
+    padding: 1px 5px;
+    letter-spacing: 1px;
+    margin-left: 5px;
+}
+
+/* CTA */
+.cta-section {
+    text-align: center;
+    padding: 120px 40px;
+}
+.cta-title {
+    font-size: 28px;
+    color: #CC0000;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+.cta-text {
+    font-size: 13px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+.cta-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.cta-link {
+    font-size: 12px;
+    color: #CC0000;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border: 1px solid #CC0000;
+    padding: 12px 30px;
+    transition: all 0.3s;
+}
+.cta-link:hover {
+    background: #CC0000;
+    color: #0a0a0a;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid #111;
+}
+.footer-brand {
+    font-size: 18px;
+    color: #CC0000;
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+}
+.footer-text {
+    font-size: 10px;
+    color: #333;
+    letter-spacing: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-title { font-size: 40px; letter-spacing: 4px; }
+    .hero-stats { flex-direction: column; gap: 30px; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .arch-card.sentinel { grid-column: span 1; }
+    .docs-grid { grid-template-columns: 1fr; }
+    .section { padding: 60px 20px; }
+    .layers-countdown { width: 90%; }
+    .cta-links { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== COUNTDOWN ==================== -->
+<div id="countdown-section">
+    <div class="countdown-title">Initializing Protocol</div>
+    
+    <div class="layers-countdown" id="layers-cd">
+        <div class="layer-bar" data-layer="1">
+            <span class="layer-num">L1</span>
+            <span class="layer-name-cd">INFRASTRUCTURE</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+        <div class="layer-bar" data-layer="2">
+            <span class="layer-num">L2</span>
+            <span class="layer-name-cd">IDENTITY</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+        <div class="layer-bar" data-layer="3">
+            <span class="layer-num">L3</span>
+            <span class="layer-name-cd">EXECUTION</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+        <div class="layer-bar" data-layer="4">
+            <span class="layer-num">L4</span>
+            <span class="layer-name-cd">CONSENSUS</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+        <div class="layer-bar" data-layer="5">
+            <span class="layer-num">L5</span>
+            <span class="layer-name-cd">SCALABILITY</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+        <div class="layer-bar" data-layer="6">
+            <span class="layer-num">L6</span>
+            <span class="layer-name-cd">OMNICHAIN</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+        <div class="layer-bar" data-layer="7">
+            <span class="layer-num">L7</span>
+            <span class="layer-name-cd">AI GOVERNANCE</span>
+            <span class="layer-status-cd">SENTINEL ACTIVE</span>
+        </div>
+        <div class="layer-bar" data-layer="8">
+            <span class="layer-num">DB</span>
+            <span class="layer-name-cd">x39 BASES</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+        <div class="layer-bar" data-layer="9">
+            <span class="layer-num">FE</span>
+            <span class="layer-name-cd">FRONTEND</span>
+            <span class="layer-status-cd">ONLINE</span>
+        </div>
+    </div>
+
+    <div class="triangle-container" id="triangle-ct">
+        <svg class="triangle-svg" viewBox="0 0 200 180">
+            <path class="triangle-path" id="triangle-path" d="M100,10 L190,170 L10,170 Z"/>
+        </svg>
+        <div class="triangle-text">x39</div>
+    </div>
+
+    <button class="enter-btn" id="enter-btn" onclick="enterSite()">
+        Enter Architecture
+    </button>
+</div>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div id="main-content">
+    
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-title">x39MATRIX</div>
+        <div class="hero-sub">9-Layer Sovereign Defense Protocol</div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">9</div>
+                <div class="stat-label">Security Layers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">10</div>
+                <div class="stat-label">ICP Canisters</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Active Defense</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2</div>
+                <div class="stat-label">Networks Protected</div>
+            </div>
+        </div>
+        <div class="hero-tagline">"The code doesn't lie. Neither do we."</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ARCHITECTURE -->
+    <div class="section">
+        <div class="section-title">ARCHITECTURE</div>
+        <div class="section-subtitle">9 SOVEREIGN LAYERS — ALL LIVE ON ICP MAINNET</div>
+        
+        <div class="arch-grid">
+            <div class="arch-card">
+                <div class="arch-status">LIVE</div>
+                <div class="arch-id">L1</div>
+                <div class="arch-name">INFRASTRUCTURE</div>
+                <div class="arch-desc">P2P network topology scanning. Discovers and catalogs every active Bitcoin and Ethereum node globally. Detects geographic concentration, anomalous latency, and Sybil attack preparation.</div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-status">LIVE</div>
+                <div class="arch-id">L2</div>
+                <div class="arch-name">IDENTITY</div>
+                <div class="arch-desc">Anti-Sybil and node authentication. Verifies data sources feeding into x39Matrix. Threshold cryptography prevents any single node from compromising the system.</div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-status">LIVE</div>
+                <div class="arch-id">L3</div>
+                <div class="arch-name">EXECUTION</div>
+                <div class="arch-desc">Real-time mempool analysis engine. Detects double-spend attempts, suspicious RBF abuse, anomalous transaction scripts, and flash loan attack sequences before block confirmation.</div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-status">LIVE</div>
+                <div class="arch-id">L4</div>
+                <div class="arch-name">CONSENSUS</div>
+                <div class="arch-desc">Hashrate distribution monitor. Tracks mining pool concentrations in real-time. Alert thresholds at 25%, 33%, 40%, and 51%. Detects chain reorganizations and selfish mining patterns.</div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-status">LIVE</div>
+                <div class="arch-id">L5</div>
+                <div class="arch-name">SCALABILITY</div>
+                <div class="arch-desc">Auto-scaling engine. Shards monitoring data across ICP canisters during high-load attack events. Ensures x39Matrix never goes down when it's needed most.</div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-status">LIVE</div>
+                <div class="arch-id">L6</div>
+                <div class="arch-name">OMNICHAIN</div>
+                <div class="arch-desc">Cross-chain intelligence. Monitors Bitcoin AND Ethereum simultaneously. Correlates events between chains — detects when BTC moves to wBTC before a coordinated attack.</div>
+            </div>
+            <div class="arch-card sentinel">
+                <div class="arch-status">SENTINEL</div>
+                <div class="arch-id">L7</div>
+                <div class="arch-name">AI GOVERNANCE — L7 SENTINEL</div>
+                <div class="arch-desc">The brain of x39Matrix. Powered by PTU-47 Category Theory engine. Uses mathematical functors and natural transformations to detect attack patterns that have NEVER been seen before. 94.7% correlation accuracy. Autonomous decision-making. Predicts attacks hours before they occur.</div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-status">LIVE</div>
+                <div class="arch-id">DB</div>
+                <div class="arch-name">x39 BASES</div>
+                <div class="arch-desc">Immutable security log database on ICP blockchain. Every alert, every detection, every event — recorded permanently. Cannot be altered, deleted, or censored by anyone.</div>
+            </div>
+        </div>
+
+        <!-- TERMINAL PREVIEW -->
+        <div class="terminal-preview">
+            <div class="terminal-bar-p">
+                <div class="tdot tdot-r"></div>
+                <div class="tdot tdot-y"></div>
+                <div class="tdot tdot-g"></div>
+                <span style="color:#555; font-size:11px; margin-left:10px;">x39matrix@sentinel:~$</span>
+            </div>
+            <div class="terminal-content">
+                <div><span class="t-prompt">x39@L4:~$</span> <span class="t-cmd">python3 hashrate_tracker.py --realtime --alert-threshold 33</span></div>
+                <div><span class="t-output">[L4] Foundry: 27% | AntPool: 15% | F2Pool: 11% | </span><span class="t-alert">UNKNOWN: 38%</span></div>
+                <div><span class="t-alert">[L4] CRITICAL: Unknown miner exceeds 33% — selfish mining probable</span></div>
+                <div style="margin-top:10px"><span class="t-prompt">x39@L7:~$</span> <span class="t-cmd">cargo run --release -- --detect-reorg --ptu47-engine</span> <span class="t-redacted">--key=xxxxxxx</span> <span class="t-tag">REDACTED</span></div>
+                <div><span class="t-output">[L7] PTU-47 Category Theory engine active...</span></div>
+                <div><span class="t-alert">[L7] MATCH: 94.7% correlation with 51% attack pattern</span></div>
+                <div><span style="color:#CC0000; font-weight:bold;">[L7] REORG DETECTED: 6 blocks replaced — ATTACK NEUTRALIZED</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DOCUMENTS & CERTIFICATIONS -->
+    <div class="section">
+        <div class="section-title">DOCUMENTS & CERTIFICATIONS</div>
+        <div class="section-subtitle">VERIFIED REPORTS — DOWNLOAD AND VERIFY</div>
+        
+        <div class="docs-grid">
+            <a class="doc-card" href="x39matrix_thompson_ethical_report.pdf" target="_blank">
+                <span class="doc-icon">&#9744;</span>
+                <div class="doc-title">Ethical Protocol Certification</div>
+                <div class="doc-desc">Full technical and ethical analysis by independent researcher Sr. Thompson. 27 pages. Architecture review, PTU-47 analysis, competitive comparison.</div>
+                <span class="doc-badge">PDF — 27 PAGES</span>
+            </a>
+            <a class="doc-card" href="x39matrix_security_report.pdf" target="_blank">
+                <span class="doc-icon">&#9888;</span>
+                <div class="doc-title">Security Audit Report</div>
+                <div class="doc-desc">Comprehensive security analysis of the x39Matrix protocol. Layer-by-layer vulnerability assessment, penetration testing results, and defense verification.</div>
+                <span class="doc-badge">PDF — FULL REPORT</span>
+            </a>
+            <a class="doc-card" href="x39matrix_proposition_detaillee_fr.pdf" target="_blank">
+                <span class="doc-icon">&#9733;</span>
+                <div class="doc-title">Technical Proposition</div>
+                <div class="doc-desc">Detailed technical and business proposal for strategic partners. Integration roadmap, use cases, ROI analysis for exchanges, DeFi protocols, and institutions.</div>
+                <span class="doc-badge">PDF — PARTNERSHIP</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <div class="cta-title">READY TO VERIFY?</div>
+        <div class="cta-text">Every canister is live on ICP mainnet. Every line of code is real. Every detection is logged immutably. Don't take our word for it — verify it yourself.</div>
+        <div class="cta-links">
+            <a class="cta-link" href="https://x.com/x39matrix" target="_blank">X / TWITTER</a>
+            <a class="cta-link" href="https://forum.dfinity.org/t/x39matrix-9-layer-sovereign-protocol-bitcoin-security-bridge-on-internet-computer/67457" target="_blank">DFINITY FORUM</a>
+            <a class="cta-link" href="mailto:contact@x39matrix.org">CONTACT — DMs OPEN</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-brand">x39Matrix</div>
+        <div class="footer-text">9 LAYERS &bull; 10 CANISTERS &bull; ICP MAINNET &bull; BITCOIN + ETHEREUM DEFENSE</div>
+        <div class="footer-text" style="margin-top: 8px; color: #222;">&copy; 2026 x39Matrix Protocol — Created by Jose Luis Olivares</div>
+    </div>
+</div>
+
+<script>
+// COUNTDOWN ANIMATION
+const layers = document.querySelectorAll('.layer-bar');
+const triangleCt = document.getElementById('triangle-ct');
+const trianglePath = document.getElementById('triangle-path');
+const enterBtn = document.getElementById('enter-btn');
+let currentLayer = 0;
+
+function activateNextLayer() {
+    if (currentLayer < layers.length) {
+        layers[currentLayer].classList.add('active');
+        currentLayer++;
+        setTimeout(activateNextLayer, 400);
+    } else {
+        // All layers active — show triangle
+        setTimeout(() => {
+            triangleCt.classList.add('visible');
+            setTimeout(() => {
+                trianglePath.classList.add('drawn');
+                setTimeout(() => {
+                    enterBtn.classList.add('visible');
+                }, 1500);
+            }, 300);
+        }, 500);
+    }
+}
+
+// Start countdown after 800ms
+setTimeout(activateNextLayer, 800);
+
+// Enter site
+function enterSite() {
+    const countdown = document.getElementById('countdown-section');
+    const main = document.getElementById('main-content');
+    countdown.classList.add('fade-out');
+    setTimeout(() => {
+        countdown.style.display = 'none';
+        main.classList.add('visible');
+        window.scrollTo(0, 0);
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
