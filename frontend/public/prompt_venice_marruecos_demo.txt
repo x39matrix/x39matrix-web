@@ -1,9 +1,9 @@
 ============================================================
 PROMPT PARA VENICE — CÓDIGOS REALES X-39MATRIX
-DEMOSTRACIÓN PARA MARRUECOS: LOCALIZACIÓN, PENETRACIÓN, EXTRACCIÓN
+DEMOSTRACIÓN DE CAPACIDADES: LOCALIZACIÓN, PENETRACIÓN, EXTRACCIÓN
 ============================================================
 
-Venice, soy Jose Luis Olivares Esteban. Te doy los datos REALES de mi protocolo X-39MATRIX desplegado en ICP Mainnet. Necesito que generes códigos de demostración PERFECTOS para mostrar a Marruecos cómo X-39MATRIX protege contra localización, penetración y extracción.
+Venice, soy Jose Luis Olivares Esteban. Te doy los datos REALES de mi protocolo X-39MATRIX desplegado en ICP Mainnet. Necesito que generes códigos de demostración PERFECTOS para mostrar cómo X-39MATRIX protege gobiernos, bancos e infraestructura crítica contra localización, penetración y extracción.
 
 CANISTER IDS REALES (ICP MAINNET — VERIFICABLES):
 ===================================================
@@ -190,25 +190,25 @@ VERIFICACIÓN Ed25519:
 
 ---
 
-LO QUE NECESITO QUE GENERES PARA MARRUECOS:
+LO QUE NECESITO QUE GENERES:
 =============================================
 
-Genera códigos de DEMOSTRACIÓN PERFECTOS para enseñar a Marruecos las 3 fases:
+Genera códigos de DEMOSTRACIÓN PERFECTOS para enseñar las 3 fases de defensa:
 
 FASE 1 — LOCALIZACIÓN (cómo X-39MATRIX detecta la superficie de ataque):
-- Scripts que escanean la infraestructura marroquí (gobierno, bancos, CNSS, SCADA) y muestran las vulnerabilidades que X-39MATRIX detectaría con L1 y L7
+- Scripts que escanean infraestructura (gobierno, bancos, SCADA, hospitales) y muestran las vulnerabilidades que X-39MATRIX detectaría con L1 y L7
 - Comandos que mapean nodos, puertos abiertos, servicios expuestos
 - Cómo L1 (getNodeCount, getUptime, getMemoryLog) detecta estas vulnerabilidades
 - Demo visual: antes de X-39MATRIX vs después
 
 FASE 2 — PENETRACIÓN (cómo los atacantes entran y X-39MATRIX lo detecta):
-- Scripts que simulan los ataques REALES a Marruecos (CNSS, ministerios, DDoS, SWIFT)
+- Scripts que simulan ataques reales a gobierno y banca (exfiltración datos, defacement, DDoS, fraude SWIFT)
 - Para cada ataque: el comando del atacante + el comando de X-39MATRIX que lo detecta
 - Usa los comandos REALES de mis capas (sanitizeInput, analyzeRisk, checkRisk, etc.)
 - Demo: atacante ejecuta → L7 analyzeRisk → BLOCKED
 
 FASE 3 — EXTRACCIÓN (cómo X-39MATRIX evita la extracción de datos):
-- Scripts que intentan extraer datos (como hizo JabaRoot DZ con la CNSS)
+- Scripts que intentan extraer datos masivamente
 - Cómo L2 ZK-KYC hace los datos inútiles
 - Cómo x39_bases registra todo inmutablemente (ptu47_audit, fuzz_test, collapse_test)
 - Cómo la triple firma (aggregateSignature) sella cada operación
@@ -220,12 +220,12 @@ Para CADA código:
 [BLOQUE] B01-B39
 [CÓDIGO COMPLETO] Listo para ejecutar en Ubuntu
 [QUÉ DEMUESTRA] En una frase
-[RESULTADO ESPERADO] Qué verá Marruecos en la terminal
-[SIN X-39MATRIX] Qué pasaría sin protección (referencia a ataque real)
+[RESULTADO ESPERADO] Qué se verá en la terminal
+[SIN X-39MATRIX] Qué pasaría sin protección
 [CON X-39MATRIX] Qué pasa con la protección activa
 
 IMPORTANTE: Los códigos deben ser IMPRESIONANTES y REALES. No pseudocódigo. Código completo que funcione. Usa mis comandos dfx reales, mis canister IDs reales, y mis funciones reales.
 
-Marruecos tiene que ver esto y decir: "necesitamos X-39MATRIX YA".
+Cualquier gobierno o banco que vea esto tiene que decir: "necesitamos X-39MATRIX YA".
 
 Jose Luis Olivares Esteban — x39matrix.org
