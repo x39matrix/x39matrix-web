@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+    size: A4;
+    margin: 2cm 2.5cm;
+    @bottom-center {
+        content: "X-39MATRIX — Resume Executif | Page " counter(page);
+        font-size: 8pt;
+        color: #888;
+        font-family: 'Courier New', monospace;
+    }
+}
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1a1a1a;
+    line-height: 1.8;
+    font-size: 11pt;
+}
+.cover {
+    page-break-after: always;
+    text-align: center;
+    padding-top: 0;
+}
+.cover img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center 30%;
+}
+.cover-title {
+    font-size: 34pt;
+    font-weight: bold;
+    color: #CC0000;
+    letter-spacing: 4px;
+    font-family: 'Courier New', monospace;
+    margin-top: 20px;
+}
+.cover-sub {
+    font-size: 14pt;
+    color: #444;
+    margin: 8px 0 5px;
+}
+.cover-edition {
+    font-size: 11pt;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+.cover-line {
+    width: 120px;
+    height: 2px;
+    background: #CC0000;
+    margin: 20px auto;
+}
+.cover-dest {
+    font-size: 15pt;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+.cover-event {
+    font-size: 12pt;
+    color: #CC0000;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.cover-author {
+    font-size: 10pt;
+    color: #666;
+    margin-top: 30px;
+}
+.cover-author strong {
+    font-size: 12pt;
+    color: #1a1a1a;
+    display: block;
+    margin-top: 4px;
+}
+.cover-version {
+    font-size: 9pt;
+    color: #999;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+}
+.cover-note {
+    margin-top: 30px;
+    font-size: 10pt;
+    color: #CC0000;
+    border: 1px solid #CC0000;
+    display: inline-block;
+    padding: 8px 25px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+h1 {
+    color: #CC0000;
+    font-size: 18pt;
+    border-bottom: 2px solid #CC0000;
+    padding-bottom: 6px;
+    margin-top: 30px;
+    font-family: 'Courier New', monospace;
+}
+h2 {
+    color: #333;
+    font-size: 13pt;
+    margin-top: 20px;
+    border-left: 4px solid #CC0000;
+    padding-left: 10px;
+}
+.highlight {
+    background: #FFF5F5;
+    border: 1px solid #CC0000;
+    border-left: 5px solid #CC0000;
+    padding: 12px 16px;
+    margin: 15px 0;
+    font-size: 10pt;
+}
+.highlight strong { color: #CC0000; }
+.metric-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+.metric {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px;
+    width: 23%;
+    text-align: center;
+}
+.metric-val {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #CC0000;
+    font-family: 'Courier New', monospace;
+}
+.metric-lab {
+    font-size: 7pt;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 9pt;
+}
+th {
+    background: #CC0000;
+    color: white;
+    padding: 7px 8px;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    font-size: 8pt;
+}
+td { padding: 6px 8px; border-bottom: 1px solid #ddd; }
+tr:nth-child(even) { background: #f9f9f9; }
+.good { color: #CC0000; font-weight: bold; }
+.bad { color: #999; }
+ul { margin: 8px 0; padding-left: 18px; }
+li { margin-bottom: 5px; }
+.footer-final {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 2px solid #CC0000;
+}
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+    <img src="marruecos_cover.jpeg" />
+    <div class="cover-title">X-39MATRIX</div>
+    <div class="cover-sub">Resume Executif</div>
+    <div class="cover-edition">Protocole Souverain de Defense Numerique — 9 Couches</div>
+    <div class="cover-line"></div>
+    <div style="font-size: 10pt; color: #555;">Proposition pour le</div>
+    <div class="cover-dest">Royaume du Maroc</div>
+    <div class="cover-event">Coupe du Monde FIFA 2030 et Souverainete Nationale</div>
+    <div class="cover-line"></div>
+    <div class="cover-author">
+        Createur et Proprietaire Exclusif
+        <strong>Jose Luis Olivares Esteban</strong>
+    </div>
+    <div class="cover-version">
+        Version 12.0 | Fevrier 2026 | www.x39matrix.org
+    </div>
+    <div class="cover-note">DOCUMENT NON CLASSIFIE — RESUME EXECUTIF</div>
+</div>
+
+<!-- SECTION 1 -->
+<h1>1. Qu'est-ce que X-39MATRIX?</h1>
+
+<p>X-39MATRIX est le premier <strong>protocole souverain de defense numerique a 9 couches</strong> deploye en production sur l'Internet Computer Protocol (ICP). Ce n'est ni une cryptomonnaie, ni une blockchain conventionnelle. C'est un <strong>systeme immunitaire numerique</strong> — un organisme autonome qui surveille, detecte, alerte et neutralise les cybermenaces en temps reel.</p>
+
+<div class="metric-grid">
+    <div class="metric">
+        <div class="metric-val">9</div>
+        <div class="metric-lab">Couches Souveraines</div>
+    </div>
+    <div class="metric">
+        <div class="metric-val">58</div>
+        <div class="metric-lab">Vecteurs de Securite</div>
+    </div>
+    <div class="metric">
+        <div class="metric-val">0</div>
+        <div class="metric-lab">Evasions Detectees</div>
+    </div>
+    <div class="metric">
+        <div class="metric-val">50K+</div>
+        <div class="metric-lab">Transactions/Seconde</div>
+    </div>
+</div>
+
+<!-- SECTION 2 -->
+<h1>2. Pourquoi le Maroc en a Besoin Maintenant</h1>
+
+<div class="highlight">
+    <strong>Avril 2025 — Piratage CNSS:</strong> Le groupe JabaRoot DZ a vole 54,000+ fichiers exposant les donnees de <strong>1,996,026 employes</strong> et 500,000 entreprises. Noms, salaires, coordonnees bancaires — tout sur Telegram. Le groupe royal SIGER, des banques majeures et le Bureau de liaison israelien touches.
+</div>
+
+<p><strong>Bilan 2024-2025 du Maroc:</strong></p>
+<ul>
+    <li><strong>12.6 millions</strong> d'attaques web en 2024</li>
+    <li><strong>75,000+</strong> attaques DDoS debut 2025 — Maroc classe <strong>3eme mondial</strong></li>
+    <li><strong>26 evenements</strong> d'espionnage etatique (APT) en 12 mois</li>
+    <li>Sites de <strong>5 ministeres</strong> pirates et defigures publiquement</li>
+    <li><strong>500+</strong> appareils medicaux exposes dans les hopitaux</li>
+    <li><strong>340%</strong> d'augmentation de ransomware dans le secteur sante</li>
+</ul>
+
+<p><strong>La Coupe du Monde FIFA 2030</strong> exposera le Maroc a des menaces exponentiellement plus grandes: 5+ milliards de telespectateurs, 3.5 millions de visiteurs, 14 stades connectes, 32 jours de competition. Reference: Paris 2024 a subi 4 milliards de tentatives d'attaques en seulement 16 jours.</p>
+
+<!-- SECTION 3 -->
+<h1>3. Ce Que X-39MATRIX Aurait Change</h1>
+
+<table>
+    <tr>
+        <th>ATTAQUE REELLE</th>
+        <th>CE QUI S'EST PASSE</th>
+        <th>AVEC X-39MATRIX</th>
+    </tr>
+    <tr>
+        <td><strong>Piratage CNSS</strong></td>
+        <td class="bad">2M citoyens exposes. Aucune detection.</td>
+        <td class="good">Detecte en &lt;3 sec. Donnees inutilisables (ZK-KYC).</td>
+    </tr>
+    <tr>
+        <td><strong>Defacement Ministeres</strong></td>
+        <td class="bad">Sites modifies. Humiliation publique.</td>
+        <td class="good">Acces bloque par triple signature. Pattern detecte par L7.</td>
+    </tr>
+    <tr>
+        <td><strong>75,000+ DDoS</strong></td>
+        <td class="bad">Services inaccessibles pendant des heures.</td>
+        <td class="good">L5 auto-scaling. 99.99% disponibilite maintenue.</td>
+    </tr>
+    <tr>
+        <td><strong>Espionnage APT</strong></td>
+        <td class="bad">Communications compromises.</td>
+        <td class="good">L8 Ed25519 chiffre tout. L4 BFT resiste.</td>
+    </tr>
+    <tr>
+        <td><strong>Ransomware Hopitaux</strong></td>
+        <td class="bad">500+ appareils exposes. Donnees en danger.</td>
+        <td class="good">L3 bloque avant execution. Donnees recuperables (x39 Bases).</td>
+    </tr>
+</table>
+
+<!-- SECTION 4 -->
+<h1>4. Les 9 Couches Souveraines</h1>
+
+<table>
+    <tr><th>COUCHE</th><th>NOM</th><th>FONCTION</th></tr>
+    <tr><td class="good">L1</td><td>Infrastructure</td><td>Cartographie des noeuds Bitcoin/Ethereum, surveillance reseau globale</td></tr>
+    <tr><td class="good">L2</td><td>Identite</td><td>ZK-KYC, anti-Sybil, controle d'acces par role (RBAC)</td></tr>
+    <tr><td class="good">L3</td><td>Execution</td><td>Analyse mempool temps reel, detection double-depense et flash loans</td></tr>
+    <tr><td class="good">L4</td><td>Consensus</td><td>Surveillance hashrate, detection reorganisations, BFT</td></tr>
+    <tr><td class="good">L5</td><td>Scalabilite</td><td>Auto-scaling sous attaque, sharding dynamique</td></tr>
+    <tr><td class="good">L6</td><td>OmniChain</td><td>Correlation cross-chain BTC + ETH, tracking wallets</td></tr>
+    <tr><td class="good">L7</td><td>IA Governance</td><td>Sentinelle L7 — Detection predictive par PTU-47 (Theorie des Categories)</td></tr>
+    <tr><td class="good">L8</td><td>Orchestrateur</td><td>Pipeline securite, signature Ed25519 agregee des 9 couches</td></tr>
+    <tr><td class="good">L9</td><td>x39_bases (Rust)</td><td>Moteur algebrique PTU-47, Horloge Quantique, stockage immutable</td></tr>
+</table>
+
+<!-- SECTION 5 -->
+<h1>5. Avantages Concurrentiels</h1>
+
+<table>
+    <tr><th>CRITERE</th><th>X-39MATRIX</th><th>CHAINALYSIS</th><th>CROWDSTRIKE</th><th>PALO ALTO</th></tr>
+    <tr><td>Detection 51%</td><td class="good">Temps reel</td><td class="bad">Post-mortem</td><td class="bad">Non</td><td class="bad">Non</td></tr>
+    <tr><td>Decentralise</td><td class="good">ICP Mainnet</td><td class="bad">Centralise</td><td class="bad">Cloud prive</td><td class="bad">Cloud prive</td></tr>
+    <tr><td>Cross-chain</td><td class="good">BTC + ETH natif</td><td class="bad">Limite</td><td class="bad">Non</td><td class="bad">Non</td></tr>
+    <tr><td>Souverainete</td><td class="good">Totale</td><td class="bad">USA</td><td class="bad">USA</td><td class="bad">USA/Israel</td></tr>
+    <tr><td>IA avancee</td><td class="good">PTU-47</td><td class="bad">ML basique</td><td class="bad">ML</td><td class="bad">ML</td></tr>
+    <tr><td>Logs immutables</td><td class="good">On-chain</td><td class="bad">Privee</td><td class="bad">Privee</td><td class="bad">Privee</td></tr>
+    <tr><td>Backdoor possible</td><td class="good">Non</td><td class="bad">Possible</td><td class="bad">Possible</td><td class="bad">Possible</td></tr>
+</table>
+
+<!-- SECTION 6 -->
+<h1>6. Secteurs Couverts</h1>
+
+<h2>Gouvernement</h2>
+<p>Communications ministerielles chiffrees, vote electronique securise, registres publics immutables, frontieres numeriques, renseignement protege.</p>
+
+<h2>Banque et Finance</h2>
+<p>Protection SWIFT (detection fraude en &lt;3 sec), anti-double-depense, anti-blanchiment cross-chain, protection des soldes par triple signature.</p>
+
+<h2>Infrastructure Critique</h2>
+<p>Energie (ONE/ONEE — protection SCADA), Transport (ONCF, Al Boraq, Tanger Med), Telecommunications (ANRT — 5G), Sante (anti-ransomware), Eau (ONEP).</p>
+
+<h2>Coupe du Monde FIFA 2030</h2>
+<p>Billetterie inviolable, acces stade biometrique, paiements securises, communications chiffrees, anti-DDoS infrastructure, detection menaces temps reel, protection diffusion TV/streaming.</p>
+
+<!-- SECTION 7 -->
+<h1>7. Feuille de Route</h1>
+
+<table>
+    <tr><th>PHASE</th><th>PERIODE</th><th>OBJECTIF</th></tr>
+    <tr><td><strong>Phase 1</strong></td><td>Mois 1-3</td><td>Pilote dans un ministere ou banque — validation technique</td></tr>
+    <tr><td><strong>Phase 2</strong></td><td>Mois 4-8</td><td>Extension gouvernement et banque — 9 couches completes</td></tr>
+    <tr><td><strong>Phase 3</strong></td><td>Mois 9-14</td><td>Infrastructure nationale critique — SCADA, telecom, transport</td></tr>
+    <tr><td><strong>Phase 4</strong></td><td>Mois 15-24</td><td>Preparation FIFA 2030 — stades, billetterie, communications</td></tr>
+    <tr><td><strong>Phase 5</strong></td><td>Continue</td><td>Operation, evolution, support 24/7</td></tr>
+</table>
+
+<!-- SECTION 8 -->
+<h1>8. Certifications Disponibles</h1>
+
+<ul>
+    <li><strong>Certificat 1:</strong> Rapport de Securite Technique — 58/58 vecteurs PASS, 0 evasions, 0 vulnerabilites critiques.</li>
+    <li><strong>Certificat 2:</strong> Certification Ethique du Protocole par Sr. Thompson — Analyse independante, 27 pages, revue architecture et PTU-47.</li>
+    <li><strong>Certificat 3:</strong> Proposition Technique Detaillee — Architecture complete, cas d'usage, feuille de route d'integration.</li>
+</ul>
+
+<p>Le document complet (60+ pages) contenant l'architecture technique detaillee, les 58 vecteurs de securite, la specification formelle PTU-47, le DPIA Maroc, les runbooks operationnels, les SLAs, le plan pilote SCADA et les exercices FIFA 2030 est disponible <strong>sur demande</strong> et protege par chiffrement.</p>
+
+<!-- SECTION 9 -->
+<h1>9. Verification en Direct</h1>
+
+<div class="highlight">
+    <strong>Site Officiel ICP:</strong> https://divzb-xiaaa-aaaam-aivwa-cai.icp0.io/<br>
+    <strong>Demo Attaque 51%:</strong> https://estado-protocolo.preview.emergentagent.com/<br>
+    <strong>Site Web:</strong> www.x39matrix.org<br><br>
+    Tous les canisters sont deployés sur ICP Mainnet et verifiables par n'importe qui via <code>dfx canister --network ic info</code>
+</div>
+
+<!-- SECTION 10 -->
+<h1>10. Contact</h1>
+
+<div class="footer-final">
+    <p style="font-size: 14pt; color: #CC0000; font-family: 'Courier New', monospace; letter-spacing: 4px; font-weight: bold;">X-39MATRIX</p>
+    <p style="font-size: 10pt; color: #333;">Jose Luis Olivares Esteban — Createur et Proprietaire Exclusif</p>
+    <p style="font-size: 10pt; color: #555;">www.x39matrix.org | @x39matrix</p>
+    <p style="font-size: 9pt; color: #888; margin-top: 10px;">&copy; 2024-2026 — Tous Droits Reserves — Propriete Intellectuelle Protegee</p>
+    <p style="font-size: 9pt; color: #aaa; font-style: italic; margin-top: 5px;">"Le code ne ment pas. X-39MATRIX non plus."</p>
+</div>
+
+</body>
+</html>
