@@ -1,0 +1,346 @@
+<!-- 
+  X39MATRIX — BOTÓN PWA PARA x39matrix.org
+  Pegar este código JUSTO DESPUÉS de la etiqueta <body> en tu index.html
+  Se posiciona en la esquina superior izquierda (opuesto a los idiomas)
+-->
+
+<!-- ESTILOS DEL BOTÓN PWA -->
+<style>
+.x39-pwa-widget {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 10000;
+  font-family: 'Courier New', monospace;
+}
+
+.x39-pwa-btn {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #CC0000;
+  color: #CC0000;
+  padding: 10px 18px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.x39-pwa-btn:hover {
+  background: #CC0000;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(255, 0, 60, 0.3);
+}
+
+.x39-pwa-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.x39-pwa-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(5, 5, 16, 0.95);
+  border: 1px solid #CC0000;
+  padding: 24px;
+  width: 320px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px rgba(255, 0, 60, 0.15), 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.x39-pwa-panel.open {
+  display: block;
+  animation: x39-slide-in 0.25s ease-out;
+}
+
+@keyframes x39-slide-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.x39-pwa-panel-title {
+  font-size: 16px;
+  color: #CC0000;
+  letter-spacing: 4px;
+  margin-bottom: 4px;
+  text-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+}
+
+.x39-pwa-panel-sub {
+  font-size: 9px;
+  color: #00E5FF;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.x39-pwa-panel-desc {
+  font-size: 10px;
+  color: #888;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.x39-pwa-panel-features {
+  margin-bottom: 16px;
+}
+
+.x39-pwa-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 10px;
+  color: #ccc;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.x39-pwa-feature-icon {
+  color: #CC0000;
+  font-size: 12px;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.x39-pwa-install-btn {
+  width: 100%;
+  background: transparent;
+  border: 2px solid #CC0000;
+  color: #CC0000;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 8px;
+}
+
+.x39-pwa-install-btn:hover {
+  background: #CC0000;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
+}
+
+.x39-pwa-instructions {
+  display: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(204, 0, 0, 0.2);
+}
+
+.x39-pwa-instructions.show {
+  display: block;
+}
+
+.x39-pwa-instructions-title {
+  font-size: 10px;
+  color: #CC0000;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.x39-pwa-step {
+  font-size: 9px;
+  color: #888;
+  line-height: 1.8;
+  padding-left: 12px;
+  border-left: 2px solid rgba(204, 0, 0, 0.3);
+  margin-bottom: 8px;
+}
+
+.x39-pwa-step strong {
+  color: #CC0000;
+}
+
+.x39-pwa-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.x39-pwa-close:hover {
+  color: #CC0000;
+}
+
+.x39-pwa-version {
+  font-size: 8px;
+  color: #333;
+  text-align: center;
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 480px) {
+  .x39-pwa-widget { top: 10px; left: 10px; }
+  .x39-pwa-btn { padding: 8px 12px; font-size: 10px; }
+  .x39-pwa-panel { width: calc(100vw - 40px); }
+}
+</style>
+
+<!-- HTML DEL BOTÓN PWA -->
+<div class="x39-pwa-widget" id="x39PwaWidget">
+  <button class="x39-pwa-btn" id="x39PwaToggle" onclick="x39TogglePanel()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    APP
+  </button>
+
+  <div class="x39-pwa-panel" id="x39PwaPanel">
+    <button class="x39-pwa-close" onclick="x39TogglePanel()">&#x2715;</button>
+    <div class="x39-pwa-panel-title">x39matrix</div>
+    <div class="x39-pwa-panel-sub">KEPLER'S VISION</div>
+    <div class="x39-pwa-panel-desc">
+      Instala x39matrix en tu dispositivo. Mensajeria segura, videollamadas, dashboard de las 9 capas y 200+ comandos operativos.
+    </div>
+
+    <div class="x39-pwa-panel-features">
+      <div class="x39-pwa-feature">
+        <span class="x39-pwa-feature-icon">&#9670;</span>
+        Mensajeria cifrada en tiempo real
+      </div>
+      <div class="x39-pwa-feature">
+        <span class="x39-pwa-feature-icon">&#9670;</span>
+        Videollamadas WebRTC P2P
+      </div>
+      <div class="x39-pwa-feature">
+        <span class="x39-pwa-feature-icon">&#9670;</span>
+        Dashboard 9 capas + 40 bloques Ed25519
+      </div>
+      <div class="x39-pwa-feature">
+        <span class="x39-pwa-feature-icon">&#9670;</span>
+        200+ comandos dfx operativos
+      </div>
+      <div class="x39-pwa-feature">
+        <span class="x39-pwa-feature-icon">&#9670;</span>
+        Motor algebraico PTU-47
+      </div>
+    </div>
+
+    <button class="x39-pwa-install-btn" id="x39InstallBtn" onclick="x39Install()">
+      INSTALAR APP
+    </button>
+
+    <div class="x39-pwa-instructions" id="x39Instructions">
+      <div class="x39-pwa-instructions-title">INSTALACION MANUAL</div>
+      <div class="x39-pwa-step" id="x39StepAndroid" style="display:none;">
+        <strong>Android (Chrome):</strong><br>
+        1. Pulsa los 3 puntos &#8942; arriba a la derecha<br>
+        2. Selecciona "Instalar aplicacion"<br>
+        3. Confirma "Instalar"
+      </div>
+      <div class="x39-pwa-step" id="x39StepIOS" style="display:none;">
+        <strong>iPhone (Safari):</strong><br>
+        1. Pulsa el icono compartir &#9757;<br>
+        2. Selecciona "Anadir a pantalla de inicio"<br>
+        3. Pulsa "Anadir"
+      </div>
+      <div class="x39-pwa-step" id="x39StepDesktop" style="display:none;">
+        <strong>Desktop (Chrome):</strong><br>
+        1. Pulsa el icono de instalacion en la barra de direcciones<br>
+        2. Confirma "Instalar"
+      </div>
+    </div>
+
+    <div class="x39-pwa-version">
+      x39matrix v12.0 | 9 Capas | 40 Bloques Ed25519 | ICP Mainnet
+    </div>
+  </div>
+</div>
+
+<!-- JAVASCRIPT DEL BOTÓN PWA -->
+<script>
+(function() {
+  'use strict';
+
+  let x39DeferredPrompt = null;
+
+  // Capturar evento beforeinstallprompt
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    x39DeferredPrompt = e;
+    // Mostrar botón nativo si disponible
+    var btn = document.getElementById('x39InstallBtn');
+    if (btn) btn.textContent = 'INSTALAR APP';
+  });
+
+  // Detectar plataforma y mostrar instrucciones
+  window.x39TogglePanel = function() {
+    var panel = document.getElementById('x39PwaPanel');
+    panel.classList.toggle('open');
+
+    if (panel.classList.contains('open')) {
+      var instructions = document.getElementById('x39Instructions');
+      var ua = navigator.userAgent || '';
+
+      if (/android/i.test(ua)) {
+        document.getElementById('x39StepAndroid').style.display = 'block';
+        document.getElementById('x39StepIOS').style.display = 'none';
+        document.getElementById('x39StepDesktop').style.display = 'none';
+      } else if (/iphone|ipad|ipod/i.test(ua)) {
+        document.getElementById('x39StepAndroid').style.display = 'none';
+        document.getElementById('x39StepIOS').style.display = 'block';
+        document.getElementById('x39StepDesktop').style.display = 'none';
+      } else {
+        document.getElementById('x39StepAndroid').style.display = 'none';
+        document.getElementById('x39StepIOS').style.display = 'none';
+        document.getElementById('x39StepDesktop').style.display = 'block';
+      }
+    }
+  };
+
+  // Instalar PWA
+  window.x39Install = function() {
+    if (x39DeferredPrompt) {
+      x39DeferredPrompt.prompt();
+      x39DeferredPrompt.userChoice.then(function(result) {
+        if (result.outcome === 'accepted') {
+          var btn = document.getElementById('x39InstallBtn');
+          if (btn) btn.textContent = 'INSTALADA';
+        }
+        x39DeferredPrompt = null;
+      });
+    } else {
+      // Mostrar instrucciones manuales
+      var instructions = document.getElementById('x39Instructions');
+      instructions.classList.add('show');
+    }
+  };
+
+  // Detectar si ya está instalada
+  window.addEventListener('appinstalled', function() {
+    var btn = document.getElementById('x39InstallBtn');
+    if (btn) {
+      btn.textContent = 'INSTALADA';
+      btn.disabled = true;
+      btn.style.borderColor = '#00E5FF';
+      btn.style.color = '#00E5FF';
+    }
+  });
+
+  // Si está en modo standalone, ocultar widget
+  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+    var widget = document.getElementById('x39PwaWidget');
+    if (widget) widget.style.display = 'none';
+  }
+})();
+</script>
