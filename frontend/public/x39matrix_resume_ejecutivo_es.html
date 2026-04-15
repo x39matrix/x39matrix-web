@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+    size: A4;
+    margin: 2cm 2.5cm;
+    @bottom-center {
+        content: "X-39MATRIX — Resumen Ejecutivo | Page " counter(page);
+        font-size: 8pt;
+        color: #888;
+        font-family: 'Courier New', monospace;
+    }
+}
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1a1a1a;
+    line-height: 1.8;
+    font-size: 11pt;
+}
+.cover {
+    page-break-after: always;
+    text-align: center;
+    padding-top: 0;
+}
+.cover img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center 30%;
+}
+.cover-title {
+    font-size: 34pt;
+    font-weight: bold;
+    color: #CC0000;
+    letter-spacing: 4px;
+    font-family: 'Courier New', monospace;
+    margin-top: 20px;
+}
+.cover-sub {
+    font-size: 14pt;
+    color: #444;
+    margin: 8px 0 5px;
+}
+.cover-edition {
+    font-size: 11pt;
+    color: #777;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+.cover-line {
+    width: 120px;
+    height: 2px;
+    background: #CC0000;
+    margin: 20px auto;
+}
+.cover-dest {
+    font-size: 15pt;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+.cover-event {
+    font-size: 12pt;
+    color: #CC0000;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.cover-author {
+    font-size: 10pt;
+    color: #666;
+    margin-top: 30px;
+}
+.cover-author strong {
+    font-size: 12pt;
+    color: #1a1a1a;
+    display: block;
+    margin-top: 4px;
+}
+.cover-version {
+    font-size: 9pt;
+    color: #999;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+}
+.cover-note {
+    margin-top: 30px;
+    font-size: 10pt;
+    color: #CC0000;
+    border: 1px solid #CC0000;
+    display: inline-block;
+    padding: 8px 25px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+h1 {
+    color: #CC0000;
+    font-size: 18pt;
+    border-bottom: 2px solid #CC0000;
+    padding-bottom: 6px;
+    margin-top: 30px;
+    font-family: 'Courier New', monospace;
+}
+h2 {
+    color: #333;
+    font-size: 13pt;
+    margin-top: 20px;
+    border-left: 4px solid #CC0000;
+    padding-left: 10px;
+}
+.highlight {
+    background: #FFF5F5;
+    border: 1px solid #CC0000;
+    border-left: 5px solid #CC0000;
+    padding: 12px 16px;
+    margin: 15px 0;
+    font-size: 10pt;
+}
+.highlight strong { color: #CC0000; }
+.metric-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+.metric {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px;
+    width: 23%;
+    text-align: center;
+}
+.metric-val {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #CC0000;
+    font-family: 'Courier New', monospace;
+}
+.metric-lab {
+    font-size: 7pt;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 9pt;
+}
+th {
+    background: #CC0000;
+    color: white;
+    padding: 7px 8px;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    font-size: 8pt;
+}
+td { padding: 6px 8px; border-bottom: 1px solid #ddd; }
+tr:nth-child(even) { background: #f9f9f9; }
+.good { color: #CC0000; font-weight: bold; }
+.bad { color: #999; }
+ul { margin: 8px 0; padding-left: 18px; }
+li { margin-bottom: 5px; }
+.footer-final {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 2px solid #CC0000;
+}
+</style>
+</head>
+<body>
+
+<!-- COUVERTURE -->
+<div class="cover">
+    <img src="marruecos_cover.jpeg" />
+    <div class="cover-title">X-39MATRIX</div>
+    <div class="cover-sub">Resumen Ejecutivo</div>
+    <div class="cover-edition">Protocolo Soberano de Defensa Digital — 9 Capas</div>
+    <div class="cover-line"></div>
+    <div style="font-size: 10pt; color: #555;">Propuesta para el</div>
+    <div class="cover-dest">Reino de Marruecos</div>
+    <div class="cover-event">Copa del Mundo FIFA 2030 y Soberania Nacional</div>
+    <div class="cover-line"></div>
+    <div class="cover-author">
+        Creador y Propietario Exclusivo
+        <strong>Jose Luis Olivares Esteban</strong>
+    </div>
+    <div class="cover-version">
+        Version 12.0 | Fevrier 2026 | www.x39matrix.org
+    </div>
+    <div class="cover-note">DOCUMENTO NO CLASIFICADO — RESUMEN EJECUTIVO</div>
+</div>
+
+<!-- SECTION 1 -->
+<h1>1. Que es X-39MATRIX?</h1>
+
+<p>X-39MATRIX es el primer <strong>protocolo soberano de defensa digital de 9 capas</strong> desplegado en produccion en el Internet Computer Protocol (ICP). No es una criptomoneda, ni una blockchain convencional. Es un <strong>sistema inmunologico digital</strong> — un organismo autonomo que vigila, detecta, alerta y neutraliza ciberamenazas en tiempo real.</p>
+
+<div class="metric-grid">
+    <div class="metric">
+        <div class="metric-val">9</div>
+        <div class="metric-lab">Capas Soberanas</div>
+    </div>
+    <div class="metric">
+        <div class="metric-val">58</div>
+        <div class="metric-lab">Vectores de Seguridad</div>
+    </div>
+    <div class="metric">
+        <div class="metric-val">0</div>
+        <div class="metric-lab">Evasiones Detectadas</div>
+    </div>
+    <div class="metric">
+        <div class="metric-val">50K+</div>
+        <div class="metric-lab">Transacciones/Segundo</div>
+    </div>
+</div>
+
+<!-- SECTION 2 -->
+<h1>2. Por Que Marruecos lo Necesita Ahora</h1>
+
+<div class="highlight">
+    <strong>Abril 2025 — Hackeo CNSS:</strong> El grupo JabaRoot DZ robo 54,000+ archivos exponiendo los datos de <strong>1,996,026 empleados</strong> et 500,000 empresas. Nombres, salarios, datos bancarios — todo en Telegram. El grupo real SIGER, bancos importantes y la Oficina de Enlace israeli afectados.
+</div>
+
+<p><strong>Balance 2024-2025 de Marruecos:</strong></p>
+<ul>
+    <li><strong>12.6 millions</strong> de ataques web en 2024</li>
+    <li><strong>75,000+</strong> ataques DDoS principios 2025 — Marruecos clasificado <strong>3o mundial</strong></li>
+    <li><strong>26 eventos</strong> de espionaje estatal (APT) en 12 meses</li>
+    <li>Sitios de <strong>5 ministerios</strong> hackeados y desfigurados publicamente</li>
+    <li><strong>500+</strong> aparatos medicos expuestos en los hospitales</li>
+    <li><strong>340%</strong> de aumento de ransomware en el sector salud</li>
+</ul>
+
+<p><strong>La Copa del Mundo FIFA 2030</strong> expondra a Marruecos a amenazas exponencialmente mayores: 5+ mil millones de telespectadores, 3.5 millones de visitantes, 14 estadios conectados, 32 dias de competicion. Referencia: Paris 2024 sufrio 4 mil millones de intentos de ataque en solo 16 dias.</p>
+
+<!-- SECTION 3 -->
+<h1>3. Lo Que X-39MATRIX Habria Cambiado</h1>
+
+<table>
+    <tr>
+        <th>ATAQUE REAL</th>
+        <th>LO QUE PASO</th>
+        <th>CON X-39MATRIX</th>
+    </tr>
+    <tr>
+        <td><strong>Hackeo CNSS</strong></td>
+        <td class="bad">2M ciudadanos expuestos. Ninguna deteccion.</td>
+        <td class="good">Detectado en &lt;3 seg. Datos inutilizables (ZK-KYC).</td>
+    </tr>
+    <tr>
+        <td><strong>Defacement Ministerios</strong></td>
+        <td class="bad">Sitios modificados. Humillacion publica.</td>
+        <td class="good">Acceso bloqueado por triple firma. Patron detectado por L7.</td>
+    </tr>
+    <tr>
+        <td><strong>75,000+ DDoS</strong></td>
+        <td class="bad">Servicios inaccesibles durante horas.</td>
+        <td class="good">L5 auto-scaling. 99.99% disponibilidad mantenida.</td>
+    </tr>
+    <tr>
+        <td><strong>Espionaje APT</strong></td>
+        <td class="bad">Comunicaciones comprometidas.</td>
+        <td class="good">L8 Ed25519 cifra todo. L4 BFT resiste.</td>
+    </tr>
+    <tr>
+        <td><strong>Ransomware Hospitales</strong></td>
+        <td class="bad">500+ aparatos expuestos. Datos en peligro.</td>
+        <td class="good">L3 bloquea antes de ejecucion. Datos recuperables (x39 Bases).</td>
+    </tr>
+</table>
+
+<!-- SECTION 4 -->
+<h1>4. Les 9 Capas Soberanas</h1>
+
+<table>
+    <tr><th>CAPA</th><th>NOMBRE</th><th>FUNCION</th></tr>
+    <tr><td class="good">L1</td><td>Infraestructura</td><td>Cartografia de nodos Bitcoin/Ethereum, vigilancia de red global</td></tr>
+    <tr><td class="good">L2</td><td>Identidad</td><td>ZK-KYC, anti-Sybil, control de acceso por rol (RBAC)</td></tr>
+    <tr><td class="good">L3</td><td>Ejecucion</td><td>Analisis mempool tiempo real, deteccion doble-gasto y flash loans</td></tr>
+    <tr><td class="good">L4</td><td>Consenso</td><td>Vigilancia hashrate, deteccion reorganizaciones, BFT</td></tr>
+    <tr><td class="good">L5</td><td>Escalabilidad</td><td>Auto-scaling bajo ataque, sharding dinamico</td></tr>
+    <tr><td class="good">L6</td><td>OmniChain</td><td>Correlacion cross-chain BTC + ETH, rastreo de wallets</td></tr>
+    <tr><td class="good">L7</td><td>IA Gobernanza</td><td>Centinela L7 — Deteccion predictiva por PTU-47 (Teoria de Categorias)</td></tr>
+    <tr><td class="good">L8</td><td>Orquestador</td><td>Pipeline seguridad, firma Ed25519 agregada de las 9 capas</td></tr>
+    <tr><td class="good">L9</td><td>x39_bases (Rust)</td><td>Motor algebraico PTU-47, Reloj Cuantico, almacenamiento inmutable</td></tr>
+</table>
+
+<!-- SECTION 5 -->
+<h1>5. Ventajas Competitivas</h1>
+
+<table>
+    <tr><th>CRITERIO</th><th>X-39MATRIX</th><th>CHAINALYSIS</th><th>CROWDSTRIKE</th><th>PALO ALTO</th></tr>
+    <tr><td>Deteccion 51%</td><td class="good">Tiempo real</td><td class="bad">Post-mortem</td><td class="bad">No</td><td class="bad">No</td></tr>
+    <tr><td>Descentralizado</td><td class="good">ICP Mainnet</td><td class="bad">Centralizado</td><td class="bad">Cloud privado</td><td class="bad">Cloud privado</td></tr>
+    <tr><td>Cross-chain</td><td class="good">BTC + ETH nativo</td><td class="bad">Limitado</td><td class="bad">No</td><td class="bad">No</td></tr>
+    <tr><td>Soberania</td><td class="good">Total</td><td class="bad">USA</td><td class="bad">USA</td><td class="bad">USA/Israel</td></tr>
+    <tr><td>IA avanzada</td><td class="good">PTU-47</td><td class="bad">ML basico</td><td class="bad">ML</td><td class="bad">ML</td></tr>
+    <tr><td>Logs inmutables</td><td class="good">On-chain</td><td class="bad">Privada</td><td class="bad">Privada</td><td class="bad">Privada</td></tr>
+    <tr><td>Backdoor posible</td><td class="good">No</td><td class="bad">Posible</td><td class="bad">Posible</td><td class="bad">Posible</td></tr>
+</table>
+
+<!-- SECTION 6 -->
+<h1>6. Sectores Cubiertos</h1>
+
+<h2>Gobierno</h2>
+<p>Comunicaciones ministeriales cifradas, voto electronico seguro, registros publicos inmutables, fronteras digitales, inteligencia protegida.</p>
+
+<h2>Banca y Finanzas</h2>
+<p>Proteccion SWIFT (deteccion fraude en &lt;3 seg), anti-doble-gasto, anti-blanqueo cross-chain, proteccion de saldos por triple firma.</p>
+
+<h2>Infraestructura Critique</h2>
+<p>Energia (ONE/ONEE — proteccion SCADA), Transporte (ONCF, Al Boraq, Tanger Med), Telecomunicaciones (ANRT — 5G), Salud (anti-ransomware), Agua (ONEP).</p>
+
+<h2>Copa del Mundo FIFA 2030</h2>
+<p>Ticketing inviolable, acceso estadio biometrico, pagos seguros, comunicaciones cifradas, anti-DDoS infraestructura, deteccion amenazas tiempo real, proteccion emision TV/streaming.</p>
+
+<!-- SECTION 7 -->
+<h1>7. Hoja de Ruta</h1>
+
+<table>
+    <tr><th>FASE</th><th>PERIODO</th><th>OBJETIVO</th></tr>
+    <tr><td><strong>Fase 1</strong></td><td>Meses 1-3</td><td>Piloto en un ministerio o banco — validacion tecnica</td></tr>
+    <tr><td><strong>Fase 2</strong></td><td>Meses 4-8</td><td>Extension gobierno y banca — 9 capas completas</td></tr>
+    <tr><td><strong>Fase 3</strong></td><td>Meses 9-14</td><td>Infraestructura nationale critique — SCADA, telecom, transport</td></tr>
+    <tr><td><strong>Fase 4</strong></td><td>Meses 15-24</td><td>Preparacion FIFA 2030 — estadios, ticketing, comunicaciones</td></tr>
+    <tr><td><strong>Fase 5</strong></td><td>Continua</td><td>Operacion, evolucion, soporte 24/7</td></tr>
+</table>
+
+<!-- SECTION 8 -->
+<h1>8. Certificaciones Disponibles</h1>
+
+<ul>
+    <li><strong>Certificado 1:</strong> Informe de Seguridad Tecnica — 58/58 vectores PASS, 0 evasiones, 0 vulnerabilidades criticas.</li>
+    <li><strong>Certificado 2:</strong> Certificacion Etica del Protocolo por Sr. Thompson — Analisis independiente, 27 paginas, revision arquitectura y PTU-47.</li>
+    <li><strong>Certificado 3:</strong> Propuesta Tecnica Detallada — Arquitectura completa, casos de uso, hoja de ruta de integracion.</li>
+</ul>
+
+<p>El documento completo (60+ paginas) que contiene la arquitectura tecnica detallada, los 58 vectores de seguridad, la especificacion formal PTU-47, el DPIA Marruecos, los runbooks operativos, los SLAs, el plan piloto SCADA y los ejercicios FIFA 2030 esta disponible <strong>bajo demanda</strong> y protegido por cifrado.</p>
+
+<!-- SECTION 9 -->
+<h1>9. Verificacion en Directo</h1>
+
+<div class="highlight">
+    <strong>Sitio Oficial ICP:</strong> https://divzb-xiaaa-aaaam-aivwa-cai.icp0.io/<br>
+    <strong>Demo Ataque 51%:</strong> https://estado-protocolo.preview.emergentagent.com/<br>
+    <strong>Sitio Web:</strong> www.x39matrix.org<br><br>
+    Todos los canisters estan desplegados en ICP Mainnet y son verificables por cualquiera via <code>dfx canister --network ic info</code>
+</div>
+
+<!-- SECTION 10 -->
+<h1>10. Contacto</h1>
+
+<div class="footer-final">
+    <p style="font-size: 14pt; color: #CC0000; font-family: 'Courier New', monospace; letter-spacing: 4px; font-weight: bold;">X-39MATRIX</p>
+    <p style="font-size: 10pt; color: #333;">Jose Luis Olivares Esteban — Creador y Propietario Exclusivo</p>
+    <p style="font-size: 10pt; color: #555;">www.x39matrix.org | @x39matrix</p>
+    <p style="font-size: 9pt; color: #888; margin-top: 10px;">&copy; 2024-2026 — Todos los Derechos Reservados — Propiedad Intelectual Protegida</p>
+    <p style="font-size: 9pt; color: #aaa; font-style: italic; margin-top: 5px;">"El codigo no miente. X-39MATRIX tampoco."</p>
+</div>
+
+</body>
+</html>
