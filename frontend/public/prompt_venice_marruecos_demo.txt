@@ -183,7 +183,7 @@ VERIFICACIÓN Ed25519:
 =====================
 - Algoritmo: Ed25519
 - Capas firmadas: 9/9
-- 40 bloques verificados: PASSED
+- 49 bloques verificados: PASSED
 - 0 Canister IDs expuestos
 - 0 claves visibles
 - 0 Fuzz escapes
