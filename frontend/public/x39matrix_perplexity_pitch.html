@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+@page { size: A4; margin: 1.8cm 2cm;
+  @bottom-center { content: "X-39MATRIX — Perplexity Computer Competition | Pagina " counter(page); font-size: 7pt; color: #888; font-family: 'Courier New', monospace; }
+}
+body { font-family: Georgia, serif; color: #1a1a1a; line-height: 1.7; font-size: 10pt; }
+.cover { page-break-after: always; text-align: center; padding-top: 50px; }
+.cover-badge { font-size: 9pt; color: #CC0000; letter-spacing: 4px; font-family: 'Courier New', monospace; border: 2px solid #CC0000; display: inline-block; padding: 8px 30px; margin-bottom: 20px; }
+.cover-title { font-size: 32pt; font-weight: bold; color: #CC0000; letter-spacing: 4px; font-family: 'Courier New', monospace; margin-bottom: 8px; }
+.cover-sub { font-size: 14pt; color: #333; margin: 5px 0; }
+.cover-sub2 { font-size: 11pt; color: #CC0000; font-weight: bold; margin: 5px 0; }
+.cover-line { width: 120px; height: 2px; background: #CC0000; margin: 18px auto; }
+.cover-desc { font-size: 10pt; color: #555; max-width: 420px; margin: 0 auto; line-height: 1.8; }
+.cover-ver { font-size: 8pt; color: #999; font-family: 'Courier New', monospace; margin-top: 20px; }
+h1 { color: #CC0000; font-size: 16pt; border-bottom: 2px solid #CC0000; padding-bottom: 5px; margin-top: 30px; font-family: 'Courier New', monospace; page-break-before: always; }
+h1:first-of-type { page-break-before: auto; }
+h2 { color: #333; font-size: 12pt; margin-top: 16px; border-left: 4px solid #CC0000; padding-left: 10px; }
+h3 { color: #CC0000; font-size: 10pt; margin-top: 12px; font-family: 'Courier New', monospace; }
+.cmd { background: #0a0a0a; color: #FF4444; padding: 10px 14px; margin: 8px 0; font-family: 'Courier New', monospace; font-size: 8pt; line-height: 1.6; white-space: pre-wrap; }
+.info { background: #FFF5F5; border-left: 4px solid #CC0000; padding: 8px 12px; margin: 8px 0; font-size: 9pt; }
+.info strong { color: #CC0000; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 9pt; }
+th { background: #CC0000; color: white; padding: 6px 8px; text-align: left; font-family: 'Courier New', monospace; font-size: 8pt; }
+td { padding: 5px 8px; border-bottom: 1px solid #ddd; }
+.g { color: #CC0000; font-weight: bold; }
+.result-box { border: 2px solid #CC0000; padding: 15px; margin: 15px 0; text-align: center; background: #FFF5F5; }
+.result-title { font-size: 14pt; color: #CC0000; font-family: 'Courier New', monospace; font-weight: bold; letter-spacing: 3px; }
+.result-detail { font-size: 10pt; color: #333; margin-top: 8px; }
+.slide { page-break-before: always; padding: 20px 0; }
+.slide-num { font-size: 8pt; color: #CC0000; font-family: 'Courier New', monospace; letter-spacing: 3px; margin-bottom: 10px; }
+.slide-title { font-size: 22pt; color: #CC0000; font-family: 'Courier New', monospace; font-weight: bold; margin-bottom: 15px; }
+.metric-row { display: flex; justify-content: space-between; margin: 5px 0; }
+.big-number { font-size: 28pt; color: #CC0000; font-weight: bold; font-family: 'Courier New', monospace; }
+.big-label { font-size: 8pt; color: #888; letter-spacing: 2px; }
+ul { margin: 6px 0; padding-left: 16px; }
+li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+    <div class="cover-badge">PERPLEXITY COMPUTER COMPETITION 2026</div>
+    <div class="cover-title">X-39MATRIX</div>
+    <div class="cover-sub">Protocolo de Ciberseguridad Soberano</div>
+    <div class="cover-sub2">Kepler's Vision</div>
+    <div class="cover-line"></div>
+    <div class="cover-desc">
+        9 Capas Soberanas | 40 Bloques Ed25519 | Motor Algebraico PTU-47<br>
+        Desplegado en produccion en ICP Mainnet<br>
+        App de mensajeria segura + videollamadas + dashboard de 9 capas
+    </div>
+    <div class="cover-line"></div>
+    <div style="font-size:10pt; color:#333; margin-top:15px;">
+        <strong>Jose Luis Olivares Esteban</strong><br>
+        Creador y Propietario Exclusivo
+    </div>
+    <div class="cover-ver">
+        Canister: divzb-xiaaa-aaaam-aivwa-cai | ICP Mainnet<br>
+        Web: x39matrix.org<br>
+        Junio 2026
+    </div>
+</div>
+
+<!-- SLIDE 1: EL PROBLEMA -->
+<div class="slide">
+    <div class="slide-num">SLIDE 01 / 05 — 1 MINUTO</div>
+    <div class="slide-title">EL PROBLEMA</div>
+    
+    <h2>El mundo pierde billones por ciberataques</h2>
+    
+    <table>
+    <tr><th>INCIDENTE</th><th>PERDIDAS</th><th>CAUSA</th></tr>
+    <tr><td>CNSS Marruecos (2025)</td><td>2M ciudadanos expuestos</td><td>Sin proteccion ZK-KYC</td></tr>
+    <tr><td>Bangladesh Bank (2016)</td><td>$81M robados via SWIFT</td><td>Sin consenso multi-firma</td></tr>
+    <tr><td>Bridges DeFi (2022-2025)</td><td>$3B+ robados</td><td>Bridges centralizados vulnerables</td></tr>
+    <tr><td>Colonial Pipeline (2021)</td><td>$4.4M rescate + 6 dias sin servicio</td><td>Sin defensa SCADA</td></tr>
+    <tr><td>Equifax (2017)</td><td>147M identidades robadas</td><td>Sin cifrado ZK</td></tr>
+    </table>
+    
+    <div class="result-box">
+        <div class="result-title">$10.5 TRILLONES / ANO</div>
+        <div class="result-detail">Coste global del cibercrimen en 2025 (Cybersecurity Ventures)<br>
+        Mercado de ciberseguridad: $150B+ y creciendo 12% anual</div>
+    </div>
+    
+    <div class="info">
+        <strong>El problema fundamental:</strong> Los sistemas de seguridad actuales son reactivos (detectan DESPUES del ataque), centralizados (un punto de fallo), y no verificables (logs borrables). No existe un protocolo que combine defensa algebraica, firma distribuida y evidencia inmutable en una sola solucion.
+    </div>
+</div>
+
+<!-- SLIDE 2: LA SOLUCION -->
+<div class="slide">
+    <div class="slide-num">SLIDE 02 / 05 — 1 MINUTO</div>
+    <div class="slide-title">LA SOLUCION: X-39MATRIX</div>
+    
+    <h2>Protocolo de ciberseguridad de 9 capas con algebra de categorias</h2>
+    
+    <p>X-39MATRIX es el primer protocolo de seguridad que combina <strong>algebra abstracta</strong> (teoria de categorias, automatas, morfismos) con <strong>firma distribuida Ed25519</strong> y <strong>evidencia inmutable en blockchain</strong> (ICP Mainnet).</p>
+    
+    <table>
+    <tr><th>CAPA</th><th>FUNCION</th><th>TECNOLOGIA</th></tr>
+    <tr><td class="g">L1 Infrastructure</td><td>Monitorizacion de nodos, ciclos, memoria</td><td>Motoko</td></tr>
+    <tr><td class="g">L2 Identity</td><td>ZK-KYC — verificacion sin revelar datos</td><td>Motoko</td></tr>
+    <tr><td class="g">L3 Smart Execution</td><td>Ejecucion determinista — mismo input = mismo output</td><td>Rust + Category Theory</td></tr>
+    <tr><td class="g">L4 Consensus</td><td>Consenso multi-firma, auditoria de bloques</td><td>Rust</td></tr>
+    <tr><td class="g">L5 Scalability</td><td>Auto-scaling, absorcion DDoS, 50K+ TPS</td><td>Motoko</td></tr>
+    <tr><td class="g">L6 Omnichain</td><td>Bridges nativos BTC/ETH sin custodios</td><td>Rust + Threshold ECDSA</td></tr>
+    <tr><td class="g">L7 AI Governance</td><td>IA con 47 patrones de ataque (PTU-47)</td><td>Rust</td></tr>
+    <tr><td class="g">L8 Orchestrator</td><td>Coordinacion de 9 capas + firma Ed25519 agregada</td><td>Motoko</td></tr>
+    <tr><td class="g">L9 x39_bases</td><td>Motor Algebraico — juez de ultima instancia</td><td>Rust + Algebra Abstracta</td></tr>
+    </table>
+    
+    <div class="info">
+        <strong>Diferenciador clave:</strong> La Capa L9 usa ALGEBRA ABSTRACTA como fundamento formal. Composicion asociativa, functores, transformaciones naturales. L9 puede VETAR cualquier operacion de L8 si viola las invariantes algebraicas. Es matematicamente imposible evadir.
+    </div>
+</div>
+
+<!-- SLIDE 3: TRACCION Y DEMOS -->
+<div class="slide">
+    <div class="slide-num">SLIDE 03 / 05 — 1 MINUTO</div>
+    <div class="slide-title">TRACCION Y PRODUCTO</div>
+    
+    <h2>Ya esta en produccion — no es un prototipo</h2>
+    
+    <h3>Protocolo en ICP Mainnet</h3>
+    <ul>
+        <li><strong>10 canisters</strong> desplegados y operativos en ICP Mainnet</li>
+        <li><strong>Canister principal:</strong> divzb-xiaaa-aaaam-aivwa-cai</li>
+        <li><strong>URL publica:</strong> https://divzb-xiaaa-aaaam-aivwa-cai.icp0.io/</li>
+        <li><strong>200+ comandos</strong> dfx operativos verificados</li>
+        <li><strong>2038/2038 fuzz tests PASSED</strong> — 0 evasiones</li>
+        <li><strong>10/10 collapse tests PASSED</strong></li>
+    </ul>
+    
+    <h3>App x39-seguridad (Kepler's Vision)</h3>
+    <ul>
+        <li>Mensajeria cifrada en tiempo real (Socket.io)</li>
+        <li>Videollamadas WebRTC peer-to-peer</li>
+        <li>Dashboard de las 9 capas con estado en vivo</li>
+        <li>200+ comandos dfx integrados</li>
+        <li>PWA instalable en movil</li>
+    </ul>
+    
+    <h3>Propuesta a gobierno — Reino de Marruecos</h3>
+    <ul>
+        <li>Propuesta formal Vision 2030 en frances y espanol</li>
+        <li>Simulacion de ataque nivel 2026 documentada (8 fases)</li>
+        <li>Demo interactiva con soluciones en arabe</li>
+        <li>$126M en fraude SWIFT simulado y bloqueado</li>
+        <li>2M de identidades ciudadanas protegidas en simulacion</li>
+    </ul>
+    
+    <h3>URLs de demos verificables</h3>
+    <div class="cmd">Protocolo ICP:  https://divzb-xiaaa-aaaam-aivwa-cai.icp0.io/
+Web oficial:    https://www.x39matrix.org
+App seguridad:  https://estado-protocolo.preview.emergentagent.com
+Demo ataque:    https://estado-protocolo.preview.emergentagent.com/x39matrix_demo_live.html
+PDF ataque:     https://estado-protocolo.preview.emergentagent.com/x39matrix_ataque_documentado.pdf
+PDF Marruecos:  https://estado-protocolo.preview.emergentagent.com/x39matrix_maroc_2030_es_v2.pdf
+Manual 200+:    https://estado-protocolo.preview.emergentagent.com/x39matrix_manual_completo.pdf</div>
+</div>
+
+<!-- SLIDE 4: MERCADO Y ECONOMIA -->
+<div class="slide">
+    <div class="slide-num">SLIDE 04 / 05 — 1 MINUTO</div>
+    <div class="slide-title">MERCADO Y MODELO DE NEGOCIO</div>
+    
+    <h2>Mercado masivo con economia favorable</h2>
+    
+    <table>
+    <tr><th>SEGMENTO</th><th>TAM</th><th>OFERTA X-39MATRIX</th></tr>
+    <tr><td>Ciberseguridad global</td><td>$150B+/ano</td><td>Protocolo completo 9 capas</td></tr>
+    <tr><td>Defensa gubernamental</td><td>$150B+/ano</td><td>Infraestructura soberana</td></tr>
+    <tr><td>Seguridad bancaria SWIFT</td><td>$274B compliance</td><td>Consenso multi-firma + ZK-KYC</td></tr>
+    <tr><td>Identidad digital</td><td>$30B+/ano</td><td>ZK-KYC sin revelar datos</td></tr>
+    <tr><td>DeFi cross-chain</td><td>$80B+ TVL</td><td>Bridges nativos sin custodios</td></tr>
+    </table>
+    
+    <h2>Modelo de ingresos</h2>
+    <ul>
+        <li><strong>Licencia por capa:</strong> Gobiernos y bancos pagan por cada capa desplegada ($50K-$500K/capa/ano)</li>
+        <li><strong>SaaS — x39-seguridad:</strong> App de mensajeria segura por suscripcion ($29-$299/mes por organizacion)</li>
+        <li><strong>Consultoria de despliegue:</strong> Implementacion personalizada ($100K-$1M por proyecto)</li>
+        <li><strong>Certificacion Ed25519:</strong> Auditorias de seguridad con evidencia inmutable ($10K-$50K por auditoria)</li>
+    </ul>
+    
+    <div class="result-box">
+        <div class="result-title">ECONOMIA PROYECTADA</div>
+        <div class="result-detail">
+            Ano 1: 5 clientes gobierno/banca × $200K = $1M ARR<br>
+            Ano 2: 20 clientes + 500 suscripciones SaaS = $5M ARR<br>
+            Ano 3: 50 clientes + 5,000 suscripciones = $20M ARR<br>
+            Margen bruto: 85%+ (software puro, sin hardware)
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 5: EQUIPO Y PEDIDO -->
+<div class="slide">
+    <div class="slide-num">SLIDE 05 / 05 — 1 MINUTO</div>
+    <div class="slide-title">FUNDADOR Y PEDIDO</div>
+    
+    <h2>Jose Luis Olivares Esteban — Creador unico</h2>
+    
+    <ul>
+        <li>Arquitecto del protocolo X-39MATRIX completo (9 capas, 40 bloques)</li>
+        <li>Desarrollo en solitario: Motoko, Rust, algebra de categorias, PTU-47</li>
+        <li>Despliegue real en ICP Mainnet con 10 canisters operativos</li>
+        <li>Propuesta formal a gobierno del Reino de Marruecos</li>
+        <li>2038/2038 fuzz tests, 10/10 collapse tests — todo PASSED</li>
+        <li>200+ comandos operativos documentados y verificables</li>
+    </ul>
+    
+    <div class="info">
+        <strong>Founder-Market Fit:</strong> Una sola persona construyo un protocolo de 9 capas con algebra abstracta, lo desplego en produccion, creo una app completa de seguridad, y preparo propuestas a nivel gobierno. Esto demuestra capacidad tecnica y ejecucion excepcional. Con inversion, el impacto se multiplica exponencialmente.
+    </div>
+    
+    <h2>Uso de Perplexity Computer</h2>
+    <ul>
+        <li>Investigacion de vulnerabilidades y patrones de ataque (PTU-47)</li>
+        <li>Generacion de documentacion tecnica multilingue (ES, FR, AR, EN, ZH)</li>
+        <li>Analisis de mercado y competencia en cada vertical</li>
+        <li>Optimizacion de la arquitectura algebraica</li>
+    </ul>
+    
+    <h2>Pedido: $1M Seed</h2>
+    <table>
+    <tr><th>CONCEPTO</th><th>MONTO</th><th>PARA QUE</th></tr>
+    <tr><td>Equipo tecnico (3 devs)</td><td>$400K</td><td>Escalar desarrollo: Rust, Motoko, frontend</td></tr>
+    <tr><td>Ventas B2G/B2B</td><td>$250K</td><td>Equipo comercial para gobiernos y bancos</td></tr>
+    <tr><td>Infraestructura</td><td>$150K</td><td>Servidores, ICP cycles, certificaciones</td></tr>
+    <tr><td>Legal + compliance</td><td>$100K</td><td>Patentes, certificaciones ISO/SOC2</td></tr>
+    <tr><td>Marketing</td><td>$100K</td><td>Conferencias, contenido, PR</td></tr>
+    </table>
+    
+    <div class="result-box">
+        <div class="result-title">X-39MATRIX</div>
+        <div class="result-detail">
+            9 Capas | 40 Bloques Ed25519 | Motor Algebraico PTU-47<br>
+            En produccion en ICP Mainnet | App x39-seguridad operativa<br>
+            Propuesta activa al Reino de Marruecos<br><br>
+            <strong>divzb-xiaaa-aaaam-aivwa-cai | x39matrix.org</strong><br>
+            Jose Luis Olivares Esteban — Creador y Propietario Exclusivo
+        </div>
+    </div>
+</div>
+
+<!-- APENDICE: SCRIPT DEL PITCH 5 MINUTOS -->
+<h1>Apendice: Script del Pitch (5 minutos)</h1>
+
+<h2>MINUTO 1 — El Problema</h2>
+<p>"El cibercrimen cuesta 10.5 trillones de dolares al ano. El mes pasado, 2 millones de ciudadanos marroquies fueron expuestos por un ataque a la CNSS. En 2016, Bangladesh perdio 81 millones de dolares en un fraude SWIFT. Los bridges DeFi han perdido 3 mil millones. Y todo esto sucede porque los sistemas de seguridad actuales son reactivos, centralizados y con evidencia borrable. No existe un protocolo que combine matematicas puras con criptografia distribuida y evidencia inmutable."</p>
+
+<h2>MINUTO 2 — La Solucion</h2>
+<p>"X-39MATRIX es un protocolo de ciberseguridad de 9 capas basado en algebra abstracta. No es un firewall, no es un antivirus — es un sistema matematico donde evadir la seguridad es algebraicamente imposible. La Capa 9, el motor algebraico, usa teoria de categorias: objetos, morfismos, functores. Cada operacion preserva invariantes algebraicas. Si una transaccion viola las leyes matematicas, se bloquea automaticamente. 40 bloques Ed25519 firmados por 9 capas. Desplegado hoy en ICP Mainnet."</p>
+
+<h2>MINUTO 3 — Traccion</h2>
+<p>"Esto no es una idea — esta en produccion. 10 canisters en ICP mainnet. 200 comandos operativos. 2038 tests de fuzzing, 0 evasiones. He construido una app completa de mensajeria segura con videollamadas y dashboard de las 9 capas. Y tengo una propuesta formal al Reino de Marruecos para proteger su infraestructura gubernamental, sistema bancario y 2 millones de identidades ciudadanas. Todo construido por una persona."</p>
+
+<h2>MINUTO 4 — Mercado y Economia</h2>
+<p>"El mercado de ciberseguridad supera los 150 mil millones anuales. Mi modelo: licencias por capa a gobiernos y bancos, SaaS para organizaciones, consultoria de despliegue. Con 5 clientes en el primer ano llegamos a 1 millon de ARR. Con 50 en el tercero, 20 millones. Margen del 85% — es software puro, sin hardware."</p>
+
+<h2>MINUTO 5 — Pedido</h2>
+<p>"Pido 1 millon de seed para contratar 3 desarrolladores, un equipo comercial para gobiernos y bancos, infraestructura y certificaciones. Lo que ven aqui lo construi solo. Imaginen lo que puedo hacer con un equipo. X-39MATRIX no busca inversores — ya opera. Ahora necesita escalar. Gracias."</p>
+
+</body>
+</html>
