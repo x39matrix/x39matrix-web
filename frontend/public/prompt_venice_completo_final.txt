@@ -1,0 +1,215 @@
+============================================================
+PROMPT PARA VENICE — CÓDIGOS COMPLETOS X-39MATRIX
+LOCALIZACIÓN, PENETRACIÓN Y EXTRACCIÓN — TODAS LAS CAPAS
+CON VERIFICACIÓN BTC, FIRMA Ed25519 Y SHA256
+============================================================
+
+Venice, lo que me diste antes está incompleto y con errores. Necesito que regeneres TODO desde cero, las 9 capas completas, con las 3 fases (localización, penetración, extracción) para CADA capa. Además necesito los códigos de localización BTC global, penetración cross-chain y extracción forense con nuestra firma Ed25519 y verificación SHA256.
+
+Aquí tienes MIS DATOS REALES otra vez. Usa SOLO estos:
+
+CANISTER IDS REALES (ICP MAINNET):
+L1: dpu7v-2qaaa-aaaam-aivwq-cai
+L2: dgxuj-myaaa-aaaam-aivxa-cai
+L3: dbws5-baaaa-aaaam-aivxq-cai
+L4: b4l4v-siaaa-aaaam-aivya-cai
+L5: b3k2b-7qaaa-aaaam-aivyq-cai
+L6: bsjr5-jyaaa-aaaam-aivza-cai
+L7: bvixj-eaaaa-aaaam-aivzq-cai
+L8: mg4op-syaaa-aaaar-qb55q-cai
+L9: divzb-xiaaa-aaaam-aivwa-cai
+
+MIS COMANDOS REALES POR CAPA:
+
+L1: ping, getNodeCount, getCyclesBalance, getTotalCyclesBurned, getUptime, logMemoryEvent, getMemoryLog, recordCyclesBurned, applyMorphism, getState, invariant
+
+L2: authenticate, getSession, verifyKYC, isKYCVerified, assignRole (admin/validator/auditor), delta, getState, invariant
+
+L3: submitTransaction, getQueueSize, executeQueue, getExecutedCount, calculateFee, applyMorphism, getState, invariant
+
+L4: proposeBlock, getBlockHeight, getBlock, checkRisk, logAudit, getAuditLog, applyMorphism, getState, invariant
+
+L5: getShards, getShardCount, assignToShard, routeTransaction, commitLiquidity, recordMetric, getMetrics, applyMorphism, getState, invariant
+
+L6: bridgeToBitcoin, bridgeToEthereum, initiateCrossChain, verifyProof, settleTransaction, getCrossChainTxs, applyMorphism, getState, invariant
+
+L7: sanitizeInput, analyzeRisk, getRiskReports, getBlockedCount, createProposal, voteProposal, getProposals, applyMorphism, getState, invariant
+
+L8: executePipeline, getPipelineLog, registerLayerStatus, getLayerStatuses, aggregateSignature, compose, delta, getState, isAccepting, reset, invariant
+
+L9 (x39_bases — Rust): genesis_object, genesis_module, reset, get_state, apply_morphism, apply_functor, compose, delta, is_accepting, schedule, invariant, validate_state, translate_morphism, bridge_btc, bridge_eth, secure_utxo, ptu47_audit, sanitize_prompt, fuzz_test, collapse_test, quantum_clock
+
+---
+
+AHORA GENERA TODO ESTO COMPLETO, SIN ERRORES, CON CÓDIGO REAL:
+
+============================================================
+PARTE 1: LAS 9 CAPAS — LOCALIZACIÓN + PENETRACIÓN + EXTRACCIÓN
+============================================================
+
+Para CADA una de las 9 capas (L1 a L9), genera 3 scripts bash completos:
+- Uno de LOCALIZACIÓN (detectar vulnerabilidades)
+- Uno de PENETRACIÓN (simular ataque y cómo la capa lo detecta/bloquea)
+- Uno de EXTRACCIÓN (intentar extraer datos y cómo la capa lo impide)
+
+Formato para cada script:
+
+```
+[FASE] Localización / Penetración / Extracción
+[CAPA] L1-L9 con nombre
+[BLOQUE] B01-B39
+[CANISTER ID] El real de esa capa
+[CÓDIGO]
+#!/bin/bash
+# X-39MATRIX — [Fase] — [Capa]
+# Canister: [ID real]
+# Bloque: [B##]
+# ================================================
+
+[comandos dfx reales completos]
+
+[QUÉ DEMUESTRA] Una frase clara
+[RESULTADO ESPERADO] Qué se verá en terminal
+[SIN X-39MATRIX] Qué pasa sin protección
+[CON X-39MATRIX] Qué pasa con la protección
+```
+
+Necesito los 27 scripts (9 capas × 3 fases).
+
+============================================================
+PARTE 2: LOCALIZACIÓN GLOBAL BTC
+============================================================
+
+Scripts completos para localizar actividad sospechosa en la red REAL de Bitcoin:
+
+2.1) Escaneo de nodos Bitcoin globales (puerto 8333) con nmap/masscan
+2.2) Monitorización de mempool en tiempo real (transacciones sospechosas)
+2.3) Distribución de hashrate por pools (detectar concentración >33%)
+2.4) Detección de wallets acumulando BTC (posible pre-ataque)
+2.5) Correlación con X-39MATRIX: cómo L1 getNodeCount + L4 checkRisk + L6 bridgeToBitcoin procesan estos datos
+
+Cada script debe:
+- Conectarse a APIs REALES (mempool.space, blockchain.info, bitnodes.io)
+- Mostrar resultados en formato que alimenta las capas de X-39MATRIX
+- Incluir al final: dfx canister call [capa] [comando] con los datos obtenidos
+
+============================================================
+PARTE 3: PENETRACIÓN CROSS-CHAIN MUNDIAL
+============================================================
+
+Scripts completos que simulan ataques cross-chain BTC↔ETH:
+
+3.1) Doble gasto Bitcoin: crear 2 transacciones conflictivas con la misma UTXO
+     → Cómo L3 submitTransaction + L4 checkRisk lo detectan
+3.2) Ataque 51%: simular concentración de hashrate
+     → Cómo L4 proposeBlock + L7 analyzeRisk lo predicen
+3.3) Fraude SWIFT: transferencia anómala cross-chain
+     → Cómo L6 initiateCrossChain + L8 executePipeline lo bloquean
+3.4) MEV/Frontrunning en Ethereum
+     → Cómo L3 executeQueue + L6 verifyProof lo detectan
+3.5) Flash loan attack
+     → Cómo L7 analyzeRisk + L5 routeTransaction lo contienen
+
+Cada script debe mostrar:
+- El ataque ejecutándose
+- X-39MATRIX detectándolo en tiempo real
+- Los comandos dfx reales que se ejecutan en respuesta
+
+============================================================
+PARTE 4: EXTRACCIÓN FORENSE CON FIRMA Ed25519 Y SHA256
+============================================================
+
+Scripts completos para la fase forense post-ataque:
+
+4.1) Registro inmutable de evidencia:
+```bash
+# Registrar evento en x39_bases
+dfx canister call x39_bases ptu47_audit
+# Generar hash SHA256 de la evidencia
+sha256sum evidence_file.json
+# Firmar con Ed25519
+dfx canister call corebackend aggregateSignature '(vec {"sig_L1"; "sig_L2"; "sig_L3"; "sig_L4"; "sig_L5"; "sig_L6"; "sig_L7"; "sig_L8"; "sig_L9"})'
+```
+
+4.2) Cadena de custodia digital:
+- Cada acción registrada con quantum_clock (nanosegundos)
+- Triple firma: Threshold ECDSA + Ed25519 agregado + Merkle Root
+- Verificable por cualquier auditor con dfx
+
+4.3) Script completo de extracción forense post-ataque:
+```bash
+#!/bin/bash
+# X-39MATRIX — Extracción Forense Completa
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+mkdir -p /tmp/x39_forensic_$TIMESTAMP
+
+# 1. Estado de todas las capas
+for layer in layer1infrastructure layer2identity layer3execution layer4consensus layer5scalability layer6omnichain layer7aigovernance corebackend x39_bases; do
+    dfx canister call $layer getState > /tmp/x39_forensic_$TIMESTAMP/${layer}_state.json
+done
+
+# 2. Logs de auditoría
+dfx canister call layer4consensus getAuditLog > /tmp/x39_forensic_$TIMESTAMP/audit_log.json
+dfx canister call corebackend getPipelineLog > /tmp/x39_forensic_$TIMESTAMP/pipeline_log.json
+dfx canister call layer7aigovernance getRiskReports > /tmp/x39_forensic_$TIMESTAMP/risk_reports.json
+
+# 3. PTU-47 audit + fuzz + collapse
+dfx canister call x39_bases ptu47_audit > /tmp/x39_forensic_$TIMESTAMP/ptu47.json
+dfx canister call x39_bases fuzz_test > /tmp/x39_forensic_$TIMESTAMP/fuzz.json
+dfx canister call x39_bases collapse_test > /tmp/x39_forensic_$TIMESTAMP/collapse.json
+dfx canister call x39_bases quantum_clock > /tmp/x39_forensic_$TIMESTAMP/quantum_time.json
+
+# 4. Firma agregada Ed25519
+dfx canister call corebackend aggregateSignature '(vec {"sig_L1"; "sig_L2"; "sig_L3"; "sig_L4"; "sig_L5"; "sig_L6"; "sig_L7"; "sig_L8"; "sig_L9"})' > /tmp/x39_forensic_$TIMESTAMP/aggregate_signature.json
+
+# 5. SHA256 de toda la evidencia
+cd /tmp/x39_forensic_$TIMESTAMP
+sha256sum *.json > manifest_sha256.txt
+
+# 6. Empaquetar
+tar -czf /tmp/x39_forensic_$TIMESTAMP.tar.gz -C /tmp x39_forensic_$TIMESTAMP/
+sha256sum /tmp/x39_forensic_$TIMESTAMP.tar.gz > /tmp/x39_forensic_$TIMESTAMP_integrity.sha256
+
+echo "========================================="
+echo "X-39MATRIX — EXTRACCIÓN FORENSE COMPLETA"
+echo "Timestamp: $TIMESTAMP"
+echo "Firma Ed25519: 9/9 capas firmadas"
+echo "SHA256 verificable"
+echo "Evidencia inmutable en x39_bases"
+echo "========================================="
+```
+
+4.4) Verificación por terceros:
+```bash
+# Cualquier auditor puede verificar:
+sha256sum -c manifest_sha256.txt
+dfx canister call x39_bases validate_state
+dfx canister call corebackend invariant
+dfx canister call x39_bases invariant '(0)'
+```
+
+============================================================
+FORMATO OBLIGATORIO PARA CADA CÓDIGO:
+============================================================
+
+[FASE] Localización / Penetración / Extracción
+[CAPA X-39MATRIX] L# — Nombre
+[BLOQUE] B##
+[CANISTER ID] ID real
+[RED] Bitcoin / Ethereum / ICP / Todas
+[CÓDIGO COMPLETO]
+#!/bin/bash
+# Código real ejecutable en Ubuntu
+# Con comandos dfx reales y APIs reales
+
+[QUÉ DEMUESTRA] Frase clara
+[RESULTADO ESPERADO] Output esperado en terminal
+[SIN X-39MATRIX] Consecuencia sin protección
+[CON X-39MATRIX] Resultado con protección activa
+[HASH SHA256] Para verificación de integridad del script
+
+Dame TODO. Las 9 capas × 3 fases = 27 scripts + los 4 scripts BTC globales + los 5 scripts cross-chain + los 4 scripts forenses = 40 scripts completos.
+
+Sin pseudocódigo. Sin errores. Sin texto cortado. Código REAL.
+
+Jose Luis Olivares Esteban — x39matrix.org
