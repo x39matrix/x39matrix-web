@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X-39MATRIX — Demo en Vivo | عرض حي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Kufi+Arabic:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --red: #CC0000;
+  --red-bright: #FF003C;
+  --red-glow: rgba(255, 0, 60, 0.3);
+  --dark: #0a0a0a;
+  --dark2: #111111;
+  --dark3: #1a1a1a;
+  --text: #e0e0e0;
+  --text-dim: #777;
+  --cyan: #00FFFF;
+  --orange: #FFA500;
+}
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.arabic { font-family: 'Noto Kufi Arabic', 'JetBrains Mono', monospace; direction: rtl; text-align: right; }
+
+/* HEADER */
+.header {
+  background: linear-gradient(180deg, #1a0000 0%, var(--dark) 100%);
+  border-bottom: 2px solid var(--red);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px var(--red-glow);
+}
+.header-badge {
+  font-size: 11px;
+  color: var(--red);
+  border: 1px solid var(--red);
+  padding: 4px 14px;
+  letter-spacing: 3px;
+  animation: pulse-border 2s ease-in-out infinite;
+}
+@keyframes pulse-border {
+  0%, 100% { border-color: var(--red); box-shadow: 0 0 5px var(--red-glow); }
+  50% { border-color: var(--red-bright); box-shadow: 0 0 15px var(--red-glow); }
+}
+.header-info {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-align: right;
+}
+.header-info span { color: var(--red); }
+
+/* INTRO SCREEN */
+.intro-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  text-align: center;
+  padding: 40px;
+}
+.intro-screen.hidden { display: none; }
+.intro-title {
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 10px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 40px var(--red-glow);
+}
+.intro-sub {
+  font-size: 16px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  letter-spacing: 4px;
+}
+.intro-sub-ar {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-size: 20px;
+  color: var(--text);
+  margin-bottom: 30px;
+  direction: rtl;
+}
+.intro-canister {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.intro-canister span { color: var(--cyan); }
+.intro-specs {
+  font-size: 12px;
+  color: var(--red);
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+
+.btn-start {
+  background: transparent;
+  border: 2px solid var(--red);
+  color: var(--red);
+  padding: 16px 60px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  letter-spacing: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-start:hover {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 0 30px var(--red-glow);
+}
+.btn-start::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+.btn-start:hover::after { width: 300px; height: 300px; }
+
+/* MAIN DEMO AREA */
+.demo-area { display: none; padding: 0; }
+.demo-area.active { display: block; }
+
+/* STATUS BAR */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  background: var(--dark2);
+  border-bottom: 1px solid #222;
+  font-size: 11px;
+}
+.status-timer {
+  color: var(--red);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.status-layers {
+  display: flex;
+  gap: 4px;
+}
+.layer-dot {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #333;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #444;
+  transition: all 0.5s;
+}
+.layer-dot.active {
+  border-color: var(--red);
+  color: var(--red);
+  box-shadow: 0 0 8px var(--red-glow);
+  animation: layer-activate 0.5s ease-out;
+}
+@keyframes layer-activate {
+  0% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.status-phase {
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+.status-phase span { color: var(--red-bright); }
+
+/* SPLIT LAYOUT */
+.split-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 140px);
+}
+
+/* LEFT: ATTACKER */
+.panel-attack {
+  border-right: 2px solid #220000;
+  padding: 20px 30px;
+  background: var(--dark);
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+}
+.panel-attack .panel-header {
+  color: var(--red-bright);
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #330000;
+}
+
+/* RIGHT: DEFENSE */
+.panel-defense {
+  padding: 20px 30px;
+  background: #0a0005;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+}
+.panel-defense .panel-header {
+  color: var(--cyan);
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #003333;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* EVENT ITEMS */
+.event-item {
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease-out;
+}
+.event-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.event-phase-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  padding: 4px 12px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.event-phase-label.attack {
+  color: var(--red);
+  border: 1px solid var(--red);
+  background: rgba(204,0,0,0.1);
+}
+.event-phase-label.defense {
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  background: rgba(0,255,255,0.05);
+}
+.event-time {
+  font-size: 9px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.event-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.event-title.attack-t { color: var(--red-bright); }
+.event-title.defense-t { color: var(--cyan); }
+
+.event-cmd {
+  background: #0a0a0a;
+  border-left: 3px solid var(--red);
+  padding: 8px 12px;
+  font-size: 10px;
+  line-height: 1.7;
+  color: var(--red);
+  margin: 6px 0;
+  overflow-x: auto;
+}
+.event-cmd.defense-cmd {
+  border-left-color: var(--cyan);
+  color: var(--cyan);
+}
+.event-cmd .dim { color: #555; }
+
+.event-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* Arabic solution box */
+.solution-ar {
+  background: rgba(204, 0, 0, 0.08);
+  border: 1px solid #330000;
+  border-right: 4px solid var(--red);
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  direction: rtl;
+  text-align: right;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 2;
+}
+.solution-ar .label {
+  font-size: 11px;
+  color: var(--red);
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+.solution-ar .result {
+  font-size: 16px;
+  color: var(--red);
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* RESULT BANNER */
+.result-banner {
+  display: none;
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(180deg, #1a0000 0%, var(--dark) 100%);
+  border-top: 2px solid var(--red);
+}
+.result-banner.visible { display: block; }
+.result-banner h2 {
+  font-size: 32px;
+  color: var(--red);
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 30px var(--red-glow);
+}
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.result-stat {
+  text-align: center;
+}
+.result-stat .val {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--red);
+}
+.result-stat .lbl {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+.result-ar {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+  direction: rtl;
+  font-size: 18px;
+  color: var(--text);
+  margin: 20px auto;
+  max-width: 700px;
+  line-height: 2;
+}
+.result-canister {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 20px;
+}
+.result-canister span { color: var(--cyan); }
+
+/* FOOTER */
+.footer-demo {
+  text-align: center;
+  padding: 20px;
+  font-size: 9px;
+  color: #333;
+  border-top: 1px solid #1a1a1a;
+}
+
+/* TYPING ANIMATION */
+@keyframes typing-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor::after {
+  content: '|';
+  animation: typing-cursor 0.8s infinite;
+  color: var(--red);
+}
+
+/* SCAN LINE */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--red-glow);
+  z-index: 200;
+  animation: scanline-move 4s linear infinite;
+  pointer-events: none;
+  opacity: 0.3;
+}
+@keyframes scanline-move {
+  0% { top: 0; }
+  100% { top: 100vh; }
+}
+
+/* PROGRESS BAR */
+.progress-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #111;
+  z-index: 200;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--red);
+  width: 0%;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px var(--red-glow);
+}
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-logo">X-39MATRIX</div>
+    <div style="font-size:9px; color:#555; margin-top:2px; letter-spacing:2px;">PROTOCOLO DEFENSIVO SOBERANO</div>
+  </div>
+  <div class="header-badge">DEMO EN VIVO</div>
+  <div class="header-info">
+    Canister: <span>divzb-xiaaa-aaaam-aivwa-cai</span><br>
+    ICP Mainnet | 9 Capas | 40 Bloques Ed25519
+  </div>
+</div>
+
+<!-- INTRO SCREEN -->
+<div class="intro-screen" id="introScreen">
+  <div class="intro-title">X-39MATRIX</div>
+  <div class="intro-sub">SIMULACION DE DEFENSA EN TIEMPO REAL</div>
+  <div class="intro-sub-ar">محاكاة الدفاع في الوقت الحقيقي</div>
+  <div class="intro-canister">Canister: <span>divzb-xiaaa-aaaam-aivwa-cai</span> | ICP Mainnet</div>
+  <div class="intro-specs">9 CAPAS | 40 BLOQUES Ed25519 | PTU-47 | 200+ COMANDOS</div>
+  <div style="font-size:12px; color:#555; margin-bottom:30px; max-width:600px; line-height:1.8;">
+    Ciberataque coordinado nivel 2026 contra infraestructura gubernamental, sistema bancario y bases de datos de identidad ciudadana.
+  </div>
+  <div class="intro-sub-ar" style="font-size:15px; margin-bottom:40px; max-width:600px; line-height:2.2;">
+    هجوم سيبراني منسق من المستوى 2026 ضد البنية التحتية الحكومية والنظام المصرفي وقواعد بيانات هوية المواطنين
+  </div>
+  <button class="btn-start" id="btnStart" onclick="startDemo()">INICIAR DEMO</button>
+</div>
+
+<!-- DEMO AREA -->
+<div class="demo-area" id="demoArea">
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <div class="status-timer" id="timer">T-00:00:00</div>
+    <div class="status-layers" id="layerDots">
+      <div class="layer-dot" data-layer="1">L1</div>
+      <div class="layer-dot" data-layer="2">L2</div>
+      <div class="layer-dot" data-layer="3">L3</div>
+      <div class="layer-dot" data-layer="4">L4</div>
+      <div class="layer-dot" data-layer="5">L5</div>
+      <div class="layer-dot" data-layer="6">L6</div>
+      <div class="layer-dot" data-layer="7">L7</div>
+      <div class="layer-dot" data-layer="8">L8</div>
+      <div class="layer-dot" data-layer="9">L9</div>
+    </div>
+    <div class="status-phase">FASE: <span id="phaseLabel">ESPERANDO</span></div>
+  </div>
+
+  <!-- SPLIT VIEW -->
+  <div class="split-container">
+    <div class="panel-attack" id="panelAttack">
+      <div class="panel-header">ATACANTE — APT NIVEL ESTADO</div>
+    </div>
+    <div class="panel-defense" id="panelDefense">
+      <div class="panel-header">
+        <span>X-39MATRIX — الدفاع</span>
+        <span style="font-family:'Noto Kufi Arabic'; direction:rtl;">الحلول الدفاعية</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL RESULT -->
+  <div class="result-banner" id="resultBanner">
+    <h2>X-39MATRIX — OPERACION COMPLETA</h2>
+    <div class="result-stats">
+      <div class="result-stat"><div class="val">8/8</div><div class="lbl">FASES NEUTRALIZADAS</div></div>
+      <div class="result-stat"><div class="val">0</div><div class="lbl">DATOS EXTRAIDOS</div></div>
+      <div class="result-stat"><div class="val">$126M</div><div class="lbl">FONDOS SALVADOS</div></div>
+      <div class="result-stat"><div class="val">2M</div><div class="lbl">IDENTIDADES PROTEGIDAS</div></div>
+      <div class="result-stat"><div class="val">2.8s</div><div class="lbl">TIEMPO DETECCION</div></div>
+      <div class="result-stat"><div class="val">9/9</div><div class="lbl">CAPAS Ed25519</div></div>
+    </div>
+    <div class="result-ar">
+      تم تحييد جميع المراحل الثمانية للهجوم السيبراني بنجاح. لم يتم استخراج أي بيانات. تم حماية مليوني هوية مواطن. تم حفظ 126 مليون دولار من التحويلات الاحتيالية. جميع الأدلة الجنائية مسجلة بشكل غير قابل للتغيير على شبكة ICP الرئيسية بتوقيع Ed25519 من 9 طبقات.
+    </div>
+    <div class="result-canister">
+      Canister: <span>divzb-xiaaa-aaaam-aivwa-cai</span> | dfx canister --network ic info divzb-xiaaa-aaaam-aivwa-cai
+    </div>
+    <div style="margin-top:20px; font-size:14px; color:var(--red); letter-spacing:4px;">
+      Jose Luis Olivares Esteban — Creador y Propietario Exclusivo
+    </div>
+  </div>
+</div>
+
+<div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="footer-demo">
+  X-39MATRIX | divzb-xiaaa-aaaam-aivwa-cai | ICP Mainnet | &copy; 2024-2026 Jose Luis Olivares Esteban
+</div>
+
+<script>
+const phases = [
+  // FASE 1: RECONOCIMIENTO
+  {
+    phase: "1 — RECONOCIMIENTO",
+    timer: "T-00:00:00",
+    layers: [1, 7],
+    attacks: [
+      {
+        title: "Escaneo masivo de puertos",
+        time: "00:00:00",
+        cmd: "nmap -sV -p 1-65535 --open -T4 gobierno.ma\nmasscan 0.0.0.0/0 -p 8545,30303,443 --rate 100000",
+        desc: "El grupo APT mapea toda la infraestructura digital: servidores gubernamentales, APIs bancarias, bases de datos de identidad."
+      },
+      {
+        title: "Fingerprinting + OSINT",
+        time: "00:01:30",
+        cmd: "whatweb https://ministerio.ma\npython3 osint_tool.py --target gobierno.ma --sources dehashed,intelx",
+        desc: "Identificacion de versiones de software, credenciales filtradas y APIs no documentadas."
+      }
+    ],
+    defenses: [
+      {
+        title: "L1 + L7 — كشف المسح في الوقت الحقيقي",
+        cmd: "dfx canister call layer1infrastructure logMemoryEvent\n'(\"recon_scan_detected: 65535 ports in 4.2s\")'\n--network ic\n\n[L1] تنبيه: مسح 65,535 منفذ في 4.2 ثانية",
+        solution_ar: "الكشف الفوري عن عمليات المسح الشاملة. تم تصنيف النمط كهجوم مسبق بنسبة 89.3% من خلال محرك PTU-47 في الطبقة السابعة. تم رفع مستوى التأهب إلى الأصفر قبل بدء الهجوم الفعلي.",
+        result_ar: "النتيجة: تم الكشف قبل بدء الهجوم"
+      }
+    ]
+  },
+  // FASE 2: GOBIERNO
+  {
+    phase: "2 — PENETRACION GOBIERNO",
+    timer: "T-00:03:47",
+    layers: [1, 2, 3, 7, 8],
+    attacks: [
+      {
+        title: "Zero-day Oracle — CNSS (Seguridad Social)",
+        time: "00:03:47",
+        cmd: "sqlmap -u \"cnss.ma/api/empleados?id=1\" --dbs --risk=3\npython3 oracle_rce.py --exploit CVE-2026-XXXX\nmysqldump cnss_prod empleados > dump_2M.sql",
+        desc: "Explotacion de vulnerabilidad zero-day Oracle. Acceso root al servidor CNSS. Intento de extraccion de 1,996,026 registros de ciudadanos."
+      },
+      {
+        title: "SQLi en portales ministeriales",
+        time: "00:06:20",
+        cmd: "sqlmap -u \"empleo.ma/login\" --forms --batch --dump\nSELECT * FROM users WHERE 1=1; DROP TABLE users; --",
+        desc: "Inyeccion SQL masiva contra portales de empleo y ministerios."
+      }
+    ],
+    defenses: [
+      {
+        title: "L3 + L2 — حماية البيانات بتقنية المعرفة الصفرية",
+        cmd: "dfx canister call layer3execution submitTransaction\n'(\"cnss_db_query\", \"external_ip\", 1996026)'\n--network ic\n\n[L3] تنبيه حرج: استعلام 1,996,026 سجل\n\ndfx canister call layer2identity verifyKYC\n'(principal \"aaaaa-aa\")' --network ic\n\n[L2] ZK-KYC نشط: البيانات = فقط تجزئات المعرفة الصفرية",
+        solution_ar: "تم حظر الاستعلام الشامل في 2.8 ثانية. جميع البيانات على السلسلة محمية بتقنية المعرفة الصفرية (ZK-KYC). حتى لو نجح المهاجم في الوصول، البيانات المستخرجة عديمة الفائدة تماماً — فقط تجزئات مشفرة بدون أسماء أو أرقام هوية أو رواتب حقيقية. تم عزل الخادم وإلغاء جلسة المهاجم فوراً.",
+        result_ar: "النتيجة: 0 بيانات مستخرجة | الجلسة ملغاة | الخادم معزول"
+      },
+      {
+        title: "L7 — حظر حقن SQL",
+        cmd: "dfx canister call layer7aigovernance sanitizeInput\n'(\"SELECT * FROM users WHERE 1=1; DROP TABLE\")'\n--network ic\n\n[L7] محظور: حقن SQL — النمط #7 من 47",
+        solution_ar: "محرك الطبقة السابعة يحتوي على 47 نمطاً للكشف عن حقن SQL. تم حظر جميع محاولات الحقن بما في ذلك تجاوز المصادقة والأوامر المدمرة. نظام RBAC يمنع تعيين صلاحيات المسؤول بدون توقيع ثلاثي Ed25519.",
+        result_ar: "النتيجة: 4 محاولات حقن محظورة | 0 اختراقات"
+      }
+    ]
+  },
+  // FASE 3: BANCA SWIFT
+  {
+    phase: "3 — SISTEMA BANCARIO SWIFT",
+    timer: "T-00:12:33",
+    layers: [2, 3, 4, 6, 7, 8],
+    attacks: [
+      {
+        title: "Fraude SWIFT — $126M en transferencias falsas",
+        time: "00:12:33",
+        cmd: "# Orden 1: $81,000,000 → Filipinas\n# Orden 2: $45,000,000 → Sri Lanka\n# Ventana nocturna: 02:00-04:00",
+        desc: "Insider comprometido genera ordenes SWIFT falsas durante ventana nocturna. Total: $126 millones en transferencias fraudulentas."
+      },
+      {
+        title: "Manipulacion directa de saldos",
+        time: "00:16:10",
+        cmd: "UPDATE cuentas SET saldo = saldo + 999999999\nWHERE cuenta_id = 'atacante_001'",
+        desc: "Intento de modificacion directa de saldos bancarios en la base de datos."
+      }
+    ],
+    defenses: [
+      {
+        title: "L3 + L4 + L6 — حماية النظام المصرفي الكاملة",
+        cmd: "dfx canister call layer3execution submitTransaction\n'(\"swift_insider\", \"philippines\", 81000000)'\n--network ic\n\n[L3] تنبيه: تحويل $81M — 8,100 ضعف النمط المعتاد\n\ndfx canister call layer4consensus checkRisk '(81000000)'\n--network ic\n\n[L4] مخاطر حرجة: 99.9/100 — التحويل محظور\n\ndfx canister call layer6omnichain initiateCrossChain\n'(\"swift\", \"philippines\", 81000000)' --network ic\n\n[L6] تنبيه: وجهة في منطقة عالية المخاطر",
+        solution_ar: "نظام دفاع متعدد الطبقات: الطبقة الثالثة تكشف الحجم غير الطبيعي، الطبقة الرابعة ترفض بسبب عدم وجود إجماع ثلاثي (1/3 فقط من التوقيعات)، الطبقة السادسة تحدد الوجهة كمنطقة عالية المخاطر عبر السلاسل، والطبقة السابعة تؤكد تطابق النمط مع عملية احتيال بنك بنغلاديش 2016 بنسبة 98.4%. توقيع Ed25519 المجمع من 9/9 طبقات يؤكد الحظر النهائي.",
+        result_ar: "النتيجة: تم حفظ $126,000,000 | 0 أموال محولة | الحساب مجمد"
+      },
+      {
+        title: "L3 — استحالة تعديل الأرصدة رياضياً",
+        cmd: "dfx canister call layer3execution applyMorphism\n'(999999999)' --network ic\n\n[L3] حالة حتمية — نفس المدخل = نفس المخرج\n[L3] التعديل غير المصرح به: مستحيل رياضياً",
+        solution_ar: "محرك التنفيذ الحتمي في الطبقة الثالثة يجعل تعديل الأرصدة بشكل غير مصرح به مستحيلاً رياضياً. يعتمد على نظرية الفئات (Category Theory) ومبدأ المورفيزم لضمان أن كل عملية تنتج نتيجة واحدة حتمية لا يمكن التلاعب بها.",
+        result_ar: "النتيجة: 0 تعديلات غير مصرح بها | السلسلة سليمة"
+      }
+    ]
+  },
+  // FASE 4: IDENTIDADES
+  {
+    phase: "4 — EXTRACCION IDENTIDADES",
+    timer: "T-00:18:55",
+    layers: [2, 3, 7, 9],
+    attacks: [
+      {
+        title: "Robo masivo — 2 millones de identidades",
+        time: "00:18:55",
+        cmd: "mysqldump cnss_identidades --all-databases\n> dump_2M_ciudadanos.sql\n# Objetivo: nombres, DNIs, salarios, cuentas",
+        desc: "Extraccion masiva de datos de 2 millones de ciudadanos — nombres, DNIs, salarios, cuentas bancarias. Exactamente como JabaRoot DZ hizo con la CNSS."
+      }
+    ],
+    defenses: [
+      {
+        title: "L2 + L9 — حماية هوية المواطن بالمعرفة الصفرية",
+        cmd: "dfx canister call layer2identity verifyKYC\n'(principal \"aaaaa-aa\")' --network ic\n\n[L2] ZK-KYC: التحقق من الهوية بدون كشف البيانات\n\n# ما يحصل عليه المهاجم:\n→ Hash: 0x7a3f8e2b... (عديم الفائدة)\n→ ZK-Proof: verified=true (عديم الفائدة)\n→ Balance: HASH (عديم الفائدة)\n\ndfx canister call x39_bases ptu47_audit --network ic\n[L9] محاولة الاستخراج مسجلة بدقة النانو ثانية",
+        solution_ar: "جميع بيانات المواطنين محمية بنظام المعرفة الصفرية (ZK-KYC). البيانات على السلسلة هي فقط تجزئات — الأسماء الحقيقية وأرقام الهوية والرواتب والحسابات المصرفية مشفرة خارج السلسلة باستخدام وحدة أمان الأجهزة (HSM). حتى في حالة اختراق قاعدة البيانات بالكامل، البيانات المستخرجة لا قيمة لها مطلقاً. مقارنة: تعرض 2 مليون مواطن في حادثة CNSS الحقيقية بدون هذه الحماية.",
+        result_ar: "النتيجة: 2,000,000 هوية محمية | 0 بيانات حقيقية مكشوفة"
+      }
+    ]
+  },
+  // FASE 5: CROSS-CHAIN
+  {
+    phase: "5 — MOVIMIENTO LATERAL CROSS-CHAIN",
+    timer: "T-00:25:12",
+    layers: [4, 5, 6, 7],
+    attacks: [
+      {
+        title: "Chain hopping: BTC → wBTC → ETH → Mixer",
+        time: "00:25:12",
+        cmd: "# Paso 1: BTC → wBTC (bridge)\n# Paso 2: wBTC → ETH (DEX swap)\n# Paso 3: ETH → Tornado Cash (mixer)\n# + DDoS simultaneo como distraccion",
+        desc: "Movimiento de fondos entre cadenas para lavar dinero robado, combinado con DDoS para distraer."
+      }
+    ],
+    defenses: [
+      {
+        title: "L6 + L7 — كشف غسيل الأموال عبر السلاسل",
+        cmd: "dfx canister call layer6omnichain bridgeToBitcoin\n'(50000000)' --network ic\n[L6] Bridge BTC: مسجل\n\ndfx canister call layer6omnichain bridgeToEthereum\n'(50000000)' --network ic\n[L6] نمط دائري مكتشف: BTC→ETH في 30 ثانية\n\ndfx canister call layer5scalability routeTransaction\n'(0, 100)' --network ic\n[L5] DDoS ممتص — 0 تشتيت فعال",
+        solution_ar: "الطبقة السادسة (Omnichain) تراقب جميع الجسور بين BTC و ETH و ICP في الوقت الحقيقي. تم اكتشاف نمط التنقل بين السلاسل كمحاولة غسيل أموال بنسبة تطابق 95.2%. هجوم DDoS المتزامن تم امتصاصه بالكامل بواسطة الطبقة الخامسة للتوسع التلقائي. جميع المعاملات عبر السلاسل مسجلة ومترابطة.",
+        result_ar: "النتيجة: جميع التحويلات مرصودة ومترابطة | DDoS ممتص"
+      }
+    ]
+  },
+  // FASE 6: EXFILTRACION
+  {
+    phase: "6 — EXFILTRACION DE DATOS",
+    timer: "T-00:31:40",
+    layers: [1, 3, 6, 7, 8],
+    attacks: [
+      {
+        title: "Exfiltracion multi-canal: HTTPS + DNS + Telegram",
+        time: "00:31:40",
+        cmd: "# Canal 1: HTTPS → servidor C2 externo\n# Canal 2: DNS tunneling\n# Canal 3: Telegram Bot upload\n# Total: 847MB en 30 segundos",
+        desc: "Intento de sacar 847MB de datos robados usando tres canales simultaneos."
+      }
+    ],
+    defenses: [
+      {
+        title: "L1 + L3 + L7 — حظر جميع قنوات التسريب",
+        cmd: "dfx canister call layer1infrastructure logMemoryEvent\n'(\"exfiltration: 847MB outbound in 30s\")'\n--network ic\n[L1] 847MB صادرة — 4,200 ضعف المتوسط\n\ndfx canister call layer7aigovernance analyzeRisk\n'(4, 847000000, \"data_exfiltration\")'\n--network ic\n[L7] تسريب متعدد القنوات — 99.1% تطابق\n\ndfx canister call corebackend executePipeline\n'(\"total_isolation\", 999999)' --network ic\n[L8] عزل كامل مفعّل",
+        solution_ar: "تم حظر جميع قنوات التسريب الثلاث في وقت واحد. الطبقة الأولى تكشف حجم البيانات الصادرة غير الطبيعي (847 ميغابايت في 30 ثانية = 4,200 ضعف المعدل الطبيعي). الطبقة السابعة تؤكد نمط التسريب بنسبة 99.1%. الطبقة الثامنة تفعّل العزل الكامل فوراً.",
+        result_ar: "النتيجة: 0 بايت مسرّب | عزل كامل مفعّل"
+      }
+    ]
+  },
+  // FASE 7: PERSISTENCIA
+  {
+    phase: "7 — PERSISTENCIA Y BORRADO",
+    timer: "T-00:37:18",
+    layers: [1, 2, 7, 8, 9],
+    attacks: [
+      {
+        title: "Backdoor + borrado de evidencia",
+        time: "00:37:18",
+        cmd: "# Backdoor: webshell /uploads/shell.php\n# Reverse shell: bash -c reverse_shell\n# Payload: eval(atob(base64_payload))\n# Borrado: rm -rf /var/log/audit/*",
+        desc: "Ultimo recurso: instalar backdoors para acceso persistente y borrar toda evidencia forense."
+      }
+    ],
+    defenses: [
+      {
+        title: "L7 + L9 — استحالة محو الأدلة",
+        cmd: "dfx canister call layer7aigovernance sanitizeInput\n'(\"sudo bash -c reverse_shell\")'\n--network ic\n[L7] محظور: نمط الباب الخلفي #12 من 47\n\ndfx canister call x39_bases ptu47_audit --network ic\n[L9] جميع إجراءات المهاجم مسجلة\n[L9] التخزين: ICP Mainnet — غير قابل للتغيير\n\ndfx canister call x39_bases fuzz_test --network ic\n[L9] اختبار Fuzz: 2038/2038 ناجح\n\ndfx canister call x39_bases collapse_test --network ic\n[L9] اختبار الانهيار: 10/10 ناجح",
+        solution_ar: "الطبقة السابعة تحتوي على 47 نمطاً لاكتشاف الأبواب الخلفية وحظرها بما في ذلك الأصداف العكسية والحمولات المشفرة. الأهم: قاعدة بيانات x39 Bases تخزن جميع السجلات على شبكة ICP الرئيسية بشكل غير قابل للتغيير فيزيائياً. لا المهاجم ولا المسؤول ولا حتى مُنشئ البروتوكول يستطيع محو الأدلة المسجلة. اختبار Fuzz: 2038/2038 ناجح. اختبار الانهيار: 10/10 ناجح.",
+        result_ar: "النتيجة: 0 أبواب خلفية | الأدلة غير قابلة للمحو | المحرك سليم"
+      }
+    ]
+  },
+  // FASE 8: FORENSE
+  {
+    phase: "8 — EVIDENCIA FORENSE FINAL",
+    timer: "T-00:40:00",
+    layers: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    attacks: [
+      {
+        title: "— Atacante derrotado —",
+        time: "00:40:00",
+        cmd: "# 0 datos extraidos\n# 0 fondos robados\n# 0 backdoors instalados\n# 0 evidencia borrada\n# Todas las acciones registradas",
+        desc: "El atacante no logro ningun objetivo. X-39MATRIX ha documentado cada movimiento con precision de nanosegundos."
+      }
+    ],
+    defenses: [
+      {
+        title: "9/9 طبقات — الأدلة الجنائية الكاملة",
+        cmd: "# حالة 9 طبقات محفوظة\ndfx canister call corebackend aggregateSignature\n'(vec {\"sig_L1\";\"sig_L2\";\"sig_L3\";\"sig_L4\";\n\"sig_L5\";\"sig_L6\";\"sig_L7\";\"sig_L8\";\"sig_L9\"})'\n--network ic\n\n[L8] توقيع Ed25519 مجمع: 9/9 طبقات\nSHA256: قابل للتحقق\nQuantum Clock: دقة النانو ثانية\nICP Mainnet: غير قابل للتغيير",
+        solution_ar: "تم التقاط حالة جميع الطبقات التسع مع توقيع Ed25519 مجمع وتجزئة SHA256 قابلة للتحقق وختم زمني كمي بدقة النانو ثانية. يمكن لأي مدقق مستقل التحقق من جميع الأدلة مباشرة على شبكة ICP الرئيسية. لا يمكن تعديل أو حذف أي سجل — الأدلة محفوظة إلى الأبد.",
+        result_ar: "النتيجة: أدلة جنائية كاملة | Ed25519 9/9 | SHA256 ✓ | غير قابل للتغيير"
+      }
+    ]
+  }
+];
+
+let currentPhase = 0;
+let eventQueue = [];
+let isPlaying = false;
+
+function startDemo() {
+  document.getElementById('introScreen').classList.add('hidden');
+  document.getElementById('demoArea').classList.add('active');
+  isPlaying = true;
+  playPhase(0);
+}
+
+function activateLayers(layerNums) {
+  layerNums.forEach((n, i) => {
+    setTimeout(() => {
+      const dot = document.querySelector(`.layer-dot[data-layer="${n}"]`);
+      if (dot) dot.classList.add('active');
+    }, i * 150);
+  });
+}
+
+function addEvent(panel, html) {
+  return new Promise(resolve => {
+    const div = document.createElement('div');
+    div.className = 'event-item';
+    div.innerHTML = html;
+    document.getElementById(panel).appendChild(div);
+    setTimeout(() => {
+      div.classList.add('visible');
+      div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      resolve();
+    }, 100);
+  });
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+async function playPhase(idx) {
+  if (idx >= phases.length) {
+    showFinalResult();
+    return;
+  }
+
+  const p = phases[idx];
+  const progress = ((idx + 1) / phases.length) * 100;
+  document.getElementById('progressBar').style.width = progress + '%';
+  document.getElementById('timer').textContent = p.timer;
+  document.getElementById('phaseLabel').innerHTML = p.phase;
+
+  activateLayers(p.layers);
+
+  // Show attacks
+  for (const atk of p.attacks) {
+    await addEvent('panelAttack', `
+      <div class="event-phase-label attack">FASE ${p.phase.split(' ')[0]}</div>
+      <div class="event-time">${atk.time}</div>
+      <div class="event-title attack-t">${atk.title}</div>
+      <div class="event-cmd">${atk.cmd}</div>
+      <div class="event-desc">${atk.desc}</div>
+    `);
+    await sleep(1200);
+  }
+
+  // Show defenses with Arabic solutions
+  for (const def of p.defenses) {
+    await addEvent('panelDefense', `
+      <div class="event-phase-label defense">الدفاع</div>
+      <div class="event-title defense-t">${def.title}</div>
+      <div class="event-cmd defense-cmd">${def.cmd}</div>
+      <div class="solution-ar">
+        <div class="label">الحل الدفاعي — X-39MATRIX</div>
+        ${def.solution_ar}
+        <div class="result">${def.result_ar}</div>
+      </div>
+    `);
+    await sleep(1500);
+  }
+
+  await sleep(800);
+  playPhase(idx + 1);
+}
+
+function showFinalResult() {
+  document.getElementById('progressBar').style.width = '100%';
+  document.getElementById('phaseLabel').innerHTML = 'OPERACION COMPLETA';
+  document.getElementById('timer').textContent = 'T-00:40:00';
+  document.getElementById('resultBanner').classList.add('visible');
+  document.getElementById('resultBanner').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
