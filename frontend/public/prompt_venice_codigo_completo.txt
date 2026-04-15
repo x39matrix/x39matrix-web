@@ -51,7 +51,7 @@ VERIFICACION DE SEGURIDAD:
 - Algoritmo de firma: Ed25519
 - Estado verificacion: PASSED
 - Cadena de firmas Ed25519 verificada en todas las capas
-- 49 bloques de integridad: PASSED
+- 40 bloques de integridad: PASSED
 - 0 Canister IDs expuestos — 0 claves visibles
 - Protocolo SOBERANO
 

