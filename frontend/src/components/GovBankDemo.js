@@ -657,7 +657,7 @@ export default function GovBankDemo() {
 
           {/* Metrics */}
           <div className="grid grid-cols-4 gap-3">
-            <MetricCard label="Amenazas Detectadas" value={metrics.detected} />
+            <MetricCard label="Bloques Verificados" value="40" />
             <MetricCard label="Ataques Bloqueados" value={metrics.blocked} />
             <MetricCard label="Tiempo Detección" value={metrics.time} />
             <MetricCard label="Evidencias Forenses" value={metrics.forensic} />
