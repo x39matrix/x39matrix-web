@@ -19,10 +19,10 @@ CANISTER_L2="b3c6l-jaaaa-aaaao-baxrq-cai"
 CANISTER_L3="akiau-riaaa-aaaao-baxua-cai"
 CANISTER_L4="anjga-4qaaa-aaaao-baxuq-cai"
 CANISTER_L5="awm2f-giaaa-aaaao-baxwa-cai"
-CANISTER_L6="b77nh-hiaaa-aaaao-baxxa-cai"
+CANISTER_L6="adlli-haaaa-aaaao-baxvq-cai"
 CANISTER_L7="awm2f-giaaa-aaaao-baxwa-cai"
 CANISTER_L8="bsbvx-7iaaa-aaaao-baxqa-cai"
-CANISTER_L9="br5f7-7uaaa-aaaao-baxya-cai"
+CANISTER_L9="arn4r-lqaaa-aaaao-baxwq-cai"
 
 clear
 echo ""
