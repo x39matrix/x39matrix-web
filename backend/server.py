@@ -78,18 +78,21 @@ def verify_token(authorization: Optional[str] = Header(None)) -> str:
 
 # --- SEED SECURITY DATA ---
 def seed_layers():
-    if layers_col.count_documents({}) > 0:
+    # Re-seed if canister IDs have been corrected
+    existing = layers_col.find_one({"layer_id": "L6"}, {"_id": 0})
+    if existing and existing.get("canister") == "b77nh-hiaaa-aaaao-baxxa-cai":
         return
+    layers_col.delete_many({})
     layer_data = [
         {"layer_id": "L1", "name": "Infrastructure", "canister": "b4dy7-eyaaa-aaaao-baxra-cai", "lang": "Motoko", "blocks": ["B36","B37","B38","B39"], "status": "ONLINE", "commands": ["ping","getNodeCount","getCyclesBalance","getTotalCyclesBurned","getUptime","logMemoryEvent","getMemoryLog","recordCyclesBurned","applyMorphism","getState","invariant"]},
         {"layer_id": "L2", "name": "Identity (ZK-KYC)", "canister": "b3c6l-jaaaa-aaaao-baxrq-cai", "lang": "Motoko", "blocks": ["B32","B33","B34","B35"], "status": "ONLINE", "commands": ["authenticate","getSession","verifyKYC","isKYCVerified","assignRole","sanitizeInput","delta","getState","invariant"]},
         {"layer_id": "L3", "name": "Smart Execution", "canister": "akiau-riaaa-aaaao-baxua-cai", "lang": "Rust", "blocks": ["B27","B28","B29","B30"], "status": "ONLINE", "commands": ["submitTransaction","getQueueSize","executeQueue","getExecutedCount","calculateFee","applyMorphism","getState","invariant"]},
         {"layer_id": "L4", "name": "Consensus", "canister": "anjga-4qaaa-aaaao-baxuq-cai", "lang": "Rust", "blocks": ["B23","B24","B25","B26"], "status": "ONLINE", "commands": ["proposeBlock","getBlockHeight","getBlock","checkRisk","logAudit","getAuditLog","applyMorphism","getState","invariant"]},
-        {"layer_id": "L5", "name": "Scalability", "canister": "aekn4-kyaaa-aaaao-baxva-cai", "lang": "Motoko", "blocks": ["B19","B20","B21","B22"], "status": "ONLINE", "commands": ["getShards","getShardCount","assignToShard","routeTransaction","commitLiquidity","recordMetric","getMetrics","applyMorphism","getState","invariant"]},
-        {"layer_id": "L6", "name": "Omnichain", "canister": "adlli-haaaa-aaaao-baxvq-cai", "lang": "Rust", "blocks": ["B15","B16","B17","B18"], "status": "ONLINE", "commands": ["bridgeToBitcoin","bridgeToEthereum","initiateCrossChain","verifyProof","settleTransaction","getCrossChainTxs","applyMorphism","getState","invariant"]},
+        {"layer_id": "L5", "name": "Scalability", "canister": "awm2f-giaaa-aaaao-baxwa-cai", "lang": "Motoko", "blocks": ["B19","B20","B21","B22"], "status": "ONLINE", "commands": ["getShards","getShardCount","assignToShard","routeTransaction","commitLiquidity","recordMetric","getMetrics","applyMorphism","getState","invariant"]},
+        {"layer_id": "L6", "name": "Omnichain", "canister": "b77nh-hiaaa-aaaao-baxxa-cai", "lang": "Rust", "blocks": ["B15","B16","B17","B18"], "status": "ONLINE", "commands": ["bridgeToBitcoin","bridgeToEthereum","initiateCrossChain","verifyProof","settleTransaction","getCrossChainTxs","applyMorphism","getState","invariant"]},
         {"layer_id": "L7", "name": "AI Governance (PTU-47)", "canister": "awm2f-giaaa-aaaao-baxwa-cai", "lang": "Rust", "blocks": ["B11","B12","B13","B14"], "status": "ONLINE", "commands": ["sanitizeInput","analyzeRisk","getRiskReports","getBlockedCount","createProposal","voteProposal","getProposals","applyMorphism","getState","invariant"]},
         {"layer_id": "L8", "name": "Core Orchestrator", "canister": "bsbvx-7iaaa-aaaao-baxqa-cai", "lang": "Motoko", "blocks": ["B05","B06","B07","B08"], "status": "ONLINE", "commands": ["executePipeline","getPipelineLog","registerLayerStatus","getLayerStatuses","aggregateSignature","compose","delta","getState","isAccepting","reset","invariant"]},
-        {"layer_id": "L9", "name": "x39_bases (Motor Algebraico)", "canister": "arn4r-lqaaa-aaaao-baxwq-cai", "lang": "Rust", "blocks": ["B01","B02","B03","B04"], "status": "ONLINE", "commands": ["genesis_object","genesis_module","reset","get_state","apply_morphism","apply_functor","compose","delta","is_accepting","schedule","invariant","validate_state","translate_morphism","bridge_btc","bridge_eth","secure_utxo","ptu47_audit","sanitize_prompt","fuzz_test","collapse_test","quantum_clock"]},
+        {"layer_id": "L9", "name": "x39_bases (Motor Algebraico)", "canister": "br5f7-7uaaa-aaaao-baxya-cai", "lang": "Rust", "blocks": ["B01","B02","B03","B04"], "status": "ONLINE", "commands": ["genesis_object","genesis_module","reset","get_state","apply_morphism","apply_functor","compose","delta","is_accepting","schedule","invariant","validate_state","translate_morphism","bridge_btc","bridge_eth","secure_utxo","ptu47_audit","sanitize_prompt","fuzz_test","collapse_test","quantum_clock"]},
     ]
     for ld in layer_data:
         ld["last_check"] = datetime.now(timezone.utc).isoformat()

@@ -61,7 +61,7 @@ sleep 2
 # SECCION 1: L9 — MOTOR ALGEBRAICO (x39_bases)
 # ============================================================
 echo -e "${RED}${BOLD}>> SECCION 1: CAPA L9 — ALGEBRA DE CATEGORIAS (x39_bases)${NC}"
-echo -e "${DIM}   Canister: arn4r-lqaaa-aaaao-baxwq-cai | Rust | Bloques B01-B04${NC}"
+echo -e "${DIM}   Canister: br5f7-7uaaa-aaaao-baxya-cai | Rust | Bloques B01-B04${NC}"
 separator
 
 # L9 - genesis_object
@@ -167,7 +167,7 @@ sleep 2
 # ============================================================
 echo ""
 echo -e "${RED}${BOLD}>> SECCION 3: CAPA L6 — OMNICHAIN (Cross-Chain Bridge)${NC}"
-echo -e "${DIM}   Canister: adlli-haaaa-aaaao-baxvq-cai | Rust | Bloques B15-B18${NC}"
+echo -e "${DIM}   Canister: b77nh-hiaaa-aaaao-baxxa-cai | Rust | Bloques B15-B18${NC}"
 separator
 
 # L6 - bridgeToBitcoin
