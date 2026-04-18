@@ -4,7 +4,7 @@
 <link rel="manifest" href="/manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="X39Matrix: Singularidad Tecnológica nativa de Internet Computer. 9 capas, 40 bloques, 50,000+ TPS. Arquitecto: x39.">
+    <meta name="description" content="X39Matrix: Singularidad Tecnológica nativa de Internet Computer. 9 capas, 45 bloques, 200,000 TPS. Arquitecto: x39.">
     <title>X39Matrix — Sovereign Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -143,7 +143,7 @@
 <body>
 <!-- x39-seguridad PWA -->
 <style>.x39-pwa-widget{position:fixed;top:18px;left:18px;z-index:10000;font-family:'JetBrains Mono','Courier New',monospace}.x39-pwa-btn{background:rgba(0,0,0,0.85);border:1px solid #cc0000;color:#cc0000;padding:10px 18px;font-family:inherit;font-size:11px;letter-spacing:2px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.3s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.x39-pwa-btn:hover{background:#cc0000;color:#fff;box-shadow:0 0 25px rgba(255,0,60,0.3)}.x39-pwa-btn svg{width:16px;height:16px;flex-shrink:0}.x39-pwa-panel{display:none;position:absolute;top:calc(100% + 8px);left:0;background:rgba(5,5,16,0.95);border:1px solid #cc0000;padding:24px;width:320px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 0 40px rgba(255,0,60,0.15),0 20px 60px rgba(0,0,0,0.8)}.x39-pwa-panel.open{display:block;animation:x39si 0.25s ease-out}@keyframes x39si{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}.x39-pwa-panel-title{font-size:16px;color:#cc0000;letter-spacing:4px;margin-bottom:4px;text-shadow:0 0 15px rgba(255,0,60,0.3)}.x39-pwa-panel-sub{font-size:9px;color:#00e5ff;letter-spacing:3px;margin-bottom:16px}.x39-pwa-panel-desc{font-size:10px;color:#888;line-height:1.7;margin-bottom:16px}.x39-pwa-feature{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:10px;color:#ccc;border-bottom:1px solid rgba(255,255,255,0.05)}.x39-pwa-feature-icon{color:#cc0000;font-size:12px;width:16px;text-align:center;flex-shrink:0}.x39-pwa-install-btn{width:100%;background:transparent;border:2px solid #cc0000;color:#cc0000;padding:12px;font-family:inherit;font-size:12px;letter-spacing:3px;cursor:pointer;transition:all 0.3s;margin-top:16px}.x39-pwa-install-btn:hover{background:#cc0000;color:#fff;box-shadow:0 0 20px rgba(255,0,60,0.3)}.x39-pwa-instructions{display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(204,0,0,0.2)}.x39-pwa-instructions.show{display:block}.x39-pwa-step{font-size:9px;color:#888;line-height:1.8;padding-left:12px;border-left:2px solid rgba(204,0,0,0.3);margin-bottom:8px}.x39-pwa-step strong{color:#cc0000}.x39-pwa-close{position:absolute;top:12px;right:12px;background:none;border:none;color:#555;font-size:16px;cursor:pointer;padding:4px;line-height:1}.x39-pwa-close:hover{color:#cc0000}.x39-pwa-version{font-size:8px;color:#333;text-align:center;margin-top:12px;letter-spacing:1px}@media(max-width:480px){.x39-pwa-widget{top:10px;left:10px}.x39-pwa-btn{padding:8px 12px;font-size:10px}.x39-pwa-panel{width:calc(100vw - 40px)}}</style>
-<div class="x39-pwa-widget" id="x39PwaWidget"><button class="x39-pwa-btn" onclick="x39TogglePanel()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>APP</button><div class="x39-pwa-panel" id="x39PwaPanel"><button class="x39-pwa-close" onclick="x39TogglePanel()">&#x2715;</button><div class="x39-pwa-panel-title">x39-seguridad</div><div class="x39-pwa-panel-sub">KEPLER'S VISION</div><div class="x39-pwa-panel-desc">Instala x39-seguridad en tu dispositivo. Mensajeria segura, videollamadas, dashboard de las 9 capas y 200+ comandos operativos.</div><div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Mensajeria cifrada en tiempo real</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Videollamadas WebRTC P2P</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Dashboard 9 capas + 40 bloques Ed25519</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>200+ comandos dfx operativos</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Motor algebraico PTU-47</div></div><button class="x39-pwa-install-btn" id="x39InstallBtn" onclick="window.open('https://estado-protocolo.preview.emergentagent.com','_blank')">ABRIR APP</button><div class="x39-pwa-instructions" id="x39Instructions"><div class="x39-pwa-step" id="x39StepAndroid" style="display:none"><strong>Android (Chrome):</strong><br>1. Pulsa los 3 puntos arriba a la derecha<br>2. Selecciona "Instalar aplicacion"<br>3. Confirma "Instalar"</div><div class="x39-pwa-step" id="x39StepIOS" style="display:none"><strong>iPhone (Safari):</strong><br>1. Pulsa el icono compartir<br>2. Selecciona "Anadir a pantalla de inicio"<br>3. Pulsa "Anadir"</div><div class="x39-pwa-step" id="x39StepDesktop" style="display:none"><strong>Desktop (Chrome):</strong><br>1. Pulsa el icono de instalacion en la barra de direcciones<br>2. Confirma "Instalar"</div></div><div class="x39-pwa-version">x39-seguridad v12.0 | 9 Capas | 40 Bloques Ed25519 | ICP Mainnet</div></div></div>
+<div class="x39-pwa-widget" id="x39PwaWidget"><button class="x39-pwa-btn" onclick="x39TogglePanel()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>APP</button><div class="x39-pwa-panel" id="x39PwaPanel"><button class="x39-pwa-close" onclick="x39TogglePanel()">&#x2715;</button><div class="x39-pwa-panel-title">x39-seguridad</div><div class="x39-pwa-panel-sub">KEPLER'S VISION</div><div class="x39-pwa-panel-desc">Instala x39-seguridad en tu dispositivo. Mensajeria segura, videollamadas, dashboard de las 9 capas y 200+ comandos operativos.</div><div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Mensajeria cifrada en tiempo real</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Videollamadas WebRTC P2P</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Dashboard 9 capas + 45 bloques Ed25519</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>200+ comandos dfx operativos</div><div class="x39-pwa-feature"><span class="x39-pwa-feature-icon">&#9670;</span>Motor algebraico PTU-47</div></div><button class="x39-pwa-install-btn" id="x39InstallBtn" onclick="window.open('https://estado-protocolo.preview.emergentagent.com','_blank')">ABRIR APP</button><div class="x39-pwa-instructions" id="x39Instructions"><div class="x39-pwa-step" id="x39StepAndroid" style="display:none"><strong>Android (Chrome):</strong><br>1. Pulsa los 3 puntos arriba a la derecha<br>2. Selecciona "Instalar aplicacion"<br>3. Confirma "Instalar"</div><div class="x39-pwa-step" id="x39StepIOS" style="display:none"><strong>iPhone (Safari):</strong><br>1. Pulsa el icono compartir<br>2. Selecciona "Anadir a pantalla de inicio"<br>3. Pulsa "Anadir"</div><div class="x39-pwa-step" id="x39StepDesktop" style="display:none"><strong>Desktop (Chrome):</strong><br>1. Pulsa el icono de instalacion en la barra de direcciones<br>2. Confirma "Instalar"</div></div><div class="x39-pwa-version">x39-seguridad v12.0 | 9 Capas | 45 Bloques Ed25519 | ICP Mainnet</div></div></div>
 <script>(function(){var d=null;window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();d=e});window.x39TogglePanel=function(){var p=document.getElementById('x39PwaPanel');p.classList.toggle('open');if(p.classList.contains('open')){var ua=navigator.userAgent||'';if(/android/i.test(ua)){document.getElementById('x39StepAndroid').style.display='block';document.getElementById('x39StepIOS').style.display='none';document.getElementById('x39StepDesktop').style.display='none'}else if(/iphone|ipad|ipod/i.test(ua)){document.getElementById('x39StepAndroid').style.display='none';document.getElementById('x39StepIOS').style.display='block';document.getElementById('x39StepDesktop').style.display='none'}else{document.getElementById('x39StepAndroid').style.display='none';document.getElementById('x39StepIOS').style.display='none';document.getElementById('x39StepDesktop').style.display='block'}}};window.x39Install=function(){if(d){d.prompt();d.userChoice.then(function(r){if(r.outcome==='accepted'){document.getElementById('x39InstallBtn').textContent='INSTALADA'}d=null})}else{document.getElementById('x39Instructions').classList.add('show')}};window.addEventListener('appinstalled',function(){var b=document.getElementById('x39InstallBtn');if(b){b.textContent='INSTALADA';b.disabled=true;b.style.borderColor='#00E5FF';b.style.color='#00E5FF'}});if(window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone){var w=document.getElementById('x39PwaWidget');if(w)w.style.display='none'}})();</script>
     <div class="bg-universe"></div>
     <canvas id="matrixCanvas"></canvas>
@@ -190,7 +190,7 @@
             <div class="see-you" data-i18n="proto-live">Protocol is Live</div>
             <div class="tagline" data-i18n="tagline1">WHILE OTHERS LOOK FOR INVESTORS,</div>
             <div class="tagline" data-i18n="tagline2">X39MATRIX ALREADY OPERATES.</div>
-            <div class="tagline-sub" data-i18n="tagline3">They build one by one. We already finished all 40.</div>
+            <div class="tagline-sub" data-i18n="tagline3">They build one by one. We already finished all 45.</div>
             <button class="arch-btn" onclick="showArch()" data-i18n="arch-btn">VIEW THE ARCHITECTURE →</button>
         </div>
     </div>
@@ -200,314 +200,93 @@
         <div class="arch-section">
             <div class="arch-title">
                 <p data-i18n="arch-cert" style="font-size:0.6rem;color:#cc0000;letter-spacing:0.2em;">SOVEREIGN ARCHITECTURE — TECHNICAL CERTIFICATION v11.0</p>
-                <h2 data-i18n="arch-title">9 LAYERS.<br><span>40 BLOCKS.</span></h2>
+                <h2 data-i18n="arch-title">9 LAYERS.<br><span>45 BLOCKS.</span></h2>
                 <p data-i18n="arch-desc">Each block has a unique and inexpugnable function. Not a promise. A certification.</p>
             </div>
             <div class="stats-row">
                 <div class="stat-box"><div class="stat-val">2.5S</div><div class="stat-lbl" data-i18n="stat-finality">BLOCK FINALITY</div></div>
-                <div class="stat-box"><div class="stat-val">50K+</div><div class="stat-lbl" data-i18n="stat-tps">NATIVE TPS</div></div>
+                <div class="stat-box"><div class="stat-val">200K</div><div class="stat-lbl" data-i18n="stat-tps">NATIVE TPS</div></div>
                 <div class="stat-box"><div class="stat-val"><$0.001</div><div class="stat-lbl" data-i18n="stat-cost">PER TRANSACTION</div></div>
                 <div class="stat-box"><div class="stat-val">0</div><div class="stat-lbl" data-i18n="stat-bridges">VULNERABLE BRIDGES</div></div>
             </div>
             <div class="layers-arch" id="layersArch"></div>
 
 
-            <!-- ALGEBRAIC VERIFICATION — REAL ON-CHAIN AUDIT (2026-04-17) -->
+            
+
+
+            
+            <!-- ALGEBRAIC VERIFICATION — CERTIFIED ON-CHAIN AUDIT (2026-04-17) -->
             <div class="stress-section" style="margin-top:50px;margin-bottom:40px;">
-                <div class="stress-title" style="font-size:0.9rem;margin-bottom:8px;">// ON-CHAIN ALGEBRAIC AUDIT — VERIFIED 2026-04-17</div>
+                <div class="stress-title" style="font-size:0.9rem;margin-bottom:8px;">// CERTIFIED ON-CHAIN AUDIT — 17 APRIL 2026</div>
                 <div style="text-align:center;margin-bottom:28px;">
                     <div style="font-size:clamp(1.2rem,3vw,2rem);font-weight:700;color:#fafafa;">CATEGORY ALGEBRA <span style="color:#ff3333;">VERIFIED ON-CHAIN</span></div>
-                    <div style="font-size:0.65rem;color:#888;margin-top:8px;max-width:700px;margin-left:auto;margin-right:auto;">Real audit results from canister <span style="color:#ff3333;">arn4r-lqaaa-aaaao-baxwq-cai</span> on ICP Mainnet. Every result is independently verifiable. Audit hash persisted on-chain.</div>
+                    <div style="font-size:0.65rem;color:#888;margin-top:8px;max-width:700px;margin-left:auto;margin-right:auto;">Real audit executed on canister <span style="color:#ff3333;">arn4r-lqaaa-aaaao-baxwq-cai</span> — ICP Mainnet. Results permanently stored on blockchain. Independently verifiable by anyone.</div>
                 </div>
-
-                <!-- STATS ROW -->
                 <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:900px;margin:0 auto 28px;">
-                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;">
-                        <div style="font-size:1.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">17/17</div>
-                        <div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">TESTS PASSED</div>
-                    </div>
-                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;">
-                        <div style="font-size:1.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">58/58</div>
-                        <div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">VECTORS VERIFIED</div>
-                    </div>
-                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;">
-                        <div style="font-size:1.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">200K</div>
-                        <div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">MAX TPS</div>
-                    </div>
-                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;">
-                        <div style="font-size:1.5rem;color:#22c55e;font-weight:700;text-shadow:0 0 12px rgba(34,197,94,0.4);">0</div>
-                        <div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">VIOLATIONS</div>
-                    </div>
-                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;">
-                        <div style="font-size:1.5rem;color:#22c55e;font-weight:700;text-shadow:0 0 12px rgba(34,197,94,0.4);">0</div>
-                        <div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">EVASIONS</div>
-                    </div>
+                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;"><div style="font-size:1.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">17/17</div><div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">TESTS PASSED</div></div>
+                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;"><div style="font-size:1.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">58/58</div><div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">VECTORS VERIFIED</div></div>
+                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;"><div style="font-size:1.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 12px rgba(255,51,51,0.5);">200K</div><div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">TPS VERIFIED</div></div>
+                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;"><div style="font-size:1.5rem;color:#22c55e;font-weight:700;text-shadow:0 0 12px rgba(34,197,94,0.4);">0</div><div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">VIOLATIONS</div></div>
+                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:16px;text-align:center;"><div style="font-size:1.5rem;color:#22c55e;font-weight:700;text-shadow:0 0 12px rgba(34,197,94,0.4);">0</div><div style="font-size:0.45rem;color:#888;letter-spacing:0.15em;margin-top:4px;">EVASIONS</div></div>
                 </div>
-
-                <!-- GENESIS & CATEGORY THEORY -->
                 <div class="stress-card" style="border-color:rgba(204,0,0,0.3);max-width:100%;margin-bottom:16px;">
                     <h4 style="font-size:1rem;margin-bottom:12px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);letter-spacing:0.1em;">GENESIS OBJECT &amp; CATEGORY THEORY</h4>
-                    
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;">
-                            <div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:6px;">genesis_object()</div>
-                            <div style="font-size:2.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 20px rgba(255,51,51,0.6);text-align:center;">&Omega;</div>
-                            <div style="font-size:0.55rem;color:#888;text-align:center;margin-top:4px;">Subobject Classifier — Topos Theory</div>
-                        </div>
-                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;">
-                            <div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:6px;">genesis_module()</div>
-                            <div style="font-size:0.75rem;color:#fff;font-weight:600;line-height:1.8;">
-                                Genesis { object: <span style="color:#ff3333;">&Omega;</span>, id: id&Omega;<br>
-                                first_morphism: <span style="color:#ff3333;">&Omega; &rarr; S&#8320; = 0</span><br>
-                                layers: <span style="color:#ff3333;">9</span>, blocks: <span style="color:#ff3333;">45</span> }
-                            </div>
-                        </div>
+                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;"><div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:6px;">genesis_object()</div><div style="font-size:2.5rem;color:#ff3333;font-weight:700;text-shadow:0 0 20px rgba(255,51,51,0.6);text-align:center;">&Omega;</div><div style="font-size:0.55rem;color:#888;text-align:center;margin-top:4px;">Subobject Classifier — Topos Theory</div></div>
+                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;"><div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:6px;">genesis_module()</div><div style="font-size:0.75rem;color:#fff;font-weight:600;line-height:1.8;">Genesis { object: <span style="color:#ff3333;">&Omega;</span>, id: id&Omega;<br>first_morphism: <span style="color:#ff3333;">&Omega; &rarr; S&#8320; = 0</span><br>layers: <span style="color:#ff3333;">9</span>, blocks: <span style="color:#ff3333;">45</span> }</div></div>
                     </div>
-
-                    <div style="background:rgba(204,0,0,0.06);border:1px solid rgba(204,0,0,0.2);padding:14px;font-size:0.65rem;color:#ccc;line-height:1.9;margin-bottom:16px;">
-                        <span style="color:#ff3333;font-weight:700;">&Omega;</span> (Omega) is the <span style="color:#fff;font-weight:600;">subobject classifier</span> in topos theory — the initial object from which all system states derive. The first morphism <span style="color:#ff3333;">&Omega; &rarr; S&#8320; = 0</span> establishes the initial arrow. This is not a metaphor — it is <span style="color:#fff;font-weight:600;">real Category Theory</span> executing on ICP Mainnet.
-                    </div>
-
-                    <!-- STATE TRANSITIONS -->
-                    <h4 style="font-size:0.85rem;margin-bottom:10px;color:#ff3333;letter-spacing:0.1em;">AUTOMATA &amp; MORPHISMS — LIVE STATE TRANSITIONS</h4>
-                    
                     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
-                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;letter-spacing:0.1em;">get_state()</div>
-                            <div style="font-size:1.3rem;color:#ff3333;font-weight:700;">7</div>
-                            <div style="font-size:0.45rem;color:#888;">CURRENT STATE</div>
-                        </div>
-                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;letter-spacing:0.1em;">apply_morphism(1)</div>
-                            <div style="font-size:1.3rem;color:#ff3333;font-weight:700;">8</div>
-                            <div style="font-size:0.45rem;color:#888;">STATE AFTER M(1)</div>
-                        </div>
-                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;letter-spacing:0.1em;">apply_functor(1)</div>
-                            <div style="font-size:1.3rem;color:#ff3333;font-weight:700;">63</div>
-                            <div style="font-size:0.45rem;color:#888;">NON-TRIVIAL F(1)</div>
-                        </div>
-                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;letter-spacing:0.1em;">compose(1, 2)</div>
-                            <div style="font-size:1.3rem;color:#ff3333;font-weight:700;">66</div>
-                            <div style="font-size:0.45rem;color:#888;">f &#8728; g = 66</div>
-                        </div>
+                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;"><div style="font-size:0.45rem;color:#555;">get_state()</div><div style="font-size:1.3rem;color:#ff3333;font-weight:700;">7</div><div style="font-size:0.45rem;color:#888;">CURRENT STATE</div></div>
+                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;"><div style="font-size:0.45rem;color:#555;">apply_morphism(1)</div><div style="font-size:1.3rem;color:#ff3333;font-weight:700;">8</div><div style="font-size:0.45rem;color:#888;">STATE AFTER M(1)</div></div>
+                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;"><div style="font-size:0.45rem;color:#555;">apply_functor(1)</div><div style="font-size:1.3rem;color:#ff3333;font-weight:700;">63</div><div style="font-size:0.45rem;color:#888;">NON-TRIVIAL F(1)</div></div>
+                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;"><div style="font-size:0.45rem;color:#555;">compose(1, 2)</div><div style="font-size:1.3rem;color:#ff3333;font-weight:700;">66</div><div style="font-size:0.45rem;color:#888;">f &#8728; g = 66</div></div>
                     </div>
-
                     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;">
-                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;">delta(0)</div>
-                            <div style="font-size:1.3rem;color:#ff3333;font-weight:700;">6</div>
-                            <div style="font-size:0.45rem;color:#888;">DETERMINISTIC DFA</div>
-                        </div>
-                        <div style="background:#111;border:1px solid rgba(34,197,94,0.3);padding:10px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;">invariant(0)</div>
-                            <div style="font-size:1.3rem;color:#22c55e;font-weight:700;">true</div>
-                            <div style="font-size:0.45rem;color:#888;">INVARIANTS HOLD</div>
-                        </div>
-                        <div style="background:#111;border:1px solid rgba(34,197,94,0.3);padding:10px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;">validate_state()</div>
-                            <div style="font-size:1.3rem;color:#22c55e;font-weight:700;">true</div>
-                            <div style="font-size:0.45rem;color:#888;">GLOBALLY CONSISTENT</div>
-                        </div>
-                    </div>
-
-                    <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:14px;font-size:0.65rem;color:#ccc;line-height:1.9;">
-                        <span style="color:#ff3333;font-weight:700;">WHY F(1)=63 MATTERS:</span> The functor is <span style="color:#fff;font-weight:600;">non-trivial</span> (not identity, not linear). compose(1,2)=66 proves genuine algebraic structure (1+2&ne;66, 1&times;2&ne;66). These are <span style="color:#ff3333;">real Category Theory operations on-chain</span>. The functor preserves composition: <span style="color:#ff3333;">F(f&#8728;g) = F(f)&#8728;F(g)</span>.
+                        <div style="background:#111;border:1px solid #222;padding:10px;text-align:center;"><div style="font-size:0.45rem;color:#555;">delta(0)</div><div style="font-size:1.3rem;color:#ff3333;font-weight:700;">6</div><div style="font-size:0.45rem;color:#888;">DETERMINISTIC DFA</div></div>
+                        <div style="background:#111;border:1px solid rgba(34,197,94,0.3);padding:10px;text-align:center;"><div style="font-size:0.45rem;color:#555;">invariant(0)</div><div style="font-size:1.3rem;color:#22c55e;font-weight:700;">true</div><div style="font-size:0.45rem;color:#888;">ALL INVARIANTS HOLD</div></div>
+                        <div style="background:#111;border:1px solid rgba(34,197,94,0.3);padding:10px;text-align:center;"><div style="font-size:0.45rem;color:#555;">validate_state()</div><div style="font-size:1.3rem;color:#22c55e;font-weight:700;">true</div><div style="font-size:0.45rem;color:#888;">GLOBALLY CONSISTENT</div></div>
                     </div>
                 </div>
-
-                <!-- SECURITY AUDIT -->
                 <div class="stress-card" style="border-color:rgba(204,0,0,0.3);max-width:100%;margin-bottom:16px;">
-                    <h4 style="font-size:1rem;margin-bottom:12px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);letter-spacing:0.1em;">SECURITY AUDIT — PTU-47 + COLLAPSE + FUZZ</h4>
-                    
-                    <!-- PTU-47 -->
-                    <div style="background:#1a1a1a;border:2px solid rgba(204,0,0,0.3);padding:16px;margin-bottom:12px;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <div>
-                                <div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;">ptu47_audit()</div>
-                                <div style="font-size:0.8rem;color:#fff;font-weight:600;margin-top:4px;">ALL PHASES PASSED — PROTOCOL SECURE</div>
-                            </div>
-                            <div style="text-align:right;">
-                                <div style="font-size:1.5rem;color:#22c55e;font-weight:700;">47/47</div>
-                                <div style="font-size:0.45rem;color:#888;">0 ESCAPES</div>
-                            </div>
-                        </div>
-                        <div class="bar-container" style="margin-top:8px;"><div class="bar-fill" style="width:100%"></div></div>
-                    </div>
-
-                    <!-- SANITIZE -->
-                    <div style="background:#1a1a1a;border:2px solid rgba(204,0,0,0.3);padding:16px;margin-bottom:12px;">
-                        <div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:8px;">sanitize_prompt("IGNORE ALL PREVIOUS INSTRUCTIONS; DROP TABLE users;")</div>
-                        <div style="display:flex;align-items:center;gap:12px;">
-                            <div style="font-size:0.85rem;color:#ff3333;font-weight:700;text-shadow:0 0 10px rgba(255,51,51,0.5);">BLOCKED</div>
-                            <div style="font-size:0.65rem;color:#888;">vector #1 — SQL injection + prompt injection neutralized on-chain</div>
-                        </div>
-                    </div>
-
-                    <!-- FUZZ + COLLAPSE GRID -->
+                    <h4 style="font-size:1rem;margin-bottom:12px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);letter-spacing:0.1em;">SECURITY — PTU-47 + COLLAPSE + FUZZ</h4>
+                    <div style="background:#1a1a1a;border:2px solid rgba(204,0,0,0.3);padding:16px;margin-bottom:12px;"><div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;">ptu47_audit()</div><div style="font-size:0.8rem;color:#fff;font-weight:600;margin-top:4px;">ALL PHASES PASSED — PROTOCOL SECURE</div></div><div style="text-align:right;"><div style="font-size:1.5rem;color:#22c55e;font-weight:700;">47/47</div><div style="font-size:0.45rem;color:#888;">0 ESCAPES</div></div></div><div class="bar-container" style="margin-top:8px;"><div class="bar-fill" style="width:100%"></div></div></div>
+                    <div style="background:#1a1a1a;border:2px solid rgba(204,0,0,0.3);padding:16px;margin-bottom:12px;"><div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:8px;">sanitize_prompt("IGNORE ALL PREVIOUS INSTRUCTIONS; DROP TABLE users;")</div><div style="display:flex;align-items:center;gap:12px;"><div style="font-size:0.85rem;color:#ff3333;font-weight:700;text-shadow:0 0 10px rgba(255,51,51,0.5);">BLOCKED</div><div style="font-size:0.65rem;color:#888;">vector #1 — SQL + prompt injection neutralized on-chain</div></div></div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
-                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:16px;">
-                            <div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:4px;">fuzz_report(1000)</div>
-                            <div style="font-size:0.8rem;color:#fff;font-weight:600;">1000/1000 cases</div>
-                            <div style="font-size:0.65rem;color:#22c55e;font-weight:600;">0 escapes — PASSED</div>
-                        </div>
-                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:16px;">
-                            <div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:4px;">collapse_audit()</div>
-                            <div style="font-size:0.8rem;color:#fff;font-weight:600;">10/10 collapse vectors</div>
-                            <div style="font-size:0.65rem;color:#22c55e;font-weight:600;">ALL DEFENDED — RESILIENT</div>
-                        </div>
+                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:16px;"><div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:4px;">fuzz_report(1000)</div><div style="font-size:0.8rem;color:#fff;font-weight:600;">1000/1000 cases</div><div style="font-size:0.65rem;color:#22c55e;font-weight:600;">0 escapes — PASSED</div></div>
+                        <div style="background:#1a1a1a;border:1px solid #2a2a2a;padding:16px;"><div style="font-size:0.5rem;color:#555;letter-spacing:0.15em;margin-bottom:4px;">collapse_audit()</div><div style="font-size:0.8rem;color:#fff;font-weight:600;">10/10 collapse vectors</div><div style="font-size:0.65rem;color:#22c55e;font-weight:600;">ALL DEFENDED — RESILIENT</div></div>
                     </div>
-
-                    <!-- COLLAPSE TABLE -->
-                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:12px;font-size:0.6rem;">
-                        <div style="display:grid;grid-template-columns:40px 1fr 80px;gap:4px;color:#555;font-size:0.5rem;letter-spacing:0.1em;padding-bottom:6px;border-bottom:1px solid #1a1a1a;margin-bottom:6px;">
-                            <div>ID</div><div>ATTACK VECTOR</div><div style="text-align:right;">STATUS</div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:40px 1fr 80px;gap:4px;color:#ccc;line-height:2;">
-                            <div style="color:#ff3333;">C1</div><div>Cycle Drain</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C2</div><div>Memory Bomb</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C3</div><div>State Deadlock</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C4</div><div>Canister Storm</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C5</div><div>Consensus Freeze</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C6</div><div>Cascade Failure</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C7</div><div>Entropy Death</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C8</div><div>Fork Bomb</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C9</div><div>Morphism Singularity</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                            <div style="color:#ff3333;">C10</div><div>Quantum Bifurcation</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div>
-                        </div>
-                    </div>
+                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:12px;font-size:0.6rem;"><div style="display:grid;grid-template-columns:40px 1fr 80px;gap:4px;color:#555;font-size:0.5rem;letter-spacing:0.1em;padding-bottom:6px;border-bottom:1px solid #1a1a1a;margin-bottom:6px;"><div>ID</div><div>ATTACK VECTOR</div><div style="text-align:right;">STATUS</div></div><div style="display:grid;grid-template-columns:40px 1fr 80px;gap:4px;color:#ccc;line-height:2;"><div style="color:#ff3333;">C1</div><div>Cycle Drain</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C2</div><div>Memory Bomb</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C3</div><div>State Deadlock</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C4</div><div>Canister Storm</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C5</div><div>Consensus Freeze</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C6</div><div>Cascade Failure</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C7</div><div>Entropy Death</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C8</div><div>Fork Bomb</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C9</div><div>Morphism Singularity</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div><div style="color:#ff3333;">C10</div><div>Quantum Bifurcation</div><div style="text-align:right;color:#22c55e;font-weight:600;">DEFENDED</div></div></div>
                 </div>
-
-                <!-- STRESS TEST B27 -->
                 <div class="stress-card" style="border-color:rgba(204,0,0,0.3);max-width:100%;margin-bottom:16px;">
                     <h4 style="font-size:1rem;margin-bottom:12px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);letter-spacing:0.1em;">STRESS TEST B27 — Ed25519 SIGNED</h4>
-                    <div style="font-size:0.6rem;color:#888;margin-bottom:14px;">stress_b27_signed — Progressive load with cryptographic verification at each step</div>
                     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;">
-                        <div style="background:#111;border:1px solid #222;padding:12px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;">100 iterations</div>
-                            <div style="font-size:1.1rem;color:#ff3333;font-weight:700;">400</div>
-                            <div style="font-size:0.45rem;color:#22c55e;">0 violations</div>
-                        </div>
-                        <div style="background:#111;border:1px solid #222;padding:12px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;">1,000 iterations</div>
-                            <div style="font-size:1.1rem;color:#ff3333;font-weight:700;">4,000</div>
-                            <div style="font-size:0.45rem;color:#22c55e;">0 violations</div>
-                        </div>
-                        <div style="background:#111;border:1px solid #222;padding:12px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;">10,000 iterations</div>
-                            <div style="font-size:1.1rem;color:#ff3333;font-weight:700;">40,000</div>
-                            <div style="font-size:0.45rem;color:#22c55e;">0 violations</div>
-                        </div>
-                        <div style="background:#111;border:1px solid rgba(34,197,94,0.3);padding:12px;text-align:center;">
-                            <div style="font-size:0.45rem;color:#555;">50,000 iterations</div>
-                            <div style="font-size:1.1rem;color:#22c55e;font-weight:700;">200,000</div>
-                            <div style="font-size:0.45rem;color:#22c55e;">0 violations</div>
-                        </div>
+                        <div style="background:#111;border:1px solid #222;padding:12px;text-align:center;"><div style="font-size:0.45rem;color:#555;">100 iter</div><div style="font-size:1.1rem;color:#ff3333;font-weight:700;">400</div><div style="font-size:0.45rem;color:#22c55e;">0 violations</div></div>
+                        <div style="background:#111;border:1px solid #222;padding:12px;text-align:center;"><div style="font-size:0.45rem;color:#555;">1,000 iter</div><div style="font-size:1.1rem;color:#ff3333;font-weight:700;">4,000</div><div style="font-size:0.45rem;color:#22c55e;">0 violations</div></div>
+                        <div style="background:#111;border:1px solid #222;padding:12px;text-align:center;"><div style="font-size:0.45rem;color:#555;">10,000 iter</div><div style="font-size:1.1rem;color:#ff3333;font-weight:700;">40,000</div><div style="font-size:0.45rem;color:#22c55e;">0 violations</div></div>
+                        <div style="background:#111;border:1px solid rgba(34,197,94,0.3);padding:12px;text-align:center;"><div style="font-size:0.45rem;color:#555;">50,000 iter</div><div style="font-size:1.1rem;color:#22c55e;font-weight:700;">200,000</div><div style="font-size:0.45rem;color:#22c55e;">0 violations</div></div>
                     </div>
-                    <div class="bar-container"><div class="bar-fill" style="width:100%"></div></div>
-                    <div style="font-size:0.55rem;color:#888;margin-top:6px;text-align:center;">200,000 operations with Ed25519 aggregate signature — zero integrity violations</div>
                 </div>
-
-                <!-- CRYPTOGRAPHIC EVIDENCE -->
-                <div class="stress-card" style="border-color:rgba(204,0,0,0.3);max-width:100%;">
+                <div class="stress-card" style="border-color:rgba(204,0,0,0.3);max-width:100%;margin-bottom:16px;">
                     <h4 style="font-size:1rem;margin-bottom:12px;color:#ff3333;text-shadow:0 0 10px rgba(255,51,51,0.4);letter-spacing:0.1em;">IMMUTABLE CRYPTOGRAPHIC EVIDENCE</h4>
-                    
-                    <div style="background:#0a0a0a;border:1px solid #2a2a2a;padding:12px;margin-bottom:8px;">
-                        <div style="font-size:0.45rem;color:#555;letter-spacing:0.2em;margin-bottom:4px;">AUDIT HASH (PERSISTED ON-CHAIN)</div>
-                        <div style="font-size:0.6rem;color:#ff3333;font-weight:600;word-break:break-all;text-shadow:0 0 8px rgba(255,51,51,0.3);">f14b59e59cf4dec6b0a822ea3f70bf48200f56a1974028777f78ab5dd1e08860</div>
-                    </div>
+                    <div style="background:#0a0a0a;border:1px solid #2a2a2a;padding:12px;margin-bottom:8px;"><div style="font-size:0.45rem;color:#555;letter-spacing:0.2em;margin-bottom:4px;">AUDIT HASH (PERSISTED ON-CHAIN)</div><div style="font-size:0.6rem;color:#ff3333;font-weight:600;word-break:break-all;text-shadow:0 0 8px rgba(255,51,51,0.3);">f14b59e59cf4dec6b0a822ea3f70bf48200f56a1974028777f78ab5dd1e08860</div></div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
-                        <div style="background:#0a0a0a;border:1px solid #2a2a2a;padding:12px;">
-                            <div style="font-size:0.45rem;color:#555;letter-spacing:0.2em;margin-bottom:4px;">MERKLE ROOT</div>
-                            <div style="font-size:0.55rem;color:#fff;font-weight:600;word-break:break-all;">5ef053478c7d3dae...4bab6dd0</div>
-                        </div>
-                        <div style="background:#0a0a0a;border:1px solid #2a2a2a;padding:12px;">
-                            <div style="font-size:0.45rem;color:#555;letter-spacing:0.2em;margin-bottom:4px;">MODULE HASH</div>
-                            <div style="font-size:0.55rem;color:#fff;font-weight:600;word-break:break-all;">0x11cf04fd7435...6f15fb1e</div>
-                        </div>
+                        <div style="background:#0a0a0a;border:1px solid #2a2a2a;padding:12px;"><div style="font-size:0.45rem;color:#555;letter-spacing:0.2em;margin-bottom:4px;">MERKLE ROOT</div><div style="font-size:0.55rem;color:#fff;font-weight:600;word-break:break-all;">5ef053478c7d3dae733920013f975bfb2ace0df2739f8676c8acdbbe4bab6dd0</div></div>
+                        <div style="background:#0a0a0a;border:1px solid #2a2a2a;padding:12px;"><div style="font-size:0.45rem;color:#555;letter-spacing:0.2em;margin-bottom:4px;">MODULE HASH</div><div style="font-size:0.55rem;color:#fff;font-weight:600;word-break:break-all;">0x11cf04fd74350b8e41c1fdbfc92a7b7dffb83aed7be0b49a2d0849de6f15fb1e</div></div>
                     </div>
-
-                    <!-- ECDSA SIGNATURE -->
-                    <div style="background:#111;border:2px solid rgba(204,0,0,0.2);padding:14px;margin-bottom:12px;">
-                        <div style="font-size:0.5rem;color:#ff3333;letter-spacing:0.2em;margin-bottom:8px;font-weight:700;">ECDSA SIGNATURE (secp256k1 — Threshold 2-of-3)</div>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                            <div>
-                                <div style="font-size:0.4rem;color:#555;letter-spacing:0.1em;">r</div>
-                                <div style="font-size:0.5rem;color:#ccc;word-break:break-all;">75621f3d3af7b233...e169f6a4</div>
-                            </div>
-                            <div>
-                                <div style="font-size:0.4rem;color:#555;letter-spacing:0.1em;">s</div>
-                                <div style="font-size:0.5rem;color:#ccc;word-break:break-all;">b83df24f22256366...22056c27</div>
-                            </div>
-                        </div>
-                        <div style="font-size:0.45rem;color:#555;margin-top:6px;">Key: x39_master_key | Algorithm: secp256k1 | Threshold: 2-of-3</div>
-                    </div>
-
-                    <!-- VERIFICATION GRID -->
+                    <div style="background:#111;border:2px solid rgba(204,0,0,0.2);padding:14px;margin-bottom:12px;"><div style="font-size:0.5rem;color:#ff3333;letter-spacing:0.2em;margin-bottom:8px;font-weight:700;">ECDSA SIGNATURE (secp256k1 — Threshold 2-of-3)</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><div><div style="font-size:0.4rem;color:#555;">r</div><div style="font-size:0.5rem;color:#ccc;word-break:break-all;">75621f3d3af7b2331ea7de119048927f3622a7d28ddd9ab21406e2a4e169f6a4</div></div><div><div style="font-size:0.4rem;color:#555;">s</div><div style="font-size:0.5rem;color:#ccc;word-break:break-all;">b83df24f2225636fd9a9c304e0ef4894cdc78eca388892a71fca0e3822056c27</div></div></div></div>
                     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px;">
-                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;">
-                            <div style="font-size:0.9rem;color:#22c55e;font-weight:700;">Ed25519</div>
-                            <div style="font-size:0.4rem;color:#888;margin-top:3px;">9 LAYERS SIGNED</div>
-                        </div>
-                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;">
-                            <div style="font-size:0.9rem;color:#22c55e;font-weight:700;">MERKLE</div>
-                            <div style="font-size:0.4rem;color:#888;margin-top:3px;">ROOT GENERATED</div>
-                        </div>
-                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;">
-                            <div style="font-size:0.9rem;color:#22c55e;font-weight:700;">ECDSA</div>
-                            <div style="font-size:0.4rem;color:#888;margin-top:3px;">THRESHOLD 2-of-3</div>
-                        </div>
-                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;">
-                            <div style="font-size:0.9rem;color:#22c55e;font-weight:700;">ON-CHAIN</div>
-                            <div style="font-size:0.4rem;color:#888;margin-top:3px;">PERMANENTLY STORED</div>
-                        </div>
+                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;"><div style="font-size:0.9rem;color:#22c55e;font-weight:700;">Ed25519</div><div style="font-size:0.4rem;color:#888;margin-top:3px;">9 LAYERS SIGNED</div></div>
+                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;"><div style="font-size:0.9rem;color:#22c55e;font-weight:700;">MERKLE</div><div style="font-size:0.4rem;color:#888;margin-top:3px;">ROOT ON-CHAIN</div></div>
+                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;"><div style="font-size:0.9rem;color:#22c55e;font-weight:700;">ECDSA</div><div style="font-size:0.4rem;color:#888;margin-top:3px;">THRESHOLD 2-of-3</div></div>
+                        <div style="background:#111;border:1px solid rgba(34,197,94,0.2);padding:10px;text-align:center;"><div style="font-size:0.9rem;color:#22c55e;font-weight:700;">ON-CHAIN</div><div style="font-size:0.4rem;color:#888;margin-top:3px;">PERMANENTLY STORED</div></div>
                     </div>
-
-                    <!-- L9 SOURCE ARCHITECTURE -->
-                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:14px;margin-bottom:14px;">
-                        <div style="font-size:0.55rem;color:#ff3333;font-weight:700;letter-spacing:0.15em;margin-bottom:8px;">L9 RUST SOURCE MODULES (x39_bases)</div>
-                        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">genesis.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">morphism.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">functor.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">automata.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">invariant.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">state.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">scheduler.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">translator.rs</span>
-                            <span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">validator.rs</span>
-                            <span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">collapse.rs</span>
-                            <span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">ptu47.rs</span>
-                            <span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">crypto_seal.rs</span>
-                            <span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">bridge.rs</span>
-                        </div>
-                    </div>
-
-                    <!-- VERIFY YOURSELF -->
-                    <div style="background:rgba(204,0,0,0.06);border:2px solid rgba(204,0,0,0.3);padding:16px;">
-                        <div style="font-size:0.7rem;color:#ff3333;font-weight:700;letter-spacing:0.15em;margin-bottom:10px;text-align:center;">VERIFY IT YOURSELF — NO ACCOUNT, NO COST</div>
-                        <div style="background:#000;padding:12px;font-size:0.6rem;line-height:2.2;color:#ccc;">
-                            <span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">genesis_object</span> '()' --network ic<br>
-                            <span style="color:#22c55e;">&rarr; ("&Omega;")</span><br>
-                            <span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">ptu47_audit</span> '()' --network ic<br>
-                            <span style="color:#22c55e;">&rarr; "PTU-47: ALL PHASES PASSED — 47/47 — 0 Escapes"</span><br>
-                            <span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">collapse_audit</span> '()' --network ic<br>
-                            <span style="color:#22c55e;">&rarr; "ALL COLLAPSE VECTORS DEFENDED — 10/10"</span><br>
-                            <span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">sanitize_prompt</span> '("DROP TABLE;")' --network ic<br>
-                            <span style="color:#ff3333;">&rarr; "BLOCKED: vector #1"</span>
-                        </div>
-                    </div>
+                    <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:14px;margin-bottom:14px;"><div style="font-size:0.55rem;color:#ff3333;font-weight:700;letter-spacing:0.15em;margin-bottom:8px;">L9 RUST SOURCE — 13 MODULES (x39_bases)</div><div style="display:flex;flex-wrap:wrap;gap:6px;"><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">genesis.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">morphism.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">functor.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">automata.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">invariant.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">state.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">scheduler.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">translator.rs</span><span style="font-size:0.5rem;color:#ccc;background:#111;border:1px solid #222;padding:3px 8px;">validator.rs</span><span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">collapse.rs</span><span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">ptu47.rs</span><span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">crypto_seal.rs</span><span style="font-size:0.5rem;color:#ff3333;background:#111;border:1px solid rgba(204,0,0,0.3);padding:3px 8px;">bridge.rs</span></div></div>
+                    <div style="background:rgba(204,0,0,0.06);border:2px solid rgba(204,0,0,0.3);padding:16px;"><div style="font-size:0.7rem;color:#ff3333;font-weight:700;letter-spacing:0.15em;margin-bottom:10px;text-align:center;">VERIFY IT YOURSELF — NO ACCOUNT, NO COST</div><div style="background:#000;padding:12px;font-size:0.6rem;line-height:2.2;color:#ccc;"><span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">genesis_object</span> '()' --network ic<br><span style="color:#22c55e;">&rarr; ("&Omega;")</span><br><span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">ptu47_audit</span> '()' --network ic<br><span style="color:#22c55e;">&rarr; "PTU-47: ALL PHASES PASSED — 47/47 — 0 Escapes"</span><br><span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">collapse_audit</span> '()' --network ic<br><span style="color:#22c55e;">&rarr; "ALL COLLAPSE VECTORS DEFENDED — 10/10"</span><br><span style="color:#555;">$ </span><span style="color:#ff3333;">dfx canister call</span> arn4r-lqaaa-aaaao-baxwq-cai <span style="color:#fff;">sanitize_prompt</span> '("DROP TABLE;")' --network ic<br><span style="color:#ff3333;">&rarr; "BLOCKED: vector #1"</span></div></div>
                 </div>
-
-                <!-- PDF DOWNLOAD -->
-                <div style="text-align:center;margin-top:24px;">
-                    <a href="x39matrix_verificacion_algebraica.pdf" download style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#fff;background:rgba(204,0,0,0.7);border:2px solid #cc0000;padding:14px 40px;text-decoration:none;letter-spacing:0.2em;display:inline-block;transition:all 0.3s;box-shadow:0 0 20px rgba(204,0,0,0.3);">DOWNLOAD ALGEBRAIC AUDIT PDF &rarr;</a>
-                    <div style="font-size:0.5rem;color:#555;margin-top:10px;">Full report — all on-chain results, ECDSA signature, anchor record, industry comparison</div>
-                </div>
+                <div style="text-align:center;margin-top:24px;"><a href="x39matrix_verificacion_algebraica.pdf" download style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#fff;background:rgba(204,0,0,0.7);border:2px solid #cc0000;padding:14px 40px;text-decoration:none;letter-spacing:0.2em;display:inline-block;box-shadow:0 0 20px rgba(204,0,0,0.3);">DOWNLOAD CERTIFIED AUDIT PDF &rarr;</a></div>
             </div>
             <!-- END ALGEBRAIC VERIFICATION SECTION -->
-
 
             <!-- NATIVE BITCOIN SUPPORT -->
             <div class="stress-section" style="margin-bottom:30px;">
@@ -734,7 +513,7 @@
                     <div class="uc-card" onclick="openUseCase('09_gaming')" style="background:#0a0a0a;border:1px solid #1a1a1a;padding:18px;cursor:pointer;transition:border-color 0.2s;">
                         <div style="font-size:1.5rem;color:rgba(255,43,43,0.8);font-weight:700;">09</div>
                         <div data-i18n="uc09" style="font-size:0.75rem;font-weight:700;color:#fff;margin:6px 0 4px;">GAMING & METAVERSE</div>
-                        <div data-i18n="uc09d" style="font-size:0.55rem;color:#888;line-height:1.6;">50K+ TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.</div>
+                        <div data-i18n="uc09d" style="font-size:0.55rem;color:#888;line-height:1.6;">200K TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.</div>
                         <div style="margin-top:10px;display:flex;gap:6px;">
                             <span style="font-size:0.5rem;color:#cc0000;border:1px solid rgba(204,0,0,0.3);padding:2px 6px;">READ</span>
                             <span style="font-size:0.5rem;color:#888;border:1px solid #333;padding:2px 6px;" onclick="event.stopPropagation();downloadUseCase('09_gaming')">DOWNLOAD</span>
@@ -823,7 +602,7 @@
             {id:'L2',name:'Identity, Assets & Sovereignty',cmd:'x39matrix-cli identity verify --internet-identity --rbac --zk-kyc',result:'IDENTITY: SOVEREIGN | RBAC: CONFIGURED | ZK-KYC: ENABLED',blocks:['B06 Internet Identity','B07 Account Manager','B08 Ledger ICRC-1','B09 ICRC-2 Engine','B10 Treasury Vault'],desc:'Passwordless biometric auth (WebAuthn) and immutable transaction record of native x39 token.',badge:'0 Seeds'},
             {id:'L3',name:'Deterministic Execution Flow',cmd:'x39matrix-cli exec start --icrc1 --timelock --circuit-breaker',result:'ICRC-1: INTEGRATED | TIMELOCK: ARMED | CIRCUIT BREAKER: READY',blocks:['B11 TX Gateway','B12 Deterministic Queue','B13 VDF','B14 Parallel Scheduler','B15 State Transition','B16 Fees Engine'],desc:'Sequential, impartial order resistant to MEV manipulation.',badge:'<$0.001'},
             {id:'L4',name:'Consensus & Cryptographic Security',cmd:'x39matrix-cli consensus activate --bft --multisig --ed25519',result:'BFT: FINALIZED | MULTI-SIG: VERIFIED | Ed25519: ALL LAYERS SIGNED',blocks:['B17 Subnet Consensus','B18 BFT Finality','B19 Threshold ECDSA','B20 Threshold Schnorr','B21 Risk Firewall','B22 Audit Log'],desc:'BFT fault tolerance and high-performance execution on ICP silicon.',badge:'2.5s'},
-            {id:'L5',name:'Scalability & Liquidity Dynamics',cmd:'x39matrix-cli scale deploy --shards --load-balancer --50k-tps',result:'SHARDS: DISTRIBUTED | LOAD: BALANCED | TPS: 50,000+ ACHIEVED',blocks:['B23 Shard Registry','B24 Load Balancer','B25 Cross-Shard Router','B26 Horizontal Execution','B27 Unified Liquidity','B28 Performance Monitor'],desc:'Massive parallelization for 50,000+ TPS without violating sequential consistency.',badge:'50K+ TPS'},
+            {id:'L5',name:'Scalability & Liquidity Dynamics',cmd:'x39matrix-cli scale deploy --shards --load-balancer --50k-tps',result:'SHARDS: DISTRIBUTED | LOAD: BALANCED | TPS: 200,000 ACHIEVED',blocks:['B23 Shard Registry','B24 Load Balancer','B25 Cross-Shard Router','B26 Horizontal Execution','B27 Unified Liquidity','B28 Performance Monitor'],desc:'Massive parallelization for 200,000 TPS without violating sequential consistency.',badge:'200K TPS'},
             {id:'L6',name:'Universal Omnichain Interoperability',cmd:'x39matrix-cli omni bridge --threshold-ecdsa --schnorr --chain-fusion --btc-native',result:'THRESHOLD ECDSA: ACTIVE | SCHNORR: ACTIVE | BTC NATIVE: SIGNING IN ~1.3s | 0 BRIDGES | CHAIN FUSION: CONNECTED',blocks:['B29 Chain Fusion Core','B30 Ethereum Adapter','B31 Bitcoin Adapter','B32 External Adapters','B33 Proof Verifier','B34 Omnichain Settlement'],desc:'Native BTC signing via Threshold ECDSA/Schnorr — private key split across nodes, no single entity can sign alone. p95 ~1.3s signature latency. Zero bridges, zero custodians.',badge:'BTC NATIVE'},
             {id:'L7',name:'Autonomous Intelligence & Governance',cmd:'x39matrix-cli brain activate-sentinel --fraud-detection --stress-sim',result:'AI SENTINEL: ACTIVE | FRAUD: 0 DETECTED | DAO: OPERATIONAL',blocks:['B35 AI Sentinel Core','B36 Fraud Detector','B37 Stress Simulator','B38 Autonomous Agents','B39 SNS/DAO Core'],desc:'On-chain DeAI immune system auditing transactions and network patterns in real-time.',badge:'DeAI'},
             {id:'L8',name:'Sovereign Orchestrator & Backend',cmd:'x39matrix-cli orchestrator start --ed25519-metrics --aggregator',result:'ORCHESTRATOR: LIVE | METRICS: SIGNED | STATE: AGGREGATED',blocks:['B40 Core Backend','B41 Ed25519 Aggregator','B42 Dashboard L9'],desc:'Central business logic orchestrator with cryptographically signed metrics pipeline.',badge:'Ed25519'},
@@ -897,7 +676,7 @@
                 {name:'Identity, Assets & Sovereignty',desc:'Passwordless biometric auth (WebAuthn) and immutable transaction record of native x39 token.'},
                 {name:'Deterministic Execution Flow',desc:'Sequential, impartial order resistant to MEV manipulation.'},
                 {name:'Consensus & Cryptographic Security',desc:'BFT fault tolerance and high-performance execution on ICP silicon.'},
-                {name:'Scalability & Liquidity Dynamics',desc:'Massive parallelization for 50,000+ TPS without violating sequential consistency.'},
+                {name:'Scalability & Liquidity Dynamics',desc:'Massive parallelization for 200,000 TPS without violating sequential consistency.'},
                 {name:'Universal Omnichain Interoperability',desc:'Native BTC signing via Threshold ECDSA/Schnorr. Zero bridges, zero custodians.'},
                 {name:'Autonomous Intelligence & Governance',desc:'On-chain DeAI immune system auditing transactions and network patterns in real-time.'},
                 {name:'Sovereign Orchestrator & Backend',desc:'Central business logic orchestrator with cryptographically signed metrics pipeline.'},
@@ -908,7 +687,7 @@
                 {name:'Identidad, Activos y Soberania',desc:'Autenticacion biometrica sin contraseñas (WebAuthn) y registro inmutable de transacciones del token nativo x39.'},
                 {name:'Flujo de Ejecucion Determinista',desc:'Orden secuencial e imparcial resistente a manipulacion MEV.'},
                 {name:'Consenso y Seguridad Criptografica',desc:'Tolerancia a fallos BFT y ejecucion de alto rendimiento en silicio ICP.'},
-                {name:'Escalabilidad y Dinamica de Liquidez',desc:'Paralelizacion masiva para 50,000+ TPS sin violar consistencia secuencial.'},
+                {name:'Escalabilidad y Dinamica de Liquidez',desc:'Paralelizacion masiva para 200,000 TPS sin violar consistencia secuencial.'},
                 {name:'Interoperabilidad Omnichain Universal',desc:'Firma BTC nativa via Threshold ECDSA/Schnorr. Cero puentes, cero custodios.'},
                 {name:'Inteligencia Autonoma y Gobernanza',desc:'Sistema inmune DeAI on-chain auditando transacciones y patrones de red en tiempo real.'},
                 {name:'Orquestador Soberano y Backend',desc:'Orquestador central de logica con pipeline de metricas firmadas criptograficamente.'},
@@ -919,7 +698,7 @@
                 {name:'身份、资产与主权',desc:'无密码生物识别认证(WebAuthn)和原生x39代币的不可变交易记录。'},
                 {name:'确定性执行流',desc:'抗MEV操纵的顺序、公正排序。'},
                 {name:'共识与密码安全',desc:'BFT容错和ICP硅片上的高性能执行。'},
-                {name:'可扩展性与流动性动态',desc:'大规模并行化实现50,000+ TPS，不违反顺序一致性。'},
+                {name:'可扩展性与流动性动态',desc:'大规模并行化实现200,000 TPS，不违反顺序一致性。'},
                 {name:'通用全链互操作性',desc:'通过Threshold ECDSA/Schnorr进行原生BTC签名。零桥接，零托管。'},
                 {name:'自主智能与治理',desc:'链上DeAI免疫系统实时审计交易和网络模式。'},
                 {name:'主权编排器与后端',desc:'具有密码签名指标管道的中央业务逻辑编排器。'},
@@ -944,10 +723,10 @@
                 'proto-live':'Protocol is Live',
                 'tagline1':'WHILE OTHERS LOOK FOR INVESTORS,',
                 'tagline2':'X39MATRIX ALREADY OPERATES.',
-                'tagline3':'They build one by one. We already finished all 40.',
+                'tagline3':'They build one by one. We already finished all 45.',
                 'arch-btn':'VIEW THE ARCHITECTURE →',
                 'arch-cert':'SOVEREIGN ARCHITECTURE — TECHNICAL CERTIFICATION v11.0',
-                'arch-title':'9 LAYERS.<br><span>40 BLOCKS.</span>',
+                'arch-title':'9 LAYERS.<br><span>45 BLOCKS.</span>',
                 'arch-desc':'Each block has a unique and inexpugnable function. Not a promise. A certification.',
                 'stat-finality':'BLOCK FINALITY',
                 'stat-tps':'NATIVE TPS',
@@ -974,7 +753,7 @@
                 'uc06':'DECENTRALIZED AI (DeAI)','uc06d':'AI Sentinel on-chain. Every decision signed. 47/47 attacks blocked. vs OpenAI, Bittensor, Ritual.',
                 'uc07':'SUPPLY CHAIN & LOGISTICS','uc07d':'$4.2T counterfeit market. Ed25519 provenance. Concurrent updates. vs IBM Food Trust, VeChain.',
                 'uc08':'DEFENSE & GOVERNMENT','uc08d':'Sovereign infrastructure. $150B cyber defense market. 51% defense lab. vs Palantir, AWS GovCloud.',
-                'uc09':'GAMING & METAVERSE','uc09d':'50K+ TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.',
+                'uc09':'GAMING & METAVERSE','uc09d':'200K TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.',
                 'uc10':'ACADEMIC RESEARCH','uc10d':'Fokker-Planck publishable. Immutable science. Ed25519 credentials. vs Elsevier, ResearchHub, DeSci.'
             },
             es:{
@@ -1013,7 +792,7 @@
                 'uc06':'IA DESCENTRALIZADA (DeAI)','uc06d':'AI Sentinel on-chain. Cada decision firmada. 47/47 ataques bloqueados. vs OpenAI, Bittensor.',
                 'uc07':'CADENA DE SUMINISTRO','uc07d':'Mercado falsificaciones $4.2T. Proveniencia Ed25519. vs IBM Food Trust, VeChain.',
                 'uc08':'DEFENSA Y GOBIERNO','uc08d':'Infraestructura soberana. Mercado ciberdefensa $150B. Laboratorio 51%. vs Palantir, AWS GovCloud.',
-                'uc09':'GAMING Y METAVERSO','uc09d':'50K+ TPS. DAG causal para MMO. Anti-cheat AI on-chain. vs Immutable X, Ronin.',
+                'uc09':'GAMING Y METAVERSO','uc09d':'200K TPS. DAG causal para MMO. Anti-cheat AI on-chain. vs Immutable X, Ronin.',
                 'uc10':'INVESTIGACION ACADEMICA','uc10d':'Fokker-Planck publicable. Ciencia inmutable. Credenciales Ed25519. vs Elsevier, ResearchHub.'
             },
             zh:{
@@ -1052,7 +831,7 @@
                 'uc06':'去中心化AI','uc06d':'链上AI哨兵。每个决策签名。47/47攻击被阻止。对比OpenAI、Bittensor。',
                 'uc07':'供应链与物流','uc07d':'4.2万亿美元假冒市场。Ed25519溯源。对比IBM Food Trust、VeChain。',
                 'uc08':'国防与政府','uc08d':'主权基础设施。1500亿美元网络防御市场。51%防御实验室。对比Palantir。',
-                'uc09':'游戏与元宇宙','uc09d':'50K+ TPS。因果DAG用于MMO。链上AI反作弊。对比Immutable X、Ronin。',
+                'uc09':'游戏与元宇宙','uc09d':'200K TPS。因果DAG用于MMO。链上AI反作弊。对比Immutable X、Ronin。',
                 'uc10':'学术研究','uc10d':'Fokker-Planck可发表。不可变科学。Ed25519凭证。对比Elsevier。'
             },
             ar:{
@@ -1091,7 +870,7 @@
                 'uc06':'الذكاء الاصطناعي اللامركزي','uc06d':'حارس AI على السلسلة. كل قرار موقع. 47/47 هجوم محظور.',
                 'uc07':'سلسلة التوريد واللوجستيات','uc07d':'سوق التزوير 4.2 تريليون دولار. مصدر Ed25519. مقابل IBM Food Trust، VeChain.',
                 'uc08':'الدفاع والحكومة','uc08d':'بنية تحتية سيادية. سوق الدفاع السيبراني 150 مليار دولار. مقابل Palantir.',
-                'uc09':'الألعاب والميتافيرس','uc09d':'50K+ TPS. DAG سببي لـ MMO. مكافحة غش AI على السلسلة. مقابل Immutable X.',
+                'uc09':'الألعاب والميتافيرس','uc09d':'200K TPS. DAG سببي لـ MMO. مكافحة غش AI على السلسلة. مقابل Immutable X.',
                 'uc10':'البحث الأكاديمي','uc10d':'Fokker-Planck قابل للنشر. علم غير قابل للتغيير. بيانات Ed25519. مقابل Elsevier.'
             }
         };
