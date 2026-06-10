@@ -1,0 +1,21 @@
+================================================================
+X39MATRIX SOVEREIGN PROTOCOL  ·  LEGACY PATH NOTICE
+================================================================
+
+This path has been RETIRED as part of the 2026-06-10 sovereign
+consolidation operation. The canonical asset has been relocated
+under the notarial structure:
+
+  Old path : /MASTER_GOLDEN_SEAL.txt.ots
+  New path : /notary/MASTER_GOLDEN_SEAL.txt.ots
+
+The cryptographic content (SHA-256, ML-DSA-87 signature,
+OpenTimestamps Bitcoin anchor) is UNCHANGED. Verify trustlessly:
+
+  curl -fsSL https://x39matrix.org/notary/MASTER_GOLDEN_SEAL.txt.ots
+  ots verify <downloaded-file>
+
+Operator : Jose Luis Olivares Esteban
+PGP FPR  : C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+Date     : 2026-06-10  (UTC)
+================================================================

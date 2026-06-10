@@ -1,0 +1,31 @@
+(
+  variant {
+    Ok = record {
+      clock_threshold_ended_ns = 1_779_229_761_719_841_356 : nat64;
+      pubkey_hex = "025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083";
+      clock_threshold_started_ns = 1_779_229_755_129_538_832 : nat64;
+      clock_threshold_delta_ns = 6_590_302_524 : nat64;
+      ecdsa_threshold_ic_hex = "71010972df6721e8995858c177b7a80b3c650ad7a7464e7eb80c1c5572b930040c3d91f7f1026f9d83268448a0ff992e4e20edf806bd1214bed0a05ea1badf6a";
+      seal_status = "B27_THRESHOLD_SEALED — VERIFIABLE_EXTERNALLY";
+      local = record {
+        tps_logical = 7_116_918_996_039_336_120 : nat64;
+        status = "B27_LOCAL_PASSED — INTEGRITY_DETERMINISTIC";
+        ed25519_local_hex = "2870b29ff890a0094054278fb73e78130089f0c9c0a38d4a49ef569c7e0d674a";
+        ecdsa_local_hex = "45cb2dbb12afbed108f08c9e22b7a578a9549ff050dfe6991a00c7643469ccce";
+        clock_started_at_ns = 1_779_229_755_129_538_832 : nat64;
+        merkle_root_hex = "fdc9c434b129f87b9c3874b028b856a989cd27997573a70d1307836077da774f";
+        functor_ok = true;
+        iter = 1_779_229_749_009_834_030 : nat64;
+        state_morph = 857 : nat32;
+        violations = 0 : nat64;
+        label = "B27_LOCAL_DETERMINISTIC";
+        total_ops = 7_116_918_996_039_336_120 : nat64;
+        state_auto = 0 : nat32;
+        clock_ended_at_ns = 1_779_229_755_129_538_832 : nat64;
+        clock_logical_ns = 0 : nat64;
+        merkle_leaves = 64 : nat64;
+      };
+      message_signed_hex = "13ea26680ecde221e259e5dab99daa78a1cb2e567ff09fb971be552080a111b4";
+    }
+  },
+)
