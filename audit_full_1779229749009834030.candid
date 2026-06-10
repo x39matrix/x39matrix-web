@@ -1,0 +1,21 @@
+================================================================
+X39MATRIX SOVEREIGN PROTOCOL  ·  LEGACY PATH NOTICE
+================================================================
+
+This path has been RETIRED as part of the 2026-06-10 sovereign
+consolidation operation. The canonical asset has been relocated
+under the notarial structure:
+
+  Old path : /audit_full_1779229749009834030.candid
+  New path : /audit_full_v1.candid (or /notary/audit_full_1779229749009834030.candid)
+
+The cryptographic content (SHA-256, ML-DSA-87 signature,
+OpenTimestamps Bitcoin anchor) is UNCHANGED. Verify trustlessly:
+
+  curl -fsSL https://x39matrix.org/audit_full_v1.candid (or /notary/audit_full_1779229749009834030.candid)
+  ots verify <downloaded-file>
+
+Operator : Jose Luis Olivares Esteban
+PGP FPR  : C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+Date     : 2026-06-10  (UTC)
+================================================================

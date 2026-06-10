@@ -1,0 +1,10 @@
+backups/
+.dfx/
+evidence/*.bak
+*.bak.*
+*.backup_*
+index_BACKUP_*
+index_backup.html
+deploy.log
+backup_config_*.tgz
+.ic-assets.json5.bak.*

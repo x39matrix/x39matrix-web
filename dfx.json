@@ -1,0 +1,9 @@
+{
+  "canisters": {
+    "frontend": {
+      "type": "assets",
+      "source": ["."]
+    }
+  },
+  "version": 1
+}

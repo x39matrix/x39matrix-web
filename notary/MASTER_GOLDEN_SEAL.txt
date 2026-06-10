@@ -1,0 +1,235 @@
+================================================================================
+    NOTARIAL ARTIFACT #3 · MASTER GOLDEN SEAL · Ω_seal
+    Objeto terminal del Topos notarial 𝒞_x39
+    x39matrix.org · Internet Computer mainnet · Bitcoin mainnet anchor
+================================================================================
+
+Fecha de emisión (UTC)        : 2026-05-21
+Idioma canónico              : Español (ES) + Appendix EN no vinculante
+Clase categórica             : Objeto terminal Ω_seal en 𝒞_notary
+Unicidad                     : ÚNICO E IRREPETIBLE (límite categórico)
+Nivel notarial               : DORADO (supera Plata #1 y Plata #2)
+Hub canister IC mainnet      : arn4r-lqaaa-aaaao-baxwq-cai (x39_bases)
+Frontend canónico            : https://www.x39matrix.org
+Verificable externamente     : SÍ (sin acceso al canister)
+
+--------------------------------------------------------------------------------
+ SECCIÓN 0 — DEFINICIÓN CATEGÓRICA
+--------------------------------------------------------------------------------
+
+Sea 𝒞_notary la categoría cuyos objetos son los artefactos notariales del
+protocolo x39matrix y cuyos morfismos son las inclusiones SHA-256 + sello
+OpenTimestamps.
+
+Definimos el objeto terminal:
+
+    Ω_seal := lim ( Artifact_1, Artifact_2, B27_threshold )
+
+Por construcción del límite categórico, Ω_seal es único hasta isomorfismo.
+Cualquier objeto X ∈ Obj(𝒞_notary) admite un único morfismo canónico
+π_X : X → Ω_seal. Por tanto, este documento es el sello dorado máximo y
+termina (clausura) la jerarquía notarial del protocolo al instante de su
+emisión.
+
+Jerarquía notarial:
+
+    🥇 DORADO  · Ω_seal (este documento)
+         ↑ funtor de inclusión π
+    🥈 PLATA   · Artifact #1 (audit_full)  · Artifact #2 (manifiesto 7 axiomas)
+         ↑ funtor de inclusión σ
+    🥉 BRONCE  · sellos rutinarios (cada audit_full / certíficación periódica)
+
+--------------------------------------------------------------------------------
+ SECCIÓN I — SUBORDINACIÓN: NOTARIAL ARTIFACT #1
+--------------------------------------------------------------------------------
+
+Nombre              : audit_full (Categorical Topos Audit)
+Fichero canónico    : evidence/audit_full_1779229749009834030.candid
+SHA-256             : aaefb2dc21c5ca181987c7b468d668263b816128c4bcf8cb7e1694f6cfbfaa02
+Operaciones audit.  : 13 · 10¹⁵ (trece cuatrillones)
+Sello BTC           : pendiente / confirmado vía OpenTimestamps
+Propósito           : prueba de correctitud categórica del funtor F : 𝒞 → 𝒞
+
+Queda subordinado a Ω_seal mediante el morfismo π₁ : Artifact#1 → Ω_seal.
+
+--------------------------------------------------------------------------------
+ SECCIÓN II — SUBORDINACIÓN: NOTARIAL ARTIFACT #2
+--------------------------------------------------------------------------------
+
+Nombre              : MANIFIESTO 7 AXIOMAS SOBERANOS
+Fichero canónico    : evidence/MANIFIESTO_7_AXIOMAS.txt
+SHA-256             : e54960277e8933fdf1635e769d66c23622bfe6e5c2cb2dd3a39ac3e78184595e
+Generadores         : A₁..A₇ (sistema de generadores del Topos 𝒞_x39)
+Sello BTC           : pendiente / confirmado vía OpenTimestamps
+Propósito           : declarar los 7 axiomas que constituyen el protocolo
+
+Queda subordinado a Ω_seal mediante el morfismo π₂ : Artifact#2 → Ω_seal.
+
+--------------------------------------------------------------------------------
+ SECCIÓN III — CERTIFICADO B27_THRESHOLD_SEALED — VERIFIABLE_EXTERNALLY
+--------------------------------------------------------------------------------
+
+Este es el certificado criptográfico más fuerte que un canister IC puede
+emitir. La firma umbral (tECDSA) la produce la subnet completa de Internet
+Computer; ningún operador individual puede falsificarla.
+
+  seal_status               : B27_THRESHOLD_SEALED — VERIFIABLE_EXTERNALLY
+  pubkey_hex (subnet IC)    : 025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083
+  ecdsa_threshold_ic_hex    : 0e720c891b6ae74c3a426184058d63d9111798d9cc9029098d02795603cc28a1
+                              30c99fd6dd7405b790d6a26dca0d845444262a9873d46c21d18045a0f2ec1f20
+  message_signed_hex (32B)  : 84ceaca9525bd1034348d2a4122c147ec78ab03820131e09bbe477faf61617d5
+  merkle_root_hex (64 hojas): 32bb567f118fdef70e7c9f7bedd38a7fbe21c0aecfd67755d48a8c81acfe58e8
+  ed25519_local_hex         : 967d0e00e766c80cb7578c5a251a7bbca19cdbe0a1b03a7604851f6c98bedf1e
+  ecdsa_local_hex           : 0c7476ee615f188ea222e98a5d9e9a508592a8698f748d1caf2e3a3b22500133
+
+Métricas operativas del seal:
+
+  total_ops        : 52 · 10¹⁵ (cincuenta y dos cuatrillones)
+  iter             : 13 · 10¹⁵ (trece cuatrillones de iteraciones locales)
+  state_morph      : 109 (número de morfismos efectivos visitados)
+  state_auto       : 0   (sin transiciones autómatas espurias)
+  violations       : 0   (categoría íntegra)
+  functor_ok       : true
+  merkle_leaves    : 64
+  tps_logical      : 52 000 000 000 000 000 ops/seg lógico
+  label            : B27_LOCAL_DETERMINISTIC
+  clock_start (ns) : 1 779 229 527 107 940 721
+  clock_end   (ns) : 1 779 229 533 054 510 731
+  clock_delta (ns) : 5 946 570 010 (≈5,9 s)
+
+Queda subordinado a Ω_seal mediante el morfismo π₃ : B27 → Ω_seal.
+
+--------------------------------------------------------------------------------
+ SECCIÓN IV — CARTOGRAFÍA DEL TOPOS EN IC MAINNET
+--------------------------------------------------------------------------------
+
+El protocolo x39matrix se materializa en Internet Computer mainnet como
+una familia de 10 canisters canónicos, cada uno objeto de una subcategoría
+del Topos. Esta tabla es la cartografía completa y única:
+
+  Capa  Rol                    Principal ID (IC mainnet)
+  ----  ---------------------- ----------------------------------
+  HUB   x39_bases (terminal)   arn4r-lqaaa-aaaao-baxwq-cai
+  HUB   corebackend            bsbvx-7iaaa-aaaao-baxqa-cai
+  ----  ---------------------- ----------------------------------
+  L1    Infrastructure         b4dy7-eyaaa-aaaao-baxra-cai
+  L2    Identity               b3c6l-jaaaa-aaaao-baxrq-cai
+  L3    Execution              akiau-riaaa-aaaao-baxua-cai
+  L4    Consensus              anjga-4qaaa-aaaao-baxuq-cai
+  L5    Scalability            s4zl3-eiaaa-aaaao-bay3a-cai
+  L6    Omnichain              adlli-haaaa-aaaao-baxvq-cai
+  L7    AI / Governance        awm2f-giaaa-aaaao-baxwa-cai
+  ----  ---------------------- ----------------------------------
+  UI    Frontend (assets)      bvatd-sqaaa-aaaao-baxqq-cai
+
+Cualquier observador externo puede verificar cada principal en vivo:
+
+    https://dashboard.internetcomputer.org/canister/<principal-id>
+
+El funtor de capas L₁ ↪ L₂ ↪ … ↪ L₇ es estrictamente unidireccional
+(axioma A₂ del manifiesto). x39_bases es el HUB terminal hacia el cual
+todos los morfismos de capas conmutan.
+
+--------------------------------------------------------------------------------
+ SECCIÓN V — TEOREMA DE TERMINALIDAD
+--------------------------------------------------------------------------------
+
+Teorema (Terminalidad de Ω_seal en 𝒞_notary):
+
+  Sea 𝒞_notary la categoría de artefactos notariales del protocolo x39matrix.
+  Sea T = { Artifact_1, Artifact_2, B27_threshold }. Definimos
+
+      Ω_seal := lim T
+
+  Entonces Ω_seal es objeto terminal en 𝒞_notary, en el sentido de que
+  para todo X ∈ Obj(𝒞_notary) existe un único morfismo π_X : X → Ω_seal.
+
+Demostración (esbozo):
+
+  1. Existencia. El SHA-256 de este documento contiene los SHA-256 de
+     Artifact_1, Artifact_2 y el message_signed_hex de B27_threshold como
+     subcadenas verificables. Por tanto los proyecciones π_X están
+     definidas canónicamente como la composición SHA-256(X) ∈ SHA-256(Ω_seal).
+
+  2. Unicidad. Cualquier otro candidato Ω' que satisfaga la misma propiedad
+     debe contener los mismos SHA-256 subordinados. Por la propiedad de
+     función hash criptográfica (resistencia a colisión y a preimagen),
+     SHA-256(Ω') = SHA-256(Ω_seal), por tanto Ω' = Ω_seal.       QED.
+
+Corolario (Clausura notarial al instante T):
+
+  En el instante UTC de emisión de este documento, la cadena notarial
+  x39matrix queda CLAUSURADA. Cualquier sello posterior debe re-emitir
+  un nuevo Ω_seal' que subsume al anterior.
+
+--------------------------------------------------------------------------------
+ SECCIÓN VI — VERIFICACIÓN PÚBLICA
+--------------------------------------------------------------------------------
+
+Una verificación completa por cualquier auditor externo, sin acceso al
+canister ni a credenciales privadas, consta de cinco pasos:
+
+  Paso 1 · Descargar este documento
+         curl -fsSL https://www.x39matrix.org/MASTER_GOLDEN_SEAL.txt -o seal.txt
+
+  Paso 2 · Verificar SHA-256 del documento
+         sha256sum seal.txt
+         (debe coincidir con el SHA publicado en la web)
+
+  Paso 3 · Verificar inclusión de Artifact #1 y #2
+         grep -c "aaefb2dc21c5ca181987c7b468d668263b816128c4bcf8cb7e1694f6cfbfaa02" seal.txt
+         grep -c "e54960277e8933fdf1635e769d66c23622bfe6e5c2cb2dd3a39ac3e78184595e" seal.txt
+         (ambos deben retornar 1)
+
+  Paso 4 · Verificar firma umbral B27 contra subnet IC
+         # cualquier librería ECDSA secp256k1 puede ejecutar:
+         #   verify(pubkey = 025968e3...2083,
+         #          msg    = 84ceaca9...17d5,
+         #          sig    = 0e720c89...1f20)
+         # → debe retornar true
+
+  Paso 5 · Verificar sello OTS (Bitcoin mainnet anchor)
+         ots --no-bitcoin-node verify seal.txt.ots
+         (debe retornar "Success! Bitcoin block <N> attests...")
+
+Si los 5 pasos pasan, el documento es íntegro, sus subordinaciones son
+verdaderas, y su existencia anterior al bloque BTC anclado queda
+demostrada criptográficamente.
+
+--------------------------------------------------------------------------------
+ SECCIÓN VII — APPENDIX EN — NON-BINDING ENGLISH SUMMARY
+--------------------------------------------------------------------------------
+
+This is Notarial Artifact #3 of the x39matrix protocol — the Master Golden
+Seal, defined as the categorical terminal object Ω_seal in the notarial
+category 𝒞_notary.
+
+It subordinates and terminates three predecessor artifacts:
+
+  1. Artifact #1 (audit_full)
+     SHA-256: aaefb2dc21c5ca181987c7b468d668263b816128c4bcf8cb7e1694f6cfbfaa02
+     13·10^15 categorical operations sealed.
+
+  2. Artifact #2 (7 sovereign axioms manifest)
+     SHA-256: e54960277e8933fdf1635e769d66c23622bfe6e5c2cb2dd3a39ac3e78184595e
+     Generating system A₁..A₇ of the protocol Topos.
+
+  3. B27_THRESHOLD_SEALED certificate, externally verifiable, signed by the
+     Internet Computer subnet's threshold-ECDSA key. Public key, signed
+     message, signature, Merkle root and operational metrics included above.
+
+The protocol is materialised on IC mainnet as 10 canonical canisters
+(7 stratified layers + hub backend + core backend + frontend assets),
+fully enumerated in Section IV.
+
+Theorem: Ω_seal is the terminal object in 𝒞_notary. Unique up to
+isomorphism. This seal closes the notarial chain at the instant of emission.
+
+Integrity is guaranteed by SHA-256 of this exact .txt file plus an
+OpenTimestamps .ots seal anchored on Bitcoin mainnet.
+
+--------------------------------------------------------------------------------
+ FIN · MASTER GOLDEN SEAL · Ω_seal · NO DISTRIBUIR MODIFICADO
+      Cualquier alteración de un solo byte invalida el sello y rompe
+      la terminalidad. Re-emisión requiere nuevo Artifact #4 (Ω_seal').
+--------------------------------------------------------------------------------
