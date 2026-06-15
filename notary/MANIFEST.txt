@@ -1,0 +1,18 @@
+X39MATRIX PQC CERTIFICATION BUNDLE
+====================================
+date       : 2026-06-10
+identity   : Jose Luis Olivares Esteban
+artifact   : x39_cert_pqc_bundle.tar.gz
+algorithms :
+  - SHA-256 (file digest)
+  - ECDSA secp256k1 (classical signature)
+  - ML-DSA-87 / FIPS-204 (post-quantum signature)
+  - OpenTimestamps (Bitcoin anchor)
+verify     :
+  $ sha256sum -c x39_cert_pqc_bundle.tar.gz.sha256
+  $ ots verify x39_cert_pqc_bundle.tar.gz.ots
+mirrors    :
+  - https://x39matrix.org/notary/x39_cert_pqc_bundle.tar.gz
+  - https://github.com/x39matrix/x39matrix-web/raw/main/notary/x39_cert_pqc_bundle.tar.gz
+  - https://codeberg.org/x39matrix/x39matrix-web/raw/branch/main/notary/x39_cert_pqc_bundle.tar.gz
+license    : sovereign / non-transferable
