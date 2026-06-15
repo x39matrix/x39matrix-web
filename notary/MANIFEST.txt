@@ -16,3 +16,11 @@ mirrors    :
   - https://github.com/x39matrix/x39matrix-web/raw/main/notary/x39_cert_pqc_bundle.tar.gz
   - https://codeberg.org/x39matrix/x39matrix-web/raw/branch/main/notary/x39_cert_pqc_bundle.tar.gz
 license    : sovereign / non-transferable
+
+IPFS pins (added 2026-06-15):
+  - bundle    : ipfs://bafkreihw7dgp6enttywquji6vpxvlanwv3swtfhfqgtca7rsezf664tydu
+  - ots       : ipfs://bafkreiffruheh7gd7mtnnniqp3el7soluph6c2hea623uw7yveoaajqr24
+  - manifest  : ipfs://bafkreibguwol5dt2flcrxe5gbksohxnqncq7eab3j2yx3y4m62t6gv3fsq
+  gateways    : https://ipfs.io/ipfs/<CID>
+                https://cloudflare-ipfs.com/ipfs/<CID>
+                https://dweb.link/ipfs/<CID>
