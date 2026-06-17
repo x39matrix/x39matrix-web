@@ -76,23 +76,25 @@ def verify_token(authorization: Optional[str] = Header(None)) -> str:
     except jwt.InvalidTokenError:
         raise HTTPException(401, "Token invalido")
 
-# --- SEED SECURITY DATA ---
+# --- SEED SECURITY DATA (synced with GitHub README v1.1.0+ + live module hashes 2026-06-17) ---
 def seed_layers():
-    # Re-seed with verified canister IDs and real commands from mainnet metadata
-    existing = layers_col.find_one({"layer_id": "L9"}, {"_id": 0})
-    if existing and existing.get("canister") == "arn4r-lqaaa-aaaao-baxwq-cai":
+    # Force re-seed if HUB module_hash is missing or outdated
+    existing = layers_col.find_one({"layer_id": "HUB"}, {"_id": 0})
+    if existing and existing.get("module_hash", "").startswith("e4ba50b8"):
         return
     layers_col.delete_many({})
     layer_data = [
-        {"layer_id": "L1", "name": "Infrastructure", "canister": "b4dy7-eyaaa-aaaao-baxra-cai", "lang": "Motoko", "blocks": ["B36","B37","B38","B39"], "status": "ONLINE", "commands": ["ping","getNodeCount","getCyclesBalance","getTotalCyclesBurned","getUptime","logMemoryEvent","getMemoryLog","recordCyclesBurned","applyMorphism","delta","getState","invariant"]},
-        {"layer_id": "L2", "name": "Identity (ZK-KYC)", "canister": "b3c6l-jaaaa-aaaao-baxrq-cai", "lang": "Motoko", "blocks": ["B32","B33","B34","B35"], "status": "ONLINE", "commands": ["authenticate","getSession","verifyKYC","isKYCVerified","assignRole","applyMorphism","delta","getState","invariant","ping"]},
-        {"layer_id": "L3", "name": "Smart Execution", "canister": "akiau-riaaa-aaaao-baxua-cai", "lang": "Motoko", "blocks": ["B27","B28","B29","B30"], "status": "ONLINE", "commands": ["submitTransaction","getQueueSize","executeQueue","getExecutedCount","calculateFee","applyMorphism","delta","getState","invariant","ping"]},
-        {"layer_id": "L4", "name": "Consensus", "canister": "anjga-4qaaa-aaaao-baxuq-cai", "lang": "Motoko", "blocks": ["B23","B24","B25","B26"], "status": "ONLINE", "commands": ["proposeBlock","getBlockHeight","getBlock","checkRisk","logAudit","getAuditLog","applyMorphism","delta","getState","invariant","ping"]},
-        {"layer_id": "L5", "name": "Scalability", "canister": "s4zl3-eiaaa-aaaao-bay3a-cai", "lang": "Motoko", "blocks": ["B19","B20","B21","B22"], "status": "ONLINE", "commands": ["updateLoad","getShardForUser","openStateChannel","moveToColdStorage","getStatus"]},
-        {"layer_id": "L6", "name": "Omnichain", "canister": "adlli-haaaa-aaaao-baxvq-cai", "lang": "Motoko", "blocks": ["B15","B16","B17","B18"], "status": "ONLINE", "commands": ["getAccruedFees","getBtcBalance","getStatus","initiateCrossChain","withdrawArchitectFees"]},
-        {"layer_id": "L7", "name": "AI Governance (PTU-47)", "canister": "awm2f-giaaa-aaaao-baxwa-cai", "lang": "Rust", "blocks": ["B11","B12","B13","B14"], "status": "ONLINE", "commands": ["sanitizeInput","analyzeRisk","getRiskReports","getBlockedCount","createProposal","voteProposal","getProposals","applyMorphism","getState","invariant"]},
-        {"layer_id": "L8", "name": "Core Orchestrator", "canister": "bsbvx-7iaaa-aaaao-baxqa-cai", "lang": "Motoko", "blocks": ["B05","B06","B07","B08"], "status": "ONLINE", "commands": ["executePipeline","getPipelineLog","registerLayerStatus","getLayerStatuses","aggregateSignature","compose","delta","getState","isAccepting","reset","invariant","ping","getGlobalHealth"]},
-        {"layer_id": "L9", "name": "x39_bases (Motor Algebraico)", "canister": "arn4r-lqaaa-aaaao-baxwq-cai", "lang": "Rust", "blocks": ["B01","B02","B03","B04"], "status": "ONLINE", "commands": ["get_state","reset","apply_morphism","apply_functor","compose","delta","is_accepting","genesis_object","genesis_module","schedule","invariant","validate_state","translate_morphism","bridge_btc","bridge_eth","secure_utxo","ptu47_audit","sanitize_prompt","fuzz_report","detect_eclipse","collapse_audit","collapse_c1_cycle_drain","collapse_c2_memory_bomb","collapse_c3_state_deadlock","collapse_c4_canister_storm","collapse_c5_consensus_freeze","collapse_c6_cascade_failure","collapse_c7_entropy_death","collapse_c8_fork_bomb","collapse_c9_morphism_singularity","collapse_c10_quantum_bifurcation","simulate_cycle_drain","stress_b27_signed","full_sealed_audit","sign_ecdsa","verify_ecdsa","sign_ed25519_aggregate","merkle_proof","ping"]},
+        {"layer_id": "HUB", "name": "x39_bases / Sovereign Topos (Ω BTC signer)", "canister": "arn4r-lqaaa-aaaao-baxwq-cai", "lang": "Rust", "blocks": ["B01","B02","B03","B04","B45"], "status": "ONLINE", "role": "threshold-ECDSA BTC mainnet signer + Motor Algebraico Categórico", "module_hash": "e4ba50b898a935c7", "commands": ["get_state","reset","apply_morphism","apply_functor","compose","delta","is_accepting","genesis_object","genesis_module","schedule","invariant","validate_state","translate_morphism","bridge_btc","bridge_eth","secure_utxo","ptu47_audit","sanitize_prompt","fuzz_report","detect_eclipse","collapse_audit","collapse_c1_cycle_drain","collapse_c2_memory_bomb","collapse_c3_state_deadlock","collapse_c4_canister_storm","collapse_c5_consensus_freeze","collapse_c6_cascade_failure","collapse_c7_entropy_death","collapse_c8_fork_bomb","collapse_c9_morphism_singularity","collapse_c10_quantum_bifurcation","simulate_cycle_drain","stress_b27_signed","full_sealed_audit","sign_ecdsa","verify_ecdsa","sign_ed25519_aggregate","merkle_proof","ping"]},
+        {"layer_id": "L1", "name": "Infrastructure", "canister": "b4dy7-eyaaa-aaaao-baxra-cai", "lang": "Motoko", "blocks": ["B36","B37","B38","B39","B40"], "status": "ONLINE", "module_hash": "a04f2a1305bd0998", "commands": ["ping","getNodeCount","getCyclesBalance","getTotalCyclesBurned","getUptime","logMemoryEvent","getMemoryLog","recordCyclesBurned","applyMorphism","delta","getState","invariant"]},
+        {"layer_id": "L2", "name": "Identity (Merkle + ZK-KYC)", "canister": "b3c6l-jaaaa-aaaao-baxrq-cai", "lang": "Motoko", "blocks": ["B32","B33","B34","B35"], "status": "ONLINE", "module_hash": "a740ea69bece1810", "commands": ["authenticate","getSession","verifyKYC","isKYCVerified","assignRole","applyMorphism","delta","getState","invariant","ping"]},
+        {"layer_id": "L3", "name": "Execution (Ed25519)", "canister": "akiau-riaaa-aaaao-baxua-cai", "lang": "Motoko", "blocks": ["B27","B28","B29","B30","B31"], "status": "ONLINE", "module_hash": "ad721c0155e3a926", "commands": ["submitTransaction","getQueueSize","executeQueue","getExecutedCount","calculateFee","applyMorphism","delta","getState","invariant","ping"]},
+        {"layer_id": "L4", "name": "Consensus (tECDSA)", "canister": "anjga-4qaaa-aaaao-baxuq-cai", "lang": "Motoko", "blocks": ["B23","B24","B25","B26","B41"], "status": "ONLINE", "module_hash": "d9dbfba7084d8aea", "commands": ["proposeBlock","getBlockHeight","getBlock","checkRisk","logAudit","getAuditLog","applyMorphism","delta","getState","invariant","ping"]},
+        {"layer_id": "L5", "name": "Scalability (OmniChain sharding)", "canister": "s4zl3-eiaaa-aaaao-bay3a-cai", "lang": "Motoko", "blocks": ["B19","B20","B21","B22","B42"], "status": "ONLINE", "module_hash": "fd1ddbef113428b5", "commands": ["updateLoad","getShardForUser","openStateChannel","moveToColdStorage","getStatus"]},
+        {"layer_id": "L6", "name": "Identity SSI / Omnichain Bridge", "canister": "adlli-haaaa-aaaao-baxvq-cai", "lang": "Motoko", "blocks": ["B15","B16","B17","B18","B43"], "status": "ONLINE", "module_hash": "8b51571fbb909971", "commands": ["getAccruedFees","getBtcBalance","getStatus","initiateCrossChain","withdrawArchitectFees"]},
+        {"layer_id": "L7", "name": "AI Governance (PTU-47)", "canister": "awm2f-giaaa-aaaao-baxwa-cai", "lang": "Rust", "blocks": ["B11","B12","B13","B14","B44"], "status": "ONLINE", "module_hash": "b65cc8b9ab5ae6f1", "commands": ["sanitizeInput","analyzeRisk","getRiskReports","getBlockedCount","createProposal","voteProposal","getProposals","applyMorphism","getState","invariant"]},
+        {"layer_id": "L8", "name": "Notarization (corebackend v2.0.0-realcrypto)", "canister": "bsbvx-7iaaa-aaaao-baxqa-cai", "lang": "Motoko", "blocks": ["B05","B06","B07","B08","B09","B10"], "status": "ONLINE", "module_hash": "4709f6a15a2262e7", "commands": ["executePipeline","getPipelineLog","registerLayerStatus","getLayerStatuses","aggregateSignature","compose","delta","getState","isAccepting","reset","invariant","ping","getGlobalHealth"]},
+        {"layer_id": "FRONT", "name": "Frontend (web canister)", "canister": "bvatd-sqaaa-aaaao-baxqq-cai", "lang": "Assets", "blocks": [], "status": "ONLINE", "module_hash": "04e565b3425fe751", "commands": ["http_request"], "domains": ["x39matrix.org","www.x39matrix.org","evidences.x39matrix.org"]},
+        {"layer_id": "DASH", "name": "Public Dashboard / Evidence Portal", "canister": "nsy7t-jiaaa-aaaau-agwra-cai", "lang": "Assets", "blocks": [], "status": "ONLINE", "module_hash": "04e565b3425fe751", "commands": ["http_request"]},
     ]
     for ld in layer_data:
         ld["last_check"] = datetime.now(timezone.utc).isoformat()
@@ -199,19 +201,86 @@ async def get_alerts(nick: str = Depends(verify_token)):
 @app.get("/api/security/stats")
 async def get_stats(nick: str = Depends(verify_token)):
     return {
-        "layers_online": 9,
-        "layers_total": 9,
-        "blocks_verified": 40,
+        "layers_online": 11,
+        "layers_total": 11,
+        "blocks_verified": 45,
         "ed25519_signatures": "9/9",
         "fuzz_tests": "2038/2038 PASSED",
         "collapse_tests": "10/10 PASSED",
-        "throughput": "50,000+ TPS",
+        "audit_score_public": "51/51",
+        "throughput": "200,000 TPS logical",
+        "btc_anchored_blocks": 19,
+        "btc_first_sovereign_tx": "b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023",
+        "btc_first_sovereign_block": 952131,
+        "pq_signatures": ["PGP-Ed25519", "ECDSA-secp256k1", "ML-DSA-87 (FIPS-204)", "SLH-DSA-SHAKE-256s (FIPS-205)"],
+        "pq_genesis_utc": "2026-06-07T10:59:51Z",
+        "pq_super_fortified_utc": "2026-06-08T20:37:26Z",
+        "cross_substrate": {"arbitrum_block": 467944125, "solana_slot": 422979180},
+        "ots_calendars": 4,
         "finality": "2.5s",
         "uptime": "99.99%",
         "canister_ids_exposed": 0,
         "keys_exposed": 0,
         "fuzz_escapes": 0,
+        "operator_pgp": "C3E062EB251A11851C0B4FFD06870F0655D5BBE8",
+        "axioms_manifest_sha256": "e54960277e8933fdf1635e769d66c23622bfe6e5c2cb2dd3a39ac3e78184595e",
         "quantum_clock": datetime.now(timezone.utc).isoformat(),
+    }
+
+@app.get("/api/security/btc_anchors")
+async def get_btc_anchors(nick: str = Depends(verify_token)):
+    """Public Bitcoin mainnet attestations of X-39MATRIX protocol events."""
+    return [
+        {"event": "Genesis #001", "block": 948027, "utc": "2026-05-05T13:21:39Z"},
+        {"event": "Audit 4 Exa-Ops", "block": 948042, "utc": "2026-05-05T15:02:43Z"},
+        {"event": "B27 Quantum Stress", "block": 948055, "utc": "2026-05-05T17:12:22Z"},
+        {"event": "Institutional Manifesto", "block": 948162, "utc": "2026-05-06T12:03:42Z"},
+        {"event": "First commercial signature + Morocco Sovereign Minute", "block": 948165, "utc": "2026-05-06T12:30:56Z"},
+        {"event": "Certificate Chain", "block": 948177, "utc": "2026-05-06T14:12:20Z"},
+        {"event": "Sovereign Sealing #1", "block": 948500, "utc": "2026-05-08T19:29:44Z"},
+        {"event": "Official Sealing #2", "block": 948501, "utc": "2026-05-08T19:39:11Z"},
+        {"event": "EVM <-> BTC cross-substrate loop", "block": 951586, "utc": "2026-05-29T16:18:18Z"},
+        {"event": "SOL <-> BTC cross-substrate loop", "block": 951605, "utc": "2026-05-29T19:47:00Z"},
+        {"event": "Certificate Block A (merkle MATCH)", "block": 951892, "utc": "2026-05-31T21:19:12Z"},
+        {"event": "Certificate Block B (merkle MATCH)", "block": 951893, "utc": "2026-05-31T21:20:47Z"},
+        {"event": "Logical TPS record", "block": 951946, "utc": "2026-06-01T06:35:43Z"},
+        {"event": "★ First sovereign tECDSA BTC send", "block": 952131, "utc": "2026-06-02T16:46:05Z", "txid": "b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023"},
+        {"event": "★ 8/8 sealed (bob.btc)", "block": 952160, "utc": "2026-06-03T00:12:13Z"},
+        {"event": "★ 8/8 sealed (alice)", "block": 952161, "utc": "2026-06-03T00:16:09Z"},
+        {"event": "★ 8/8 sealed (catallaxy)", "block": 952174, "utc": "2026-06-03T03:41:05Z"},
+        {"event": "★ corebackend v2.0.0-realcrypto genesis tECDSA", "block": 952634, "utc": "2026-06-06T00:00:00Z"},
+        {"event": "★ Delta DNS migration (alice)", "block": 954081, "utc": "2026-06-17T10:15:47Z"},
+        {"event": "★ Delta DNS migration (catallaxy)", "block": 954115, "utc": "2026-06-17T15:44:10Z"},
+        {"event": "★ Delta DNS migration (finney)", "block": 954131, "utc": "2026-06-17T19:19:19Z"},
+    ]
+
+@app.get("/api/security/pq_genesis")
+async def get_pq_genesis(nick: str = Depends(verify_token)):
+    """Post-Quantum genesis manifests with cryptographic identifiers."""
+    return {
+        "pq_genesis_2026_06_07": {
+            "manifest_sha256": "a0a54f84de892f31e63bc8800c5faa2744fa1324505fb5a70901e548e02d6577",
+            "manifest_triple_sha256": "ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143",
+            "signatures": ["PGP-Ed25519", "ECDSA-secp256k1", "ML-DSA-87"],
+            "pq_algorithm": "ML-DSA-87 (FIPS-204, NIST level V)",
+            "signed_utc": "2026-06-07T10:59:51Z",
+            "ots_calendars": 4,
+        },
+        "pq_super_fortified_2026_06_08": {
+            "manifest_sha256": "ef3b829cd8c004dc5f75561e33cbce979d475cd79af9ba3e94f558418062286b",
+            "signatures": ["PGP-Ed25519", "ECDSA-secp256k1", "ML-DSA-87", "SLH-DSA-SHAKE-256s"],
+            "pq_algorithms": ["ML-DSA-87 (FIPS-204)", "SLH-DSA-SHAKE-256s (FIPS-205)"],
+            "signed_utc": "2026-06-08T20:37:26Z",
+            "resistance": "Requires simultaneous break of: 500K+ qubit CRQC + Module-LWE + SHA-3 preimage. Probability ~0 under known physics.",
+            "ots_calendars": 4,
+        },
+        "delta_dns_2026_06_17": {
+            "manifest_sha256": "d73094c7f079eda0515408416239967b9e590c1724972ed7367ae0ceddbc352a",
+            "signature": "PGP-Ed25519",
+            "signed_utc": "2026-06-17T09:41:06Z",
+            "btc_attestation_blocks": [954081, 954115, 954131],
+            "ots_calendars": ["alice", "catallaxy", "finney", "bob"],
+        },
     }
 
 # --- MANUAL & COMMANDS ---
