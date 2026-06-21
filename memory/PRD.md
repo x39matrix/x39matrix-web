@@ -99,30 +99,68 @@ Triple-attestation of latest delta:
 - [2026-06-17] DNS migration Namecheap → Cloudflare; `evidences.x39matrix.org` cert issued
 - [2026-06-17] Cloudflare Worker `x39-lnurl` deployed (LNURL proxy)
 - [2026-06-17] Triple BTC attestation of delta sealed in blocks #954081/#954115/#954131
-- [2026-06-17] Sandbox `/app` synchronized with production reality (THIS UPDATE)
+- [2026-06-17] Sandbox `/app` synchronized with production reality
+- [2026-06-20] Generated `X39MATRIX_COMMERCIAL_PROPOSAL_2026.pdf` (initial commercial deck)
+- [2026-06-20] Generated `X39MATRIX_PITCH_DECK_SEVILLA_2026.pdf` (15 slides 16:9, investor-grade, Summer Emprendedor 2026 Sevilla, score 95/100)
+- [2026-06-21] Generated `X39MATRIX_ONEPAGER_SEVILLA_2026.pdf` (A4 portrait, ready-to-print hand-out with verification QR code, score 8.5/10)
+
+---
+
+## Sevilla Pitch Materials (Summer Emprendedor 2026 - June 22)
+
+### Pitch Deck v1.0 (`/app/frontend/public/X39MATRIX_PITCH_DECK_SEVILLA_2026.pdf`)
+15 slides 16:9 (presentation format):
+1. Cover (X-39MATRIX + Sevilla event branding + 4 KPI badges)
+2. Q-Day threat (broken classical cryptography 2030-2035)
+3. Competitive gap (vs Bitcoin BIP360, Ethereum LeanXMSS, Signal PQXDH, Apple PQ3, Cloudflare, BTQ)
+4. Solution (3 unique pillars: no-human-key + quadruple PQ + cross-chain anchor)
+5. Real traction (11/11 canisters, 52/52 audit, 9 BTC anchors, first BTC TX signed without human)
+6. Cryptographic evidence (BTC blocks #948027 → #954131, TXIDs, hashes)
+7. Tech stack (10 algorithms in deep defense, FIPS-203/204/205, NIST Level V)
+8. 17 target markets ($502B TAM 2030)
+9. TAM/SAM/SOM funnel ($502B → $50B → $1.5B in 5 years)
+10. Business model (3 tiers: PRO $25K / ENTERPRISE $250K / SOVEREIGN $1.5M annual)
+11. Competitive advantage (5 moats, 18-24 months lead)
+12. Roadmap 2026-2028 (quarterly milestones with BTC anchoring)
+13. Sovereign Operator + continuity plan (mathematical bus factor = 0)
+14. **Sevilla & Andalucia tech hub** (Casa de Contratacion 1503 → modern crypto-sovereign capital)
+15. The Ask (EUR 2M seed round, use of funds, next steps, full contact)
+
+### One-Pager v2.0 (`/app/frontend/public/X39MATRIX_ONEPAGER_SEVILLA_2026.pdf`)
+A4 portrait, single-page, ultra-dense but legible. Includes verification QR code in footer.
+Sections: Header + 4 KPIs + Hook intro + Problem/Solution (2-col) + Traction full-width + Markets/Business Model (2-col) + The Ask/Sevilla (2-col) + Footer with contact + QR.
 
 ---
 
 ## Backlog / Roadmap
 
 ### P0 (this week)
+- **REVOKE exposed Cloudflare API token `cfat_wCqyd...`** (user action, security blocker)
 - Bind `pay.x39matrix.org/*` route to `x39-lnurl` Worker
-- Verify Lightning Address `grants@pay.x39matrix.org` resolves end-to-end
+- Verify Lightning Address `grants@pay.x39matrix.org` resolves end-to-end (curl test)
 
-### P1 (this month)
-- Generate "X-39MATRIX Sovereign Snapshot v3.0" PDF (ES + FR + EN)
-- HackenProof Bug Bounty submission with defensive proofs
-- Update GitHub README with HUB module hash `e4ba50b898a935c7…`
+### P1 (this month - pre Sevilla event Jun 22)
+- Print pitch deck + one-pager on premium paper for hand-delivery
+- Rehearse 3-min elevator pitch using slides 1, 5, 8, 14, 15
+- Generate "X-39MATRIX Sovereign Snapshot v3.0" PDF (ES + FR + EN translations)
+
+### P1 (Q3 2026)
+- DFINITY Foundation grant submission (5 milestones + 3-5 min demo video, deadline July 1)
+- HackenProof Bug Bounty submission with 10 collapse attacks + PTU-47 dossier
+- Update GitHub README with HUB module hash `e4ba50b898a935c7…` (DONE)
 - Pre-Morocco demo suite (`dfx canister call x39_bases ptu47_audit` + 10 collapses)
 
 ### P2 (3-6 months)
-- DFINITY Foundation grant pitch (M0: 30-min senior threshold-crypto review)
+- DFINITY senior threshold-crypto review (M0)
 - Threshold-Schnorr Solana library prototype (M1 month 3)
-- 9-Layer × 5-Block Pattern whitepaper draft (M2 month 6)
+- 9-Layer × 5-Block Pattern whitepaper v1.0 (IACR ePrint, M2 month 6)
+- Open thread on DFINITY Developer Forum
 
 ### P3 (long term)
 - Full Sovereign Stack Apache 2.0 open-sourcing (M4 month 12)
-- First external pilot (banking / government Tier 2)
+- First external pilot (banking / government Tier 2) Q4 2026
+- 3 Tier 3 Sovereign contracts (Q2 2027, ARR USD 5M target)
+- Series A USD 15M Q3 2027
 
 ---
 
