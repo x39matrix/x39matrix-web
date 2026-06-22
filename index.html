@@ -141,12 +141,14 @@
 </head>
 <body>
 <!-- X39_LANG_STICKY_HOME_V6 -->
-<div id="x39-lang-sticky-v6" style="position:fixed !important;top:14px !important;right:14px !important;z-index:999999 !important;background:rgba(8,4,4,0.94);border:1px solid #cc0000;border-radius:6px;padding:5px 7px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;backdrop-filter:blur(8px);display:flex;gap:2px;box-shadow:0 4px 16px rgba(0,0,0,0.5);">
-  <button onclick="setLang('es');return false;" data-testid="sticky-lang-es" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="Español">🇪🇸</button>
-  <button onclick="setLang('en');return false;" data-testid="sticky-lang-en" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="English">🇬🇧</button>
-  <button onclick="setLang('ar');return false;" data-testid="sticky-lang-ar" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="العربية">🇸🇦</button>
-  <button onclick="setLang('ja');return false;" data-testid="sticky-lang-ja" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="日本語">🇯🇵</button>
-  <button onclick="setLang('zh');return false;" data-testid="sticky-lang-zh" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="中文">🇨🇳</button>
+<div id="x39-lang-sticky-v6" style="position:fixed;top:12px;right:12px;z-index:999999;pointer-events:none;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+  <div style="background:rgba(8,4,4,0.92);border:1px solid #cc0000;border-radius:6px;padding:5px 7px;display:inline-flex;gap:2px;backdrop-filter:blur(8px);pointer-events:auto;box-shadow:0 4px 16px rgba(0,0,0,0.5);">
+    <button type="button" onclick="setLang('es');return false;" data-testid="sticky-lang-es" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="Español">🇪🇸</button>
+    <button type="button" onclick="setLang('en');return false;" data-testid="sticky-lang-en" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="English">🇬🇧</button>
+    <button type="button" onclick="setLang('ar');return false;" data-testid="sticky-lang-ar" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="العربية">🇸🇦</button>
+    <button type="button" onclick="setLang('ja');return false;" data-testid="sticky-lang-ja" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="日本語">🇯🇵</button>
+    <button type="button" onclick="setLang('zh');return false;" data-testid="sticky-lang-zh" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="中文">🇨🇳</button>
+  </div>
 </div>
 <!-- /X39_LANG_STICKY_HOME_V6 -->
 
