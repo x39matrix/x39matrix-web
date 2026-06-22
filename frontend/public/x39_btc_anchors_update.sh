@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-#  X-39MATRIX  ::  BTC ANCHORS SYNC v1.0
+#  X-39MATRIX  ::  BTC ANCHORS SYNC v1.1 (hardened)
 #  Actualiza Home + Notaria con bloques BTC confirmados y deja la verificacion
 #  del Whitepaper a un sub-comando.
 #
@@ -8,12 +8,26 @@
 #    bash <(wget -qO- https://estado-protocolo.preview.emergentagent.com/x39_btc_anchors_update.sh)
 #
 #  SUB-COMANDOS:
-#    ./x39_btc_anchors_update.sh                 -> sync + commit + deploy
-#    ./x39_btc_anchors_update.sh verify          -> re-verifica Whitepaper OTS
+#    ./x39_btc_anchors_update.sh                 -> sync + commit + deploy (WP queda PENDING)
+#    ./x39_btc_anchors_update.sh verify          -> ots upgrade + verify local
+#    ./x39_btc_anchors_update.sh verify-remote   -> verifica via mempool.space (sin bitcoind)
 #    ./x39_btc_anchors_update.sh sync-only       -> solo modifica archivos
 #    ./x39_btc_anchors_update.sh deploy-only     -> solo dfx deploy --network ic
+#
+#  HARDENING v1.1:
+#    - WP_BLOCK debe ser numerico (solo digitos). Cualquier otro valor (NNNNNN,
+#      placeholders, letras...) se trata como PENDING y muestra un warning.
 # ============================================================================
 set -e
+
+# --- VALIDACION DE WP_BLOCK -------------------------------------------------
+if [ -n "$WP_BLOCK" ]; then
+  if ! echo "$WP_BLOCK" | grep -Eq '^[0-9]{6,7}$'; then
+    echo -e "\033[1;31m[X] WP_BLOCK='$WP_BLOCK' NO es un numero de bloque valido (6-7 digitos)\033[0m"
+    echo -e "\033[1;33m[!] Tratando Whitepaper como PENDING. Usa WP_BLOCK=<numero> solo cuando el OTS confirme.\033[0m"
+    WP_BLOCK=""
+  fi
+fi
 
 REPO="${HOME}/x39matrix-web"
 HOME_FILE="${REPO}/index.html"
@@ -35,6 +49,42 @@ warn(){ echo -e "${Y}[!]${N} $*"; }
 err(){ echo -e "${R}[X]${N} $*"; }
 
 # ============================================================================
+#  SUB-COMANDO: verify-remote (via mempool.space, sin bitcoind local)
+# ============================================================================
+if [ "$1" = "verify-remote" ]; then
+  info "Verificando Whitepaper OTS via mempool.space (sin bitcoind local)..."
+  if [ ! -f "$WP_OTS" ]; then
+    err "No existe ${WP_OTS}"; exit 1
+  fi
+  info "Extrayendo txids del .ots..."
+  TXIDS=$(ots info "$WP_OTS" 2>/dev/null | grep -oE '[0-9a-f]{64}' | sort -u || true)
+  if [ -z "$TXIDS" ]; then
+    warn "No se encontraron txids. Ejecuta primero: bash $0 verify"
+    exit 0
+  fi
+  echo "$TXIDS" | while read -r TXID; do
+    [ -z "$TXID" ] && continue
+    echo "----------------------------------------------------------------"
+    echo "  TXID: $TXID"
+    JSON=$(curl -fsSL "https://mempool.space/api/tx/$TXID" 2>/dev/null || echo "")
+    if [ -z "$JSON" ]; then
+      echo "    -> no encontrada en mempool.space (aun no broadcastada o no es txid de tx onchain)"
+      continue
+    fi
+    CONFIRMED=$(echo "$JSON" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['status'].get('confirmed',False))" 2>/dev/null || echo "false")
+    if [ "$CONFIRMED" = "True" ]; then
+      BLK=$(echo "$JSON" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['status']['block_height'])")
+      echo -e "    -> ${G}CONFIRMADA${N} en bloque BTC #$BLK"
+      echo -e "    -> Ejecuta:  ${B}WP_BLOCK=$BLK bash $0${N}"
+    else
+      echo "    -> aun en mempool (sin confirmar)"
+    fi
+  done
+  echo "----------------------------------------------------------------"
+  exit 0
+fi
+
+# ============================================================================
 #  SUB-COMANDO: verify  (solo re-chequea el OTS del Whitepaper)
 # ============================================================================
 if [ "$1" = "verify" ]; then
@@ -48,9 +98,11 @@ if [ "$1" = "verify" ]; then
   echo "----------------------------------------------------------------"
   ots verify "$WP_OTS" || true
   echo "----------------------------------------------------------------"
-  ok "Verificacion terminada. Si ves 'Success! Bitcoin block <N>' anota ese numero"
-  ok "y vuelve a correr este script sin argumentos pasando WP_BLOCK=<N>:"
-  echo "   WP_BLOCK=NNNNNN bash $0"
+  ok "Verificacion local terminada."
+  ok "Si NO tienes bitcoind local usa el chequeo remoto:"
+  echo "   bash $0 verify-remote"
+  ok "Cuando tengas el bloque BTC real:"
+  echo "   WP_BLOCK=<numero_real> bash $0"
   exit 0
 fi
 
