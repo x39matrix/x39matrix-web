@@ -1,0 +1,186 @@
+{
+  "program_name": "X-39MATRIX Bug Bounty",
+  "version": "1.0",
+  "effective_date": "2026-06-22T00:00:00Z",
+  "platform": "HackenProof",
+  "max_reward_usd": 50000,
+  "contact": {
+    "email": "security@x39matrix.org",
+    "pgp_fingerprint": "C3E062EB251A11851C0B4FFD06870F0655D5BBE8",
+    "lightning_bounty": "bounty@pay.x39matrix.org",
+    "url": "https://hackenproof.com/programs/x39matrix"
+  },
+  "in_scope_canisters": [
+    {
+      "layer": "HUB_OMEGA",
+      "name": "x39_bases",
+      "id": "arn4r-lqaaa-aaaao-baxwq-cai",
+      "lang": "Rust",
+      "hash16": "e4ba50b898a935c7"
+    },
+    {
+      "layer": "L1",
+      "name": "Infrastructure",
+      "id": "b4dy7-eyaaa-aaaao-baxra-cai",
+      "lang": "Motoko",
+      "hash16": "a04f2a1305bd0998"
+    },
+    {
+      "layer": "L2",
+      "name": "Identity",
+      "id": "b3c6l-jaaaa-aaaao-baxrq-cai",
+      "lang": "Motoko",
+      "hash16": "a740ea69bece1810"
+    },
+    {
+      "layer": "L3",
+      "name": "Execution",
+      "id": "akiau-riaaa-aaaao-baxua-cai",
+      "lang": "Motoko",
+      "hash16": "ad721c0155e3a926"
+    },
+    {
+      "layer": "L4",
+      "name": "Consensus",
+      "id": "anjga-4qaaa-aaaao-baxuq-cai",
+      "lang": "Motoko",
+      "hash16": "d9dbfba7084d8aea"
+    },
+    {
+      "layer": "L5",
+      "name": "Scalability",
+      "id": "s4zl3-eiaaa-aaaao-bay3a-cai",
+      "lang": "Motoko",
+      "hash16": "fd1ddbef113428b5"
+    },
+    {
+      "layer": "L6",
+      "name": "Bridge",
+      "id": "adlli-haaaa-aaaao-baxvq-cai",
+      "lang": "Motoko",
+      "hash16": "8b51571fbb909971"
+    },
+    {
+      "layer": "L7",
+      "name": "AI_Governance_PTU47",
+      "id": "awm2f-giaaa-aaaao-baxwa-cai",
+      "lang": "Rust",
+      "hash16": "b65cc8b9ab5ae6f1"
+    },
+    {
+      "layer": "L8",
+      "name": "Notarization",
+      "id": "bsbvx-7iaaa-aaaao-baxqa-cai",
+      "lang": "Motoko",
+      "hash16": "4709f6a15a2262e7"
+    },
+    {
+      "layer": "FRONT",
+      "name": "Frontend",
+      "id": "bvatd-sqaaa-aaaao-baxqq-cai",
+      "lang": "Assets",
+      "hash16": "04e565b3425fe751"
+    },
+    {
+      "layer": "DASH",
+      "name": "Dashboard",
+      "id": "nsy7t-jiaaa-aaaau-agwra-cai",
+      "lang": "Assets",
+      "hash16": "04e565b3425fe751"
+    }
+  ],
+  "in_scope_domains": [
+    "x39matrix.org",
+    "www.x39matrix.org",
+    "evidences.x39matrix.org",
+    "pay.x39matrix.org"
+  ],
+  "out_of_scope": [
+    "ICP boundary nodes (DFINITY)",
+    "Bitcoin Core protocol",
+    "Third-party libs upstream",
+    "Social engineering of operator",
+    "Physical/side-channel",
+    "DoS without code-exec PoC",
+    "Archived backup repos",
+    "Self-XSS"
+  ],
+  "severity_matrix": {
+    "CRITICAL": {
+      "cvss": "9.0-10.0",
+      "usd_min": 25000,
+      "usd_max": 50000
+    },
+    "HIGH": {
+      "cvss": "7.0-8.9",
+      "usd_min": 5000,
+      "usd_max": 25000
+    },
+    "MEDIUM": {
+      "cvss": "4.0-6.9",
+      "usd_min": 1000,
+      "usd_max": 5000
+    },
+    "LOW": {
+      "cvss": "0.1-3.9",
+      "usd_min": 100,
+      "usd_max": 1000
+    },
+    "INFO": {
+      "cvss": "0.0",
+      "reward": "Hall of Fame"
+    }
+  },
+  "pre_documented_attacks": [
+    {
+      "id": "ATK-01",
+      "vector": "Quantum break of ECDSA/Ed25519",
+      "defense": "ML-DSA-87 + SLH-DSA"
+    },
+    {
+      "id": "ATK-02",
+      "vector": "Threshold subnet collusion >1/3 nodes",
+      "defense": "ICP randomness + cross-substrate"
+    },
+    {
+      "id": "ATK-03",
+      "vector": "Stable memory corruption via upgrade",
+      "defense": "Schema versioning + invariants"
+    },
+    {
+      "id": "ATK-04",
+      "vector": "OTS chain rollback",
+      "defense": "Triple OTS attestation BTC"
+    },
+    {
+      "id": "ATK-05",
+      "vector": "L4 consensus rule injection",
+      "defense": "Axiom A4 + L9 categorical algebra"
+    },
+    {
+      "id": "ATK-06",
+      "vector": "Cross-substrate replay",
+      "defense": "Nonce isolation per substrate"
+    },
+    {
+      "id": "ATK-07",
+      "vector": "PGP key compromise of operator",
+      "defense": "Bus-factor-0 + threshold-ECDSA"
+    },
+    {
+      "id": "ATK-08",
+      "vector": "Frontend supply chain attack",
+      "defense": "Module hash BTC + SRI"
+    },
+    {
+      "id": "ATK-09",
+      "vector": "Adversarial AI gaming PTU-47",
+      "defense": "Bounded epistemic budget"
+    },
+    {
+      "id": "ATK-10",
+      "vector": "Time-warp on timestamps",
+      "defense": "Bitcoin block hash as clock"
+    }
+  ]
+}
