@@ -1,0 +1,90 @@
+<!-- ════════════════════════════════════════════════════════════════════════
+     X39MATRIX · Sovereign Payment Modal v2.0
+     ────────────────────────────────────────────────────────────────────────
+     Reemplaza el bloque <div class="modal-backdrop" id="pay-modal">…</div>
+     en tu index.html (líneas ~1290-1336 del original)
+     ════════════════════════════════════════════════════════════════════════ -->
+
+<!-- ═════════ MODAL PAGO BTC · SOVEREIGN v2 ═════════ -->
+<div class="modal-backdrop" id="pay-modal" data-testid="pay-modal">
+  <div class="modal" style="max-width: 38rem;">
+    <button type="button" class="modal-close" id="pay-close" aria-label="cerrar">×</button>
+
+    <h3 style="margin-top:0; color: var(--gold-bright); display:flex; align-items:center; gap:.6rem;">
+      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background: var(--gold-bright); box-shadow: 0 0 12px var(--gold-bright);"></span>
+      Pago Bitcoin · Sovereign Notary Service
+    </h3>
+
+    <!-- Plan + precio -->
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin: .8rem 0 1.2rem; padding-bottom: .8rem; border-bottom: 1px dashed var(--line);">
+      <div>
+        <div class="dim" style="font-size:.78rem; letter-spacing:.05em; text-transform:uppercase;">Plan seleccionado</div>
+        <div style="font-size:.85rem; color: var(--ink-dim); margin-top:.2rem;">
+          Requiere <strong id="x39-pay-required-conf" style="color: var(--gold-bright);">1 conf</strong> · tECDSA verificada
+        </div>
+      </div>
+      <strong id="pay-amount" class="gold" style="font-size:1.8rem; font-family:'Playfair Display',serif;">— €</strong>
+    </div>
+
+    <!-- Status box -->
+    <div id="x39-pay-status"
+         style="font-family:'Source Code Pro',monospace; font-size:.85rem; padding:.7rem 1rem; border-radius:6px; border:1px solid; margin-bottom:1rem; background:rgba(0,0,0,.3); color:#d4a23a;">
+      <span style="font-size:1.3em;margin-right:.4em;">○</span>Inicializando…
+    </div>
+
+    <!-- Sats display -->
+    <p class="dim" style="font-size:.78rem; margin: 0 0 .35rem; letter-spacing:.04em;">Importe exacto a pagar:</p>
+    <div id="pay-sats" style="font-family:'Source Code Pro', monospace; font-size:1rem; color: var(--gold-bright); word-break:break-all; margin: 0 0 1.2rem; background: rgba(0,0,0,.4); padding: .75rem .9rem; border-radius: 4px; border: 1px solid var(--line);">… consultando cotización …</div>
+
+    <!-- QR -->
+    <div style="text-align: center; margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,.25); border-radius: 8px; border: 1px solid var(--line);">
+      <img id="pay-qr-img" alt="QR de pago Bitcoin BIP21" style="width: 240px; height: 240px; background: var(--ink); border-radius: 8px; padding: 8px; display:block; margin: 0 auto;" />
+      <p class="dim" style="font-size:.72rem; margin: .7rem 0 .4rem;">Escanea con tu wallet · BIP21 unified URI (on-chain + LN)</p>
+      <a id="x39-pay-open-wallet" href="bitcoin:" 
+         style="display:inline-block; padding:.45rem 1rem; background: rgba(212,162,58,.12); border:1px solid var(--gold); border-radius:6px; color: var(--gold-bright); font-size:.82rem; text-decoration:none; font-weight:500;">
+        ▸ Abrir en mi wallet
+      </a>
+    </div>
+
+    <!-- Dirección BTC -->
+    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem; display:flex; justify-content:space-between; align-items:center;">
+      <span>Dirección on-chain · <strong style="color: var(--gold-bright);">X39_JOSEPH</strong> (tECDSA)</span>
+      <span style="font-size:.68rem; color: var(--emerald); letter-spacing:.06em;">SOVEREIGN</span>
+    </p>
+    <div style="display:flex; gap:.5rem; align-items:stretch; margin-bottom: 1rem;">
+      <code id="pay-address" style="flex:1; font-family:'Source Code Pro', monospace; font-size:.78rem; background: rgba(0,0,0,.4); padding: .55rem .7rem; border-radius: 4px; border: 1px solid var(--line); word-break:break-all; color: var(--ink);">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</code>
+      <button type="button" class="copy-btn" id="copy-addr" data-copy="bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg" style="position: static; flex-shrink: 0;">copiar</button>
+    </div>
+
+    <!-- Lightning -->
+    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem;">
+      ⚡ Lightning Network <span style="color: var(--gold-bright);">(instantáneo · sub-cent fees)</span>:
+    </p>
+    <div style="display:flex; gap:.5rem; align-items:stretch; margin-bottom: 1rem;">
+      <code id="pay-ln-address" style="flex:1; font-family:'Source Code Pro', monospace; font-size:.78rem; background: rgba(0,0,0,.4); padding: .55rem .7rem; border-radius: 4px; border: 1px solid var(--line); word-break:break-all; color: var(--ink);">strictcent462@walletofsatoshi.com</code>
+      <button type="button" class="copy-btn" id="copy-ln-addr" data-copy="strictcent462@walletofsatoshi.com" style="position: static; flex-shrink: 0;">copiar</button>
+    </div>
+
+    <!-- Panel TXID detectado (oculto hasta que detectamos pago) -->
+    <div id="x39-pay-txid-panel" style="display:none;"></div>
+
+    <!-- Instrucciones -->
+    <div style="background: rgba(45,138,108,.06); border: 1px solid rgba(45,138,108,.3); border-radius: var(--radius-sm); padding: .9rem 1rem; margin: 1rem 0;">
+      <p style="margin: 0 0 .4rem; font-size:.85rem; color: #7fd4b0; font-weight: 600;">▸ Cómo funciona:</p>
+      <ol style="margin: 0; padding-left: 1.3rem; font-size:.78rem; color: var(--ink-dim); line-height: 1.65;">
+        <li>El sistema añade <strong style="color:#7fd4b0;">+1 a 99 sats</strong> únicos al importe para identificar tu pago.</li>
+        <li>Escaneas el QR (o copias la dirección) y pagas <strong>el importe exacto</strong>.</li>
+        <li>El status box arriba detectará tu transacción automáticamente desde mempool.</li>
+        <li>Cuando confirme, te aparecerá un botón <strong>"Reclamar certificado por email"</strong>.</li>
+      </ol>
+    </div>
+
+    <!-- Footer -->
+    <p class="dim" style="font-size:.7rem; margin: 0; text-align: center; line-height:1.6;">
+      Reparto auto-split tECDSA: <strong style="color: var(--gold);">75%</strong> architect · <strong style="color: var(--gold);">25%</strong> canister X39_JOSEPH<br>
+      Pubkey ECDSA: <code style="font-size:.65rem; color: var(--ink-mute);">025968e3ee…2083</code> · 
+      <a href="mailto:grants@x39matrix.org" style="color: var(--gold-bright);">grants@x39matrix.org</a>
+    </p>
+  </div>
+</div>
+<!-- ═════════ FIN MODAL PAGO BTC SOVEREIGN v2 ═════════ -->

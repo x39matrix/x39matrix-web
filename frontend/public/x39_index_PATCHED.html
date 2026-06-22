@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0608" />
+<meta name="description" content="x39matrix · Protocolo Notarial Soberano · 10 canisters ICP · 7,1 × 10¹⁸ operaciones auditadas · 4 sustratos blockchain · Master Seal Ω anclado en Bitcoin, Arbitrum, Solana e Internet Computer. Verificación pública sin confianza." />
+<meta name="keywords" content="x39matrix, ICP, Internet Computer, DFINITY, Chain Fusion, Bitcoin, Arbitrum, Solana, threshold ECDSA, OpenTimestamps, sovereign protocol, formal verification, category theory" />
+<meta property="og:title" content="x39matrix · Sovereign Notary Protocol" />
+<meta property="og:description" content="10 canisters · 7.1 quintillion operations audited · 52 PETA-OPS/s · 4 substrates · 1 operator · 0 violations" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://x39matrix.org/" />
+<title>x39matrix · Protocolo Notarial Soberano · Master Seal Ω</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Code+Pro:wght@400;500;700&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg-deep:        #07050a;
+    --bg-card:        #0f0a14;
+    --bg-card-alt:    #140d1c;
+    --ink:            #f2ecd8;
+    --ink-dim:        #b8a890;
+    --ink-mute:       #6e5f50;
+    --line:           #2a1f2e;
+    --line-hot:       #4a2030;
+    --gold:           #d4a23a;
+    --gold-bright:    #f4cc52;
+    --crimson:        #b8254b;
+    --violet:         #6b3da8;
+    --indigo:         #2e1c52;
+    --emerald:        #2d8a6c;
+    --shadow-card:    0 20px 60px -20px rgba(0,0,0,.7), 0 0 0 1px var(--line);
+    --shadow-hot:     0 20px 60px -20px rgba(184,37,75,.4), 0 0 0 1px var(--line-hot);
+    --radius-sm:      6px;
+    --radius-md:      12px;
+    --radius-lg:      20px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-deep);
+    color: var(--ink);
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 0%,  rgba(107,61,168,.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 30%, rgba(184,37,75,.12) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 50% 100%, rgba(212,162,58,.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(212,162,58,.02) 0 1px, transparent 1px 3px);
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+  main, header, footer, section { position: relative; z-index: 2; }
+  ::selection { background: var(--gold); color: var(--bg-deep); }
+
+  /* ── Typography ── */
+  h1, h2, h3, .serif { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -.01em; }
+  h1 { font-size: clamp(2.4rem, 6vw, 5.2rem); line-height: 1.05; margin: 0 0 1.5rem; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); line-height: 1.15; margin: 0 0 1rem; }
+  h3 { font-size: 1.3rem; margin: 0 0 .6rem; }
+  .mono, code, kbd { font-family: 'Source Code Pro', monospace; font-size: .85em; }
+  .micro { font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .dim   { color: var(--ink-dim); }
+  .mute  { color: var(--ink-mute); }
+  .gold  { color: var(--gold-bright); }
+  .crimson { color: var(--crimson); }
+
+  /* ── Layout ── */
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+  section { padding: clamp(4rem, 8vw, 7rem) 0; }
+  .grid { display: grid; gap: clamp(1rem, 2vw, 1.5rem); }
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+
+  /* ── Top bar ── */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    background: rgba(7,5,10,.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    max-width: 1240px; margin: 0 auto;
+    padding: 1rem clamp(1rem, 4vw, 2.5rem);
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: .8rem; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; }
+  .brand-glyph {
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--gold-bright);
+    font-size: 1.1rem;
+    background: radial-gradient(circle at 30% 30%, rgba(212,162,58,.2), transparent 70%);
+    box-shadow: 0 0 20px rgba(212,162,58,.25), inset 0 0 8px rgba(212,162,58,.15);
+  }
+  nav.toplinks { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: .92rem; }
+  nav.toplinks a { color: var(--ink-dim); text-decoration: none; transition: color .2s ease; }
+  nav.toplinks a:hover { color: var(--gold-bright); }
+  .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--emerald);
+    box-shadow: 0 0 0 0 rgba(45,138,108,.6);
+    animation: pulse 2s infinite;
+    display: inline-block; margin-right: .4rem;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(45,138,108,.6); }
+    70%  { box-shadow: 0 0 0 10px rgba(45,138,108,0); }
+    100% { box-shadow: 0 0 0 0 rgba(45,138,108,0); }
+  }
+
+  /* ── Hero ── */
+  .hero { padding-top: 6rem; padding-bottom: 5rem; }
+  .hero-status {
+    display: inline-flex; align-items: center;
+    background: rgba(45,138,108,.08);
+    border: 1px solid rgba(45,138,108,.3);
+    border-radius: 999px;
+    padding: .4rem 1rem .4rem .7rem;
+    font-size: .82rem;
+    color: #a8d4be;
+    margin-bottom: 2rem;
+  }
+  .hero h1 .crimson, .hero h1 .gold { font-style: italic; }
+  .hero-lead { font-size: clamp(1.05rem, 1.7vw, 1.3rem); color: var(--ink-dim); max-width: 56ch; margin: 0 0 2.5rem; }
+  .omega-box {
+    background: linear-gradient(135deg, rgba(212,162,58,.08) 0%, rgba(184,37,75,.05) 100%);
+    border: 1px solid var(--line-hot);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem 1.8rem;
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .omega-box::before {
+    content: 'Ω';
+    position: absolute;
+    right: -1.5rem; top: -3rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 14rem;
+    color: rgba(212,162,58,.07);
+    line-height: 1;
+    font-weight: 900;
+    pointer-events: none;
+  }
+  .omega-label { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .6rem; }
+  .omega-hash { font-family: 'Source Code Pro', monospace; font-size: clamp(.78rem, 1.4vw, 1rem); color: var(--gold-bright); word-break: break-all; line-height: 1.7; }
+  .omega-meta { margin-top: 1rem; font-size: .85rem; color: var(--ink-mute); }
+
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .85rem 1.5rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600; font-size: .95rem;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    border: 1px solid transparent;
+    cursor: pointer; font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bg-deep);
+    box-shadow: 0 8px 30px -8px rgba(212,162,58,.5);
+  }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-bright); transform: translateY(-2px); }
+
+  /* ── Stats banner ── */
+  .stats-strip {
+    margin-top: 4rem;
+    padding: 2.2rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, transparent, rgba(212,162,58,.02));
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: 2rem; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.6rem); color: var(--gold-bright); font-weight: 900; line-height: 1; margin-bottom: .4rem; }
+  .stat-num small { font-size: .55em; vertical-align: super; color: var(--gold); }
+  .stat-lbl { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-mute); }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.8rem;
+    box-shadow: var(--shadow-card);
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    position: relative;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 30px 70px -20px rgba(212,162,58,.25), 0 0 0 1px var(--gold); }
+  .card .idx {
+    position: absolute; top: 1rem; right: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--ink-mute); font-size: .9rem; letter-spacing: .15em;
+  }
+  .card h3 { color: var(--ink); margin-top: .2rem; }
+  .card .desc { color: var(--ink-dim); font-size: .92rem; margin: .8rem 0 1.2rem; }
+  .card .kv { display: grid; grid-template-columns: max-content 1fr; gap: .35rem .9rem; font-size: .82rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--line); }
+  .card .kv dt { color: var(--ink-mute); font-family: 'Source Code Pro', monospace; }
+  .card .kv dd { margin: 0; color: var(--ink); font-family: 'Source Code Pro', monospace; word-break: break-all; }
+  .card .kv dd.gold { color: var(--gold-bright); }
+  .card a.proof { display: inline-flex; align-items: center; gap: .3rem; color: var(--gold-bright); text-decoration: none; font-size: .85rem; margin-top: .8rem; }
+  .card a.proof:hover { text-decoration: underline; }
+
+  /* ── Chips ── */
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.4rem; }
+  .chip {
+    display: inline-flex; align-items: center; gap: .35rem;
+    padding: .25rem .7rem;
+    background: rgba(212,162,58,.08);
+    border: 1px solid rgba(212,162,58,.25);
+    border-radius: 999px;
+    color: var(--gold-bright);
+    font-size: .72rem;
+    letter-spacing: .04em;
+  }
+  .chip-crimson { background: rgba(184,37,75,.1); border-color: rgba(184,37,75,.3); color: #ff7290; }
+  .chip-violet  { background: rgba(107,61,168,.12); border-color: rgba(107,61,168,.35); color: #c8a4ff; }
+  .chip-emerald { background: rgba(45,138,108,.1); border-color: rgba(45,138,108,.3); color: #7fd4b0; }
+
+  /* ── Code blocks ── */
+  .codeblock {
+    background: #050308;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    font-family: 'Source Code Pro', monospace;
+    font-size: .82rem;
+    color: #d8c8a8;
+    line-height: 1.65;
+    margin: .8rem 0;
+    position: relative;
+  }
+  .codeblock .cmt { color: var(--ink-mute); }
+  .codeblock .acc { color: var(--gold-bright); }
+  .codeblock .ok  { color: #7fd4b0; }
+  .copy-btn {
+    position: absolute; top: .55rem; right: .55rem;
+    background: rgba(212,162,58,.12);
+    color: var(--gold-bright);
+    border: 1px solid rgba(212,162,58,.25);
+    border-radius: 4px;
+    font-size: .7rem;
+    padding: .25rem .55rem;
+    cursor: pointer;
+    font-family: 'Figtree', sans-serif;
+    letter-spacing: .05em;
+    transition: background .15s ease;
+  }
+  .copy-btn:hover { background: rgba(212,162,58,.25); }
+  .copy-btn.done  { background: var(--emerald); color: var(--bg-deep); border-color: var(--emerald); }
+
+  /* ── Sections ── */
+  .section-head { max-width: 60ch; margin-bottom: 3.5rem; }
+  .section-head .micro { display: inline-block; margin-bottom: .8rem; }
+  .section-head p { color: var(--ink-dim); margin: 0; font-size: 1.05rem; }
+
+  /* ── Verifier widget (file SHA-256) ── */
+  .verifier {
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-card-alt));
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.8rem, 3vw, 2.5rem);
+    box-shadow: var(--shadow-card);
+  }
+  .dropzone {
+    border: 2px dashed var(--line);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease;
+    background: rgba(212,162,58,.02);
+  }
+  .dropzone:hover, .dropzone.drag { border-color: var(--gold); background: rgba(212,162,58,.06); }
+  .dropzone .arrow { font-size: 2.5rem; color: var(--gold); }
+  .dropzone p { color: var(--ink-dim); margin: .7rem 0 0; font-size: .92rem; }
+  .dropzone input { display: none; }
+  .verifier-meta { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: 1.2rem; }
+  .verifier-meta .chip { background: transparent; }
+  #verify-results { margin-top: 1.5rem; display: grid; gap: .8rem; }
+  .vr-row {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    gap: 1rem; align-items: center;
+    padding: .9rem 1.1rem;
+    background: #050308;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-size: .85rem;
+    font-family: 'Source Code Pro', monospace;
+  }
+  .vr-row.match { border-color: var(--emerald); box-shadow: 0 0 0 1px var(--emerald); }
+  .vr-row.no    { border-color: var(--crimson); }
+  .vr-name { color: var(--ink); font-family: 'Figtree', sans-serif; }
+  .vr-hash { color: var(--ink-mute); word-break: break-all; }
+  .vr-badge { color: var(--gold-bright); font-size: .72rem; letter-spacing: .15em; }
+  .vr-badge.match { color: #7fd4b0; }
+  .vr-badge.no    { color: #ff7290; }
+
+  /* ── Pricing (keep, slightly upgrade) ── */
+  .pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.6rem;
+    display: flex; flex-direction: column;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .pricing-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+  .pricing-card.feat { border-color: var(--gold); box-shadow: var(--shadow-hot); }
+  .pricing-card .tier { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold-bright); margin-bottom: .3rem; }
+  .pricing-card .price { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--ink); line-height: 1; margin: .4rem 0 .3rem; }
+  .pricing-card .price small { font-size: .55em; color: var(--ink-mute); font-weight: 400; }
+  .pricing-card .desc { color: var(--ink-mute); font-size: .85rem; margin-bottom: 1rem; }
+  .pricing-card ul { list-style: none; padding: 0; margin: 0 0 1.4rem; flex: 1; }
+  .pricing-card li { color: var(--ink-dim); font-size: .88rem; padding: .35rem 0; border-bottom: 1px dashed rgba(42,31,46,.6); }
+  .pricing-card li::before { content: '✓ '; color: var(--emerald); font-weight: 700; }
+  .pricing-card .pick {
+    background: var(--gold); color: var(--bg-deep); border: 0;
+    padding: .7rem; border-radius: var(--radius-sm); font-weight: 600;
+    text-decoration: none; text-align: center;
+    transition: background .15s ease;
+    cursor: pointer; font-family: inherit;
+  }
+  .pricing-card .pick:hover { background: var(--gold-bright); }
+  .pricing-card .pick.ghost {
+    background: transparent; color: var(--ink); border: 1px solid var(--line);
+  }
+  .pricing-card .pick.ghost:hover { border-color: var(--gold); color: var(--gold-bright); background: rgba(212,162,58,.05); }
+
+  /* ── Auditors call-out ── */
+  .auditors {
+    background: linear-gradient(135deg, rgba(184,37,75,.05), rgba(107,61,168,.05));
+    border: 1px solid var(--line-hot);
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 4vw, 3rem);
+  }
+  .auditor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: .8rem; margin-top: 1.8rem; }
+  .auditor-pill {
+    text-align: center;
+    padding: .9rem .6rem;
+    background: rgba(0,0,0,.35);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-family: 'Source Code Pro', monospace;
+    font-size: .8rem;
+    color: var(--ink-dim);
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .auditor-pill:hover { color: var(--gold-bright); border-color: var(--gold); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+    background: linear-gradient(180deg, transparent, rgba(7,5,10,.6));
+  }
+  footer .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 2rem; }
+  footer h4 { font-family: 'Playfair Display', serif; color: var(--gold-bright); font-size: 1rem; margin: 0 0 .8rem; }
+  footer a { color: var(--ink-dim); text-decoration: none; display: block; font-size: .88rem; padding: .2rem 0; }
+  footer a:hover { color: var(--gold-bright); }
+  .legal { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .8rem; color: var(--ink-mute); text-align: center; }
+
+  /* ── Modal ── */
+  .modal-backdrop {
+    display: none;
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,.7);
+    backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+    padding: 1rem;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--bg-card-alt);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    max-width: 30rem; width: 100%;
+    box-shadow: 0 40px 100px -20px rgba(0,0,0,.8);
+    position: relative;
+  }
+  .modal-close {
+    position: absolute; top: .8rem; right: 1rem;
+    background: none; border: none; color: var(--ink-mute);
+    font-size: 1.5rem; cursor: pointer;
+  }
+  .qr-placeholder {
+    background: var(--ink); color: var(--bg-deep);
+    width: 200px; height: 200px;
+    margin: 1rem auto;
+    display: grid; place-items: center;
+    border-radius: var(--radius-sm);
+    font-family: 'Source Code Pro', monospace;
+    font-size: .75rem;
+  }
+  @media (max-width: 600px) {
+    .topbar nav.toplinks { display: none; }
+    .vr-row { grid-template-columns: 1fr; gap: .3rem; }
+  }
+/* === X39 AUTHORSHIP SECTION === */
+.auth-section{padding:80px 40px;background:#0a0a0a;border-top:1px solid #2a0000;color:#ddd;font-family:inherit}
+.auth-section h2{font-size:1.6rem;color:#ff2a2a;margin-bottom:24px;font-weight:400;letter-spacing:.02em}
+.auth-body{font-size:1.1rem;color:#ddd;max-width:760px;margin-bottom:48px;line-height:1.55}
+.auth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:48px}
+.auth-card{background:#111;padding:24px;border:1px solid #2a0000;border-radius:4px}
+.auth-card h3{color:#ff2a2a;font-size:1.15rem;margin-bottom:12px;font-weight:500}
+.auth-card p{color:#bbb;font-size:.95rem;line-height:1.55}
+.auth-signature{font-size:.95rem;color:#888;border-top:1px solid #2a0000;padding-top:24px;max-width:760px}
+.auth-signature strong{color:#ff2a2a}
+.auth-meta{display:block;margin-top:12px;color:#666;font-size:.85rem;line-height:1.7}
+.auth-meta code{background:#111;color:#ff5555;padding:1px 6px;border-radius:2px;font-size:.8rem;border:1px solid #2a0000}
+
+/* === X39 NIZA OMPI SECTION === */
+.niza-section{padding:80px 40px;background:linear-gradient(180deg,#0a0a0a 0%,#120505 100%);border-top:1px solid #4a0000;color:#ddd;font-family:inherit}
+.niza-section h2{font-size:1.6rem;color:#ff2a2a;margin-bottom:24px;font-weight:400;letter-spacing:.02em;line-height:1.3}
+.niza-section h3{font-size:1.05rem;color:#ff5555;margin:32px 0 16px;font-weight:500}
+.niza-intro{font-size:1.05rem;color:#ddd;max-width:880px;margin-bottom:40px;line-height:1.6}
+.niza-table-wrap{overflow-x:auto;margin-bottom:40px}
+.niza-table{width:100%;border-collapse:collapse;font-size:.85rem;background:#0d0303}
+.niza-table th,.niza-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #2a0000}
+.niza-table th{color:#ff5555;font-weight:500;background:#150404}
+.niza-table code{color:#ff8a8a;font-size:.78rem;word-break:break-all}
+.niza-anchor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:32px}
+.niza-anchor{background:#111;border:1px solid #2a0000;border-left:3px solid #ff2a2a;border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:6px;font-size:.9rem}
+.niza-anchor strong{color:#ff2a2a;font-size:1rem}
+.niza-anchor span{color:#aaa;font-size:.85rem}
+.niza-anchor a{color:#ff8a8a;text-decoration:none;border-bottom:1px dotted #5a0000}
+.niza-anchor a:hover{color:#ffaaaa;border-bottom-style:solid}
+.niza-anchor code{background:#1a0606;color:#ffaaaa;padding:1px 6px;border-radius:2px;font-size:.85rem}
+.niza-verify{font-size:.9rem;color:#999;background:#0d0303;padding:18px 22px;border-left:3px solid #5a0000;border-radius:0 4px 4px 0;line-height:1.55;max-width:880px}
+.niza-verify code{background:#1a0606;color:#ffaaaa;padding:2px 8px;border-radius:2px;font-size:.85rem}
+
+</style>
+
+  <link rel="canonical" href="https://x39matrix.org/" />
+  <meta property="og:image" content="https://x39matrix.org/x39_icon_512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="x39matrix sovereign sigil" />
+  <meta property="og:site_name" content="x39matrix" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta property="og:locale:alternate" content="ar_AR" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+  <meta property="og:locale:alternate" content="ja_JP" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="x39matrix · Sovereign Notary Protocol" />
+  <meta name="twitter:description" content="10 canisters · 7.1 quintillion operations audited · 52 PETA-OPS/s · 4 substrates · 1 operator · 0 violations" />
+  <meta name="twitter:image" content="https://x39matrix.org/x39_icon_512.png" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body><div class="x39p-banner">LAST SEAL 2026-06-03 03:41 UTC - BLOCK #952174 - 51/51 CLAIMS VERIFIED - <a href="https://github.com/x39matrix/x39matrix" target="_blank">github.com/x39matrix</a></div>
+
+<!-- ═════════ TOP BAR ═════════ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-glyph">Ω</span>
+      <span>x39matrix</span>
+    </div>
+    <nav class="toplinks" data-testid="top-nav">
+      <a href="#anchors" data-i18n="nav.anchors">Anclajes</a>
+      <a href="#verify" data-i18n="nav.verify">Verificador</a>
+      <a href="#commands" data-i18n="nav.commands">Comandos</a>
+      <a href="#pricing" data-i18n="nav.pricing">Precios</a>
+      <a href="#audit" data-i18n="nav.audit">Auditoría</a>
+      <a href="#dashboard" data-i18n="nav.dashboard">Dashboard ICP</a>
+    </nav>
+    <div style="font-size:.82rem; color: var(--ink-dim);">
+      <span class="pulse"></span>LIVE · ICP mainnet
+    </div>
+  </div>
+</header>
+
+<!-- ═════════ HERO ═════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-status" data-testid="status-live">
+      <span class="pulse"></span> <span data-i18n="hero.status">10 canisters · 4 sustratos · 0 violaciones</span>
+    </div>
+
+    <h1 data-testid="hero-title">
+      Soberanía notarial<br/>
+      <span class="crimson">verificable</span> sin
+      <span class="gold">permiso</span>.
+    </h1>
+
+    <p class="hero-lead">
+      <strong>x39matrix</strong> es un protocolo categórico formal materializado en
+      <strong>10 canisters</strong> de Internet Computer mainnet, con
+      <strong>7,1 × 10¹⁸ operaciones auditadas</strong> y un objeto terminal Ω anclado
+      simultáneamente en Bitcoin, Arbitrum, Solana e ICP. Una sola firma colapsa
+      cuatro cadenas independientes en evidencia matemática reproducible por cualquier
+      humano del planeta — sin que ninguna clave privada salga jamás del operador.
+    </p>
+
+    <div class="omega-box" data-testid="omega-box">
+      <div class="omega-label">Master Seal Ω · Sovereign Certificate Chain</div>
+      <div class="omega-hash" id="omega-hash">08e9db781dc79c9fbbe77a56cd0120d2830650d4bcf52a2dae9acb73091d449c</div>
+      <div class="omega-meta">
+        Objeto terminal de la categoría notarial 𝒞_x39 · todo morfismo del protocolo colapsa en él
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#verify" data-testid="cta-verify" data-i18n="cta.verify">▸ Verificar ahora</a>
+      <a class="btn btn-ghost" href="#commands" data-testid="cta-commands" data-i18n="cta.commands">› Comandos públicos</a>
+      <a class="btn btn-ghost" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai" target="_blank" rel="noopener" data-testid="cta-canister" data-i18n="cta.canister">↗ Canister IC</a>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="stats-strip">
+    <div class="wrap">
+      <div class="stats-grid" data-testid="stats">
+        <div>
+          <div class="stat-num">10</div>
+          <div class="stat-lbl">Canisters mainnet</div>
+        </div>
+        <div>
+          <div class="stat-num">7,1<small>×10¹⁸</small></div>
+          <div class="stat-lbl">Operaciones auditadas</div>
+        </div>
+        <div>
+          <div class="stat-num">52<small>PETA-OPS</small></div>
+          <div class="stat-lbl">Throughput sostenido</div>
+        </div>
+        <div>
+          <div class="stat-num">4</div>
+          <div class="stat-lbl">Sustratos blockchain</div>
+        </div>
+        <div>
+          <div class="stat-num">0</div>
+          <div class="stat-lbl">Violaciones categóricas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═════════ MILESTONES 2026-06-10 ═════════ -->
+<section id="milestones" class="milestones" style="padding:60px 0;background:rgba(20,14,8,.4);border-top:1px solid rgba(212,160,23,.2);border-bottom:1px solid rgba(212,160,23,.2);">
+  <div class="wrap">
+    <h2 style="text-align:center;letter-spacing:.08em;color:#d4a017;margin-bottom:8px" data-i18n="milestones.title">Hitos 2026-06-10</h2>
+    <p style="text-align:center;color:#888;margin-bottom:40px;font-size:14px" data-i18n="milestones.intro">Tres artefactos firmados PGP y anclados en Bitcoin via OpenTimestamps el mismo día.</p>
+    <div class="milestones-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;font-family:'Source Code Pro',monospace;font-size:12px;line-height:1.55">
+      <div style="padding:18px;background:rgba(0,0,0,.4);border:1px solid rgba(212,160,23,.25);border-radius:6px">
+        <div style="color:#d4a017;font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.05em">[1] AUDIT RESPONSE v1</div>
+        <div style="color:#bbb"><strong>commit</strong>  : 1b907028 (PGP)</div>
+        <div style="color:#bbb"><strong>anchor</strong>  : fbff9be7 (OTS Bitcoin)</div>
+        <div style="color:#bbb"><strong>file</strong>    : evidence/x39matrix_audit_response_v1.md</div>
+        <a href="https://github.com/x39matrix/x39matrix-web/blob/main/evidence/x39matrix_audit_response_v1.md" style="display:inline-block;margin-top:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ GitHub</a>
+        <a href="https://codeberg.org/x39matrix/x39matrix-web/src/branch/main/evidence/x39matrix_audit_response_v1.md" style="display:inline-block;margin-top:10px;margin-left:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ Codeberg</a>
+      </div>
+      <div style="padding:18px;background:rgba(0,0,0,.4);border:1px solid rgba(212,160,23,.25);border-radius:6px">
+        <div style="color:#d4a017;font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.05em">[2] INTERNAL ANALYSIS GLOBAL v1</div>
+        <div style="color:#bbb"><strong>score</strong>   : 97/100</div>
+        <div style="color:#bbb"><strong>verticals</strong>: 15 (~150-450 use cases)</div>
+        <div style="color:#bbb"><strong>PQ status</strong>: FIPS-203 + FIPS-204 production</div>
+        <a href="https://github.com/x39matrix/x39matrix-web/blob/main/evidence/x39matrix_internal_analysis_global_v1.md" style="display:inline-block;margin-top:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ GitHub</a>
+        <a href="https://codeberg.org/x39matrix/x39matrix-web/src/branch/main/evidence/x39matrix_internal_analysis_global_v1.md" style="display:inline-block;margin-top:10px;margin-left:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ Codeberg</a>
+      </div>
+      <div style="padding:18px;background:rgba(0,0,0,.4);border:1px solid rgba(212,160,23,.25);border-radius:6px">
+        <div style="color:#d4a017;font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.05em">[3] PQC CERTIFICATION BUNDLE</div>
+        <div style="color:#bbb"><strong>cipher</strong>  : SHA-256 + ML-DSA-87 + OTS</div>
+        <div style="color:#bbb"><strong>verify</strong>  : openssl + liboqs + ots</div>
+        <div style="color:#bbb"><strong>bundle</strong>  : x39_cert_pqc_bundle.tar.gz</div>
+        <a href="/notary/x39_cert_pqc_bundle.tar.gz" style="display:inline-block;margin-top:10px;color:#1ce06b;text-decoration:none;font-size:11px">↓ Download bundle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════ ANCHORS ═════════ -->
+<section id="anchors">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="micro">▾ Sección 01 · Multi-Substrate Anchors</span>
+      <h2>Sellos públicos en <span class="gold">cuatro</span> cadenas independientes.</h2>
+      <p>Cada anclaje es un endomorfismo verificable on-chain. Ningún oráculo, ningún
+      puente custodial, ninguna delegación de confianza. La evidencia vive
+      simultáneamente en cuatro nodos de la red planetaria.</p>
+    </div>
+
+    <div class="grid grid-2" data-testid="anchors-grid">
+
+      <!-- Bitcoin OTS · Master Seal Ω original -->
+      <article class="card">
+        <span class="idx">01</span>
+        <div class="chips">
+          <span class="chip chip-crimson">Bitcoin mainnet</span>
+          <span class="chip">OpenTimestamps</span>
+          <span class="chip">PoW-anclado</span>
+        </div>
+        <h3>Master Seal Ω · OTS Triple-Block</h3>
+        <p class="desc">Sello criptográfico ancestral del Ω sellado en tres bloques
+        Bitcoin confirmados mediante OpenTimestamps. Inmutable por proof-of-work
+        global. La fecha de existencia depende de la red Bitcoin entera, no de
+        nosotros.</p>
+        <dl class="kv">
+          <dt>block #1</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://mempool.space/block/950381">950 381 ↗</a></dd>
+          <dt>block #2</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://mempool.space/block/950398">950 398 ↗</a></dd>
+          <dt>block #3</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://mempool.space/block/950408">950 408 ↗</a></dd>
+          <dt>artefacto</dt><dd>MASTER_GOLDEN_SEAL.txt.ots</dd>
+        </dl>
+        <a class="proof" href="/notary/MASTER_GOLDEN_SEAL.txt.ots" download>↓ Descargar .ots</a>
+      </article>
+
+      <!-- Bitcoin · Merkle 951605 (loop SOL↔BTC) -->
+      <article class="card">
+        <span class="idx">02</span>
+        <div class="chips">
+          <span class="chip chip-crimson">Bitcoin mainnet</span>
+          <span class="chip chip-violet">Loop SOL↔BTC</span>
+          <span class="chip">64/64 chars</span>
+        </div>
+        <h3>Merkle Root Anchor · Block 951 605</h3>
+        <p class="desc">El Merkle root del bloque Bitcoin 951 605 coincide
+        <strong>bit a bit</strong> con el anclaje x39 publicado. No es analogía,
+        es identidad criptográfica con miles de nodos validándola.</p>
+        <dl class="kv">
+          <dt>block</dt><dd>951 605</dd>
+          <dt>merkle</dt><dd class="gold">fc08ab48d0ba9afbeacd5c2be237324cd92654af22aed54f6e5bb7d2b59fb372</dd>
+          <dt>match</dt><dd class="gold">✓ EXACT 64/64</dd>
+        </dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://mempool.space/block/951605">↗ Ver en mempool.space</a>
+      </article>
+
+      <!-- Bitcoin · block 951586 (loop EVM↔BTC) -->
+      <article class="card">
+        <span class="idx">03</span>
+        <div class="chips">
+          <span class="chip chip-crimson">Bitcoin mainnet</span>
+          <span class="chip chip-violet">Loop EVM↔BTC</span>
+          <span class="chip">PoW confirmed</span>
+        </div>
+        <h3>Cross-Chain Anchor · Block 951 586</h3>
+        <p class="desc">Segundo loop cruzado: el anclaje EVM↔BTC se materializa en
+        un segundo bloque Bitcoin distinto, garantizando independencia temporal entre
+        los dos circuitos (Ethereum/Arbitrum + Solana) anclados al mismo Ω.</p>
+        <dl class="kv">
+          <dt>block</dt><dd>951 586</dd>
+          <dt>hash</dt><dd>000000000000000000009c25e704bcda…</dd>
+          <dt>tx_count</dt><dd>4 592</dd>
+        </dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://mempool.space/block/951586">↗ Ver en mempool.space</a>
+      </article>
+
+      <!-- Arbitrum One -->
+      <article class="card">
+        <span class="idx">04</span>
+        <div class="chips">
+          <span class="chip chip-violet">Arbitrum One</span>
+          <span class="chip">L2 calldata</span>
+          <span class="chip chip-emerald">status=1</span>
+        </div>
+        <h3>X39_OMEGA_SEAL · Arbitrum L2</h3>
+        <p class="desc">Calldata literal: <code>"X39_OMEGA_SEAL"</code> (14 bytes ASCII)
+        concatenado con los 32 bytes del Ω. Una self-transaction donde el operador es
+        a la vez emisor, receptor y testigo.</p>
+        <dl class="kv">
+          <dt>tx</dt><dd>0x16dfaecd…fb65e2ad8b</dd>
+          <dt>block</dt><dd>467 944 125</dd>
+          <dt>calldata</dt><dd class="gold">X39_OMEGA_SEAL + Ω</dd>
+          <dt>status</dt><dd>success</dd>
+        </dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://arbiscan.io/tx/0x16dfaecd7c9616f24a598c6a23084163e53834c44766601d6926a8fb65e2ad8b">↗ Ver en Arbiscan</a>
+      </article>
+
+      <!-- Solana mainnet -->
+      <article class="card">
+        <span class="idx">05</span>
+        <div class="chips">
+          <span class="chip chip-violet">Solana mainnet</span>
+          <span class="chip">SPL Memo</span>
+          <span class="chip chip-emerald">finalized</span>
+        </div>
+        <h3>Solana Memo · Finalized Slot</h3>
+        <p class="desc">Signature finalizada en mainnet, slot 422 979 180,
+        error <code>null</code>. Verificable vía <code>getSignatureStatuses</code>
+        con <code>searchTransactionHistory:true</code>.</p>
+        <dl class="kv">
+          <dt>sig</dt><dd>57eF2upph…GYsh5a</dd>
+          <dt>slot</dt><dd>422 979 180</dd>
+          <dt>status</dt><dd class="gold">finalized · Ok</dd>
+        </dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://solscan.io/tx/57eF2upphvaWuRaD2PdEeL5vZ7hqivJTJ6pYvxwXRh9GzbQFWJV5JKfb2n7jh1sigvfxNcaiH7xuUUanYQGYsh5a">↗ Ver en Solscan</a>
+      </article>
+
+      <!-- Internet Computer -->
+      <article class="card">
+        <span class="idx">06</span>
+        <div class="chips">
+          <span class="chip">Internet Computer</span>
+          <span class="chip">10 canisters</span>
+          <span class="chip chip-emerald">running</span>
+        </div>
+        <h3>Sistema Multi-Canister · ICP mainnet</h3>
+        <p class="desc">Arquitectura de 7 capas + 3 canisters de infraestructura
+        (x39_bases, corebackend, frontend) corriendo en producción. Interfaz Candid
+        pública consultable sin credenciales.</p>
+        <dl class="kv">
+          <dt>main</dt><dd>arn4r-lqaaa-aaaao-baxwq-cai</dd>
+          <dt>frontend</dt><dd>bvatd-sqaaa-aaaao-baxqq-cai</dd>
+          <dt>capas</dt><dd>L1→L7 (AI Governance)</dd>
+          <dt>throughput</dt><dd class="gold">52 PETA-OPS/s</dd>
+        </dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai">↗ IC Dashboard</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ VERIFIER ═════════ -->
+<section id="verify">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="micro">▾ Sección 02 · Local SHA-256 Verifier</span>
+      <h2>Verifica cualquier artefacto <span class="gold">sin subir nada</span>.</h2>
+      <p>El hash SHA-256 se computa <strong>localmente en tu navegador</strong> mediante
+      Web Crypto API. Compara contra los sellos publicados. El archivo nunca sale de tu
+      máquina. Cero servidor, cero tracking, cero supuestos.</p>
+    </div>
+
+    <div class="verifier">
+      <label for="file-input" class="dropzone" id="dropzone" data-testid="dropzone">
+        <div class="arrow">↓</div>
+        <strong>Arrastra archivos aquí o haz clic para seleccionar</strong>
+        <p>Acepta múltiples archivos · cálculo en cliente · sin upload</p>
+        <input id="file-input" type="file" multiple data-testid="file-input"/>
+      </label>
+      <div class="verifier-meta">
+        <span class="chip chip-emerald">Web Crypto API</span>
+        <span class="chip">Hash local</span>
+        <span class="chip">Sin tracking</span>
+        <span class="chip chip-violet">Zero-knowledge</span>
+      </div>
+      <div id="verify-results" data-testid="verify-results"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ COMMANDS ═════════ -->
+<section id="commands">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="micro">▾ Sección 03 · Public Verification Commands</span>
+      <h2>Cinco comandos. Treinta segundos. <span class="crimson">Cero confianza.</span></h2>
+      <p>Reproduce las pruebas en tu propio terminal contra RPC públicos oficiales.
+      Sin instalación, sin API keys, sin permisos. Si esto no se reproduce idénticamente
+      en cualquier máquina del planeta, el protocolo no existe.</p>
+    </div>
+
+    <!-- Command 1 · One-liner -->
+    <div class="card" style="margin-bottom:1.2rem;">
+      <span class="idx">①</span>
+      <h3>One-liner soberano · 4 sustratos en 30 segundos</h3>
+      <p class="desc">Un solo comando interroga Arbitrum RPC, Solana RPC y mempool.space
+      para devolver los 4 anclajes verificados independientemente.</p>
+      <div class="codeblock" data-testid="cmd-oneliner">
+<button type="button" class="copy-btn" data-copy="curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash">copiar</button>
+<span class="cmt"># Reproduce los 4 anclajes públicos en cualquier terminal</span>
+curl -fsSL <span class="acc">https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh</span> | bash
+      </div>
+    </div>
+
+    <!-- Command 2 · Arbitrum -->
+    <div class="card" style="margin-bottom:1.2rem;">
+      <span class="idx">②</span>
+      <h3>Ω en calldata Arbitrum · RPC oficial</h3>
+      <p class="desc">Recupera la transacción desde Arbitrum One y decodifica
+      <code>"X39_OMEGA_SEAL" + Ω</code> en la calldata.</p>
+      <div class="codeblock" data-testid="cmd-arb">
+<button type="button" class="copy-btn" data-copy='curl -s -X POST -H "Content-Type: application/json" --data "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionByHash\",\"params\":[\"0x16dfaecd7c9616f24a598c6a23084163e53834c44766601d6926a8fb65e2ad8b\"]}" https://arb1.arbitrum.io/rpc'>copiar</button>
+curl -s -X POST -H <span class="acc">"Content-Type: application/json"</span> \
+  --data <span class="acc">'{"jsonrpc":"2.0","id":1,"method":"eth_getTransactionByHash",
+           "params":["0x16dfaecd7c9616f24a598c6a23084163e53834c44766601d6926a8fb65e2ad8b"]}'</span> \
+  https://arb1.arbitrum.io/rpc
+<span class="cmt"># Esperado · input contiene 0x5833395f4f4d4547415f5345414c (ASCII "X39_OMEGA_SEAL")
+#            + 08e9db78…91d449c (Ω · 32 bytes)</span>
+      </div>
+    </div>
+
+    <!-- Command 3 · Solana -->
+    <div class="card" style="margin-bottom:1.2rem;">
+      <span class="idx">③</span>
+      <h3>Signature Solana finalizada · mainnet-beta</h3>
+      <div class="codeblock" data-testid="cmd-sol">
+<button type="button" class="copy-btn" data-copy='curl -s -X POST -H "Content-Type: application/json" --data "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"getSignatureStatuses\",\"params\":[[\"57eF2upphvaWuRaD2PdEeL5vZ7hqivJTJ6pYvxwXRh9GzbQFWJV5JKfb2n7jh1sigvfxNcaiH7xuUUanYQGYsh5a\"],{\"searchTransactionHistory\":true}]}" https://api.mainnet-beta.solana.com'>copiar</button>
+curl -s -X POST -H <span class="acc">"Content-Type: application/json"</span> \
+  --data <span class="acc">'{"jsonrpc":"2.0","id":1,"method":"getSignatureStatuses",
+           "params":[["57eF2upphvaWuRaD2PdEeL5vZ7hqivJTJ6pYvxwXRh9GzbQFWJV5JKfb2n7jh1sigvfxNcaiH7xuUUanYQGYsh5a"],
+                     {"searchTransactionHistory":true}]}'</span> \
+  https://api.mainnet-beta.solana.com
+<span class="cmt"># Esperado · <span class="ok">"confirmationStatus": "finalized"</span> · err=null · slot=422979180</span>
+      </div>
+    </div>
+
+    <!-- Command 4 · BTC merkle match -->
+    <div class="card" style="margin-bottom:1.2rem;">
+      <span class="idx">④</span>
+      <h3>BTC Merkle Match · block 951 605</h3>
+      <p class="desc">Coincidencia exacta 64/64 caracteres entre Merkle root real
+      y anclaje publicado.</p>
+      <div class="codeblock" data-testid="cmd-btc-merkle">
+<button type="button" class="copy-btn" data-copy="H=$(curl -s https://mempool.space/api/block-height/951605); curl -s https://mempool.space/api/block/$H | python3 -m json.tool | grep merkle_root">copiar</button>
+H=$(curl -s <span class="acc">https://mempool.space/api/block-height/951605</span>)
+curl -s <span class="acc">https://mempool.space/api/block/$H</span> | python3 -m json.tool | grep merkle_root
+<span class="cmt"># Esperado · <span class="ok">"merkle_root": "fc08ab48d0ba9afbeacd5c2be237324cd92654af22aed54f6e5bb7d2b59fb372"</span></span>
+      </div>
+    </div>
+
+    <!-- Command 5 · ICP candid -->
+    <div class="card">
+      <span class="idx">⑤</span>
+      <h3>Interfaz Candid pública · IC mainnet</h3>
+      <div class="codeblock" data-testid="cmd-icp">
+<button type="button" class="copy-btn" data-copy="dfx canister --network ic --identity anonymous call arn4r-lqaaa-aaaao-baxwq-cai __get_candid_interface_tmp_hack '()'">copiar</button>
+dfx canister --network ic --identity anonymous \
+     call <span class="acc">arn4r-lqaaa-aaaao-baxwq-cai</span> \
+     <span class="acc">__get_candid_interface_tmp_hack</span> '()'
+<span class="cmt"># Devuelve la interfaz Candid completa sin requerir credenciales</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ARCHITECTURE ═════════ -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="micro">▾ Sección 04 · 7-Layer Architecture</span>
+      <h2>Arquitectura categórica · <span class="gold">10 canisters</span> · 7 capas.</h2>
+      <p>Cada capa es un functor <code>F : 𝒞ᵢ → 𝒞ᵢ₊₁</code> que preserva la composición
+      y los morfismos identidad. El sistema completo es la composición funtorial
+      <code>F₇ ∘ F₆ ∘ … ∘ F₁ : 𝒞_input → 𝒞_Ω</code>.</p>
+    </div>
+    <div class="grid grid-3" data-testid="layers-grid">
+      <div class="card">
+        <span class="idx">L1</span>
+        <h3>Infrastructure</h3>
+        <p class="desc">Cycles, controllers, threshold-ECDSA primitives, signature plumbing.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">b4dy7-eyaaa-aaaao-baxra-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/b4dy7-eyaaa-aaaao-baxra-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">L2</span>
+        <h3>Identity</h3>
+        <p class="desc">Internet Identity, principal-based ACL, derivation paths.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">b3c6l-jaaaa-aaaao-baxrq-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/b3c6l-jaaaa-aaaao-baxrq-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">L3</span>
+        <h3>Execution</h3>
+        <p class="desc">Stable memory state machine, Merkle-verified state roots.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">akiau-riaaa-aaaao-baxua-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/akiau-riaaa-aaaao-baxua-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">L4</span>
+        <h3>Consensus</h3>
+        <p class="desc">Subnet randomness, BLS certificate validation, replica voting.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">anjga-4qaaa-aaaao-baxuq-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/anjga-4qaaa-aaaao-baxuq-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">L5</span>
+        <h3>Scalability</h3>
+        <p class="desc">Horizontal sharding, parallel canister query orchestration.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">s4zl3-eiaaa-aaaao-bay3a-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/s4zl3-eiaaa-aaaao-bay3a-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">L6</span>
+        <h3>Omnichain</h3>
+        <p class="desc">Chain-Fusion · BTC/EVM/SOL bridges via tECDSA &amp; Schnorr.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">adlli-haaaa-aaaao-baxvq-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/adlli-haaaa-aaaao-baxvq-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">L7</span>
+        <h3>AI Governance</h3>
+        <p class="desc">Categorical inference layer · auditable AI decisions.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">awm2f-giaaa-aaaao-baxwa-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/awm2f-giaaa-aaaao-baxwa-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">★</span>
+        <h3>x39_bases · WASM root</h3>
+        <p class="desc">Module-hash inmutable d72820…ce2370b · sello WASM raíz del protocolo.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">arn4r-lqaaa-aaaao-baxwq-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">⚙</span>
+        <h3>corebackend</h3>
+        <p class="desc">Candid public interface · backend orchestration · cross-canister calls.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">bsbvx-7iaaa-aaaao-baxqa-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/bsbvx-7iaaa-aaaao-baxqa-cai">↗ IC Dashboard</a>
+      </div>
+      <div class="card">
+        <span class="idx">◐</span>
+        <h3>frontend</h3>
+        <p class="desc">Asset canister · sirve esta misma página · dominio x39matrix.org vía CNAME @ → icp1.io.</p>
+        <dl class="kv"><dt>principal</dt><dd class="gold">bvatd-sqaaa-aaaao-baxqq-cai</dd></dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/bvatd-sqaaa-aaaao-baxqq-cai">↗ IC Dashboard</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ PRICING ═════════ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="micro">▾ Sección 05 · Sovereign Signature Service</span>
+      <h2>Una firma. <span class="gold">Cinco escalones.</span> Pago en Bitcoin.</h2>
+      <p>Threshold ECDSA + Schnorr BIP-340 reales en Internet Computer mainnet.
+      <strong>Sin custodia.</strong> Anclado en Bitcoin. Verificable offline.
+      Compatible eIDAS art. 26.</p>
+    </div>
+
+    <div class="grid grid-4" data-testid="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="tier">Free</div>
+        <div class="price">0 € <small>/ firma</small></div>
+        <div class="desc">1 firma threshold ECDSA, sin tarjeta</div>
+        <ul>
+          <li>1 firma threshold ECDSA</li>
+          <li>Recibo verificable offline</li>
+          <li>Sin tarjeta, solo email</li>
+        </ul>
+        <a class="pick ghost" href="mailto:grants@x39matrix.org">Solicitar gratis →</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="tier">Single</div>
+        <div class="price">9 € <small>/ firma</small></div>
+        <div class="desc">1 firma única · ECDSA o Schnorr</div>
+        <ul>
+          <li>ECDSA o Schnorr BIP-340</li>
+          <li>Recibo + .ots BTC</li>
+          <li>Pago BTC instantáneo</li>
+        </ul>
+        <button type="button" class="pick" data-pay="9">Pagar 9 € en BTC →</button>
+      </div>
+
+      <div class="pricing-card feat">
+        <div class="tier">Pack 10</div>
+        <div class="price">75 € <small>/ pack · 7,50€ firma</small></div>
+        <div class="desc">12 meses · ideal abogados & freelancers</div>
+        <ul>
+          <li>10 firmas anuales</li>
+          <li>Email automático con recibo</li>
+          <li>Verificador offline incluido</li>
+        </ul>
+        <button type="button" class="pick" data-pay="75">Pagar 75 € en BTC →</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="tier">Studio</div>
+        <div class="price">250 € <small>/ pack · 5€ firma</small></div>
+        <div class="desc">50 firmas · estudios & consultorías</div>
+        <ul>
+          <li>50 firmas anuales</li>
+          <li>Recibo PDF + .ots BTC</li>
+          <li>Email automático</li>
+        </ul>
+        <button type="button" class="pick" data-pay="250">Pagar 250 € en BTC →</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="tier">Office</div>
+        <div class="price">500 € <small>/ pack · 5€ firma</small></div>
+        <div class="desc">100 firmas · despachos & gestorías</div>
+        <ul>
+          <li>100 firmas anuales</li>
+          <li>Logo opcional en recibo</li>
+          <li>Soporte email 48h</li>
+        </ul>
+        <button type="button" class="pick" data-pay="500">Pagar 500 € en BTC →</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="tier">Corporate</div>
+        <div class="price">3.500 € <small>/ año · 3,50€ firma</small></div>
+        <div class="desc">1.000 firmas · empresas medianas</div>
+        <ul>
+          <li>1.000 firmas anuales</li>
+          <li>Webhook integrable</li>
+          <li>Reporte mensual de uso</li>
+        </ul>
+        <button type="button" class="pick" data-pay="3500">Pagar 3.500 € en BTC →</button>
+      </div>
+
+      <div class="pricing-card">
+        <div class="tier">Enterprise</div>
+        <div class="price">24.000 € <small>/ año</small></div>
+        <div class="desc">5.000 firmas/mes · API ilimitada</div>
+        <ul>
+          <li>SLA escrito + soporte directo</li>
+          <li>derivation_path dedicado</li>
+          <li>Bancos · gobiernos · integradores</li>
+        </ul>
+        <a class="pick ghost" href="mailto:grants@x39matrix.org">Contacto →</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="tier">Enterprise XL</div>
+        <div class="price">60.000 € <small>/ año</small></div>
+        <div class="desc">15.000 firmas/mes · 24/7</div>
+        <ul>
+          <li>SLA 99,9% · soporte 24/7</li>
+          <li>Auditoría trimestral firmada</li>
+          <li>Webhook + integración SAP/Oracle</li>
+        </ul>
+        <a class="pick ghost" href="mailto:grants@x39matrix.org">Contactar →</a>
+      </div>
+
+      <div class="pricing-card feat">
+        <div class="tier gold">Banking</div>
+        <div class="price">120.000 € <small>/ año</small></div>
+        <div class="desc">50.000 firmas/mes · path dedicado</div>
+        <ul>
+          <li>Cumplimiento eIDAS + MiCA</li>
+          <li>SLA premium 99,99% + DRP</li>
+          <li>Reporting regulatorio mensual</li>
+        </ul>
+        <a class="pick ghost" href="mailto:grants@x39matrix.org">Solicitar dossier →</a>
+      </div>
+
+    </div>
+
+    <p class="dim" style="text-align:center; margin-top:2.5rem; font-size:.88rem;">
+      <strong>Cómo funciona el pago BTC</strong> · Al pulsar "Pagar en BTC" obtienes
+      dirección + QR + cantidad exacta en sats. Reparto automático: <strong>75 %</strong>
+      al architect · <strong>25 %</strong> al canister soberano <code>X39_JOSEPH</code>
+      (<code>bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</code>). El sistema se sustenta solo.
+    </p>
+  </div>
+</section>
+
+<!-- ═════════ AUDITORS ═════════ -->
+<section id="audit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="micro">▾ Sección 06 · Open Adversarial Audit</span>
+      <h2>Llamado público a las <span class="crimson">élites criptográficas</span> del planeta.</h2>
+      <p>El protocolo está expuesto deliberadamente. Los anclajes son verificables sin
+      mi cooperación. Los comandos son reproducibles. Si una sola aseveración fallara, sería
+      detectable por cualquier auditor en 60 segundos. Invito formalmente a las firmas
+      siguientes a romperlo:</p>
+    </div>
+
+    <div class="auditors">
+      <h3 style="text-align:center; color: var(--gold-bright); margin: 0 0 1rem;">Top-tier crypto-security firms</h3>
+      <div class="auditor-grid">
+        <div class="auditor-pill">Trail of Bits</div>
+        <div class="auditor-pill">Halborn</div>
+        <div class="auditor-pill">CertiK</div>
+        <div class="auditor-pill">OpenZeppelin</div>
+        <div class="auditor-pill">Quantstamp</div>
+        <div class="auditor-pill">Zellic</div>
+        <div class="auditor-pill">Spearbit</div>
+        <div class="auditor-pill">ConsenSys Diligence</div>
+        <div class="auditor-pill">ChainSecurity</div>
+        <div class="auditor-pill">Runtime Verification</div>
+        <div class="auditor-pill">Code4rena</div>
+        <div class="auditor-pill">Cantina</div>
+      </div>
+
+      <h3 style="text-align:center; color: var(--gold-bright); margin: 2.5rem 0 1rem;">Big Four · $100 B+ practices</h3>
+      <div class="auditor-grid">
+        <div class="auditor-pill">Deloitte</div>
+        <div class="auditor-pill">PwC</div>
+        <div class="auditor-pill">EY</div>
+        <div class="auditor-pill">KPMG</div>
+      </div>
+
+      <h3 style="text-align:center; color: var(--gold-bright); margin: 2.5rem 0 1rem;">DFINITY · ICP core engineers</h3>
+      <div class="auditor-grid">
+        <div class="auditor-pill">DFINITY Foundation</div>
+        <div class="auditor-pill">ICP researchers</div>
+        <div class="auditor-pill">Chain Fusion contributors</div>
+        <div class="auditor-pill">Formal-methods specialists</div>
+      </div>
+
+      <p style="text-align:center; margin-top: 2.5rem; color: var(--ink-dim);">
+        Contacto técnico · <a href="mailto:grants@x39matrix.org" style="color: var(--gold-bright); text-decoration: none;">grants@x39matrix.org</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ DASHBOARD VERIFICATION ═════════ -->
+<section id="dashboard">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="micro">▾ Sección 07 · Live IC Dashboard Verification</span>
+      <h2>Verifica cada canister en el <span class="gold">dashboard oficial</span> de ICP.</h2>
+      <p>Cada canister del protocolo es consultable públicamente en
+      <a href="https://dashboard.internetcomputer.org/" target="_blank" rel="noopener" style="color: var(--gold-bright);">dashboard.internetcomputer.org</a>
+      — el dashboard oficial mantenido por DFINITY. Cualquier visitante ve en tiempo real:
+      módulo WASM hash, controladores, cycles balance, subnet, memory size y log de instalación.
+      Sin credenciales. Sin cooperación del operador. Cero confianza requerida.</p>
+    </div>
+
+    <div class="grid grid-3" data-testid="canisters-grid">
+
+      <!-- Canister principal (conocido) -->
+      <article class="card">
+        <span class="idx">★</span>
+        <div class="chips">
+          <span class="chip chip-emerald">live · public</span>
+          <span class="chip">main</span>
+        </div>
+        <h3>x39matrix · core</h3>
+        <p class="desc">Canister Rust principal. Threshold-ECDSA, audit_full registry,
+        Merkle proofs, Sovereign Certificate Chain.</p>
+        <dl class="kv">
+          <dt>principal</dt><dd class="gold">arn4r-lqaaa-aaaao-baxwq-cai</dd>
+          <dt>tipo</dt><dd>Rust · backend</dd>
+        </dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai">↗ Ver en IC Dashboard</a>
+      </article>
+
+      <!-- Canister frontend (conocido) -->
+      <article class="card">
+        <span class="idx">★</span>
+        <div class="chips">
+          <span class="chip chip-emerald">live · public</span>
+          <span class="chip">frontend</span>
+        </div>
+        <h3>x39matrix · frontend</h3>
+        <p class="desc">Asset canister sirviendo esta misma página. Atado al dominio
+        x39matrix.org vía CNAME @ → icp1.io y TXT _canister-id.</p>
+        <dl class="kv">
+          <dt>principal</dt><dd class="gold">bvatd-sqaaa-aaaao-baxqq-cai</dd>
+          <dt>dominio</dt><dd>x39matrix.org</dd>
+          <dt>boundary</dt><dd>icp1.io · icp2.io ACME</dd>
+        </dl>
+        <a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/bvatd-sqaaa-aaaao-baxqq-cai">↗ Ver en IC Dashboard</a>
+      </article>
+
+      <!-- Comando para listar los 8 restantes -->
+      <article class="card" style="border-style: dashed; border-color: var(--gold);">
+        <span class="idx">⊕</span>
+        <div class="chips">
+          <span class="chip chip-violet">10 canisters · todos públicos</span>
+        </div>
+        <h3>Los 10 canisters · todos en el IC Dashboard</h3>
+        <p class="desc">Cada uno con su propio enlace al dashboard oficial de DFINITY.
+        Module hash, controllers, cycles, subnet y memory size visibles sin
+        credenciales para los <strong>10 canisters</strong>:</p>
+        <dl class="kv">
+          <dt>L1 infra</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/b4dy7-eyaaa-aaaao-baxra-cai">b4dy7-eyaaa…cai ↗</a></dd>
+          <dt>L2 id</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/b3c6l-jaaaa-aaaao-baxrq-cai">b3c6l-jaaaa…cai ↗</a></dd>
+          <dt>L3 exec</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/akiau-riaaa-aaaao-baxua-cai">akiau-riaaa…cai ↗</a></dd>
+          <dt>L4 cons</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/anjga-4qaaa-aaaao-baxuq-cai">anjga-4qaaa…cai ↗</a></dd>
+          <dt>L5 scale</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/s4zl3-eiaaa-aaaao-bay3a-cai">s4zl3-eiaaa…cai ↗</a></dd>
+          <dt>L6 omni</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/adlli-haaaa-aaaao-baxvq-cai">adlli-haaaa…cai ↗</a></dd>
+          <dt>L7 AI gov</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/awm2f-giaaa-aaaao-baxwa-cai">awm2f-giaaa…cai ↗</a></dd>
+          <dt>x39_bases</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai">arn4r-lqaaa…cai ↗</a></dd>
+          <dt>corebackend</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/bsbvx-7iaaa-aaaao-baxqa-cai">bsbvx-7iaaa…cai ↗</a></dd>
+          <dt>frontend</dt><dd><a class="proof" target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/bvatd-sqaaa-aaaao-baxqq-cai">bvatd-sqaaa…cai ↗</a></dd>
+        </dl>
+      </article>
+
+    </div>
+
+    <!-- ── DNS proof ───────────────────────────────────────────────────── -->
+    <div class="card" style="margin-top: 2.5rem;">
+      <h3>Pruebas DNS · dominio x39matrix.org → canister IC</h3>
+      <p class="desc">La cadena DNS pública demuestra que <code>x39matrix.org</code>
+      resuelve directamente al canister IC mediante los registros canónicos del boundary
+      node de Internet Computer. Verificable con cualquier herramienta DNS estándar.</p>
+      <div class="codeblock">
+<button type="button" class="copy-btn" data-copy="dig x39matrix.org CNAME +short; dig _canister-id.x39matrix.org TXT +short">copiar</button>
+<span class="cmt"># Verifica el binding DNS oficial</span>
+dig x39matrix.org CNAME +short
+<span class="ok">  icp1.io.</span>
+
+dig _canister-id.x39matrix.org TXT +short
+<span class="ok">  "bvatd-sqaaa-aaaao-baxqq-cai"</span>
+
+<span class="cmt"># El TXT _canister-id es el binding canónico aceptado por el boundary node de ICP.
+# Cualquiera puede ejecutar este comando y obtener el mismo resultado.</span>
+      </div>
+    </div>
+
+    <!-- ── On-dashboard checklist ──────────────────────────────────────── -->
+    <div class="card" style="margin-top: 1.5rem; background: linear-gradient(180deg, var(--bg-card), rgba(45,138,108,.04));">
+      <h3 style="color: #7fd4b0;">✓ Qué verás en el dashboard oficial</h3>
+      <p class="desc">Al abrir <a href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai" target="_blank" rel="noopener" style="color: var(--gold-bright);">dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai</a>
+      el dashboard oficial te muestra automáticamente:</p>
+      <ul style="color: var(--ink-dim); font-size: .9rem; line-height: 1.9; padding-left: 1.2rem; margin: .5rem 0 0;">
+        <li><strong style="color: var(--gold-bright);">Module hash</strong> · huella WASM inmutable (debe coincidir con el publicado en este sitio)</li>
+        <li><strong style="color: var(--gold-bright);">Controllers</strong> · principales con permiso de upgrade (lista pública)</li>
+        <li><strong style="color: var(--gold-bright);">Cycles balance</strong> · gas restante para operación on-chain</li>
+        <li><strong style="color: var(--gold-bright);">Subnet</strong> · qué subnet del IC ejecuta el canister</li>
+        <li><strong style="color: var(--gold-bright);">Memory size</strong> · bytes ocupados en stable memory</li>
+        <li><strong style="color: var(--gold-bright);">Status</strong> · running · stopped · stopping</li>
+        <li><strong style="color: var(--gold-bright);">Creation date</strong> · timestamp original irreversible</li>
+        <li><strong style="color: var(--gold-bright);">History of installs/upgrades</strong> · todos los module-hashes anteriores firmados</li>
+      </ul>
+      <p class="dim" style="font-size: .85rem; margin-top: 1rem;">
+        Estos datos son <strong>mantenidos por DFINITY</strong>, no por nosotros. Si lo que ves
+        no coincide con lo declarado en esta página, el protocolo está roto y debes denunciarlo.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════════ FOOTER ═════════ -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>x39matrix</h4>
+      <a href="#anchors">Anclajes blockchain</a>
+      <a href="#verify">Verificador local</a>
+      <a href="#commands">Comandos públicos</a>
+      <a href="#pricing">Servicios</a>
+    </div>
+    <div>
+      <h4>On-chain</h4>
+      <a target="_blank" rel="noopener" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai">IC main canister ↗</a>
+      <a target="_blank" rel="noopener" href="https://arbiscan.io/tx/0x16dfaecd7c9616f24a598c6a23084163e53834c44766601d6926a8fb65e2ad8b">Arbitrum tx ↗</a>
+      <a target="_blank" rel="noopener" href="https://solscan.io/tx/57eF2upphvaWuRaD2PdEeL5vZ7hqivJTJ6pYvxwXRh9GzbQFWJV5JKfb2n7jh1sigvfxNcaiH7xuUUanYQGYsh5a">Solana sig ↗</a>
+      <a target="_blank" rel="noopener" href="https://mempool.space/block/951605">BTC block 951605 ↗</a>
+    </div>
+    <div>
+      <h4>Artefactos</h4>
+      <a href="/audit_full_v1.candid">audit_full.candid</a>
+      <a href="/notary/MASTER_GOLDEN_SEAL.txt.ots">MASTER_SEAL.ots</a>
+      <a href="#commands">PUBLIC_VERIFY_X39_FULL.sh</a>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <a href="mailto:grants@x39matrix.org">grants@x39matrix.org</a>
+      <a href="mailto:grants@x39matrix.org">grants@x39matrix.org</a>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <p>x39matrix · Sovereign Notary Protocol · Master Seal Ω = <code>08e9db78…91d449c</code></p>
+    <p>10 canisters · 7,1 × 10¹⁸ operations audited · 52 PETA-OPS/s · 4 substrates · 0 violations · 1 operator</p>
+    <p style="margin-top:1rem;">Hosted on Internet Computer · Frontend canister <code>bvatd-sqaaa-aaaao-baxqq-cai</code> · DNS records · CNAME @ → icp1.io · TXT _canister-id verified</p>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     X39MATRIX · Sovereign Payment Modal v2.0
+     ────────────────────────────────────────────────────────────────────────
+     Reemplaza el bloque <div class="modal-backdrop" id="pay-modal">…</div>
+     en tu index.html (líneas ~1290-1336 del original)
+     ════════════════════════════════════════════════════════════════════════ -->
+
+<!-- ═════════ MODAL PAGO BTC · SOVEREIGN v2 ═════════ -->
+<div class="modal-backdrop" id="pay-modal" data-testid="pay-modal">
+  <div class="modal" style="max-width: 38rem;">
+    <button type="button" class="modal-close" id="pay-close" aria-label="cerrar">×</button>
+
+    <h3 style="margin-top:0; color: var(--gold-bright); display:flex; align-items:center; gap:.6rem;">
+      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background: var(--gold-bright); box-shadow: 0 0 12px var(--gold-bright);"></span>
+      Pago Bitcoin · Sovereign Notary Service
+    </h3>
+
+    <!-- Plan + precio -->
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin: .8rem 0 1.2rem; padding-bottom: .8rem; border-bottom: 1px dashed var(--line);">
+      <div>
+        <div class="dim" style="font-size:.78rem; letter-spacing:.05em; text-transform:uppercase;">Plan seleccionado</div>
+        <div style="font-size:.85rem; color: var(--ink-dim); margin-top:.2rem;">
+          Requiere <strong id="x39-pay-required-conf" style="color: var(--gold-bright);">1 conf</strong> · tECDSA verificada
+        </div>
+      </div>
+      <strong id="pay-amount" class="gold" style="font-size:1.8rem; font-family:'Playfair Display',serif;">— €</strong>
+    </div>
+
+    <!-- Status box -->
+    <div id="x39-pay-status"
+         style="font-family:'Source Code Pro',monospace; font-size:.85rem; padding:.7rem 1rem; border-radius:6px; border:1px solid; margin-bottom:1rem; background:rgba(0,0,0,.3); color:#d4a23a;">
+      <span style="font-size:1.3em;margin-right:.4em;">○</span>Inicializando…
+    </div>
+
+    <!-- Sats display -->
+    <p class="dim" style="font-size:.78rem; margin: 0 0 .35rem; letter-spacing:.04em;">Importe exacto a pagar:</p>
+    <div id="pay-sats" style="font-family:'Source Code Pro', monospace; font-size:1rem; color: var(--gold-bright); word-break:break-all; margin: 0 0 1.2rem; background: rgba(0,0,0,.4); padding: .75rem .9rem; border-radius: 4px; border: 1px solid var(--line);">… consultando cotización …</div>
+
+    <!-- QR -->
+    <div style="text-align: center; margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,.25); border-radius: 8px; border: 1px solid var(--line);">
+      <img id="pay-qr-img" alt="QR de pago Bitcoin BIP21" style="width: 240px; height: 240px; background: var(--ink); border-radius: 8px; padding: 8px; display:block; margin: 0 auto;" />
+      <p class="dim" style="font-size:.72rem; margin: .7rem 0 .4rem;">Escanea con tu wallet · BIP21 unified URI (on-chain + LN)</p>
+      <a id="x39-pay-open-wallet" href="bitcoin:" 
+         style="display:inline-block; padding:.45rem 1rem; background: rgba(212,162,58,.12); border:1px solid var(--gold); border-radius:6px; color: var(--gold-bright); font-size:.82rem; text-decoration:none; font-weight:500;">
+        ▸ Abrir en mi wallet
+      </a>
+    </div>
+
+    <!-- Dirección BTC -->
+    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem; display:flex; justify-content:space-between; align-items:center;">
+      <span>Dirección on-chain · <strong style="color: var(--gold-bright);">X39_JOSEPH</strong> (tECDSA)</span>
+      <span style="font-size:.68rem; color: var(--emerald); letter-spacing:.06em;">SOVEREIGN</span>
+    </p>
+    <div style="display:flex; gap:.5rem; align-items:stretch; margin-bottom: 1rem;">
+      <code id="pay-address" style="flex:1; font-family:'Source Code Pro', monospace; font-size:.78rem; background: rgba(0,0,0,.4); padding: .55rem .7rem; border-radius: 4px; border: 1px solid var(--line); word-break:break-all; color: var(--ink);">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</code>
+      <button type="button" class="copy-btn" id="copy-addr" data-copy="bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg" style="position: static; flex-shrink: 0;">copiar</button>
+    </div>
+
+    <!-- Lightning -->
+    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem;">
+      ⚡ Lightning Network <span style="color: var(--gold-bright);">(instantáneo · sub-cent fees)</span>:
+    </p>
+    <div style="display:flex; gap:.5rem; align-items:stretch; margin-bottom: 1rem;">
+      <code id="pay-ln-address" style="flex:1; font-family:'Source Code Pro', monospace; font-size:.78rem; background: rgba(0,0,0,.4); padding: .55rem .7rem; border-radius: 4px; border: 1px solid var(--line); word-break:break-all; color: var(--ink);">strictcent462@walletofsatoshi.com</code>
+      <button type="button" class="copy-btn" id="copy-ln-addr" data-copy="strictcent462@walletofsatoshi.com" style="position: static; flex-shrink: 0;">copiar</button>
+    </div>
+
+    <!-- Panel TXID detectado (oculto hasta que detectamos pago) -->
+    <div id="x39-pay-txid-panel" style="display:none;"></div>
+
+    <!-- Instrucciones -->
+    <div style="background: rgba(45,138,108,.06); border: 1px solid rgba(45,138,108,.3); border-radius: var(--radius-sm); padding: .9rem 1rem; margin: 1rem 0;">
+      <p style="margin: 0 0 .4rem; font-size:.85rem; color: #7fd4b0; font-weight: 600;">▸ Cómo funciona:</p>
+      <ol style="margin: 0; padding-left: 1.3rem; font-size:.78rem; color: var(--ink-dim); line-height: 1.65;">
+        <li>El sistema añade <strong style="color:#7fd4b0;">+1 a 99 sats</strong> únicos al importe para identificar tu pago.</li>
+        <li>Escaneas el QR (o copias la dirección) y pagas <strong>el importe exacto</strong>.</li>
+        <li>El status box arriba detectará tu transacción automáticamente desde mempool.</li>
+        <li>Cuando confirme, te aparecerá un botón <strong>"Reclamar certificado por email"</strong>.</li>
+      </ol>
+    </div>
+
+    <!-- Footer -->
+    <p class="dim" style="font-size:.7rem; margin: 0; text-align: center; line-height:1.6;">
+      Reparto auto-split tECDSA: <strong style="color: var(--gold);">75%</strong> architect · <strong style="color: var(--gold);">25%</strong> canister X39_JOSEPH<br>
+      Pubkey ECDSA: <code style="font-size:.65rem; color: var(--ink-mute);">025968e3ee…2083</code> · 
+      <a href="mailto:grants@x39matrix.org" style="color: var(--gold-bright);">grants@x39matrix.org</a>
+    </p>
+  </div>
+</div>
+<!-- ═════════ FIN MODAL PAGO BTC SOVEREIGN v2 ═════════ -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Sellos publicados (SHA-256 ↦ etiqueta) ──
+  const SEALS = {
+    "08e9db781dc79c9fbbe77a56cd0120d2830650d4bcf52a2dae9acb73091d449c":
+      "Ω · Master Golden Seal",
+    "aaefb2dc21c5ca181987c7b468d668263b816128c4bcf8cb7e1694f6cfbfaa02":
+      "audit_full.candid · 13·10¹⁵ ops categoriales",
+    "e54960277e8933fdf1635e769d66c23622bfe6e5c2cb2dd3a39ac3e78184595e":
+      "Manifiesto 7 Axiomas",
+    "d728207ed228856ff5f2f2d323850e7da486ca97cbb42abfb8b93ab1bce2370b":
+      "x39_bases · module hash WASM",
+    "c0ff48527732a36b370052c72ce5774e2cbe94b37b6ab557521a5c527c1cd3a0":
+      "Final composite hash · cross-chain anchor",
+    "fc08ab48d0ba9afbeacd5c2be237324cd92654af22aed54f6e5bb7d2b59fb372":
+      "Merkle root · BTC block 951 605"
+  };
+
+  // ── Copy buttons ──
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        const orig = btn.textContent;
+        btn.textContent = '✓ copiado';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('done'); }, 1800);
+      } catch (e) { console.warn('clipboard error', e); }
+    });
+  });
+
+  // ── File SHA-256 verifier ──
+  const dz       = document.getElementById('dropzone');
+  const fi       = document.getElementById('file-input');
+  const results  = document.getElementById('verify-results');
+
+  async function hashFile(file) {
+    const buf  = await file.arrayBuffer();
+    const hash = await crypto.subtle.digest('SHA-256', buf);
+    return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function handleFiles(files) {
+    for (const f of files) {
+      try {
+        const h = await hashFile(f);
+        const seal = SEALS[h.toLowerCase()];
+        const row = document.createElement('div');
+        row.className = 'vr-row ' + (seal ? 'match' : 'no');
+        row.innerHTML = `
+          <span class="vr-name">${f.name}</span>
+          <span class="vr-hash">${h}</span>
+          <span class="vr-badge ${seal ? 'match' : 'no'}">
+            ${seal ? '✓ '+seal : '✗ sin sello'}
+          </span>`;
+        results.appendChild(row);
+      } catch (e) {
+        const row = document.createElement('div');
+        row.className = 'vr-row no';
+        row.innerHTML = `<span class="vr-name">${f.name}</span><span class="vr-hash">error: ${e.message}</span><span class="vr-badge no">✗</span>`;
+        results.appendChild(row);
+      }
+    }
+  }
+
+  fi.addEventListener('change', e => handleFiles(e.target.files));
+  ['dragenter','dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('drag'); }));
+  ['dragleave','drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('drag'); }));
+  dz.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+
+  // ── Pay modal SOVEREIGN v2 (anteriormente "Pay modal") ──
+  // El módulo completo está embebido al final del <body>
+  // como <script id="x39-payment-v2">...</script>
+);
+  }
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a03c9470baabc69e',t:'MTc4MDEzMTk1NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script id="x39-lang-loader">
+(function(){
+'use strict';
+if(document.getElementById('x39-lang-switcher-root'))return;
+var CSS=".x39-lang-switcher{display:inline-flex;align-items:center;gap:2px;padding:3px;margin-left:16px;background:rgba(20,14,8,.8);border:1px solid rgba(212,160,23,.3);border-radius:8px;font-family:'Source Code Pro',monospace;direction:ltr;z-index:9999;position:relative}.x39-lang-switcher__btn{background:transparent;color:#888;border:none;padding:4px 8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:5px;font-weight:600;transition:background-color 150ms,color 150ms}.x39-lang-switcher__btn:hover{background:rgba(212,160,23,.1);color:#d4a017}.x39-lang-switcher__btn.active{background:#d4a017;color:#1a1106}[dir='rtl'] .x39-lang-switcher{margin-left:0;margin-right:16px}";
+var I18N={
+'nav.anchors':{en:'Anchors',es:'Anclajes',fr:'Ancrages',ar:'الترسيخات',zh:'锚点',ja:'アンカー',ru:'Якоря'},
+'nav.verify':{en:'Verifier',es:'Verificador',fr:'Vérificateur',ar:'المحقق',zh:'验证器',ja:'検証者',ru:'Верификатор'},
+'nav.commands':{en:'Commands',es:'Comandos',fr:'Commandes',ar:'الأوامر',zh:'命令',ja:'コマンド',ru:'Команды'},
+'nav.pricing':{en:'Pricing',es:'Precios',fr:'Tarifs',ar:'الأسعار',zh:'价格',ja:'価格',ru:'Цены'},
+'nav.audit':{en:'Audit',es:'Auditoría',fr:'Audit',ar:'التدقيق',zh:'审计',ja:'監査',ru:'Аудит'},
+'nav.dashboard':{en:'ICP Dashboard',es:'Dashboard ICP',fr:'Tableau ICP',ar:'لوحة ICP',zh:'ICP 仪表板',ja:'ICPダッシュボード',ru:'Панель ICP'},
+'omega.label':{en:'Master Seal Ω · Sovereign Certificate Chain',es:'Master Seal Ω · Cadena Soberana de Certificados',fr:'Master Seal Ω · Chaîne Souveraine de Certificats',ar:'الختم الرئيسي Ω · سلسلة الشهادات السيادية',zh:'主印章 Ω · 主权证书链',ja:'マスターシール Ω · ソブリン証明書チェーン',ru:'Главная печать Ω · Суверенная цепь сертификатов'},
+'chain.btc':{en:'Bitcoin mainnet',es:'Bitcoin mainnet',fr:'Bitcoin mainnet',ar:'شبكة بيتكوين الرئيسية',zh:'比特币主网',ja:'Bitcoinメインネット',ru:'Сеть Bitcoin'},
+'chain.icp':{en:'Internet Computer',es:'Internet Computer',fr:'Internet Computer',ar:'الحاسوب الإنترنتي',zh:'互联网计算机',ja:'インターネットコンピューター',ru:'Internet Computer'}
+};
+/* X39_I18N_PATCH_v1 */
+var I18N={"nav.anchors":{"es":"Anclajes","en":"Anchors","fr":"Ancrages","ar":"المراسي","zh":"锚定","ja":"アンカー","ru":"Привязки"},"nav.verify":{"es":"Verificador","en":"Verifier","fr":"Vérificateur","ar":"المُحقّق","zh":"验证器","ja":"検証器","ru":"Верификатор"},"nav.commands":{"es":"Comandos","en":"Commands","fr":"Commandes","ar":"الأوامر","zh":"命令","ja":"コマンド","ru":"Команды"},"nav.pricing":{"es":"Precios","en":"Pricing","fr":"Tarifs","ar":"الأسعار","zh":"价格","ja":"料金","ru":"Цены"},"nav.audit":{"es":"Auditoría","en":"Audit","fr":"Audit","ar":"التدقيق","zh":"审计","ja":"監査","ru":"Аудит"},"nav.dashboard":{"es":"Dashboard ICP","en":"ICP Dashboard","fr":"Dashboard ICP","ar":"لوحة ICP","zh":"ICP仪表盘","ja":"ICPダッシュ","ru":"Панель ICP"},"cta.verify":{"es":"▸ Verificar ahora","en":"▸ Verify now","fr":"▸ Vérifier maintenant","ar":"▸ تحقق الآن","zh":"▸ 立即验证","ja":"▸ 今すぐ検証","ru":"▸ Проверить"},"cta.commands":{"es":"› Comandos públicos","en":"› Public commands","fr":"› Commandes publiques","ar":"› أوامر عامة","zh":"› 公开命令","ja":"› 公開コマンド","ru":"› Команды"},"cta.canister":{"es":"↗ Canister IC","en":"↗ IC Canister","fr":"↗ Canister IC","ar":"↗ IC Canister","zh":"↗ IC 容器","ja":"↗ IC キャニスタ","ru":"↗ Canister IC"},"hero.status":{"es":"10 canisters · 4 sustratos · 0 violaciones","en":"10 canisters · 4 substrates · 0 violations","fr":"10 canisters · 4 substrats · 0 violations","ar":"10 كانيسترز · 4 ركائز · 0 انتهاكات","zh":"10 个容器 · 4 个底层 · 0 违规","ja":"10 キャニスター · 4 基盤 · 0 違反","ru":"10 канистеров · 4 субстрата · 0 нарушений"},"milestones.title":{"es":"Hitos 2026-06-10","en":"Milestones 2026-06-10","fr":"Jalons 2026-06-10","ar":"إنجازات 2026-06-10","zh":"里程碑 2026-06-10","ja":"マイルストーン 2026-06-10","ru":"Вехи 2026-06-10"},"milestones.intro":{"es":"Tres artefactos firmados PGP y anclados en Bitcoin via OpenTimestamps el mismo día.","en":"Three artifacts PGP-signed and Bitcoin-anchored via OpenTimestamps in a single day.","fr":"Trois artefacts signés PGP et ancrés sur Bitcoin via OpenTimestamps le même jour.","ar":"ثلاث قطع موقعة بـ PGP ومثبّتة في بيتكوين عبر OpenTimestamps في يوم واحد.","zh":"三件文物经 PGP 签名并通过 OpenTimestamps 锚定在比特币上，全部在同一天完成。","ja":"3 つのアーティファクトが同日に PGP 署名され、OpenTimestamps 経由でビットコインに固定された。","ru":"Три артефакта подписаны PGP и заякорены в Bitcoin через OpenTimestamps за один день."}};
+var RTL=['ar'],SUP=['en','es','fr','ar','zh','ja','ru'],KEY='x39-lang';
+var LABELS={en:'EN',es:'ES',fr:'FR',ar:'AR',zh:'中',ja:'日',ru:'РУ'};
+function getL(){var s=localStorage.getItem(KEY);return SUP.indexOf(s)>=0?s:'es';}
+function setL(l){if(SUP.indexOf(l)<0)return;localStorage.setItem(KEY,l);document.documentElement.lang=l;document.documentElement.dir=RTL.indexOf(l)>=0?'rtl':'ltr';
+document.querySelectorAll('.x39-lang-switcher__btn').forEach(function(b){var a=b.getAttribute('data-lang')===l;b.classList.toggle('active',a);b.setAttribute('aria-checked',a?'true':'false');});
+document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');var e=I18N[k];if(e&&e[l])el.textContent=e[l];else if(e&&e.en)el.textContent=e.en;});}
+function init(){var s=document.createElement('style');s.textContent=CSS;document.head.appendChild(s);
+var sw=document.createElement('div');sw.id='x39-lang-switcher-root';sw.className='x39-lang-switcher';sw.setAttribute('role','radiogroup');sw.setAttribute('aria-label','Language');sw.setAttribute('data-testid','x39-lang-switcher');
+SUP.forEach(function(l){var b=document.createElement('button');b.type='button';b.className='x39-lang-switcher__btn';b.setAttribute('data-lang',l);b.setAttribute('role','radio');b.setAttribute('data-testid','x39-lang-'+l);b.textContent=LABELS[l];b.addEventListener('click',function(){setL(l);});sw.appendChild(b);});
+var t=document.querySelector('header.topbar .brand')||document.querySelector('header.topbar')||document.querySelector('header')||document.querySelector('nav.topnav')||document.querySelector('nav')||document.body;
+t.appendChild(sw);setL(getL());}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+window.X39Lang={setLang:setL,getLang:getL,supported:SUP};
+})();
+</script>
+
+
+<!-- ===== X39MATRIX 2026-06-03 PATCH · NON-DESTRUCTIVE ===== -->
+<style>
+.x39p-banner{background:#1ce06b;color:#000;text-align:center;padding:.55rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.05em;position:relative;z-index:9999}
+.x39p-banner a{color:#000;text-decoration:underline;font-weight:700}
+.x39p-section{padding:60px 24px;max-width:1200px;margin:0 auto;font-family:'JetBrains Mono',monospace;color:#fafafa;position:relative;z-index:50}
+.x39p-section h2{font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;margin:.4rem 0 1rem}
+.x39p-section h2 span{color:#cc0000}
+.x39p-tag{display:inline-block;font-size:.6rem;background:rgba(204,0,0,.2);color:#ff4433;padding:3px 10px;letter-spacing:.2em;font-weight:700;margin-bottom:8px}
+.x39p-desc{font-size:.78rem;color:#bbb;line-height:1.7;max-width:880px}
+.x39p-row{display:grid;grid-template-columns:130px 1fr auto;gap:1rem;padding:.85rem 1rem;border-bottom:1px solid #1a1a1a;font-size:.78rem;align-items:center}
+.x39p-row:hover{background:#0a0a0a}
+.x39p-block{color:#ff3333;font-weight:700;text-shadow:0 0 8px rgba(255,51,51,.4)}
+.x39p-rowdesc{color:#ccc;font-size:.74rem;line-height:1.5}
+.x39p-link{color:#22c55e;text-decoration:none;font-size:.7rem;border:1px solid #1a3a1a;padding:.3rem .65rem;border-radius:4px;white-space:nowrap}
+.x39p-link:hover{background:#0a3a1a;border-color:#22c55e}
+.x39p-tier{display:inline-block;padding:.1rem .45rem;border-radius:3px;font-size:.55rem;letter-spacing:.08em;margin-left:.4rem}
+.x39p-tier-h{background:#3a1a08;color:#ff6a3d}.x39p-tier-o{background:#2a1a08;color:#f0b400}
+.x39p-tier-t{background:#0a3a1a;color:#1ce06b}.x39p-tier-s{background:#1a0a3a;color:#a07ad4}
+.x39p-tier-c{background:#0a1a3a;color:#7ad4e0}
+.x39p-subtier{margin-top:2rem;font-size:.78rem;letter-spacing:.12em}
+.x39p-cmd{position:relative;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:6px;padding:1.1rem 1rem;margin:.65rem 0;font-size:.75rem;color:#ff3333;overflow-x:auto}
+.x39p-cmd pre{margin:0;white-space:pre-wrap;word-break:break-all;color:#ffaa66}
+.x39p-copy{position:absolute;top:.5rem;right:.5rem;background:#1a0a0a;color:#ff3333;border:1px solid #3a1a1a;padding:.3rem .8rem;border-radius:4px;font-size:.65rem;cursor:pointer;letter-spacing:.05em;text-transform:uppercase}
+.x39p-copy:hover{background:#3a0a0a;color:#fff}
+.x39p-copy.ok{background:#0a3a1a;color:#22c55e;border-color:#22c55e}
+.x39p-cmdlbl{display:inline-block;background:#1a0a0a;color:#ff3333;padding:.15rem .55rem;border-radius:3px;font-size:.6rem;letter-spacing:.1em;margin-bottom:.5rem}
+.x39p-cmdexp{color:#666;font-size:.66rem;font-style:italic;padding-top:.4rem;border-top:1px dashed #1a1a1a;margin-top:.5rem;display:block}
+.x39p-cmdh3{font-size:.95rem;color:#fff;margin:.3rem 0;font-weight:700}
+.x39p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.5rem 0}
+.x39p-card{background:linear-gradient(180deg,#0a0a0a 0%,#1a1208 100%);border:1px solid #1a1a1a;border-radius:8px;padding:1.4rem}
+.x39p-card:hover{border-color:#f0b400}
+.x39p-cardtier{color:#f0b400;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.x39p-price{font-size:1.7rem;font-weight:700;color:#fff;margin:.4rem 0;line-height:1}
+.x39p-price small{font-size:.78rem;font-weight:400;color:#777}
+.x39p-feat{list-style:none;padding:0;margin:.9rem 0;font-size:.74rem;color:#bbb}
+.x39p-feat li{padding:.3rem 0;padding-left:1.2rem;position:relative}
+.x39p-feat li::before{content:'#';position:absolute;left:0;color:#f0b400}
+.x39p-cta{display:block;width:100%;text-align:center;background:#f0b400;color:#0a0805;padding:.75rem 1rem;border-radius:5px;text-decoration:none;font-weight:700;letter-spacing:.05em;margin-top:1rem}
+.x39p-cta:hover{background:#fff}
+.x39p-proof{background:linear-gradient(135deg,#050a05 0%,#0a3a1a 100%);border:1px solid #1ce06b;border-radius:10px;padding:1.8rem;margin:1.8rem 0}
+.x39p-prooftag{color:#1ce06b;font-size:.65rem;letter-spacing:.2em;margin-bottom:.6rem}
+.x39p-proofdata{font-size:.7rem;color:#888;line-height:1.7;margin-top:1.3rem;padding:.9rem;background:#000;border-radius:5px;word-break:break-all}
+</style>
+
+<section class="x39p-section" id="x39-2026-anchors" style="border-top:1px solid #1a1a1a;margin-top:60px">
+<div class="x39p-tag">SECCION 2026-06 - MULTI-SUBSTRATE ANCHORS</div>
+<h2>17 bloques Bitcoin. 4 sustratos. <span>Cero confianza.</span></h2>
+<p class="x39p-desc">Cada anclaje es un endomorfismo verificable on-chain contra exploradores publicos. Ultima actualizacion <strong>2026-06-03 03:41 UTC</strong> - bloque <a href="https://mempool.space/block/952174" target="_blank" style="color:#1ce06b">#952174</a>.</p>
+<div style="margin-top:2rem">
+<div class="x39p-subtier" style="color:#ff6a3d">TIER 1 - GENESIS HISTORICOS - Mayo 5-8 2026</div>
+<div class="x39p-row"><span class="x39p-block">#948027</span><span class="x39p-rowdesc">Genesis #001 - manifiesto 7 axiomas - SHA e54960277e89<span class="x39p-tier x39p-tier-h">GENESIS</span></span><a class="x39p-link" href="https://mempool.space/block/948027" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#948042</span><span class="x39p-rowdesc">Audit 4 Exa-Ops - verificacion multi-trillon<span class="x39p-tier x39p-tier-h">AUDIT</span></span><a class="x39p-link" href="https://mempool.space/block/948042" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#948055</span><span class="x39p-rowdesc">B27 Quantum Stress - 27 vectores post-cuanticos<span class="x39p-tier x39p-tier-h">PQ</span></span><a class="x39p-link" href="https://mempool.space/block/948055" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#948162</span><span class="x39p-rowdesc">Manifiesto Institucional - verificabilidad publica<span class="x39p-tier x39p-tier-h">MANIFEST</span></span><a class="x39p-link" href="https://mempool.space/block/948162" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#948165</span><span class="x39p-rowdesc">Primera firma comercial - Minuto Soberano Marruecos<span class="x39p-tier x39p-tier-h">COMMERCIAL</span></span><a class="x39p-link" href="https://mempool.space/block/948165" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#948177</span><span class="x39p-rowdesc">Certificate Chain - primera fabrica cross-clan<span class="x39p-tier x39p-tier-h">CHAIN</span></span><a class="x39p-link" href="https://mempool.space/block/948177" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#948500</span><span class="x39p-rowdesc">Sovereign Sealing #1 - batch inmutable<span class="x39p-tier x39p-tier-h">SEAL-1</span></span><a class="x39p-link" href="https://mempool.space/block/948500" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#948501</span><span class="x39p-rowdesc">Official Sealing #2 - continuacion de cadena<span class="x39p-tier x39p-tier-h">SEAL-2</span></span><a class="x39p-link" href="https://mempool.space/block/948501" target="_blank">mempool</a></div>
+<div class="x39p-subtier" style="color:#f0b400">TIER 2 - MASTER SEAL OMEGA - OPENTIMESTAMPS TRIPLE</div>
+<div class="x39p-row"><span class="x39p-block">#950 381</span><span class="x39p-rowdesc">Master Seal - calendar alice.btc - 08e9db78<span class="x39p-tier x39p-tier-o">O-1</span></span><a class="x39p-link" href="https://mempool.space/block/950381" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#950 398</span><span class="x39p-rowdesc">Master Seal - calendar bob.btc<span class="x39p-tier x39p-tier-o">O-2</span></span><a class="x39p-link" href="https://mempool.space/block/950398" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#950 408</span><span class="x39p-rowdesc">Master Seal - calendar catallaxy<span class="x39p-tier x39p-tier-o">O-3</span></span><a class="x39p-link" href="https://mempool.space/block/950408" target="_blank">mempool</a></div>
+<div class="x39p-subtier" style="color:#a07ad4">TIER 3 - CROSS-SUBSTRATE LOOPS - Mayo 29 2026</div>
+<div class="x39p-row"><span class="x39p-block">#951 586</span><span class="x39p-rowdesc">Loop EVM-BTC - Arbitrum cross-anchor<span class="x39p-tier x39p-tier-s">EVM-BTC</span></span><a class="x39p-link" href="https://mempool.space/block/951586" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#951 605</span><span class="x39p-rowdesc">Loop SOL-BTC - merkle 64/64 - fc08ab48<span class="x39p-tier x39p-tier-s">SOL-BTC</span></span><a class="x39p-link" href="https://mempool.space/block/951605" target="_blank">mempool</a></div>
+<div class="x39p-subtier" style="color:#7ad4e0">TIER 4 - SOVEREIGN NOTARIZATION CERT - Mayo 31</div>
+<div class="x39p-row"><span class="x39p-block">#951 892</span><span class="x39p-rowdesc">Certificate - merkle b9221a7f5dee<span class="x39p-tier x39p-tier-c">CERT-1</span></span><a class="x39p-link" href="https://mempool.space/block/951892" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#951 893</span><span class="x39p-rowdesc">Certificate - merkle c8e73b0a6621 - consecutivo<span class="x39p-tier x39p-tier-c">CERT-2</span></span><a class="x39p-link" href="https://mempool.space/block/951893" target="_blank">mempool</a></div>
+<div class="x39p-subtier" style="color:#1ce06b">TIER 5 - FIRST SOVEREIGN tECDSA SEND - Jun 2 16:46:05 UTC</div>
+<div class="x39p-row"><span class="x39p-block">#952 131</span><span class="x39p-rowdesc"><strong style="color:#1ce06b">PRIMER SEND tECDSA DESDE CANISTER ICP</strong> - TX b5a881a2 - 13 nodos - 12 978 sats<span class="x39p-tier x39p-tier-t">tECDSA</span></span><a class="x39p-link" href="https://mempool.space/tx/b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023" target="_blank">TX</a></div>
+<div class="x39p-subtier" style="color:#1ce06b">TIER 6 - TRIPLE SEAL 8/8 INTEGRITY - Jun 3 2026</div>
+<div class="x39p-row"><span class="x39p-block">#952 160</span><span class="x39p-rowdesc">8/8 integrity log - bob.btc - TX 658e7713<span class="x39p-tier x39p-tier-t">8/8-A</span></span><a class="x39p-link" href="https://mempool.space/block/952160" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#952 161</span><span class="x39p-rowdesc">8/8 integrity log - alice - TX 61efa2cb<span class="x39p-tier x39p-tier-t">8/8-B</span></span><a class="x39p-link" href="https://mempool.space/block/952161" target="_blank">mempool</a></div>
+<div class="x39p-row"><span class="x39p-block">#952 174</span><span class="x39p-rowdesc">8/8 integrity log - catallaxy - TX d5e5dbb1<span class="x39p-tier x39p-tier-t">8/8-C</span></span><a class="x39p-link" href="https://mempool.space/block/952174" target="_blank">mempool</a></div>
+<div class="x39p-subtier" style="color:#7ad4e0">NON-BTC SUBSTRATES - Arbitrum + Solana</div>
+<div class="x39p-row"><span class="x39p-block">Arbitrum</span><span class="x39p-rowdesc">Block #467 944 125 - calldata X39_OMEGA_SEAL<span class="x39p-tier x39p-tier-s">L2</span></span><a class="x39p-link" href="https://arbiscan.io/tx/0x16dfaecd7c9616f24a598c6a23084163e53834c44766601d6926a8fb65e2ad8b" target="_blank">Arbiscan</a></div>
+<div class="x39p-row"><span class="x39p-block">Solana</span><span class="x39p-rowdesc">Slot #422 979 180 - finalized - SPL Memo<span class="x39p-tier x39p-tier-s">L1</span></span><a class="x39p-link" href="https://solscan.io/tx/57eF2upphvaWuRaD2PdEeL5vZ7hqivJTJ6pYvxwXRh9GzbQFWJV5JKfb2n7jh1sigvfxNcaiH7xuUUanYQGYsh5a" target="_blank">Solscan</a></div>
+</div>
+</section>
+
+<section class="x39p-section" id="x39-2026-commands">
+<div class="x39p-tag">SECCION 2026-06 - PUBLIC VERIFICATION COMMANDS</div>
+<h2>Siete comandos. <span>Cero confianza.</span></h2>
+<p class="x39p-desc">RPC publicos oficiales. URLs canonicas en GitHub, blockstream.info, mempool.space, arbiscan, solscan e ic-api.internetcomputer.org - nunca caducan.</p>
+<div class="x39p-cmdlbl">1 - ONE-LINER - 46 CLAIMS IN 30s</div>
+<div class="x39p-cmdh3">Verifica los 46 anclajes en un solo comando</div>
+<div class="x39p-cmd"><button type="button" class="x39p-copy" data-c="c1">COPIAR</button>
+<pre id="c1">curl -sL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash</pre>
+<span class="x39p-cmdexp">Esperado: Passed 51/51</span></div>
+<div class="x39p-cmdlbl">2 - tECDSA SEND - BLOCK #952131</div>
+<div class="x39p-cmdh3">Recupera la primera TX soberana del canister</div>
+<div class="x39p-cmd"><button type="button" class="x39p-copy" data-c="c2">COPIAR</button>
+<pre id="c2">curl -s "https://blockstream.info/api/tx/b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023" | python3 -m json.tool</pre>
+<span class="x39p-cmdexp">Esperado: vin[0].witness[1] = 025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083</span></div>
+<div class="x39p-cmdlbl">3 - BIP-143 SIGHASH - ECDSA MATHEMATICAL PROOF</div>
+<div class="x39p-cmdh3">Reconstruye la sighash y verifica la firma</div>
+<div class="x39p-cmd"><button type="button" class="x39p-copy" data-c="c3">COPIAR</button>
+<pre id="c3">pip install ecdsa &amp;&amp; python3 -c "
+import hashlib
+from ecdsa import VerifyingKey, SECP256k1
+from ecdsa.util import sigdecode_der
+pk = bytes.fromhex('025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083')
+sig = bytes.fromhex('30450221009cb7810f310326414a26a8c010441ee75dc0ac4e5958e5053242b149658e338c0220716728a9af47c15cb54bebd9396c2377984672d6560a2a8b7fbe2a4db41e7b81')
+sighash = bytes.fromhex('bc2ae31a2af24375c1e6ca674041c3f3c6c24a2cd74a915df575c3688dce12a5')
+vk = VerifyingKey.from_string(pk, curve=SECP256k1, hashfunc=hashlib.sha256)
+vk.verify_digest(sig, sighash, sigdecode=sigdecode_der)
+print('ECDSA signature mathematically VALID')
+"</pre>
+<span class="x39p-cmdexp">Esperado: ECDSA signature mathematically VALID</span></div>
+<div class="x39p-cmdlbl">4 - TRIPLE SEAL 8/8 - OPENTIMESTAMPS</div>
+<div class="x39p-cmdh3">Verifica el sello triple del log de integridad</div>
+<div class="x39p-cmd"><button type="button" class="x39p-copy" data-c="c4">COPIAR</button>
+<pre id="c4">for TXID in 658e77134580cc2caa9d456ab9d9dd2011b98fbd01a8269a601d9c26091c407d \
+            61efa2cbe9b4b5f6349cc8f92ff45da704cdfbb6414d9ab4f1eeb9c32b5b09bc \
+            d5e5dbb1c4b1ba7cc23f6b7d71fee659e102dd7022ca3eabf6df253f1aa7da57; do
+  echo "--- TX $TXID ---"
+  curl -s "https://blockstream.info/api/tx/$TXID/merkle-proof" | python3 -m json.tool
+done</pre>
+<span class="x39p-cmdexp">Esperado: 3 merkle-proofs validas en bloques 952160/952161/952174</span></div>
+<div class="x39p-cmdlbl">5 - ARBITRUM ONE - X39_OMEGA_SEAL</div>
+<div class="x39p-cmdh3">Decodifica el Omega en calldata Arbitrum L2</div>
+<div class="x39p-cmd"><button type="button" class="x39p-copy" data-c="c5">COPIAR</button>
+<pre id="c5">curl -s -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","id":1,"method":"eth_getTransactionByHash",
+  "params":["0x16dfaecd7c9616f24a598c6a23084163e53834c44766601d6926a8fb65e2ad8b"]}' \
+  https://arb1.arbitrum.io/rpc | python3 -m json.tool</pre>
+<span class="x39p-cmdexp">Esperado: input contiene 0x5833395f4f4d4547415f5345414c (ASCII X39_OMEGA_SEAL)</span></div>
+<div class="x39p-cmdlbl">6 - SOLANA MAINNET - FINALIZED</div>
+<div class="x39p-cmdh3">Confirma la signature Solana en mainnet</div>
+<div class="x39p-cmd"><button type="button" class="x39p-copy" data-c="c6">COPIAR</button>
+<pre id="c6">curl -s -X POST -H "Content-Type: application/json" \
+  --data '{"jsonrpc":"2.0","id":1,"method":"getSignatureStatuses",
+  "params":[["57eF2upphvaWuRaD2PdEeL5vZ7hqivJTJ6pYvxwXRh9GzbQFWJV5JKfb2n7jh1sigvfxNcaiH7xuUUanYQGYsh5a"],
+  {"searchTransactionHistory":true}]}' \
+  https://api.mainnet-beta.solana.com | python3 -m json.tool</pre>
+<span class="x39p-cmdexp">Esperado: finalized - err=null - slot=422979180</span></div>
+<div class="x39p-cmdlbl">7 - ICP MAINNET - 11 CANISTERS</div>
+<div class="x39p-cmdh3">Inspecciona los 11 canisters via API DFINITY</div>
+<div class="x39p-cmd"><button type="button" class="x39p-copy" data-c="c7">COPIAR</button>
+<pre id="c7">for CID in arn4r-lqaaa-aaaao-baxwq-cai b4dy7-eyaaa-aaaao-baxra-cai \
+           b3c6l-jaaaa-aaaao-baxrq-cai akiau-riaaa-aaaao-baxua-cai \
+           anjga-4qaaa-aaaao-baxuq-cai s4zl3-eiaaa-aaaao-bay3a-cai \
+           adlli-haaaa-aaaao-baxvq-cai awm2f-giaaa-aaaao-baxwa-cai \
+           bsbvx-7iaaa-aaaao-baxqa-cai bvatd-sqaaa-aaaao-baxqq-cai \
+           nsy7t-jiaaa-aaaau-agwra-cai; do
+  echo "--- $CID ---"
+  curl -s "https://ic-api.internetcomputer.org/api/v3/canisters/$CID" \
+    | python3 -c "import sys,json;d=json.load(sys.stdin);print('  module_hash:', d.get('module_hash','?')[:16])"
+done</pre>
+<span class="x39p-cmdexp">Esperado: 11 canisters listados con module_hash</span></div>
+</section>
+
+<section class="x39p-section" id="notaria">
+<div class="x39p-tag" style="color:#1ce06b;background:rgba(28,224,107,.18)">SECCION 2026-06 - NOTARIA SOBERANA</div>
+<h2>Primera notaria del mundo <span style="color:#1ce06b">sin notario.</span></h2>
+<p class="x39p-desc">La autoridad firmante no reside en ningun humano. La clave privada esta fragmentada via threshold-ECDSA entre los 13 nodos de la subnet <code style="color:#f0b400">o3ow2-2ipam-6fcj</code>. Ningun operador puede firmar solo. Cada sello requiere quorum criptografico, se ancla en al menos 3 bloques Bitcoin via OpenTimestamps, y se verifica offline con un comando bash. Cumple con <strong>eIDAS art. 26</strong> (UE 910/2014) y <strong>MiCA Art. 50</strong>.</p>
+<div class="x39p-proof">
+<div class="x39p-prooftag">PROOF - FIRMA NOTARIAL HISTORICA - 2026-06-02 16:46:05 UTC</div>
+<h3 style="color:#fff;margin:.4rem 0">La primera firma notarial sin humano en la historia.</h3>
+<p style="color:#c8b89a;line-height:1.6;margin:1rem 0;font-size:.78rem">El 2 de junio de 2026 a las 16:46:05 UTC, el canister <code style="color:#f0b400">arn4r-lqaaa-aaaao-baxwq-cai</code> ejecuto <code style="color:#f0b400">send_btc_safe</code>. La subnet de 13 nodos firmo colectivamente via threshold-ECDSA secp256k1. Once minutos despues, un minero la incluyo en el bloque <strong>#952131</strong>. Esta TX es la primera firma notarial soberana donde ningun humano tiene la clave completa.</p>
+<div class="x39p-proofdata">
+txid: <span style="color:#1ce06b">b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023</span><br>
+block: <span style="color:#f0b400">#952131</span><br>
+pubkey: <span style="color:#1ce06b">025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083</span><br>
+sighash: bc2ae31a2af24375c1e6ca674041c3f3c6c24a2cd74a915df575c3688dce12a5<br>
+destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</span> (X39_JOSEPH)
+</div>
+<a class="x39p-link" style="margin-top:1.2rem;display:inline-block;color:#1ce06b;border-color:#1ce06b" href="https://mempool.space/tx/b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023" target="_blank">Ver TX historica</a>
+</div>
+<h3 style="margin-top:2rem;color:#fff;font-size:1.1rem">Tarifas en Bitcoin nativo - pago directo sin pasarela</h3>
+<p class="x39p-desc" style="margin-bottom:1.5rem">Reparto automatico: <strong style="color:#f0b400">75 %</strong> al architect - <strong style="color:#1ce06b">25 %</strong> al canister soberano X39_JOSEPH (<code style="color:#f0b400">bc1q6tkt7x38</code>), destino de la firma notarial historica del bloque #952131. El sistema se sustenta solo.</p>
+<div class="x39p-grid">
+<div class="x39p-card"><div class="x39p-cardtier">Free</div><div class="x39p-price">0 EUR<small> / firma</small></div><ul class="x39p-feat"><li>1 firma threshold-ECDSA</li><li>Recibo verificable offline</li><li>Sin tarjeta, solo email</li></ul><a class="x39p-cta" href="mailto:grants@x39matrix.org">Solicitar gratis</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Single</div><div class="x39p-price">9 EUR<small> / firma</small></div><ul class="x39p-feat"><li>ECDSA o Schnorr BIP-340</li><li>Recibo + .ots Bitcoin</li><li>Pago BTC instantaneo</li></ul><a class="x39p-cta" href="#pricing">Pagar 9 EUR en BTC</a></div>
+<div class="x39p-card" style="border-color:#f0b400"><div class="x39p-cardtier">Pack 10</div><div class="x39p-price">75 EUR<small> / 7,50/firma</small></div><ul class="x39p-feat"><li>10 firmas anuales</li><li>Email automatico</li><li>Verificador offline</li></ul><a class="x39p-cta" href="#pricing">Pagar 75 EUR</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Studio</div><div class="x39p-price">250 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>50 firmas anuales</li><li>Recibo PDF + .ots</li><li>Email automatico</li></ul><a class="x39p-cta" href="#pricing">Pagar 250 EUR</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Office</div><div class="x39p-price">500 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>100 firmas anuales</li><li>Logo opcional en recibo</li><li>Soporte email 48h</li></ul><a class="x39p-cta" href="#pricing">Pagar 500 EUR</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Corporate</div><div class="x39p-price">3.500 EUR<small> / 3,50/firma</small></div><ul class="x39p-feat"><li>1.000 firmas anuales</li><li>Webhook integrable</li><li>Reporte mensual</li></ul><a class="x39p-cta" href="#pricing">Pagar 3.500 EUR</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Enterprise</div><div class="x39p-price">24.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>5.000 firmas/mes - API ilimitada</li><li>SLA + soporte directo</li><li>derivation_path dedicado</li></ul><a class="x39p-cta" href="mailto:enterprise@x39matrix.org">Contacto</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Enterprise XL</div><div class="x39p-price">60.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>15.000 firmas/mes - 24/7</li><li>SLA 99,9 %</li><li>Auditoria trimestral</li></ul><a class="x39p-cta" href="mailto:enterprise@x39matrix.org">Contactar</a></div>
+<div class="x39p-card" style="border-color:#1ce06b"><div class="x39p-cardtier" style="color:#1ce06b">Banking</div><div class="x39p-price">120.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>50.000 firmas/mes - path dedicado</li><li>eIDAS + MiCA + DRP</li><li>SLA 99,99 %</li></ul><a class="x39p-cta" style="background:#1ce06b" href="mailto:banking@x39matrix.org">Solicitar dossier</a></div>
+</div>
+<h3 style="margin-top:2.5rem;color:#fff;font-size:1.05rem">Casos de uso documentados y anclados</h3>
+<div class="x39p-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+<div class="x39p-card"><div class="x39p-cardtier">01 - Legal</div><p style="color:#bbb;font-size:.78rem;line-height:1.55">Documentos legales con anclaje Bitcoin - valido en jurisdicciones eIDAS.</p></div>
+<div class="x39p-card"><div class="x39p-cardtier">02 - Contratos</div><p style="color:#bbb;font-size:.78rem;line-height:1.55">Contratos inteligentes cross-chain - BTC + EVM + SOL en una firma.</p></div>
+<div class="x39p-card"><div class="x39p-cardtier">03 - Sucesion</div><p style="color:#bbb;font-size:.78rem;line-height:1.55">Planificacion sucesoria sin claves recuperables - el canister ejecuta el testamento.</p></div>
+<div class="x39p-card"><div class="x39p-cardtier">04 - DAO Treasury</div><p style="color:#bbb;font-size:.78rem;line-height:1.55">Tesoreria DAO sin multisig drift - quorum criptografico.</p></div>
+<div class="x39p-card"><div class="x39p-cardtier">05 - Jurisdiccion hostil</div><p style="color:#bbb;font-size:.78rem;line-height:1.55">Notariado en estados coercitivos - el sello es un bloque Bitcoin.</p></div>
+<div class="x39p-card"><div class="x39p-cardtier">06 - WIPO</div><p style="color:#bbb;font-size:.78rem;line-height:1.55">Anterioridad en BTC antes del filing - 6 clases Nice: 9-35-38-41-42-45.</p></div>
+</div>
+</section>
+
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    if(!e.target.classList || !e.target.classList.contains('x39p-copy')) return;
+    var t=document.getElementById(e.target.getAttribute('data-c'));
+    if(!t) return;
+    var txt=t.innerText||t.textContent;
+    var done=function(){e.target.textContent='COPIADO';e.target.classList.add('ok');
+      setTimeout(function(){e.target.textContent='COPIAR';e.target.classList.remove('ok');},2000);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done).catch(function(){
+        var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.left='-9999px';
+        document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(_){}
+        document.body.removeChild(ta);done();});
+    }else{var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.left='-9999px';
+      document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(_){}
+      document.body.removeChild(ta);done();}
+  });
+})();
+</script>
+<!-- ===== END X39MATRIX 2026-06-03 PATCH ===== -->
+<section id="niza-pq-filing" class="niza-section">
+  <h2>§ Niza · Primer Filing OMPI/WIPO con Criptografía Post-Cuántica Anclado en Bitcoin</h2>
+  <p class="niza-intro">
+    El <strong>2 de junio de 2026 · 20:47 UTC</strong>, cinco artefactos
+    criptográficos del filing internacional X39MATRIX bajo la <strong>Clasificación
+    de Niza</strong> fueron sellados con <strong>ML-DSA-87</strong> (firma digital
+    post-cuántica, NIST FIPS 204) y <strong>ML-KEM-1024</strong> (encapsulado de
+    claves resistente a cuántica, NIST FIPS 203), y triple-anclados en Bitcoin
+    mainnet mediante tres calendarios OpenTimestamps independientes.
+    <strong>Es el primer registro conocido de filing de propiedad intelectual con
+    identidad post-cuántica certificada en Bitcoin.</strong>
+  </p>
+
+  <div class="niza-table-wrap">
+    <h3>Los 5 artefactos canónicos del filing</h3>
+    <table class="niza-table">
+      <thead><tr><th>Fichero</th><th>SHA-256</th><th>Bytes</th></tr></thead>
+      <tbody>
+        <tr><td><code>X39_PQ_SOVEREIGN_FINGERPRINT.txt</code></td><td><code>185d22b5dd79b3767b4fc00489c96b70601e781504b34d447df66835520b32ca</code></td><td>64</td></tr>
+        <tr><td><code>x39_sovereign.mldsa87.pk.pem</code></td><td><code>97626a614002bbf28903e209e54b3b71f6a5ef42a48210b00af2d99eb2ba9c96</code></td><td>3,595</td></tr>
+        <tr><td><code>x39_sovereign.mlkem1024.pk.pem</code></td><td><code>b716b4abe4c8f84decb5949d16a6cfe5a3f755f61b336afd2a0bf0fc05ce27cf</code></td><td>2,206</td></tr>
+        <tr><td><code>x39_sovereign_identity.json</code></td><td><code>a7d17340053eb6d4c64423f27ecef5edf4bed7ff27d2f7a05b2a6d52ccfb320b</code></td><td>843</td></tr>
+        <tr><td><code>x39_topos_axiom.mldsa87.sig</code></td><td><code>7ffe65915f3e04335485039a166223b9a37e286f7053db02500235a9ad2963b7</code></td><td>4,627</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="niza-anchors">
+    <h3>Triple-anclaje Bitcoin (3 calendarios OTS independientes)</h3>
+    <div class="niza-anchor-grid">
+      <div class="niza-anchor">
+        <strong>alice.btc</strong> · primary
+        <span>block <a href="https://mempool.space/block/00000000000000000001f488b605565f210f44cf4181bced7437b1c398ef554f" target="_blank" rel="noopener"><code>#952148</code></a></span>
+        <span>2026-06-02 20:47 UTC</span>
+      </div>
+      <div class="niza-anchor">
+        <strong>bob.btc</strong> · independent
+        <span>block <a href="https://mempool.space/block/000000000000000000018efd42e12b64b0e5dbfa6f96a3ba2c20d3642f8a0503" target="_blank" rel="noopener"><code>#952150</code></a></span>
+        <span>2026-06-02 21:03 UTC</span>
+      </div>
+      <div class="niza-anchor">
+        <strong>catallaxy.btc</strong> · third-party
+        <span>block <a href="https://mempool.space/block/00000000000000000000e8aa642249cc8fd59cee0d007dac57e424af47ae9086" target="_blank" rel="noopener"><code>#952174</code></a></span>
+        <span>2026-06-03 03:41 UTC</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="niza-verify">
+    <strong>Verifica tú mismo:</strong>
+    <code>ots upgrade fichero.ots && ots info fichero.ots</code>
+    devuelve <code>BitcoinBlockHeaderAttestation(952148)</code>,
+    <code>(952150)</code> y <code>(952174)</code>. Cualquier inconsistencia
+    sería detectable por cualquier auditor en menos de 60 segundos.
+  </p>
+</section>
+
+<section id="authorship" class="auth-section">
+  <h2>§ Autoría · Método · Soberanía</h2>
+  <p class="auth-body">
+    <strong>x39matrix</strong> es un protocolo creado por una sola persona.
+    Sin equipo. Sin empresa. Sin VC. Sin permiso.
+  </p>
+  <div class="auth-grid">
+    <div class="auth-card">
+      <h3>🜂 Arquitectura</h3>
+      <p>
+        La categoría 𝒞<sub>x39</sub>, la composición funtorial de las 7 capas,
+        la elección de Threshold-ECDSA + Schnorr BIP-340, el anclaje
+        cuádruple BTC/ARB/SOL/ICP, el objeto terminal Ω y la teoría
+        notarial soberana son <strong>intuición humana</strong>.
+        Cero delegación. Cero co-autoría.
+      </p>
+    </div>
+    <div class="auth-card">
+      <h3>⚙ Ejecución</h3>
+      <p>
+        El código bash, los scripts de verificación, el HTML de este sitio
+        y las demos de terminal se han producido con asistencia de
+        <strong>modelos de IA</strong> bajo dirección directa del operador.
+        Cada artefacto está firmado, hasheado y reproducible.
+        La IA es compilador, no co-autor.
+      </p>
+    </div>
+    <div class="auth-card">
+      <h3>🔴 Soberanía</h3>
+      <p>
+        El protocolo no requiere confianza en el operador ni en la IA
+        que ayudó a materializarlo. Toda aseveración es reproducible
+        on-chain. Si los <strong>51 axiomas</strong> verificados no fueran
+        ciertos, cualquier auditor los rompería en 60 segundos.
+        <em>No pido confianza. Ofrezco verificación.</em>
+      </p>
+    </div>
+  </div>
+  <p class="auth-signature">
+    Firmado · <strong>X39MATRIX // Sovereign Operator</strong><br/>
+    <span class="auth-meta">
+      tECDSA pubkey · <code>025968e3ee2aad…2083</code><br/>
+      BTC address Ω · <code>bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</code><br/>
+      ICP controller · <code>arn4r-lqaaa-aaaao-baxwq-cai</code>
+    </span>
+  </p>
+</section>
+
+
+<footer style="background:#0a0a0a;color:#39BAE6;padding:50px 20px;font-family:monospace;border-top:2px solid #FFB454;margin-top:60px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <h3 style="color:#FFB454;font-size:1.4em;margin-bottom:24px;border-bottom:1px solid #39BAE6;padding-bottom:12px;">Operador Soberano</h3>
+    <p style="line-height:2.2;font-size:0.95em;color:#cfd8dc;">
+      <strong style="color:#FFB454;font-size:1.15em;">Jose Luis Olivares Esteban</strong><br>
+      <span style="color:#A39C8A;">Operator, architect, and notary of the X39MATRIX protocol.</span><br><br>
+      <strong>GitHub:</strong> <a href="https://github.com/x39matrix/x39matrix" style="color:#39BAE6;text-decoration:none;">github.com/x39matrix/x39matrix</a><br>
+      <strong>Release v1.1.0:</strong> <a href="https://github.com/x39matrix/x39matrix/releases/tag/v1.1.0" style="color:#39BAE6;text-decoration:none;">github.com/x39matrix/x39matrix/releases/tag/v1.1.0</a><br>
+      <strong>DFINITY Forum:</strong> <a href="https://forum.dfinity.org/t/x39matrix-9-layer-sovereign-protocol-bitcoin-security-bridge-on-internet-computer/67457" style="color:#39BAE6;text-decoration:none;">9-Layer Sovereign Protocol thread</a><br>
+      <strong>Contact:</strong> <a href="mailto:grants@x39matrix.org" style="color:#39BAE6;text-decoration:none;">grants@x39matrix.org</a><br><br>
+      <span style="color:#39BAE6;">First operational PQ + BTC + OTS + WIPO filing:</span> 2026-06-02<br>
+      <span style="color:#A39C8A;font-size:0.85em;">Bitcoin anchor blocks: #952148 &middot; #952150 &middot; #952174</span>
+    </p>
+    <p style="margin-top:30px;color:#A39C8A;font-style:italic;text-align:center;border-top:1px solid #1a1a1a;padding-top:20px;">
+      Cypherpunk principle: Do not trust. Verify.
+    </p>
+  </div>
+</footer>
+
+
+<!-- ═════════ X39 PAYMENT MODULE v2 SOVEREIGN ═════════ -->
+<script id="x39-payment-v2">
+/* ═══════════════════════════════════════════════════════════════════════════
+   X39MATRIX · Sovereign Payment Module v2.0
+   ───────────────────────────────────────────────────────────────────────────
+   Destino soberano: bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg  (X39_JOSEPH)
+   tECDSA pubkey:    025968e3ee...2083
+   Lightning addr:   strictcent462@walletofsatoshi.com
+   
+   Capacidades:
+   - Conversión EUR→sats en vivo (CoinGecko + fallback Mempool.space)
+   - Sats únicos por sesión (identificación pago multi-cliente)
+   - Polling mempool.space para detección automática (cada 10s)
+   - Estados live: esperando / detectado / 1conf / 3conf / confirmado
+   - Email auto-fill con TXID + plan + sats
+   - QR onchain + Lightning (BIP21 unified URI)
+   - LocalStorage para resiliencia de sesión
+   - 100% sin servidor externo (excepto APIs públicas read-only)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+(function() {
+  'use strict';
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Constantes soberanas
+  // ──────────────────────────────────────────────────────────────────────
+  const X39 = {
+    BTC_ADDR:    'bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg',
+    LN_ADDR:     'strictcent462@walletofsatoshi.com',
+    TECDSA_PK:   '025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083',
+    CANISTER_ID: 'arn4r-lqaaa-aaaao-baxwq-cai',
+    EMAIL:       'grants@x39matrix.org',
+    POLL_MS:     10000,         // 10s polling
+    MAX_POLLS:   180,           // 30 min max polling
+    BACKEND: {
+      coingecko: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur',
+      mempool:   'https://mempool.space/api/address/',
+      mempoolPrice: 'https://mempool.space/api/v1/prices',
+    },
+    TIER_CONF: {  // confirmaciones requeridas según importe
+      9:    0,    // Single: 0-conf (mempool detection)
+      75:   1,    // Pack10: 1 conf
+      250:  1,    // Studio: 1 conf
+      500:  3,    // Office: 3 conf
+      3500: 3,    // Corporate: 3 conf
+      // tiers superiores van por mailto directo
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Estado de la sesión actual
+  // ──────────────────────────────────────────────────────────────────────
+  let session = {
+    eur: 0,
+    sats: 0,
+    btc_price: 0,
+    btcAmount: '',
+    uniqueSuffix: 0,
+    pollTimer: null,
+    pollCount: 0,
+    detectedTxid: null,
+    confirmations: 0,
+    requiredConf: 1,
+    status: 'idle'  // idle | waiting | detected | confirming | confirmed | error
+  };
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Helpers
+  // ──────────────────────────────────────────────────────────────────────
+  const $ = id => document.getElementById(id);
+  const fmt = n => n.toLocaleString('es', { maximumFractionDigits: 8 });
+
+  function persistSession() {
+    try {
+      localStorage.setItem('x39_payment_session', JSON.stringify({
+        ...session, pollTimer: null
+      }));
+    } catch (e) {}
+  }
+
+  function restoreSession() {
+    try {
+      const raw = localStorage.getItem('x39_payment_session');
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return null;
+  }
+
+  function clearSession() {
+    try { localStorage.removeItem('x39_payment_session'); } catch (e) {}
+    if (session.pollTimer) clearInterval(session.pollTimer);
+    session = {
+      eur: 0, sats: 0, btc_price: 0, btcAmount: '',
+      uniqueSuffix: 0, pollTimer: null, pollCount: 0,
+      detectedTxid: null, confirmations: 0, requiredConf: 1,
+      status: 'idle'
+    };
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Conversión EUR→sats (CoinGecko + fallback Mempool.space)
+  // ──────────────────────────────────────────────────────────────────────
+  async function fetchBtcPrice() {
+    try {
+      const r = await fetch(X39.BACKEND.coingecko, { mode: 'cors' });
+      if (r.ok) {
+        const j = await r.json();
+        if (j.bitcoin && j.bitcoin.eur) return j.bitcoin.eur;
+      }
+    } catch (e) {
+      console.warn('CoinGecko fallback to Mempool.space:', e.message);
+    }
+    try {
+      const r = await fetch(X39.BACKEND.mempoolPrice, { mode: 'cors' });
+      if (r.ok) {
+        const j = await r.json();
+        if (j.EUR) return j.EUR;
+      }
+    } catch (e) {
+      console.warn('Mempool.space price failed:', e.message);
+    }
+    throw new Error('No price feed available');
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Detección de pago via mempool.space API
+  // ──────────────────────────────────────────────────────────────────────
+  async function checkPayment(address, expectedSats) {
+    try {
+      const r = await fetch(X39.BACKEND.mempool + address + '/txs', { mode: 'cors' });
+      if (!r.ok) return null;
+      const txs = await r.json();
+      // buscar TX entrante con cantidad exacta
+      for (const tx of txs) {
+        for (const vout of tx.vout) {
+          if (vout.scriptpubkey_address === address && vout.value === expectedSats) {
+            const confirmed = tx.status && tx.status.confirmed;
+            let confs = 0;
+            if (confirmed && tx.status.block_height) {
+              // get tip height
+              try {
+                const tr = await fetch('https://mempool.space/api/blocks/tip/height', { mode: 'cors' });
+                if (tr.ok) {
+                  const tip = parseInt(await tr.text(), 10);
+                  confs = tip - tx.status.block_height + 1;
+                }
+              } catch (e) { confs = 1; }
+            }
+            return {
+              txid: tx.txid,
+              confirmations: confs,
+              confirmed: confirmed,
+              block_height: tx.status.block_height || null
+            };
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('mempool.space check failed:', e.message);
+    }
+    return null;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Generación de URI BIP21 + URL QR
+  // ──────────────────────────────────────────────────────────────────────
+  function buildUri(amountBtc, eur) {
+    const label = encodeURIComponent('X39MATRIX-' + eur + 'EUR-SovereignSig');
+    const message = encodeURIComponent('Threshold-ECDSA Notary · X39_JOSEPH');
+    return `bitcoin:${X39.BTC_ADDR}?amount=${amountBtc}&label=${label}&message=${message}&lightning=${X39.LN_ADDR}`;
+  }
+
+  function qrUrl(uri) {
+    // qrserver.com permitido por img-src https: del CSP
+    return 'https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=10&ecc=M&data=' + encodeURIComponent(uri);
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Render de estado en el modal
+  // ──────────────────────────────────────────────────────────────────────
+  function renderStatus() {
+    const el = $('x39-pay-status');
+    if (!el) return;
+    const map = {
+      idle:       { color: '#6e5f50', icon: '○', text: 'Inicializando…' },
+      loading:    { color: '#d4a23a', icon: '◐', text: 'Consultando cotización Bitcoin…' },
+      waiting:    { color: '#d4a23a', icon: '◔', text: 'Esperando tu pago · escanea el QR' },
+      detected:   { color: '#7fd4b0', icon: '◑', text: 'Pago DETECTADO en mempool · esperando confirmación…' },
+      confirming: { color: '#7fd4b0', icon: '◕', text: `Confirmando: ${session.confirmations}/${session.requiredConf} bloques BTC` },
+      confirmed:  { color: '#1ce06b', icon: '●', text: `✓ Pago CONFIRMADO · ${session.confirmations} confirmaciones` },
+      error:      { color: '#b8254b', icon: '✗', text: 'Error en cotización · usa importe manual' },
+    };
+    const s = map[session.status] || map.idle;
+    el.style.color = s.color;
+    el.style.borderColor = s.color;
+    el.innerHTML = `<span style="font-size:1.3em;margin-right:.4em;">${s.icon}</span>${s.text}`;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Polling loop para detectar el pago
+  // ──────────────────────────────────────────────────────────────────────
+  function startPolling() {
+    stopPolling();
+    session.status = 'waiting';
+    renderStatus();
+    session.pollCount = 0;
+    session.pollTimer = setInterval(async () => {
+      session.pollCount++;
+      if (session.pollCount > X39.MAX_POLLS) {
+        stopPolling();
+        return;
+      }
+      const result = await checkPayment(X39.BTC_ADDR, session.sats);
+      if (result) {
+        session.detectedTxid = result.txid;
+        session.confirmations = result.confirmations;
+        if (!result.confirmed) {
+          session.status = 'detected';
+        } else if (result.confirmations < session.requiredConf) {
+          session.status = 'confirming';
+        } else {
+          session.status = 'confirmed';
+          renderTxidPanel();
+          stopPolling();
+        }
+        renderTxidPanel();
+        renderStatus();
+        persistSession();
+      }
+    }, X39.POLL_MS);
+  }
+
+  function stopPolling() {
+    if (session.pollTimer) clearInterval(session.pollTimer);
+    session.pollTimer = null;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Render del panel TXID cuando detectamos pago
+  // ──────────────────────────────────────────────────────────────────────
+  function renderTxidPanel() {
+    const el = $('x39-pay-txid-panel');
+    if (!el) return;
+    if (!session.detectedTxid) {
+      el.style.display = 'none';
+      return;
+    }
+    el.style.display = 'block';
+    const mempoolLink = `https://mempool.space/tx/${session.detectedTxid}`;
+    const subject = encodeURIComponent(`PAGO ${session.eur}EUR · X39MATRIX · ${session.sats} sats`);
+    const body = encodeURIComponent(
+      `═══════════════════════════════════════\n` +
+      `  X39MATRIX · Sovereign Signature Service\n` +
+      `═══════════════════════════════════════\n\n` +
+      `Plan:    ${session.eur} EUR\n` +
+      `Sats:    ${session.sats}\n` +
+      `BTC:     ${session.btcAmount}\n` +
+      `TXID:    ${session.detectedTxid}\n` +
+      `Conf:    ${session.confirmations}/${session.requiredConf}\n` +
+      `Mempool: ${mempoolLink}\n\n` +
+      `Por favor enviadme el certificado .ots + recibo PDF\n` +
+      `firmado threshold-ECDSA en menos de 24 h.\n\n` +
+      `Email comprador: [TU EMAIL AQUÍ]\n` +
+      `Nombre/Empresa:  [OPCIONAL]\n`
+    );
+    el.innerHTML = `
+      <div style="background:rgba(28,224,107,.08);border:1px solid rgba(28,224,107,.4);border-radius:6px;padding:1rem 1.1rem;margin:1rem 0;">
+        <div style="color:#1ce06b;font-weight:600;font-size:.92rem;margin-bottom:.6rem;">▸ Pago detectado en cadena</div>
+        <div style="font-family:'Source Code Pro',monospace;font-size:.72rem;color:#c8b89a;word-break:break-all;line-height:1.5;">
+          TXID: <a href="${mempoolLink}" target="_blank" rel="noopener" style="color:#7fd4b0;text-decoration:none;">${session.detectedTxid}</a>
+        </div>
+        <a href="mailto:${X39.EMAIL}?subject=${subject}&body=${body}"
+           class="x39-pay-cta"
+           style="display:inline-block;margin-top:.9rem;padding:.55rem 1.1rem;background:#1ce06b;color:#0a0608;border-radius:6px;font-weight:600;font-size:.88rem;text-decoration:none;font-family:'Figtree',sans-serif;">
+          ▸ Reclamar mi certificado por email
+        </a>
+      </div>
+    `;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Apertura del modal con tier seleccionado
+  // ──────────────────────────────────────────────────────────────────────
+  async function openPaymentFor(eur) {
+    clearSession();
+    session.eur = eur;
+    session.requiredConf = X39.TIER_CONF[eur] !== undefined ? X39.TIER_CONF[eur] : 1;
+    session.status = 'loading';
+
+    // Mostrar modal
+    const modal = $('pay-modal');
+    if (!modal) {
+      console.error('Modal #pay-modal no encontrado');
+      return;
+    }
+    modal.classList.add('open');
+
+    // Set fields iniciales
+    if ($('pay-amount')) $('pay-amount').textContent = eur.toLocaleString('es') + ' €';
+    if ($('pay-sats')) $('pay-sats').textContent = '… consultando cotización Bitcoin en vivo …';
+    if ($('x39-pay-required-conf')) $('x39-pay-required-conf').textContent = session.requiredConf + ' conf' + (session.requiredConf === 1 ? '' : 's');
+    renderStatus();
+
+    // QR placeholder (sin amount)
+    if ($('pay-qr-img')) $('pay-qr-img').src = qrUrl(buildUri('0', eur));
+
+    // Conversión EUR→sats
+    try {
+      const btcPrice = await fetchBtcPrice();
+      session.btc_price = btcPrice;
+      const baseSats = Math.round((eur / btcPrice) * 1e8);
+      // Sats únicos: añadir 1-99 sats aleatorios para identificación
+      session.uniqueSuffix = Math.floor(Math.random() * 99) + 1;
+      session.sats = baseSats + session.uniqueSuffix;
+      session.btcAmount = (session.sats / 1e8).toFixed(8);
+
+      if ($('pay-sats')) {
+        $('pay-sats').innerHTML =
+          `<strong style="color:#f4cc52;">${fmt(session.sats)} sats</strong>` +
+          ` <span style="color:#6e5f50;font-size:.85em">·</span> ` +
+          `${session.btcAmount} BTC` +
+          ` <span style="color:#6e5f50;font-size:.85em">@</span> ` +
+          `${fmt(Math.round(btcPrice))} €/BTC` +
+          `<div style="font-size:.72rem;color:#7fd4b0;margin-top:.4rem;line-height:1.4;">` +
+          `▸ Importe único: incluye <strong>+${session.uniqueSuffix} sats</strong> de identificación de sesión.<br>` +
+          `▸ Detección automática en mempool · sin intervención manual.` +
+          `</div>`;
+      }
+
+      // QR final con cantidad exacta (BIP21 unified URI)
+      const uri = buildUri(session.btcAmount, eur);
+      if ($('pay-qr-img')) $('pay-qr-img').src = qrUrl(uri);
+
+      // Botón "Abrir en wallet"
+      const openBtn = $('x39-pay-open-wallet');
+      if (openBtn) openBtn.href = uri;
+
+      persistSession();
+
+      // Arrancar polling
+      startPolling();
+    } catch (e) {
+      session.status = 'error';
+      renderStatus();
+      if ($('pay-sats')) {
+        $('pay-sats').innerHTML =
+          `<span style="color:#b8254b;">No se pudo cargar la cotización (CSP o CORS).</span><br>` +
+          `<span style="color:#c8b89a;font-size:.85em;">Envía manualmente el equivalente de <strong>${eur} €</strong> en BTC a la dirección de abajo.</span>`;
+      }
+    }
+  }
+
+  function closeModal() {
+    const modal = $('pay-modal');
+    if (modal) modal.classList.remove('open');
+    stopPolling();
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Bind events
+  // ──────────────────────────────────────────────────────────────────────
+  function bind() {
+    // Botones data-pay
+    document.querySelectorAll('[data-pay]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const eur = parseFloat(btn.dataset.pay);
+        if (!isNaN(eur) && eur > 0) openPaymentFor(eur);
+      });
+    });
+
+    // Cerrar modal
+    const closeBtn = $('pay-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    const modal = $('pay-modal');
+    if (modal) modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Escape cierra
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('open')) closeModal();
+    });
+
+    // Botón copiar dirección BTC
+    const copyBtc = $('copy-addr');
+    if (copyBtc) {
+      copyBtc.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(X39.BTC_ADDR);
+          copyBtc.textContent = '✓ copiado';
+          copyBtc.classList.add('done');
+          setTimeout(() => { copyBtc.textContent = 'copiar'; copyBtc.classList.remove('done'); }, 1800);
+        } catch (e) {}
+      });
+    }
+
+    // Botón copiar Lightning
+    const copyLn = $('copy-ln-addr');
+    if (copyLn) {
+      copyLn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(X39.LN_ADDR);
+          copyLn.textContent = '✓ copiado';
+          copyLn.classList.add('done');
+          setTimeout(() => { copyLn.textContent = 'copiar'; copyLn.classList.remove('done'); }, 1800);
+        } catch (e) {}
+      });
+    }
+
+    // Restore session si la había
+    const saved = restoreSession();
+    if (saved && saved.eur && saved.status !== 'confirmed' && saved.status !== 'idle') {
+      console.log('[X39] Restoring payment session for', saved.eur, '€');
+    }
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Auto-init
+  // ──────────────────────────────────────────────────────────────────────
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
+
+  // Expose para debugging
+  window.X39_PAY = { X39, session: () => session, open: openPaymentFor, close: closeModal };
+})();
+</script>
+<!-- ═════════ FIN X39 PAYMENT MODULE v2 ═════════ -->
+
+</body>
+</html>

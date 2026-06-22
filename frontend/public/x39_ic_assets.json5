@@ -1,0 +1,42 @@
+// ════════════════════════════════════════════════════════════════════════
+//  X39MATRIX · .ic-assets.json5 · CSP actualizado para pago soberano
+// ────────────────────────────────────────────────────────────────────────
+//  Ubicación en repo: src/frontend/assets/.ic-assets.json5
+//  o equivalente según estructura del canister asset.
+//
+//  CAMBIOS sobre el CSP original:
+//    + connect-src añade: api.coingecko.com (precio EUR/BTC)
+//                          mempool.space (detección de pago)
+//                          blockstream.info (fallback explorer)
+//    + img-src ya permite https: → QR de api.qrserver.com OK
+//
+//  Tras editar este archivo: dfx deploy frontend --network ic
+// ════════════════════════════════════════════════════════════════════════
+[
+  {
+    "match": "**/*",
+    "headers": {
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Resource-Policy": "same-origin",
+      "Referrer-Policy": "no-referrer",
+      "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()",
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://ic0.app https://icp-api.io https://ic-api.internetcomputer.org https://api.coingecko.com https://mempool.space https://blockstream.info https://livingroomofsatoshi.com https://walletofsatoshi.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+    },
+    "ignore": false
+  },
+  {
+    "match": "**/*.html",
+    "headers": {
+      "Cache-Control": "public, max-age=60"
+    }
+  },
+  {
+    "match": "**/*.{js,css,svg,woff,woff2}",
+    "headers": {
+      "Cache-Control": "public, max-age=86400"
+    }
+  }
+]
