@@ -2825,40 +2825,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
 <!-- /X39_I18N_NOTARY -->
 
 
-<!-- X39_BTC_ANCHORS_v2_START -->
-<style id="x39-anchors-v2-style">
- .x39-anchors-v2{position:relative;z-index:9999;isolation:isolate;margin:48px auto;max-width:980px;padding:24px 28px;border:1px solid rgba(204,0,0,.55);border-radius:14px;background:#0a0606;color:#f5e6e6;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 40px rgba(204,0,0,.18),inset 0 0 24px rgba(204,0,0,.08)}
- .x39-anchors-v2 h3{margin:0 0 18px;font-size:13px;letter-spacing:.22em;color:#ff5a4a;text-transform:uppercase;text-shadow:0 0 12px rgba(255,60,40,.35)}
- .x39-anchors-v2 ul{list-style:none;margin:0;padding:0}
- .x39-anchors-v2 li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px dashed rgba(204,0,0,.22);flex-wrap:wrap}
- .x39-anchors-v2 li:first-child{border-top:0}
- .x39-anchors-v2 .f{font-size:13px;color:#f0d8d8;word-break:break-all}
- .x39-bdg-r{font-size:11px;padding:5px 12px;border-radius:999px;letter-spacing:.1em;text-decoration:none;display:inline-block;font-weight:700}
- .x39-bdg-r.ok{background:rgba(204,0,0,.18);color:#ff7a6a;border:1px solid rgba(255,80,60,.65);box-shadow:0 0 14px rgba(204,0,0,.28)}
- .x39-bdg-r.ok:hover{background:rgba(204,0,0,.35);color:#fff}
- .x39-bdg-r.pending{background:rgba(255,170,40,.10);color:#ffc070;border:1px solid rgba(255,170,40,.55)}
- .x39-anchors-v2 .foot{margin-top:14px;font-size:11px;color:#9a7070;letter-spacing:.08em}
- @media(max-width:640px){.x39-anchors-v2{margin:24px 12px;padding:18px}}
-</style>
-<section class="x39-anchors-v2" id="x39-btc-anchors" data-testid="x39-btc-anchors-widget">
-  <h3>BTC ANCHORS &mdash; OpenTimestamps · Bitcoin Mainnet</h3>
-  <ul>
-    <li>
-      <span class="f">MASTER_GOLDEN_SEAL.txt</span>
-      <a class="x39-bdg-r ok" href="https://mempool.space/block/954866" target="_blank" rel="noopener" data-testid="anchor-mgs">&#10003; BTC #954866</a>
-    </li>
-    <li>
-      <span class="f">MANIFEST_MAESTRO.txt &nbsp;<small style="opacity:.6">(238 anchors)</small></span>
-      <a class="x39-bdg-r ok" href="https://mempool.space/block/954867" target="_blank" rel="noopener" data-testid="anchor-manifest">&#10003; BTC #954867</a>
-    </li>
-    <li>
-      <span class="f">X39MATRIX_WHITEPAPER_v1.0.pdf</span>
-      <a class="x39-bdg-r ok" href="https://mempool.space/block/954873" target="_blank" rel="noopener" data-testid="anchor-wp">&#10003; BTC #954873</a>
-    </li>
-  </ul>
-  <div class="foot">Verifiable on Bitcoin mainnet via OpenTimestamps (.ots) &middot; mempool.space</div>
-</section>
-<!-- X39_BTC_ANCHORS_v2_END -->
+
 <!-- X39_FIX_3b_OLD_ANCHORS_HIDDEN -->
 <style>
  /* Ocultar via CSS attribute selector el span exacto */
@@ -2914,5 +2881,55 @@ curl -fsSL https://icp0.io/api/v2/canister/bvatd-sqaaa-aaaao-baxqq-cai/read_stat
   </p>
 </section>
 <!-- X39_SPRINT_C_WASM_END -->
+<!-- X39_BTC_ANCHORS_v3_START -->
+<style id="x39-anchors-v3-style">
+ .x39-anchors-v3{position:relative;z-index:9999;isolation:isolate;margin:48px auto;max-width:980px;padding:28px;border:1px solid rgba(204,0,0,.55);border-radius:14px;background:#0a0606;color:#f5e6e6;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 50px rgba(204,0,0,.2),inset 0 0 26px rgba(204,0,0,.08)}
+ .x39-anchors-v3 h3{margin:0 0 6px;font-size:13px;letter-spacing:.24em;color:#ff5a4a;text-transform:uppercase;text-shadow:0 0 14px rgba(255,60,40,.4)}
+ .x39-anchors-v3 .lead{font-size:11px;color:#bfa0a0;letter-spacing:.10em;margin-bottom:18px}
+ .x39-anchors-v3 ul{list-style:none;margin:0;padding:0}
+ .x39-anchors-v3 li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 0;border-top:1px dashed rgba(204,0,0,.22);flex-wrap:wrap}
+ .x39-anchors-v3 li:first-child{border-top:0}
+ .x39-anchors-v3 .f{font-size:13px;color:#f0d8d8;word-break:break-word}
+ .x39-anchors-v3 .foot{margin-top:18px;font-size:11px;color:#9a7070;letter-spacing:.10em;text-align:center}
+ .x39-bdg-r{font-size:11px;padding:5px 12px;border-radius:999px;letter-spacing:.1em;text-decoration:none;display:inline-block;font-weight:700}
+ .x39-bdg-r.ok{background:rgba(204,0,0,.18);color:#ff7a6a;border:1px solid rgba(255,80,60,.65);box-shadow:0 0 14px rgba(204,0,0,.28)}
+ .x39-bdg-r.ok:hover{background:rgba(204,0,0,.35);color:#fff}
+ @media(max-width:640px){.x39-anchors-v3{margin:24px 12px;padding:18px}}
+</style>
+<section class="x39-anchors-v3" id="x39-btc-anchors" data-testid="x39-btc-anchors-widget-v3">
+  <h3>BTC ANCHORS &mdash; 6 sealed artefacts on Bitcoin mainnet</h3>
+  <div class="lead">OpenTimestamps · multi-calendar attestations · post-quantum bundle included</div>
+  <ul>
+    <li>
+      <span class="f">audit_response_v1.md &nbsp;<small style="opacity:.55;font-size:11px">audit response · sovereign reply</small></span>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/953121" target="_blank" rel="noopener" data-testid="anchor-953121">&#10003; BTC #953121</a>
+    </li>
+    <li>
+      <span class="f">internal_analysis_global_v1.md &nbsp;<small style="opacity:.55;font-size:11px">global internal analysis</small></span>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/953699" target="_blank" rel="noopener" data-testid="anchor-953699">&#10003; BTC #953699</a>
+    </li>
+    <li style="background:rgba(204,0,0,.10);border-radius:8px;padding:14px 12px;margin:6px 0;border:1px solid rgba(255,80,60,.45);box-shadow:0 0 18px rgba(255,80,60,.18)">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+        <span class="f"><strong style="color:#ff7a6a;letter-spacing:.04em">🌟 x39_cert_pqc_bundle.tar.gz</strong><br><small style="opacity:.6;font-size:11px">PQC FIPS-203/204 + SLH-DSA bundle</small></span>
+        <a class="x39-bdg-r ok" href="https://mempool.space/block/953819" target="_blank" rel="noopener" data-testid="anchor-953819">&#10003; BTC #953819</a>
+      </div>
+      <div style="margin-top:6px;font-size:10px;color:#ffae9e;letter-spacing:.12em">POST-QUANTUM BUNDLE · TRIPLE INDEPENDENT ATTESTATION</div>
+    </li>
+    <li>
+      <span class="f">MASTER_GOLDEN_SEAL.txt &nbsp;<small style="opacity:.55;font-size:11px">master seal</small></span>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/954866" target="_blank" rel="noopener" data-testid="anchor-954866">&#10003; BTC #954866</a>
+    </li>
+    <li>
+      <span class="f">MANIFEST_MAESTRO.txt &nbsp;<small style="opacity:.55;font-size:11px">238 documents manifest</small></span>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/954867" target="_blank" rel="noopener" data-testid="anchor-954867">&#10003; BTC #954867</a>
+    </li>
+    <li>
+      <span class="f">X39MATRIX_WHITEPAPER_v1.0.pdf &nbsp;<small style="opacity:.55;font-size:11px">50-page whitepaper</small></span>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/954873" target="_blank" rel="noopener" data-testid="anchor-954873">&#10003; BTC #954873</a>
+    </li>
+  </ul>
+  <div class="foot">Verifiable on Bitcoin mainnet · mempool.space · OpenTimestamps</div>
+</section>
+<!-- X39_BTC_ANCHORS_v3_END -->
 </body>
 </html>
