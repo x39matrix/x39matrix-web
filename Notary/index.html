@@ -497,25 +497,7 @@ button.x39p-cta:hover { opacity: .9; }
 </style>
 <!-- X39_FIX_2_LANG_DEDUP -->
 <style>#x39-lang-switcher-root{display:none!important;visibility:hidden!important}</style>
-<!-- X39_FIX_3_OLD_ANCHORS_HIDDEN -->
-<style>
- /* Ocultar linea informativa de anclas obsoletas (queda redundante con widget v2) */
- span[style*="A39C8A"]:has-text("Bitcoin anchor blocks"){display:none!important}
-</style>
-<script>
-(function(){
-  // Fallback robusto sin :has-text (no soportado en navegadores estandar)
-  try{
-    document.querySelectorAll('span').forEach(function(s){
-      var t = (s.textContent||'').trim();
-      if(t.indexOf('Bitcoin anchor blocks: #952148') === 0){
-        s.style.display='none';
-        s.setAttribute('data-x39-hidden','obsolete-anchors');
-      }
-    });
-  }catch(e){}
-})();
-</script>
+
 <!-- X39_FIX_4_RED_OVERRIDE -->
 <style>
  /* Anula verdes residuales y los convierte en rojo soberano */
@@ -2877,5 +2859,38 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
   <div class="foot">Verifiable on Bitcoin mainnet via OpenTimestamps (.ots) &middot; mempool.space</div>
 </section>
 <!-- X39_BTC_ANCHORS_v2_END -->
+<!-- X39_FIX_3b_OLD_ANCHORS_HIDDEN -->
+<style>
+ /* Ocultar via CSS attribute selector el span exacto */
+ span[style*="A39C8A"][style*="0.85em"]{display:none!important}
+</style>
+<script>
+(function(){
+  function hideObs(){
+    try{
+      var sps = document.querySelectorAll('span');
+      var n = 0;
+      sps.forEach(function(s){
+        var t = (s.textContent || '').replace(/\s+/g,' ').trim();
+        if(/^Bitcoin anchor blocks?:\s*#?952148/.test(t) || t.indexOf('#952148') >= 0 && t.indexOf('#952174') >= 0){
+          s.style.setProperty('display','none','important');
+          s.setAttribute('data-x39-hidden','obsolete-anchors');
+          n++;
+        }
+      });
+      // tambien tachar las lineas de Niza con block 952174 si son redundantes
+      console.log('[X39 FIX3b] hidden', n, 'obsolete anchor spans');
+    }catch(e){ console.warn('[X39 FIX3b] error', e); }
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', hideObs);
+  } else {
+    hideObs();
+  }
+  // re-correr tras 1s por si hay render tardio
+  setTimeout(hideObs, 1000);
+})();
+</script>
+
 </body>
 </html>
