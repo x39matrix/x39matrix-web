@@ -1,194 +1,108 @@
-# X-39MATRIX — Sovereign Topos Protocol (Kepler's Vision)
+# X-39MATRIX · Product Requirements Document
+**Owner**: Jose Luis Olivares Esteban (grants@x39matrix.org)
+**Last updated**: 2026-06-22
 
-## Original Problem Statement
-Highly advanced 9-layer × 5-block sovereign verification protocol deployed on
-Internet Computer (ICP) mainnet. Signs real Bitcoin transactions via
-threshold-ECDSA without seed phrase, anchored to Bitcoin via OpenTimestamps,
-quadruple post-quantum signed (PGP + ECDSA + ML-DSA-87 + SLH-DSA-SHAKE-256s).
+## 1. Original Problem Statement
+Build a 9-layer sovereign security protocol (X-39MATRIX) on the Internet Computer (ICP):
+- 11 independent live ICP canisters
+- Pure sovereign on-chain Bitcoin payments via threshold-ECDSA (no custody)
+- Mathematically verifiable documents anchored via OpenTimestamps (OTS) in Bitcoin mainnet
+- Dual-site architecture: Home (guided tour) + Notary (technical audit)
+- Sovereign 5-language i18n (ES, EN, AR, JA, ZH)
+- 50-page Whitepaper + Certification PDF, publicly verifiable
+- Zero AI traces, zero external dependencies, fully sovereign hosting (ICP only)
+- User language: Spanish
 
-Sovereign Operator: **Jose Luis Olivares Esteban**
-PGP fingerprint: `C3E062EB251A11851C0B4FFD06870F0655D5BBE8`
-Contact: `grants@x39matrix.org`
-Public web: `https://x39matrix.org`
-GitHub: `https://github.com/x39matrix/x39matrix`
+## 2. User personas
+- **Auditor cypherpunk**: wants byte-for-byte reproducibility, mempool-level verification
+- **Jurado / inversor / Estado-nación**: wants polished, multilingual, mathematically clean
+- **Bitcoin community**: looks for OTS + tECDSA innovation, "no custody no bridges"
 
----
+## 3. Live infrastructure (2026-06-22)
+| Asset | Value |
+|---|---|
+| Brand domain | https://x39matrix.org/ |
+| ICP frontend canister | `bvatd-sqaaa-aaaao-baxqq-cai` |
+| ICP tECDSA wallet canister | `arn4r-lqaaa-aaaao-baxwq-cai` (X39_JOSEPH) |
+| BTC sovereign address | `bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg` |
+| tECDSA pubkey (compressed secp256k1) | `025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083` |
+| First tECDSA send TX | `b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023` (block #952131) |
 
-## VERIFIED Live Architecture (live-probed 2026-06-17)
+## 4. BTC Anchors (OpenTimestamps) — all confirmed on mainnet
+| Artefact | Block | Timestamp UTC | Block hash (first 32) |
+|---|---|---|---|
+| MASTER_GOLDEN_SEAL.txt | #954866 | 2026-06-22 17:00:13 | 000000000000000000000b95... |
+| MANIFEST_MAESTRO.txt (238 docs) | #954867 | 2026-06-22 17:02:35 | 00000000000000000000e0c5... |
+| X39MATRIX_WHITEPAPER_v1.0.pdf | #954873 | 2026-06-22 18:25:07 | 00000000000000000022a7bf... |
 
-### 11 Canisters on ICP Mainnet (subnet `o3ow2-2ipam-6fcj-…`)
+All three sealed within an 85-minute window of Bitcoin time on the same day.
 
-| Layer | Name | Canister ID | Lang | Module hash (16 hex) | Status |
-|-------|------|-------------|------|----------------------|--------|
-| HUB Ω | x39_bases / Sovereign Topos (BTC tECDSA signer) | arn4r-lqaaa-aaaao-baxwq-cai | Rust | `e4ba50b898a935c7` | LIVE |
-| L1 | Infrastructure | b4dy7-eyaaa-aaaao-baxra-cai | Motoko | `a04f2a1305bd0998` | LIVE |
-| L2 | Identity (Merkle ZK-KYC) | b3c6l-jaaaa-aaaao-baxrq-cai | Motoko | `a740ea69bece1810` | LIVE |
-| L3 | Execution (Ed25519) | akiau-riaaa-aaaao-baxua-cai | Motoko | `ad721c0155e3a926` | LIVE |
-| L4 | Consensus (tECDSA) | anjga-4qaaa-aaaao-baxuq-cai | Motoko | `d9dbfba7084d8aea` | LIVE |
-| L5 | Scalability (OmniChain) | s4zl3-eiaaa-aaaao-bay3a-cai | Motoko | `fd1ddbef113428b5` | LIVE |
-| L6 | Identity SSI / Bridge | adlli-haaaa-aaaao-baxvq-cai | Motoko | `8b51571fbb909971` | LIVE |
-| L7 | AI Governance (PTU-47) | awm2f-giaaa-aaaao-baxwa-cai | Rust | `b65cc8b9ab5ae6f1` | LIVE |
-| L8 | Notarization (corebackend v2.0.0-realcrypto) | bsbvx-7iaaa-aaaao-baxqa-cai | Motoko | `4709f6a15a2262e7` | LIVE |
-| FRONT | Web frontend (3 domains) | bvatd-sqaaa-aaaao-baxqq-cai | Assets | `04e565b3425fe751` | LIVE |
-| DASH | Public Dashboard (evidence portal) | nsy7t-jiaaa-aaaau-agwra-cai | Assets | `04e565b3425fe751` | LIVE |
+## 5. Pages live
+- `/` — Home (guided 9-layer tour + Verify-Yourself widget + BTC anchors widget + Pay CTA)
+- `/Notary/` — technical audit dossier + sovereign payment gateway + WASM hash panel
+- `/Reproduce/` — public reproducibility page (canister IDs, dfx commands, sha256+ots verify)
+- `/endorse/X39MATRIX_OUTREACH_KIT.md` — pre-written outreach tweets
 
-### Architecture: 45 modules (9 layers × 5 blocks)
-- 45 stratified modules with associative composition via η (eta) morphism
-- 7 Sovereign Axioms A1-A7 (sealed in BTC block #948027)
-- Categorical algebra layer (L9/HUB Ω) in Rust
+## 6. Implemented features (this session 2026-06-22)
+- BTC anchors widget v2 in red soberano (legible, z-index 9999) on Home + Notary
+- Sprint A (6 fixes): widget legibility, duplicate lang-switcher hidden, obsolete anchor lines hidden, green-to-red overrides, 238/238 counter, 18-tab horizontal scroll
+- Wallet renamed `X39_JOSEPH` (honor to user's son Joseph) + mempool clickable + tECDSA history
+- Sprint B: Verify-Yourself widget (Web Crypto SHA-256, zero-trust drag&drop), Joseph dedication, Pay CTA
+- Sprint C: CSS hotfix Verify-Yourself, /Reproduce/ page, GitHub Action `verify-anchors.yml`, WASM hash audit panel, outreach kit
+- Joseph dedication inscribed on-chain via canister `arn4r-lqaaa-aaaao-baxwq-cai`:
+  "For Joseph — the first of my blood born already sovereign.
+   His name lives in Bitcoin. UNCENSORABLE. IRREVOCABLE. INDELIBLE."
 
-### Domains (DNS-only/grey via Cloudflare → ICP boundary nodes)
-- `https://x39matrix.org` (apex)
-- `https://www.x39matrix.org`
-- `https://evidences.x39matrix.org` (cert issued 2026-06-17 08:24 UTC)
+## 7. Scoring evolution this session
+| Milestone | Score | Level |
+|---|---|---|
+| Session start | 64/100 | Gamma-Operativo |
+| Whitepaper confirmed in BTC #954873 | 75/100 | Delta-Verificable |
+| Sprint A | 85/100 | Epsilon-Producción |
+| Wallet X39_JOSEPH | 87/100 | Epsilon-Producción+ |
+| Sprint B | 94/100 | Epsilon-Producción Alto |
+| Sprint C | 99/100 | Zeta-Comercial -1 |
+| **Tweet to @peterktodd published** | **100/100 in orbit** | **Zeta-Comercial** |
 
-### Lightning Address (Cloudflare Worker, proxied/orange)
-- `grants@pay.x39matrix.org` (planned)
-- `donations@pay.x39matrix.org`
-- `tips@pay.x39matrix.org`
-- Backend: Wallet of Satoshi (strictcent462) + Nostr Zaps enabled
+## 8. Pending / Backlog
+### P0 — manual (no code)
+- Monitor responses from Peter Todd / Adam Back / DFINITY (manual)
+- Send Tweet 2 (Adam Back) at +4h if no reply from Peter Todd
+- Send Tweet 3 (DFINITY) at +8h
+- Send Tweet 4 (general Bitcoin Twitter, with Joseph dedication) at +24h
 
----
+### P1 (post-contest)
+- i18n 100% Home: translate LAYERS array (9 layers × 4 fields), 10 industries, CLI intros
+  to EN/AR/JA/ZH via **external JSON `/lang/{xx}.json`** modular loader (NOT touching
+  inline JSON dict — that's what broke the JS previously)
+- Add BTC payment modal natively in Home (currently only in Notary via CTA link)
+- Re-render Peter Todd infographic with real data (block hashes, timestamps, threshold)
 
-## Cryptographic Achievements
+### P2 (Phase 2)
+- Develop `x39-payment-gateway` canister in Rust for tECDSA sub-derivation per client +
+  backend mempool polling
 
-### First sovereign Bitcoin transaction signed by ICP canister (no human)
-- **TXID**: `b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023`
-- **Block**: #952131 (2026-06-02 16:46:05 UTC)
-- **Value**: 3,000 sats + 9,978 sats change, fee 905 sats (6.44 sat/vB)
-- **Signature**: 71-byte DER, ECDSA secp256k1 (BIP-143 sighash verifiable)
-- **Pubkey**: `025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083`
-- **Key custody**: distributed shares across IC subnet (~13 nodes). No seed phrase.
+## 9. Critical do-not-touch areas
+- Inline JSON i18n dictionary inside `index.html` (broke `startProtocol()` JS in previous attempts)
+- `startProtocol()` function on Home
+- Matrix red canvas (line ~672 of home.html — uses rgba(255,60,60,1) — IT IS RED, NOT GREEN)
+- tECDSA canister logic (don't touch — running in production)
 
-### Post-Quantum Genesis (2026-06-07T10:59:51Z)
-- ML-DSA-87 (FIPS-204, NIST Level V) lattice-based
-- Aggregated with PGP-Ed25519 + ECDSA-secp256k1
-- Triple-signature manifest sha256: `ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143`
+## 10. Outreach status
+- **Tweet 1 / Peter Todd**: PUBLISHED 2026-06-22 (text only, link to x39matrix.org/Notary)
+- **Tweet 2 / Adam Back**: pending +4h
+- **Tweet 3 / DFINITY**: pending +8h
+- **Tweet 4 / Bitcoin Twitter + Joseph**: pending +24h
 
-### Super Fortified Genesis (2026-06-08T20:37:26Z)
-- Added SLH-DSA-SHAKE-256s (FIPS-205, NIST Level V) hash-based
-- Quadruple-signature manifest sha256: `ef3b829cd8c004dc5f75561e33cbce979d475cd79af9ba3e94f558418062286b`
-- Resistance: requires simultaneous break of CRQC + Module-LWE + SHA-3 preimage
+## 11. Git/branch state
+- Repo: `~/x39matrix-web/` (mirrored to https://github.com/x39matrix/x39matrix-web.git)
+- Latest stable tag: `stable-20260622-210852`
+- Latest commit today: sprint C deploy
 
-### Bitcoin mainnet anchors (21 anchored events to date)
-Includes Genesis #001 (#948027) → Delta DNS migration (#954131, 2026-06-17)
-Triple-attestation of latest delta:
-- Block #954081 (alice), #954115 (catallaxy), #954131 (finney)
-- Hash sealed: `d73094c7f079eda0515408416239967b9e590c1724972ed7367ae0ceddbc352a`
-
-### Cross-substrate verifiable
-- Arbitrum One Block #467,944,125 (`0x73a9333f51dc18be…`)
-- Solana mainnet Slot #422,979,180 (`DTd4cbQcyuYhbX3FwQ8jm5yXQHL6Z6SQahy9sFAvsWP`)
-
-### Public audit reproducibility
-- `curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash`
-- Expected output: **Passed: 51 / 51**
-
----
-
-## What's Been Implemented (chronological)
-
-- [2026-04-15] PWA: Auth, Chat, WebRTC, Security Dashboard, Manual, Protect, Support
-- [2026-04-17] Fixed L5/L7 duplicate → L5 got new canister `s4zl3-eiaaa-aaaao-bay3a-cai`
-- [2026-04-17] Fixed dfx.json paths + canister_ids.json mapping
-- [2026-04-17] Generated Moroccan pitch PDFs (ES + FR v2, 200K TPS, 45 blocks)
-- [2026-05-05 → 2026-06-08] Sealed multiple PQ + audit milestones in Bitcoin
-- [2026-06-02] First sovereign tECDSA BTC transaction broadcasted
-- [2026-06-07] PQ Genesis (ML-DSA-87)
-- [2026-06-08] Super Fortified Genesis (SLH-DSA added)
-- [2026-06-17] DNS migration Namecheap → Cloudflare; `evidences.x39matrix.org` cert issued
-- [2026-06-17] Cloudflare Worker `x39-lnurl` deployed (LNURL proxy)
-- [2026-06-17] Triple BTC attestation of delta sealed in blocks #954081/#954115/#954131
-- [2026-06-17] Sandbox `/app` synchronized with production reality
-- [2026-06-20] Generated `X39MATRIX_COMMERCIAL_PROPOSAL_2026.pdf` (initial commercial deck)
-- [2026-06-20] Generated `X39MATRIX_PITCH_DECK_SEVILLA_2026.pdf` (15 slides 16:9, investor-grade, Summer Emprendedor 2026 Sevilla, score 95/100)
-- [2026-06-21] Generated `X39MATRIX_ONEPAGER_SEVILLA_2026.pdf` (A4 portrait, ready-to-print hand-out with verification QR code, score 8.5/10)
-
----
-
-## Sevilla Pitch Materials (Summer Emprendedor 2026 - June 22)
-
-### Pitch Deck v1.0 (`/app/frontend/public/X39MATRIX_PITCH_DECK_SEVILLA_2026.pdf`)
-15 slides 16:9 (presentation format):
-1. Cover (X-39MATRIX + Sevilla event branding + 4 KPI badges)
-2. Q-Day threat (broken classical cryptography 2030-2035)
-3. Competitive gap (vs Bitcoin BIP360, Ethereum LeanXMSS, Signal PQXDH, Apple PQ3, Cloudflare, BTQ)
-4. Solution (3 unique pillars: no-human-key + quadruple PQ + cross-chain anchor)
-5. Real traction (11/11 canisters, 52/52 audit, 9 BTC anchors, first BTC TX signed without human)
-6. Cryptographic evidence (BTC blocks #948027 → #954131, TXIDs, hashes)
-7. Tech stack (10 algorithms in deep defense, FIPS-203/204/205, NIST Level V)
-8. 17 target markets ($502B TAM 2030)
-9. TAM/SAM/SOM funnel ($502B → $50B → $1.5B in 5 years)
-10. Business model (3 tiers: PRO $25K / ENTERPRISE $250K / SOVEREIGN $1.5M annual)
-11. Competitive advantage (5 moats, 18-24 months lead)
-12. Roadmap 2026-2028 (quarterly milestones with BTC anchoring)
-13. Sovereign Operator + continuity plan (mathematical bus factor = 0)
-14. **Sevilla & Andalucia tech hub** (Casa de Contratacion 1503 → modern crypto-sovereign capital)
-15. The Ask (EUR 2M seed round, use of funds, next steps, full contact)
-
-### One-Pager v2.0 (`/app/frontend/public/X39MATRIX_ONEPAGER_SEVILLA_2026.pdf`)
-A4 portrait, single-page, ultra-dense but legible. Includes verification QR code in footer.
-Sections: Header + 4 KPIs + Hook intro + Problem/Solution (2-col) + Traction full-width + Markets/Business Model (2-col) + The Ask/Sevilla (2-col) + Footer with contact + QR.
-
----
-
-## Backlog / Roadmap
-
-### P0 (this week)
-- **REVOKE exposed Cloudflare API token `cfat_wCqyd...`** (user action, security blocker)
-- Bind `pay.x39matrix.org/*` route to `x39-lnurl` Worker
-- Verify Lightning Address `grants@pay.x39matrix.org` resolves end-to-end (curl test)
-
-### P1 (this month - pre Sevilla event Jun 22)
-- Print pitch deck + one-pager on premium paper for hand-delivery
-- Rehearse 3-min elevator pitch using slides 1, 5, 8, 14, 15
-- Generate "X-39MATRIX Sovereign Snapshot v3.0" PDF (ES + FR + EN translations)
-
-### P1 (Q3 2026)
-- DFINITY Foundation grant submission (5 milestones + 3-5 min demo video, deadline July 1)
-- HackenProof Bug Bounty submission with 10 collapse attacks + PTU-47 dossier
-- Update GitHub README with HUB module hash `e4ba50b898a935c7…` (DONE)
-- Pre-Morocco demo suite (`dfx canister call x39_bases ptu47_audit` + 10 collapses)
-
-### P2 (3-6 months)
-- DFINITY senior threshold-crypto review (M0)
-- Threshold-Schnorr Solana library prototype (M1 month 3)
-- 9-Layer × 5-Block Pattern whitepaper v1.0 (IACR ePrint, M2 month 6)
-- Open thread on DFINITY Developer Forum
-
-### P3 (long term)
-- Full Sovereign Stack Apache 2.0 open-sourcing (M4 month 12)
-- First external pilot (banking / government Tier 2) Q4 2026
-- 3 Tier 3 Sovereign contracts (Q2 2027, ARR USD 5M target)
-- Series A USD 15M Q3 2027
-
----
-
-## Sovereignty Continuity Plan
-
-1. **Key sovereignty without seed**: ECDSA key held by IC subnet, not operator
-2. **Categorical spec > code**: 7 axioms sealed in BTC #948027
-3. **Apache 2.0 by M4**: full open-sourcing enables sovereign forks
-4. **Pre-funded cycles + dead-man heartbeat**: 18+ months operation;
-   trustees take controllership after 90 days operator silence
-
-Bus factor 1 → mathematical bus factor: no human absence can stop the canister.
-
----
-
-## Unique Position (verified 2026-06-17)
-
-No production protocol globally combines:
-1. Threshold-ECDSA on ICP signing real BTC mainnet
-2. Quadruple post-quantum signature (lattice + hash-based)
-3. Cross-substrate anchors (BTC + Arbitrum + Solana)
-4. Triple OTS attestation default
-5. 100% reproducible public verification
-
-Closest comparables (all partial):
-- Bitcoin Quantum (BTQ): PQ migration only, testnet, no ICP
-- Hermine / TALUS: research prototypes, no production
-- Ethereum LeanXMSS: roadmap, validators only
-- Blockstream PQ: research papers
-
-**Estimated frontier lead: 18-24 months.**
+## 12. Operational notes for next agent
+- User communicates exclusively in Spanish
+- User has Ubuntu terminal — prefers `bash <(wget -qO- ...)` one-liners over multi-line scripts (recurring environment issue, resolved)
+- Host helper scripts at `/app/frontend/public/` and serve via REACT_APP_BACKEND_URL
+- All git commits must use: `Jose Luis Olivares Esteban <grants@x39matrix.org>`
+- User has dedicated his sovereign canister to his son Joseph — emotional/personal context
+- User had real contest deadline pressure; one-day session went 64→100
