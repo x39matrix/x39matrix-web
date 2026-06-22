@@ -1032,7 +1032,7 @@
             document.getElementById('emailStatus').textContent='SENDING...';
             document.getElementById('emailStatus').style.color='#888';
             try{
-                const r=await fetch('https://nivel-scan.preview.emergentagent.com/api/download-usecase',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,document_id:currentUC,language:selectedPdfLang})});
+                const subject=encodeURIComponent('X39MATRIX use-case request: '+currentUC);const body=encodeURIComponent('Hello,\n\nRequest document '+currentUC+' (lang: '+selectedPdfLang+').\nEmail: '+email+'\n\n— Sent from x39matrix.org');window.location.href='mailto:grants@x39matrix.org?subject='+subject+'&body='+body;const r={ok:true,json:async()=>({status:'mailto'})};
                 const d=await r.json();
                 if(d.status==='ok'){
                     document.getElementById('emailStatus').textContent='SENT. CHECK YOUR EMAIL.';
