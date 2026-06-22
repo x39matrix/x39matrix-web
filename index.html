@@ -10,7 +10,7 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{background:#1a1a1a;color:#fafafa;font-family:'JetBrains Mono',monospace;min-height:100vh;overflow-x:hidden;}
         #matrixCanvas{position:fixed;inset:0;z-index:1;opacity:0.7;}
-        .bg-universe{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 30% 20%, rgba(204,0,0,0.18) 0%, transparent 55%),radial-gradient(ellipse at 70% 80%, rgba(180,20,20,0.15) 0%, transparent 55%),#050505;opacity:1;}
+        .bg-universe{position:fixed;inset:0;z-index:0;background-image:url('https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/340zhz87_WhatsApp%20Image%202026-04-11%20at%2022.26.42.jpeg');background-size:cover;background-position:center;filter:hue-rotate(280deg) saturate(1.2);opacity:0.5;}
         .container{max-width:1400px;margin:0 auto;padding:24px;position:relative;z-index:1;}
         .lang-switch{position:fixed;top:16px;right:16px;z-index:9999;display:flex;gap:3px;background:rgba(0,0,0,0.8);border:1px solid rgba(204,0,0,0.3);padding:3px;backdrop-filter:blur(10px);}
         .lang-btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:4px 8px;border:none;cursor:pointer;transition:0.2s;background:transparent;color:#fff;}
@@ -141,13 +141,13 @@
 </head>
 <body>
 <!-- X39_LANG_STICKY_HOME_V6 -->
-<div id="x39-lang-sticky-v6" style="position:fixed;top:12px;right:12px;z-index:999999;pointer-events:none;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+<div id="x39-lang-sticky-v6" style="position:fixed;top:12px;right:12px;z-index:999999;pointer-events:none;">
   <div style="background:rgba(8,4,4,0.92);border:1px solid #cc0000;border-radius:6px;padding:5px 7px;display:inline-flex;gap:2px;backdrop-filter:blur(8px);pointer-events:auto;box-shadow:0 4px 16px rgba(0,0,0,0.5);">
-    <button type="button" onclick="if(window.setLang)setLang('es');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="Español">🇪🇸</button>
-    <button type="button" onclick="if(window.setLang)setLang('en');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="English">🇬🇧</button>
-    <button type="button" onclick="if(window.setLang)setLang('ar');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="العربية">🇸🇦</button>
-    <button type="button" onclick="if(window.setLang)setLang('ja');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="日本語">🇯🇵</button>
-    <button type="button" onclick="if(window.setLang)setLang('zh');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="中文">🇨🇳</button>
+    <button type="button" onclick="if(window.setLang)setLang('es');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;" title="Español">🇪🇸</button>
+    <button type="button" onclick="if(window.setLang)setLang('en');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;" title="English">🇬🇧</button>
+    <button type="button" onclick="if(window.setLang)setLang('ar');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;" title="العربية">🇸🇦</button>
+    <button type="button" onclick="if(window.setLang)setLang('ja');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;" title="日本語">🇯🇵</button>
+    <button type="button" onclick="if(window.setLang)setLang('zh');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;" title="中文">🇨🇳</button>
   </div>
 </div>
 <!-- /X39_LANG_STICKY_HOME_V6 -->
@@ -183,7 +183,8 @@
     <a data-x39nav href="#hitosJunio">Hitos 2026-06</a>
     <a data-x39nav href="#archView">10 Industrias</a>
     <a data-x39nav href="#liveTerminal">Live CLI</a>
-    <a data-x39nav href="#whitepaper">📑 Whitepaper</a>
+    <a data-x39nav href="/demo/" target="_blank">Demo</a>
+    <a data-x39nav href="/manual/" target="_blank">Manual</a>
     <a class="notary" href="/Notary/" data-testid="home-notary-link">🛡️ Notaría Soberana</a>
   </div>
 </nav>
@@ -195,7 +196,7 @@
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
         <button class="lang-btn" onclick="setLang('es')">ES</button>
         <button class="lang-btn" onclick="setLang('zh')">中文</button>
-        <button class="lang-btn" onclick="setLang('ar')">عربي</button><button class="lang-btn" onclick="setLang(\'ja\')" data-testid="lang-ja-btn">日本語</button><button class="lang-btn" onclick="setLang('ja')" data-testid="lang-ja-btn">日本語</button><button class="lang-btn" onclick="setLang(\'ja\')" data-testid="lang-ja-btn">日本語</button>
+        <button class="lang-btn" onclick="setLang('ar')">عربي</button>
     </div>
 
     <!-- LANDING -->
@@ -408,7 +409,7 @@
                         <button class="cli-cmd-btn" onclick="runLiveCmd('stress')">STRESS TEST</button>
                         <button class="cli-cmd-btn" onclick="runLiveCmd('topology')">TOPOLOGY</button>
                         <button class="cli-cmd-btn" onclick="runLiveCmd('verify')">VERIFY ED25519</button>
-                        <a href="/PUBLIC_VERIFY_X39_FULL.sh" download="x39_verify.sh" class="cli-cmd-btn" style="text-decoration:none;background:rgba(204,0,0,0.15);border-color:rgba(204,0,0,0.5);">DOWNLOAD CLI</a>
+                        <a href="https://nivel-scan.preview.emergentagent.com/x39matrix-cli.sh" download="x39matrix-cli" class="cli-cmd-btn" style="text-decoration:none;background:rgba(204,0,0,0.15);border-color:rgba(204,0,0,0.5);">DOWNLOAD CLI</a>
                     </div>
                 </div>
             </div>
@@ -498,15 +499,10 @@
 <section id="whitepaper" style="background:linear-gradient(135deg,#0d0606 0%,#1a0a0a 100%);padding:50px 20px;border-top:2px solid #FFD700;border-bottom:2px solid #FFD700;text-align:center;">
   <div style="max-width:900px;margin:0 auto;">
     <div style="font-size:0.6rem;letter-spacing:0.3em;color:#FFD700;margin-bottom:10px;">// FORMAL WHITEPAPER · IACR ePrint format</div>
-    <h2 style="font-size:1.8rem;color:#fff;margin:0 0 12px;letter-spacing:0.03em;">Sovereign Notarial Infrastructure</h2>
+    <h2 style="font-size:1.8rem;color:#fff;margin:0 0 12px;">Sovereign Notarial Infrastructure</h2>
     <div style="font-size:0.9rem;color:#bbb;margin-bottom:8px;">for Nation-States · Banking · Healthcare · Academia</div>
-    <div style="font-size:0.7rem;color:#888;margin-bottom:30px;">50 pages · 20 chapters · 13 ministries detailed · 12 compliance frameworks · 20 academic references</div>
-    <a href="/X39MATRIX_WHITEPAPER_v1.0.pdf" target="_blank" data-testid="download-whitepaper" style="display:inline-block;background:#FFD700;color:#000;font-weight:700;padding:14px 36px;border-radius:4px;text-decoration:none;letter-spacing:0.08em;font-size:0.85rem;box-shadow:0 0 24px rgba(255,215,0,0.35);transition:all .2s ease;">📑 DOWNLOAD WHITEPAPER v1.0 · PDF (82 KB)</a>
-    <div style="margin-top:14px;font-size:0.65rem;color:#888;">
-      <a href="/X39MATRIX_WHITEPAPER_v1.0.pdf.ots" style="color:#ff3a2b;text-decoration:none;">Bitcoin OTS proof ↗</a>
-      &nbsp;·&nbsp;
-      <code style="color:#888;font-size:0.65rem;">sha256: $(sha256sum X39MATRIX_WHITEPAPER_v1.0.pdf | awk '{print substr($1,1,32)}')...</code>
-    </div>
+    <div style="font-size:0.7rem;color:#888;margin-bottom:30px;">50 pages · 20 chapters · 13 ministries</div>
+    <a href="/X39MATRIX_WHITEPAPER_v1.0.pdf" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#FFD700;color:#000;font-weight:700;padding:14px 36px;border-radius:4px;text-decoration:none;letter-spacing:0.08em;font-size:0.85rem;box-shadow:0 0 24px rgba(255,215,0,0.35);">📑 DOWNLOAD WHITEPAPER v1.0 · PDF (82 KB)</a>
   </div>
 </section>
 <!-- /X39_WHITEPAPER_HERO -->
@@ -721,7 +717,13 @@
 
         let selectedPdfLang='en';
         window.selectPdfLang=function(btn,lang){selectedPdfLang=lang;document.querySelectorAll('.pdf-lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
-        window.downloadPdf=function(){window.open('/X39MATRIX_WHITEPAPER_v1.0.pdf','_blank');};
+        window.downloadPdf=function(){
+            const urls={
+                en:'/x39matrix_certification_en.html',
+                es:'https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/r7hsdjsv_x39matrix_realidad.pdf',
+                zh:'/x39matrix_certification_zh.html',
+                ar:'/x39matrix_certification_ar.html'
+            };
             const a=document.createElement('a');a.href=urls[selectedPdfLang];a.download='x39matrix_certification_'+selectedPdfLang+'.pdf';a.target='_blank';a.click();
         };
 
@@ -948,38 +950,6 @@
                 'uc08':'الدفاع والحكومة','uc08d':'بنية تحتية سيادية. سوق الدفاع السيبراني 150 مليار دولار. مقابل Palantir.',
                 'uc09':'الألعاب والميتافيرس','uc09d':'50K+ TPS. DAG سببي لـ MMO. مكافحة غش AI على السلسلة. مقابل Immutable X.',
                 'uc10':'البحث الأكاديمي','uc10d':'Fokker-Planck قابل للنشر. علم غير قابل للتغيير. بيانات Ed25519. مقابل Elsevier.'
-            },
-            ja:{
-                'tagline1':'プロトコル分散型',
-                'tagline2':'ED25519 · x509 · アーキテクト X39',
-                'tagline3':'彼らは一つずつ作る。我々はすでに45を完成し、238のBTCブロックに固定した。',
-                'arch-cert':'ソブリンアーキテクチャ — 技術認証 v12.0',
-                'arch-title':'9 レイヤー。<br><span>45 ブロック</span><br><span style="font-size:0.5em;color:#FFD700">+ 238 BTC アンカー</span>',
-                'arch-desc':'各ブロックは固有で陥落不可能な機能を持つ。約束ではなく、認証である。',
-                'arch-btn':'アーキテクチャを見る →',
-                'stat-finality':'ブロック確定',
-                'stat-tps':'ネイティブ TPS',
-                'stat-tx':'トランザクション単価',
-                'stat-bridges':'脆弱なブリッジ',
-                'btc-title':'// ネイティブビットコイン統合 — THRESHOLD ECDSA & SCHNORR',
-                'btc-sub':'BTC ソブリン署名 — ブリッジなし、カストディアンなし',
-                'morph-title':'// レイヤー 9: 因果 DAG — 深層状態モルフィズム',
-                'morph-sub':'ロックなしの数学的競合解決',
-                'uc-section':'// 業界アプリケーション',
-                'uc-title':'X39MATRIX が稼働する場所',
-                'uc-desc':'10 業界。詳細な技術分析。現行ソリューションとの比較。各文書は独立してダウンロード可能。',
-                'pdf-title':'// 技術認証をダウンロード',
-                'footer-text':'9 レイヤー · 45 基礎ブロック · 238 BTC アンカー · 11 ICP キャニスター · ML-DSA-87 PQC · ソブリンプロトコル v12.0',
-                'uc01':'分散型金融 (DeFi)','uc01d':'ネイティブビットコイン。ブリッジゼロ。ブリッジ損失30億ドル解消。Uniswap、Aave、LayerZero、THORChain との対比。',
-                'uc02':'機関銀行業務','uc02d':'2.5秒決済 vs SWIFT 1-5日。2,740億ドルのコンプライアンス市場。JPMorgan Onyx、R3 Corda、Ripple との対比。',
-                'uc03':'ブロックチェーンセキュリティ','uc03d':'51%防御ラボ。2,038ファジングケース、エスケープ0。Trail of Bits、Halborn、Forta との対比。',
-                'uc04':'クロスチェーンインフラ','uc04d':'閾値ECDSAネイティブ署名。ブリッジなし。LayerZero、Wormhole、Cosmos IBC、Axelar との対比。',
-                'uc05':'ソブリンデジタルアイデンティティ','uc05d':'パスワードゼロ。デバイス紐付け鍵。2023年で220億件漏洩。Google、Worldcoin、Microsoft ION との対比。',
-                'uc06':'分散型AI (DeAI)','uc06d':'オンチェーンAI Sentinel。全決定が署名済。47/47攻撃ブロック。OpenAI、Bittensor、Ritual との対比。',
-                'uc07':'サプライチェーン','uc07d':'4.2兆ドルの偽造市場。Ed25519プロビナンス。並列更新。IBM Food Trust、VeChain との対比。',
-                'uc08':'防衛・政府','uc08d':'ソブリンインフラ。1500億ドルサイバー防衛市場。51%防御ラボ。Palantir、AWS GovCloud との対比。',
-                'uc09':'ゲーミング & メタバース','uc09d':'50K+ TPS。MMO向け因果DAG。オンチェーンAIアンチチート。Immutable X、Ronin との対比。',
-                'uc10':'学術研究','uc10d':'公表可能なFokker-Planck。不変科学。Ed25519資格証明。Elsevier、ResearchHub、DeSci との対比。'
             }
         };
 
@@ -1044,7 +1014,7 @@
             document.getElementById('emailStatus').textContent='SENDING...';
             document.getElementById('emailStatus').style.color='#888';
             try{
-                const subject=encodeURIComponent('X39MATRIX use-case request: '+currentUC);const body=encodeURIComponent('Hello,\n\nRequest document '+currentUC+' (lang: '+selectedPdfLang+').\nEmail: '+email+'\n\n— Sent from x39matrix.org');window.location.href='mailto:grants@x39matrix.org?subject='+subject+'&body='+body;const r={ok:true,json:async()=>({status:'mailto'})};
+                const r=await fetch('https://nivel-scan.preview.emergentagent.com/api/download-usecase',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,document_id:currentUC,language:selectedPdfLang})});
                 const d=await r.json();
                 if(d.status==='ok'){
                     document.getElementById('emailStatus').textContent='SENT. CHECK YOUR EMAIL.';
