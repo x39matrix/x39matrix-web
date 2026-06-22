@@ -133,7 +133,35 @@ if '</body>' in html_new:
 else:
     html_new += js_injection
 
-# ─── Escribir resultado ───
+# ═════════════════════════════════════════════════════════════════
+# PATCH 6 · Eliminar scripts Cloudflare fantasma
+# ═════════════════════════════════════════════════════════════════
+# Script 1: email-decode.min.js (queda como artefacto del Cloudflare proxy antiguo)
+p6a = re.compile(
+    r'<script\s+data-cfasync="false"\s+src="/cdn-cgi/scripts/[^"]+"></script>'
+)
+html_new, n6a = p6a.subn('<!-- removed: cloudflare email-decode.min.js -->', html_new)
+
+# Script 2: bloque iframe que carga challenge-platform/scripts/jsd/main.js
+p6b = re.compile(
+    r'<script>\(function\(\)\{function c\(\)\{[^<]*?challenge-platform[^<]*?\}\}\)\(\);</script>',
+    re.DOTALL
+)
+html_new, n6b = p6b.subn('<!-- removed: cloudflare challenge-platform iframe injector -->', html_new)
+
+# Script 3 (más permisivo si el matcheo anterior falla): cualquier script con challenge-platform
+if n6b == 0:
+    p6b2 = re.compile(
+        r'<script>\(function\(\)\{[^<]*?cdn-cgi/challenge-platform[^<]*?\}\}\)\(\);</script>',
+        re.DOTALL
+    )
+    html_new, n6b = p6b2.subn('<!-- removed: cloudflare challenge-platform iframe injector -->', html_new)
+
+print(f"[PATCH 6] Scripts Cloudflare fantasma eliminados: email-decode={n6a}, challenge-platform={n6b}")
+
+# ═════════════════════════════════════════════════════════════════
+# PATCH 7 · Eliminar cualquier referencia restante a cdn-cgi
+# ═════════════════════════════════════════════════════════════════
 with open(OUT_HTML, "w", encoding="utf-8") as f:
     f.write(html_new)
 
