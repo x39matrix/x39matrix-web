@@ -1,28 +1,31 @@
+// ════════════════════════════════════════════════════════════════════════
+//  X39MATRIX · .ic-assets.json5 · v2.1
+//  ── CSP soberano + security_policy declarado (silencia warning dfx)
+//  ── Ubicación en repo: x39matrix-web/.ic-assets.json5
+// ════════════════════════════════════════════════════════════════════════
 [
   {
     "match": "**/*",
+    "security_policy": "standard",
     "disable_security_policy_warning": true,
     "headers": {
-      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
       "X-Content-Type-Options": "nosniff",
-      "Referrer-Policy": "no-referrer",
       "X-Frame-Options": "DENY",
-      "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()",
       "Cross-Origin-Opener-Policy": "same-origin",
       "Cross-Origin-Resource-Policy": "same-origin",
-      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://ic0.app https://icp-api.io https://ic-api.internetcomputer.org; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
-    }
+      "Referrer-Policy": "no-referrer",
+      "Permissions-Policy": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()",
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://ic0.app https://icp-api.io https://ic-api.internetcomputer.org https://api.coingecko.com https://mempool.space https://blockstream.info https://livingroomofsatoshi.com https://walletofsatoshi.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+    },
+    "ignore": false
   },
-  { "match": "**/*.html",   "headers": { "Content-Type": "text/html; charset=utf-8" } },
-  { "match": "**/*.sh",     "headers": { "Content-Type": "application/x-sh; charset=utf-8", "Content-Disposition": "attachment" } },
-  { "match": "**/*.ots",    "headers": { "Content-Type": "application/vnd.opentimestamps.ots", "Content-Disposition": "attachment" } },
-  { "match": "**/*.candid", "headers": { "Content-Type": "text/plain; charset=utf-8" } },
-  { "match": "**/*.txt",    "headers": { "Content-Type": "text/plain; charset=utf-8" } },
-  { "match": "**/*.json",   "headers": { "Content-Type": "application/json; charset=utf-8" } },
-  { "match": "**/*.pdf",    "headers": { "Content-Type": "application/pdf", "Content-Disposition": "inline" } },
-  { "match": "**/*.png",    "headers": { "Content-Type": "image/png" } },
-  { "match": "**/*.js",     "headers": { "Content-Type": "application/javascript; charset=utf-8" } },
-  { "match": "service-worker.js", "headers": { "Content-Type": "application/javascript; charset=utf-8", "Service-Worker-Allowed": "/" } },
-  { "match": "MASTER_GOLDEN_SEAL.txt.ots",            "headers": { "Content-Type": "text/plain; charset=utf-8" } },
-  { "match": "audit_full_1779229749009834030.candid", "headers": { "Content-Type": "text/plain; charset=utf-8" } }
+  {
+    "match": "**/*.html",
+    "headers": { "Cache-Control": "public, max-age=60" }
+  },
+  {
+    "match": "**/*.{js,css,svg,woff,woff2}",
+    "headers": { "Cache-Control": "public, max-age=86400" }
+  }
 ]

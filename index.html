@@ -484,6 +484,17 @@
   <meta name="twitter:image" content="https://x39matrix.org/x39_icon_512.png" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<style id="x39-pay-cta-button-reset">
+button.x39p-cta {
+  font-family: inherit !important;
+  border: 0 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+button.x39p-cta:hover { opacity: .9; }
+</style>
 </head>
 <body><div class="x39p-banner">LAST SEAL 2026-06-03 03:41 UTC - BLOCK #952174 - 51/51 CLAIMS VERIFIED - <a href="https://github.com/x39matrix/x39matrix" target="_blank">github.com/x39matrix</a></div>
 
@@ -495,12 +506,12 @@
       <span>x39matrix</span>
     </div>
     <nav class="toplinks" data-testid="top-nav">
-      <a href="#anchors">Anclajes</a>
-      <a href="#verify">Verificador</a>
-      <a href="#commands">Comandos</a>
-      <a href="#pricing">Precios</a>
-      <a href="#audit">Auditoría</a>
-      <a href="#dashboard">Dashboard ICP</a>
+      <a href="#anchors" data-i18n="nav.anchors">Anclajes</a>
+      <a href="#verify" data-i18n="nav.verify">Verificador</a>
+      <a href="#commands" data-i18n="nav.commands">Comandos</a>
+      <a href="#pricing" data-i18n="nav.pricing">Precios</a>
+      <a href="#audit" data-i18n="nav.audit">Auditoría</a>
+      <a href="#dashboard" data-i18n="nav.dashboard">Dashboard ICP</a>
     </nav>
     <div style="font-size:.82rem; color: var(--ink-dim);">
       <span class="pulse"></span>LIVE · ICP mainnet
@@ -512,7 +523,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-status" data-testid="status-live">
-      <span class="pulse"></span> 10 canisters · 4 sustratos · 0 violaciones
+      <span class="pulse"></span> <span data-i18n="hero.status">10 canisters · 4 sustratos · 0 violaciones</span>
     </div>
 
     <h1 data-testid="hero-title">
@@ -539,9 +550,9 @@
     </div>
 
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#verify" data-testid="cta-verify">▸ Verificar ahora</a>
-      <a class="btn btn-ghost" href="#commands" data-testid="cta-commands">› Comandos públicos</a>
-      <a class="btn btn-ghost" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai" target="_blank" rel="noopener" data-testid="cta-canister">↗ Canister IC</a>
+      <a class="btn btn-primary" href="#verify" data-testid="cta-verify" data-i18n="cta.verify">▸ Verificar ahora</a>
+      <a class="btn btn-ghost" href="#commands" data-testid="cta-commands" data-i18n="cta.commands">› Comandos públicos</a>
+      <a class="btn btn-ghost" href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai" target="_blank" rel="noopener" data-testid="cta-canister" data-i18n="cta.canister">↗ Canister IC</a>
     </div>
   </div>
 
@@ -573,6 +584,39 @@
     </div>
   </div>
 </section>
+<!-- ═════════ MILESTONES 2026-06-10 ═════════ -->
+<section id="milestones" class="milestones" style="padding:60px 0;background:rgba(20,14,8,.4);border-top:1px solid rgba(212,160,23,.2);border-bottom:1px solid rgba(212,160,23,.2);">
+  <div class="wrap">
+    <h2 style="text-align:center;letter-spacing:.08em;color:#d4a017;margin-bottom:8px" data-i18n="milestones.title">Hitos 2026-06-10</h2>
+    <p style="text-align:center;color:#888;margin-bottom:40px;font-size:14px" data-i18n="milestones.intro">Tres artefactos firmados PGP y anclados en Bitcoin via OpenTimestamps el mismo día.</p>
+    <div class="milestones-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;font-family:'Source Code Pro',monospace;font-size:12px;line-height:1.55">
+      <div style="padding:18px;background:rgba(0,0,0,.4);border:1px solid rgba(212,160,23,.25);border-radius:6px">
+        <div style="color:#d4a017;font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.05em">[1] AUDIT RESPONSE v1</div>
+        <div style="color:#bbb"><strong>commit</strong>  : 1b907028 (PGP)</div>
+        <div style="color:#bbb"><strong>anchor</strong>  : fbff9be7 (OTS Bitcoin)</div>
+        <div style="color:#bbb"><strong>file</strong>    : evidence/x39matrix_audit_response_v1.md</div>
+        <a href="https://github.com/x39matrix/x39matrix-web/blob/main/evidence/x39matrix_audit_response_v1.md" style="display:inline-block;margin-top:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ GitHub</a>
+        <a href="https://codeberg.org/x39matrix/x39matrix-web/src/branch/main/evidence/x39matrix_audit_response_v1.md" style="display:inline-block;margin-top:10px;margin-left:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ Codeberg</a>
+      </div>
+      <div style="padding:18px;background:rgba(0,0,0,.4);border:1px solid rgba(212,160,23,.25);border-radius:6px">
+        <div style="color:#d4a017;font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.05em">[2] INTERNAL ANALYSIS GLOBAL v1</div>
+        <div style="color:#bbb"><strong>score</strong>   : 97/100</div>
+        <div style="color:#bbb"><strong>verticals</strong>: 15 (~150-450 use cases)</div>
+        <div style="color:#bbb"><strong>PQ status</strong>: FIPS-203 + FIPS-204 production</div>
+        <a href="https://github.com/x39matrix/x39matrix-web/blob/main/evidence/x39matrix_internal_analysis_global_v1.md" style="display:inline-block;margin-top:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ GitHub</a>
+        <a href="https://codeberg.org/x39matrix/x39matrix-web/src/branch/main/evidence/x39matrix_internal_analysis_global_v1.md" style="display:inline-block;margin-top:10px;margin-left:10px;color:#1ce06b;text-decoration:none;font-size:11px">↗ Codeberg</a>
+      </div>
+      <div style="padding:18px;background:rgba(0,0,0,.4);border:1px solid rgba(212,160,23,.25);border-radius:6px">
+        <div style="color:#d4a017;font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.05em">[3] PQC CERTIFICATION BUNDLE</div>
+        <div style="color:#bbb"><strong>cipher</strong>  : SHA-256 + ML-DSA-87 + OTS</div>
+        <div style="color:#bbb"><strong>verify</strong>  : openssl + liboqs + ots</div>
+        <div style="color:#bbb"><strong>bundle</strong>  : x39_cert_pqc_bundle.tar.gz</div>
+        <a href="/notary/x39_cert_pqc_bundle.tar.gz" style="display:inline-block;margin-top:10px;color:#1ce06b;text-decoration:none;font-size:11px">↓ Download bundle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ═════════ ANCHORS ═════════ -->
 <section id="anchors">
@@ -1254,55 +1298,98 @@ dig _canister-id.x39matrix.org TXT +short
   </div>
 </footer>
 
-<!-- ═════════ MODAL PAGO BTC ═════════ -->
+<!-- ════════════════════════════════════════════════════════════════════════
+     X39MATRIX · Sovereign Payment Modal v2.0
+     ────────────────────────────────────────────────────────────────────────
+     Reemplaza el bloque <div class="modal-backdrop" id="pay-modal">…</div>
+     en tu index.html (líneas ~1290-1336 del original)
+     ════════════════════════════════════════════════════════════════════════ -->
+
+<!-- ═════════ MODAL PAGO BTC · SOVEREIGN v2 ═════════ -->
 <div class="modal-backdrop" id="pay-modal" data-testid="pay-modal">
-  <div class="modal" style="max-width: 32rem;">
+  <div class="modal" style="max-width: 38rem;">
     <button type="button" class="modal-close" id="pay-close" aria-label="cerrar">×</button>
-    <h3 style="margin-top:0; color: var(--gold-bright);">Pago en Bitcoin · onchain + Lightning ⚡</h3>
 
+    <h3 style="margin-top:0; color: var(--gold-bright); display:flex; align-items:center; gap:.6rem;">
+      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background: var(--gold-bright); box-shadow: 0 0 12px var(--gold-bright);"></span>
+      Pago Bitcoin · Sovereign Notary Service
+    </h3>
+
+    <!-- Plan + precio -->
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin: .8rem 0 1.2rem; padding-bottom: .8rem; border-bottom: 1px dashed var(--line);">
-      <span class="dim" style="font-size:.85rem;">Plan seleccionado:</span>
-      <strong id="pay-amount" class="gold" style="font-size:1.6rem; font-family:'Playfair Display',serif;">— €</strong>
+      <div>
+        <div class="dim" style="font-size:.78rem; letter-spacing:.05em; text-transform:uppercase;">Plan seleccionado</div>
+        <div style="font-size:.85rem; color: var(--ink-dim); margin-top:.2rem;">
+          Requiere <strong id="x39-pay-required-conf" style="color: var(--gold-bright);">1 conf</strong> · tECDSA verificada
+        </div>
+      </div>
+      <strong id="pay-amount" class="gold" style="font-size:1.8rem; font-family:'Playfair Display',serif;">— €</strong>
     </div>
 
-    <p class="dim" style="font-size:.82rem; margin: 0 0 .4rem;">Importe en sats (cotización CoinGecko en vivo):</p>
-    <p id="pay-sats" style="font-family:'Source Code Pro', monospace; font-size:1rem; color: var(--gold-bright); word-break:break-all; margin: 0 0 1.2rem; background: rgba(0,0,0,.4); padding: .6rem .8rem; border-radius: 4px; border: 1px solid var(--line);">… consultando cotización …</p>
-
-    <div style="text-align: center; margin: 1rem 0;">
-      <img id="pay-qr-img" alt="QR de pago Bitcoin" style="width: 220px; height: 220px; background: var(--ink); border-radius: 8px; padding: 8px; display:block; margin: 0 auto;" />
-      <p class="dim" style="font-size:.72rem; margin-top:.5rem;">Escanea con tu wallet · BIP21 URI</p>
+    <!-- Status box -->
+    <div id="x39-pay-status"
+         style="font-family:'Source Code Pro',monospace; font-size:.85rem; padding:.7rem 1rem; border-radius:6px; border:1px solid; margin-bottom:1rem; background:rgba(0,0,0,.3); color:#d4a23a;">
+      <span style="font-size:1.3em;margin-right:.4em;">○</span>Inicializando…
     </div>
 
-    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem;">Dirección de destino:</p>
+    <!-- Sats display -->
+    <p class="dim" style="font-size:.78rem; margin: 0 0 .35rem; letter-spacing:.04em;">Importe exacto a pagar:</p>
+    <div id="pay-sats" style="font-family:'Source Code Pro', monospace; font-size:1rem; color: var(--gold-bright); word-break:break-all; margin: 0 0 1.2rem; background: rgba(0,0,0,.4); padding: .75rem .9rem; border-radius: 4px; border: 1px solid var(--line);">… consultando cotización …</div>
+
+    <!-- QR -->
+    <div style="text-align: center; margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,.25); border-radius: 8px; border: 1px solid var(--line);">
+      <img id="pay-qr-img" alt="QR de pago Bitcoin BIP21" style="width: 240px; height: 240px; background: var(--ink); border-radius: 8px; padding: 8px; display:block; margin: 0 auto;" />
+      <p class="dim" style="font-size:.72rem; margin: .7rem 0 .4rem;">Escanea con tu wallet · BIP21 unified URI (on-chain + LN)</p>
+      <a id="x39-pay-open-wallet" href="bitcoin:" 
+         style="display:inline-block; padding:.45rem 1rem; background: rgba(212,162,58,.12); border:1px solid var(--gold); border-radius:6px; color: var(--gold-bright); font-size:.82rem; text-decoration:none; font-weight:500;">
+        ▸ Abrir en mi wallet
+      </a>
+    </div>
+
+    <!-- Dirección BTC -->
+    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem; display:flex; justify-content:space-between; align-items:center;">
+      <span>Dirección on-chain · <strong style="color: var(--gold-bright);">X39_JOSEPH</strong> (tECDSA)</span>
+      <span style="font-size:.68rem; color: var(--emerald); letter-spacing:.06em;">SOVEREIGN</span>
+    </p>
     <div style="display:flex; gap:.5rem; align-items:stretch; margin-bottom: 1rem;">
       <code id="pay-address" style="flex:1; font-family:'Source Code Pro', monospace; font-size:.78rem; background: rgba(0,0,0,.4); padding: .55rem .7rem; border-radius: 4px; border: 1px solid var(--line); word-break:break-all; color: var(--ink);">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</code>
       <button type="button" class="copy-btn" id="copy-addr" data-copy="bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg" style="position: static; flex-shrink: 0;">copiar</button>
     </div>
-      
 
-    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem;">⚡ Lightning Network <span style="color: var(--gold-bright);">(instantaneo · fees sub-cent)</span>:</p>
+    <!-- Lightning -->
+    <p class="dim" style="font-size:.78rem; margin: 1.2rem 0 .3rem;">
+      ⚡ Lightning Network <span style="color: var(--gold-bright);">(instantáneo · sub-cent fees)</span>:
+    </p>
     <div style="display:flex; gap:.5rem; align-items:stretch; margin-bottom: 1rem;">
       <code id="pay-ln-address" style="flex:1; font-family:'Source Code Pro', monospace; font-size:.78rem; background: rgba(0,0,0,.4); padding: .55rem .7rem; border-radius: 4px; border: 1px solid var(--line); word-break:break-all; color: var(--ink);">strictcent462@walletofsatoshi.com</code>
       <button type="button" class="copy-btn" id="copy-ln-addr" data-copy="strictcent462@walletofsatoshi.com" style="position: static; flex-shrink: 0;">copiar</button>
     </div>
 
+    <!-- Panel TXID detectado (oculto hasta que detectamos pago) -->
+    <div id="x39-pay-txid-panel" style="display:none;"></div>
+
+    <!-- Instrucciones -->
     <div style="background: rgba(45,138,108,.06); border: 1px solid rgba(45,138,108,.3); border-radius: var(--radius-sm); padding: .9rem 1rem; margin: 1rem 0;">
-      <p style="margin: 0 0 .4rem; font-size:.85rem; color: #7fd4b0; font-weight: 600;">▸ Tras enviar el pago:</p>
-      <ol style="margin: 0; padding-left: 1.3rem; font-size:.82rem; color: var(--ink-dim); line-height: 1.7;">
-        <li>Copia el <strong>TXID</strong> de tu wallet (el hash de tu transacción).</li>
-        <li>Envía email a <a href="mailto:grants@x39matrix.org" style="color: var(--gold-bright);">grants@x39matrix.org</a> con: TXID + plan + email.</li>
-        <li>Recibirás <strong>certificado .ots</strong> + recibo PDF firmado threshold-ECDSA en &lt; 24 h.</li>
+      <p style="margin: 0 0 .4rem; font-size:.85rem; color: #7fd4b0; font-weight: 600;">▸ Cómo funciona:</p>
+      <ol style="margin: 0; padding-left: 1.3rem; font-size:.78rem; color: var(--ink-dim); line-height: 1.65;">
+        <li>El sistema añade <strong style="color:#7fd4b0;">+1 a 99 sats</strong> únicos al importe para identificar tu pago.</li>
+        <li>Escaneas el QR (o copias la dirección) y pagas <strong>el importe exacto</strong>.</li>
+        <li>El status box arriba detectará tu transacción automáticamente desde mempool.</li>
+        <li>Cuando confirme, te aparecerá un botón <strong>"Reclamar certificado por email"</strong>.</li>
       </ol>
     </div>
 
-    <p class="dim" style="font-size:.72rem; margin: 0; text-align: center;">
-      Reparto auto-split: <strong style="color: var(--gold);">75 %</strong> architect · <strong style="color: var(--gold);">25 %</strong> canister X39_JOSEPH ·
-      <a href="mailto:grants@x39matrix.org" style="color: var(--gold-bright);">soporte</a>
+    <!-- Footer -->
+    <p class="dim" style="font-size:.7rem; margin: 0; text-align: center; line-height:1.6;">
+      Reparto auto-split tECDSA: <strong style="color: var(--gold);">75%</strong> architect · <strong style="color: var(--gold);">25%</strong> canister X39_JOSEPH<br>
+      Pubkey ECDSA: <code style="font-size:.65rem; color: var(--ink-mute);">025968e3ee…2083</code> · 
+      <a href="mailto:grants@x39matrix.org" style="color: var(--gold-bright);">grants@x39matrix.org</a>
     </p>
   </div>
 </div>
+<!-- ═════════ FIN MODAL PAGO BTC SOVEREIGN v2 ═════════ -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<!-- removed: cloudflare email-decode.min.js --><script>
   // ── Sellos publicados (SHA-256 ↦ etiqueta) ──
   const SEALS = {
     "08e9db781dc79c9fbbe77a56cd0120d2830650d4bcf52a2dae9acb73091d449c":
@@ -1371,58 +1458,14 @@ dig _canister-id.x39matrix.org TXT +short
   ['dragleave','drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('drag'); }));
   dz.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
 
-  // ── Pay modal ──
-  const modal = document.getElementById('pay-modal');
-  const BTC_ADDR = 'bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg';
-
-  document.querySelectorAll('[data-pay]').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const eur = parseFloat(btn.dataset.pay);
-      document.getElementById('pay-amount').textContent = eur.toLocaleString('es') + ' €';
-      document.getElementById('pay-sats').textContent = '… consultando cotización BTC en vivo …';
-      // QR placeholder con dirección sin amount (por si CoinGecko falla)
-      const fallback_uri = 'bitcoin:' + BTC_ADDR;
-      document.getElementById('pay-qr-img').src =
-        'https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=8&data=' + encodeURIComponent(fallback_uri);
-      modal.classList.add('open');
-
-      try {
-        const r   = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur');
-        const j   = await r.json();
-        const btc = j.bitcoin.eur;
-        const btcAmount = (eur / btc).toFixed(8);
-        const sats = Math.round((eur / btc) * 1e8);
-        document.getElementById('pay-sats').textContent =
-          sats.toLocaleString('es') + ' sats   ·   ' + btcAmount + ' BTC   @ ' + btc.toLocaleString('es') + ' €/BTC';
-        // QR ahora con cantidad exacta (BIP21 URI)
-        const uri = 'bitcoin:' + BTC_ADDR + '?amount=' + btcAmount + '&label=x39matrix-' + eur + 'EUR';
-        document.getElementById('pay-qr-img').src =
-          'https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=8&data=' + encodeURIComponent(uri);
-      } catch (e) {
-        document.getElementById('pay-sats').textContent =
-          'CoinGecko offline. Envía manualmente el equivalente en BTC a la dirección de abajo. Importe: ' + eur + ' €';
-      }
-    });
-  });
-
-  document.getElementById('pay-close').addEventListener('click', () => modal.classList.remove('open'));
-  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
-
-  // Re-attach copy listener al botón nuevo del modal (no se procesa en el querySelectorAll inicial porque el modal vive ya en DOM)
-  const copyAddr = document.getElementById('copy-addr');
-  if (copyAddr) {
-    copyAddr.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(copyAddr.dataset.copy);
-        copyAddr.textContent = '✓ copiado';
-        copyAddr.classList.add('done');
-        setTimeout(() => { copyAddr.textContent = 'copiar'; copyAddr.classList.remove('done'); }, 1800);
-      } catch (e) { console.warn('clipboard error', e); }
-    });
+  // ── Pay modal SOVEREIGN v2 (anteriormente "Pay modal") ──
+  // El módulo completo está embebido al final del <body>
+  // como <script id="x39-payment-v2">...</script>
+);
   }
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a03c9470baabc69e',t:'MTc4MDEzMTk1NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script id="x39-lang-loader">
+<!-- removed: cloudflare challenge-platform iframe injector --><script id="x39-lang-loader">
 (function(){
 'use strict';
 if(document.getElementById('x39-lang-switcher-root'))return;
@@ -1438,6 +1481,8 @@ var I18N={
 'chain.btc':{en:'Bitcoin mainnet',es:'Bitcoin mainnet',fr:'Bitcoin mainnet',ar:'شبكة بيتكوين الرئيسية',zh:'比特币主网',ja:'Bitcoinメインネット',ru:'Сеть Bitcoin'},
 'chain.icp':{en:'Internet Computer',es:'Internet Computer',fr:'Internet Computer',ar:'الحاسوب الإنترنتي',zh:'互联网计算机',ja:'インターネットコンピューター',ru:'Internet Computer'}
 };
+/* X39_I18N_PATCH_v1 */
+var I18N={"nav.anchors":{"es":"Anclajes","en":"Anchors","fr":"Ancrages","ar":"المراسي","zh":"锚定","ja":"アンカー","ru":"Привязки"},"nav.verify":{"es":"Verificador","en":"Verifier","fr":"Vérificateur","ar":"المُحقّق","zh":"验证器","ja":"検証器","ru":"Верификатор"},"nav.commands":{"es":"Comandos","en":"Commands","fr":"Commandes","ar":"الأوامر","zh":"命令","ja":"コマンド","ru":"Команды"},"nav.pricing":{"es":"Precios","en":"Pricing","fr":"Tarifs","ar":"الأسعار","zh":"价格","ja":"料金","ru":"Цены"},"nav.audit":{"es":"Auditoría","en":"Audit","fr":"Audit","ar":"التدقيق","zh":"审计","ja":"監査","ru":"Аудит"},"nav.dashboard":{"es":"Dashboard ICP","en":"ICP Dashboard","fr":"Dashboard ICP","ar":"لوحة ICP","zh":"ICP仪表盘","ja":"ICPダッシュ","ru":"Панель ICP"},"cta.verify":{"es":"▸ Verificar ahora","en":"▸ Verify now","fr":"▸ Vérifier maintenant","ar":"▸ تحقق الآن","zh":"▸ 立即验证","ja":"▸ 今すぐ検証","ru":"▸ Проверить"},"cta.commands":{"es":"› Comandos públicos","en":"› Public commands","fr":"› Commandes publiques","ar":"› أوامر عامة","zh":"› 公开命令","ja":"› 公開コマンド","ru":"› Команды"},"cta.canister":{"es":"↗ Canister IC","en":"↗ IC Canister","fr":"↗ Canister IC","ar":"↗ IC Canister","zh":"↗ IC 容器","ja":"↗ IC キャニスタ","ru":"↗ Canister IC"},"hero.status":{"es":"10 canisters · 4 sustratos · 0 violaciones","en":"10 canisters · 4 substrates · 0 violations","fr":"10 canisters · 4 substrats · 0 violations","ar":"10 كانيسترز · 4 ركائز · 0 انتهاكات","zh":"10 个容器 · 4 个底层 · 0 违规","ja":"10 キャニスター · 4 基盤 · 0 違反","ru":"10 канистеров · 4 субстрата · 0 нарушений"},"milestones.title":{"es":"Hitos 2026-06-10","en":"Milestones 2026-06-10","fr":"Jalons 2026-06-10","ar":"إنجازات 2026-06-10","zh":"里程碑 2026-06-10","ja":"マイルストーン 2026-06-10","ru":"Вехи 2026-06-10"},"milestones.intro":{"es":"Tres artefactos firmados PGP y anclados en Bitcoin via OpenTimestamps el mismo día.","en":"Three artifacts PGP-signed and Bitcoin-anchored via OpenTimestamps in a single day.","fr":"Trois artefacts signés PGP et ancrés sur Bitcoin via OpenTimestamps le même jour.","ar":"ثلاث قطع موقعة بـ PGP ومثبّتة في بيتكوين عبر OpenTimestamps في يوم واحد.","zh":"三件文物经 PGP 签名并通过 OpenTimestamps 锚定在比特币上，全部在同一天完成。","ja":"3 つのアーティファクトが同日に PGP 署名され、OpenTimestamps 経由でビットコインに固定された。","ru":"Три артефакта подписаны PGP и заякорены в Bitcoin через OpenTimestamps за один день."}};
 var RTL=['ar'],SUP=['en','es','fr','ar','zh','ja','ru'],KEY='x39-lang';
 var LABELS={en:'EN',es:'ES',fr:'FR',ar:'AR',zh:'中',ja:'日',ru:'РУ'};
 function getL(){var s=localStorage.getItem(KEY);return SUP.indexOf(s)>=0?s:'es';}
@@ -1628,11 +1673,11 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
 <p class="x39p-desc" style="margin-bottom:1.5rem">Reparto automatico: <strong style="color:#f0b400">75 %</strong> al architect - <strong style="color:#1ce06b">25 %</strong> al canister soberano X39_JOSEPH (<code style="color:#f0b400">bc1q6tkt7x38</code>), destino de la firma notarial historica del bloque #952131. El sistema se sustenta solo.</p>
 <div class="x39p-grid">
 <div class="x39p-card"><div class="x39p-cardtier">Free</div><div class="x39p-price">0 EUR<small> / firma</small></div><ul class="x39p-feat"><li>1 firma threshold-ECDSA</li><li>Recibo verificable offline</li><li>Sin tarjeta, solo email</li></ul><a class="x39p-cta" href="mailto:grants@x39matrix.org">Solicitar gratis</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Single</div><div class="x39p-price">9 EUR<small> / firma</small></div><ul class="x39p-feat"><li>ECDSA o Schnorr BIP-340</li><li>Recibo + .ots Bitcoin</li><li>Pago BTC instantaneo</li></ul><a class="x39p-cta" href="#pricing">Pagar 9 EUR en BTC</a></div>
-<div class="x39p-card" style="border-color:#f0b400"><div class="x39p-cardtier">Pack 10</div><div class="x39p-price">75 EUR<small> / 7,50/firma</small></div><ul class="x39p-feat"><li>10 firmas anuales</li><li>Email automatico</li><li>Verificador offline</li></ul><a class="x39p-cta" href="#pricing">Pagar 75 EUR</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Studio</div><div class="x39p-price">250 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>50 firmas anuales</li><li>Recibo PDF + .ots</li><li>Email automatico</li></ul><a class="x39p-cta" href="#pricing">Pagar 250 EUR</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Office</div><div class="x39p-price">500 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>100 firmas anuales</li><li>Logo opcional en recibo</li><li>Soporte email 48h</li></ul><a class="x39p-cta" href="#pricing">Pagar 500 EUR</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Corporate</div><div class="x39p-price">3.500 EUR<small> / 3,50/firma</small></div><ul class="x39p-feat"><li>1.000 firmas anuales</li><li>Webhook integrable</li><li>Reporte mensual</li></ul><a class="x39p-cta" href="#pricing">Pagar 3.500 EUR</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Single</div><div class="x39p-price">9 EUR<small> / firma</small></div><ul class="x39p-feat"><li>ECDSA o Schnorr BIP-340</li><li>Recibo + .ots Bitcoin</li><li>Pago BTC instantaneo</li></ul><button type="button" class="x39p-cta" data-pay="9">Pagar 9 EUR en BTC</button></div>
+<div class="x39p-card" style="border-color:#f0b400"><div class="x39p-cardtier">Pack 10</div><div class="x39p-price">75 EUR<small> / 7,50/firma</small></div><ul class="x39p-feat"><li>10 firmas anuales</li><li>Email automatico</li><li>Verificador offline</li></ul><button type="button" class="x39p-cta" data-pay="75">Pagar 75 EUR</button></div>
+<div class="x39p-card"><div class="x39p-cardtier">Studio</div><div class="x39p-price">250 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>50 firmas anuales</li><li>Recibo PDF + .ots</li><li>Email automatico</li></ul><button type="button" class="x39p-cta" data-pay="250">Pagar 250 EUR</button></div>
+<div class="x39p-card"><div class="x39p-cardtier">Office</div><div class="x39p-price">500 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>100 firmas anuales</li><li>Logo opcional en recibo</li><li>Soporte email 48h</li></ul><button type="button" class="x39p-cta" data-pay="500">Pagar 500 EUR</button></div>
+<div class="x39p-card"><div class="x39p-cardtier">Corporate</div><div class="x39p-price">3.500 EUR<small> / 3,50/firma</small></div><ul class="x39p-feat"><li>1.000 firmas anuales</li><li>Webhook integrable</li><li>Reporte mensual</li></ul><button type="button" class="x39p-cta" data-pay="3500">Pagar 3.500 EUR</button></div>
 <div class="x39p-card"><div class="x39p-cardtier">Enterprise</div><div class="x39p-price">24.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>5.000 firmas/mes - API ilimitada</li><li>SLA + soporte directo</li><li>derivation_path dedicado</li></ul><a class="x39p-cta" href="mailto:enterprise@x39matrix.org">Contacto</a></div>
 <div class="x39p-card"><div class="x39p-cardtier">Enterprise XL</div><div class="x39p-price">60.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>15.000 firmas/mes - 24/7</li><li>SLA 99,9 %</li><li>Auditoria trimestral</li></ul><a class="x39p-cta" href="mailto:enterprise@x39matrix.org">Contactar</a></div>
 <div class="x39p-card" style="border-color:#1ce06b"><div class="x39p-cardtier" style="color:#1ce06b">Banking</div><div class="x39p-price">120.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>50.000 firmas/mes - path dedicado</li><li>eIDAS + MiCA + DRP</li><li>SLA 99,99 %</li></ul><a class="x39p-cta" style="background:#1ce06b" href="mailto:banking@x39matrix.org">Solicitar dossier</a></div>
@@ -1794,5 +1839,438 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
   </div>
 </footer>
 
-</body>
+
+<!-- ═════════ X39 PAYMENT MODULE v2 SOVEREIGN ═════════ -->
+<script id="x39-payment-v2">
+/* ═══════════════════════════════════════════════════════════════════════════
+   X39MATRIX · Sovereign Payment Module v2.0
+   ───────────────────────────────────────────────────────────────────────────
+   Destino soberano: bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg  (X39_JOSEPH)
+   tECDSA pubkey:    025968e3ee...2083
+   Lightning addr:   strictcent462@walletofsatoshi.com
+   
+   Capacidades:
+   - Conversión EUR→sats en vivo (CoinGecko + fallback Mempool.space)
+   - Sats únicos por sesión (identificación pago multi-cliente)
+   - Polling mempool.space para detección automática (cada 10s)
+   - Estados live: esperando / detectado / 1conf / 3conf / confirmado
+   - Email auto-fill con TXID + plan + sats
+   - QR onchain + Lightning (BIP21 unified URI)
+   - LocalStorage para resiliencia de sesión
+   - 100% sin servidor externo (excepto APIs públicas read-only)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+(function() {
+  'use strict';
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Constantes soberanas
+  // ──────────────────────────────────────────────────────────────────────
+  const X39 = {
+    BTC_ADDR:    'bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg',
+    LN_ADDR:     'strictcent462@walletofsatoshi.com',
+    TECDSA_PK:   '025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083',
+    CANISTER_ID: 'arn4r-lqaaa-aaaao-baxwq-cai',
+    EMAIL:       'grants@x39matrix.org',
+    POLL_MS:     10000,         // 10s polling
+    MAX_POLLS:   180,           // 30 min max polling
+    BACKEND: {
+      coingecko: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur',
+      mempool:   'https://mempool.space/api/address/',
+      mempoolPrice: 'https://mempool.space/api/v1/prices',
+    },
+    TIER_CONF: {  // confirmaciones requeridas según importe
+      9:    0,    // Single: 0-conf (mempool detection)
+      75:   1,    // Pack10: 1 conf
+      250:  1,    // Studio: 1 conf
+      500:  3,    // Office: 3 conf
+      3500: 3,    // Corporate: 3 conf
+      // tiers superiores van por mailto directo
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Estado de la sesión actual
+  // ──────────────────────────────────────────────────────────────────────
+  let session = {
+    eur: 0,
+    sats: 0,
+    btc_price: 0,
+    btcAmount: '',
+    uniqueSuffix: 0,
+    pollTimer: null,
+    pollCount: 0,
+    detectedTxid: null,
+    confirmations: 0,
+    requiredConf: 1,
+    status: 'idle'  // idle | waiting | detected | confirming | confirmed | error
+  };
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Helpers
+  // ──────────────────────────────────────────────────────────────────────
+  const $ = id => document.getElementById(id);
+  const fmt = n => n.toLocaleString('es', { maximumFractionDigits: 8 });
+
+  function persistSession() {
+    try {
+      localStorage.setItem('x39_payment_session', JSON.stringify({
+        ...session, pollTimer: null
+      }));
+    } catch (e) {}
+  }
+
+  function restoreSession() {
+    try {
+      const raw = localStorage.getItem('x39_payment_session');
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return null;
+  }
+
+  function clearSession() {
+    try { localStorage.removeItem('x39_payment_session'); } catch (e) {}
+    if (session.pollTimer) clearInterval(session.pollTimer);
+    session = {
+      eur: 0, sats: 0, btc_price: 0, btcAmount: '',
+      uniqueSuffix: 0, pollTimer: null, pollCount: 0,
+      detectedTxid: null, confirmations: 0, requiredConf: 1,
+      status: 'idle'
+    };
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Conversión EUR→sats (CoinGecko + fallback Mempool.space)
+  // ──────────────────────────────────────────────────────────────────────
+  async function fetchBtcPrice() {
+    try {
+      const r = await fetch(X39.BACKEND.coingecko, { mode: 'cors' });
+      if (r.ok) {
+        const j = await r.json();
+        if (j.bitcoin && j.bitcoin.eur) return j.bitcoin.eur;
+      }
+    } catch (e) {
+      console.warn('CoinGecko fallback to Mempool.space:', e.message);
+    }
+    try {
+      const r = await fetch(X39.BACKEND.mempoolPrice, { mode: 'cors' });
+      if (r.ok) {
+        const j = await r.json();
+        if (j.EUR) return j.EUR;
+      }
+    } catch (e) {
+      console.warn('Mempool.space price failed:', e.message);
+    }
+    throw new Error('No price feed available');
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Detección de pago via mempool.space API
+  // ──────────────────────────────────────────────────────────────────────
+  async function checkPayment(address, expectedSats) {
+    try {
+      const r = await fetch(X39.BACKEND.mempool + address + '/txs', { mode: 'cors' });
+      if (!r.ok) return null;
+      const txs = await r.json();
+      // buscar TX entrante con cantidad exacta
+      for (const tx of txs) {
+        for (const vout of tx.vout) {
+          if (vout.scriptpubkey_address === address && vout.value === expectedSats) {
+            const confirmed = tx.status && tx.status.confirmed;
+            let confs = 0;
+            if (confirmed && tx.status.block_height) {
+              // get tip height
+              try {
+                const tr = await fetch('https://mempool.space/api/blocks/tip/height', { mode: 'cors' });
+                if (tr.ok) {
+                  const tip = parseInt(await tr.text(), 10);
+                  confs = tip - tx.status.block_height + 1;
+                }
+              } catch (e) { confs = 1; }
+            }
+            return {
+              txid: tx.txid,
+              confirmations: confs,
+              confirmed: confirmed,
+              block_height: tx.status.block_height || null
+            };
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('mempool.space check failed:', e.message);
+    }
+    return null;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Generación de URI BIP21 + URL QR
+  // ──────────────────────────────────────────────────────────────────────
+  function buildUri(amountBtc, eur) {
+    const label = encodeURIComponent('X39MATRIX-' + eur + 'EUR-SovereignSig');
+    const message = encodeURIComponent('Threshold-ECDSA Notary · X39_JOSEPH');
+    return `bitcoin:${X39.BTC_ADDR}?amount=${amountBtc}&label=${label}&message=${message}&lightning=${X39.LN_ADDR}`;
+  }
+
+  function qrUrl(uri) {
+    // qrserver.com permitido por img-src https: del CSP
+    return 'https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=10&ecc=M&data=' + encodeURIComponent(uri);
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Render de estado en el modal
+  // ──────────────────────────────────────────────────────────────────────
+  function renderStatus() {
+    const el = $('x39-pay-status');
+    if (!el) return;
+    const map = {
+      idle:       { color: '#6e5f50', icon: '○', text: 'Inicializando…' },
+      loading:    { color: '#d4a23a', icon: '◐', text: 'Consultando cotización Bitcoin…' },
+      waiting:    { color: '#d4a23a', icon: '◔', text: 'Esperando tu pago · escanea el QR' },
+      detected:   { color: '#7fd4b0', icon: '◑', text: 'Pago DETECTADO en mempool · esperando confirmación…' },
+      confirming: { color: '#7fd4b0', icon: '◕', text: `Confirmando: ${session.confirmations}/${session.requiredConf} bloques BTC` },
+      confirmed:  { color: '#1ce06b', icon: '●', text: `✓ Pago CONFIRMADO · ${session.confirmations} confirmaciones` },
+      error:      { color: '#b8254b', icon: '✗', text: 'Error en cotización · usa importe manual' },
+    };
+    const s = map[session.status] || map.idle;
+    el.style.color = s.color;
+    el.style.borderColor = s.color;
+    el.innerHTML = `<span style="font-size:1.3em;margin-right:.4em;">${s.icon}</span>${s.text}`;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Polling loop para detectar el pago
+  // ──────────────────────────────────────────────────────────────────────
+  function startPolling() {
+    stopPolling();
+    session.status = 'waiting';
+    renderStatus();
+    session.pollCount = 0;
+    session.pollTimer = setInterval(async () => {
+      session.pollCount++;
+      if (session.pollCount > X39.MAX_POLLS) {
+        stopPolling();
+        return;
+      }
+      const result = await checkPayment(X39.BTC_ADDR, session.sats);
+      if (result) {
+        session.detectedTxid = result.txid;
+        session.confirmations = result.confirmations;
+        if (!result.confirmed) {
+          session.status = 'detected';
+        } else if (result.confirmations < session.requiredConf) {
+          session.status = 'confirming';
+        } else {
+          session.status = 'confirmed';
+          renderTxidPanel();
+          stopPolling();
+        }
+        renderTxidPanel();
+        renderStatus();
+        persistSession();
+      }
+    }, X39.POLL_MS);
+  }
+
+  function stopPolling() {
+    if (session.pollTimer) clearInterval(session.pollTimer);
+    session.pollTimer = null;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Render del panel TXID cuando detectamos pago
+  // ──────────────────────────────────────────────────────────────────────
+  function renderTxidPanel() {
+    const el = $('x39-pay-txid-panel');
+    if (!el) return;
+    if (!session.detectedTxid) {
+      el.style.display = 'none';
+      return;
+    }
+    el.style.display = 'block';
+    const mempoolLink = `https://mempool.space/tx/${session.detectedTxid}`;
+    const subject = encodeURIComponent(`PAGO ${session.eur}EUR · X39MATRIX · ${session.sats} sats`);
+    const body = encodeURIComponent(
+      `═══════════════════════════════════════\n` +
+      `  X39MATRIX · Sovereign Signature Service\n` +
+      `═══════════════════════════════════════\n\n` +
+      `Plan:    ${session.eur} EUR\n` +
+      `Sats:    ${session.sats}\n` +
+      `BTC:     ${session.btcAmount}\n` +
+      `TXID:    ${session.detectedTxid}\n` +
+      `Conf:    ${session.confirmations}/${session.requiredConf}\n` +
+      `Mempool: ${mempoolLink}\n\n` +
+      `Por favor enviadme el certificado .ots + recibo PDF\n` +
+      `firmado threshold-ECDSA en menos de 24 h.\n\n` +
+      `Email comprador: [TU EMAIL AQUÍ]\n` +
+      `Nombre/Empresa:  [OPCIONAL]\n`
+    );
+    el.innerHTML = `
+      <div style="background:rgba(28,224,107,.08);border:1px solid rgba(28,224,107,.4);border-radius:6px;padding:1rem 1.1rem;margin:1rem 0;">
+        <div style="color:#1ce06b;font-weight:600;font-size:.92rem;margin-bottom:.6rem;">▸ Pago detectado en cadena</div>
+        <div style="font-family:'Source Code Pro',monospace;font-size:.72rem;color:#c8b89a;word-break:break-all;line-height:1.5;">
+          TXID: <a href="${mempoolLink}" target="_blank" rel="noopener" style="color:#7fd4b0;text-decoration:none;">${session.detectedTxid}</a>
+        </div>
+        <a href="mailto:${X39.EMAIL}?subject=${subject}&body=${body}"
+           class="x39-pay-cta"
+           style="display:inline-block;margin-top:.9rem;padding:.55rem 1.1rem;background:#1ce06b;color:#0a0608;border-radius:6px;font-weight:600;font-size:.88rem;text-decoration:none;font-family:'Figtree',sans-serif;">
+          ▸ Reclamar mi certificado por email
+        </a>
+      </div>
+    `;
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Apertura del modal con tier seleccionado
+  // ──────────────────────────────────────────────────────────────────────
+  async function openPaymentFor(eur) {
+    clearSession();
+    session.eur = eur;
+    session.requiredConf = X39.TIER_CONF[eur] !== undefined ? X39.TIER_CONF[eur] : 1;
+    session.status = 'loading';
+
+    // Mostrar modal
+    const modal = $('pay-modal');
+    if (!modal) {
+      console.error('Modal #pay-modal no encontrado');
+      return;
+    }
+    modal.classList.add('open');
+
+    // Set fields iniciales
+    if ($('pay-amount')) $('pay-amount').textContent = eur.toLocaleString('es') + ' €';
+    if ($('pay-sats')) $('pay-sats').textContent = '… consultando cotización Bitcoin en vivo …';
+    if ($('x39-pay-required-conf')) $('x39-pay-required-conf').textContent = session.requiredConf + ' conf' + (session.requiredConf === 1 ? '' : 's');
+    renderStatus();
+
+    // QR placeholder (sin amount)
+    if ($('pay-qr-img')) $('pay-qr-img').src = qrUrl(buildUri('0', eur));
+
+    // Conversión EUR→sats
+    try {
+      const btcPrice = await fetchBtcPrice();
+      session.btc_price = btcPrice;
+      const baseSats = Math.round((eur / btcPrice) * 1e8);
+      // Sats únicos: añadir 1-99 sats aleatorios para identificación
+      session.uniqueSuffix = Math.floor(Math.random() * 99) + 1;
+      session.sats = baseSats + session.uniqueSuffix;
+      session.btcAmount = (session.sats / 1e8).toFixed(8);
+
+      if ($('pay-sats')) {
+        $('pay-sats').innerHTML =
+          `<strong style="color:#f4cc52;">${fmt(session.sats)} sats</strong>` +
+          ` <span style="color:#6e5f50;font-size:.85em">·</span> ` +
+          `${session.btcAmount} BTC` +
+          ` <span style="color:#6e5f50;font-size:.85em">@</span> ` +
+          `${fmt(Math.round(btcPrice))} €/BTC` +
+          `<div style="font-size:.72rem;color:#7fd4b0;margin-top:.4rem;line-height:1.4;">` +
+          `▸ Importe único: incluye <strong>+${session.uniqueSuffix} sats</strong> de identificación de sesión.<br>` +
+          `▸ Detección automática en mempool · sin intervención manual.` +
+          `</div>`;
+      }
+
+      // QR final con cantidad exacta (BIP21 unified URI)
+      const uri = buildUri(session.btcAmount, eur);
+      if ($('pay-qr-img')) $('pay-qr-img').src = qrUrl(uri);
+
+      // Botón "Abrir en wallet"
+      const openBtn = $('x39-pay-open-wallet');
+      if (openBtn) openBtn.href = uri;
+
+      persistSession();
+
+      // Arrancar polling
+      startPolling();
+    } catch (e) {
+      session.status = 'error';
+      renderStatus();
+      if ($('pay-sats')) {
+        $('pay-sats').innerHTML =
+          `<span style="color:#b8254b;">No se pudo cargar la cotización (CSP o CORS).</span><br>` +
+          `<span style="color:#c8b89a;font-size:.85em;">Envía manualmente el equivalente de <strong>${eur} €</strong> en BTC a la dirección de abajo.</span>`;
+      }
+    }
+  }
+
+  function closeModal() {
+    const modal = $('pay-modal');
+    if (modal) modal.classList.remove('open');
+    stopPolling();
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Bind events
+  // ──────────────────────────────────────────────────────────────────────
+  function bind() {
+    // Botones data-pay
+    document.querySelectorAll('[data-pay]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const eur = parseFloat(btn.dataset.pay);
+        if (!isNaN(eur) && eur > 0) openPaymentFor(eur);
+      });
+    });
+
+    // Cerrar modal
+    const closeBtn = $('pay-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    const modal = $('pay-modal');
+    if (modal) modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Escape cierra
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('open')) closeModal();
+    });
+
+    // Botón copiar dirección BTC
+    const copyBtc = $('copy-addr');
+    if (copyBtc) {
+      copyBtc.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(X39.BTC_ADDR);
+          copyBtc.textContent = '✓ copiado';
+          copyBtc.classList.add('done');
+          setTimeout(() => { copyBtc.textContent = 'copiar'; copyBtc.classList.remove('done'); }, 1800);
+        } catch (e) {}
+      });
+    }
+
+    // Botón copiar Lightning
+    const copyLn = $('copy-ln-addr');
+    if (copyLn) {
+      copyLn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(X39.LN_ADDR);
+          copyLn.textContent = '✓ copiado';
+          copyLn.classList.add('done');
+          setTimeout(() => { copyLn.textContent = 'copiar'; copyLn.classList.remove('done'); }, 1800);
+        } catch (e) {}
+      });
+    }
+
+    // Restore session si la había
+    const saved = restoreSession();
+    if (saved && saved.eur && saved.status !== 'confirmed' && saved.status !== 'idle') {
+      console.log('[X39] Restoring payment session for', saved.eur, '€');
+    }
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
+  //  Auto-init
+  // ──────────────────────────────────────────────────────────────────────
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
+
+  // Expose para debugging
+  window.X39_PAY = { X39, session: () => session, open: openPaymentFor, close: closeModal };
+})();
+</script>
+<!-- ═════════ FIN X39 PAYMENT MODULE v2 ═════════ -->
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0fc4049cc68eca2',t:'MTc4MjE0MTc3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
