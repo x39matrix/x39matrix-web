@@ -1,0 +1,24 @@
+Contact: mailto:security@x39matrix.org
+Contact: https://hackenproof.com/programs/x39matrix
+Expires: 2027-06-22T00:00:00.000Z
+Encryption: https://x39matrix.org/pgp/sovereign-operator.asc
+Acknowledgments: https://x39matrix.org/hall-of-fame
+Preferred-Languages: en, es, fr
+Canonical: https://x39matrix.org/.well-known/security.txt
+Policy: https://x39matrix.org/X39MATRIX_BOUNTY_PROGRAM_v1.0.pdf
+Hiring: https://x39matrix.org/careers
+
+# X-39MATRIX Security Contact (RFC 9116)
+# Sovereign Topos Protocol  ·  https://x39matrix.org
+# Sovereign Operator: Jose Luis Olivares Esteban
+# PGP Fingerprint:    C3E062EB 251A1185 1C0B4FFD 06870F06 55D5BBE8
+# Effective from:     2026-06-22 00:00 UTC
+# Bitcoin-anchored:   YES (commit + .ots in evidence/ folder of canonical repo)
+#
+# Scope:              11 ICP mainnet canisters + 4 web domains + GitHub canonical repo
+# Bounty range:       USD 100 - USD 50,000 (see Policy)
+# Payment methods:    Bitcoin Lightning (bounty@pay.x39matrix.org), on-chain BTC, USDC, wire
+# Response SLA:       First response < 24h, triage < 72h
+#
+# Coordinated disclosure expected.
+# Safe Harbor granted for good-faith research within program scope.
