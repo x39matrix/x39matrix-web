@@ -517,7 +517,7 @@ button.x39p-cta:hover { opacity: .9; }
 </style>
 <div id="x39-home-banner">
   <a href="/" data-testid="notary-home-link">← Home · Tour Guiado</a>
-  <span class="tag">Está usted en la <strong style="color:#FFD700">Notaría Soberana</strong> · dossier técnico de auditoría</span>
+  <span class="tag">Está usted en la <strong style="color:#FFD700" data-i18n="banner.notary.tag">Notaría Soberana</strong> · dossier técnico de auditoría</span>
 </div>
 <!-- /X39_NOTARY_HOMELINK -->
 <!-- X39_WHITEPAPER_NOTARY -->
@@ -876,8 +876,8 @@ button.x39p-cta:hover { opacity: .9; }
     <div class="verifier">
       <label for="file-input" class="dropzone" id="dropzone" data-testid="dropzone">
         <div class="arrow">↓</div>
-        <strong>Arrastra archivos aquí o haz clic para seleccionar</strong>
-        <p>Acepta múltiples archivos · cálculo en cliente · sin upload</p>
+        <strong data-i18n="verifier.drop">Arrastra archivos aquí o haz clic para seleccionar</strong>
+        <p data-i18n="verifier.note">Acepta múltiples archivos · cálculo en cliente · sin upload</p>
         <input id="file-input" type="file" multiple data-testid="file-input"/>
       </label>
       <div class="verifier-meta">
@@ -951,7 +951,7 @@ curl -s -X POST -H <span class="acc">"Content-Type: application/json"</span> \
     <div class="card" style="margin-bottom:1.2rem;">
       <span class="idx">④</span>
       <h3>BTC Merkle Match · block 951 605</h3>
-      <p class="desc">Coincidencia exacta 64/64 caracteres entre Merkle root real
+      <p class="desc" data-i18n="cmd5.merkle">Coincidencia exacta 64/64 caracteres entre Merkle root real
       y anclaje publicado.</p>
       <div class="codeblock" data-testid="cmd-btc-merkle">
 <button type="button" class="copy-btn" data-copy="H=$(curl -s https://mempool.space/api/block-height/951605); curl -s https://mempool.space/api/block/$H | python3 -m json.tool | grep merkle_root">copiar</button>
@@ -964,7 +964,7 @@ curl -s <span class="acc">https://mempool.space/api/block/$H</span> | python3 -m
     <!-- Command 5 · ICP candid -->
     <div class="card">
       <span class="idx">⑤</span>
-      <h3>Interfaz Candid pública · IC mainnet</h3>
+      <h3 data-i18n="candid.title">Interfaz Candid pública · IC mainnet</h3>
       <div class="codeblock" data-testid="cmd-icp">
 <button type="button" class="copy-btn" data-copy="dfx canister --network ic --identity anonymous call arn4r-lqaaa-aaaao-baxwq-cai __get_candid_interface_tmp_hack '()'">copiar</button>
 dfx canister --network ic --identity anonymous \
@@ -1185,7 +1185,7 @@ dfx canister --network ic --identity anonymous \
     </div>
 
     <p class="dim" style="text-align:center; margin-top:2.5rem; font-size:.88rem;">
-      <strong>Cómo funciona el pago BTC</strong> · Al pulsar "Pagar en BTC" obtienes
+      <strong data-i18n="payment.howit">Cómo funciona el pago BTC</strong> · Al pulsar "Pagar en BTC" obtienes
       dirección + QR + cantidad exacta en sats. Reparto automático: <strong>75 %</strong>
       al architect · <strong>25 %</strong> al canister soberano <code>X39_JOSEPH</code>
       (<code>bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</code>). El sistema se sustenta solo.
@@ -1343,7 +1343,7 @@ dig _canister-id.x39matrix.org TXT +short
 
     <!-- ── On-dashboard checklist ──────────────────────────────────────── -->
     <div class="card" style="margin-top: 1.5rem; background: linear-gradient(180deg, var(--bg-card), rgba(45,138,108,.04));">
-      <h3 style="color: #7fd4b0;">✓ Qué verás en el dashboard oficial</h3>
+      <h3 style="color: #7fd4b0;" data-i18n="dashboard.subtitle">✓ Qué verás en el dashboard oficial</h3>
       <p class="desc">Al abrir <a href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai" target="_blank" rel="noopener" style="color: var(--gold-bright);">dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai</a>
       el dashboard oficial te muestra automáticamente:</p>
       <ul style="color: var(--ink-dim); font-size: .9rem; line-height: 1.9; padding-left: 1.2rem; margin: .5rem 0 0;">
@@ -1818,10 +1818,10 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
 </script>
 <!-- ===== END X39MATRIX 2026-06-03 PATCH ===== -->
 <section id="niza-pq-filing" class="niza-section">
-  <h2>§ Niza · Primer Filing OMPI/WIPO con Criptografía Post-Cuántica Anclado en Bitcoin</h2>
+  <h2 data-i18n="niza.title">§ Niza · Primer Filing OMPI/WIPO con Criptografía Post-Cuántica Anclado en Bitcoin</h2>
   <p class="niza-intro">
     El <strong>2 de junio de 2026 · 20:47 UTC</strong>, cinco artefactos
-    criptográficos del filing internacional X39MATRIX bajo la <strong>Clasificación
+    criptográficos del filing internacional X39MATRIX bajo la <strong data-i18n="niza.classification">Clasificación
     de Niza</strong> fueron sellados con <strong>ML-DSA-87</strong> (firma digital
     post-cuántica, NIST FIPS 204) y <strong>ML-KEM-1024</strong> (encapsulado de
     claves resistente a cuántica, NIST FIPS 203), y triple-anclados en Bitcoin
@@ -1866,7 +1866,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
   </div>
 
   <p class="niza-verify">
-    <strong>Verifica tú mismo:</strong>
+    <strong data-i18n="verify.yourself">Verifica tú mismo:</strong>
     <code>ots upgrade fichero.ots && ots info fichero.ots</code>
     devuelve <code>BitcoinBlockHeaderAttestation(952148)</code>,
     <code>(952150)</code> y <code>(952174)</code>. Cualquier inconsistencia
@@ -1887,7 +1887,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
         La categoría 𝒞<sub>x39</sub>, la composición funtorial de las 7 capas,
         la elección de Threshold-ECDSA + Schnorr BIP-340, el anclaje
         cuádruple BTC/ARB/SOL/ICP, el objeto terminal Ω y la teoría
-        notarial soberana son <strong>intuición humana</strong>.
+        notarial soberana son <strong data-i18n="authorship.human">intuición humana</strong>.
         Cero delegación. Cero co-autoría.
       </p>
     </div>
@@ -2380,6 +2380,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
 {
   "es": {
     "hero.title": "Soberanía notarial verificable sin permiso.",
+    "hero.subtitle": "Protocolo notarial soberano. Once canisters en mainnet del Internet Computer. Anclaje en cuatro sustratos blockchain independientes. Sin custodio, sin puentes, sin permiso.",
     "cta.verify": "▸ Verificar ahora",
     "cta.commands": "› Comandos públicos",
     "cta.canister": "↗ Canister IC",
@@ -2409,20 +2410,37 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "tier.free": "Solicitar gratis →",
     "tier.dossier": "Solicitar dossier →",
     "tier.contact": "Contacto →",
-    "auth.architecture": "🜂 Arquitectura",
-    "auth.execution": "⚙ Ejecución",
-    "auth.sovereignty": "🔴 Soberanía"
+    "banner.notary.tag": "Notaría Soberana",
+    "banner.notary.desc": "Está usted en la Notaría Soberana · dossier técnico de auditoría",
+    "verifier.drop": "Arrastra archivos aquí o haz clic para seleccionar",
+    "verifier.note": "Acepta múltiples archivos · cálculo en cliente · sin upload",
+    "anchors.desc": "Tres artefactos firmados PGP y anclados en Bitcoin via OpenTimestamps el mismo día.",
+    "arch.desc": "Arquitectura de 7 capas + 3 canisters de infraestructura (x39_bases, corebackend, frontend) corriendo en producción.",
+    "cmd5.intro": "Un solo comando interroga Arbitrum RPC, Solana RPC y mempool.space para devolver los 4 anclajes verificados independientemente.",
+    "cmd5.merkle": "Coincidencia exacta 64/64 caracteres entre Merkle root real y anclaje publicado.",
+    "dashboard.subtitle": "✓ Qué verás en el dashboard oficial",
+    "payment.howit": "Cómo funciona el pago BTC",
+    "payment.howit.desc": "Genera un QR BIP-21 estándar con dirección + cantidad en sats calculada a tiempo real. El navegador hace polling a mempool.space cada 15 segundos. Detectado el pago, se imprime certificado descargable. Cero servidor, cero custodio.",
+    "candid.title": "Interfaz Candid pública · IC mainnet",
+    "candid.desc": "Module-hash inmutable · sello WASM raíz del protocolo. Cualquier auditor puede llamar funciones públicas sin necesidad de cooperación del operador.",
+    "frontend.desc": "Asset canister · sirve esta misma página · dominio x39matrix.org vía CNAME @ → icp1.io.",
+    "core.desc": "Canister Rust principal. Threshold-ECDSA, audit_full registry, Merkle proofs, Sovereign Certificate Chain.",
+    "succession.title": "Sucesión post-mortem soberana",
+    "succession.desc": "Planificación sucesoria sin claves recuperables — el canister ejecuta el testamento bajo condiciones criptográficas predefinidas.",
+    "niza.title": "§ Niza · Primer Filing OMPI/WIPO con Criptografía Post-Cuántica Anclado en Bitcoin",
+    "niza.classification": "Clasificación de Niza",
+    "niza.firstever": "Es el primer registro conocido de filing de propiedad intelectual con identidad post-cuántica certificada en Bitcoin",
+    "verify.yourself": "Verifica tú mismo:",
+    "authorship.human": "intuición humana",
+    "summary.stats": "10 canisters · 7,1 × 10¹⁸ operations audited · 52 PETA-OPS/s · 4 substrates · 0 violations · 1 operator",
+    "rpc.canonical": "RPC públicos oficiales. URLs canónicas en GitHub, blockstream.info, mempool.space, arbiscan, solscan e ic-api.internetcomputer.org."
   },
   "en": {
     "hero.title": "Permissionless verifiable notarial sovereignty.",
-    "cta.verify": "▸ Verify now",
-    "cta.commands": "› Public commands",
-    "cta.canister": "↗ IC Canister",
-    "stat.canisters": "Mainnet canisters",
-    "stat.ops": "Audited operations",
-    "stat.throughput": "Sustained throughput",
-    "stat.substrates": "Blockchain substrates",
-    "stat.violations": "Categorical violations",
+    "hero.subtitle": "Sovereign notary protocol. Eleven canisters on Internet Computer mainnet. Anchored across four independent blockchain substrates. No custodian, no bridges, no permission.",
+    "cta.verify": "▸ Verify now", "cta.commands": "› Public commands", "cta.canister": "↗ IC Canister",
+    "stat.canisters": "Mainnet canisters", "stat.ops": "Audited operations", "stat.throughput": "Sustained throughput",
+    "stat.substrates": "Blockchain substrates", "stat.violations": "Categorical violations",
     "section.milestones": "Milestones 2026-06-10",
     "section.anchors": "Public seals across four independent chains.",
     "section.verifier": "Verify any artifact without uploading anything.",
@@ -2437,27 +2455,40 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "section.authorship": "§ Authorship · Method · Sovereignty",
     "niza.artifacts": "The 5 canonical artifacts of the filing",
     "niza.triple": "Bitcoin triple-anchoring (3 independent OTS calendars)",
-    "tier.pay9": "Pay €9 in BTC →",
-    "tier.pay75": "Pay €75 in BTC →",
-    "tier.pay250": "Pay €250 in BTC →",
-    "tier.pay500": "Pay €500 in BTC →",
-    "tier.free": "Request free →",
-    "tier.dossier": "Request dossier →",
-    "tier.contact": "Contact →",
-    "auth.architecture": "🜂 Architecture",
-    "auth.execution": "⚙ Execution",
-    "auth.sovereignty": "🔴 Sovereignty"
+    "tier.pay9": "Pay €9 in BTC →", "tier.pay75": "Pay €75 in BTC →",
+    "tier.pay250": "Pay €250 in BTC →", "tier.pay500": "Pay €500 in BTC →",
+    "tier.free": "Request free →", "tier.dossier": "Request dossier →", "tier.contact": "Contact →",
+    "banner.notary.tag": "Sovereign Notary",
+    "banner.notary.desc": "You are in the Sovereign Notary · technical audit dossier",
+    "verifier.drop": "Drag files here or click to select",
+    "verifier.note": "Multiple files accepted · client-side computation · no upload",
+    "anchors.desc": "Three PGP-signed artifacts anchored to Bitcoin via OpenTimestamps on the same day.",
+    "arch.desc": "7-layer architecture + 3 infrastructure canisters (x39_bases, corebackend, frontend) running in production.",
+    "cmd5.intro": "A single command queries Arbitrum RPC, Solana RPC and mempool.space to return the 4 independently verified anchors.",
+    "cmd5.merkle": "Exact 64/64 character match between real Merkle root and published anchor.",
+    "dashboard.subtitle": "✓ What you will see on the official dashboard",
+    "payment.howit": "How BTC payment works",
+    "payment.howit.desc": "Generates a standard BIP-21 QR with address + sats amount calculated in real time. The browser polls mempool.space every 15 seconds. Once detected, a downloadable certificate is printed. Zero server, zero custodian.",
+    "candid.title": "Public Candid interface · IC mainnet",
+    "candid.desc": "Immutable module-hash · root WASM seal of the protocol. Any auditor can call public functions without operator cooperation.",
+    "frontend.desc": "Asset canister · serves this very page · domain x39matrix.org via CNAME @ → icp1.io.",
+    "core.desc": "Main Rust canister. Threshold-ECDSA, audit_full registry, Merkle proofs, Sovereign Certificate Chain.",
+    "succession.title": "Sovereign post-mortem succession",
+    "succession.desc": "Estate planning without recoverable keys — the canister executes the will under predefined cryptographic conditions.",
+    "niza.title": "§ Nice Classification · First WIPO Filing with Post-Quantum Cryptography Anchored in Bitcoin",
+    "niza.classification": "Nice Classification",
+    "niza.firstever": "This is the first known intellectual-property filing with post-quantum certified identity anchored in Bitcoin",
+    "verify.yourself": "Verify it yourself:",
+    "authorship.human": "human intuition",
+    "summary.stats": "11 canisters · 7.1 × 10¹⁸ operations audited · 52 PETA-OPS/s · 4 substrates · 0 violations · 1 operator",
+    "rpc.canonical": "Official public RPCs. Canonical URLs on GitHub, blockstream.info, mempool.space, arbiscan, solscan and ic-api.internetcomputer.org."
   },
   "ar": {
     "hero.title": "سيادة توثيقية قابلة للتحقق دون إذن.",
-    "cta.verify": "▸ تحقق الآن",
-    "cta.commands": "› الأوامر العامة",
-    "cta.canister": "↗ كانيستر IC",
-    "stat.canisters": "كانيسترات الشبكة الرئيسية",
-    "stat.ops": "عمليات مدققة",
-    "stat.throughput": "إنتاجية مستدامة",
-    "stat.substrates": "ركائز البلوكشين",
-    "stat.violations": "انتهاكات فئوية",
+    "hero.subtitle": "بروتوكول توثيق سيادي. أحد عشر كانيستر على الشبكة الرئيسية لـ Internet Computer. مرتبط بأربع ركائز بلوكتشين مستقلة. بدون أمين، بدون جسور، بدون إذن.",
+    "cta.verify": "▸ تحقق الآن", "cta.commands": "› الأوامر العامة", "cta.canister": "↗ كانيستر IC",
+    "stat.canisters": "كانيسترات الشبكة الرئيسية", "stat.ops": "عمليات مدققة", "stat.throughput": "إنتاجية مستدامة",
+    "stat.substrates": "ركائز البلوكتشين", "stat.violations": "انتهاكات فئوية",
     "section.milestones": "إنجازات 2026-06-10",
     "section.anchors": "أختام عامة على أربع سلاسل مستقلة.",
     "section.verifier": "تحقق من أي قطعة دون رفع أي شيء.",
@@ -2468,66 +2499,92 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "section.dashboard": "تحقق من كل كانيستر على لوحة ICP الرسمية.",
     "section.17blocks": "17 كتلة بيتكوين. 4 ركائز. صفر ثقة.",
     "section.commands7": "سبعة أوامر. صفر ثقة.",
-    "section.notary": "أول كتابة عدل في العالم بدون كاتب عدل.",
+    "section.notary": "أول كاتب عدل في العالم بدون كاتب عدل.",
     "section.authorship": "§ التأليف · المنهج · السيادة",
     "niza.artifacts": "القطع الخمس القانونية للإيداع",
-    "niza.triple": "التثبيت الثلاثي على البيتكوين (3 تقاويم OTS مستقلة)",
-    "tier.pay9": "ادفع 9 يورو بالبيتكوين →",
-    "tier.pay75": "ادفع 75 يورو بالبيتكوين →",
-    "tier.pay250": "ادفع 250 يورو بالبيتكوين →",
-    "tier.pay500": "ادفع 500 يورو بالبيتكوين →",
-    "tier.free": "اطلب مجانا →",
-    "tier.dossier": "اطلب الملف →",
-    "tier.contact": "تواصل →",
-    "auth.architecture": "🜂 البنية",
-    "auth.execution": "⚙ التنفيذ",
-    "auth.sovereignty": "🔴 السيادة"
+    "niza.triple": "التثبيت الثلاثي بالبيتكوين (3 تقاويم OTS مستقلة)",
+    "tier.pay9": "ادفع 9 يورو بالبيتكوين →", "tier.pay75": "ادفع 75 يورو بالبيتكوين →",
+    "tier.pay250": "ادفع 250 يورو بالبيتكوين →", "tier.pay500": "ادفع 500 يورو بالبيتكوين →",
+    "tier.free": "اطلب مجانا →", "tier.dossier": "اطلب الملف →", "tier.contact": "تواصل →",
+    "banner.notary.tag": "كاتب العدل السيادي",
+    "banner.notary.desc": "أنت في كاتب العدل السيادي · ملف تدقيق فني",
+    "verifier.drop": "اسحب الملفات هنا أو انقر للاختيار",
+    "verifier.note": "متعدد الملفات · حساب جانب العميل · بدون رفع",
+    "anchors.desc": "ثلاث قطع موقعة بـ PGP ومرتبطة بـ Bitcoin عبر OpenTimestamps في نفس اليوم.",
+    "arch.desc": "بنية من 7 طبقات + 3 كانيسترات بنية تحتية (x39_bases، corebackend، frontend) تعمل في الإنتاج.",
+    "cmd5.intro": "أمر واحد يستعلم Arbitrum RPC و Solana RPC و mempool.space لإرجاع المراسي الأربعة التي تم التحقق منها بشكل مستقل.",
+    "cmd5.merkle": "تطابق دقيق 64/64 حرفًا بين Merkle root الفعلي والمرساة المنشورة.",
+    "dashboard.subtitle": "✓ ما سترى في اللوحة الرسمية",
+    "payment.howit": "كيف يعمل الدفع بالبيتكوين",
+    "payment.howit.desc": "يولد رمز QR BIP-21 قياسي مع العنوان + المبلغ بالساتوشي محسوب في الوقت الفعلي. يقوم المتصفح بالاستفسار من mempool.space كل 15 ثانية. بمجرد الكشف، تتم طباعة شهادة قابلة للتنزيل. صفر خادم، صفر أمين.",
+    "candid.title": "واجهة Candid العامة · IC mainnet",
+    "candid.desc": "module-hash غير قابل للتغيير · ختم WASM الجذر للبروتوكول. أي مدقق يمكنه استدعاء الوظائف العامة دون تعاون من المشغل.",
+    "frontend.desc": "كانيستر الأصول · يخدم هذه الصفحة بالذات · نطاق x39matrix.org عبر CNAME @ → icp1.io.",
+    "core.desc": "الكانيستر الرئيسي بـ Rust. Threshold-ECDSA، سجل audit_full، براهين Merkle، سلسلة الشهادات السيادية.",
+    "succession.title": "خلافة سيادية بعد الوفاة",
+    "succession.desc": "تخطيط الميراث بدون مفاتيح قابلة للاسترداد — الكانيستر ينفذ الوصية بشروط تشفيرية محددة مسبقا.",
+    "niza.title": "§ تصنيف نيس · أول إيداع OMPI/WIPO بتشفير ما بعد الكم مرتبط بالبيتكوين",
+    "niza.classification": "تصنيف نيس",
+    "niza.firstever": "هو أول سجل معروف لإيداع ملكية فكرية بهوية ما بعد الكم معتمدة في Bitcoin",
+    "verify.yourself": "تحقق بنفسك:",
+    "authorship.human": "حدس بشري",
+    "summary.stats": "11 كانيستر · 7.1 × 10¹⁸ عملية مدققة · 52 PETA-OPS/ث · 4 ركائز · 0 انتهاكات · 1 مشغل",
+    "rpc.canonical": "RPCs عامة رسمية. عناوين URL قانونية على GitHub، blockstream.info، mempool.space، arbiscan، solscan و ic-api.internetcomputer.org."
   },
   "ja": {
     "hero.title": "許可不要で検証可能な公証主権。",
-    "cta.verify": "▸ 今すぐ検証",
-    "cta.commands": "› パブリックコマンド",
-    "cta.canister": "↗ IC キャニスター",
-    "stat.canisters": "メインネット キャニスター",
-    "stat.ops": "監査済みオペレーション",
-    "stat.throughput": "持続的スループット",
-    "stat.substrates": "ブロックチェーン基盤",
-    "stat.violations": "カテゴリ違反",
+    "hero.subtitle": "ソブリン公証プロトコル。Internet Computer メインネット上の 11 キャニスター。4 つの独立したブロックチェーン基盤にアンカー。カストディアンなし、ブリッジなし、許可なし。",
+    "cta.verify": "▸ 今すぐ検証", "cta.commands": "› パブリックコマンド", "cta.canister": "↗ IC キャニスター",
+    "stat.canisters": "メインネット キャニスター", "stat.ops": "監査済みオペレーション", "stat.throughput": "持続的スループット",
+    "stat.substrates": "ブロックチェーン基盤", "stat.violations": "カテゴリ違反",
     "section.milestones": "マイルストーン 2026-06-10",
-    "section.anchors": "4つの独立したチェーンに公開シール。",
+    "section.anchors": "4 つの独立したチェーンに公開シール。",
     "section.verifier": "何もアップロードせずに任意のアーティファクトを検証。",
-    "section.commands5": "5つのコマンド。30秒。ゼロトラスト。",
+    "section.commands5": "5 つのコマンド。30 秒。ゼロトラスト。",
     "section.architecture": "カテゴリ的アーキテクチャ · 11 キャニスター · 7 レイヤー。",
-    "section.signature": "1つの署名。5つの段階。ビットコインで支払い。",
+    "section.signature": "1 つの署名。5 つの段階。ビットコインで支払い。",
     "section.audit": "世界の暗号セキュリティエリートへの公開招請。",
-    "section.dashboard": "ICP公式ダッシュボードで各キャニスターを検証。",
+    "section.dashboard": "ICP 公式ダッシュボードで各キャニスターを検証。",
     "section.17blocks": "17 ビットコインブロック。4 基盤。ゼロトラスト。",
-    "section.commands7": "7つのコマンド。ゼロトラスト。",
+    "section.commands7": "7 つのコマンド。ゼロトラスト。",
     "section.notary": "世界初の公証人なし公証。",
     "section.authorship": "§ 著者性 · 方法論 · 主権",
-    "niza.artifacts": "出願の5つの正規アーティファクト",
-    "niza.triple": "ビットコイン三重アンカー (3つの独立したOTSカレンダー)",
-    "tier.pay9": "9ユーロをBTCで支払う →",
-    "tier.pay75": "75ユーロをBTCで支払う →",
-    "tier.pay250": "250ユーロをBTCで支払う →",
-    "tier.pay500": "500ユーロをBTCで支払う →",
-    "tier.free": "無料リクエスト →",
-    "tier.dossier": "ドシエをリクエスト →",
-    "tier.contact": "お問い合わせ →",
-    "auth.architecture": "🜂 アーキテクチャ",
-    "auth.execution": "⚙ 実行",
-    "auth.sovereignty": "🔴 主権"
+    "niza.artifacts": "出願の 5 つの正規アーティファクト",
+    "niza.triple": "ビットコイン三重アンカー (3 つの独立した OTS カレンダー)",
+    "tier.pay9": "9 ユーロを BTC で支払う →", "tier.pay75": "75 ユーロを BTC で支払う →",
+    "tier.pay250": "250 ユーロを BTC で支払う →", "tier.pay500": "500 ユーロを BTC で支払う →",
+    "tier.free": "無料リクエスト →", "tier.dossier": "ドシエをリクエスト →", "tier.contact": "お問い合わせ →",
+    "banner.notary.tag": "ソブリン公証",
+    "banner.notary.desc": "あなたはソブリン公証にいます · 技術監査ドシエ",
+    "verifier.drop": "ファイルをここにドラッグするかクリックして選択",
+    "verifier.note": "複数ファイル対応 · クライアント側計算 · アップロードなし",
+    "anchors.desc": "PGP 署名された 3 つのアーティファクトが同じ日に OpenTimestamps 経由で Bitcoin にアンカーされました。",
+    "arch.desc": "7 レイヤーアーキテクチャ + 3 つのインフラキャニスター (x39_bases、corebackend、frontend) が本番稼働中。",
+    "cmd5.intro": "1 つのコマンドが Arbitrum RPC、Solana RPC、mempool.space に問い合わせて、独立に検証された 4 つのアンカーを返します。",
+    "cmd5.merkle": "実際の Merkle root と公開アンカー間で 64/64 文字の完全一致。",
+    "dashboard.subtitle": "✓ 公式ダッシュボードで見えるもの",
+    "payment.howit": "BTC 支払いの仕組み",
+    "payment.howit.desc": "アドレス + サトシ単位の金額をリアルタイムで計算した標準 BIP-21 QR を生成。ブラウザが 15 秒ごとに mempool.space をポーリング。検出されると、ダウンロード可能な証明書が印刷されます。サーバーゼロ、カストディアンゼロ。",
+    "candid.title": "パブリック Candid インターフェース · IC mainnet",
+    "candid.desc": "不変な module-hash · プロトコルのルート WASM シール。監査人はオペレータの協力なしに公開関数を呼び出せます。",
+    "frontend.desc": "アセットキャニスター · このページを提供 · CNAME @ → icp1.io 経由のドメイン x39matrix.org。",
+    "core.desc": "メイン Rust キャニスター。Threshold-ECDSA、audit_full レジストリ、Merkle 証明、ソブリン証明書チェーン。",
+    "succession.title": "ソブリン死後継承",
+    "succession.desc": "回復可能な鍵なしの遺産計画 — キャニスターが事前定義された暗号条件の下で遺言を実行します。",
+    "niza.title": "§ ニース分類 · ビットコインにアンカーされた最初のポスト量子暗号 OMPI/WIPO 出願",
+    "niza.classification": "ニース分類",
+    "niza.firstever": "Bitcoin にアンカーされたポスト量子認証 ID を持つ最初の既知の IP 出願です",
+    "verify.yourself": "自分で検証:",
+    "authorship.human": "人間の直観",
+    "summary.stats": "11 キャニスター · 7.1 × 10¹⁸ 監査済みオペレーション · 52 PETA-OPS/秒 · 4 基盤 · 違反 0 · 1 オペレータ",
+    "rpc.canonical": "公式パブリック RPC。GitHub、blockstream.info、mempool.space、arbiscan、solscan、ic-api.internetcomputer.org の正規 URL。"
   },
   "zh": {
     "hero.title": "无需许可、可验证的公证主权。",
-    "cta.verify": "▸ 立即验证",
-    "cta.commands": "› 公开命令",
-    "cta.canister": "↗ IC 容器",
-    "stat.canisters": "主网容器",
-    "stat.ops": "已审计操作",
-    "stat.throughput": "持续吞吐量",
-    "stat.substrates": "区块链基底",
-    "stat.violations": "范畴违规",
+    "hero.subtitle": "主权公证协议。Internet Computer 主网上的 11 个容器。锚定在四个独立的区块链基底上。无托管人、无桥接、无许可。",
+    "cta.verify": "▸ 立即验证", "cta.commands": "› 公开命令", "cta.canister": "↗ IC 容器",
+    "stat.canisters": "主网容器", "stat.ops": "已审计操作", "stat.throughput": "持续吞吐量",
+    "stat.substrates": "区块链基底", "stat.violations": "范畴违规",
     "section.milestones": "里程碑 2026-06-10",
     "section.anchors": "四条独立链上的公开印章。",
     "section.verifier": "无需上传任何内容即可验证任何工件。",
@@ -2542,16 +2599,33 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "section.authorship": "§ 作者 · 方法 · 主权",
     "niza.artifacts": "申报的 5 个规范工件",
     "niza.triple": "比特币三重锚定 (3 个独立的 OTS 日历)",
-    "tier.pay9": "用 BTC 支付 9 欧元 →",
-    "tier.pay75": "用 BTC 支付 75 欧元 →",
-    "tier.pay250": "用 BTC 支付 250 欧元 →",
-    "tier.pay500": "用 BTC 支付 500 欧元 →",
-    "tier.free": "免费请求 →",
-    "tier.dossier": "请求档案 →",
-    "tier.contact": "联系 →",
-    "auth.architecture": "🜂 架构",
-    "auth.execution": "⚙ 执行",
-    "auth.sovereignty": "🔴 主权"
+    "tier.pay9": "用 BTC 支付 9 欧元 →", "tier.pay75": "用 BTC 支付 75 欧元 →",
+    "tier.pay250": "用 BTC 支付 250 欧元 →", "tier.pay500": "用 BTC 支付 500 欧元 →",
+    "tier.free": "免费请求 →", "tier.dossier": "请求档案 →", "tier.contact": "联系 →",
+    "banner.notary.tag": "主权公证",
+    "banner.notary.desc": "您正位于主权公证 · 技术审计档案",
+    "verifier.drop": "将文件拖到此处或单击选择",
+    "verifier.note": "支持多文件 · 客户端计算 · 无上传",
+    "anchors.desc": "三个 PGP 签名工件在同一天通过 OpenTimestamps 锚定到 Bitcoin。",
+    "arch.desc": "7 层架构 + 3 个基础设施容器(x39_bases、corebackend、frontend)在生产环境中运行。",
+    "cmd5.intro": "单条命令查询 Arbitrum RPC、Solana RPC 和 mempool.space,返回 4 个独立验证的锚点。",
+    "cmd5.merkle": "实际 Merkle root 与已发布锚点之间精确 64/64 字符匹配。",
+    "dashboard.subtitle": "✓ 您将在官方仪表板看到的内容",
+    "payment.howit": "BTC 付款如何工作",
+    "payment.howit.desc": "生成带有地址 + 实时计算的 satoshi 金额的标准 BIP-21 QR 码。浏览器每 15 秒轮询 mempool.space。检测到付款后,打印可下载证书。零服务器,零托管人。",
+    "candid.title": "公开 Candid 接口 · IC mainnet",
+    "candid.desc": "不可变的 module-hash · 协议根 WASM 印章。任何审计员都可以调用公共函数,无需运营商配合。",
+    "frontend.desc": "资产容器 · 提供本页面 · 域名 x39matrix.org 通过 CNAME @ → icp1.io。",
+    "core.desc": "主 Rust 容器。Threshold-ECDSA、audit_full 注册表、Merkle 证明、主权证书链。",
+    "succession.title": "主权身后继承",
+    "succession.desc": "无可恢复密钥的遗产规划 — 容器在预定义的加密条件下执行遗嘱。",
+    "niza.title": "§ 尼斯分类 · 第一个锚定在比特币上的后量子密码学 OMPI/WIPO 申报",
+    "niza.classification": "尼斯分类",
+    "niza.firstever": "这是第一个已知的具有锚定在 Bitcoin 上的后量子认证身份的知识产权申报",
+    "verify.yourself": "自己验证:",
+    "authorship.human": "人类直觉",
+    "summary.stats": "11 容器 · 7.1 × 10¹⁸ 已审计操作 · 52 PETA-OPS/秒 · 4 基底 · 0 违规 · 1 运营商",
+    "rpc.canonical": "官方公共 RPC。GitHub、blockstream.info、mempool.space、arbiscan、solscan 和 ic-api.internetcomputer.org 上的规范 URL。"
   }
 }
 
