@@ -143,11 +143,11 @@
 <!-- X39_LANG_STICKY_HOME_V6 -->
 <div id="x39-lang-sticky-v6" style="position:fixed;top:12px;right:12px;z-index:999999;pointer-events:none;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
   <div style="background:rgba(8,4,4,0.92);border:1px solid #cc0000;border-radius:6px;padding:5px 7px;display:inline-flex;gap:2px;backdrop-filter:blur(8px);pointer-events:auto;box-shadow:0 4px 16px rgba(0,0,0,0.5);">
-    <button type="button" onclick="setLang('es');return false;" data-testid="sticky-lang-es" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="Español">🇪🇸</button>
-    <button type="button" onclick="setLang('en');return false;" data-testid="sticky-lang-en" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="English">🇬🇧</button>
-    <button type="button" onclick="setLang('ar');return false;" data-testid="sticky-lang-ar" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="العربية">🇸🇦</button>
-    <button type="button" onclick="setLang('ja');return false;" data-testid="sticky-lang-ja" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="日本語">🇯🇵</button>
-    <button type="button" onclick="setLang('zh');return false;" data-testid="sticky-lang-zh" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;pointer-events:auto;" title="中文">🇨🇳</button>
+    <button type="button" onclick="if(window.setLang)setLang('es');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="Español">🇪🇸</button>
+    <button type="button" onclick="if(window.setLang)setLang('en');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="English">🇬🇧</button>
+    <button type="button" onclick="if(window.setLang)setLang('ar');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="العربية">🇸🇦</button>
+    <button type="button" onclick="if(window.setLang)setLang('ja');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="日本語">🇯🇵</button>
+    <button type="button" onclick="if(window.setLang)setLang('zh');return false;" style="background:none;border:none;color:#d8d8d8;cursor:pointer;padding:4px 6px;font-size:14px;line-height:1;" title="中文">🇨🇳</button>
   </div>
 </div>
 <!-- /X39_LANG_STICKY_HOME_V6 -->
@@ -184,7 +184,7 @@
     <a data-x39nav href="#archView">10 Industrias</a>
     <a data-x39nav href="#liveTerminal">Live CLI</a>
     <a data-x39nav href="#whitepaper">📑 Whitepaper</a>
-    <a class="notary" href="/Notary/" data-testid="home-notary-link" data-i18n="hitos.card6.tag">🛡️ NOTARÍA SOBERANA</a>
+    <a class="notary" href="/Notary/" data-testid="home-notary-link">🛡️ Notaría Soberana</a>
   </div>
 </nav>
 <!-- /X39_NAV_V30 -->
@@ -418,15 +418,15 @@
   <div style="max-width:1200px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:40px;">
       <div style="font-size:0.65rem;letter-spacing:0.3em;color:#ff3a2b;margin-bottom:8px;">// HITOS JUNIO 2026 · DESDE EL FILING ABRIL</div>
-      <h2 style="font-size:2rem;color:#fff;margin:0;letter-spacing:0.05em;">DE 45 BLOQUES A <span style="color:#ff3a2b" data-i18n="hitos.title-2">238 ANCLAJES BTC</span></h2>
-      <div style="font-size:0.75rem;color:#888;margin-top:12px;" data-i18n="hitos.subtitle">235/238 confirmados en Bitcoin mainnet · 11 canisters ICP · 51/51 axiomas verificados públicamente</div>
+      <h2 style="font-size:2rem;color:#fff;margin:0;letter-spacing:0.05em;">DE 45 BLOQUES A <span style="color:#ff3a2b">238 ANCLAJES BTC</span></h2>
+      <div style="font-size:0.75rem;color:#888;margin-top:12px;">235/238 confirmados en Bitcoin mainnet · 11 canisters ICP · 51/51 axiomas verificados públicamente</div>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;">
 
       <div style="background:#0d0606;border:1px solid #ff3a2b;padding:20px;border-radius:6px;">
-        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;" data-i18n="hitos.card1.tag">★ MASTER SEAL Ω</div>
-        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;" data-i18n="hitos.card1.title">Triple-Anclaje OpenTimestamps</div>
+        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;">★ MASTER SEAL Ω</div>
+        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;">Triple-Anclaje OpenTimestamps</div>
         <div style="font-size:0.7rem;color:#aaa;line-height:1.7;">Ω <code style="color:#FFD700;font-size:0.65rem;">08e9db78…91d449c</code> sellado en 3 calendars BTC independientes (alice · bob · catallaxy). Inmutable por proof-of-work global.</div>
         <div style="margin-top:14px;font-size:0.65rem;">
           <a href="https://mempool.space/block/950381" target="_blank" style="color:#ff3a2b;text-decoration:none;margin-right:10px;">#950381 ↗</a>
@@ -436,8 +436,8 @@
       </div>
 
       <div style="background:#0d0606;border:1px solid #ff3a2b;padding:20px;border-radius:6px;">
-        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;" data-i18n="hitos.card2.tag">⚡ PRIMERA FIRMA SOBERANA</div>
-        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;" data-i18n="hitos.card2.title">tECDSA Send · Bloque #952131</div>
+        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;">⚡ PRIMERA FIRMA SOBERANA</div>
+        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;">tECDSA Send · Bloque #952131</div>
         <div style="font-size:0.7rem;color:#aaa;line-height:1.7;">El canister <code style="color:#FFD700;font-size:0.65rem;">arn4r-lqaaa…</code> firmó vía threshold-ECDSA con 13 nodos. <strong>Ningún humano tiene la clave completa.</strong> Primera notarización autónoma de la historia.</div>
         <div style="margin-top:14px;font-size:0.65rem;">
           <a href="https://mempool.space/tx/b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023" target="_blank" style="color:#ff3a2b;text-decoration:none;">Ver TX histórica ↗</a>
@@ -445,8 +445,8 @@
       </div>
 
       <div style="background:#0d0606;border:1px solid #ff3a2b;padding:20px;border-radius:6px;">
-        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;" data-i18n="hitos.card3.tag">🌐 NIZA WIPO POST-CUÁNTICO</div>
-        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;" data-i18n="hitos.card3.title">Filing IP cuántico-resistente</div>
+        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;">🌐 NIZA WIPO POST-CUÁNTICO</div>
+        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;">Filing IP cuántico-resistente</div>
         <div style="font-size:0.7rem;color:#aaa;line-height:1.7;">5 artefactos firmados <strong>ML-DSA-87</strong> (FIPS-204) + <strong>ML-KEM-1024</strong> (FIPS-203) y triple-anclados en BTC. Primer filing IP post-cuántico conocido.</div>
         <div style="margin-top:14px;font-size:0.65rem;">
           <a href="https://mempool.space/block/952148" target="_blank" style="color:#ff3a2b;text-decoration:none;margin-right:10px;">#952148 ↗</a>
@@ -456,8 +456,8 @@
       </div>
 
       <div style="background:#0d0606;border:1px solid #ff3a2b;padding:20px;border-radius:6px;">
-        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;" data-i18n="hitos.card4.tag">🔗 LOOPS CROSS-CHAIN</div>
-        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;" data-i18n="hitos.card4.title">BTC ↔ Arbitrum ↔ Solana</div>
+        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;">🔗 LOOPS CROSS-CHAIN</div>
+        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;">BTC ↔ Arbitrum ↔ Solana</div>
         <div style="font-size:0.7rem;color:#aaa;line-height:1.7;">Merkle root del bloque #951605 coincide <strong>bit a bit 64/64</strong> con el ancla X39. Calldata literal <code style="color:#FFD700;font-size:0.65rem;">X39_OMEGA_SEAL</code> en Arbitrum L2.</div>
         <div style="margin-top:14px;font-size:0.65rem;">
           <a href="https://mempool.space/block/951605" target="_blank" style="color:#ff3a2b;text-decoration:none;margin-right:10px;">BTC #951605 ↗</a>
@@ -466,8 +466,8 @@
       </div>
 
       <div style="background:#0d0606;border:1px solid #ff3a2b;padding:20px;border-radius:6px;">
-        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;" data-i18n="hitos.card5.tag">📜 MANIFEST MAESTRO</div>
-        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;" data-i18n="hitos.card5.title">238 .ots auditables</div>
+        <div style="font-size:0.55rem;letter-spacing:0.2em;color:#ff3a2b;margin-bottom:6px;">📜 MANIFEST MAESTRO</div>
+        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;">238 .ots auditables</div>
         <div style="font-size:0.7rem;color:#aaa;line-height:1.7;">Documento maestro listando los 238 archivos OpenTimestamps con su altura de bloque BTC + estado. Auto-anclado en Bitcoin.</div>
         <div style="margin-top:14px;font-size:0.65rem;">
           <a href="/MANIFEST_MAESTRO.txt" target="_blank" style="color:#ff3a2b;text-decoration:none;margin-right:10px;">Manifest ↗</a>
@@ -477,17 +477,17 @@
 
       <div style="background:#0d0606;border:1px solid #FFD700;padding:20px;border-radius:6px;">
         <div style="font-size:0.55rem;letter-spacing:0.2em;color:#FFD700;margin-bottom:6px;">🛡️ NOTARÍA SOBERANA</div>
-        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;" data-i18n="hitos.card6.title">Dossier técnico completo</div>
+        <div style="font-size:1.1rem;color:#fff;margin-bottom:12px;font-weight:700;">Dossier técnico completo</div>
         <div style="font-size:0.7rem;color:#aaa;line-height:1.7;">El detalle exhaustivo de los 17 bloques BTC junio 2026, los 7 comandos de verificación pública, los 9 tiers de precio y la arquitectura completa de los 11 canisters.</div>
         <div style="margin-top:14px;font-size:0.7rem;">
-          <a href="/Notary/" style="color:#FFD700;border:1px solid #FFD700;padding:6px 12px;border-radius:3px;text-decoration:none;font-weight:700;" data-i18n="hitos.card6.cta">Entrar a Notaría →</a>
+          <a href="/Notary/" style="color:#FFD700;border:1px solid #FFD700;padding:6px 12px;border-radius:3px;text-decoration:none;font-weight:700;">Entrar a Notaría →</a>
         </div>
       </div>
 
     </div>
 
     <div style="text-align:center;margin-top:35px;padding-top:25px;border-top:1px solid #222;">
-      <div style="font-size:0.6rem;color:#666;letter-spacing:0.2em;margin-bottom:8px;" data-i18n="hitos.verify-tag">// VERIFICACIÓN PÚBLICA 30 SEGUNDOS</div>
+      <div style="font-size:0.6rem;color:#666;letter-spacing:0.2em;margin-bottom:8px;">// VERIFICACIÓN PÚBLICA 30 SEGUNDOS</div>
       <code style="display:inline-block;background:#000;border:1px solid #ff3a2b;padding:10px 18px;color:#ff3a2b;font-size:0.75rem;border-radius:4px;">curl -sL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash</code>
       <div style="font-size:0.65rem;color:#888;margin-top:10px;">Esperado: <strong style="color:#0f0">Passed 51/51</strong></div>
     </div>
@@ -497,11 +497,11 @@
 <!-- X39_WHITEPAPER_HERO -->
 <section id="whitepaper" style="background:linear-gradient(135deg,#0d0606 0%,#1a0a0a 100%);padding:50px 20px;border-top:2px solid #FFD700;border-bottom:2px solid #FFD700;text-align:center;">
   <div style="max-width:900px;margin:0 auto;">
-    <div style="font-size:0.6rem;letter-spacing:0.3em;color:#FFD700;margin-bottom:10px;" data-i18n="wp.tag">// FORMAL WHITEPAPER · IACR ePrint format</div>
-    <h2 style="font-size:1.8rem;color:#fff;margin:0 0 12px;letter-spacing:0.03em;" data-i18n="wp.title">Sovereign Notarial Infrastructure</h2>
-    <div style="font-size:0.9rem;color:#bbb;margin-bottom:8px;" data-i18n="wp.subtitle">for Nation-States · Banking · Healthcare · Academia</div>
+    <div style="font-size:0.6rem;letter-spacing:0.3em;color:#FFD700;margin-bottom:10px;">// FORMAL WHITEPAPER · IACR ePrint format</div>
+    <h2 style="font-size:1.8rem;color:#fff;margin:0 0 12px;letter-spacing:0.03em;">Sovereign Notarial Infrastructure</h2>
+    <div style="font-size:0.9rem;color:#bbb;margin-bottom:8px;">for Nation-States · Banking · Healthcare · Academia</div>
     <div style="font-size:0.7rem;color:#888;margin-bottom:30px;">50 pages · 20 chapters · 13 ministries detailed · 12 compliance frameworks · 20 academic references</div>
-    <a href="/X39MATRIX_WHITEPAPER_v1.0.pdf" target="_blank" data-testid="download-whitepaper" style="display:inline-block;background:#FFD700;color:#000;font-weight:700;padding:14px 36px;border-radius:4px;text-decoration:none;letter-spacing:0.08em;font-size:0.85rem;box-shadow:0 0 24px rgba(255,215,0,0.35);transition:all .2s ease;" data-i18n="wp.download">📑 DOWNLOAD WHITEPAPER v1.0 · PDF (82 KB)</a>
+    <a href="/X39MATRIX_WHITEPAPER_v1.0.pdf" target="_blank" data-testid="download-whitepaper" style="display:inline-block;background:#FFD700;color:#000;font-weight:700;padding:14px 36px;border-radius:4px;text-decoration:none;letter-spacing:0.08em;font-size:0.85rem;box-shadow:0 0 24px rgba(255,215,0,0.35);transition:all .2s ease;">📑 DOWNLOAD WHITEPAPER v1.0 · PDF (82 KB)</a>
     <div style="margin-top:14px;font-size:0.65rem;color:#888;">
       <a href="/X39MATRIX_WHITEPAPER_v1.0.pdf.ots" style="color:#ff3a2b;text-decoration:none;">Bitcoin OTS proof ↗</a>
       &nbsp;·&nbsp;
@@ -831,7 +831,7 @@
                 'uc08':'DEFENSE & GOVERNMENT','uc08d':'Sovereign infrastructure. $150B cyber defense market. 51% defense lab. vs Palantir, AWS GovCloud.',
                 'uc09':'GAMING & METAVERSE','uc09d':'50K+ TPS. Causal DAG for MMO. AI anti-cheat on-chain. vs Immutable X, Ronin, Solana Gaming.',
                 'uc10':'ACADEMIC RESEARCH','uc10d':'Fokker-Planck publishable. Immutable science. Ed25519 credentials. vs Elsevier, ResearchHub, DeSci.'
-            ,'hitos.title-1':'FROM 45 BLOCKS TO','hitos.title-2':'238 BTC ANCHORS','hitos.subtitle':'235/238 confirmed in Bitcoin mainnet · 11 ICP canisters · 51/51 publicly verified axioms','hitos.card1.tag':'★ MASTER SEAL Ω','hitos.card1.title':'Triple OpenTimestamps Anchor','hitos.card2.tag':'⚡ FIRST SOVEREIGN SIGNATURE','hitos.card2.title':'tECDSA Send · Block #952131','hitos.card3.tag':'🌐 POST-QUANTUM NICE WIPO','hitos.card3.title':'Quantum-resistant IP Filing','hitos.card4.tag':'🔗 CROSS-CHAIN LOOPS','hitos.card4.title':'BTC ↔ Arbitrum ↔ Solana','hitos.card5.tag':'📜 MASTER MANIFEST','hitos.card5.title':'238 auditable .ots files','hitos.card6.tag':'🛡️ SOVEREIGN NOTARY','hitos.card6.title':'Complete technical dossier','hitos.card6.cta':'Enter Notary →','hitos.verify-tag':'// PUBLIC VERIFICATION 30 SECONDS','wp.title':'Sovereign Notarial Infrastructure','wp.subtitle':'for Nation-States · Banking · Healthcare · Academia','wp.download':'📑 DOWNLOAD WHITEPAPER v1.0 · PDF (82 KB)','wp.tag':'// FORMAL WHITEPAPER · IACR ePrint format'},
+            },
             es:{
                 'cli-version':'X39MATRIX CLI v12.0',
                 'cli-sub':'// DEMOSTRACION EN VIVO → 9 CAPAS',
@@ -870,7 +870,7 @@
                 'uc08':'DEFENSA Y GOBIERNO','uc08d':'Infraestructura soberana. Mercado ciberdefensa $150B. Laboratorio 51%. vs Palantir, AWS GovCloud.',
                 'uc09':'GAMING Y METAVERSO','uc09d':'50K+ TPS. DAG causal para MMO. Anti-cheat AI on-chain. vs Immutable X, Ronin.',
                 'uc10':'INVESTIGACION ACADEMICA','uc10d':'Fokker-Planck publicable. Ciencia inmutable. Credenciales Ed25519. vs Elsevier, ResearchHub.'
-            ,'hitos.title-1':'DE 45 BLOQUES A','hitos.title-2':'238 ANCLAJES BTC','hitos.subtitle':'235/238 confirmados en Bitcoin mainnet · 11 canisters ICP · 51/51 axiomas verificados públicamente','hitos.card1.tag':'★ MASTER SEAL Ω','hitos.card1.title':'Triple-Anclaje OpenTimestamps','hitos.card2.tag':'⚡ PRIMERA FIRMA SOBERANA','hitos.card2.title':'tECDSA Send · Bloque #952131','hitos.card3.tag':'🌐 NIZA WIPO POST-CUÁNTICO','hitos.card3.title':'Filing IP cuántico-resistente','hitos.card4.tag':'🔗 LOOPS CROSS-CHAIN','hitos.card4.title':'BTC ↔ Arbitrum ↔ Solana','hitos.card5.tag':'📜 MANIFEST MAESTRO','hitos.card5.title':'238 .ots auditables','hitos.card6.tag':'🛡️ NOTARÍA SOBERANA','hitos.card6.title':'Dossier técnico completo','hitos.card6.cta':'Entrar a Notaría →','hitos.verify-tag':'// VERIFICACIÓN PÚBLICA 30 SEGUNDOS','wp.title':'Infraestructura Notarial Soberana','wp.subtitle':'para Estados, Banca, Sanidad y Academia','wp.download':'📑 DESCARGAR WHITEPAPER v1.0 · PDF (82 KB)','wp.tag':'// WHITEPAPER FORMAL · formato IACR ePrint'},
+            },
             zh:{
                 'cli-version':'X39MATRIX CLI v12.0',
                 'cli-sub':'// 现场演示 → 9层',
@@ -909,7 +909,7 @@
                 'uc08':'国防与政府','uc08d':'主权基础设施。1500亿美元网络防御市场。51%防御实验室。对比Palantir。',
                 'uc09':'游戏与元宇宙','uc09d':'50K+ TPS。因果DAG用于MMO。链上AI反作弊。对比Immutable X、Ronin。',
                 'uc10':'学术研究','uc10d':'Fokker-Planck可发表。不可变科学。Ed25519凭证。对比Elsevier。'
-            ,'hitos.title-1':'从 45 个区块到','hitos.title-2':'238 个 BTC 锚点','hitos.subtitle':'在 Bitcoin 主网中确认 235/238 · 11 个 ICP 容器 · 51/51 个公开验证的公理','hitos.card1.tag':'★ 主印章 Ω','hitos.card1.title':'三重 OpenTimestamps 锚定','hitos.card2.tag':'⚡ 第一个主权签名','hitos.card2.title':'tECDSA 发送 · 区块 #952131','hitos.card3.tag':'🌐 尼斯 WIPO 后量子','hitos.card3.title':'抗量子 IP 申报','hitos.card4.tag':'🔗 跨链循环','hitos.card4.title':'BTC ↔ Arbitrum ↔ Solana','hitos.card5.tag':'📜 主清单','hitos.card5.title':'238 个可审计的 .ots 文件','hitos.card6.tag':'🛡️ 主权公证','hitos.card6.title':'完整的技术档案','hitos.card6.cta':'进入公证 →','hitos.verify-tag':'// 公共验证 30 秒','wp.title':'主权公证基础设施','wp.subtitle':'面向国家、银行、医疗和学术','wp.download':'📑 下载 WHITEPAPER v1.0 · PDF (82 KB)','wp.tag':'// 正式 WHITEPAPER · IACR ePrint 格式'},
+            },
             ar:{
                 'cli-version':'X39MATRIX CLI v12.0',
                 'cli-sub':'// عرض مباشر ← 9 طبقات',
@@ -948,7 +948,7 @@
                 'uc08':'الدفاع والحكومة','uc08d':'بنية تحتية سيادية. سوق الدفاع السيبراني 150 مليار دولار. مقابل Palantir.',
                 'uc09':'الألعاب والميتافيرس','uc09d':'50K+ TPS. DAG سببي لـ MMO. مكافحة غش AI على السلسلة. مقابل Immutable X.',
                 'uc10':'البحث الأكاديمي','uc10d':'Fokker-Planck قابل للنشر. علم غير قابل للتغيير. بيانات Ed25519. مقابل Elsevier.'
-            ,'hitos.title-1':'من 45 كتلة إلى','hitos.title-2':'238 ترسيخ BTC','hitos.subtitle':'235/238 مؤكدة في Bitcoin mainnet · 11 كانيستر ICP · 51/51 بديهيات متحقق منها علنا','hitos.card1.tag':'★ الختم الرئيسي Ω','hitos.card1.title':'ترسيخ ثلاثي OpenTimestamps','hitos.card2.tag':'⚡ أول توقيع سيادي','hitos.card2.title':'إرسال tECDSA · كتلة #952131','hitos.card3.tag':'🌐 نيس WIPO ما بعد الكم','hitos.card3.title':'إيداع IP مقاوم للكم','hitos.card4.tag':'🔗 حلقات Cross-Chain','hitos.card4.title':'BTC ↔ Arbitrum ↔ Solana','hitos.card5.tag':'📜 البيان الرئيسي','hitos.card5.title':'238 ملف .ots قابل للتدقيق','hitos.card6.tag':'🛡️ كاتب العدل السيادي','hitos.card6.title':'ملف فني كامل','hitos.card6.cta':'دخول كاتب العدل →','hitos.verify-tag':'// تحقق علني 30 ثانية','wp.title':'بنية تحتية توثيقية سيادية','wp.subtitle':'للدول · البنوك · الرعاية الصحية · الأكاديميا','wp.download':'📑 تحميل WHITEPAPER v1.0 · PDF (82 KB)','wp.tag':'// WHITEPAPER رسمي · بصيغة IACR ePrint'},
+            },
             ja:{
                 'tagline1':'プロトコル分散型',
                 'tagline2':'ED25519 · x509 · アーキテクト X39',
@@ -980,7 +980,7 @@
                 'uc08':'防衛・政府','uc08d':'ソブリンインフラ。1500億ドルサイバー防衛市場。51%防御ラボ。Palantir、AWS GovCloud との対比。',
                 'uc09':'ゲーミング & メタバース','uc09d':'50K+ TPS。MMO向け因果DAG。オンチェーンAIアンチチート。Immutable X、Ronin との対比。',
                 'uc10':'学術研究','uc10d':'公表可能なFokker-Planck。不変科学。Ed25519資格証明。Elsevier、ResearchHub、DeSci との対比。'
-            ,'hitos.title-1':'45ブロックから','hitos.title-2':'238 BTC アンカーへ','hitos.subtitle':'Bitcoin mainnet で 235/238 確認 · 11 ICP キャニスター · 51/51 公的に検証された公理','hitos.card1.tag':'★ マスターシール Ω','hitos.card1.title':'三重 OpenTimestamps アンカー','hitos.card2.tag':'⚡ 最初のソブリン署名','hitos.card2.title':'tECDSA 送信 · ブロック #952131','hitos.card3.tag':'🌐 ニース WIPO ポスト量子','hitos.card3.title':'量子耐性 IP 出願','hitos.card4.tag':'🔗 クロスチェーンループ','hitos.card4.title':'BTC ↔ Arbitrum ↔ Solana','hitos.card5.tag':'📜 マスターマニフェスト','hitos.card5.title':'238 個の監査可能な .ots ファイル','hitos.card6.tag':'🛡️ ソブリン公証','hitos.card6.title':'完全な技術ドシエ','hitos.card6.cta':'公証に入る →','hitos.verify-tag':'// 公的検証 30 秒','wp.title':'ソブリン公証インフラストラクチャ','wp.subtitle':'国家・銀行・医療・アカデミア向け','wp.download':'📑 WHITEPAPER v1.0 をダウンロード · PDF (82 KB)','wp.tag':'// 公式 WHITEPAPER · IACR ePrint フォーマット'}
+            }
         };
 
         // USE CASES
@@ -1162,7 +1162,7 @@
             }
             cliRunning=false;
         };
-    )();
+    })();
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9eb4b4d6781ae8b5',t:'MTc3NjAyMjg2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
