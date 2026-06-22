@@ -72,7 +72,53 @@ new_js_block = (
 html_new = js_old_pattern.sub(new_js_block, html_new, count=1)
 
 # ═════════════════════════════════════════════════════════════════
-# PATCH 3 · Inyectar el JS nuevo justo antes de </body>
+# PATCH 3 · Convertir enlaces <a x39p-cta href="#pricing"> en botones
+# que abran el modal. Detecta el importe a partir del texto del enlace.
+# ═════════════════════════════════════════════════════════════════
+# Mapa texto del botón → importe EUR
+P3_MAP = [
+    ('Pagar 9 EUR en BTC',  '9'),
+    ('Pagar 75 EUR',        '75'),
+    ('Pagar 250 EUR',       '250'),
+    ('Pagar 500 EUR',       '500'),
+    ('Pagar 3.500 EUR',     '3500'),
+]
+p3_count = 0
+for label, eur in P3_MAP:
+    # Reemplaza <a class="x39p-cta" href="#pricing">LABEL</a>
+    # por <button type="button" class="x39p-cta" data-pay="EUR">LABEL</button>
+    pat = re.compile(
+        r'<a\s+class="x39p-cta"\s+href="#pricing"\s*>\s*' + re.escape(label) + r'\s*</a>'
+    )
+    new_html, n = pat.subn(
+        f'<button type="button" class="x39p-cta" data-pay="{eur}">{label}</button>',
+        html_new
+    )
+    if n > 0:
+        html_new = new_html
+        p3_count += n
+print(f"[PATCH 3] Botones convertidos en sección 'Notaría Soberana': {p3_count}/5")
+
+# ═════════════════════════════════════════════════════════════════
+# PATCH 4 · Asegurar que .x39p-cta como <button> mantiene el look del <a>
+# ═════════════════════════════════════════════════════════════════
+p4_css_injection = (
+    '\n<style id="x39-pay-cta-button-reset">\n'
+    'button.x39p-cta {\n'
+    '  font-family: inherit !important;\n'
+    '  border: 0 !important;\n'
+    '  cursor: pointer !important;\n'
+    '  width: 100% !important;\n'
+    '  text-align: center !important;\n'
+    '}\n'
+    'button.x39p-cta:hover { opacity: .9; }\n'
+    '</style>\n'
+)
+if '</head>' in html_new:
+    html_new = html_new.replace('</head>', p4_css_injection + '</head>', 1)
+
+# ═════════════════════════════════════════════════════════════════
+# PATCH 5 · Inyectar el JS nuevo justo antes de </body>
 # ═════════════════════════════════════════════════════════════════
 js_injection = (
     '\n<!-- ═════════ X39 PAYMENT MODULE v2 SOVEREIGN ═════════ -->\n'

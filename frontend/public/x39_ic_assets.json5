@@ -1,20 +1,13 @@
 // ════════════════════════════════════════════════════════════════════════
-//  X39MATRIX · .ic-assets.json5 · CSP actualizado para pago soberano
-// ────────────────────────────────────────────────────────────────────────
-//  Ubicación en repo: src/frontend/assets/.ic-assets.json5
-//  o equivalente según estructura del canister asset.
-//
-//  CAMBIOS sobre el CSP original:
-//    + connect-src añade: api.coingecko.com (precio EUR/BTC)
-//                          mempool.space (detección de pago)
-//                          blockstream.info (fallback explorer)
-//    + img-src ya permite https: → QR de api.qrserver.com OK
-//
-//  Tras editar este archivo: dfx deploy frontend --network ic
+//  X39MATRIX · .ic-assets.json5 · v2.1
+//  ── CSP soberano + security_policy declarado (silencia warning dfx)
+//  ── Ubicación en repo: x39matrix-web/.ic-assets.json5
 // ════════════════════════════════════════════════════════════════════════
 [
   {
     "match": "**/*",
+    "security_policy": "standard",
+    "disable_security_policy_warning": true,
     "headers": {
       "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
       "X-Content-Type-Options": "nosniff",
@@ -29,14 +22,10 @@
   },
   {
     "match": "**/*.html",
-    "headers": {
-      "Cache-Control": "public, max-age=60"
-    }
+    "headers": { "Cache-Control": "public, max-age=60" }
   },
   {
     "match": "**/*.{js,css,svg,woff,woff2}",
-    "headers": {
-      "Cache-Control": "public, max-age=86400"
-    }
+    "headers": { "Cache-Control": "public, max-age=86400" }
   }
 ]

@@ -484,6 +484,17 @@
   <meta name="twitter:image" content="https://x39matrix.org/x39_icon_512.png" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<style id="x39-pay-cta-button-reset">
+button.x39p-cta {
+  font-family: inherit !important;
+  border: 0 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+button.x39p-cta:hover { opacity: .9; }
+</style>
 </head>
 <body><div class="x39p-banner">LAST SEAL 2026-06-03 03:41 UTC - BLOCK #952174 - 51/51 CLAIMS VERIFIED - <a href="https://github.com/x39matrix/x39matrix" target="_blank">github.com/x39matrix</a></div>
 
@@ -1662,11 +1673,11 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
 <p class="x39p-desc" style="margin-bottom:1.5rem">Reparto automatico: <strong style="color:#f0b400">75 %</strong> al architect - <strong style="color:#1ce06b">25 %</strong> al canister soberano X39_JOSEPH (<code style="color:#f0b400">bc1q6tkt7x38</code>), destino de la firma notarial historica del bloque #952131. El sistema se sustenta solo.</p>
 <div class="x39p-grid">
 <div class="x39p-card"><div class="x39p-cardtier">Free</div><div class="x39p-price">0 EUR<small> / firma</small></div><ul class="x39p-feat"><li>1 firma threshold-ECDSA</li><li>Recibo verificable offline</li><li>Sin tarjeta, solo email</li></ul><a class="x39p-cta" href="mailto:grants@x39matrix.org">Solicitar gratis</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Single</div><div class="x39p-price">9 EUR<small> / firma</small></div><ul class="x39p-feat"><li>ECDSA o Schnorr BIP-340</li><li>Recibo + .ots Bitcoin</li><li>Pago BTC instantaneo</li></ul><a class="x39p-cta" href="#pricing">Pagar 9 EUR en BTC</a></div>
-<div class="x39p-card" style="border-color:#f0b400"><div class="x39p-cardtier">Pack 10</div><div class="x39p-price">75 EUR<small> / 7,50/firma</small></div><ul class="x39p-feat"><li>10 firmas anuales</li><li>Email automatico</li><li>Verificador offline</li></ul><a class="x39p-cta" href="#pricing">Pagar 75 EUR</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Studio</div><div class="x39p-price">250 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>50 firmas anuales</li><li>Recibo PDF + .ots</li><li>Email automatico</li></ul><a class="x39p-cta" href="#pricing">Pagar 250 EUR</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Office</div><div class="x39p-price">500 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>100 firmas anuales</li><li>Logo opcional en recibo</li><li>Soporte email 48h</li></ul><a class="x39p-cta" href="#pricing">Pagar 500 EUR</a></div>
-<div class="x39p-card"><div class="x39p-cardtier">Corporate</div><div class="x39p-price">3.500 EUR<small> / 3,50/firma</small></div><ul class="x39p-feat"><li>1.000 firmas anuales</li><li>Webhook integrable</li><li>Reporte mensual</li></ul><a class="x39p-cta" href="#pricing">Pagar 3.500 EUR</a></div>
+<div class="x39p-card"><div class="x39p-cardtier">Single</div><div class="x39p-price">9 EUR<small> / firma</small></div><ul class="x39p-feat"><li>ECDSA o Schnorr BIP-340</li><li>Recibo + .ots Bitcoin</li><li>Pago BTC instantaneo</li></ul><button type="button" class="x39p-cta" data-pay="9">Pagar 9 EUR en BTC</button></div>
+<div class="x39p-card" style="border-color:#f0b400"><div class="x39p-cardtier">Pack 10</div><div class="x39p-price">75 EUR<small> / 7,50/firma</small></div><ul class="x39p-feat"><li>10 firmas anuales</li><li>Email automatico</li><li>Verificador offline</li></ul><button type="button" class="x39p-cta" data-pay="75">Pagar 75 EUR</button></div>
+<div class="x39p-card"><div class="x39p-cardtier">Studio</div><div class="x39p-price">250 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>50 firmas anuales</li><li>Recibo PDF + .ots</li><li>Email automatico</li></ul><button type="button" class="x39p-cta" data-pay="250">Pagar 250 EUR</button></div>
+<div class="x39p-card"><div class="x39p-cardtier">Office</div><div class="x39p-price">500 EUR<small> / 5/firma</small></div><ul class="x39p-feat"><li>100 firmas anuales</li><li>Logo opcional en recibo</li><li>Soporte email 48h</li></ul><button type="button" class="x39p-cta" data-pay="500">Pagar 500 EUR</button></div>
+<div class="x39p-card"><div class="x39p-cardtier">Corporate</div><div class="x39p-price">3.500 EUR<small> / 3,50/firma</small></div><ul class="x39p-feat"><li>1.000 firmas anuales</li><li>Webhook integrable</li><li>Reporte mensual</li></ul><button type="button" class="x39p-cta" data-pay="3500">Pagar 3.500 EUR</button></div>
 <div class="x39p-card"><div class="x39p-cardtier">Enterprise</div><div class="x39p-price">24.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>5.000 firmas/mes - API ilimitada</li><li>SLA + soporte directo</li><li>derivation_path dedicado</li></ul><a class="x39p-cta" href="mailto:enterprise@x39matrix.org">Contacto</a></div>
 <div class="x39p-card"><div class="x39p-cardtier">Enterprise XL</div><div class="x39p-price">60.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>15.000 firmas/mes - 24/7</li><li>SLA 99,9 %</li><li>Auditoria trimestral</li></ul><a class="x39p-cta" href="mailto:enterprise@x39matrix.org">Contactar</a></div>
 <div class="x39p-card" style="border-color:#1ce06b"><div class="x39p-cardtier" style="color:#1ce06b">Banking</div><div class="x39p-price">120.000 EUR<small> / ano</small></div><ul class="x39p-feat"><li>50.000 firmas/mes - path dedicado</li><li>eIDAS + MiCA + DRP</li><li>SLA 99,99 %</li></ul><a class="x39p-cta" style="background:#1ce06b" href="mailto:banking@x39matrix.org">Solicitar dossier</a></div>
