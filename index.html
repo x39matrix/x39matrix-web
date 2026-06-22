@@ -171,8 +171,6 @@
     <a data-x39nav href="#hitosJunio">Hitos 2026-06</a>
     <a data-x39nav href="#archView">10 Industrias</a>
     <a data-x39nav href="#liveTerminal">Live CLI</a>
-    <a data-x39nav href="/demo/" target="_blank">Demo</a>
-    <a data-x39nav href="/manual/" target="_blank">Manual</a>
     <a data-x39nav href="#whitepaper">📑 Whitepaper</a>
     <a class="notary" href="/Notary/" data-testid="home-notary-link">🛡️ Notaría Soberana</a>
   </div>
@@ -711,13 +709,7 @@
 
         let selectedPdfLang='en';
         window.selectPdfLang=function(btn,lang){selectedPdfLang=lang;document.querySelectorAll('.pdf-lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');};
-        window.downloadPdf=function(){
-            const urls={
-                en:'/x39matrix_certification_en.html',
-                es:'https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/r7hsdjsv_x39matrix_realidad.pdf',
-                zh:'/x39matrix_certification_zh.html',
-                ar:'/x39matrix_certification_ar.html'
-            };
+        window.downloadPdf=function(){window.open('/X39MATRIX_WHITEPAPER_v1.0.pdf','_blank');};
             const a=document.createElement('a');a.href=urls[selectedPdfLang];a.download='x39matrix_certification_'+selectedPdfLang+'.pdf';a.target='_blank';a.click();
         };
 
