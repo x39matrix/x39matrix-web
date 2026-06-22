@@ -2892,5 +2892,27 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
 })();
 </script>
 
+<!-- X39_SPRINT_C_WASM_START -->
+<section style="margin:36px auto;max-width:980px;padding:24px;border:1px solid rgba(204,0,0,.45);border-radius:14px;background:#0a0606;font-family:'JetBrains Mono',monospace;color:#f5e6e6;position:relative;z-index:50">
+  <h3 style="margin:0 0 12px;font-size:13px;letter-spacing:.24em;color:#ff5a4a;text-transform:uppercase">REPRODUCE THE CANISTER · WASM HASH AUDIT</h3>
+  <p style="font-size:.75rem;color:#bfa0a0;margin-bottom:14px;line-height:1.6">
+    The deployed module hash is a deterministic SHA-256 of the WASM binary that runs on the Internet Computer.
+    Anyone can fetch it and compare against their own local build to prove byte-for-byte authenticity.
+  </p>
+  <pre style="background:#000;border:1px solid #1a0808;padding:14px;border-radius:6px;font-size:.72rem;color:#cfa3a3;overflow-x:auto;line-height:1.7;margin:0">
+<span style="color:#888"># 1) Query the live canister module hash (requires dfx)</span>
+dfx canister --network ic info bvatd-sqaaa-aaaao-baxqq-cai
+
+<span style="color:#888"># Expected:</span>
+<span style="color:#7be58a">Module hash: 0x04e565b3425fe7510ee16b02adcfe3f01abc9a2725c82a21cb08969241debd62</span>
+
+<span style="color:#888"># 2) Or via the public IC HTTP gateway (no dfx needed)</span>
+curl -fsSL https://icp0.io/api/v2/canister/bvatd-sqaaa-aaaao-baxqq-cai/read_state
+  </pre>
+  <p style="margin-top:14px;font-size:.7rem;color:#7a5050;letter-spacing:.1em">
+    Full reproducibility instructions → <a href="/Reproduce/" style="color:#ff7a6a">/Reproduce/</a>
+  </p>
+</section>
+<!-- X39_SPRINT_C_WASM_END -->
 </body>
 </html>

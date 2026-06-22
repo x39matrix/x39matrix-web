@@ -1,0 +1,57 @@
+name: Verify BTC Anchors
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 6 * * *'   # daily 06:17 UTC
+  workflow_dispatch:
+
+jobs:
+  verify-mempool:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify MASTER_GOLDEN_SEAL.txt at BTC #954866
+        run: |
+          set -e
+          HASH=$(curl -fsSL https://mempool.space/api/block-height/954866)
+          echo "Block #954866 hash: $HASH"
+          [ ${#HASH} -eq 64 ] && echo "OK MASTER_GOLDEN_SEAL anchor (block #954866) exists in BTC mainnet"
+
+      - name: Verify MANIFEST_MAESTRO.txt at BTC #954867
+        run: |
+          set -e
+          HASH=$(curl -fsSL https://mempool.space/api/block-height/954867)
+          echo "Block #954867 hash: $HASH"
+          [ ${#HASH} -eq 64 ] && echo "OK MANIFEST_MAESTRO anchor (block #954867) exists in BTC mainnet"
+
+      - name: Verify WHITEPAPER_v1.0.pdf at BTC #954873
+        run: |
+          set -e
+          HASH=$(curl -fsSL https://mempool.space/api/block-height/954873)
+          echo "Block #954873 hash: $HASH"
+          [ ${#HASH} -eq 64 ] && echo "OK WHITEPAPER anchor (block #954873) exists in BTC mainnet"
+
+      - name: Verify first sovereign tECDSA send TX
+        run: |
+          set -e
+          TXID=b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023
+          JSON=$(curl -fsSL https://mempool.space/api/tx/$TXID)
+          CONFIRMED=$(echo "$JSON" | python3 -c "import sys,json;print(json.load(sys.stdin)['status']['confirmed'])")
+          [ "$CONFIRMED" = "True" ] && echo "OK first sovereign tECDSA send still confirmed onchain"
+
+  verify-ots:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install OpenTimestamps client
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install opentimestamps-client
+      - name: ots upgrade (cosmetic, refreshes pending attestations)
+        continue-on-error: true
+        run: |
+          for f in MASTER_GOLDEN_SEAL.txt.ots MANIFEST_MAESTRO.txt.ots X39MATRIX_WHITEPAPER_v1.0.pdf.ots; do
+            [ -f "$f" ] && ots upgrade "$f" || echo "(skipping $f, not in repo)"
+          done

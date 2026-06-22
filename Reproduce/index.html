@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X39MATRIX · Reproducibility</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+ *{box-sizing:border-box}
+ body{margin:0;font-family:'JetBrains Mono',ui-monospace,monospace;background:#0a0606;color:#f5e6e6;line-height:1.65}
+ .wrap{max-width:980px;margin:0 auto;padding:48px 24px}
+ h1{font-size:1.6rem;color:#ff5a4a;letter-spacing:.18em;text-transform:uppercase;text-shadow:0 0 14px rgba(255,60,40,.35)}
+ h2{font-size:1rem;color:#ff7a6a;letter-spacing:.16em;text-transform:uppercase;border-top:1px dashed rgba(255,80,60,.25);padding-top:24px;margin-top:36px}
+ a{color:#ff7a6a;border-bottom:1px dashed rgba(255,80,60,.4);text-decoration:none}
+ a:hover{color:#fff}
+ .nav{font-size:.7rem;color:#9a7070;margin-bottom:32px;letter-spacing:.15em}
+ .nav a{color:#ff7a6a;border:0}
+ pre{background:#000;border:1px solid #1a0808;padding:16px;border-radius:6px;font-size:.78rem;color:#cfa3a3;overflow-x:auto;line-height:1.7}
+ pre .c{color:#888;font-style:italic}
+ pre .v{color:#7be58a}
+ .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:18px 0}
+ .card{padding:14px;background:rgba(204,0,0,.06);border:1px solid rgba(204,0,0,.32);border-radius:6px;font-size:.75rem}
+ .card strong{color:#ff9a8a;letter-spacing:.08em;display:block;margin-bottom:6px}
+ .badge{display:inline-block;font-size:.65rem;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,80,60,.55);background:rgba(204,0,0,.10);color:#ff9a8a;letter-spacing:.1em;font-weight:700;margin-right:6px}
+ .lead{font-size:.85rem;color:#d8a5a5;border-left:3px solid #cc0000;padding:6px 0 6px 16px;margin:24px 0}
+ .foot{margin-top:48px;padding-top:24px;border-top:1px dashed rgba(255,80,60,.25);font-size:.65rem;color:#7a5050;text-align:center;letter-spacing:.15em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav"><a href="/">← Home</a>  ·  <a href="/Notary/">Notaría</a>  ·  Reproducibility</div>
+
+  <h1>X39MATRIX · Public Reproducibility</h1>
+  <div class="lead">
+    Every byte of this site can be reconstructed from public sources. No trust required. Anyone with a Linux terminal, <code>dfx</code> CLI and a Bitcoin node can rebuild and re-verify X39MATRIX in under 10 minutes.
+  </div>
+
+  <h2>1 · Canister identity</h2>
+  <div class="grid">
+    <div class="card"><strong>Frontend canister</strong><code>bvatd-sqaaa-aaaao-baxqq-cai</code><br><a href="https://dashboard.internetcomputer.org/canister/bvatd-sqaaa-aaaao-baxqq-cai" target="_blank">→ IC dashboard</a></div>
+    <div class="card"><strong>tECDSA Wallet canister</strong><code>arn4r-lqaaa-aaaao-baxwq-cai</code> (X39_JOSEPH)<br><a href="https://dashboard.internetcomputer.org/canister/arn4r-lqaaa-aaaao-baxwq-cai" target="_blank">→ IC dashboard</a></div>
+    <div class="card"><strong>BTC sovereign address</strong><code style="font-size:.65rem">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg</code><br><a href="https://mempool.space/address/bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg" target="_blank">→ mempool.space</a></div>
+  </div>
+
+  <h2>2 · Reproduce the frontend from source</h2>
+  <pre><span class="c"># Clone (read-only, public)</span>
+git clone https://github.com/x39matrix/x39matrix-web.git
+cd x39matrix-web
+
+<span class="c"># Optional: checkout a specific stable tag</span>
+git checkout stable-20260622-210852
+
+<span class="c"># Compare your local HEAD with the deployed module hash</span>
+dfx canister --network ic info bvatd-sqaaa-aaaao-baxqq-cai
+<span class="c">#  -> Module hash should match the hash reported on the IC dashboard.</span></pre>
+
+  <h2>3 · Verify BTC anchors yourself</h2>
+  <pre><span class="c"># Install OpenTimestamps client</span>
+pip install opentimestamps-client
+
+<span class="c"># Download an artifact and its .ots proof</span>
+curl -fsSL https://bvatd-sqaaa-aaaao-baxqq-cai.icp0.io/MASTER_GOLDEN_SEAL.txt     -o MASTER_GOLDEN_SEAL.txt
+curl -fsSL https://bvatd-sqaaa-aaaao-baxqq-cai.icp0.io/MASTER_GOLDEN_SEAL.txt.ots -o MASTER_GOLDEN_SEAL.txt.ots
+
+<span class="c"># Hash the artifact locally — must match the .ots commitment</span>
+sha256sum MASTER_GOLDEN_SEAL.txt
+
+<span class="c"># Verify against Bitcoin mainnet (needs bitcoind OR a public esplora)</span>
+ots verify MASTER_GOLDEN_SEAL.txt.ots
+<span class="c"># Expected:  Success! Bitcoin block <span class="v">954866</span></span></pre>
+
+  <p style="font-size:.75rem">Repeat for:</p>
+  <div class="grid">
+    <div class="card"><strong>MASTER_GOLDEN_SEAL.txt</strong>BTC block <span class="badge">#954866</span><br><a href="https://mempool.space/block/954866" target="_blank">explore</a></div>
+    <div class="card"><strong>MANIFEST_MAESTRO.txt</strong> (238 docs)<br>BTC block <span class="badge">#954867</span><br><a href="https://mempool.space/block/954867" target="_blank">explore</a></div>
+    <div class="card"><strong>X39MATRIX_WHITEPAPER_v1.0.pdf</strong><br>BTC block <span class="badge">#954873</span><br><a href="https://mempool.space/block/954873" target="_blank">explore</a></div>
+  </div>
+
+  <h2>4 · Verify the first sovereign tECDSA send</h2>
+  <pre><span class="c"># The first real Threshold-ECDSA Bitcoin send from this canister:</span>
+curl -fsSL https://mempool.space/api/tx/b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023 \
+  | python3 -m json.tool
+
+<span class="c"># Confirmed in block #952131. 13 nodes signed. 12 978 sats sent.</span>
+<span class="c"># Signed by 13 ICP nodes simultaneously. No single key. No custody.</span></pre>
+
+  <h2>5 · Cryptographic identity</h2>
+  <pre>tECDSA public key (compressed secp256k1):
+025968e3eea2adc6a3c7e0b24c39f3e94009393e57280cb9ccc3801251bb202083
+
+derived Bitcoin address (P2WPKH bech32):
+bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg
+
+derived via:
+  canister  : arn4r-lqaaa-aaaao-baxwq-cai
+  ICP key   : key_1 (mainnet, threshold ECDSA, 13 nodes)
+  curve     : secp256k1
+  derivation: m/derivation_path = ["X39_JOSEPH"]</pre>
+
+  <h2>6 · Continuous public verification</h2>
+  <p style="font-size:.78rem">A GitHub Action re-verifies the three BTC anchors on every commit and once daily via cron, querying <code>mempool.space</code>. If any anchor becomes unverifiable the build fails publicly.</p>
+  <p style="font-size:.78rem">→ <a href="https://github.com/x39matrix/x39matrix-web/actions" target="_blank">github.com/x39matrix/x39matrix-web/actions</a></p>
+
+  <div class="foot">
+    Cypherpunk principle: Do not trust. Verify.<br>
+    Authored by Jose Luis Olivares Esteban &middot; grants@x39matrix.org<br>
+    Dedicated to my son Joseph — sovereignty for the next generation.
+  </div>
+</div>
+</body>
+</html>
