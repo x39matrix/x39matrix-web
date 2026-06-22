@@ -10,7 +10,7 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{background:#1a1a1a;color:#fafafa;font-family:'JetBrains Mono',monospace;min-height:100vh;overflow-x:hidden;}
         #matrixCanvas{position:fixed;inset:0;z-index:1;opacity:0.7;}
-        .bg-universe{position:fixed;inset:0;z-index:0;background-image:url('https://customer-assets.emergentagent.com/job_nivel-scan/artifacts/340zhz87_WhatsApp%20Image%202026-04-11%20at%2022.26.42.jpeg');background-size:cover;background-position:center;filter:hue-rotate(280deg) saturate(1.2);opacity:0.5;}
+        .bg-universe{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 30% 20%, rgba(204,0,0,0.18) 0%, transparent 55%),radial-gradient(ellipse at 70% 80%, rgba(180,20,20,0.15) 0%, transparent 55%),#050505;opacity:1;}
         .container{max-width:1400px;margin:0 auto;padding:24px;position:relative;z-index:1;}
         .lang-switch{position:fixed;top:16px;right:16px;z-index:9999;display:flex;gap:3px;background:rgba(0,0,0,0.8);border:1px solid rgba(204,0,0,0.3);padding:3px;backdrop-filter:blur(10px);}
         .lang-btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:4px 8px;border:none;cursor:pointer;transition:0.2s;background:transparent;color:#fff;}
@@ -396,7 +396,7 @@
                         <button class="cli-cmd-btn" onclick="runLiveCmd('stress')">STRESS TEST</button>
                         <button class="cli-cmd-btn" onclick="runLiveCmd('topology')">TOPOLOGY</button>
                         <button class="cli-cmd-btn" onclick="runLiveCmd('verify')">VERIFY ED25519</button>
-                        <a href="https://nivel-scan.preview.emergentagent.com/x39matrix-cli.sh" download="x39matrix-cli" class="cli-cmd-btn" style="text-decoration:none;background:rgba(204,0,0,0.15);border-color:rgba(204,0,0,0.5);">DOWNLOAD CLI</a>
+                        <a href="/PUBLIC_VERIFY_X39_FULL.sh" download="x39_verify.sh" class="cli-cmd-btn" style="text-decoration:none;background:rgba(204,0,0,0.15);border-color:rgba(204,0,0,0.5);">DOWNLOAD CLI</a>
                     </div>
                 </div>
             </div>
