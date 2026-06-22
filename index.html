@@ -496,7 +496,65 @@ button.x39p-cta {
 button.x39p-cta:hover { opacity: .9; }
 </style>
 </head>
-<body><div class="x39p-banner">LAST SEAL 2026-06-03 03:41 UTC - BLOCK #952174 - 51/51 CLAIMS VERIFIED - <a href="https://github.com/x39matrix/x39matrix" target="_blank">github.com/x39matrix</a></div>
+<body>
+<!-- X39_NAV_V23 -->
+<style>
+  #x39-nav-v23 {
+    position: sticky; top: 0; z-index: 9999;
+    background: rgba(8,10,14,0.92);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-bottom: 1px solid rgba(255,215,0,0.18);
+    padding: 10px 14px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+  }
+  #x39-nav-v23 .x39-nav-inner {
+    display: flex; gap: 22px; align-items: center;
+    overflow-x: auto; scrollbar-width: thin;
+    white-space: nowrap; -webkit-overflow-scrolling: touch;
+  }
+  #x39-nav-v23 .x39-nav-inner::-webkit-scrollbar { height: 4px; }
+  #x39-nav-v23 .x39-nav-inner::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.35); border-radius: 2px; }
+  #x39-nav-v23 .x39-brand {
+    font-weight: 700; letter-spacing: 0.5px; color: #FFD700;
+    text-decoration: none; flex-shrink: 0;
+  }
+  #x39-nav-v23 a[data-x39nav] {
+    color: #d8d8d8; text-decoration: none; flex-shrink: 0;
+    padding: 4px 2px; border-bottom: 2px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  #x39-nav-v23 a[data-x39nav]:hover { color: #FFD700; border-bottom-color: #FFD700; }
+  @media (max-width: 640px) {
+    #x39-nav-v23 { font-size: 13px; padding: 8px 10px; }
+    #x39-nav-v23 .x39-nav-inner { gap: 16px; }
+  }
+</style>
+<nav id="x39-nav-v23" aria-label="Navegación X39Matrix v2.3">
+  <div class="x39-nav-inner">
+    <a class="x39-brand" href="#top">X39<span style="color:#fff">MATRIX</span></a>
+      <a href="#omega-hash" data-x39nav>Omega Hash</a>
+      <a href="#milestones" data-x39nav>Hitos</a>
+      <a href="#anchors" data-x39nav>Anchors</a>
+      <a href="#verify" data-x39nav>Verificación</a>
+      <a href="#verify-results" data-x39nav>Verify Results</a>
+      <a href="#commands" data-x39nav>Commands</a>
+      <a href="#pricing" data-x39nav>Pricing</a>
+      <a href="#audit" data-x39nav>Auditoría</a>
+      <a href="#dashboard" data-x39nav>Dashboard</a>
+      <a href="#x39-pay-status" data-x39nav>X39 Pay Status</a>
+      <a href="#pay-sats" data-x39nav>Pay Sats</a>
+      <a href="#x39-pay-txid-panel" data-x39nav>X39 Pay Txid Panel</a>
+      <a href="#x39-2026-anchors" data-x39nav>X39 2026 Anchors</a>
+      <a href="#x39-2026-commands" data-x39nav>X39 2026 Commands</a>
+      <a href="#notaria" data-x39nav>Notaría</a>
+      <a href="#niza-pq-filing" data-x39nav>Niza Pq Filing</a>
+      <a href="#authorship" data-x39nav>Authorship</a>
+  </div>
+</nav>
+<!-- /X39_NAV_V23 -->
+<div class="x39p-banner">LAST SEAL 2026-06-03 03:41 UTC - BLOCK #952174 - 51/51 CLAIMS VERIFIED - <a href="https://github.com/x39matrix/x39matrix" target="_blank">github.com/x39matrix</a></div>
 
 <!-- ═════════ TOP BAR ═════════ -->
 <header class="topbar">

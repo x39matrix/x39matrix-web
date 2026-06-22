@@ -1,0 +1,46 @@
+================================================================
+  X39MATRIX — MANIFEST_MAESTRO
+  Fecha de generación: 2026-06-22T16:22:14Z
+  Operador: Jose Luis Olivares Esteban <grants@x39matrix.org>
+  Protocolo: X-39MATRIX (9-Layer Sovereign Verification)
+  Ancla: Bitcoin Mainnet vía OpenTimestamps
+================================================================
+
+ARCHIVO (.ots)                                                    | BLOQUE BTC   | TXID / ESTADO
+----------------------------------------------------------------- + ------------ + ----------------------------------------------------------------
+x39matrix/x39matrix/X39_KEY_CONSOLIDATION_v1/manifest.json.asc.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/verification_report_20260602_211942.json.ots  | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/verification_report_20260606_114415.json.ots  | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/x39_topos_axiom.md.ots                        | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/verification_report_20260602_210846.json.ots  | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_OMPI_Filing_Pack/x39_HRF_evidence_bundle_2026-06-04.zip.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_OMPI_Filing_Pack/x39_topos_axiom.mldsa87.sig.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_OMPI_Filing_Pack/x39_sovereign.mlkem1024.pk.pem.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_OMPI_Filing_Pack/X39_PQ_SOVEREIGN_FINGERPRINT.txt.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_OMPI_Filing_Pack/x39_sovereign_identity.json.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_OMPI_Filing_Pack/x39_sovereign.mldsa87.pk.pem.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/verification_report_20260602_213154.json.ots  | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/verify_x39_total.sh.ots                       | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/evidence/pq_super_fortify_20260608T203726Z/SHA256SUMS.txt.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/test_run_20260602.log.ots                     | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_PQ_SOVEREIGN/x39_topos_axiom.mldsa87.sig.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_PQ_SOVEREIGN/x39_sovereign.mlkem1024.pk.pem.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_PQ_SOVEREIGN/X39_PQ_SOVEREIGN_FINGERPRINT.txt.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_PQ_SOVEREIGN/x39_sovereign_identity.json.ots | PENDING      | (esperando confirmación)
+x39matrix/x39matrix/X39_PQ_SOVEREIGN/x39_sovereign.mldsa87.pk.pem.ots | PENDING      | (esperando confirmación)
+x39matrix-web/MASTER_GOLDEN_SEAL.txt.ots                          | PENDING      | (esperando confirmación)
+x39matrix-web/notary/MASTER_GOLDEN_SEAL.txt.ots                   | PENDING      | (esperando confirmación)
+x39matrix-web/notary/x39_cert_pqc_bundle.tar.gz.ots               | PENDING      | (esperando confirmación)
+x39matrix-web/evidence/x39matrix_audit_response_v1.md.ots         | PENDING      | (esperando confirmación)
+x39matrix-web/evidence/x39matrix_internal_analysis_global_v1.md.ots | PENDING      | (esperando confirmación)
+
+================================================================
+  RESUMEN
+    Total .ots:        25
+    Confirmados BTC:   0
+    Pendientes:        25
+================================================================
+
+Verificación pública:
+  ots verify <archivo.ots>
+  Explorador: https://mempool.space/tx/<TXID>
