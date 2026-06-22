@@ -171,20 +171,38 @@ if [ $? -eq 0 ]; then ST[1]="OK"; ok "Verify-Yourself listo"; else ST[1]="ERR"; 
 step "BLOQUE 2 — Dedicatoria a Joseph"
 
 python3 - "$HOME_FILE" <<'PY'
-import sys, pathlib
+import sys, re, pathlib
 p = pathlib.Path(sys.argv[1])
 html = p.read_text(encoding="utf-8")
-MARK = "<!-- X39_SPRINT_B_DEDICATION -->"
-DEDICATION = f'''{MARK}<div style="text-align:center;font-size:0.6rem;color:#9a7070;font-style:italic;margin-top:-6px;margin-bottom:14px;letter-spacing:0.18em">· dedicated to my son <strong style="color:#ff7a6a;font-style:normal">Joseph</strong> — sovereignty for the next generation ·</div>
+MARK_S = "<!-- X39_SPRINT_B_DEDICATION_START -->"
+MARK_E = "<!-- X39_SPRINT_B_DEDICATION_END -->"
+OLD_INLINE_MARK = "<!-- X39_SPRINT_B_DEDICATION -->"
+
+DEDICATION = f'''{MARK_S}<div style="text-align:center;font-family:'JetBrains Mono',monospace;margin-top:-4px;margin-bottom:18px" data-testid="joseph-dedication">
+  <div style="font-size:0.66rem;color:#d8a5a5;font-style:italic;letter-spacing:0.10em;line-height:1.55;max-width:680px;margin:0 auto">
+    For <strong style="color:#ff7a6a;font-style:normal">Joseph</strong> — the first of my blood born already sovereign.
+  </div>
+  <div style="font-size:0.58rem;color:#9a7070;letter-spacing:0.22em;margin-top:6px;font-weight:700">
+    His name lives in Bitcoin. <span style="color:#ff5a4a">UNCENSORABLE.</span> <span style="color:#ff5a4a">IRREVOCABLE.</span> <span style="color:#ff5a4a">INDELIBLE.</span>
+  </div>
+</div>{MARK_E}
 '''
 ANCHOR = '<div style="font-size:0.9rem;color:#ff3333;font-weight:700;text-shadow:0 0 10px rgba(255,51,51,0.4);margin-bottom:14px;text-align:center;letter-spacing:0.15em;">SOVEREIGN CRYPTOGRAPHIC IDENTIFIER · X39_JOSEPH</div>'
 
-if MARK in html:
-    print("  -> ya estaba aplicado")
-elif ANCHOR in html:
+# Limpiar la version vieja inline-mark (si quedo de un sprint anterior)
+old_inline_re = re.compile(re.escape(OLD_INLINE_MARK) + r'<div[^>]*>\s*·\s*dedicated to my son.*?</div>\s*', re.S)
+html = old_inline_re.sub("", html)
+
+# Tambien limpiar version start/end previa para reemplazo limpio
+old_block_re = re.compile(re.escape(MARK_S) + r".*?" + re.escape(MARK_E) + r"\s*", re.S)
+existed = bool(old_block_re.search(html))
+html = old_block_re.sub("", html)
+
+if ANCHOR in html:
     html = html.replace(ANCHOR, ANCHOR + "\n" + DEDICATION, 1)
     p.write_text(html, encoding="utf-8")
-    print("  -> dedicatoria a Joseph insertada bajo el titulo")
+    msg = "ACTUALIZADA" if existed else "INSERTADA"
+    print(f"  -> dedicatoria a Joseph {msg} (Uncensorable · Irrevocable · Indelible)")
 else:
     print("  -> WARN: anchor X39_JOSEPH no encontrado")
 print("OK")
