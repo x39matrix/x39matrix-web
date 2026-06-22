@@ -495,6 +495,53 @@ button.x39p-cta {
 }
 button.x39p-cta:hover { opacity: .9; }
 </style>
+<!-- X39_FIX_2_LANG_DEDUP -->
+<style>#x39-lang-switcher-root{display:none!important;visibility:hidden!important}</style>
+<!-- X39_FIX_3_OLD_ANCHORS_HIDDEN -->
+<style>
+ /* Ocultar linea informativa de anclas obsoletas (queda redundante con widget v2) */
+ span[style*="A39C8A"]:has-text("Bitcoin anchor blocks"){display:none!important}
+</style>
+<script>
+(function(){
+  // Fallback robusto sin :has-text (no soportado en navegadores estandar)
+  try{
+    document.querySelectorAll('span').forEach(function(s){
+      var t = (s.textContent||'').trim();
+      if(t.indexOf('Bitcoin anchor blocks: #952148') === 0){
+        s.style.display='none';
+        s.setAttribute('data-x39-hidden','obsolete-anchors');
+      }
+    });
+  }catch(e){}
+})();
+</script>
+<!-- X39_FIX_4_RED_OVERRIDE -->
+<style>
+ /* Anula verdes residuales y los convierte en rojo soberano */
+ .x39p-banner{background:#cc0000!important;color:#fff!important;text-shadow:0 0 8px rgba(0,0,0,.4)}
+ .x39p-banner a{color:#fff!important;border-bottom:1px dashed #fff}
+ a[style*="1ce06b"], [style*="color:#1ce06b"], [style*="color: #1ce06b"]{color:#ff5a4a!important}
+ [style*="background:#1ce06b"], [style*="background: #1ce06b"]{background:#cc0000!important;color:#fff!important}
+ [style*="border-color:#1ce06b"], [style*="border:1px solid #1ce06b"]{border-color:#ff5a4a!important}
+ /* Italic serif del hero -> monospace coherente con Home */
+ .hero em, .hero i, h1 em, h1 i{font-style:normal!important;font-family:'JetBrains Mono',monospace!important}
+</style>
+<!-- X39_FIX_6_TABS_SCROLLABLE -->
+<style>
+ /* Permitir scroll horizontal en barra de nav con muchas tabs */
+ header.topbar nav, header nav, nav.topnav, .x39p-nav, [data-x39nav], nav[role="navigation"]{
+   overflow-x:auto!important;
+   scrollbar-width:thin;
+   scrollbar-color:#cc0000 transparent;
+   white-space:nowrap;
+   -webkit-overflow-scrolling:touch;
+ }
+ header.topbar nav::-webkit-scrollbar, nav.topnav::-webkit-scrollbar{height:4px}
+ header.topbar nav::-webkit-scrollbar-thumb, nav.topnav::-webkit-scrollbar-thumb{background:#cc0000;border-radius:2px}
+ /* Tabs sueltas no se rompen a 2 lineas */
+ header.topbar nav > a, nav.topnav > a, .x39p-nav > a{flex-shrink:0!important;white-space:nowrap!important}
+</style>
 </head>
 <body>
 <!-- X39_NOTARY_HOMELINK -->
@@ -2434,7 +2481,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "authorship.human": "intuición humana",
     "summary.stats": "10 canisters · 7,1 × 10¹⁸ operations audited · 52 PETA-OPS/s · 4 substrates · 0 violations · 1 operator",
     "rpc.canonical": "RPC públicos oficiales. URLs canónicas en GitHub, blockstream.info, mempool.space, arbiscan, solscan e ic-api.internetcomputer.org.",
-    "hero.status": "✓ 51/51 axiomas verificados · 235/238 documentos anclados a Bitcoin",
+    "hero.status": "✓ 51/51 axiomas verificados · 238/238 documentos anclados a Bitcoin",
     "milestones.title": "Hitos 2026-06-10",
     "milestones.intro": "Sellos públicos en cuatro cadenas independientes. Reproducible en 30 segundos.",
     "nav.verify": "Verificar",
@@ -2503,7 +2550,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "authorship.human": "human intuition",
     "summary.stats": "11 canisters · 7.1 × 10¹⁸ operations audited · 52 PETA-OPS/s · 4 substrates · 0 violations · 1 operator",
     "rpc.canonical": "Official public RPCs. Canonical URLs on GitHub, blockstream.info, mempool.space, arbiscan, solscan and ic-api.internetcomputer.org.",
-    "hero.status": "✓ 51/51 axioms verified · 235/238 documents anchored to Bitcoin",
+    "hero.status": "✓ 51/51 axioms verified · 238/238 documents anchored to Bitcoin",
     "milestones.title": "Milestones 2026-06-10",
     "milestones.intro": "Public seals across four independent chains. Reproducible in 30 seconds.",
     "nav.verify": "Verify",
@@ -2572,7 +2619,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "authorship.human": "حدس بشري",
     "summary.stats": "11 كانيستر · 7.1 × 10¹⁸ عملية مدققة · 52 PETA-OPS/ث · 4 ركائز · 0 انتهاكات · 1 مشغل",
     "rpc.canonical": "RPCs عامة رسمية. عناوين URL قانونية على GitHub، blockstream.info، mempool.space، arbiscan، solscan و ic-api.internetcomputer.org.",
-    "hero.status": "✓ تم التحقق من 51/51 بديهية · 235/238 وثيقة مرتبطة بـ Bitcoin",
+    "hero.status": "✓ تم التحقق من 51/51 بديهية · 238/238 وثيقة مرتبطة بـ Bitcoin",
     "milestones.title": "إنجازات 2026-06-10",
     "milestones.intro": "أختام عامة على أربع سلاسل مستقلة. قابلة للتكرار في 30 ثانية.",
     "nav.verify": "تحقق",
@@ -2641,7 +2688,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "authorship.human": "人間の直観",
     "summary.stats": "11 キャニスター · 7.1 × 10¹⁸ 監査済みオペレーション · 52 PETA-OPS/秒 · 4 基盤 · 違反 0 · 1 オペレータ",
     "rpc.canonical": "公式パブリック RPC。GitHub、blockstream.info、mempool.space、arbiscan、solscan、ic-api.internetcomputer.org の正規 URL。",
-    "hero.status": "✓ 51/51 公理検証済み · 235/238 ドキュメントが Bitcoin にアンカー",
+    "hero.status": "✓ 51/51 公理検証済み · 238/238 ドキュメントが Bitcoin にアンカー",
     "milestones.title": "マイルストーン 2026-06-10",
     "milestones.intro": "4 つの独立したチェーンに公開シール。30 秒で再現可能。",
     "nav.verify": "検証",
@@ -2710,7 +2757,7 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
     "authorship.human": "人类直觉",
     "summary.stats": "11 容器 · 7.1 × 10¹⁸ 已审计操作 · 52 PETA-OPS/秒 · 4 基底 · 0 违规 · 1 运营商",
     "rpc.canonical": "官方公共 RPC。GitHub、blockstream.info、mempool.space、arbiscan、solscan 和 ic-api.internetcomputer.org 上的规范 URL。",
-    "hero.status": "✓ 已验证 51/51 公理 · 235/238 文档锚定到 Bitcoin",
+    "hero.status": "✓ 已验证 51/51 公理 · 238/238 文档锚定到 Bitcoin",
     "milestones.title": "里程碑 2026-06-10",
     "milestones.intro": "四条独立链上的公开印章。30 秒内可重现。",
     "nav.verify": "验证",
@@ -2795,38 +2842,40 @@ destino: <span style="color:#f0b400">bc1q6tkt7x38utprskxmwa9vfw4eypm84xxsj9r3xg<
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0fce6c56c47334a',t:'MTc4MjE0ODU5Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <!-- /X39_I18N_NOTARY -->
 
-<!-- X39_BTC_ANCHORS_v1_START -->
-<style>
- .x39-anchors{margin:32px auto;max-width:980px;padding:20px 24px;border:1px solid #2a2a2a;border-radius:14px;background:#0b0b0b;color:#e8e8e8;font-family:ui-monospace,Menlo,Consolas,monospace}
- .x39-anchors h3{margin:0 0 14px;font-size:14px;letter-spacing:.18em;color:#9adfa1;text-transform:uppercase}
- .x39-anchors ul{list-style:none;margin:0;padding:0}
- .x39-anchors li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px dashed #1d1d1d;flex-wrap:wrap}
- .x39-anchors li:first-child{border-top:0}
- .x39-anchors .f{font-size:13px;color:#cfcfcf;word-break:break-all}
- .x39-bdg{font-size:11px;padding:4px 10px;border-radius:999px;letter-spacing:.08em;text-decoration:none;display:inline-block}
- .x39-bdg.ok{background:#0e3b1c;color:#7be58a;border:1px solid #1c6a32}
- .x39-bdg.pending{background:#3b2a0e;color:#ffd27d;border:1px solid #6a4b1c}
- .x39-bdg a,a.x39-bdg{color:inherit;text-decoration:none}
- .x39-anchors .foot{margin-top:12px;font-size:11px;color:#888;letter-spacing:.06em}
+
+<!-- X39_BTC_ANCHORS_v2_START -->
+<style id="x39-anchors-v2-style">
+ .x39-anchors-v2{position:relative;z-index:9999;isolation:isolate;margin:48px auto;max-width:980px;padding:24px 28px;border:1px solid rgba(204,0,0,.55);border-radius:14px;background:#0a0606;color:#f5e6e6;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 40px rgba(204,0,0,.18),inset 0 0 24px rgba(204,0,0,.08)}
+ .x39-anchors-v2 h3{margin:0 0 18px;font-size:13px;letter-spacing:.22em;color:#ff5a4a;text-transform:uppercase;text-shadow:0 0 12px rgba(255,60,40,.35)}
+ .x39-anchors-v2 ul{list-style:none;margin:0;padding:0}
+ .x39-anchors-v2 li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px dashed rgba(204,0,0,.22);flex-wrap:wrap}
+ .x39-anchors-v2 li:first-child{border-top:0}
+ .x39-anchors-v2 .f{font-size:13px;color:#f0d8d8;word-break:break-all}
+ .x39-bdg-r{font-size:11px;padding:5px 12px;border-radius:999px;letter-spacing:.1em;text-decoration:none;display:inline-block;font-weight:700}
+ .x39-bdg-r.ok{background:rgba(204,0,0,.18);color:#ff7a6a;border:1px solid rgba(255,80,60,.65);box-shadow:0 0 14px rgba(204,0,0,.28)}
+ .x39-bdg-r.ok:hover{background:rgba(204,0,0,.35);color:#fff}
+ .x39-bdg-r.pending{background:rgba(255,170,40,.10);color:#ffc070;border:1px solid rgba(255,170,40,.55)}
+ .x39-anchors-v2 .foot{margin-top:14px;font-size:11px;color:#9a7070;letter-spacing:.08em}
+ @media(max-width:640px){.x39-anchors-v2{margin:24px 12px;padding:18px}}
 </style>
-<section class="x39-anchors" id="x39-btc-anchors" data-i18n-section="btc-anchors">
-  <h3>BTC ANCHORS &mdash; OpenTimestamps Status</h3>
+<section class="x39-anchors-v2" id="x39-btc-anchors" data-testid="x39-btc-anchors-widget">
+  <h3>BTC ANCHORS &mdash; OpenTimestamps · Bitcoin Mainnet</h3>
   <ul>
     <li>
       <span class="f">MASTER_GOLDEN_SEAL.txt</span>
-      <a class="x39-bdg ok" href="https://mempool.space/block/954866" target="_blank" rel="noopener">&#10003; BTC #954866</a>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/954866" target="_blank" rel="noopener" data-testid="anchor-mgs">&#10003; BTC #954866</a>
     </li>
     <li>
-      <span class="f">MANIFEST_MAESTRO.txt &nbsp;<small>(238 anchors)</small></span>
-      <a class="x39-bdg ok" href="https://mempool.space/block/954867" target="_blank" rel="noopener">&#10003; BTC #954867</a>
+      <span class="f">MANIFEST_MAESTRO.txt &nbsp;<small style="opacity:.6">(238 anchors)</small></span>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/954867" target="_blank" rel="noopener" data-testid="anchor-manifest">&#10003; BTC #954867</a>
     </li>
     <li>
       <span class="f">X39MATRIX_WHITEPAPER_v1.0.pdf</span>
-      <span class="x39-bdg ok">&#10003; BTC #954873</span>
+      <a class="x39-bdg-r ok" href="https://mempool.space/block/954873" target="_blank" rel="noopener" data-testid="anchor-wp">&#10003; BTC #954873</a>
     </li>
   </ul>
   <div class="foot">Verifiable on Bitcoin mainnet via OpenTimestamps (.ots) &middot; mempool.space</div>
 </section>
-<!-- X39_BTC_ANCHORS_v1_END -->
+<!-- X39_BTC_ANCHORS_v2_END -->
 </body>
 </html>
