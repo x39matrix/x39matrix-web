@@ -1,0 +1,67 @@
+<script>
+(function(){
+  'use strict';
+  // X39MATRIX i18n engine v1.0 — sovereign, no external deps
+  var DICT = null;
+  try {
+    var raw = document.getElementById('x39-i18n-dict');
+    if (raw) DICT = JSON.parse(raw.textContent);
+  } catch(e) { console.warn('x39-i18n: dict parse failed', e); }
+
+  var RTL = { ar: true };
+
+  function applyLang(lang) {
+    if (!DICT || !DICT[lang]) {
+      console.warn('x39-i18n: lang not found:', lang);
+      return;
+    }
+    var d = DICT[lang];
+    // Aplicar a cada elemento con data-i18n
+    var nodes = document.querySelectorAll('[data-i18n]');
+    nodes.forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if (d[key]) {
+        // Guardar el original la primera vez
+        if (!el.hasAttribute('data-i18n-original')) {
+          el.setAttribute('data-i18n-original', el.innerHTML);
+        }
+        el.innerHTML = d[key];
+      } else if (el.hasAttribute('data-i18n-original')) {
+        // Fallback al original si no hay traducción
+        el.innerHTML = el.getAttribute('data-i18n-original');
+      }
+    });
+    // RTL / LTR
+    document.documentElement.dir = RTL[lang] ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('x39-lang', lang); } catch(e) {}
+
+    // Resaltar el botón activo del selector
+    var btns = document.querySelectorAll('#x39-lang-switcher button');
+    btns.forEach(function(b){
+      var on = b.getAttribute('onclick') || '';
+      if (on.indexOf("'" + lang + "'") >= 0 || on.indexOf('"' + lang + '"') >= 0) {
+        b.style.color = '#FFD700';
+        b.style.fontWeight = '700';
+      } else {
+        b.style.color = '#d8d8d8';
+        b.style.fontWeight = '400';
+      }
+    });
+  }
+
+  // API pública
+  window.x39SetLang = function(lang) { applyLang(lang); };
+
+  // Cargar idioma guardado o detectar del navegador
+  document.addEventListener('DOMContentLoaded', function(){
+    var saved = null;
+    try { saved = localStorage.getItem('x39-lang'); } catch(e) {}
+    if (!saved) {
+      var nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase().slice(0,2);
+      if (['es','en','ar','ja','zh'].indexOf(nav) >= 0) saved = nav; else saved = 'es';
+    }
+    applyLang(saved);
+  });
+})();
+</script>
