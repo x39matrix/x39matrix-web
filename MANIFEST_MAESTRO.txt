@@ -1,6 +1,6 @@
 ================================================================
   X39MATRIX — MANIFEST_MAESTRO (v3 · regenerado automático)
-  Generado: 2026-06-23T12:38:35Z
+  Generado: 2026-06-23T17:04:21Z
   Operador: Jose Luis Olivares Esteban <grants@x39matrix.org>
   Ancla: Bitcoin Mainnet vía OpenTimestamps
 ================================================================
@@ -26,7 +26,7 @@ x39matrix-canonical/notary/MASTER_GOLDEN_SEAL.txt.ots                       | 95
 x39matrix-canonical/notary/X39_OMPI_DECLARATION_v1.0_FINAL.pdf.ots          | 952511       | CONFIRMED
 x39matrix-canonical/notary/x39_verify_v1.2_deployment.txt.ots               | 952586       | CONFIRMED
 .../x39matrix/evidence/pq_super_fortify_20260608T203726Z/SHA256SUMS.txt.ots | 952898       | CONFIRMED
-x39matrix-web/MANIFEST_MAESTRO.txt.ots                                      | 954865       | CONFIRMED
+x39matrix-web/MANIFEST_MAESTRO.txt.ots                                      | -            | PENDING (esperando calendario)
 x39matrix-web/MASTER_GOLDEN_SEAL.txt.ots                                    | 954862       | CONFIRMED
 x39matrix-web/RECORDS.md.ots                                                | 954980       | CONFIRMED
 x39matrix-web/RECORDS.md.v1_triple_anchor.ots                               | 954913       | CONFIRMED
@@ -192,6 +192,6 @@ x39matrix/x39matrix/x39_topos_axiom.md.ots                                  | 95
 
 ================================================================
   TOTAL .ots ......... 182
-  CONFIRMED .......... 182
-  PENDING ............ 0
+  CONFIRMED .......... 181
+  PENDING ............ 1
 ================================================================
