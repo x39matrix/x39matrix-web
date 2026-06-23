@@ -4,6 +4,9 @@ import secrets
 from datetime import datetime, timezone, timedelta
 from typing import Optional
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import jwt
 import socketio
 from fastapi import FastAPI, HTTPException, Depends, Header
@@ -293,6 +296,106 @@ async def get_manual_layers(nick: str = Depends(verify_token)):
 @app.get("/api/health")
 async def health():
     return {"status": "ok", "service": "X-39MATRIX Messenger"}
+
+# --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
+import json as _json
+import re as _re
+from fastapi import Body
+
+EMERGENT_LLM_KEY = os.environ.get("EMERGENT_LLM_KEY")
+LANG_NAMES = {
+    "en": "English",
+    "zh": "Simplified Chinese",
+    "ja": "Japanese",
+    "ar": "Arabic (Modern Standard)",
+}
+
+def _extract_json(text: str) -> dict:
+    t = (text or "").strip()
+    t = _re.sub(r"^```(?:json)?\s*", "", t)
+    t = _re.sub(r"\s*```$", "", t)
+    # try direct parse
+    try:
+        return _json.loads(t)
+    except Exception:
+        pass
+    # fallback: find first {...} block
+    m = _re.search(r"\{[\s\S]*\}", t)
+    if m:
+        try:
+            return _json.loads(m.group(0))
+        except Exception:
+            return {}
+    return {}
+
+@app.post("/api/x39/translate-bulk")
+async def x39_translate_bulk(payload: dict = Body(...)):
+    """
+    Translate Spanish strings to EN/ZH/JA/AR for X-39MATRIX i18n.
+    Body: { "strings": ["...","..."], "target_langs": ["en","zh","ja","ar"] }
+    Returns: { "en": {es: tr, ...}, "zh": {...}, ... }
+    """
+    if not EMERGENT_LLM_KEY:
+        raise HTTPException(500, "EMERGENT_LLM_KEY not configured")
+
+    from emergentintegrations.llm.chat import LlmChat, UserMessage
+
+    strings = payload.get("strings") or []
+    target_langs = payload.get("target_langs") or ["en", "zh", "ja", "ar"]
+    strings = [s for s in {str(x).strip() for x in strings} if s and len(s) > 1]
+    if not strings:
+        return {l: {} for l in target_langs}
+
+    SYSTEM_TPL = (
+        "You translate Spanish strings to {LANG}. Strict rules:\n"
+        "1. Preserve technical terms as-is: SHA-256, Bitcoin, BTC, ICP, tECDSA, "
+        "OpenTimestamps, OTS, PQC, FIPS-203/204/205, ML-KEM, ML-DSA, SLH-DSA, "
+        "canister, blockchain, mainnet, x39MATRIX, X-39MATRIX, Ω, Web Crypto API.\n"
+        "2. Preserve symbols (· → ↓ ↑ ✓ €, $, ₿) and emoji.\n"
+        "3. Preserve casing pattern: ALL-CAPS Spanish -> ALL-CAPS in target language.\n"
+        "4. Preserve punctuation and surrounding whitespace.\n"
+        "5. Tone: cypherpunk, technical, sovereign, concise. No literal/clumsy phrasing.\n"
+        "6. OUTPUT ONLY a single valid JSON object mapping the EXACT input Spanish string "
+        "to its {LANG} translation. No markdown, no code fence, no commentary."
+    )
+
+    out = {l: {} for l in target_langs}
+    CHUNK = 40
+
+    for lang in target_langs:
+        if lang not in LANG_NAMES:
+            continue
+        chat = (
+            LlmChat(
+                api_key=EMERGENT_LLM_KEY,
+                session_id=f"x39-trans-{lang}-{secrets.token_hex(4)}",
+                system_message=SYSTEM_TPL.format(LANG=LANG_NAMES[lang]),
+            )
+            .with_model("gemini", "gemini-3-flash-preview")
+        )
+        for i in range(0, len(strings), CHUNK):
+            chunk = strings[i : i + CHUNK]
+            user_payload = _json.dumps(chunk, ensure_ascii=False, indent=0)
+            user_msg = UserMessage(
+                text=(
+                    f"Translate every string below to {LANG_NAMES[lang]}.\n"
+                    f"Return a JSON object whose KEYS are the EXACT input strings "
+                    f"and whose VALUES are the translations.\n\n"
+                    f"INPUT (JSON array):\n{user_payload}"
+                )
+            )
+            try:
+                resp = await chat.send_message(user_msg)
+                text = resp if isinstance(resp, str) else getattr(resp, "content", str(resp))
+                parsed = _extract_json(text)
+                if isinstance(parsed, dict):
+                    for k, v in parsed.items():
+                        if isinstance(k, str) and isinstance(v, str):
+                            out[lang][k] = v
+            except Exception as e:
+                print(f"[x39-translate] {lang} chunk {i}: {e}")
+
+    return out
 
 # --- SOCKET.IO EVENTS ---
 connected_users = {}
