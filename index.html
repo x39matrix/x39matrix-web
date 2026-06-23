@@ -450,6 +450,72 @@
   setTimeout(dedup, 1500);
 })();
 </script>
+<!-- X39_LAUNCH_V4 -->
+<style>
+ /* Ocultar PERMANENTEMENTE duplicados que rompen el hero v3 */
+ [data-x39-launch-hide="1"]{ display:none !important; visibility:hidden !important; }
+</style>
+<script>
+(function(){
+  function hideText(node, reason){
+    node.setAttribute('data-x39-launch-hide', '1');
+    node.setAttribute('data-x39-hidden-reason', reason);
+  }
+
+  function applyFix(){
+    // === 1) Headings/textos especificos a ocultar ===
+    var TEXTS_TO_HIDE = [
+      'PROTOCOLO DESCENTRALIZADO',
+      'BIENVENIDO AL PROTOCOLO MAS GRANDE',
+      'BIENVENIDO AL PROTOCOLO MÁS GRANDE',
+      'VERIFICA',
+      'NETWORK ACTIVATED — LIVE IN ICP MAINNET',
+      'NETWORK ACTIVATED - LIVE IN ICP MAINNET'
+    ];
+    var heads = document.querySelectorAll('h1, h2, h3, h4, p, div, span');
+    for (var i=0; i<heads.length; i++){
+      var n = heads[i];
+      // skip si esta dentro del hero v3 (lo dejamos)
+      if (n.closest && n.closest('#x39-hero-v3')) continue;
+      var t = (n.textContent || '').trim().toUpperCase();
+      for (var j=0; j<TEXTS_TO_HIDE.length; j++){
+        if (t === TEXTS_TO_HIDE[j].toUpperCase()){
+          hideText(n, TEXTS_TO_HIDE[j]);
+          break;
+        }
+      }
+    }
+
+    // === 2) Boton PULSA AQUI VIEJO (que no es el v3) ===
+    var oldBtns = document.querySelectorAll('button[onclick*="startProtocol"]:not(.x39-hv3-cta)');
+    oldBtns.forEach(function(b){ hideText(b, 'old-pulsa-button'); });
+
+    // === 3) Triangulo VIEJO (no el SVG del v3) ===
+    var allBoxes = document.querySelectorAll('div, section, article');
+    for (var k=0; k<allBoxes.length; k++){
+      var d = allBoxes[k];
+      if (d.classList && d.classList.contains('x39-hv3-tri')) continue;
+      if (d.id === 'x39-hero-v3') continue;
+      if (d.closest && d.closest('#x39-hero-v3')) continue;
+      var t = (d.textContent || '').trim();
+      if (t.length > 400) continue;
+      if (/ED25519/i.test(t) && /x509/i.test(t) && /ARQUITECTO\s*X39/i.test(t)){
+        hideText(d, 'old-triangle');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', applyFix);
+  } else {
+    applyFix();
+  }
+  // Ejecutar varias veces para atrapar cualquier element que aparezca tarde
+  setTimeout(applyFix, 300);
+  setTimeout(applyFix, 1200);
+  setTimeout(applyFix, 3000);
+})();
+</script>
 </head>
 <body>
 <!-- X39_LANG_STICKY_HOME_V6 -->
@@ -1585,8 +1651,7 @@ ots verify MASTER_GOLDEN_SEAL.txt.ots
     <li style="background:rgba(204,0,0,.10);border-radius:8px;padding:14px 12px;margin:6px 0;border:1px solid rgba(255,80,60,.45);box-shadow:0 0 18px rgba(255,80,60,.18)">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
         <span class="f"><strong style="color:#ff7a6a;letter-spacing:.04em">🌟 x39_cert_pqc_bundle.tar.gz</strong><br><small style="opacity:.6;font-size:11px">PQC FIPS-203/204 + SLH-DSA bundle</small></span>
-        <a class="x39-bdg-r ok" href="https://mempool.space/block/953819" target="_blank" rel="noopener" data-testid="anchor-953819">&#10003; BTC #953819</a>
-      </div>
+        <a class="x39-bdg-r ok" href="https://mempool.space/block/953819" target="_blank" rel="noopener" data-testid="anchor-953819">&#10003; BTC #953819</a> · <a href="https://mempool.space/block/953842">#953842</a> (finney)</div>
       <div style="margin-top:6px;font-size:10px;color:#ffae9e;letter-spacing:.12em">POST-QUANTUM BUNDLE · TRIPLE INDEPENDENT ATTESTATION</div>
     </li>
     <li>
