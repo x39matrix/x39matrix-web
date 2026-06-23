@@ -151,192 +151,257 @@
    .x39-verify-sov h3{font-size:16px !important;letter-spacing:.26em !important}
  }
 </style>
-<!-- X39_HERO_V2 -->
+<!-- X39_HERO_V3 -->
 <style>
- /* === PULSA AQUI grande, glow rojo, animado === */
- button[onclick*="startProtocol"], button[data-testid="pulsa-aqui"]{
-   position:relative !important;
-   font-family:'JetBrains Mono', ui-monospace, monospace !important;
-   font-size:1.15rem !important;
-   font-weight:800 !important;
-   letter-spacing:0.3em !important;
-   color:#fff !important;
-   background:linear-gradient(135deg, rgba(220,20,20,1) 0%, rgba(150,0,0,1) 100%) !important;
-   border:2px solid #ff5a4a !important;
-   padding:24px 72px !important;
-   border-radius:8px !important;
-   cursor:pointer !important;
-   text-shadow:0 0 12px rgba(0,0,0,.5) !important;
-   box-shadow:
-     0 0 0 1px rgba(0,0,0,.4),
-     0 0 28px rgba(255,60,40,.7),
-     0 0 70px rgba(255,60,40,.4),
-     inset 0 0 16px rgba(255,180,160,.3) !important;
-   animation: x39pulsa 2.4s ease-in-out infinite !important;
-   transition:transform .15s ease, box-shadow .15s ease !important;
-   z-index:200 !important;
-   display:block !important;
-   margin:24px auto !important;
- }
- button[onclick*="startProtocol"]:hover{
-   transform:translateY(-2px) scale(1.05) !important;
-   box-shadow:
-     0 0 0 1px rgba(0,0,0,.4),
-     0 0 40px rgba(255,80,60,.9),
-     0 0 90px rgba(255,80,60,.55),
-     inset 0 0 20px rgba(255,180,160,.4) !important;
- }
- button[onclick*="startProtocol"]:active{ transform:translateY(0) scale(.98) !important; }
- @keyframes x39pulsa {
-   0%,100%{ box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 28px rgba(255,60,40,.7),0 0 70px rgba(255,60,40,.4),inset 0 0 16px rgba(255,180,160,.3); }
-   50%   { box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 40px rgba(255,80,60,.9),0 0 95px rgba(255,80,60,.6),inset 0 0 20px rgba(255,180,160,.45); }
- }
-
- /* Subtitulo bajo el boton */
- .x39-pulsa-subtitle{
-   text-align:center;
-   font-family:'JetBrains Mono', ui-monospace, monospace;
-   font-size:0.72rem;
-   color:#ff9a8a;
-   letter-spacing:0.24em;
-   margin:0 auto 32px auto;
-   text-transform:uppercase;
-   text-shadow:0 0 8px rgba(255,80,60,.5);
-   animation:x39subfade 2.4s ease-in-out infinite;
- }
- @keyframes x39subfade {
-   0%,100%{ opacity:.7; }
-   50%   { opacity:1; }
- }
- .x39-pulsa-subtitle .arrow{ color:#ff5a4a; font-weight:800; }
-
- /* === Hero wrapper compacto above-the-fold === */
- #x39-hero-zone{
-   min-height: calc(100vh - 80px);
+ /* ========================================================
+    HERO V3 :: mini-triangulo + PULSA AQUI above-the-fold
+    ======================================================== */
+ #x39-hero-v3{
+   position:relative;
+   z-index:50;
+   min-height: calc(100vh - 64px);
    display:flex;
    flex-direction:column;
    align-items:center;
    justify-content:center;
-   padding: 24px 16px;
-   position:relative;
-   z-index: 10;
+   padding: 48px 16px 32px 16px;
+   background:transparent;
  }
- #x39-hero-zone .x39-hero-triangle{
-   transform: scale(0.72);
-   transform-origin: center center;
-   margin: 0 auto;
- }
- @media (max-width: 768px){
-   #x39-hero-zone .x39-hero-triangle{ transform: scale(0.58); }
-   button[onclick*="startProtocol"]{ font-size:0.95rem !important; padding:18px 44px !important; letter-spacing:0.22em !important; }
- }
-
- /* Etiqueta arriba del triangulo */
- .x39-hero-tagline{
-   text-align:center;
+ #x39-hero-v3 .x39-hv3-tagline{
    font-family:'JetBrains Mono', ui-monospace, monospace;
    font-size:0.7rem;
    color:#ff9a8a;
    letter-spacing:0.4em;
    text-transform:uppercase;
-   margin-bottom: 8px;
-   opacity:.85;
+   text-align:center;
+   margin-bottom: 18px;
+   opacity:.9;
  }
- .x39-hero-tagline strong{ color:#ff5a4a; }
+ #x39-hero-v3 .x39-hv3-tagline strong{ color:#ff5a4a; }
+
+ /* mini-triangulo SVG */
+ #x39-hero-v3 .x39-hv3-tri{
+   width: 220px;
+   height: 200px;
+   margin: 0 auto 18px auto;
+   position:relative;
+ }
+ #x39-hero-v3 .x39-hv3-tri svg{ width:100%; height:100%; display:block; }
+ #x39-hero-v3 .x39-hv3-tri .x39-hv3-tri-label{
+   position:absolute; inset:0; display:flex; flex-direction:column;
+   align-items:center; justify-content:center;
+   font-family:'JetBrains Mono', ui-monospace, monospace;
+   color:#ff5a4a; text-align:center; gap:4px;
+   text-shadow:0 0 8px rgba(255,80,60,.5);
+   pointer-events:none;
+ }
+ #x39-hero-v3 .x39-hv3-tri .x39-hv3-tri-label .l1{ font-size:1.1rem; letter-spacing:0.15em; font-weight:800; }
+ #x39-hero-v3 .x39-hv3-tri .x39-hv3-tri-label .l2{ font-size:0.75rem; letter-spacing:0.22em; opacity:.85; }
+ #x39-hero-v3 .x39-hv3-tri .x39-hv3-tri-label .l3{ font-size:0.65rem; letter-spacing:0.3em; opacity:.7; margin-top:4px; }
+
+ /* PULSA AQUI v3 — nuevo boton grande con glow */
+ #x39-hero-v3 .x39-hv3-cta{
+   font-family:'JetBrains Mono', ui-monospace, monospace;
+   font-size:1.2rem;
+   font-weight:800;
+   letter-spacing:0.32em;
+   color:#fff;
+   background:linear-gradient(135deg, rgba(220,20,20,1) 0%, rgba(150,0,0,1) 100%);
+   border:2px solid #ff5a4a;
+   padding:24px 80px;
+   border-radius:8px;
+   cursor:pointer;
+   text-shadow:0 0 12px rgba(0,0,0,.5);
+   box-shadow:
+     0 0 0 1px rgba(0,0,0,.4),
+     0 0 28px rgba(255,60,40,.7),
+     0 0 70px rgba(255,60,40,.4),
+     inset 0 0 16px rgba(255,180,160,.3);
+   animation: x39hv3pulsa 2.4s ease-in-out infinite;
+   transition: transform .15s ease, box-shadow .15s ease;
+   margin: 20px auto 12px auto;
+   display:block;
+ }
+ #x39-hero-v3 .x39-hv3-cta:hover{
+   transform:translateY(-2px) scale(1.05);
+   box-shadow:
+     0 0 0 1px rgba(0,0,0,.4),
+     0 0 40px rgba(255,80,60,.95),
+     0 0 95px rgba(255,80,60,.6),
+     inset 0 0 20px rgba(255,180,160,.45);
+ }
+ #x39-hero-v3 .x39-hv3-cta:active{ transform:translateY(0) scale(.98); }
+ @keyframes x39hv3pulsa {
+   0%,100%{ box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 28px rgba(255,60,40,.7),0 0 70px rgba(255,60,40,.4),inset 0 0 16px rgba(255,180,160,.3); }
+   50%   { box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 40px rgba(255,80,60,.95),0 0 95px rgba(255,80,60,.6),inset 0 0 20px rgba(255,180,160,.45); }
+ }
+
+ #x39-hero-v3 .x39-hv3-sub{
+   text-align:center;
+   font-family:'JetBrains Mono', ui-monospace, monospace;
+   font-size:0.72rem;
+   color:#ff9a8a;
+   letter-spacing:0.24em;
+   text-transform:uppercase;
+   margin-top:14px;
+   text-shadow:0 0 8px rgba(255,80,60,.5);
+   animation:x39hv3subfade 2.4s ease-in-out infinite;
+ }
+ @keyframes x39hv3subfade {
+   0%,100%{ opacity:.7; }
+   50%   { opacity:1; }
+ }
+ #x39-hero-v3 .x39-hv3-sub .arrow{ color:#ff5a4a; font-weight:800; }
+
+ #x39-hero-v3 .x39-hv3-secondary{
+   margin-top:28px;
+   font-family:'JetBrains Mono', ui-monospace, monospace;
+   font-size:0.72rem;
+   color:#ff9a8a;
+   letter-spacing:0.2em;
+   text-transform:uppercase;
+   opacity:.75;
+   cursor:pointer;
+   text-decoration:underline;
+   text-decoration-color: rgba(255,90,74,.4);
+   text-underline-offset: 4px;
+   background:transparent; border:none;
+ }
+ #x39-hero-v3 .x39-hv3-secondary:hover{ color:#ff5a4a; opacity:1; }
+
+ /* === Colapsar VERIFY YOURSELF en la primera vista === */
+ body.x39-collapsed [data-x39-hide-on-collapse="1"]{
+   display:none !important;
+ }
+
+ /* Mobile */
+ @media (max-width: 768px){
+   #x39-hero-v3{ min-height: calc(100vh - 56px); padding: 36px 12px 24px 12px; }
+   #x39-hero-v3 .x39-hv3-tri{ width:160px; height:150px; }
+   #x39-hero-v3 .x39-hv3-cta{ font-size:1rem; padding:18px 48px; letter-spacing:0.24em; }
+ }
 </style>
 
 <script>
 (function(){
-  // ============================================================
-  //  Reorden DOM al cargar: triangulo + PULSA AQUI arriba
-  // ============================================================
-  function reorderHero(){
-    if(document.getElementById('x39-hero-zone')) return; // idempotente
+  // === Inyectar hero arriba (idempotente) ===
+  function buildHero(){
+    if(document.getElementById('x39-hero-v3')) return;
 
-    // 1) Localizar el boton PULSA AQUI
-    var btn = document.querySelector('button[onclick*="startProtocol"]');
-    if(!btn) return;
-
-    // 2) Localizar el triangulo (busca por texto "ARQUITECTO X39" o por svg/canvas hero)
-    var triangleNode = null;
-    // intento 1: por contenido textual del bloque
-    var allDivs = document.querySelectorAll('div, section, header');
-    for (var i=0; i<allDivs.length; i++){
-      var d = allDivs[i];
-      var t = (d.textContent || '').trim();
-      // Bloque pequeño que contiene "ARQUITECTO X39" Y "ED25519" (es el triangulo hero)
-      if (t.length < 220 && /ARQUITECTO\s*X39/i.test(t) && /ED25519/i.test(t)){
-        triangleNode = d;
-        break;
-      }
-    }
-
-    // 3) Localizar el bloque "VERIFY YOURSELF"
-    var verifyNode = null;
-    var heads = document.querySelectorAll('h1, h2, h3, h4');
-    for (var j=0; j<heads.length; j++){
-      if(/VERIFY\s*YOURSELF/i.test(heads[j].textContent || '')){
-        // subir hasta el contenedor con borde rojo (max 6 niveles)
-        var n = heads[j];
-        for (var k=0; k<6 && n.parentElement; k++){
-          n = n.parentElement;
-          var bd = (window.getComputedStyle(n).border || '');
-          if (n.tagName === 'SECTION' || n.tagName === 'ARTICLE' || /rgb\(\s*204\s*,\s*0\s*,\s*0/.test(bd) || /rgb\(\s*255/.test(bd)){
-            verifyNode = n;
-            break;
-          }
-        }
-        if (!verifyNode) verifyNode = heads[j].parentElement;
-        break;
-      }
-    }
-
-    // 4) Crear el hero-zone wrapper
     var hero = document.createElement('section');
-    hero.id = 'x39-hero-zone';
+    hero.id = 'x39-hero-v3';
+    hero.setAttribute('data-testid', 'x39-hero-zone');
+    hero.innerHTML = [
+      '<div class="x39-hv3-tagline">',
+        '<strong>X-39MATRIX</strong> · 9-LAYER SOVEREIGN PROTOCOL · BITCOIN MAINNET',
+      '</div>',
 
-    var tag = document.createElement('div');
-    tag.className = 'x39-hero-tagline';
-    tag.innerHTML = '<strong>X-39MATRIX</strong> · 9-LAYER SOVEREIGN PROTOCOL · BITCOIN MAINNET';
-    hero.appendChild(tag);
+      '<div class="x39-hv3-tri" data-testid="x39-hero-triangle">',
+        '<svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+          '<defs>',
+            '<linearGradient id="x39triG" x1="0" y1="0" x2="1" y2="1">',
+              '<stop offset="0%" stop-color="#ff5a4a" stop-opacity="0.95"/>',
+              '<stop offset="100%" stop-color="#7a0000" stop-opacity="0.6"/>',
+            '</linearGradient>',
+            '<filter id="x39triGlow" x="-20%" y="-20%" width="140%" height="140%">',
+              '<feGaussianBlur stdDeviation="3" result="b"/>',
+              '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>',
+            '</filter>',
+          '</defs>',
+          '<polygon points="110,14 206,186 14,186" fill="none" stroke="url(#x39triG)" stroke-width="2.2" filter="url(#x39triGlow)"/>',
+          '<circle cx="110" cy="120" r="48" fill="none" stroke="#cc0000" stroke-opacity="0.55" stroke-width="1"/>',
+          '<circle cx="110" cy="120" r="72" fill="none" stroke="#cc0000" stroke-opacity="0.3" stroke-width="1"/>',
+        '</svg>',
+        '<div class="x39-hv3-tri-label">',
+          '<div class="l1">ED25519</div>',
+          '<div class="l2">x509</div>',
+          '<div class="l3">ARQUITECTO X39</div>',
+        '</div>',
+      '</div>',
 
-    // 5) Mover triangulo dentro del hero (compactado)
-    if (triangleNode){
-      var triWrap = document.createElement('div');
-      triWrap.className = 'x39-hero-triangle';
-      // Clonar el triangulo para evitar perder referencias en JS existente
-      triWrap.appendChild(triangleNode);
-      hero.appendChild(triWrap);
-    }
+      '<button class="x39-hv3-cta" data-testid="pulsa-aqui-v3" type="button">PULSA AQUÍ</button>',
 
-    // 6) Mover el boton PULSA AQUI dentro del hero
-    var btnParent = btn.parentNode;
-    hero.appendChild(btn);
+      '<div class="x39-hv3-sub">',
+        '<span class="arrow">↓</span> Iniciar tour soberano · Start 9-layer protocol tour <span class="arrow">↓</span>',
+      '</div>',
 
-    // 7) Subtitulo bajo el boton
-    var sub = document.createElement('div');
-    sub.className = 'x39-pulsa-subtitle';
-    sub.innerHTML = '<span class="arrow">↓</span> Iniciar el tour soberano de 9 capas · Start the 9-layer protocol tour <span class="arrow">↓</span>';
-    hero.appendChild(sub);
+      '<button class="x39-hv3-secondary" data-testid="x39-reveal-all" type="button">→ ver toda la arquitectura</button>'
+    ].join('');
 
-    // 8) Insertar el hero como PRIMER hijo del <body> (despues del nav si lo hay)
+    // insertar despues de la nav (si existe), sino como primer hijo del body
     var nav = document.querySelector('nav, header[role="banner"], .top-nav, .navbar');
-    if (nav && nav.parentNode === document.body){
+    if (nav && nav.parentNode === document.body && nav.nextSibling){
       nav.parentNode.insertBefore(hero, nav.nextSibling);
     } else {
       document.body.insertBefore(hero, document.body.firstChild);
     }
+  }
 
-    // 9) Si encontramos VERIFY YOURSELF, moverlo a DESPUES del hero
-    if (verifyNode && verifyNode !== hero && !hero.contains(verifyNode)){
-      hero.parentNode.insertBefore(verifyNode, hero.nextSibling);
+  // === Marcar VERIFY YOURSELF para ocultar en colapso ===
+  function markVerifySection(){
+    var heads = document.querySelectorAll('h1, h2, h3, h4');
+    for (var i=0; i<heads.length; i++){
+      var t = (heads[i].textContent || '').trim();
+      if (/VERIFY\s*YOURSELF/i.test(t)){
+        // subir al contenedor padre con borde (max 8 niveles)
+        var n = heads[i];
+        for (var k=0; k<8 && n.parentElement && n.parentElement !== document.body; k++){
+          n = n.parentElement;
+        }
+        if (n && n !== document.body){
+          n.setAttribute('data-x39-hide-on-collapse', '1');
+          return n;
+        }
+      }
+    }
+    return null;
+  }
+
+  // === Revelar todo y scroll suave ===
+  function reveal(scrollTarget){
+    document.body.classList.remove('x39-collapsed');
+    if(scrollTarget && scrollTarget.scrollIntoView){
+      try { scrollTarget.scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){}
     }
   }
 
+  function init(){
+    buildHero();
+    var verifyNode = markVerifySection();
+    document.body.classList.add('x39-collapsed');
+
+    // CTA PULSA AQUI v3 -> startProtocol() + reveal
+    var cta = document.querySelector('.x39-hv3-cta');
+    if (cta){
+      cta.addEventListener('click', function(e){
+        e.preventDefault();
+        reveal(verifyNode);
+        if (typeof window.startProtocol === 'function'){
+          try { window.startProtocol(); } catch(err){ console.warn('startProtocol error:', err); }
+        } else {
+          // fallback: buscar el boton original y dispararle un click
+          var orig = document.querySelector('button[onclick*="startProtocol"]');
+          if (orig) orig.click();
+        }
+      });
+    }
+
+    // Secondary: revelar todo sin disparar tour
+    var sec = document.querySelector('.x39-hv3-secondary');
+    if (sec){
+      sec.addEventListener('click', function(){ reveal(verifyNode); });
+    }
+
+    // Nav links (Arquitectura, etc.) -> revelar antes de navegar
+    document.querySelectorAll('nav a, header a, .top-nav a, .navbar a').forEach(function(a){
+      a.addEventListener('click', function(){ document.body.classList.remove('x39-collapsed'); });
+    });
+  }
+
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', reorderHero);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    reorderHero();
+    init();
   }
 })();
 </script>
