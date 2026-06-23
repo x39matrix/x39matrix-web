@@ -156,9 +156,17 @@
 
 
 
+
+<!-- X39_I18N_V1 -->
+<style>
+ [data-lang]{ cursor:pointer; opacity:.65; transition: opacity .15s ease; }
+ [data-lang]:hover{ opacity:1; }
+ [data-lang].x39-lang-active{ opacity:1; outline:1px solid #ff5a4a; outline-offset:2px; border-radius:3px; }
+ html[dir="rtl"] body{ text-align: right; }
+</style>
+<script src="/lang/i18n.js" defer></script>
 <!-- X39_HOME_V5 -->
 <style>
- /* === Estilizar el boton EXISTENTE PULSA AQUI (el original del HTML) === */
  button[onclick*="startProtocol"]{
    font-family:'JetBrains Mono', ui-monospace, monospace !important;
    font-size:1.25rem !important;
@@ -170,34 +178,21 @@
    padding:24px 80px !important;
    border-radius:8px !important;
    cursor:pointer !important;
-   text-shadow:0 0 12px rgba(0,0,0,.6) !important;
    box-shadow:
-     0 0 0 1px rgba(0,0,0,.4),
      0 0 30px rgba(255,60,40,.75),
      0 0 80px rgba(255,60,40,.45),
      inset 0 0 18px rgba(255,180,160,.3) !important;
    animation: x39pulsa 2.4s ease-in-out infinite !important;
-   transition: transform .15s ease, box-shadow .15s ease !important;
    margin: 48px auto 16px auto !important;
    display:block !important;
    position:relative !important;
    z-index:50 !important;
  }
- button[onclick*="startProtocol"]:hover{
-   transform:translateY(-2px) scale(1.05) !important;
-   box-shadow:
-     0 0 0 1px rgba(0,0,0,.4),
-     0 0 45px rgba(255,80,60,.95),
-     0 0 100px rgba(255,80,60,.6),
-     inset 0 0 22px rgba(255,180,160,.45) !important;
- }
- button[onclick*="startProtocol"]:active{ transform:translateY(0) scale(.98) !important; }
+ button[onclick*="startProtocol"]:hover{ transform:translateY(-2px) scale(1.05) !important; }
  @keyframes x39pulsa {
-   0%,100%{ box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 30px rgba(255,60,40,.75),0 0 80px rgba(255,60,40,.45),inset 0 0 18px rgba(255,180,160,.3); }
-   50%   { box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 45px rgba(255,80,60,.95),0 0 100px rgba(255,80,60,.6),inset 0 0 22px rgba(255,180,160,.45); }
+   0%,100%{ box-shadow:0 0 30px rgba(255,60,40,.75),0 0 80px rgba(255,60,40,.45),inset 0 0 18px rgba(255,180,160,.3); }
+   50%{ box-shadow:0 0 45px rgba(255,80,60,.95),0 0 100px rgba(255,80,60,.6),inset 0 0 22px rgba(255,180,160,.45); }
  }
-
- /* === Subtitulo debajo del boton (inyectado por JS) === */
  .x39-v5-sub{
    text-align:center;
    font-family:'JetBrains Mono', ui-monospace, monospace;
@@ -206,65 +201,34 @@
    letter-spacing:0.26em;
    text-transform:uppercase;
    margin: 0 auto 32px auto;
-   text-shadow:0 0 8px rgba(255,80,60,.5);
    animation: x39subfade 2.4s ease-in-out infinite;
  }
  @keyframes x39subfade { 0%,100%{opacity:.7} 50%{opacity:1} }
- .x39-v5-sub .arrow{ color:#ff5a4a; font-weight:800; }
-
- /* === Ocultar elementos especificos que estorban === */
  [data-x39-v5-hide="1"]{ display:none !important; }
-
  @media (max-width: 768px){
-   button[onclick*="startProtocol"]{
-     font-size:1rem !important;
-     padding:18px 44px !important;
-     letter-spacing:0.24em !important;
-   }
+   button[onclick*="startProtocol"]{ font-size:1rem !important; padding:18px 44px !important; }
  }
 </style>
-
 <script>
 (function(){
   function init(){
-    // === A) Ocultar textos parasitos especificos (sin tocar el resto) ===
-    var KILL = [
-      'BIENVENIDO AL PROTOCOLO MAS GRANDE',
-      'BIENVENIDO AL PROTOCOLO MÁS GRANDE',
-      'VERIFICA'
-    ];
-    var all = document.querySelectorAll('h1, h2, h3, h4, h5, p, div, span');
-    for (var i=0; i<all.length; i++){
-      var n = all[i];
-      // No tocar el boton PULSA AQUI ni ningun ancestro que LO contenga
-      if (n.querySelector && n.querySelector('button[onclick*="startProtocol"]')) continue;
-      // No tocar nodos con muchos hijos (probablemente containers grandes)
-      if (n.children && n.children.length > 4) continue;
+    var KILL = ['BIENVENIDO AL PROTOCOLO MAS GRANDE','BIENVENIDO AL PROTOCOLO MÁS GRANDE','VERIFICA'];
+    document.querySelectorAll('h1,h2,h3,h4,h5,p,div,span').forEach(function(n){
+      if (n.querySelector && n.querySelector('button[onclick*="startProtocol"]')) return;
+      if (n.children && n.children.length > 4) return;
       var t = (n.textContent || '').trim().toUpperCase();
-      for (var k=0; k<KILL.length; k++){
-        if (t === KILL[k].toUpperCase()){
-          n.setAttribute('data-x39-v5-hide', '1');
-          break;
-        }
-      }
-    }
-
-    // === B) Agregar subtitulo bilingue debajo del boton PULSA AQUI ===
+      KILL.forEach(function(k){ if (t === k.toUpperCase()) n.setAttribute('data-x39-v5-hide','1'); });
+    });
     var btn = document.querySelector('button[onclick*="startProtocol"]');
     if (btn && !document.querySelector('.x39-v5-sub')){
       var sub = document.createElement('div');
       sub.className = 'x39-v5-sub';
-      sub.innerHTML = '<span class="arrow">&darr;</span> Iniciar tour soberano &middot; Start 9-layer protocol tour <span class="arrow">&darr;</span>';
+      sub.innerHTML = '↓ Iniciar tour soberano · Start 9-layer protocol tour ↓';
       if (btn.parentNode) btn.parentNode.insertBefore(sub, btn.nextSibling);
     }
   }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-  // re-correr para atrapar elementos lazy
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
   setTimeout(init, 600);
   setTimeout(init, 2000);
 })();
