@@ -157,14 +157,7 @@
 
 
 
-<!-- X39_I18N_V1 -->
-<style>
- [data-lang]{ cursor:pointer; opacity:.65; transition: opacity .15s ease; }
- [data-lang]:hover{ opacity:1; }
- [data-lang].x39-lang-active{ opacity:1; outline:1px solid #ff5a4a; outline-offset:2px; border-radius:3px; }
- html[dir="rtl"] body{ text-align: right; }
-</style>
-<script src="/lang/i18n.js" defer></script>
+
 <!-- X39_HOME_V5 -->
 <style>
  button[onclick*="startProtocol"]{
@@ -231,6 +224,151 @@
   else init();
   setTimeout(init, 600);
   setTimeout(init, 2000);
+})();
+</script>
+<!-- X39_V9 -->
+<style>
+ /* === Banderas activas === */
+ [data-lang]{ cursor:pointer; opacity:.65; transition: opacity .15s ease; }
+ [data-lang]:hover{ opacity:1; }
+ [data-lang].x39-lang-active{ opacity:1; outline:1px solid #ff5a4a; outline-offset:2px; border-radius:3px; }
+ html[dir="rtl"] body{ text-align: right; }
+
+ /* === Verify Yourself: SIEMPRE visible, va al FONDO === */
+ #x39-verify-yourself{ display: block !important; }
+
+ /* === Ocultar el toggle colapsable v8 === */
+ #x39-verify-toggle{ display: none !important; }
+
+ /* === Triángulo principal: MÁS GRANDE === */
+ .x39-triangle, .triangle, svg.triangle, .hero-triangle,
+ [class*="triangle"], [id*="triangle"]{
+   transform: scale(1.35) !important;
+   transform-origin: center top !important;
+   margin: 24px auto 24px auto !important;
+   filter: drop-shadow(0 0 28px rgba(255,60,40,.55)) drop-shadow(0 0 60px rgba(255,60,40,.35)) !important;
+ }
+ @media (max-width: 768px){
+   .x39-triangle, .triangle, svg.triangle, .hero-triangle,
+   [class*="triangle"], [id*="triangle"]{ transform: scale(1.1) !important; }
+ }
+
+ /* === Botón PULSA AQUÍ: GIGANTE, pegado al triángulo === */
+ button[onclick*="startProtocol"]{
+   font-family:'JetBrains Mono', ui-monospace, monospace !important;
+   font-size: 1.65rem !important;
+   font-weight: 900 !important;
+   letter-spacing: 0.38em !important;
+   color: #fff !important;
+   background: linear-gradient(135deg, rgba(230,20,20,1) 0%, rgba(150,0,0,1) 100%) !important;
+   border: 3px solid #ff5a4a !important;
+   padding: 32px 110px !important;
+   border-radius: 10px !important;
+   cursor: pointer !important;
+   box-shadow:
+     0 0 40px rgba(255,60,40,.85),
+     0 0 110px rgba(255,60,40,.55),
+     inset 0 0 24px rgba(255,180,160,.35) !important;
+   animation: x39pulsa 2.2s ease-in-out infinite !important;
+   margin: 28px auto 56px auto !important;
+   display: block !important;
+   position: relative !important;
+   z-index: 50 !important;
+   text-transform: uppercase !important;
+ }
+ button[onclick*="startProtocol"]:hover{
+   transform: translateY(-3px) scale(1.06) !important;
+ }
+ @keyframes x39pulsa {
+   0%,100%{ box-shadow:0 0 40px rgba(255,60,40,.85),0 0 110px rgba(255,60,40,.55),inset 0 0 24px rgba(255,180,160,.35); }
+   50%    { box-shadow:0 0 60px rgba(255,90,60,1),  0 0 140px rgba(255,90,60,.75), inset 0 0 30px rgba(255,200,180,.5); }
+ }
+ @media (max-width: 768px){
+   button[onclick*="startProtocol"]{
+     font-size: 1.15rem !important;
+     padding: 22px 50px !important;
+     letter-spacing: 0.28em !important;
+   }
+ }
+
+ /* === Header del Verify (cuando ya está al fondo) === */
+ #x39-verify-yourself{
+   margin-top: 64px !important;
+   padding-top: 32px !important;
+   border-top: 1px solid rgba(255,90,74,.25) !important;
+ }
+
+ /* === Ocultar duplicados de lang switcher (limpieza v8) === */
+ .lang-switch{ display: none !important; }
+
+ [data-x39-v9-hide="1"]{ display:none !important; }
+</style>
+
+<script src="/lang/i18n.js" defer></script>
+
+<script>
+(function(){
+  function layout(){
+    // 1) Eliminar/ocultar toggle colapsable v8 si existe
+    var oldToggle = document.getElementById('x39-verify-toggle');
+    if (oldToggle && oldToggle.parentNode) oldToggle.parentNode.removeChild(oldToggle);
+    document.body.classList.remove('x39-verify-open');
+
+    // 2) Ocultar duplicados de Bienvenido / Network activated en hero
+    var KILL = [
+      'NETWORK ACTIVATED — LIVE IN ICP MAINNET',
+      'NETWORK ACTIVATED - LIVE IN ICP MAINNET'
+    ];
+    document.querySelectorAll('h1,h2,h3,h4,h5,p,div,span').forEach(function(n){
+      if (n.querySelector && n.querySelector('button[onclick*="startProtocol"]')) return;
+      if (n.children && n.children.length > 4) return;
+      var t = (n.textContent || '').trim().toUpperCase();
+      KILL.forEach(function(k){ if (t === k.toUpperCase()) n.setAttribute('data-x39-v9-hide','1'); });
+    });
+
+    // 3) Mover Verify Yourself al FONDO (debajo del segundo triángulo
+    //    "BIENVENIDO A LA MAYOR ARQUITECTURA" o, si no existe, al final del main)
+    var verify = document.getElementById('x39-verify-yourself');
+    if (verify){
+      // Buscar el ancla preferido: "BIENVENIDO A LA MAYOR ARQUITECTURA"
+      var target = null;
+      var heads = document.querySelectorAll('h1,h2,h3,h4');
+      for (var i=0;i<heads.length;i++){
+        var t = (heads[i].textContent || '').trim().toUpperCase();
+        if (t.indexOf('BIENVENIDO') === 0 && t.indexOf('ARQUITECTURA') !== -1){
+          target = heads[i];
+          break;
+        }
+        if (t.indexOf('WELCOME') === 0 && t.indexOf('ARCHITECTURE') !== -1){
+          target = heads[i];
+          break;
+        }
+        if (t.indexOf('SOVEREIGN ARCHITECTURE') !== -1){
+          target = heads[i];
+          break;
+        }
+      }
+      // Fallback: BTC anchors
+      if (!target) target = document.getElementById('x39-btc-anchors');
+      // Fallback final: antes del footer
+      if (!target){
+        var foot = document.querySelector('footer');
+        if (foot && foot.parentNode){
+          foot.parentNode.insertBefore(verify, foot);
+          return;
+        }
+      }
+      if (target && target.parentNode){
+        // Insertar el widget JUSTO DESPUÉS del título de bienvenida
+        target.parentNode.insertBefore(verify, target.nextSibling);
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', layout);
+  else layout();
+  setTimeout(layout, 800);
+  setTimeout(layout, 2500);
 })();
 </script>
 </head>
