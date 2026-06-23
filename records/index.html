@@ -63,13 +63,14 @@
     <span class="num">RECORD 2 · POST-QUANTUM BUNDLE</span>
     <h2>First individual-authored PQC bundle on Bitcoin mainnet</h2>
     <div class="claim">
-      First post-quantum bundle combining FIPS-203 (ML-KEM-1024) + FIPS-204 (ML-DSA-87) + FIPS-205 (SLH-DSA-SHAKE-256s), authored by a single individual with no corporate or academic affiliation, sealed in Bitcoin mainnet with triple independent OpenTimestamps calendar attestation.
+      First post-quantum bundle combining FIPS-203 (ML-KEM-1024) + FIPS-204 (ML-DSA-87) + FIPS-205 (SLH-DSA-SHAKE-256s), authored by a single individual with no corporate or academic affiliation, sealed in Bitcoin mainnet with quadruple independent OpenTimestamps calendar attestation.
     </div>
     <table>
       <tr><th>Calendar</th><th>Bitcoin block</th></tr>
       <tr><td>alice.btc.calendar.opentimestamps.org</td><td><a href="https://mempool.space/block/953819" target="_blank">#953819</a></td></tr>
       <tr><td>bob.btc.calendar.opentimestamps.org</td><td><a href="https://mempool.space/block/953820" target="_blank">#953820</a></td></tr>
       <tr><td>btc.calendar.catallaxy.com</td><td><a href="https://mempool.space/block/953827" target="_blank">#953827</a></td></tr>
+<tr><td>finney.calendar.eternitywall.com</td><td><a href="https://mempool.space/block/953842">#953842</a></td></tr>
     </table>
     <p style="font-size:.78rem">Bundle file: <code>notary/x39_cert_pqc_bundle.tar.gz</code> · OTS proof: <code>notary/x39_cert_pqc_bundle.tar.gz.ots</code></p>
     <p style="font-size:.78rem"><strong style="color:#ff9a8a">Why this matters:</strong> these three NIST primitives cover the entire FIPS post-quantum portfolio at the highest security level. The bundle is simultaneously lattice-resistant (ML-*) and lattice-immune (SLH-DSA). Breaking it requires defeating all three independent cryptographic foundations.</p>
