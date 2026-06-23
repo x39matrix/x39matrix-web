@@ -151,6 +151,195 @@
    .x39-verify-sov h3{font-size:16px !important;letter-spacing:.26em !important}
  }
 </style>
+<!-- X39_HERO_V2 -->
+<style>
+ /* === PULSA AQUI grande, glow rojo, animado === */
+ button[onclick*="startProtocol"], button[data-testid="pulsa-aqui"]{
+   position:relative !important;
+   font-family:'JetBrains Mono', ui-monospace, monospace !important;
+   font-size:1.15rem !important;
+   font-weight:800 !important;
+   letter-spacing:0.3em !important;
+   color:#fff !important;
+   background:linear-gradient(135deg, rgba(220,20,20,1) 0%, rgba(150,0,0,1) 100%) !important;
+   border:2px solid #ff5a4a !important;
+   padding:24px 72px !important;
+   border-radius:8px !important;
+   cursor:pointer !important;
+   text-shadow:0 0 12px rgba(0,0,0,.5) !important;
+   box-shadow:
+     0 0 0 1px rgba(0,0,0,.4),
+     0 0 28px rgba(255,60,40,.7),
+     0 0 70px rgba(255,60,40,.4),
+     inset 0 0 16px rgba(255,180,160,.3) !important;
+   animation: x39pulsa 2.4s ease-in-out infinite !important;
+   transition:transform .15s ease, box-shadow .15s ease !important;
+   z-index:200 !important;
+   display:block !important;
+   margin:24px auto !important;
+ }
+ button[onclick*="startProtocol"]:hover{
+   transform:translateY(-2px) scale(1.05) !important;
+   box-shadow:
+     0 0 0 1px rgba(0,0,0,.4),
+     0 0 40px rgba(255,80,60,.9),
+     0 0 90px rgba(255,80,60,.55),
+     inset 0 0 20px rgba(255,180,160,.4) !important;
+ }
+ button[onclick*="startProtocol"]:active{ transform:translateY(0) scale(.98) !important; }
+ @keyframes x39pulsa {
+   0%,100%{ box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 28px rgba(255,60,40,.7),0 0 70px rgba(255,60,40,.4),inset 0 0 16px rgba(255,180,160,.3); }
+   50%   { box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 40px rgba(255,80,60,.9),0 0 95px rgba(255,80,60,.6),inset 0 0 20px rgba(255,180,160,.45); }
+ }
+
+ /* Subtitulo bajo el boton */
+ .x39-pulsa-subtitle{
+   text-align:center;
+   font-family:'JetBrains Mono', ui-monospace, monospace;
+   font-size:0.72rem;
+   color:#ff9a8a;
+   letter-spacing:0.24em;
+   margin:0 auto 32px auto;
+   text-transform:uppercase;
+   text-shadow:0 0 8px rgba(255,80,60,.5);
+   animation:x39subfade 2.4s ease-in-out infinite;
+ }
+ @keyframes x39subfade {
+   0%,100%{ opacity:.7; }
+   50%   { opacity:1; }
+ }
+ .x39-pulsa-subtitle .arrow{ color:#ff5a4a; font-weight:800; }
+
+ /* === Hero wrapper compacto above-the-fold === */
+ #x39-hero-zone{
+   min-height: calc(100vh - 80px);
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   justify-content:center;
+   padding: 24px 16px;
+   position:relative;
+   z-index: 10;
+ }
+ #x39-hero-zone .x39-hero-triangle{
+   transform: scale(0.72);
+   transform-origin: center center;
+   margin: 0 auto;
+ }
+ @media (max-width: 768px){
+   #x39-hero-zone .x39-hero-triangle{ transform: scale(0.58); }
+   button[onclick*="startProtocol"]{ font-size:0.95rem !important; padding:18px 44px !important; letter-spacing:0.22em !important; }
+ }
+
+ /* Etiqueta arriba del triangulo */
+ .x39-hero-tagline{
+   text-align:center;
+   font-family:'JetBrains Mono', ui-monospace, monospace;
+   font-size:0.7rem;
+   color:#ff9a8a;
+   letter-spacing:0.4em;
+   text-transform:uppercase;
+   margin-bottom: 8px;
+   opacity:.85;
+ }
+ .x39-hero-tagline strong{ color:#ff5a4a; }
+</style>
+
+<script>
+(function(){
+  // ============================================================
+  //  Reorden DOM al cargar: triangulo + PULSA AQUI arriba
+  // ============================================================
+  function reorderHero(){
+    if(document.getElementById('x39-hero-zone')) return; // idempotente
+
+    // 1) Localizar el boton PULSA AQUI
+    var btn = document.querySelector('button[onclick*="startProtocol"]');
+    if(!btn) return;
+
+    // 2) Localizar el triangulo (busca por texto "ARQUITECTO X39" o por svg/canvas hero)
+    var triangleNode = null;
+    // intento 1: por contenido textual del bloque
+    var allDivs = document.querySelectorAll('div, section, header');
+    for (var i=0; i<allDivs.length; i++){
+      var d = allDivs[i];
+      var t = (d.textContent || '').trim();
+      // Bloque pequeño que contiene "ARQUITECTO X39" Y "ED25519" (es el triangulo hero)
+      if (t.length < 220 && /ARQUITECTO\s*X39/i.test(t) && /ED25519/i.test(t)){
+        triangleNode = d;
+        break;
+      }
+    }
+
+    // 3) Localizar el bloque "VERIFY YOURSELF"
+    var verifyNode = null;
+    var heads = document.querySelectorAll('h1, h2, h3, h4');
+    for (var j=0; j<heads.length; j++){
+      if(/VERIFY\s*YOURSELF/i.test(heads[j].textContent || '')){
+        // subir hasta el contenedor con borde rojo (max 6 niveles)
+        var n = heads[j];
+        for (var k=0; k<6 && n.parentElement; k++){
+          n = n.parentElement;
+          var bd = (window.getComputedStyle(n).border || '');
+          if (n.tagName === 'SECTION' || n.tagName === 'ARTICLE' || /rgb\(\s*204\s*,\s*0\s*,\s*0/.test(bd) || /rgb\(\s*255/.test(bd)){
+            verifyNode = n;
+            break;
+          }
+        }
+        if (!verifyNode) verifyNode = heads[j].parentElement;
+        break;
+      }
+    }
+
+    // 4) Crear el hero-zone wrapper
+    var hero = document.createElement('section');
+    hero.id = 'x39-hero-zone';
+
+    var tag = document.createElement('div');
+    tag.className = 'x39-hero-tagline';
+    tag.innerHTML = '<strong>X-39MATRIX</strong> · 9-LAYER SOVEREIGN PROTOCOL · BITCOIN MAINNET';
+    hero.appendChild(tag);
+
+    // 5) Mover triangulo dentro del hero (compactado)
+    if (triangleNode){
+      var triWrap = document.createElement('div');
+      triWrap.className = 'x39-hero-triangle';
+      // Clonar el triangulo para evitar perder referencias en JS existente
+      triWrap.appendChild(triangleNode);
+      hero.appendChild(triWrap);
+    }
+
+    // 6) Mover el boton PULSA AQUI dentro del hero
+    var btnParent = btn.parentNode;
+    hero.appendChild(btn);
+
+    // 7) Subtitulo bajo el boton
+    var sub = document.createElement('div');
+    sub.className = 'x39-pulsa-subtitle';
+    sub.innerHTML = '<span class="arrow">↓</span> Iniciar el tour soberano de 9 capas · Start the 9-layer protocol tour <span class="arrow">↓</span>';
+    hero.appendChild(sub);
+
+    // 8) Insertar el hero como PRIMER hijo del <body> (despues del nav si lo hay)
+    var nav = document.querySelector('nav, header[role="banner"], .top-nav, .navbar');
+    if (nav && nav.parentNode === document.body){
+      nav.parentNode.insertBefore(hero, nav.nextSibling);
+    } else {
+      document.body.insertBefore(hero, document.body.firstChild);
+    }
+
+    // 9) Si encontramos VERIFY YOURSELF, moverlo a DESPUES del hero
+    if (verifyNode && verifyNode !== hero && !hero.contains(verifyNode)){
+      hero.parentNode.insertBefore(verifyNode, hero.nextSibling);
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', reorderHero);
+  } else {
+    reorderHero();
+  }
+})();
+</script>
 </head>
 <body>
 <!-- X39_LANG_STICKY_HOME_V6 -->
@@ -639,7 +828,7 @@
                 <div style="background:#0a0a0a;border:2px solid rgba(204,0,0,0.4);padding:30px;max-width:400px;width:90%;margin:auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
                     <div style="font-size:0.9rem;color:#ff3333;font-weight:700;text-align:center;margin-bottom:6px;letter-spacing:0.15em;">DOWNLOAD DOCUMENT</div>
                     <div style="font-size:0.6rem;color:#888;text-align:center;margin-bottom:20px;">Enter your email to receive the document</div>
-                    <input id="emailInput" type="email" placeholder="your@email.com" style="width:100%;background:#111;border:1px solid #333;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:12px;outline:none;box-sizing:border-box;margin-bottom:12px;" onfocus="this.style.borderColor='#cc0000'" onblur="this.style.borderColor='#333'">
+                    <input id="emailInput" type="email" placeholder="grants@x39matrix.org" style="width:100%;background:#111;border:1px solid #333;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:12px;outline:none;box-sizing:border-box;margin-bottom:12px;" onfocus="this.style.borderColor='#cc0000'" onblur="this.style.borderColor='#333'">
                     <button onclick="submitEmailDownload()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:12px;background:rgba(204,0,0,0.8);color:#fff;border:none;cursor:pointer;letter-spacing:0.15em;margin-bottom:8px;transition:background 0.2s;" onmouseover="this.style.background='#cc0000'" onmouseout="this.style.background='rgba(204,0,0,0.8)'">SEND TO MY EMAIL</button>
                     <div id="emailStatus" style="font-size:0.6rem;text-align:center;margin-top:8px;min-height:16px;"></div>
                     <button onclick="closeEmailModal()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:0.6rem;padding:8px;background:transparent;color:#555;border:1px solid #222;cursor:pointer;letter-spacing:0.1em;margin-top:8px;">CANCEL</button>
@@ -1256,13 +1445,6 @@ ots verify MASTER_GOLDEN_SEAL.txt.ots
 </div>
 
 
-<!-- X39_SPRINT_B_PAY_CTA -->
-<div style="text-align:center;margin:36px auto 18px;max-width:980px;padding:0 24px">
-  <a href="/Notary/#pay" data-testid="home-pay-cta" style="display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#fff;background:linear-gradient(135deg,rgba(204,0,0,.9),rgba(140,0,0,.95));border:2px solid rgba(255,80,60,.7);padding:16px 40px;text-decoration:none;letter-spacing:.18em;border-radius:6px;box-shadow:0 0 28px rgba(204,0,0,.4),inset 0 0 18px rgba(255,80,60,.18);transition:.25s">
-    <span style="font-size:1.1rem">₿</span>  PAY THE PROTOCOL · SOVEREIGN BTC GATEWAY  <span style="font-size:0.9rem">↗</span>
-  </a>
-  <div style="margin-top:8px;font-size:0.6rem;color:#9a7070;letter-spacing:.15em;font-family:'JetBrains Mono',monospace">tECDSA · No custody · No bridges · Settled in Bitcoin mainnet</div>
-
 <!-- X39_BTC_ANCHORS_v3_START -->
 <style id="x39-anchors-v3-style">
  .x39-anchors-v3{position:relative;z-index:9999;isolation:isolate;margin:48px auto;max-width:980px;padding:28px;border:1px solid rgba(204,0,0,.55);border-radius:14px;background:#0a0606;color:#f5e6e6;font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 50px rgba(204,0,0,.2),inset 0 0 26px rgba(204,0,0,.08)}
@@ -1313,5 +1495,13 @@ ots verify MASTER_GOLDEN_SEAL.txt.ots
   <div class="foot">Verifiable on Bitcoin mainnet · mempool.space · OpenTimestamps</div>
 </section>
 <!-- X39_BTC_ANCHORS_v3_END -->
+<!-- X39_SPRINT_B_PAY_CTA -->
+<div style="text-align:center;margin:36px auto 18px;max-width:980px;padding:0 24px">
+  <a href="/Notary/#pay" data-testid="home-pay-cta" style="display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:#fff;background:linear-gradient(135deg,rgba(204,0,0,.9),rgba(140,0,0,.95));border:2px solid rgba(255,80,60,.7);padding:16px 40px;text-decoration:none;letter-spacing:.18em;border-radius:6px;box-shadow:0 0 28px rgba(204,0,0,.4),inset 0 0 18px rgba(255,80,60,.18);transition:.25s">
+    <span style="font-size:1.1rem">₿</span>  PAY THE PROTOCOL · SOVEREIGN BTC GATEWAY  <span style="font-size:0.9rem">↗</span>
+  </a>
+  <div style="margin-top:8px;font-size:0.6rem;color:#9a7070;letter-spacing:.15em;font-family:'JetBrains Mono',monospace">tECDSA · No custody · No bridges · Settled in Bitcoin mainnet</div>
+
+
 </body>
 </html>
