@@ -151,11 +151,10 @@
    .x39-verify-sov h3{font-size:16px !important;letter-spacing:.26em !important}
  }
 </style>
+
 <!-- X39_HERO_V3 -->
 <style>
- /* ========================================================
-    HERO V3 :: mini-triangulo + PULSA AQUI above-the-fold
-    ======================================================== */
+ /* HERO V3 :: mini-triangulo + PULSA AQUI above-the-fold */
  #x39-hero-v3{
    position:relative;
    z-index:50;
@@ -179,7 +178,6 @@
  }
  #x39-hero-v3 .x39-hv3-tagline strong{ color:#ff5a4a; }
 
- /* mini-triangulo SVG */
  #x39-hero-v3 .x39-hv3-tri{
    width: 220px;
    height: 200px;
@@ -199,7 +197,6 @@
  #x39-hero-v3 .x39-hv3-tri .x39-hv3-tri-label .l2{ font-size:0.75rem; letter-spacing:0.22em; opacity:.85; }
  #x39-hero-v3 .x39-hv3-tri .x39-hv3-tri-label .l3{ font-size:0.65rem; letter-spacing:0.3em; opacity:.7; margin-top:4px; }
 
- /* PULSA AQUI v3 — nuevo boton grande con glow */
  #x39-hero-v3 .x39-hv3-cta{
    font-family:'JetBrains Mono', ui-monospace, monospace;
    font-size:1.2rem;
@@ -269,12 +266,10 @@
  }
  #x39-hero-v3 .x39-hv3-secondary:hover{ color:#ff5a4a; opacity:1; }
 
- /* === Colapsar VERIFY YOURSELF en la primera vista === */
  body.x39-collapsed [data-x39-hide-on-collapse="1"]{
    display:none !important;
  }
 
- /* Mobile */
  @media (max-width: 768px){
    #x39-hero-v3{ min-height: calc(100vh - 56px); padding: 36px 12px 24px 12px; }
    #x39-hero-v3 .x39-hv3-tri{ width:160px; height:150px; }
@@ -284,7 +279,6 @@
 
 <script>
 (function(){
-  // === Inyectar hero arriba (idempotente) ===
   function buildHero(){
     if(document.getElementById('x39-hero-v3')) return;
 
@@ -293,7 +287,7 @@
     hero.setAttribute('data-testid', 'x39-hero-zone');
     hero.innerHTML = [
       '<div class="x39-hv3-tagline">',
-        '<strong>X-39MATRIX</strong> · 9-LAYER SOVEREIGN PROTOCOL · BITCOIN MAINNET',
+        '<strong>X-39MATRIX</strong> &middot; 9-LAYER SOVEREIGN PROTOCOL &middot; BITCOIN MAINNET',
       '</div>',
 
       '<div class="x39-hv3-tri" data-testid="x39-hero-triangle">',
@@ -319,16 +313,15 @@
         '</div>',
       '</div>',
 
-      '<button class="x39-hv3-cta" data-testid="pulsa-aqui-v3" type="button">PULSA AQUÍ</button>',
+      '<button class="x39-hv3-cta" data-testid="pulsa-aqui-v3" type="button">PULSA AQU\u00cd</button>',
 
       '<div class="x39-hv3-sub">',
-        '<span class="arrow">↓</span> Iniciar tour soberano · Start 9-layer protocol tour <span class="arrow">↓</span>',
+        '<span class="arrow">&darr;</span> Iniciar tour soberano &middot; Start 9-layer protocol tour <span class="arrow">&darr;</span>',
       '</div>',
 
-      '<button class="x39-hv3-secondary" data-testid="x39-reveal-all" type="button">→ ver toda la arquitectura</button>'
+      '<button class="x39-hv3-secondary" data-testid="x39-reveal-all" type="button">&rarr; ver toda la arquitectura</button>'
     ].join('');
 
-    // insertar despues de la nav (si existe), sino como primer hijo del body
     var nav = document.querySelector('nav, header[role="banner"], .top-nav, .navbar');
     if (nav && nav.parentNode === document.body && nav.nextSibling){
       nav.parentNode.insertBefore(hero, nav.nextSibling);
@@ -337,13 +330,11 @@
     }
   }
 
-  // === Marcar VERIFY YOURSELF para ocultar en colapso ===
   function markVerifySection(){
     var heads = document.querySelectorAll('h1, h2, h3, h4');
     for (var i=0; i<heads.length; i++){
       var t = (heads[i].textContent || '').trim();
       if (/VERIFY\s*YOURSELF/i.test(t)){
-        // subir al contenedor padre con borde (max 8 niveles)
         var n = heads[i];
         for (var k=0; k<8 && n.parentElement && n.parentElement !== document.body; k++){
           n = n.parentElement;
@@ -357,7 +348,6 @@
     return null;
   }
 
-  // === Revelar todo y scroll suave ===
   function reveal(scrollTarget){
     document.body.classList.remove('x39-collapsed');
     if(scrollTarget && scrollTarget.scrollIntoView){
@@ -370,7 +360,6 @@
     var verifyNode = markVerifySection();
     document.body.classList.add('x39-collapsed');
 
-    // CTA PULSA AQUI v3 -> startProtocol() + reveal
     var cta = document.querySelector('.x39-hv3-cta');
     if (cta){
       cta.addEventListener('click', function(e){
@@ -379,20 +368,17 @@
         if (typeof window.startProtocol === 'function'){
           try { window.startProtocol(); } catch(err){ console.warn('startProtocol error:', err); }
         } else {
-          // fallback: buscar el boton original y dispararle un click
           var orig = document.querySelector('button[onclick*="startProtocol"]');
           if (orig) orig.click();
         }
       });
     }
 
-    // Secondary: revelar todo sin disparar tour
     var sec = document.querySelector('.x39-hv3-secondary');
     if (sec){
       sec.addEventListener('click', function(){ reveal(verifyNode); });
     }
 
-    // Nav links (Arquitectura, etc.) -> revelar antes de navegar
     document.querySelectorAll('nav a, header a, .top-nav a, .navbar a').forEach(function(a){
       a.addEventListener('click', function(){ document.body.classList.remove('x39-collapsed'); });
     });
