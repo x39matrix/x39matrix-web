@@ -1,0 +1,139 @@
+================================================================================
+X-39MATRIX  ·  LAYER 10 — SELECTIVE DISCLOSURE  ·  DECISIONS MANIFEST
+================================================================================
+
+Documento         : X39MATRIX_LAYER10_DECISIONS.yaml
+Tipo              : Source of truth (YAML) - decisiones oficiales Capa 10 v1.0
+Estado            : FROZEN
+Fecha de sello    : 2026-06-24 UTC
+Arquitecto unico  : Jose Luis Olivares Esteban
+Contacto          : grants@x39matrix.org
+PGP fingerprint   : C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+
+PROPIEDAD CRITICA: este YAML es la unica fuente de verdad para la Capa 10.
+Cualquier artefacto posterior (RFC, whitepaper PDF, codigo, PUBLIC_VERIFY)
+DEBE citar este fichero por su SHA-256. Si su hash cambia, toda la cadena
+de derivacion queda invalidada.
+
+--------------------------------------------------------------------------------
+1. IDENTIFICACION DEL DOCUMENTO
+--------------------------------------------------------------------------------
+
+Archivo  :  X39MATRIX_LAYER10_DECISIONS.yaml
+Tamano   :  11277 bytes  (11,01 KB)
+Encoding :  UTF-8 plano (determinista por definicion)
+SHA-256  :  3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5
+
+URL publica:
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_LAYER10_DECISIONS.yaml
+
+URL definitiva (al publicar en x39matrix.org):
+  https://x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml
+
+--------------------------------------------------------------------------------
+2. SELLO OPENTIMESTAMPS (.ots)  -  YA GENERADO
+--------------------------------------------------------------------------------
+
+Archivo .ots :  X39MATRIX_LAYER10_DECISIONS.yaml.ots
+Tamano       :  700 bytes
+SHA-256 .ots :  58379024d774e7c384d8b826af671a8f0909955618f2d0bdaed992ab466d7d5a
+Calendarios  :  4 (publicos, independientes)
+                 - https://a.pool.opentimestamps.org
+                 - https://b.pool.opentimestamps.org
+                 - https://a.pool.eternitywall.com   (alice)
+                 - https://ots.btc.catallaxy.com     (catallaxy)
+
+URL publica:
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_LAYER10_DECISIONS.yaml.ots
+
+Estado: PendingAttestation (4 calendarios en cola para sellado BTC).
+        Tiempo estimado hasta inclusion en bloque BTC: 1-6 horas.
+
+--------------------------------------------------------------------------------
+3. COMANDOS PARA VERIFICAR EN CUALQUIER ORDENADOR  (auditor / regulador)
+--------------------------------------------------------------------------------
+
+# Paso 1 - descargar el YAML y su sello
+curl -sLO https://x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml
+curl -sLO https://x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml.ots
+
+# Paso 2 - comprobar que el hash coincide con este manifiesto
+sha256sum X39MATRIX_LAYER10_DECISIONS.yaml
+# Debe imprimir:
+# 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5  X39MATRIX_LAYER10_DECISIONS.yaml
+
+# Paso 3 - verificar el sello OpenTimestamps contra Bitcoin
+ots verify X39MATRIX_LAYER10_DECISIONS.yaml.ots
+# Cuando los calendarios cierren contra un bloque BTC, devolvera:
+# Success! Bitcoin block <altura> attests existence as of <fecha UTC>
+
+# Paso 4 - (opcional) verificar firma PGP del autor
+curl -sLO https://x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml.asc
+gpg --verify X39MATRIX_LAYER10_DECISIONS.yaml.asc
+# Debe imprimir:
+# Good signature from "Jose Luis Olivares Esteban <grants@x39matrix.org>"
+# Primary key fingerprint: C3E0 62EB 251A 1185 1C0B  4FFD 0687 0F06 55D5 BBE8
+
+--------------------------------------------------------------------------------
+4. DECISIONES TECNICAS LOCKED EN ESTE YAML  (resumen)
+--------------------------------------------------------------------------------
+
+ZK Backend primario     :  Winterfell v0.10.x  (Rust nativo, sin trusted setup)
+ZK Backend M5 (recur.)  :  Plonky3            (evaluacion)
+zkVM (AI receipts L7)   :  risc0
+Noir policy             :  Reservado para v1.1 (SNARK opcional)
+
+Hash dentro de circuito :  Rescue-Prime (Rp64_256)
+Hash Merkle             :  Rescue-Prime
+Hash externo (OTS/wire) :  SHAKE-256 (FIPS-202)
+Field                   :  Goldilocks (p = 2^64 - 2^32 + 1)
+Security level          :  128-bit classical, PQ-resistant via hash-only primitives
+
+Firma PQ proof_message  :  SLH-DSA-SHAKE-256s (FIPS-205, hash-only)
+                            -> maxima conservacion PQ, sin hipotesis lattice
+
+Time oracle             :  Cabecera bloque Bitcoin finalizado (>= 6 confirmaciones)
+Nullifier epoch         :  per-verifier epoch (anti-Sybil sin correlacion)
+Revocacion              :  Merkle root primario + KZG accumulator alternativo
+GDPR                    :  solo commitments anclados; datos personales client-side
+
+KPIs                    :  verify <= 200 ms, prove <= 60 s (C1-C4) / 600 s (C5)
+                           proof_size <= 200 KB, reproducibility 51/51
+
+Licencia documento      :  CC-BY-SA 4.0
+Licencia codigo         :  MIT OR Apache-2.0
+
+--------------------------------------------------------------------------------
+5. CADENA DE DERIVACION  (artefactos que dependen de este YAML)
+--------------------------------------------------------------------------------
+
+PASO 1  [ESTE FICHERO]        X39MATRIX_LAYER10_DECISIONS.yaml          (source)
+PASO 2                        X39MATRIX_LAYER10_RFC_v1.0.pdf            (15-20 pag)
+PASO 3                        X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf     (5-6 pag)
+PASO 4                        PUBLIC_VERIFY_LAYER10.sh                  (script)
+
+Cada uno de los pasos 2-4 citara el SHA-256 de este YAML en su seccion
+"derived_from". Si este YAML cambia, los tres artefactos derivados deben
+regenerarse y sus hashes actualizarse coherentemente.
+
+--------------------------------------------------------------------------------
+6. PROXIMOS PASOS RECOMENDADOS PARA EL AUTOR
+--------------------------------------------------------------------------------
+
+a) Firmar este YAML localmente con tu clave PGP:
+     gpg --armor --detach-sign --local-user grants@x39matrix.org \
+         X39MATRIX_LAYER10_DECISIONS.yaml
+     # produce X39MATRIX_LAYER10_DECISIONS.yaml.asc
+
+b) Subir el .asc al servidor publico junto al YAML y al .ots.
+
+c) Anunciar publicamente el SHA-256:
+     "X-39MATRIX Layer 10 v1.0 DECISIONS sealed.
+      SHA-256: 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5"
+     (Twitter / Habr / GitHub / mail diplomatico Marruecos)
+
+d) Dar luz verde al PASO 2 (RFC tecnico extendido) cuando estes listo.
+
+================================================================================
+END OF MANIFEST  ·  X-39MATRIX LAYER 10 v1.0  ·  FROZEN  ·  2026-06-24 UTC
+================================================================================

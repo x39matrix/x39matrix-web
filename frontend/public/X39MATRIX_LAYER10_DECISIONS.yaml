@@ -1,0 +1,200 @@
+# =============================================================================
+# X-39MATRIX  ·  LAYER 10 — SELECTIVE DISCLOSURE  ·  OFFICIAL DECISIONS
+# =============================================================================
+# Source of truth for the X-39MATRIX Layer 10 (Zero-Knowledge) specification.
+# Every downstream artifact (RFC, whitepaper PDF, PUBLIC_VERIFY script,
+# Noir/Winterfell code) MUST cite this file by its SHA-256.
+#
+# Architect      : Jose Luis Olivares Esteban
+# Contact        : grants@x39matrix.org
+# PGP fingerprint: C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+# Sealed         : 2026-06-24 UTC
+# Anchoring      : OpenTimestamps -> Bitcoin (4 independent public calendars)
+# Reproducibility: this YAML is plain UTF-8, deterministic by definition
+# License (doc)  : CC-BY-SA 4.0
+# License (code) : MIT OR Apache-2.0
+# =============================================================================
+
+decision_date: "2026-06-24"
+spec_version:  "1.0"
+status:        "FROZEN - source of truth for X-39MATRIX Layer 10"
+
+# -----------------------------------------------------------------------------
+# 1. ZK BACKEND SELECTION
+# -----------------------------------------------------------------------------
+chosen_stark_backend: "Winterfell v0.10.x"
+backend_repo:         "https://github.com/facebook/winterfell"
+backend_audit_status: "no externally audited; mitigated by determinism + PUBLIC_VERIFY"
+secondary_backend_for_recursion: "Plonky3 (evaluate in M5)"
+noir_policy: "Noir reserved for optional SNARK circuits in v1.1 only; NOT in v1.0"
+zkvm_for_ai_receipts: "risc0 zkVM (opt-in, server-assisted proving allowed with SLA)"
+
+# -----------------------------------------------------------------------------
+# 2. CRYPTOGRAPHIC PARAMETERS  (locked, no ambiguity)
+# -----------------------------------------------------------------------------
+hash_inside_circuit:           "Rescue-Prime (Rp64_256)"   # STARK-friendly, Winterfell default
+hash_for_merkle_trees:         "Rescue-Prime"
+hash_for_external_anchoring:   "SHAKE-256"                  # FIPS-202, used for OTS + wire
+field:                         "BaseElement (Goldilocks p = 2^64 - 2^32 + 1)"
+stark_security_level_bits:     128                          # classical; PQ via hash-only primitives
+fri_folding_factor:            8
+fri_max_remainder_size:        256
+num_queries:                   27                           # tuned to 128-bit PQ soundness
+
+# -----------------------------------------------------------------------------
+# 3. POST-QUANTUM SIGNATURE FOR proof_message WRAPPER
+# -----------------------------------------------------------------------------
+proof_message_signature:       "SLH-DSA-SHAKE-256s"         # FIPS-205, hash-only, conservative
+proof_message_sig_size_bytes:  29792
+proof_message_sig_rationale: |
+  Hash-only assumption (no lattices). Aligns with the protocol's doctrine of
+  PQ-purity: the entire chain (proof -> wrapper -> OTS -> Bitcoin) depends on
+  exactly one cryptographic primitive class (hash functions resistant to
+  Grover speed-up). Trade-off accepted: larger signatures (~29 KB) in exchange
+  for the most conservative post-quantum posture available in NIST FIPS-205.
+
+# -----------------------------------------------------------------------------
+# 4. REFINEMENTS APPLIED  (all accepted into v1.0)
+# -----------------------------------------------------------------------------
+refinements_applied:
+  replace_noir_with_winterfell:    true
+  threat_model_module_added:       true            # Module G in RFC
+  proof_message_pq_signature:      true            # SLH-DSA-SHAKE-256s
+  current_date_oracle_specified:   true            # latest Bitcoin block header
+  epoch_granularity_defined:       true            # per-verifier epoch
+  revocation_alternatives_documented: true         # Merkle root + KZG accumulator
+
+# -----------------------------------------------------------------------------
+# 5. TIME ORACLE  (for circuits that need "now")
+# -----------------------------------------------------------------------------
+time_oracle:
+  source:        "Latest finalized Bitcoin block header (>= 6 confirmations)"
+  binding:       "block_height + block_hash committed as STARK public input"
+  rationale:     "Already trusted by L8 (OpenTimestamps anchors here)"
+  client_freshness_proof: "client provides Merkle path from block to chain tip"
+
+# -----------------------------------------------------------------------------
+# 6. NULLIFIER SEMANTICS  (anti-Sybil without KYC)
+# -----------------------------------------------------------------------------
+nullifier:
+  derivation:    "Rescue-Prime( secret || circuit_id || verifier_epoch )"
+  epoch_policy:  "per-verifier epoch (recommended)"
+  unlinkability: "same human across distinct verifiers -> uncorrelated nullifiers"
+  single_use:    "enforced per (circuit, verifier, epoch) tuple"
+  secret_custody:"client-side only; never enters the canister"
+
+# -----------------------------------------------------------------------------
+# 7. REVOCATION
+# -----------------------------------------------------------------------------
+revocation:
+  primary:    "Merkle revocation root (client must sync)"
+  alternative:"KZG vector commitment (for offline clients)"
+  publication:"both roots anchored hourly via OpenTimestamps"
+
+# -----------------------------------------------------------------------------
+# 8. KPIs  (realistic, not aspirational)
+# -----------------------------------------------------------------------------
+kpis:
+  proof_verification_latency_ms:      200       # in-canister, target
+  prover_time_client_seconds_default: 60        # for circuits C1-C4
+  prover_time_C5_seconds:             600       # risc0 AI inference (server-assisted opt-in)
+  proof_size_kb_target:               200
+  reproducibility_checks_required:    "51/51 PUBLIC_VERIFY style"
+
+# -----------------------------------------------------------------------------
+# 9. OPERATIONAL CONSTRAINTS
+# -----------------------------------------------------------------------------
+operational_constraints:
+  canister_stateless:             true
+  secrets_client_side:            true
+  public_verify_script_required:  "PUBLIC_VERIFY_LAYER10.sh"
+  build_reproducibility:          "deterministic via reportlab invariant=1 + cargo --locked"
+  gdpr_posture: |
+    Only commitments (one-way hashes) are anchored to Bitcoin. Personal data
+    lives client-side and remains erasable. Anchored hashes are not personal
+    data because they are not re-identifiable without the client's secret.
+
+# -----------------------------------------------------------------------------
+# 10. CIRCUITS PLANNED FOR v1.0
+# -----------------------------------------------------------------------------
+circuits:
+  - id: "C1"
+    name: "age_ge_18"
+    public_inputs: ["bitcoin_block_height", "bitcoin_block_hash"]
+    private_inputs: ["date_of_birth", "gov_signature", "gov_pubkey"]
+  - id: "C2"
+    name: "jurisdiction_residence"
+    public_inputs: ["target_jurisdiction_id"]
+    private_inputs: ["passport_hash", "gov_signature"]
+  - id: "C3"
+    name: "btc_payment_range_proof"
+    public_inputs: ["threshold_satoshis"]
+    private_inputs: ["utxo_commitment", "utxo_value", "merkle_path"]
+  - id: "C4"
+    name: "unique_human_nullifier"
+    public_inputs: ["verifier_epoch", "nullifier_out"]
+    private_inputs: ["secret", "circuit_id"]
+  - id: "C5"
+    name: "ai_inference_receipt"
+    proof_system: "risc0 zkVM"
+    public_inputs: ["model_hash", "output_commitment"]
+    private_inputs: ["input_vector", "model_weights"]
+
+# -----------------------------------------------------------------------------
+# 11. ROADMAP M4 (12 sprints)
+# -----------------------------------------------------------------------------
+roadmap:
+  sprint_0: "Lock parameters (DONE in this YAML). Open issues #spec, #threat, #pq-sig, #time-oracle."
+  sprint_1: "Implement C1 age_ge_18 with Bitcoin block header time oracle. Unit + KAT tests."
+  sprint_2: "Implement C2 jurisdiction + C3 BTC range proof. Integrate with L4 tECDSA."
+  sprint_3: "Implement C4 nullifier (per-verifier epoch). Integrate with L6 SSI."
+  sprint_4: "Implement C5 risc0 AI receipt. Integrate with L7 AI Governance."
+  sprint_5: "Canister x39_zk_verifier in Rust + ic-cdk. SLH-DSA-SHAKE-256s wrapper verification."
+  sprint_6: "OTS pipeline + Bitcoin anchoring queue for proof commitments."
+  sprint_7: "PUBLIC_VERIFY_LAYER10.sh + reproducibility CI."
+  sprint_8: "External audit prep (test vectors, KAT, threat model review)."
+  sprint_9: "Recursion evaluation (Plonky3) for proof aggregation."
+  sprint_10: "GDPR / EU compliance documentation pack."
+  sprint_11: "Public testnet with 5 reference circuits live."
+  sprint_12: "Mainnet rollout v10.0 + Bitcoin-anchored release."
+
+# -----------------------------------------------------------------------------
+# 12. DELIVERABLES IMMEDIATELY REQUIRED
+# -----------------------------------------------------------------------------
+deliverables_immediately_required:
+  step_2: "X39MATRIX_LAYER10_RFC_v1.0.pdf  (15-20 pages, threat model + Winterfell params + test vectors)"
+  step_3: "X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf  (5-6 pages, public-facing, derives from RFC)"
+  step_4: "PUBLIC_VERIFY_LAYER10.sh  (reproducibility audit script with pinned SHA-256 hashes)"
+
+# -----------------------------------------------------------------------------
+# 13. CROSS-REFERENCES TO PROTOCOL LAYERS
+# -----------------------------------------------------------------------------
+integration_map:
+  L1_Infra:           "x39_zk_verifier canister hosted on application subnet"
+  L2_Identity_Merkle: "Leaves may reference commitments instead of raw identities"
+  L3_Execution:       "Each canister call may emit a STARK of its correctness"
+  L4_tECDSA:          "BTC signatures conditioned on ZK eligibility proof"
+  L5_Scalability:     "Recursive STARK aggregation (M5 with Plonky3)"
+  L6_Identity_SSI:    "DIDs issued with selective attribute disclosure"
+  L7_AI_Governance:   "risc0 receipts prove inference without leaking model weights"
+  L8_OTS:             "Each STARK proof commitment may be anchored to Bitcoin"
+  L9_Hub:             "Orchestrates Prover -> Verifier -> commitment -> OTS pipeline"
+
+# -----------------------------------------------------------------------------
+# 14. LICENSES
+# -----------------------------------------------------------------------------
+license_rfc:  "CC-BY-SA 4.0"
+license_code: "MIT OR Apache-2.0"
+
+# -----------------------------------------------------------------------------
+# 15. AUDIT TRAIL  (this section is intentionally signed externally)
+# -----------------------------------------------------------------------------
+audit_trail:
+  yaml_sha256_self_reference: "computed at publication time, see manifest"
+  ots_proof:                  "X39MATRIX_LAYER10_DECISIONS.yaml.ots"
+  pgp_signature:              "X39MATRIX_LAYER10_DECISIONS.yaml.asc (signed locally by author)"
+  manifest:                   "X39MATRIX_LAYER10_DECISIONS.MANIFEST.txt"
+
+# =============================================================================
+# END OF DECISIONS  ·  X-39MATRIX LAYER 10 v1.0  ·  FROZEN  ·  2026-06-24 UTC
+# =============================================================================
