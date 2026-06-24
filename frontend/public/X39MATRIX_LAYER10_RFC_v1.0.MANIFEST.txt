@@ -1,0 +1,181 @@
+================================================================================
+X-39MATRIX  ·  RFC L10-001 v1.0  ·  TECHNICAL SPECIFICATION  ·  MANIFEST
+================================================================================
+
+Documento         : X39MATRIX_LAYER10_RFC_v1.0.pdf
+Tipo              : RFC tecnico extendido - Capa 10 Selective Disclosure
+Paginas           : 16 (portada + indice + 12 secciones + apendice + contraportada)
+Estado            : FROZEN
+Fecha de sello    : 2026-06-24 UTC
+Determinismo      : VERIFICADO (rebuild produce SHA-256 identico)
+Arquitecto unico  : Jose Luis Olivares Esteban
+Contacto          : grants@x39matrix.org
+PGP fingerprint   : C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+
+DEPENDENCIA NORMATIVA  (derived_from):
+  X39MATRIX_LAYER10_DECISIONS.yaml
+  SHA-256: 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5
+
+Si el hash del YAML cambia, este RFC queda matematicamente invalidado y
+debe regenerarse. Esta cadena de dependencia es verificable por cualquier
+auditor sin acceso privilegiado.
+
+--------------------------------------------------------------------------------
+1. IDENTIFICACION DEL DOCUMENTO
+--------------------------------------------------------------------------------
+
+Archivo  :  X39MATRIX_LAYER10_RFC_v1.0.pdf
+Tamano   :  69 791 bytes  (68,16 KB)
+Paginas  :  16
+SHA-256  :  de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5
+
+URL publica (preview):
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_LAYER10_RFC_v1.0.pdf
+
+URL definitiva:
+  https://x39matrix.org/X39MATRIX_LAYER10_RFC_v1.0.pdf
+
+--------------------------------------------------------------------------------
+2. SELLO OPENTIMESTAMPS (.ots)  -  YA GENERADO
+--------------------------------------------------------------------------------
+
+Archivo .ots :  X39MATRIX_LAYER10_RFC_v1.0.pdf.ots
+Tamano       :  630 bytes
+SHA-256 .ots :  1573fc798de1cf6bb3f2c2288f010c8f3737b1242f99a5810e567886b62fe0cd
+Calendarios  :  4 (publicos, independientes)
+                 - https://a.pool.opentimestamps.org
+                 - https://b.pool.opentimestamps.org
+                 - https://a.pool.eternitywall.com   (alice)
+                 - https://ots.btc.catallaxy.com     (catallaxy)
+
+URL publica:
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_LAYER10_RFC_v1.0.pdf.ots
+
+Estado: PendingAttestation (4 calendarios en cola para sellado BTC).
+        Tiempo estimado hasta inclusion en bloque BTC: 1-6 horas.
+
+--------------------------------------------------------------------------------
+3. INDICE DEL RFC (16 paginas)
+--------------------------------------------------------------------------------
+
+  §1   Resumen ejecutivo                                       pag 3
+  §2   Notacion y preliminares matematicos                     pag 4
+  §3   Parametros Winterfell  (locked)                         pag 5
+  §4   Wire format  (JSON-LD / CBOR)  + firma PQ               pag 6
+  §5   Circuitos C1-C5  (pseudocodigo)                         pag 7-8
+  §6   Modulo G  ·  Threat Model formal                        pag 9-10
+  §7   Integracion con L1-L9 + canister API (Candid)           pag 11
+  §8   Test vectors (KAT) anclados                             pag 12
+  §9   Roadmap M4  ·  12 sprints                               pag 13
+  §10  Reproducibilidad y PUBLIC_VERIFY                        pag 14
+  §11  Referencias normativas                                  pag 15
+  §12  Appendice A  ·  derivacion del hash YAML                pag 15
+
+--------------------------------------------------------------------------------
+4. ADVERSARIOS MODELADOS  (§6 Threat Model)
+--------------------------------------------------------------------------------
+
+  A_C  Adversario clasico              -> soundness 128-bit, FRI
+  A_Q  Adversario cuantico             -> SLH-DSA-SHAKE-256s + hash-only STARK
+  A_P  Probador malicioso              -> FRI soundness 2^-128
+  A_V  Verificador malicioso           -> ZK property + simulador formal
+  A_S  Side-channels en el cliente     -> constant-time Rescue-Prime + air-gap opt-in
+  A_R  Coercion del operador           -> threshold-PGP signing (M5)
+  A_X  Censura del canister            -> multi-subnet + BTC anchoring
+
+--------------------------------------------------------------------------------
+5. PARAMETROS WINTERFELL LOCKED  (extracto, ver §3 completo)
+--------------------------------------------------------------------------------
+
+  backend           : Winterfell v0.10.x
+  field             : Goldilocks (p = 2^64 - 2^32 + 1)
+  hash in-circuit   : Rescue-Prime (Rp64_256)
+  hash external     : SHAKE-256 (FIPS-202)
+  fri folding       : 8
+  fri max remainder : 256
+  num queries       : 27
+  blowup factor     : 8
+  grinding bits     : 16
+  security level    : 128-bit classical / PQ via hash-only
+  wrapper signature : SLH-DSA-SHAKE-256s (FIPS-205)
+
+--------------------------------------------------------------------------------
+6. COMANDOS PARA VERIFICAR EN CUALQUIER ORDENADOR  (auditor / regulador)
+--------------------------------------------------------------------------------
+
+# Paso 1 - descargar RFC + sello
+curl -sLO https://x39matrix.org/X39MATRIX_LAYER10_RFC_v1.0.pdf
+curl -sLO https://x39matrix.org/X39MATRIX_LAYER10_RFC_v1.0.pdf.ots
+
+# Paso 2 - comprobar el hash (debe coincidir exactamente)
+sha256sum X39MATRIX_LAYER10_RFC_v1.0.pdf
+# Debe imprimir:
+# de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5  X39MATRIX_LAYER10_RFC_v1.0.pdf
+
+# Paso 3 - verificar el sello OpenTimestamps contra Bitcoin
+ots verify X39MATRIX_LAYER10_RFC_v1.0.pdf.ots
+# Cuando los calendarios cierren contra un bloque BTC, devolvera:
+# Success! Bitcoin block <altura> attests existence as of <fecha UTC>
+
+# Paso 4 - verificar la dependencia normativa del YAML
+curl -sL https://x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml | sha256sum
+# Debe imprimir:
+# 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5
+
+# Paso 5 - (opcional) verificar firma PGP del autor
+curl -sLO https://x39matrix.org/X39MATRIX_LAYER10_RFC_v1.0.pdf.asc
+gpg --verify X39MATRIX_LAYER10_RFC_v1.0.pdf.asc
+
+--------------------------------------------------------------------------------
+7. REPRODUCIBILIDAD DEL BUILD  (independientemente verificable)
+--------------------------------------------------------------------------------
+
+Compilador      : Python 3.11+
+Libreria        : reportlab 5.0.0
+Build flag      : invariant=1, pageCompression=0
+Script          : /tmp/l10_build/build_l10_rfc.py
+Dependencia ext.: ninguna (sin imagenes, sin timestamps dinamicos)
+
+VERIFICACION DETERMINISTICA (realizada en build time):
+  - Build #1 produce SHA-256:  de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5
+  - Build #2 (rebuild) produce SHA-256: de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5
+  - diff: 0 bytes diferentes  -> DETERMINISMO CONFIRMADO
+
+--------------------------------------------------------------------------------
+8. CADENA DE DEPENDENCIAS ENTRE ARTEFACTOS (Merkle DAG implicito)
+--------------------------------------------------------------------------------
+
+  [PASO 1]  X39MATRIX_LAYER10_DECISIONS.yaml
+             SHA-256: 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5
+                |
+                |  (citado por)
+                v
+  [PASO 2]  X39MATRIX_LAYER10_RFC_v1.0.pdf   <-- ESTE FICHERO
+             SHA-256: de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5
+                |
+                |  (referenciado por)
+                v
+  [PASO 3]  X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf   (pendiente)
+                |
+                |  (auditado por)
+                v
+  [PASO 4]  PUBLIC_VERIFY_LAYER10.sh   (pendiente, pinea todos los hashes)
+
+--------------------------------------------------------------------------------
+9. PROXIMOS PASOS RECOMENDADOS PARA EL AUTOR
+--------------------------------------------------------------------------------
+
+a) Firmar este RFC localmente con tu clave PGP:
+     gpg --armor --detach-sign --local-user grants@x39matrix.org \
+         X39MATRIX_LAYER10_RFC_v1.0.pdf
+     -> produce X39MATRIX_LAYER10_RFC_v1.0.pdf.asc
+
+b) Subir el .asc al servidor publico junto al PDF y al .ots.
+
+c) Anunciar publicamente el SHA-256 (Twitter / Habr / GitHub / mailing list).
+
+d) Dar luz verde al PASO 3 (whitepaper publico 5-6 paginas) cuando estes listo.
+
+================================================================================
+END OF MANIFEST  ·  X-39MATRIX RFC L10-001 v1.0  ·  FROZEN  ·  2026-06-24 UTC
+================================================================================
