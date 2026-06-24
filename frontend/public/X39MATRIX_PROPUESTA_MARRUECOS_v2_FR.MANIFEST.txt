@@ -1,0 +1,137 @@
+================================================================================
+X-39MATRIX  ·  PROPOSITION ROYAUME DU MAROC  ·  MANIFESTE CRYPTOGRAPHIQUE
+================================================================================
+
+Date de scellement :  2026-06-24 UTC
+Architecte         :  Jose Luis Olivares Esteban
+Contact            :  grants@x39matrix.org
+Empreinte PGP      :  C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+
+--------------------------------------------------------------------------------
+1. IDENTIFICATION DU DOCUMENT
+--------------------------------------------------------------------------------
+
+Fichier  :  X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+Taille   :  1.100.779 octets
+Pages    :  23
+SHA-256  :  d120b3a1e299bca6f2ecc84ca9c42ed5d12b42fe39b3f0e0e1e55989b1e42643
+
+URL publique :
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+
+--------------------------------------------------------------------------------
+2. SCELLEMENT OPENTIMESTAMPS (.ots)  -  DEJA GENERE
+--------------------------------------------------------------------------------
+
+Fichier .ots :  X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots
+Taille       :  875 octets
+Calendriers  :  4 (publics, independants)
+                 - https://a.pool.opentimestamps.org
+                 - https://b.pool.opentimestamps.org
+                 - https://a.pool.eternitywall.com   (alice)
+                 - https://ots.btc.catallaxy.com     (catallaxy)
+
+URL publique :
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots
+
+Etat : PendingAttestation (3 calendriers en file d'attente pour le scellement BTC).
+       Delai estime jusqu'a l'inclusion dans un bloc BTC : 1-6 heures.
+
+--------------------------------------------------------------------------------
+3. COMMANDES POUR VERIFIER LE .ots SUR TOUT ORDINATEUR
+--------------------------------------------------------------------------------
+
+# Installer le client OTS (1 seule fois) :
+pip install opentimestamps-client
+
+# Telecharger la paire PDF + .ots :
+curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots
+
+# Voir le manifeste OTS :
+ots info X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots
+
+# Mettre a jour les preuves (attendre l'inclusion dans BTC, 1-6 heures) :
+ots upgrade X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots
+
+# Verification finale contre Bitcoin mainnet :
+ots verify X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots \
+          -f X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+
+# Sortie attendue :
+#   Success! Bitcoin block N attests data existed as of [timestamp UTC]
+
+--------------------------------------------------------------------------------
+4. SIGNATURE PGP (.asc)  -  A EXECUTER SUR VOTRE ORDINATEUR (cle privee locale)
+--------------------------------------------------------------------------------
+
+IMPORTANT : la signature PGP necessite la cle privee, c'est pourquoi elle doit
+etre executee LOCALEMENT. NE JAMAIS partager la cle privee avec aucun serveur.
+
+# Etape 1. Telechargez le PDF sur votre ordinateur :
+curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+
+# Etape 2. Verifiez le hash (doit correspondre a la ligne 1) :
+sha256sum X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+# Attendu :
+# d120b3a1e299bca6f2ecc84ca9c42ed5d12b42fe39b3f0e0e1e55989b1e42643  X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+
+# Etape 3. Signez avec votre cle PGP :
+gpg --detach-sign --armor \
+    --local-user C3E062EB251A11851C0B4FFD06870F0655D5BBE8 \
+    --output X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.asc \
+    X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+
+# Etape 4. Verification locale :
+gpg --verify X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.asc \
+             X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+# Attendu :
+#   gpg: Good signature from "Jose Luis Olivares Esteban <grants@x39matrix.org>"
+#   Primary key fingerprint: C3E0 62EB 251A 1185 1C0B  4FFD 0687 0F06 55D5 BBE8
+
+# Etape 5. (Optionnel) Publiez le .asc avec le PDF sur x39matrix.org :
+#   https://x39matrix.org/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+#   https://x39matrix.org/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots
+#   https://x39matrix.org/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.asc
+
+--------------------------------------------------------------------------------
+5. VERIFICATION COMBINEE (tout auditeur)
+--------------------------------------------------------------------------------
+
+BASE=https://x39matrix.org  # ou le domaine public ou vous le publiez
+curl -fsSLO $BASE/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+curl -fsSLO $BASE/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots
+curl -fsSLO $BASE/X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.asc
+
+# 1) Integrite
+sha256sum X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+# doit etre exactement :
+# d120b3a1e299bca6f2ecc84ca9c42ed5d12b42fe39b3f0e0e1e55989b1e42643
+
+# 2) Scellement temporel sur Bitcoin (consensus mondial)
+ots verify X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots \
+          -f X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+
+# 3) Signature de l'architecte (PGP)
+gpg --recv-keys C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+gpg --verify X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.asc \
+             X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf
+
+# Si les trois passent : le PDF est mathematiquement authentique,
+# atteste par Bitcoin mainnet et signe par l'architecte.
+
+--------------------------------------------------------------------------------
+6. CHAINE DE CONFIANCE
+--------------------------------------------------------------------------------
+
+Toute modification du PDF, fut-elle d'un seul octet, rompra au moins une des
+trois preuves ci-dessus. Reecrire le scellement OTS exige de reecrire Bitcoin
+entier depuis le bloc du scellement, ce qui coute plusieurs milliards USD et
+la collusion de plus de 51 % de la puissance de minage mondiale : en pratique,
+impossible.
+
+Ce manifeste est public, libre, redistribuable. CC0 / Domaine public.
+
+================================================================================
+                            X-39MATRIX  ·  Don't trust. Verify.
+================================================================================
