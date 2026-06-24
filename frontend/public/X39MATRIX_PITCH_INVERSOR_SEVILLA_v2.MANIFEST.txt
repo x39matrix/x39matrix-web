@@ -2,22 +2,27 @@
 X-39MATRIX  ·  PITCH INVERSOR SEVILLA  ·  MANIFIESTO CRIPTOGRAFICO
 ================================================================================
 
-Fecha de sello :  2026-06-24 UTC
-Reunion        :  Sevilla  ·  viernes  ·  26 de junio de 2026
-Arquitecto     :  Jose Luis Olivares Esteban
-Contacto       :  grants@x39matrix.org
-PGP fingerprint:  C3E062EB251A11851C0B4FFD06870F0655D5BBE8
-Portada        :  Foto real de la Giralda (Unsplash, libre de derechos) con
-                  overlay cypherpunk e identidad X-39MATRIX.
+Version          :  v2  ·  build DETERMINISTA (reportlab invariant=1)
+Fecha de sello   :  2026-06-24 UTC
+Reunion          :  Sevilla  ·  viernes  ·  26 de junio de 2026
+Arquitecto       :  Jose Luis Olivares Esteban
+Contacto         :  grants@x39matrix.org
+PGP fingerprint  :  C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+Portada          :  Foto real de la Giralda (Unsplash, libre de derechos) con
+                    overlay cypherpunk y fecha 26 DE JUNIO DE 2026 en rojo.
+
+PROPIEDAD CRITICA: el build es REPRODUCIBLE. Mismo codigo + misma imagen ->
+mismo SHA-256, siempre. El inversor puede regenerar el PDF en su ordenador y
+comprobar que coincide bit a bit con el que tiene en la mano.
 
 --------------------------------------------------------------------------------
 1. IDENTIFICACION DEL DOCUMENTO
 --------------------------------------------------------------------------------
 
 Archivo  :  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
-Tamano   :  1.272.281 bytes  (1,21 MB)
-Paginas  :  11
-SHA-256  :  29202615f7dbbce5977d6e75d90546b0512f76ab59ae2a59be4219c336ff3568
+Tamano   :  1.268.227 bytes  (1,21 MB)
+Paginas  :  10
+SHA-256  :  6753dcfe678049921561a81b33bc6c4ce54558b9c8fd5a755732a50f7fa6a4b5
 
 URL publica:
   https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
@@ -27,7 +32,7 @@ URL publica:
 --------------------------------------------------------------------------------
 
 Archivo .ots :  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
-Tamano       :  700 bytes
+SHA-256 .ots :  1c412780c9d4a2ce22b0c86a7ce79794a8696365cca41e75d6d951ec53cd14fd
 Calendarios  :  4 (publicos, independientes)
                  - https://a.pool.opentimestamps.org
                  - https://b.pool.opentimestamps.org
@@ -47,14 +52,23 @@ Estado: PendingAttestation (4 calendarios en cola para sellado BTC).
 # Instalar cliente OTS (1 sola vez):
 pip install opentimestamps-client
 
-# Descargar el par PDF + .ots:
-curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
-curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
+# Descargar el par PDF + .ots (forzando cache-bust):
+curl -fsSLO "https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf?v=$(date +%s)"
+curl -fsSLO "https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots?v=$(date +%s)"
+
+# Renombrar (curl deja el ?v=... en el nombre):
+mv 'X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf?v='* X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf 2>/dev/null
+mv 'X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots?v='* X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots 2>/dev/null
+
+# Verificar hash del PDF (debe coincidir con la linea 1):
+sha256sum X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+# Esperado:
+# 6753dcfe678049921561a81b33bc6c4ce54558b9c8fd5a755732a50f7fa6a4b5  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
 
 # Ver el manifiesto OTS:
 ots info X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
 
-# Actualizar pruebas (esperar a que se incluya en BTC, 1-6 horas):
+# Actualizar pruebas (1-6 horas tras el sello):
 ots upgrade X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
 
 # Verificacion final contra Bitcoin mainnet:
@@ -65,19 +79,17 @@ ots verify X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots \
 #   Success! Bitcoin block N attests data existed as of [timestamp UTC]
 
 --------------------------------------------------------------------------------
-4. FIRMA PGP (.asc)  -  EJECUTAR EN TU UBUNTU (clave privada local)
+4. FIRMA PGP (.asc)  -  EJECUTAR EN TU UBUNTU
 --------------------------------------------------------------------------------
 
-IMPORTANTE: la firma PGP requiere tu clave privada, por eso debes ejecutarla TU
-en tu propia maquina. NUNCA compartas tu clave privada con ningun servidor.
-
-# Paso 1. Descarga el PDF a tu Ubuntu local:
-curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+# Paso 1. Descarga LIMPIA del PDF (con cache-buster para evitar CDN cache):
+curl -fsSL "https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf?v=$(date +%s)" \
+     -o X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
 
 # Paso 2. Comprueba el hash (debe coincidir EXACTAMENTE):
 sha256sum X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
 # Esperado:
-# 29202615f7dbbce5977d6e75d90546b0512f76ab59ae2a59be4219c336ff3568  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+# 6753dcfe678049921561a81b33bc6c4ce54558b9c8fd5a755732a50f7fa6a4b5  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
 
 # Paso 3. Firma con tu clave PGP:
 gpg --detach-sign --armor \
@@ -85,43 +97,43 @@ gpg --detach-sign --armor \
     --output X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.asc \
     X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
 
-# Paso 4. Verificacion local (debe imprimir Good signature):
+# Paso 4. Verificacion local:
 gpg --verify X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.asc \
              X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
 # Esperado:
-#   gpg: Good signature from "Jose Luis Olivares Esteban <grants@x39matrix.org>"
-#   Primary key fingerprint: C3E0 62EB 251A 1185 1C0B  4FFD 0687 0F06 55D5 BBE8
+#   gpg: Good signature from "Jose Luis Olivares Esteban (Sovereign Operator X39MATRIX) <grants@x39matrix.org>"
 
 --------------------------------------------------------------------------------
-5. VERIFICACION COMBINADA EN LA REUNION DEL VIERNES
+5. DEMOSTRACION EN VIVO EN LA REUNION
 --------------------------------------------------------------------------------
 
-# Para hacer en directo con el inversor delante:
-
-# 1) Auditoria publica completa del protocolo (30 segundos):
+# 1) Auditoria publica del protocolo (30 s):
 curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash
 # Esperado: Passed: 51 / 51
 
-# 2) Hash del PDF que el inversor tiene en la mano:
+# 2) Hash del PDF que el inversor tiene:
 sha256sum X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
-# Debe ser exactamente: 29202615f7dbbce5977d6e75d90546b0512f76ab59ae2a59be4219c336ff3568
+# Debe ser: 6753dcfe678049921561a81b33bc6c4ce54558b9c8fd5a755732a50f7fa6a4b5
 
-# 3) Demostracion de la notaria soberana en directo:
-echo "Contrato confidencial NDA Sevilla 2026-06-26" > demo.txt
+# 3) Notaria soberana en directo (selle un archivo cualquiera):
+echo "NDA Sevilla 2026-06-26 - $(date -u)" > demo.txt
 sha256sum demo.txt
-# (lleve este hash al panel de la Notaria  ·  x39matrix.org/Notary/)
+# (lleve este hash al panel  ->  https://x39matrix.org/Notary/)
 
 --------------------------------------------------------------------------------
 6. CADENA DE CONFIANZA
 --------------------------------------------------------------------------------
 
-Cualquier modificacion del PDF, aunque sea de un solo byte, rompera al menos
-una de las tres pruebas anteriores (SHA-256 / OTS / PGP). Reescribir el sello
-OTS exige reescribir Bitcoin entero desde el bloque del sello, lo que cuesta
-varios miles de millones de USD y la colusion del 51% de la potencia minera
-mundial. En la practica: imposible.
+Tres pruebas independientes deben pasar para que el documento sea considerado
+autentico:
 
-Este manifiesto es publico, libre, redistribuible. CC0 / Dominio publico.
+  1) sha256sum     ==  6753dcfe678049921561a81b33bc6c4ce54558b9c8fd5a755732a50f7fa6a4b5
+  2) ots verify    ==  Success (Bitcoin block N atestigua el contenido)
+  3) gpg --verify  ==  Good signature from Jose Luis Olivares Esteban
+
+Modificar el PDF un solo byte rompe al menos una de las tres. Reescribir el
+sello OTS exige reescribir Bitcoin: miles de millones USD + colusion >51%
+de la potencia minera mundial. En la practica: imposible.
 
 ================================================================================
                        X-39MATRIX  ·  Don't trust. Verify.
