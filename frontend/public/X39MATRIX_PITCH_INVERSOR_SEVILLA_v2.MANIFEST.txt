@@ -1,0 +1,128 @@
+================================================================================
+X-39MATRIX  ·  PITCH INVERSOR SEVILLA  ·  MANIFIESTO CRIPTOGRAFICO
+================================================================================
+
+Fecha de sello :  2026-06-24 UTC
+Reunion        :  Sevilla  ·  viernes  ·  26 de junio de 2026
+Arquitecto     :  Jose Luis Olivares Esteban
+Contacto       :  grants@x39matrix.org
+PGP fingerprint:  C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+Portada        :  Foto real de la Giralda (Unsplash, libre de derechos) con
+                  overlay cypherpunk e identidad X-39MATRIX.
+
+--------------------------------------------------------------------------------
+1. IDENTIFICACION DEL DOCUMENTO
+--------------------------------------------------------------------------------
+
+Archivo  :  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+Tamano   :  1.272.281 bytes  (1,21 MB)
+Paginas  :  11
+SHA-256  :  29202615f7dbbce5977d6e75d90546b0512f76ab59ae2a59be4219c336ff3568
+
+URL publica:
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+
+--------------------------------------------------------------------------------
+2. SELLO OPENTIMESTAMPS (.ots)  -  YA GENERADO
+--------------------------------------------------------------------------------
+
+Archivo .ots :  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
+Tamano       :  700 bytes
+Calendarios  :  4 (publicos, independientes)
+                 - https://a.pool.opentimestamps.org
+                 - https://b.pool.opentimestamps.org
+                 - https://a.pool.eternitywall.com   (alice)
+                 - https://ots.btc.catallaxy.com     (catallaxy)
+
+URL publica:
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
+
+Estado: PendingAttestation (4 calendarios en cola para sellado BTC).
+        Tiempo estimado hasta inclusion en bloque BTC: 1-6 horas.
+
+--------------------------------------------------------------------------------
+3. COMANDOS PARA VERIFICAR EL .ots EN CUALQUIER ORDENADOR
+--------------------------------------------------------------------------------
+
+# Instalar cliente OTS (1 sola vez):
+pip install opentimestamps-client
+
+# Descargar el par PDF + .ots:
+curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
+
+# Ver el manifiesto OTS:
+ots info X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
+
+# Actualizar pruebas (esperar a que se incluya en BTC, 1-6 horas):
+ots upgrade X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots
+
+# Verificacion final contra Bitcoin mainnet:
+ots verify X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots \
+          -f X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+
+# Salida esperada:
+#   Success! Bitcoin block N attests data existed as of [timestamp UTC]
+
+--------------------------------------------------------------------------------
+4. FIRMA PGP (.asc)  -  EJECUTAR EN TU UBUNTU (clave privada local)
+--------------------------------------------------------------------------------
+
+IMPORTANTE: la firma PGP requiere tu clave privada, por eso debes ejecutarla TU
+en tu propia maquina. NUNCA compartas tu clave privada con ningun servidor.
+
+# Paso 1. Descarga el PDF a tu Ubuntu local:
+curl -fsSLO https://estado-protocolo.preview.emergentagent.com/X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+
+# Paso 2. Comprueba el hash (debe coincidir EXACTAMENTE):
+sha256sum X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+# Esperado:
+# 29202615f7dbbce5977d6e75d90546b0512f76ab59ae2a59be4219c336ff3568  X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+
+# Paso 3. Firma con tu clave PGP:
+gpg --detach-sign --armor \
+    --local-user C3E062EB251A11851C0B4FFD06870F0655D5BBE8 \
+    --output X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.asc \
+    X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+
+# Paso 4. Verificacion local (debe imprimir Good signature):
+gpg --verify X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.asc \
+             X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+# Esperado:
+#   gpg: Good signature from "Jose Luis Olivares Esteban <grants@x39matrix.org>"
+#   Primary key fingerprint: C3E0 62EB 251A 1185 1C0B  4FFD 0687 0F06 55D5 BBE8
+
+--------------------------------------------------------------------------------
+5. VERIFICACION COMBINADA EN LA REUNION DEL VIERNES
+--------------------------------------------------------------------------------
+
+# Para hacer en directo con el inversor delante:
+
+# 1) Auditoria publica completa del protocolo (30 segundos):
+curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash
+# Esperado: Passed: 51 / 51
+
+# 2) Hash del PDF que el inversor tiene en la mano:
+sha256sum X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf
+# Debe ser exactamente: 29202615f7dbbce5977d6e75d90546b0512f76ab59ae2a59be4219c336ff3568
+
+# 3) Demostracion de la notaria soberana en directo:
+echo "Contrato confidencial NDA Sevilla 2026-06-26" > demo.txt
+sha256sum demo.txt
+# (lleve este hash al panel de la Notaria  ·  x39matrix.org/Notary/)
+
+--------------------------------------------------------------------------------
+6. CADENA DE CONFIANZA
+--------------------------------------------------------------------------------
+
+Cualquier modificacion del PDF, aunque sea de un solo byte, rompera al menos
+una de las tres pruebas anteriores (SHA-256 / OTS / PGP). Reescribir el sello
+OTS exige reescribir Bitcoin entero desde el bloque del sello, lo que cuesta
+varios miles de millones de USD y la colusion del 51% de la potencia minera
+mundial. En la practica: imposible.
+
+Este manifiesto es publico, libre, redistribuible. CC0 / Dominio publico.
+
+================================================================================
+                       X-39MATRIX  ·  Don't trust. Verify.
+================================================================================
