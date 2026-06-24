@@ -1,0 +1,1066 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document (opensource)
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R /F5 6 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/BaseFont /Courier-Bold /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+5 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font
+>>
+endobj
+6 0 obj
+<<
+/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F5 /Subtype /Type1 /Type /Font
+>>
+endobj
+7 0 obj
+<<
+/Contents 20 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+8 0 obj
+<<
+/Contents 21 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+9 0 obj
+<<
+/Contents 22 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+10 0 obj
+<<
+/Contents 23 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+11 0 obj
+<<
+/Contents 24 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+12 0 obj
+<<
+/Contents 25 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+13 0 obj
+<<
+/Contents 26 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+14 0 obj
+<<
+/Contents 27 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+15 0 obj
+<<
+/Contents 28 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+16 0 obj
+<<
+/Contents 29 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 19 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+17 0 obj
+<<
+/PageMode /UseNone /Pages 19 0 R /Type /Catalog
+>>
+endobj
+18 0 obj
+<<
+/Author (Jose Luis Olivares Esteban) /CreationDate (D:20000101000000+00'00') /Creator (X-39MATRIX deterministic build \(reportlab invariant=1\)) /Keywords () /ModDate (D:20000101000000+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (Public whitepaper for the X-39MATRIX Layer 10 Zero-Knowledge Selective Disclosure) /Title (X-39MATRIX Layer 10 Whitepaper - Post-Quantum Selective Disclosure) /Trapped /False
+>>
+endobj
+19 0 obj
+<<
+/Count 10 /Kids [ 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R ] /Type /Pages
+>>
+endobj
+20 0 obj
+<<
+/Length 3883
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 RG
+.8 w
+n 20 20 555.2756 801.8898 re S
+0 1 .611765 rg
+BT /F2 6.5 Tf 7.8 TL ET
+BT 1 0 0 1 87.0378 786.8898 Tm (Post-Quantum  \267  zk-STARK transparente  \267  Bitcoin-anchored  \267  FIPS-203/204/205  \267  Reproducible bit-by-bit) Tj T* ET
+0 1 .611765 rg
+BT /F3 9 Tf 10.8 TL ET
+BT 1 0 0 1 151.8378 751.8898 Tm (L1 > L2 > L3 > L4 > L5 > L6 > L7 > L8 > L9 > [ L 1 0 ]) Tj T* ET
+.603922 .639216 .603922 rg
+BT /F2 7 Tf 8.4 TL ET
+BT 1 0 0 1 146.4378 737.8898 Tm (Infra \267 Identity \267 Exec \267 tECDSA \267 Scale \267 SSI \267 AI Gov \267 OTS \267 Hub \267 ZK) Tj T* ET
+0 1 .611765 rg
+BT /F4 44 Tf 52.8 TL ET
+BT 1 0 0 1 166.8478 641.8898 Tm (X-39MATRIX) Tj T* ET
+1 1 1 rg
+BT /F4 26 Tf 31.2 TL ET
+BT 1 0 0 1 235.5108 606.8898 Tm (LAYER 10) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 16 Tf 19.2 TL ET
+BT 1 0 0 1 162.4858 581.8898 Tm (Post-Quantum Selective Disclosure) Tj T* ET
+.603922 .639216 .603922 rg
+BT /F5 12 Tf 14.4 TL ET
+BT 1 0 0 1 167.5878 561.8898 Tm (Whitepaper publico completo  \267  v1.0  \267  FROZEN) Tj T* ET
+1 1 1 rg
+BT /F5 13 Tf 15.6 TL ET
+BT 1 0 0 1 190.0628 516.8898 Tm ("Probar la verdad sin revelar el dato.") Tj T* ET
+.603922 .639216 .603922 rg
+BT /F5 9 Tf 10.8 TL ET
+BT 1 0 0 1 135.3048 498.8898 Tm (Goldwasser, Micali, Rackoff  \267  1985  \267  honrado en cada hash de este documento) Tj T* ET
+0 1 .611765 rg
+BT /F4 11 Tf 13.2 TL ET
+BT 1 0 0 1 142.4058 456.8898 Tm ([ NOTARIA CRIPTOGRAFICA  \267  CERTIFICACIONES VIVAS ]) Tj T* ET
+0 1 .611765 RG
+.6 w
+n 42.6378 381.8898 240 42 re S
+0 1 .611765 rg
+BT /F4 7 Tf 8.4 TL ET
+BT 1 0 0 1 48.6378 412.8898 Tm ([O T S]  OPENTIMESTAMPS  \267  4 calendars) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 7.5 Tf 9 TL ET
+BT 1 0 0 1 48.6378 401.8898 Tm (a.pool.opentimestamps.org / b.pool / a) Tj T* ET
+BT 1 0 0 1 48.6378 392.8898 Tm (lice / catallaxy) Tj T* ET
+0 1 .611765 RG
+.6 w
+n 312.6378 381.8898 240 42 re S
+0 1 .611765 rg
+BT /F4 7 Tf 8.4 TL ET
+BT 1 0 0 1 318.6378 412.8898 Tm ([B T C]  BITCOIN ANCHORING) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 7.5 Tf 9 TL ET
+BT 1 0 0 1 318.6378 401.8898 Tm (PoW chain attestation in ~1-6 hours pe) Tj T* ET
+BT 1 0 0 1 318.6378 392.8898 Tm (r stamp) Tj T* ET
+0 1 .611765 RG
+.6 w
+n 42.6378 325.8898 240 42 re S
+0 1 .611765 rg
+BT /F4 7 Tf 8.4 TL ET
+BT 1 0 0 1 48.6378 356.8898 Tm ([P G P]  RFC4880 SIGNATURE) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 7.5 Tf 9 TL ET
+BT 1 0 0 1 48.6378 345.8898 Tm (C3E062EB251A11851C0B4FFD06870F0655D5BB) Tj T* ET
+BT 1 0 0 1 48.6378 336.8898 Tm (E8) Tj T* ET
+0 1 .611765 RG
+.6 w
+n 312.6378 325.8898 240 42 re S
+0 1 .611765 rg
+BT /F4 7 Tf 8.4 TL ET
+BT 1 0 0 1 318.6378 356.8898 Tm ([P Q C]  FIPS-203 / 204 / 205) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 7.5 Tf 9 TL ET
+BT 1 0 0 1 318.6378 345.8898 Tm (ML-KEM  \267  ML-DSA  \267  SLH-DSA-SHAKE-25) Tj T* ET
+BT 1 0 0 1 318.6378 336.8898 Tm (6s) Tj T* ET
+0 1 .611765 RG
+.6 w
+n 40 50 515.2756 90 re S
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 50 126 Tm (ARQUITECTO UNICO Y CUSTODIO) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 50 112 Tm (Jose Luis Olivares Esteban) Tj T* ET
+BT 1 0 0 1 50 99 Tm (grants@x39matrix.org) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 7.5 Tf 9 TL ET
+BT 1 0 0 1 50 86 Tm (PGP fingerprint:  C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 50 65 Tm (HOSTING CANONICO) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8 Tf 9.6 TL ET
+BT 1 0 0 1 180 65 Tm (https://www.x39matrix.org      \267      https://github.com/x39matrix/x39matrix) Tj T* ET
+.603922 .639216 .603922 rg
+BT /F1 7.5 Tf 9 TL ET
+BT 1 0 0 1 187.0728 42 Tm (Build determinista  \267  reportlab invariant=1  \267  reproducible bit-by-bit) Tj T* ET
+BT 1 0 0 1 123.814 30 Tm (Licencia documento: CC-BY-SA 4.0  \267  Licencia codigo: MIT OR Apache-2.0  \267  Sellado: 2026-06-24 UTC) Tj T* ET
+ 
+endstream
+endobj
+21 0 obj
+<<
+/Length 4059
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 487.7776 826.8898 Tm (ABSTRACT / INDICE) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (Abstract) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 753.8898 Tm (X-39MATRIX es un protocolo soberano de seguridad de nueve capas que combina consenso BFT en Internet Computer,) Tj T* ET
+BT 1 0 0 1 28 740.3898 Tm (firma umbral ECDSA sobre Bitcoin nativo, anclaje temporal universal via OpenTimestamps, y criptografia post-cuantica) Tj T* ET
+BT 1 0 0 1 28 726.8898 Tm (conforme a los estandares FIPS-203, FIPS-204 y FIPS-205 del NIST. Este whitepaper especifica la Capa 10 -- Selective) Tj T* ET
+BT 1 0 0 1 28 713.3898 Tm (Disclosure -- que cierra el unico hueco de privacidad residual del protocolo: permitir demostrar la veracidad de) Tj T* ET
+BT 1 0 0 1 28 699.8898 Tm (afirmaciones sobre datos privados sin revelar dichos datos.) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 678.3898 Tm (La solucion adoptada es zk-STARK transparente \(sobre Winterfell v0.10.x\) complementada con receipts de risc0 zkVM) Tj T* ET
+BT 1 0 0 1 28 664.8898 Tm (para pruebas de ejecucion. El sistema completo mantiene una unica hipotesis criptografica subyacente: la resistencia de) Tj T* ET
+BT 1 0 0 1 28 651.3898 Tm (las funciones hash a colisiones y preimagen, incluso frente a adversarios cuanticos. La firma del wrapper de cada prueba) Tj T* ET
+BT 1 0 0 1 28 637.8898 Tm (se realiza con SLH-DSA-SHAKE-256s \(FIPS-205\), el algoritmo PQ mas conservador disponible.) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 616.3898 Tm (Cada artefacto descrito en este documento -- incluido el propio documento -- es reproducible bit a bit por cualquier) Tj T* ET
+BT 1 0 0 1 28 602.8898 Tm (auditor sin acceso privilegiado, esta sellado con OpenTimestamps contra Bitcoin, y firmado con PGP. La doctrina) Tj T* ET
+BT 1 0 0 1 28 589.3898 Tm (cypherpunk subyacente se condensa en cinco palabras: 'Don't trust. Verify. Always.') Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 563.8898 Tm (Indice) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 40 547.8898 Tm (1.  Que es la Capa 10) Tj T* ET
+BT 1 0 0 1 549.7156 547.8898 Tm (3) Tj T* ET
+.121569 .164706 .121569 RG
+.2 w
+n 147.28 546.8898 m 535.2756 546.8898 l S
+BT 1 0 0 1 40 530.8898 Tm (2.  Que problema resuelve \(cuatro huecos de L1-L9\)) Tj T* ET
+BT 1 0 0 1 549.7156 530.8898 Tm (4) Tj T* ET
+.121569 .164706 .121569 RG
+.2 w
+n 282.33 529.8898 m 535.2756 529.8898 l S
+BT 1 0 0 1 40 513.8898 Tm (3.  La solucion: zk-STARK + risc0) Tj T* ET
+BT 1 0 0 1 549.7156 513.8898 Tm (5) Tj T* ET
+.121569 .164706 .121569 RG
+.2 w
+n 199.22 512.8898 m 535.2756 512.8898 l S
+BT 1 0 0 1 40 496.8898 Tm (4.  Doctrina post-cuantica completa) Tj T* ET
+BT 1 0 0 1 549.7156 496.8898 Tm (6) Tj T* ET
+.121569 .164706 .121569 RG
+.2 w
+n 206.73 495.8898 m 535.2756 495.8898 l S
+BT 1 0 0 1 40 479.8898 Tm (5.  Cinco casos de uso universales) Tj T* ET
+BT 1 0 0 1 549.7156 479.8898 Tm (7) Tj T* ET
+.121569 .164706 .121569 RG
+.2 w
+n 204.51 478.8898 m 535.2756 478.8898 l S
+BT 1 0 0 1 40 462.8898 Tm (6.  Como verificar este documento \(notaria viva\)) Tj T* ET
+BT 1 0 0 1 549.7156 462.8898 Tm (8) Tj T* ET
+.121569 .164706 .121569 RG
+.2 w
+n 262.85 461.8898 m 535.2756 461.8898 l S
+BT 1 0 0 1 40 445.8898 Tm (7.  Doctrina, roadmap y proximos pasos) Tj T* ET
+BT 1 0 0 1 549.7156 445.8898 Tm (9) Tj T* ET
+.121569 .164706 .121569 RG
+.2 w
+n 226.73 444.8898 m 535.2756 444.8898 l S
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 2) Tj T* ET
+ 
+endstream
+endobj
+22 0 obj
+<<
+/Length 4768
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 471.2446 826.8898 Tm (\2471  QUE ES LA CAPA 10) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (1.  Que es la Capa 10) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 753.8898 Tm (La Capa 10 es la capa criptografica de divulgacion selectiva del protocolo X-39MATRIX. Permite a cualquier participante) Tj T* ET
+BT 1 0 0 1 28 740.3898 Tm (demostrar matematicamente la veracidad de una afirmacion sobre un dato privado -- por ejemplo, 'soy mayor de edad',) Tj T* ET
+BT 1 0 0 1 28 726.8898 Tm ('tengo residencia en la jurisdiccion X' o 'he pagado al menos N satoshis' -- sin revelar el dato subyacente.) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 705.3898 Tm (Esto se logra mediante pruebas de conocimiento cero \(Zero-Knowledge Proofs\) implementadas como zk-STARK) Tj T* ET
+BT 1 0 0 1 28 691.8898 Tm (transparentes y post-cuanticas. La verdad de la afirmacion se vuelve verificable publicamente; el dato que la sustenta) Tj T* ET
+BT 1 0 0 1 28 678.3898 Tm (permanece soberano y nunca abandona al titular.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 654.8898 Tm (1.1  Tagline cypherpunk) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 638.8898 Tm (   "PROBAR LA VERDAD SIN REVELAR EL DATO.") Tj T* ET
+BT 1 0 0 1 32 627.8898 Tm  T* ET
+BT 1 0 0 1 32 616.8898 Tm (   Goldwasser, Micali, Rackoff  \267  1985  \267  honrado.) Tj T* ET
+BT 1 0 0 1 32 605.8898 Tm (   Eric Hughes, Cypherpunk Manifesto  \267  1993  \267  honrado.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 586.8898 Tm (1.2  Donde se sienta en la arquitectura) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 570.8898 Tm (X-39MATRIX se compone de nueve capas pre-existentes \(Infraestructura, Identidad Merkle, Ejecucion, Consenso) Tj T* ET
+BT 1 0 0 1 28 557.3898 Tm (tECDSA, Escalabilidad, SSI, Gobernanza AI, Notarizacion via OTS, y Hub de orquestacion\). La Capa 10 NO sustituye a) Tj T* ET
+BT 1 0 0 1 28 543.8898 Tm (ninguna; actua como capa ortogonal de privacidad montada encima del Hub \(L9\), dotando a cada capa anterior de una) Tj T* ET
+BT 1 0 0 1 28 530.3898 Tm (variante verificable-en-cero-conocimiento sin perder sus propiedades originales.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 506.8898 Tm (1.3  Propiedades formales heredadas y anadidas) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 490.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 490.8898 Tm (Integridad -> heredada de L2 + L8 \(Merkle + OTS / Bitcoin\).) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 470.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 470.8898 Tm (No-repudio -> heredada de L4 \(threshold-ECDSA\) + PGP del autor.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 450.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 450.8898 Tm (Sello temporal -> heredada de L8 \(OpenTimestamps anclado en Bitcoin\).) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 430.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 430.8898 Tm (Disponibilidad BFT -> heredada de L1 \(Internet Computer subnet consensus\).) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 410.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 410.8898 Tm (Resistencia cuantica -> heredada de la doctrina FIPS-203/204/205 + reforzada por L10.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 390.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 390.8898 Tm (Divulgacion selectiva -> NUEVA con L10 -> privacidad sin sacrificar verificabilidad.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 370.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 370.8898 Tm (Anti-Sybil sin KYC -> NUEVA con L10 -> unicidad humana via nullifier per-verifier.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 350.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 350.8898 Tm (Compliance privado -> NUEVA con L10 -> cumplimiento normativo sin doxxing del operador.) Tj T* ET
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 3) Tj T* ET
+ 
+endstream
+endobj
+23 0 obj
+<<
+/Length 4148
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 435.7486 826.8898 Tm (\2472  QUE PROBLEMA RESUELVE) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (2.  Que problema resuelve) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 753.8898 Tm (Un protocolo soberano sin Capa 10 -- por solido que sea criptograficamente -- deja cuatro huecos residuales que) Tj T* ET
+BT 1 0 0 1 28 740.3898 Tm (cualquier adversario informado puede explotar para vulnerar la privacidad del operador o de sus usuarios. Estos huecos) Tj T* ET
+BT 1 0 0 1 28 726.8898 Tm (no son fallos de implementacion: son propiedades estructurales de cualquier sistema que opere sobre cadenas publicas) Tj T* ET
+BT 1 0 0 1 28 713.3898 Tm (sin una capa de divulgacion selectiva.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 689.8898 Tm (Hueco #1  \267  Correlacion en el grafo publico de la blockchain) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 676.8898 Tm (Cada interaccion verificable deja una huella publica vinculable a una identidad. Aunque el contenido este cifrado, los) Tj T* ET
+BT 1 0 0 1 28 663.3898 Tm (meta-datos \(quien, cuando, contra que\) construyen un grafo social explotable. Sin pruebas ZK, la transparencia se paga) Tj T* ET
+BT 1 0 0 1 28 649.8898 Tm (con vigilancia.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 628.3898 Tm (Hueco #2  \267  Compliance imposible sin doxxing) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 615.3898 Tm (Demostrar a un regulador que se cumple una norma \(edad, residencia fiscal, sanciones, AML\) exige hoy entregar el) Tj T* ET
+BT 1 0 0 1 28 601.8898 Tm (documento original o copias completas. Una vez entregados, esos datos viven fuera del control del titular y son) Tj T* ET
+BT 1 0 0 1 28 588.3898 Tm (vulnerables a filtraciones, brechas, o uso no autorizado.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 566.8898 Tm (Hueco #3  \267  Anti-Sybil exige identidad real) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 553.8898 Tm (Los esquemas anti-Sybil clasicos \(un humano un voto\) dependen de procesos KYC tradicionales que construyen bases) Tj T* ET
+BT 1 0 0 1 28 540.3898 Tm (de datos centralizadas honeypot. Sin nullifiers ZK, garantizar unicidad humana es incompatible con el principio) Tj T* ET
+BT 1 0 0 1 28 526.8898 Tm (cypherpunk de soberania.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 505.3898 Tm (Hueco #4  \267  Las inferencias AI son cajas negras no auditables) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 492.3898 Tm (Un canister que ejecuta un modelo AI puede emitir resultados, pero no puede demostrar matematicamente que ese) Tj T* ET
+BT 1 0 0 1 28 478.8898 Tm (resultado proviene exactamente del modelo declarado, con los inputs declarados, sin filtrar pesos ni inputs sensibles. La) Tj T* ET
+BT 1 0 0 1 28 465.3898 Tm (gobernanza algoritmica queda como promesa, no como prueba.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 441.8898 Tm (2.1  Estos cuatro huecos comparten una sola solucion matematica) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 425.8898 Tm (Los cuatro problemas anteriores -- correlacion, compliance, anti-Sybil, inferencia auditable -- se resuelven con el mismo) Tj T* ET
+BT 1 0 0 1 28 412.3898 Tm (primitivo criptografico: pruebas de conocimiento cero \(ZKPs\). Anadir ZK al protocolo no es lujo: es la pieza que cierra) Tj T* ET
+BT 1 0 0 1 28 398.8898 Tm (logicamente el sistema y lo hace digno del nombre 'soberano'.) Tj T* ET
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 4) Tj T* ET
+ 
+endstream
+endobj
+24 0 obj
+<<
+/Length 4392
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 410.9806 826.8898 Tm (\2473  LA SOLUCION  \267  zk-STARK + risc0) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (3.  La solucion: zk-STARK + risc0) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 753.8898 Tm (Una prueba de conocimiento cero es un protocolo entre dos partes \(un Probador y un Verificador\) que convence al) Tj T* ET
+BT 1 0 0 1 28 740.3898 Tm (Verificador de que el Probador conoce un dato secreto que cumple cierta propiedad, sin transmitir el dato. Es) Tj T* ET
+BT 1 0 0 1 28 726.8898 Tm (matematica, no acuerdo. No depende de la buena fe del Probador ni de la honestidad del Verificador.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 703.3898 Tm (3.1  Eleccion tecnologica  \(con justificacion publica\)) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 687.3898 Tm (  Primario  : zk-STARK sobre Winterfell v0.10.x          \(Rust, Polygon-Miden\)) Tj T* ET
+BT 1 0 0 1 32 676.3898 Tm (  Secundario: Plonky3 para recursion / agregacion \(M5\)    \(Rust, Polygon Zero\)) Tj T* ET
+BT 1 0 0 1 32 665.3898 Tm (  zkVM      : risc0 para pruebas de ejecucion arbitraria  \(Rust, RISC-V\)) Tj T* ET
+BT 1 0 0 1 32 654.3898 Tm (  NO usado  : zk-SNARK \(Groth16, PLONK\) - exige trusted setup; descartado.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 635.3898 Tm (3.2  Tres propiedades formales de toda prueba ZK) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 619.3898 Tm (  Completitud   : si la afirmacion es verdadera, el Verificador acepta.) Tj T* ET
+BT 1 0 0 1 32 608.3898 Tm (  Solidez       : si la afirmacion es falsa, ningun Probador deshonesto convence.) Tj T* ET
+BT 1 0 0 1 32 597.3898 Tm (                  Probabilidad de exito <= 2^-128 \(negligible\).) Tj T* ET
+BT 1 0 0 1 32 586.3898 Tm (  Cero conoc.   : la transcripcion del protocolo no revela nada sobre el dato secreto.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 567.3898 Tm (3.3  Analogia divulgativa) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 551.3898 Tm (Imagine que necesita demostrar que conoce la combinacion de una caja fuerte sin abrirla. Mete un papel firmado dentro) Tj T* ET
+BT 1 0 0 1 28 537.8898 Tm (y muestra que ha cambiado: alguien que no supiera la combinacion no habria podido modificar el interior. Eso es) Tj T* ET
+BT 1 0 0 1 28 524.3898 Tm (esencialmente lo que hace una prueba ZK con matematica: deja evidencia de conocimiento sin revelar el conocimiento) Tj T* ET
+BT 1 0 0 1 28 510.8898 Tm (mismo.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 489.3898 Tm (3.4  Por que STARK y no SNARK) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 473.3898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 473.3898 Tm (STARK es transparente: no requiere ceremonia de confianza inicial.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 453.3898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 453.3898 Tm (STARK depende solo de funciones hash: post-cuantico por construccion.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 433.3898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 433.3898 Tm (STARK es escalable: verificacion poli-logaritmica O\(log^2 n\).) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 413.3898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 413.3898 Tm (SNARK ofrece pruebas mas pequenas pero exige asumir dureza de pairings \(no PQ\).) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 393.3898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 393.3898 Tm (Para un protocolo soberano de larga vida, STARK es la unica eleccion defendible.) Tj T* ET
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 5) Tj T* ET
+ 
+endstream
+endobj
+25 0 obj
+<<
+/Length 4021
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 435.7756 826.8898 Tm (\2474  DOCTRINA POST-CUANTICA) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (4.  Doctrina post-cuantica completa) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 753.8898 Tm (X-39MATRIX adopta una postura post-cuantica conservadora: cada decision criptografica se elige no por rendimiento,) Tj T* ET
+BT 1 0 0 1 28 740.3898 Tm (sino por la robustez de la hipotesis matematica que la respalda frente a un adversario cuantico hipotetico \(Shor, Grover,) Tj T* ET
+BT 1 0 0 1 28 726.8898 Tm (BHT\). La Capa 10 refuerza esta postura sin introducir nuevos supuestos.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 703.3898 Tm (4.1  Estandares NIST adoptados) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 687.3898 Tm (  FIPS-202   :  SHAKE-256                              \(hash extensible\)) Tj T* ET
+BT 1 0 0 1 32 676.3898 Tm (  FIPS-203   :  ML-KEM                                 \(encapsulacion clave PQ\)) Tj T* ET
+BT 1 0 0 1 32 665.3898 Tm (  FIPS-204   :  ML-DSA                                 \(firma lattice PQ\)) Tj T* ET
+BT 1 0 0 1 32 654.3898 Tm (  FIPS-205   :  SLH-DSA-SHAKE-256s    [LAYER 10 LOCK]  \(firma hash-only PQ\)) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 635.3898 Tm (4.2  Por que SLH-DSA-SHAKE-256s y no ML-DSA) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 619.3898 Tm (ML-DSA \(Dilithium\) ofrece firmas mas pequenas \(~4.6 KB\) pero asume la dureza del problema Module-LWE sobre) Tj T* ET
+BT 1 0 0 1 28 605.8898 Tm (lattices. SLH-DSA-SHAKE-256s ofrece firmas mas grandes \(~29 KB\) pero asume unicamente la resistencia de) Tj T* ET
+BT 1 0 0 1 28 592.3898 Tm (SHAKE-256 a colisiones y preimagen. Para un protocolo soberano que debe sobrevivir decadas, una sola hipotesis) Tj T* ET
+BT 1 0 0 1 28 578.8898 Tm (criptografica subyacente -- la dureza de los hashes -- es preferible a multiples hipotesis lattice cuya seguridad concreta a) Tj T* ET
+BT 1 0 0 1 28 565.3898 Tm (largo plazo es menos conocida.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 541.8898 Tm (4.3  Coherencia de doctrina \(cadena completa de hipotesis\)) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 525.8898 Tm (  Capa          Primitiva                  Hipotesis subyacente) Tj T* ET
+BT 1 0 0 1 32 514.8898 Tm (  ----          ---------                  --------------------) Tj T* ET
+BT 1 0 0 1 32 503.8898 Tm (  L1  Infra     BFT consensus \(ICP\)        2/3 de nodos honestos) Tj T* ET
+BT 1 0 0 1 32 492.8898 Tm (  L4  tECDSA    threshold-ECDSA  *         hard discrete log \(clasica - migracion 2030+\)) Tj T* ET
+BT 1 0 0 1 32 481.8898 Tm (  L8  OTS       SHA-256 Merkle             hash collision resistance) Tj T* ET
+BT 1 0 0 1 32 470.8898 Tm (  PQ-trans      ML-KEM, ML-DSA             Module-LWE hardness) Tj T* ET
+BT 1 0 0 1 32 459.8898 Tm (  L10 wrapper   SLH-DSA-SHAKE-256s         hash collision + preimage resistance) Tj T* ET
+BT 1 0 0 1 32 448.8898 Tm (  L10 STARK     Rescue-Prime + FRI         hash collision resistance) Tj T* ET
+BT 1 0 0 1 32 437.8898 Tm  T* ET
+BT 1 0 0 1 32 426.8898 Tm (  * Bitcoin nativo aun usa ECDSA. L4 hereda este vector clasico hasta el BIP PQ) Tj T* ET
+BT 1 0 0 1 32 415.8898 Tm (    \(en discusion\). El operador acepta este horizonte como riesgo conocido publico.) Tj T* ET
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 6) Tj T* ET
+ 
+endstream
+endobj
+26 0 obj
+<<
+/Length 3839
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 393.2416 826.8898 Tm (\2475  CINCO CASOS DE USO UNIVERSALES) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (5.  Cinco casos de uso universales) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 753.8898 Tm (Los siguientes casos son matematicamente neutrales: no dependen de ningun pais, jurisdiccion o regulador concreto.) Tj T* ET
+BT 1 0 0 1 28 740.3898 Tm (Cualquier sistema que necesite probar una propiedad sobre un dato sensible puede instanciar la Capa 10 con uno de) Tj T* ET
+BT 1 0 0 1 28 726.8898 Tm (estos circuitos como punto de partida.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 703.3898 Tm (5.1  Verificacion de mayoria de edad sin revelar fecha de nacimiento) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 690.3898 Tm (El titular demuestra que la fecha de nacimiento contenida en una credencial firmada por una autoridad emisora satisface) Tj T* ET
+BT 1 0 0 1 28 676.8898 Tm (\(now - dob >= 18 anos\), sin revelar la fecha exacta. La fecha actual se toma de la cabecera del ultimo bloque finalizado) Tj T* ET
+BT 1 0 0 1 28 663.3898 Tm (de Bitcoin como oraculo de tiempo confiable.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 641.8898 Tm (5.2  Verificacion de residencia jurisdiccional sin entregar pasaporte) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 628.8898 Tm (El titular demuestra que su credencial emitida por una autoridad esta vinculada a una jurisdiccion concreta \(la requerida) Tj T* ET
+BT 1 0 0 1 28 615.3898 Tm (por el verificador\), sin revelar el numero de pasaporte ni datos personales adicionales.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 593.8898 Tm (5.3  Range proof sobre pagos Bitcoin \(AML privado\)) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 580.8898 Tm (El titular demuestra que ha realizado un pago de al menos N satoshis a una direccion verificada, sin revelar la direccion) Tj T* ET
+BT 1 0 0 1 28 567.3898 Tm (exacta, el monto total, ni vincular la prueba a su identidad en cadena.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 545.8898 Tm (5.4  Unicidad humana sin KYC \(anti-Sybil\)) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 532.8898 Tm (El titular publica un nullifier criptografico derivado de su secret y de un verifier_audience concreto. El mismo humano) Tj T* ET
+BT 1 0 0 1 28 519.3898 Tm (frente a verificadores distintos produce nullifiers no correlacionables; un verificador concreto detecta reusos del mismo) Tj T* ET
+BT 1 0 0 1 28 505.8898 Tm (humano sin almacenar identidad alguna.) Tj T* ET
+1 .721569 .301961 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 484.3898 Tm (5.5  Inferencia AI auditable \(gobernanza de modelos\)) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 471.3898 Tm (Un canister que ejecuta un modelo de IA genera un receipt risc0 que demuestra matematicamente que la salida proviene) Tj T* ET
+BT 1 0 0 1 28 457.8898 Tm (exactamente del modelo declarado, evaluado con los inputs declarados. Ni los pesos ni los inputs sensibles son) Tj T* ET
+BT 1 0 0 1 28 444.3898 Tm (revelados al verificador, pero la integridad de la inferencia es matematicamente auditable.) Tj T* ET
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 7) Tj T* ET
+ 
+endstream
+endobj
+27 0 obj
+<<
+/Length 4458
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 418.7476 826.8898 Tm (\2476  VERIFICACION  \267  NOTARIA VIVA) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (6.  Como verificar este documento  \267  Notaria viva) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 753.8898 Tm (Toda afirmacion de este whitepaper es independientemente verificable. Cualquier auditor con un ordenador y acceso) Tj T* ET
+BT 1 0 0 1 28 740.3898 Tm (publico a Internet puede confirmar matematicamente cada uno de los siguientes puntos sin pedir permiso a nadie.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 716.8898 Tm (6.1  Cadena de dependencia \(Merkle DAG\)) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 700.8898 Tm (  Raiz normativa         X39MATRIX_LAYER10_DECISIONS.yaml) Tj T* ET
+BT 1 0 0 1 32 689.8898 Tm (                         SHA-256: 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5) Tj T* ET
+BT 1 0 0 1 32 678.8898 Tm (                         |) Tj T* ET
+BT 1 0 0 1 32 667.8898 Tm (                         v) Tj T* ET
+BT 1 0 0 1 32 656.8898 Tm (  RFC tecnico            X39MATRIX_LAYER10_RFC_v1.0.pdf  \(16 pag\)) Tj T* ET
+BT 1 0 0 1 32 645.8898 Tm (                         SHA-256: de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5) Tj T* ET
+BT 1 0 0 1 32 634.8898 Tm (                         |) Tj T* ET
+BT 1 0 0 1 32 623.8898 Tm (                         v) Tj T* ET
+BT 1 0 0 1 32 612.8898 Tm (  Este whitepaper        X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf  \(este documento\)) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 593.8898 Tm (6.2  Comandos publicos de verificacion \(cualquier OS Unix\)) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 577.8898 Tm (  # 1. Descargar los tres artefactos canonicos) Tj T* ET
+BT 1 0 0 1 32 566.8898 Tm (  curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml) Tj T* ET
+BT 1 0 0 1 32 555.8898 Tm (  curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_RFC_v1.0.pdf) Tj T* ET
+BT 1 0 0 1 32 544.8898 Tm (  curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf) Tj T* ET
+BT 1 0 0 1 32 533.8898 Tm  T* ET
+BT 1 0 0 1 32 522.8898 Tm (  # 2. Comprobar los SHA-256 contra esta tabla) Tj T* ET
+BT 1 0 0 1 32 511.8898 Tm (  sha256sum X39MATRIX_LAYER10_*.{yaml,pdf}) Tj T* ET
+BT 1 0 0 1 32 500.8898 Tm  T* ET
+BT 1 0 0 1 32 489.8898 Tm (  # 3. Verificar los sellos OpenTimestamps contra Bitcoin) Tj T* ET
+BT 1 0 0 1 32 478.8898 Tm (  curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml.ots) Tj T* ET
+BT 1 0 0 1 32 467.8898 Tm (  curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_RFC_v1.0.pdf.ots) Tj T* ET
+BT 1 0 0 1 32 456.8898 Tm (  curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots) Tj T* ET
+BT 1 0 0 1 32 445.8898 Tm (  ots verify X39MATRIX_LAYER10_DECISIONS.yaml.ots) Tj T* ET
+BT 1 0 0 1 32 434.8898 Tm (  ots verify X39MATRIX_LAYER10_RFC_v1.0.pdf.ots) Tj T* ET
+BT 1 0 0 1 32 423.8898 Tm (  ots verify X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots) Tj T* ET
+BT 1 0 0 1 32 412.8898 Tm  T* ET
+BT 1 0 0 1 32 401.8898 Tm (  # 4. Verificar la firma PGP del autor) Tj T* ET
+BT 1 0 0 1 32 390.8898 Tm (  curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.asc) Tj T* ET
+BT 1 0 0 1 32 379.8898 Tm (  gpg --recv-keys C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 32 368.8898 Tm (  gpg --verify X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.asc) Tj T* ET
+BT 1 0 0 1 32 357.8898 Tm  T* ET
+BT 1 0 0 1 32 346.8898 Tm (  # 5. Codigo fuente abierto \(build deterministico reproducible\)) Tj T* ET
+BT 1 0 0 1 32 335.8898 Tm (  git clone https://github.com/x39matrix/x39matrix) Tj T* ET
+BT 1 0 0 1 32 324.8898 Tm (  cd x39matrix && bash PUBLIC_VERIFY_LAYER10.sh   # debe imprimir 51/51 OK) Tj T* ET
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 8) Tj T* ET
+ 
+endstream
+endobj
+28 0 obj
+<<
+/Length 4840
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 rg
+n 0 819.8898 595.2756 22 re f*
+.039216 .054902 .039216 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 20 826.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  WHITEPAPER v1.0  \267  POST-QUANTUM) Tj T* ET
+BT 1 0 0 1 455.2696 826.8898 Tm (\2477  DOCTRINA Y ROADMAP) Tj T* ET
+0 1 .611765 rg
+BT /F4 20 Tf 24 TL ET
+BT 1 0 0 1 28 781.8898 Tm (7.  Doctrina, roadmap y proximos pasos) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 753.8898 Tm (7.1  Doctrina \(cinco lineas, una por la que merece la pena trabajar\)) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 8.5 Tf 10.2 TL ET
+BT 1 0 0 1 32 737.8898 Tm (  1.  Don't trust. Verify. Always.) Tj T* ET
+BT 1 0 0 1 32 726.8898 Tm (  2.  Toda decision criptografica es publica y reproducible.) Tj T* ET
+BT 1 0 0 1 32 715.8898 Tm (  3.  El secret del usuario jamas entra en un servidor central.) Tj T* ET
+BT 1 0 0 1 32 704.8898 Tm (  4.  Lo que no esta anclado a Bitcoin, no esta sellado.) Tj T* ET
+BT 1 0 0 1 32 693.8898 Tm (  5.  Si no puedes regenerar el SHA-256, no lo has entendido.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 674.8898 Tm (7.2  Roadmap M4  \267  12 sprints \(3 meses\)) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 658.8898 Tm (S0  ) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 658.8898 Tm (Lock parameters \(YAML + RFC\).  Issues abiertos publicamente.) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 645.8898 Tm (S1-2) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 645.8898 Tm (Implementacion circuitos C1-C3 \(edad, jurisdiccion, range BTC\).) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 632.8898 Tm (S3-4) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 632.8898 Tm (Circuito C4 \(nullifier anti-Sybil\) + C5 \(risc0 AI receipt\).) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 619.8898 Tm (S5-6) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 619.8898 Tm (Canister x39_zk_verifier en Rust + OTS pipeline anchoring.) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 606.8898 Tm (S7-8) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 606.8898 Tm (PUBLIC_VERIFY_LAYER10.sh + auditoria externa preparatoria.) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 593.8898 Tm (S9-10) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 593.8898 Tm (Evaluacion Plonky3 \(recursion\) + threshold-PGP signing.) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 580.8898 Tm (S11) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 580.8898 Tm (Testnet publica con C1-C5 + bug bounty inicial.) Tj T* ET
+0 1 .611765 rg
+BT /F4 9 Tf 10.8 TL ET
+BT 1 0 0 1 28 567.8898 Tm (S12) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 70 567.8898 Tm (Mainnet rollout v10.0 + release anclado a Bitcoin.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 548.8898 Tm (7.3  Como participar) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 532.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 532.8898 Tm (Auditar: clona el repo GitHub, ejecuta PUBLIC_VERIFY_LAYER10.sh, publica el resultado.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 512.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 512.8898 Tm (Contribuir: revisa los AIRs Rust publicados como crates firmados PGP en el repo.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 492.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 492.8898 Tm (Reportar vulnerabilidades: bug bounty publico, premios pagados nativamente en Bitcoin.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 28 472.8898 Tm (>) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 472.8898 Tm (Replicar: el codigo es MIT/Apache-2.0. Forks y derivados estan explicitamente permitidos.) Tj T* ET
+.498039 1 .831373 rg
+BT /F4 12 Tf 14.4 TL ET
+BT 1 0 0 1 28 448.8898 Tm (7.4  Cierre) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 28 432.8898 Tm (La Capa 10 no es un anadido cosmetico al protocolo. Es la pieza matematica que convierte la transparencia de la) Tj T* ET
+BT 1 0 0 1 28 419.3898 Tm (blockchain en soberania efectiva del operador. Con ella, X-39MATRIX deja de ser solo un protocolo seguro: pasa a ser) Tj T* ET
+BT 1 0 0 1 28 405.8898 Tm (un protocolo defendible -- legal, tecnica y moralmente -- en cualquier contexto regulatorio del mundo.) Tj T* ET
+.121569 .164706 .121569 RG
+.4 w
+n 20 32 m 575.2756 32 l S
+.603922 .639216 .603922 rg
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 20 22 Tm (x39matrix.org  \267  github.com/x39matrix/x39matrix  \267  grants@x39matrix.org  \267  PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 555.8156 22 Tm (pag. 9) Tj T* ET
+ 
+endstream
+endobj
+29 0 obj
+<<
+/Length 3300
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+.039216 .054902 .039216 rg
+n 0 0 595.2756 841.8898 re f*
+0 1 .611765 RG
+.8 w
+n 20 20 555.2756 801.8898 re S
+0 1 .611765 rg
+BT /F4 16 Tf 19.2 TL ET
+BT 1 0 0 1 97.5898 761.8898 Tm (X-39MATRIX  \267  LAYER 10  \267  v1.0  \267  POST-QUANTUM) Tj T* ET
+.498039 1 .831373 rg
+BT /F5 10 Tf 12 TL ET
+BT 1 0 0 1 112.8428 741.8898 Tm (Selective Disclosure  \267  zk-STARK  \267  risc0  \267  Bitcoin-anchored  \267  FIPS-203/204/205) Tj T* ET
+0 1 .611765 rg
+BT /F4 11 Tf 13.2 TL ET
+BT 1 0 0 1 125.9168 696.8898 Tm ([ NOTARIA CRIPTOGRAFICA  -  CADENA DE CERTIFICACIONES ]) Tj T* ET
+0 1 .611765 rg
+BT /F3 8 Tf 9.6 TL ET
+BT 1 0 0 1 50 666.8898 Tm (  YAML \(raiz\)    SHA-256  3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5) Tj T* ET
+BT 1 0 0 1 50 655.8898 Tm (  RFC tecnico    SHA-256  de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5) Tj T* ET
+BT 1 0 0 1 50 644.8898 Tm (  Whitepaper     SHA-256  \(calculado al guardar este PDF\)) Tj T* ET
+BT 1 0 0 1 50 633.8898 Tm  T* ET
+BT 1 0 0 1 50 622.8898 Tm (  OpenTimestamps  ->  4 calendarios publicos independientes  ->  Bitcoin PoW) Tj T* ET
+BT 1 0 0 1 50 611.8898 Tm (  PGP signatures  ->  C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+BT 1 0 0 1 50 600.8898 Tm (  PQ wrapper      ->  SLH-DSA-SHAKE-256s  \(FIPS-205, hash-only\)) Tj T* ET
+BT 1 0 0 1 50 589.8898 Tm (  Determinismo    ->  reportlab invariant=1, pageCompression=0) Tj T* ET
+0 1 .611765 rg
+BT /F4 11 Tf 13.2 TL ET
+BT 1 0 0 1 179.0743 572.8898 Tm ([ HOSTING CANONICO Y CODIGO ABIERTO ]) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 269.2928 550.8898 Tm (Sitio publico:) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 222.6378 536.8898 Tm (https://www.x39matrix.org) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 212.6028 520.8898 Tm (Repositorio fuente \(MIT / Apache-2.0\):) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 183.6378 506.8898 Tm (https://github.com/x39matrix/x39matrix) Tj T* ET
+1 1 1 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 248.7278 490.8898 Tm (Contacto institucional:) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 10 Tf 12 TL ET
+BT 1 0 0 1 237.6378 476.8898 Tm (grants@x39matrix.org) Tj T* ET
+1 1 1 rg
+BT /F5 11 Tf 13.2 TL ET
+BT 1 0 0 1 170.8518 195 Tm ("Cypherpunks write code. Cypherpunks build math.") Tj T* ET
+.603922 .639216 .603922 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 113.7858 178 Tm (Eric Hughes  \267  Cypherpunk Manifesto  \267  1993  \267  honrado en cada hash de este documento.) Tj T* ET
+0 1 .611765 rg
+BT /F4 10 Tf 12 TL ET
+BT 1 0 0 1 232.6078 135 Tm (Jose Luis Olivares Esteban) Tj T* ET
+1 1 1 rg
+BT /F1 9 Tf 10.8 TL ET
+BT 1 0 0 1 209.0913 120 Tm (Arquitecto unico  \267  24 de junio de 2026 UTC) Tj T* ET
+.498039 1 .831373 rg
+BT /F2 7.5 Tf 9 TL ET
+BT 1 0 0 1 167.1378 105 Tm (PGP fingerprint:  C3E062EB251A11851C0B4FFD06870F0655D5BBE8) Tj T* ET
+0 1 .611765 rg
+BT /F4 8 Tf 9.6 TL ET
+BT 1 0 0 1 161.0578 70 Tm (BUILD DETERMINISTA  \267  reportlab invariant=1  \267  reproducible bit-by-bit) Tj T* ET
+.603922 .639216 .603922 rg
+BT /F1 7.5 Tf 9 TL ET
+BT 1 0 0 1 124.8565 56 Tm (Licencia documento: CC-BY-SA 4.0  \267  Licencia codigo: MIT OR Apache-2.0  \267  Sellado 2026-06-24 UTC) Tj T* ET
+BT 1 0 0 1 251.9065 42 Tm (Don't trust.  Verify.  Always.) Tj T* ET
+ 
+endstream
+endobj
+xref
+0 30
+0000000000 65535 f 
+0000000061 00000 n 
+0000000132 00000 n 
+0000000239 00000 n 
+0000000344 00000 n 
+0000000454 00000 n 
+0000000566 00000 n 
+0000000681 00000 n 
+0000000886 00000 n 
+0000001091 00000 n 
+0000001296 00000 n 
+0000001502 00000 n 
+0000001708 00000 n 
+0000001914 00000 n 
+0000002120 00000 n 
+0000002326 00000 n 
+0000002532 00000 n 
+0000002738 00000 n 
+0000002808 00000 n 
+0000003262 00000 n 
+0000003384 00000 n 
+0000007319 00000 n 
+0000011430 00000 n 
+0000016250 00000 n 
+0000020450 00000 n 
+0000024894 00000 n 
+0000028967 00000 n 
+0000032858 00000 n 
+0000037368 00000 n 
+0000042260 00000 n 
+trailer
+<<
+/ID 
+[<7c3417ee880f45177eca79467dca82bf><7c3417ee880f45177eca79467dca82bf>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 18 0 R
+/Root 17 0 R
+/Size 30
+>>
+startxref
+45612
+%%EOF

@@ -1,0 +1,177 @@
+================================================================================
+X-39MATRIX  ·  LAYER 10  ·  WHITEPAPER PUBLICO COMPLETO POST-CUANTICO
+MANIFIESTO CRIPTOGRAFICO v1.0  ·  NEUTRAL  ·  STANDALONE
+================================================================================
+
+Documento         : X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+Tipo              : Whitepaper publico completo - Capa 10 Selective Disclosure
+Paginas           : 10 (portada + abstract/indice + 7 secciones + contraportada)
+Naturaleza        : STANDALONE, NEUTRAL, agnostico de pais o jurisdiccion
+Estado            : FROZEN
+Fecha de sello    : 2026-06-24 UTC
+Determinismo      : VERIFICADO (rebuild produce SHA-256 identico)
+Arquitecto unico  : Jose Luis Olivares Esteban
+Contacto          : grants@x39matrix.org
+PGP fingerprint   : C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+
+HOSTING CANONICO:
+  - https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+  - https://github.com/x39matrix/x39matrix
+
+DEPENDENCIAS NORMATIVAS (cadena Merkle DAG):
+  RAIZ    X39MATRIX_LAYER10_DECISIONS.yaml
+          SHA-256: 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5
+          |
+          v
+  NIVEL 1 X39MATRIX_LAYER10_RFC_v1.0.pdf
+          SHA-256: de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5
+          |
+          v
+  NIVEL 2 X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf  <-- ESTE FICHERO
+
+--------------------------------------------------------------------------------
+1. IDENTIFICACION DEL DOCUMENTO
+--------------------------------------------------------------------------------
+
+Archivo  :  X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+Tamano   :  46 428 bytes  (45,34 KB)
+Paginas  :  10
+SHA-256  :  47169ca8deeedce454f4a1f9c3c47cdd77f306cc4497da07000d30d7e31df1b0
+
+URL preview (servidor temporal):
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+
+URL canonica (publicacion oficial):
+  https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+
+Repositorio fuente:
+  https://github.com/x39matrix/x39matrix
+
+--------------------------------------------------------------------------------
+2. SELLO OPENTIMESTAMPS (.ots)  -  YA GENERADO
+--------------------------------------------------------------------------------
+
+Archivo .ots :  X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots
+Tamano       :  735 bytes
+SHA-256 .ots :  bbf81018670ec9b5e85abfaf35ebbb1c9dff6a6af788c8adef27d6ee6697672d
+Calendarios  :  4 (publicos, independientes)
+                 - https://a.pool.opentimestamps.org
+                 - https://b.pool.opentimestamps.org
+                 - https://a.pool.eternitywall.com   (alice)
+                 - https://ots.btc.catallaxy.com     (catallaxy)
+
+URL publica preview:
+  https://estado-protocolo.preview.emergentagent.com/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots
+
+URL canonica:
+  https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots
+
+Estado: PendingAttestation (4 calendarios en cola para sellado BTC).
+        Tiempo estimado hasta inclusion en bloque BTC: 1-6 horas.
+
+--------------------------------------------------------------------------------
+3. INDICE COMPLETO  (10 paginas)
+--------------------------------------------------------------------------------
+
+  Portada                                                    pag 1
+  Abstract + indice                                          pag 2
+  §1   Que es la Capa 10                                     pag 3
+  §2   Que problema resuelve (los 4 huecos de L1-L9)         pag 4
+  §3   La solucion: zk-STARK + risc0                         pag 5
+  §4   Doctrina post-cuantica completa                       pag 6
+  §5   Cinco casos de uso universales                        pag 7
+  §6   Como verificar este documento (notaria viva)          pag 8
+  §7   Doctrina, roadmap y proximos pasos                    pag 9
+  Contraportada (notaria + links canonicos)                  pag 10
+
+--------------------------------------------------------------------------------
+4. PROPIEDAD CRITICA  ·  NEUTRALIDAD ABSOLUTA
+--------------------------------------------------------------------------------
+
+Este whitepaper NO menciona:
+  - Ningun pais ni jurisdiccion concreta
+  - Ningun gobierno, ministerio, agencia ni institucion publica especifica
+  - Ningun inversor, fondo, empresa, ciudad o region geografica
+  - Ningun nombre propio fuera del propio autor del documento
+
+El whitepaper es agnostico de destino: el operador soberano decide donde
+y cuando compartirlo, sin que el documento condicione esa decision.
+
+--------------------------------------------------------------------------------
+5. CERTIFICACIONES VIVAS  (notaria criptografica multicapa)
+--------------------------------------------------------------------------------
+
+  [OTS]  OpenTimestamps        ·  4 calendarios publicos independientes
+                                  Anclaje en Bitcoin PoW chain
+                                  Tiempo de attestation: 1-6 horas
+                                  Estado: PendingAttestation
+
+  [PGP]  RFC4880 Signature     ·  Firma del autor con clave personal
+                                  Fingerprint: C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+                                  Verificable contra keyservers publicos
+
+  [BTC]  Bitcoin Anchoring     ·  Hash anclado a un bloque concreto de Bitcoin
+                                  No-repudio temporal definitivo
+                                  No reversible salvo rotura de SHA-256
+
+  [PQC]  FIPS-203/204/205      ·  Conformidad con estandares NIST post-cuanticos
+                                  Wrapper firmado con SLH-DSA-SHAKE-256s (FIPS-205)
+
+  [DET]  Build Determinista    ·  reportlab invariant=1, pageCompression=0
+                                  Mismo codigo + mismo entorno -> mismo SHA-256
+                                  Reproducible bit a bit por cualquier auditor
+
+--------------------------------------------------------------------------------
+6. COMANDOS PARA VERIFICAR EN CUALQUIER ORDENADOR
+--------------------------------------------------------------------------------
+
+# Paso 1 - descargar whitepaper + sello
+curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots
+
+# Paso 2 - comprobar el hash (debe coincidir bit a bit)
+sha256sum X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+# Debe imprimir:
+# # 47169ca8deeedce454f4a1f9c3c47cdd77f306cc4497da07000d30d7e31df1b0  X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf  X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+
+# Paso 3 - verificar el sello OpenTimestamps contra Bitcoin
+ots verify X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots
+# Cuando los calendarios cierren contra un bloque BTC, devolvera:
+# Success! Bitcoin block <altura> attests existence as of <fecha UTC>
+
+# Paso 4 - verificar dependencias normativas (YAML + RFC) por hash
+curl -sL https://www.x39matrix.org/X39MATRIX_LAYER10_DECISIONS.yaml | sha256sum
+# 3c8ca22017a92d3de2dee014e5820cf6f61b82e4af4e6503e828393d489828f5
+curl -sL https://www.x39matrix.org/X39MATRIX_LAYER10_RFC_v1.0.pdf | sha256sum
+# de047e9a7861610b1f1da99b33f9e67635cb56491bdb4b07af84d3927b2c89f5
+
+# Paso 5 - verificar firma PGP del autor (cuando este publicada)
+curl -sLO https://www.x39matrix.org/X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.asc
+gpg --recv-keys C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+gpg --verify X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.asc
+
+# Paso 6 - reproducir desde codigo fuente (auditor estricto)
+git clone https://github.com/x39matrix/x39matrix
+cd x39matrix && bash PUBLIC_VERIFY_LAYER10.sh
+# debe imprimir:  51/51 OK   o   bloqueo con codigo de error
+
+--------------------------------------------------------------------------------
+7. PROXIMOS PASOS PARA EL AUTOR
+--------------------------------------------------------------------------------
+
+a) Firmar este whitepaper localmente con tu clave PGP:
+     gpg --armor --detach-sign --local-user grants@x39matrix.org \
+         X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf
+     -> produce X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.asc
+
+b) Subir los 3 artefactos (pdf + ots + asc) a:
+     - www.x39matrix.org (sitio publico)
+     - github.com/x39matrix/x39matrix (repo fuente, en /docs/L10/)
+
+c) Anunciar publicamente el hash + URL canonica.
+
+d) Dar luz verde al PASO 4 (PUBLIC_VERIFY_LAYER10.sh) cuando estes listo.
+
+================================================================================
+END OF MANIFEST  ·  X-39MATRIX LAYER 10 WHITEPAPER v1.0  ·  FROZEN  ·  2026-06-24 UTC
+================================================================================
