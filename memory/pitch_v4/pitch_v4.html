@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>X-39MATRIX :: Pitch Sevilla v4 — Verdad Verificada</title>
+<title>X-39MATRIX :: Presentación Sevilla v4 — Verdad Verificada</title>
 <style>
 @page {
   size: A4;
   margin: 18mm 16mm 16mm 16mm;
   @bottom-center {
-    content: "X-39MATRIX :: Pitch Inversor Sevilla v4 :: " counter(page) " / " counter(pages);
+    content: "X-39MATRIX :: Presentación a Inversores Sevilla v4 :: " counter(page) " / " counter(pages);
     color: #008f23;
     font-family: 'Courier New', monospace;
     font-size: 8pt;
@@ -173,14 +173,14 @@ ul.cypher li { padding: 1mm 0; }
   <h1>X-39 MATRIX</h1>
   <div class="sub">PROTOCOLO SOBERANO POST-CUÁNTICO HÍBRIDO</div>
   <div class="sub">— Verdad anclada en Bitcoin —</div>
-  <p style="margin-top: 14mm; color: #c9ffd5;">Pitch Inversor — Sevilla<br>v4.0 · 2026-06-25</p>
+  <p style="margin-top: 14mm; color: #c9ffd5;">Presentación a Inversores — Sevilla<br>v4.0 · 2026-06-25</p>
 
   <div class="stamp">
     <strong style="color:#00ff41;">VERDAD CRIPTOGRÁFICA VERIFICADA</strong><br><br>
     SHA-256 manifest triple :: <span class="fp">ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143</span><br>
     Anclaje BTC mainnet     :: <span style="color:#00ff41;">CONFIRMED · block #952718 + #952732</span><br>
     Firma post-cuántica     :: <span style="color:#00ff41;">ML-DSA-87 (FIPS 204, NIST L5)</span><br>
-    Co-firma forward-secure :: <span style="color:#00ff41;">SLH-DSA-SHAKE-256s (FIPS 205)</span><br>
+    Co-firma con seguridad hacia adelante :: <span style="color:#00ff41;">SLH-DSA-SHAKE-256s (FIPS 205)</span><br>
     Operador soberano       :: Jose Luis Olivares Esteban<br>
     Email                   :: grants@x39matrix.org<br>
     Repositorio público     :: github.com/x39matrix/x39matrix
@@ -193,11 +193,11 @@ ul.cypher li { padding: 1mm 0; }
 <section class="slide">
   <h1>01 :: LA VERDAD QUE NO TENÍAMOS EN v3</h1>
 
-  <h2>Lo que cambió entre el Pitch v3 (Mayo) y hoy</h2>
+  <h2>Lo que cambió entre la Presentación v3 (Mayo) y hoy</h2>
 
   <div class="box win">
     <h3>El 7 de junio de 2026, a las 10:59:51 UTC</h3>
-    <p>el protocolo X-39MATRIX produjo y firmó la <strong>primera firma soberana post-cuántica del mundo conocido</strong> anclada en Bitcoin mainnet — <strong>SIN seed phrase, SIN humano en el bucle, SIN custodios</strong>.</p>
+    <p>el protocolo X-39MATRIX produjo y firmó la <strong>primera firma soberana post-cuántica del mundo conocido</strong> anclada en Bitcoin mainnet — <strong>SIN frase semilla, SIN humano en el bucle, SIN custodios</strong>.</p>
   </div>
 
   <h2>Atestación criptográfica en cadena Bitcoin</h2>
@@ -221,7 +221,7 @@ cd x39matrix
 ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots \
   | grep BitcoinBlockHeaderAttestation</div>
 
-  <p style="margin-top: 4mm;"><em>Output esperado:</em></p>
+  <p style="margin-top: 4mm;"><em>Salida esperada:</em></p>
   <div class="term no-prompt"><span class="ok">verify BitcoinBlockHeaderAttestation(952718)</span>
 <span class="ok">verify BitcoinBlockHeaderAttestation(952732)</span></div>
 
@@ -234,12 +234,12 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
 
   <h2>Citación oficial</h2>
   <div class="box alert">
-    <p><strong>Gidney &amp; Ekerå (Quantum 5, 2021):</strong> <em>"How to factor 2048-bit RSA integers in 8 hours using 20 million noisy qubits"</em></p>
+    <p><strong>Gidney y Ekerå (Quantum 5, 2021):</strong> <em>«Cómo factorizar enteros RSA de 2048 bits en 8 horas usando 20 millones de cúbits ruidosos»</em></p>
     <p><strong>Google Quantum AI (marzo 2026):</strong> avances en corrección de errores con distancia &gt;17. CRQC en horizonte 2030-2035.</p>
-    <p><strong>NIST PQC migration mandate:</strong> ECDSA, RSA, BLS12-381 fuera del portfolio de supervivencia. ML-DSA + SLH-DSA in.</p>
+    <p><strong>Mandato de migración PQC del NIST:</strong> ECDSA, RSA, BLS12-381 fuera del catálogo de supervivencia. ML-DSA y SLH-DSA dentro.</p>
   </div>
 
-  <h2>"Harvest now, decrypt later" YA está ocurriendo</h2>
+  <h2>«Cosecha hoy, descifra mañana» YA está ocurriendo</h2>
   <ul class="cypher">
     <li>Estados-nación ya almacenan tráfico cifrado clásico esperando el CRQC.</li>
     <li>Las firmas eIDAS clásicas emitidas <strong>hoy</strong> serán falsificables retroactivamente.</li>
@@ -267,24 +267,24 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   <table>
     <tr><th>Capa</th><th>Función</th><th>Tecnología</th><th>Estado</th></tr>
     <tr><td>L1</td><td>Identidad soberana</td><td>Principal ICP + PGP Ed25519</td><td class="win">PROD</td></tr>
-    <tr><td>L2</td><td>Firma post-cuántica primaria</td><td>ML-DSA-87 (FIPS 204)</td><td class="win">PROD · ancled BTC</td></tr>
-    <tr><td>L3</td><td>Firma hash-based co-secura</td><td>SLH-DSA-SHAKE-256s (FIPS 205)</td><td class="win">PROD</td></tr>
-    <tr><td>L4</td><td>Firma umbral distribuida</td><td>threshold-ECDSA en ICP subnet (13 nodos)</td><td class="win">PROD</td></tr>
+    <tr><td>L2</td><td>Firma post-cuántica primaria</td><td>ML-DSA-87 (FIPS 204)</td><td class="win">PROD · anclado BTC</td></tr>
+    <tr><td>L3</td><td>Firma co-segura basada en hash</td><td>SLH-DSA-SHAKE-256s (FIPS 205)</td><td class="win">PROD</td></tr>
+    <tr><td>L4</td><td>Firma umbral distribuida</td><td>threshold-ECDSA en subred ICP (13 nodos)</td><td class="win">PROD</td></tr>
     <tr><td>L5</td><td>Anclaje temporal universal</td><td>OpenTimestamps en Bitcoin</td><td class="win">PROD · 21 bloques BTC</td></tr>
     <tr><td>L6</td><td>Notarización inmutable</td><td>IPFS + canister ICP</td><td class="win">PROD</td></tr>
-    <tr><td>L7</td><td>Reproducibilidad bit-a-bit</td><td>Builds deterministas + SHA-256</td><td class="win">PROD</td></tr>
+    <tr><td>L7</td><td>Reproducibilidad bit-a-bit</td><td>Compilaciones deterministas + SHA-256</td><td class="win">PROD</td></tr>
     <tr><td>L8</td><td>CI público de verificación</td><td>GitHub Actions verify.yml</td><td class="win">PROD</td></tr>
-    <tr><td>L9</td><td>Custodia descentralizada</td><td>Self-custody + Shamir 3-of-5</td><td>BETA</td></tr>
+    <tr><td>L9</td><td>Custodia descentralizada</td><td>Auto-custodia + Shamir 3-de-5</td><td>BETA</td></tr>
     <tr><td>L10</td><td>Divulgación selectiva zk</td><td>zk-STARK transparente (Winterfell, Rust)</td><td>EXPERIMENTAL</td></tr>
   </table>
 
   <h2>Lo que ningún otro proyecto público combina</h2>
   <ul class="cypher">
-    <li>4 firmas simultáneas obligatorias por release: <strong>PGP + ECDSA + ML-DSA-87 + SLH-DSA-256s</strong>.</li>
-    <li>Bitcoin como notario universal sin coste por firma (calendars OpenTimestamps gratuitos).</li>
-    <li>Canister ICP que firma Bitcoin sin seed phrase (la clave la mantiene la subnet distribuida).</li>
-    <li>Reproducibilidad SLSA L4 — auditor independiente reproduce y obtiene mismo hash.</li>
-    <li>CI verifica SHA-256 + PGP + OTS en cada push, públicamente, sin acceso privilegiado.</li>
+    <li>4 firmas simultáneas obligatorias por publicación: <strong>PGP + ECDSA + ML-DSA-87 + SLH-DSA-256s</strong>.</li>
+    <li>Bitcoin como notario universal sin coste por firma (calendarios OpenTimestamps gratuitos).</li>
+    <li>Canister ICP que firma Bitcoin sin frase semilla (la clave la mantiene la subred distribuida).</li>
+    <li>Reproducibilidad SLSA L4 — auditor independiente reproduce y obtiene el mismo hash.</li>
+    <li>El CI verifica SHA-256 + PGP + OTS en cada envío, públicamente, sin acceso privilegiado.</li>
   </ul>
 
   <div class="footer-axiom">10 capas en una sola pila. Auditable en 30 segundos. AGPL-3.0. Soberano.</div>
@@ -349,7 +349,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
       <td><strong>X-39MATRIX</strong></td>
       <td class="win"><strong>€0,00 / firma</strong></td>
       <td class="win"><strong>SÍ (NIST L5)</strong></td>
-      <td class="win"><strong>€15K (one-time setup)</strong></td>
+      <td class="win"><strong>€15K (configuración única)</strong></td>
     </tr>
   </table>
   <p style="font-size: 7.5pt; color: #008f23; margin-top: 2mm;">* Volumen estimado: 50.000 documentos/año. Precio en mayúsculas y minúsculas según fuentes públicas Q2 2026.</p>
@@ -386,7 +386,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   <div class="big-saving">€28.650.000 vs DocuSign</div>
   <div class="big-saving">€9.550.000 vs FNMT</div>
 
-  <p style="text-align: center; margin-top: 6mm;">Setup X-39MATRIX one-time: <strong style="color:#ffcc00;">€15.000</strong> · ROI: <strong style="color:#00ff41;">&lt; 7 días</strong></p>
+  <p style="text-align: center; margin-top: 6mm;">Configuración inicial X-39MATRIX (única): <strong style="color:#ffcc00;">€15.000</strong> · ROI: <strong style="color:#00ff41;">&lt; 7 días</strong></p>
 
   <div class="box alert" style="margin-top: 6mm;">
     <h3>Lo que el ahorro NO mide</h3>
@@ -410,17 +410,17 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
     <tr>
       <td>Sello cualificado eIDAS 2.0 PQ</td>
       <td class="lose">RSA clásico, vulnerable</td>
-      <td class="win">ML-DSA-87 + BTC anchor</td>
+      <td class="win">ML-DSA-87 + anclaje BTC</td>
     </tr>
     <tr>
       <td>Historia clínica SAS (Sevilla)</td>
       <td class="lose">Centralizado, sin anclaje temporal</td>
-      <td class="win">zk-STARK selective disclosure + BTC</td>
+      <td class="win">divulgación selectiva zk-STARK + BTC</td>
     </tr>
     <tr>
       <td>Expediente urbanístico</td>
       <td class="lose">PDF firmado clásico, fácil de impugnar</td>
-      <td class="win">4-firma + BTC sello fecha cierta</td>
+      <td class="win">4-firma + sello BTC con fecha cierta</td>
     </tr>
     <tr>
       <td>Notarización contratos públicos</td>
@@ -433,9 +433,9 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
       <td class="win">Soberanía sin Estado validador</td>
     </tr>
     <tr>
-      <td>Trazabilidad IA generativa (C2PA-like)</td>
-      <td class="lose">Adobe propietario, vendor lock-in</td>
-      <td class="win">Open, on-chain, sin Microsoft/Adobe</td>
+      <td>Trazabilidad de IA generativa (estilo C2PA)</td>
+      <td class="lose">Adobe propietario, dependencia del proveedor</td>
+      <td class="win">Abierto, en cadena, sin Microsoft/Adobe</td>
     </tr>
     <tr>
       <td>Sellos académicos universitarios</td>
@@ -445,7 +445,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
     <tr>
       <td>Voto consultivo verificable</td>
       <td class="lose">No existe en Sevilla</td>
-      <td class="win">tECDSA + zk + BTC anchor</td>
+      <td class="win">tECDSA + zk + anclaje BTC</td>
     </tr>
   </table>
 
@@ -467,7 +467,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   <h2>Patentes / propiedad intelectual / soberanía</h2>
   <ul class="cypher">
     <li>Marca registrada <strong>WIPO/OMPI</strong> (en proceso).</li>
-    <li>Código bajo <strong>AGPL-3.0 + MIT dual</strong>: protege la soberanía sin perder adopción library.</li>
+    <li>Código bajo <strong>AGPL-3.0 + MIT dual</strong>: protege la soberanía sin perder la adopción como biblioteca.</li>
     <li>Artefactos criptográficos bajo <strong>CC0 + PGP + OTS</strong>: dominio público con prueba de autoría.</li>
     <li>Arquitectura categórica protegida por <strong>publicación con fecha cierta</strong> en Bitcoin (axioma anclado en bloque #948027).</li>
   </ul>
@@ -475,19 +475,19 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   <h2>Componentes propios (no dependencias)</h2>
   <table>
     <tr><th>Componente</th><th>Propio o externo</th><th>Auditable</th></tr>
-    <tr><td>9-Layer × 5-Block Algebra</td><td class="win">PROPIO (categórico)</td><td class="win">Sí, formal</td></tr>
-    <tr><td>Triple/cuádruple-firma engine</td><td class="win">PROPIO</td><td class="win">Sí, AGPL-3.0</td></tr>
-    <tr><td>Sovereign Topos pattern</td><td class="win">PROPIO (categórico)</td><td class="win">Sí, formal</td></tr>
+    <tr><td>Álgebra 9-Capas × 5-Bloques</td><td class="win">PROPIO (categórico)</td><td class="win">Sí, formal</td></tr>
+    <tr><td>Motor triple/cuádruple-firma</td><td class="win">PROPIO</td><td class="win">Sí, AGPL-3.0</td></tr>
+    <tr><td>Patrón de Topos Soberano</td><td class="win">PROPIO (categórico)</td><td class="win">Sí, formal</td></tr>
     <tr><td>Canister x39_bases (Rust, ICP)</td><td class="win">PROPIO</td><td class="win">Sí, module hash público</td></tr>
-    <tr><td>Cross-substrate anchoring</td><td class="win">PROPIO (BTC+ETH+SOL)</td><td class="win">Sí, on-chain</td></tr>
+    <tr><td>Anclaje multi-substrato</td><td class="win">PROPIO (BTC+ETH+SOL)</td><td class="win">Sí, on-chain</td></tr>
     <tr><td>OpenTimestamps</td><td>Externo (FOSS, P. Todd)</td><td class="win">Sí, MIT</td></tr>
-    <tr><td>Winterfell zk-STARK</td><td>Externo (Polygon Miden)</td><td>BETA · marked experimental</td></tr>
+    <tr><td>Winterfell zk-STARK</td><td>Externo (Polygon Miden)</td><td>BETA · marcado experimental</td></tr>
     <tr><td>ML-DSA-87 / SLH-DSA-256s</td><td>Externo (NIST estándar)</td><td class="win">Sí, FIPS 204/205</td></tr>
   </table>
 
   <h2>Ventaja categórica: lo que nadie copia rápido</h2>
   <div class="box win">
-    <p><strong>Combinar las 10 capas + 4 firmas + reproducibilidad + CI público + Bitcoin anchoring + ICP threshold</strong> en una sola pila coherente requiere ~18-36 meses de ingeniería para un equipo de 5 personas. <strong>Es nuestra moat técnica natural</strong> — no por opacidad sino por la curva de aprendizaje del conjunto.</p>
+    <p><strong>Combinar las 10 capas + 4 firmas + reproducibilidad + CI público + anclaje en Bitcoin + umbral ICP</strong> en una sola pila coherente requiere ~18-36 meses de ingeniería para un equipo de 5 personas. <strong>Es nuestra fosa técnica natural</strong> — no por opacidad sino por la curva de aprendizaje del conjunto.</p>
   </div>
 
   <div class="footer-axiom">El código es abierto. El conocimiento de cómo se integra, no. Esa es la verdadera ventaja.</div>
@@ -511,7 +511,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   <ul class="cypher">
     <li>NIS2 (Directiva UE) + DORA exigirán PQC en infra crítica antes de 2028.</li>
     <li>eIDAS 2.0 abrirá hueco a sellos PQ a partir de 2027.</li>
-    <li>Cloudflare y Google preparan sus propios sellos PQ (target 2027).</li>
+    <li>Cloudflare y Google preparan sus propios sellos PQ (objetivo 2027).</li>
     <li><strong>Quien defina el estándar abierto en este período, gana el mercado UE.</strong></li>
   </ul>
 
@@ -521,7 +521,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
     <tr><td>Liderazgo regulatorio UE (referencia eIDAS 2.0 PQ)</td><td class="win">incalculable</td></tr>
     <tr><td>Ahorro directo en firmas/notarizaciones</td><td class="cash">€2,8M/año</td></tr>
     <tr><td>Atracción de fondos europeos (Horizon, NGI, NLnet)</td><td class="cash">€500K – €2M en 24 meses</td></tr>
-    <tr><td>Posicionamiento en medios técnicos (HN, IACR, DFINITY forum)</td><td class="win">orgánico</td></tr>
+    <tr><td>Posicionamiento en medios técnicos (HN, IACR, foro DFINITY)</td><td class="win">orgánico</td></tr>
     <tr><td>Empleo cualificado en zona Sevilla Este / Triana</td><td class="cash">8-15 puestos directos</td></tr>
   </table>
 
@@ -535,28 +535,28 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   <h2>Hitos del programa piloto</h2>
   <table>
     <tr><th>Mes</th><th>Entregable</th><th>KPI verificable</th></tr>
-    <tr><td>M0</td><td>Acuerdo marco + setup técnico</td><td>5 canister IDs públicos + repo Sevilla fork</td></tr>
+    <tr><td>M0</td><td>Acuerdo marco + configuración técnica</td><td>5 canister IDs públicos + repositorio Sevilla bifurcado</td></tr>
     <tr><td>M3</td><td>1.000 documentos del padrón firmados PQ</td><td>OTS anchor en 3+ bloques BTC</td></tr>
     <tr><td>M6</td><td>Verificador web público en sevilla.es/verifica</td><td>Cualquier vecino verifica un documento en 30s</td></tr>
     <tr><td>M9</td><td>Piloto barrios vulnerables (Polígono Sur)</td><td>200 vecinos con identidad PQ activa</td></tr>
-    <tr><td>M12</td><td>Open-sourcing total + auditoría externa Cure53</td><td>Audit report público + Apache 2.0 release</td></tr>
+    <tr><td>M12</td><td>Liberación total como código abierto + auditoría externa Cure53</td><td>Informe de auditoría público + publicación Apache 2.0</td></tr>
   </table>
 
   <h2>Recursos solicitados</h2>
   <table>
     <tr><th>Concepto</th><th>Importe</th><th>Justificación</th></tr>
-    <tr><td>Co-financiación piloto Ayuntamiento</td><td class="cash">€85.000</td><td>setup técnico + integración 2 sistemas</td></tr>
+    <tr><td>Co-financiación piloto Ayuntamiento</td><td class="cash">€85.000</td><td>configuración técnica + integración 2 sistemas</td></tr>
     <tr><td>Recursos humanos (2 ingenieros 12 meses)</td><td class="cash">€95.000</td><td>cubierto con grant NLnet PET (solicitud abierta)</td></tr>
     <tr><td>Auditoría externa Cure53 / Quarkslab</td><td class="cash">€40.000</td><td>cubierto con NLnet Security Audit track (gratuito)</td></tr>
-    <tr><td>Setup infraestructura ICP + dominio</td><td class="cash">€8.000</td><td>cycles canister 18 meses + DNS soberano</td></tr>
+    <tr><td>Configuración de infraestructura ICP + dominio</td><td class="cash">€8.000</td><td>cycles del canister 18 meses + DNS soberano</td></tr>
     <tr><td><strong>Aportación neta Ayuntamiento Sevilla</strong></td><td class="cash"><strong>€85.000 únicos</strong></td><td><strong>resto cubierto por grants UE</strong></td></tr>
   </table>
 
   <h2>Garantía de continuidad operativa</h2>
   <ul class="cypher">
-    <li>Pre-funded cycles 18 meses (cubre todo el piloto sin renovación).</li>
-    <li>Dead-man heartbeat: si el operador desaparece, controlador pasa a trustees nombrados (3 universidades sevillanas).</li>
-    <li>Open-sourcing Apache 2.0 al M12: cualquier developer puede mantener el fork del Ayuntamiento sin nosotros.</li>
+    <li>Cycles pre-financiados 18 meses (cubre todo el piloto sin renovación).</li>
+    <li>Latido de hombre muerto: si el operador desaparece, el controlador pasa a fideicomisarios nombrados (3 universidades sevillanas).</li>
+    <li>Liberación como código abierto Apache 2.0 al M12: cualquier desarrollador puede mantener la bifurcación del Ayuntamiento sin nosotros.</li>
     <li>Especificación categórica sellada en BTC: la matemática sobrevive a cualquier humano.</li>
   </ul>
 
@@ -565,35 +565,35 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
 
 <!-- ============ SLIDE 10 — Cierre ============ -->
 <section class="slide">
-  <h1>10 :: CIERRE — VERIFY, DON'T TRUST</h1>
+  <h1>10 :: CIERRE — VERIFICA, NO CONFÍES</h1>
 
   <h2>Lo que hicimos solo en Junio de 2026</h2>
   <ul class="cypher">
-    <li><strong>2026-06-02:</strong> primer canister soberano firmando Bitcoin mainnet sin seed phrase.</li>
+    <li><strong>2026-06-02:</strong> primer canister soberano firmando Bitcoin mainnet sin frase semilla.</li>
     <li><strong>2026-06-07:</strong> primer manifest triple-firma post-cuántico anclado en BTC mundial.</li>
-    <li><strong>2026-06-08:</strong> upgrade a cuádruple firma con SLH-DSA-256s (defensa lattice + hash).</li>
+    <li><strong>2026-06-08:</strong> actualización a cuádruple firma con SLH-DSA-256s (defensa basada en retículas + hash).</li>
     <li><strong>2026-06-17:</strong> migración DNS soberana documentada en 3 bloques BTC.</li>
-    <li><strong>2026-06-24:</strong> Layer 10 zk-STARK Selective Disclosure release v1.0.</li>
-    <li><strong>2026-06-25:</strong> BTC attestations CONFIRMED publicadas en repo (este día).</li>
+    <li><strong>2026-06-24:</strong> Capa 10 zk-STARK Divulgación Selectiva, publicación v1.0.</li>
+    <li><strong>2026-06-25:</strong> atestaciones BTC CONFIRMADAS publicadas en el repositorio (este día).</li>
   </ul>
 
   <h2>Para auditar todo en 30 segundos desde cualquier laptop</h2>
   <div class="term">curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash</div>
 
-  <p style="margin-top: 4mm;"><em>Output esperado:</em></p>
-  <div class="term no-prompt"><span class="ok">Passed: 51 / 51</span>
-<span class="out">  - 17 Bitcoin mainnet blocks verified</span>
-<span class="out">  - 4 Bitcoin transactions verified</span>
-<span class="out">  - 11 ICP canisters with module hashes verified</span>
-<span class="out">  - 1 ECDSA signature via BIP-143 sighash verified</span>
-<span class="out">  - 3 OpenTimestamps merkle proofs verified</span>
-<span class="out">  - 2 merkle-root matches against Certificate verified</span>
-<span class="out">  - 2 PDF artifact hashes verified</span></div>
+  <p style="margin-top: 4mm;"><em>Salida esperada:</em></p>
+  <div class="term no-prompt"><span class="ok">Superadas: 51 / 51</span>
+<span class="out">  - 17 bloques Bitcoin mainnet verificados</span>
+<span class="out">  - 4 transacciones Bitcoin verificadas</span>
+<span class="out">  - 11 canisters ICP con module hash verificados</span>
+<span class="out">  - 1 firma ECDSA vía sighash BIP-143 verificada</span>
+<span class="out">  - 3 pruebas merkle de OpenTimestamps verificadas</span>
+<span class="out">  - 2 coincidencias merkle-root contra Certificate verificadas</span>
+<span class="out">  - 2 hashes de artefactos PDF verificados</span></div>
 
   <h2>Contacto soberano</h2>
   <div class="stamp" style="display:block; border: 1px solid #00ff41; padding: 4mm; background: #030503; font-size: 9pt; margin-top: 4mm;">
     <strong style="color: #00ff41;">Jose Luis Olivares Esteban</strong><br>
-    Sovereign Operator · Architect · Notary<br><br>
+    Operador Soberano · Arquitecto · Notario<br><br>
     grants@x39matrix.org<br>
     PGP: <span class="fp">C3E062EB251A11851C0B4FFD06870F0655D5BBE8</span><br>
     Repo: github.com/x39matrix/x39matrix<br>
@@ -612,7 +612,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   </p>
 
   <p style="text-align: center; margin-top: 8mm; font-size: 8pt; color: #008f23;">
-    Este pitch (SHA-256 del PDF compilado) será anclado en Bitcoin tras compilación.<br>
+    Esta presentación (SHA-256 del PDF compilado) será anclada en Bitcoin tras compilación.<br>
     Cualquier modificación posterior será criptográficamente detectable.
   </p>
 </section>
