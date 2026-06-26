@@ -9,24 +9,24 @@
   margin: 18mm 16mm 16mm 16mm;
   @bottom-center {
     content: "X-39MATRIX :: Presentación a Inversores Sevilla v4.1 :: " counter(page) " / " counter(pages);
-    color: #008f23;
-    font-family: 'Courier New', monospace;
+    color: #888;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 8pt;
   }
   @top-right {
     content: "github.com/x39matrix/x39matrix";
-    color: #008f23;
-    font-family: 'Courier New', monospace;
+    color: #888;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 7pt;
   }
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
-  background: #000;
-  color: #00ff41;
-  font-family: 'Courier New', 'JetBrains Mono', monospace;
-  font-size: 9.5pt;
-  line-height: 1.45;
+  background: #FFFFFF;
+  color: #1a1a1a;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 10pt;
+  line-height: 1.5;
 }
 .slide {
   page-break-after: always;
@@ -37,32 +37,35 @@ html, body {
 .slide:last-child { page-break-after: auto; }
 h1 {
   font-size: 22pt;
-  color: #00ff41;
-  border-bottom: 2px solid #00ff41;
+  color: #B8860B;
+  border-bottom: 2px solid #B8860B;
   padding-bottom: 4mm;
   margin-bottom: 6mm;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 h2 {
   font-size: 14pt;
-  color: #00ff41;
-  margin: 4mm 0 3mm 0;
-  border-left: 4px solid #00ff41;
+  color: #B8860B;
+  margin: 5mm 0 3mm 0;
+  border-left: 4px solid #B8860B;
   padding-left: 3mm;
+  font-weight: 600;
 }
 h3 {
   font-size: 11pt;
-  color: #00ff41;
+  color: #1a1a1a;
   margin: 4mm 0 2mm 0;
+  font-weight: 700;
 }
-p, li { color: #c9ffd5; margin: 2mm 0; }
-strong { color: #00ff41; font-weight: bold; }
-em { color: #ffcc00; font-style: normal; }
+p, li { color: #1a1a1a; margin: 2mm 0; }
+strong { color: #1a1a1a; font-weight: 700; }
+em { color: #B8860B; font-style: italic; }
 .tag {
   display: inline-block;
-  background: #001f08;
-  border: 1px solid #00ff41;
-  color: #00ff41;
+  background: #fdf6e3;
+  border: 1px solid #B8860B;
+  color: #B8860B;
   padding: 1mm 2.5mm;
   font-size: 7.5pt;
   margin-right: 2mm;
@@ -70,100 +73,104 @@ em { color: #ffcc00; font-style: normal; }
   letter-spacing: 0.5px;
 }
 .term {
-  background: #050505;
-  border: 1px solid #00ff41;
-  color: #00ff41;
+  background: #1a1a1a;
+  border: 1px solid #B8860B;
+  color: #FFFFFF;
   padding: 4mm;
   margin: 3mm 0;
   font-size: 8.5pt;
   white-space: pre-wrap;
   word-wrap: break-word;
+  font-family: 'Courier New', monospace;
   position: relative;
 }
 .term::before {
   content: "$ ";
-  color: #ffcc00;
+  color: #FFD700;
+  font-weight: bold;
 }
 .term.no-prompt::before { content: ""; }
-.term .out { color: #c9ffd5; }
-.term .ok { color: #00ff41; font-weight: bold; }
-.term .fail { color: #ff3b30; }
-.term .warn { color: #ffcc00; }
+.term .out { color: #E0E0E0; }
+.term .ok { color: #FFD700; font-weight: bold; }
+.term .fail { color: #FF6B6B; }
+.term .warn { color: #FFD700; }
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 3mm 0;
-  font-size: 8.5pt;
+  font-size: 9pt;
 }
 th, td {
-  border: 1px solid #008f23;
-  padding: 2mm 3mm;
+  border: 1px solid #B8860B;
+  padding: 2.5mm 3mm;
   text-align: left;
   vertical-align: top;
-  color: #c9ffd5;
+  color: #1a1a1a;
 }
 th {
-  background: #001f08;
-  color: #00ff41;
-  font-weight: bold;
+  background: #B8860B;
+  color: white;
+  font-weight: 700;
 }
-td.win { color: #00ff41; font-weight: bold; }
-td.lose { color: #ff3b30; }
-td.cash { color: #ffcc00; font-weight: bold; }
+td.win { color: #1a1a1a; font-weight: 700; background: #fdf6e3; }
+td.lose { color: #C62828; }
+td.cash { color: #B8860B; font-weight: 700; }
 .cover {
   text-align: center;
-  padding: 60mm 0 0 0;
+  padding: 55mm 0 0 0;
 }
 .cover h1 {
   font-size: 36pt;
   border: none;
   text-align: center;
-  text-shadow: 0 0 10px rgba(0,255,65,0.5);
   letter-spacing: 4px;
+  color: #B8860B;
 }
 .cover .sub {
   font-size: 14pt;
-  color: #ffcc00;
+  color: #1a1a1a;
   margin: 6mm 0;
   letter-spacing: 2px;
+  font-weight: 600;
 }
 .cover .stamp {
-  margin-top: 30mm;
+  margin-top: 28mm;
   font-size: 8.5pt;
-  color: #008f23;
-  border: 1px solid #00ff41;
+  color: #1a1a1a;
+  border: 1px solid #B8860B;
   padding: 4mm;
   display: inline-block;
   text-align: left;
+  background: #fdf6e3;
 }
 .footer-axiom {
   margin-top: 6mm;
   font-style: italic;
-  color: #008f23;
-  font-size: 8.5pt;
-  border-top: 1px dashed #008f23;
+  color: #B8860B;
+  font-size: 9pt;
+  border-top: 1px dashed #B8860B;
   padding-top: 2mm;
 }
 ul.cypher { list-style: none; padding: 0; }
-ul.cypher li::before { content: "▶ "; color: #00ff41; font-weight: bold; }
+ul.cypher li::before { content: "▶ "; color: #B8860B; font-weight: bold; }
 ul.cypher li { padding: 1mm 0; }
 .big-saving {
   font-size: 28pt;
-  color: #ffcc00;
+  color: #B8860B;
   text-align: center;
   margin: 8mm 0;
-  text-shadow: 0 0 8px rgba(255,204,0,0.4);
   letter-spacing: 2px;
+  font-weight: 700;
 }
 .box {
-  border: 1px solid #008f23;
+  border: 1px solid #B8860B;
   padding: 4mm;
   margin: 3mm 0;
-  background: #030503;
+  background: #fdf6e3;
 }
-.box.win { border-color: #00ff41; }
-.box.alert { border-color: #ffcc00; }
-.fp { font-family: 'Courier New', monospace; font-size: 7.5pt; color: #008f23; word-break: break-all; }
+.box.win { border: 2px solid #B8860B; background: #fcf3e0; }
+.box.alert { border: 2px solid #C62828; background: #fff5f5; }
+.fp { font-family: 'Courier New', monospace; font-size: 7.5pt; color: #555; word-break: break-all; }
 </style>
 </head>
 <body>
@@ -173,21 +180,21 @@ ul.cypher li { padding: 1mm 0; }
   <h1>X-39 MATRIX</h1>
   <div class="sub">PROTOCOLO SOBERANO POST-CUÁNTICO HÍBRIDO</div>
   <div class="sub">— Verdad anclada en Bitcoin —</div>
-  <p style="margin-top: 14mm; color: #c9ffd5;">Presentación a Inversores — Sevilla<br>v4.1 · 2026-06-25 · Capa 10 Reforzada</p>
+  <p style="margin-top: 14mm; color: #1a1a1a;">Presentación a Inversores — Sevilla<br>v4.1 · 2026-06-25 · Capa 10 Reforzada</p>
 
   <div class="stamp">
-    <strong style="color:#00ff41;">VERDAD CRIPTOGRÁFICA VERIFICADA</strong><br><br>
+    <strong style="color:#B8860B;">VERDAD CRIPTOGRÁFICA VERIFICADA</strong><br><br>
     SHA-256 manifest triple :: <span class="fp">ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143</span><br>
-    Anclaje BTC mainnet     :: <span style="color:#00ff41;">CONFIRMED · block #952718 + #952732</span><br>
-    Firma post-cuántica     :: <span style="color:#00ff41;">ML-DSA-87 (FIPS 204, NIST L5)</span><br>
-    Co-firma con seguridad hacia adelante :: <span style="color:#00ff41;">SLH-DSA-SHAKE-256s (FIPS 205)</span><br>
+    Anclaje BTC mainnet     :: <span style="color:#B8860B;">CONFIRMED · block #952718 + #952732</span><br>
+    Firma post-cuántica     :: <span style="color:#B8860B;">ML-DSA-87 (FIPS 204, NIST L5)</span><br>
+    Co-firma con seguridad hacia adelante :: <span style="color:#B8860B;">SLH-DSA-SHAKE-256s (FIPS 205)</span><br>
     Operador soberano       :: Jose Luis Olivares Esteban<br>
     Móvil                   :: +34 643 105 983<br>
     Email                   :: grants@x39matrix.org<br>
     Repositorio público     :: github.com/x39matrix/x39matrix
   </div>
 
-  <p style="margin-top: 14mm; color: #ffcc00; font-style: italic;">No confíes. Verifica.</p>
+  <p style="margin-top: 14mm; color: #B8860B; font-style: italic; font-weight: 700;">No confíes. Verifica.</p>
 </section>
 
 <!-- ============ SLIDE 1 — La verdad nueva ============ -->
@@ -346,14 +353,14 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
       <td class="lose">NO</td>
       <td class="cash">N/D (vendor lock-in)</td>
     </tr>
-    <tr style="background: #001f08;">
+    <tr style="background: #fdf6e3;">
       <td><strong>X-39MATRIX</strong></td>
       <td class="win"><strong>€0,00 / firma</strong></td>
       <td class="win"><strong>SÍ (NIST L5)</strong></td>
       <td class="win"><strong>€15K (configuración única)</strong></td>
     </tr>
   </table>
-  <p style="font-size: 7.5pt; color: #008f23; margin-top: 2mm;">* Volumen estimado: 50.000 documentos/año. Precio en mayúsculas y minúsculas según fuentes públicas Q2 2026.</p>
+  <p style="font-size: 7.5pt; color: #888; margin-top: 2mm;">* Volumen estimado: 50.000 documentos/año. Precio en mayúsculas y minúsculas según fuentes públicas Q2 2026.</p>
 
   <h2>Por qué X-39MATRIX cuesta cero por firma</h2>
   <ul class="cypher">
@@ -380,14 +387,14 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
     <tr><td>Contratos y licitaciones</td><td>15.000</td><td class="cash">€45K</td><td class="cash">€15K</td><td class="win">€0</td></tr>
     <tr><td>Expedientes urbanísticos</td><td>40.000</td><td class="cash">€120K</td><td class="cash">€40K</td><td class="win">€0</td></tr>
     <tr><td>Documentos sanitarios SAS</td><td>500.000</td><td class="cash">€1,5M</td><td class="cash">€500K</td><td class="win">€0</td></tr>
-    <tr style="background: #001f08;"><td><strong>TOTAL ANUAL</strong></td><td><strong>955.000</strong></td><td class="cash"><strong>€2.865.000</strong></td><td class="cash"><strong>€955.000</strong></td><td class="win"><strong>€0</strong></td></tr>
+    <tr style="background: #fdf6e3;"><td><strong>TOTAL ANUAL</strong></td><td><strong>955.000</strong></td><td class="cash"><strong>€2.865.000</strong></td><td class="cash"><strong>€955.000</strong></td><td class="win"><strong>€0</strong></td></tr>
   </table>
 
   <h2>Ahorro neto X-39MATRIX vs alternativas (10 años)</h2>
   <div class="big-saving">€28.650.000 vs DocuSign</div>
   <div class="big-saving">€9.550.000 vs FNMT</div>
 
-  <p style="text-align: center; margin-top: 6mm;">Configuración inicial X-39MATRIX (única): <strong style="color:#ffcc00;">€15.000</strong> · ROI: <strong style="color:#00ff41;">&lt; 7 días</strong></p>
+  <p style="text-align: center; margin-top: 6mm;">Configuración inicial X-39MATRIX (única): <strong style="color:#B8860B;">€15.000</strong> · ROI: <strong style="color:#B8860B;">&lt; 7 días</strong></p>
 
   <div class="box alert" style="margin-top: 6mm;">
     <h3>Lo que el ahorro NO mide</h3>
@@ -664,28 +671,28 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
 <span class="out">  - 2 hashes de artefactos PDF verificados</span></div>
 
   <h2>Contacto soberano</h2>
-  <div class="stamp" style="display:block; border: 1px solid #00ff41; padding: 4mm; background: #030503; font-size: 9pt; margin-top: 4mm;">
-    <strong style="color: #00ff41;">Jose Luis Olivares Esteban</strong><br>
+  <div class="stamp" style="display:block; border: 1px solid #B8860B; padding: 4mm; background: #fdf6e3; font-size: 9pt; margin-top: 4mm;">
+    <strong style="color: #B8860B;">Jose Luis Olivares Esteban</strong><br>
     Operador Soberano · Arquitecto · Notario<br><br>
-    Móvil:    <strong style="color:#00ff41;">+34 643 105 983</strong><br>
-    Email:    <strong style="color:#00ff41;">grants@x39matrix.org</strong><br>
+    Móvil:    <strong style="color:#B8860B;">+34 643 105 983</strong><br>
+    Email:    <strong style="color:#B8860B;">grants@x39matrix.org</strong><br>
     PGP:      <span class="fp">C3E062EB251A11851C0B4FFD06870F0655D5BBE8</span><br>
     Repo:     github.com/x39matrix/x39matrix<br>
     Web:      x39matrix.org<br>
     Verificador público: PUBLIC_VERIFY_X39_FULL.sh
   </div>
 
-  <p style="margin-top: 10mm; text-align: center; font-size: 18pt; color: #00ff41;">
+  <p style="margin-top: 10mm; text-align: center; font-size: 18pt; color: #B8860B; font-weight: 700;">
     La matemática se mantiene.<br>
     Los sellos se acumulan.<br>
     El canister firma.
   </p>
 
-  <p style="text-align: center; margin-top: 6mm; font-size: 11pt; color: #ffcc00; letter-spacing: 3px;">
+  <p style="text-align: center; margin-top: 6mm; font-size: 13pt; color: #B8860B; letter-spacing: 4px; font-weight: 700;">
     NO CONFÍES. VERIFICA.
   </p>
 
-  <p style="text-align: center; margin-top: 8mm; font-size: 8pt; color: #008f23;">
+  <p style="text-align: center; margin-top: 8mm; font-size: 8pt; color: #888;">
     Esta presentación (SHA-256 del PDF compilado) será anclada en Bitcoin tras compilación.<br>
     Cualquier modificación posterior será criptográficamente detectable.
   </p>
