@@ -297,6 +297,48 @@ async def get_manual_layers(nick: str = Depends(verify_token)):
 async def health():
     return {"status": "ok", "service": "X-39MATRIX Messenger"}
 
+# --- PUBLIC PITCH DECK DOWNLOADS (Sevilla v4.1) ---
+from fastapi.responses import FileResponse
+
+_PITCH_DIR = os.path.join(os.path.dirname(__file__), "static")
+
+@app.get("/api/pitch/v4_1.pdf")
+async def download_pitch_v4_1():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Pitch v4.1 not found")
+    return FileResponse(
+        path,
+        media_type="application/pdf",
+        filename="X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf",
+    )
+
+@app.get("/api/pitch/v4_1.html")
+async def download_pitch_v4_1_html():
+    path = os.path.join(_PITCH_DIR, "pitch_v4_1.html")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Pitch v4.1 HTML not found")
+    return FileResponse(
+        path,
+        media_type="text/html; charset=utf-8",
+        filename="pitch_v4_1.html",
+    )
+
+@app.get("/api/pitch/v4_1.sha256")
+async def pitch_v4_1_sha256():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Pitch v4.1 not found")
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            h.update(chunk)
+    return {
+        "filename": "X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf",
+        "sha256": h.hexdigest(),
+        "size_bytes": os.path.getsize(path),
+    }
+
 # --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
 import json as _json
 import re as _re
