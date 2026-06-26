@@ -383,6 +383,35 @@ async def download_camara_ots():
         raise HTTPException(404, "Camara email .ots not found")
     return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_Propuesta_Camara_Sevilla.pdf.ots")
 
+# --- MENSAJE PERSONAL — ALCALDE DE SEVILLA ---
+@app.get("/api/alcalde/mensaje.pdf")
+async def download_alcalde_pdf():
+    path = os.path.join(_PITCH_DIR, "mensaje_alcalde_sanz.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Alcalde mensaje PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_Mensaje_Alcalde_Sevilla.pdf")
+
+@app.get("/api/alcalde/mensaje.txt")
+async def download_alcalde_txt():
+    path = os.path.join(_PITCH_DIR, "mensaje_alcalde_sanz.txt")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Alcalde mensaje TXT not found")
+    return FileResponse(path, media_type="text/plain; charset=utf-8", filename="X39MATRIX_Mensaje_Alcalde_Sevilla.txt")
+
+@app.get("/api/alcalde/mensaje.html")
+async def download_alcalde_html():
+    path = os.path.join(_PITCH_DIR, "mensaje_alcalde_sanz.html")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Alcalde mensaje HTML not found")
+    return FileResponse(path, media_type="text/html; charset=utf-8", filename="X39MATRIX_Mensaje_Alcalde_Sevilla.html")
+
+@app.get("/api/alcalde/mensaje.pdf.ots")
+async def download_alcalde_ots():
+    path = os.path.join(_PITCH_DIR, "mensaje_alcalde_sanz.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Alcalde mensaje .ots not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_Mensaje_Alcalde_Sevilla.pdf.ots")
+
 # --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
 import json as _json
 import re as _re

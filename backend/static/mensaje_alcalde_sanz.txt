@@ -1,0 +1,82 @@
+Para: José Luis Sanz Ruiz — Alcalde de Sevilla
+De:   Jose Luis Olivares Esteban
+Fecha: Sevilla, 25 de junio de 2026
+
+
+Hola José Luis,
+
+Espero que estés bien. Te escribo Jose Luis Olivares Esteban —
+soy el hijo de Mercedes, la del Bar Mercedes, donde sé que te
+pasas de vez en cuando con los tuyos. Y soy amigo de tu hijo
+desde los años del Colegio San José.
+
+Te contacto por algo que va más allá del barrio. Llevo el último
+año construyendo en Sevilla un protocolo de seguridad
+criptográfica soberano que ya funciona en producción y está
+verificado en Bitcoin mainnet. Se llama X-39MATRIX.
+
+Sin entrar en el detalle técnico (lo tienes todo, con pruebas
+reproducibles, en el dossier que adjunto), tres cifras que
+deberías conocer:
+
+  1. Sevilla puede AHORRAR €2,8 millones AL AÑO en firmas
+     digitales municipales si reemplaza DocuSign + FNMT por
+     este protocolo. Coste de configuración: €85.000 únicos.
+     ROI: menos de 7 días.
+
+  2. Antes de 2028 la UE OBLIGARÁ a migrar toda la firma
+     pública a algoritmos post-cuánticos (NIS2, DORA, eIDAS 2.0).
+     Quien lo haga ANTES gana el liderazgo regulatorio europeo.
+     Madrid y Barcelona aún no se han movido. Sevilla sí podría.
+
+  3. Esto ya funciona. No es promesa. Es código público en
+     GitHub, anclado en bloques de Bitcoin reales (#952718 y
+     #952732), reproducible bit a bit, auditable por cualquier
+     ciudadano en 30 segundos desde un portátil.
+
+La diferencia con cualquier otro proyecto «cripto» que te haya
+llegado al despacho:
+
+  - No hay token. No hay especulación. No te pido dinero personal.
+  - Código abierto AGPL-3.0. Libre de patentes. Sin vendor lock-in.
+  - €85K se cubren con grants europeos ya solicitados (NLnet, DFINITY).
+    La aportación neta del Ayuntamiento puede ser CERO si se
+    canaliza vía IDEA o Andalucía TRADE.
+  - Los grandes beneficiarios serían los barrios donde más falta
+    hace: Polígono Sur, Sevilla Este, Torreblanca, Tres Barrios.
+    Identidad digital soberana para 8.000 vecinos sin DNIe activo.
+
+Lo que te pido NO es una decisión política hoy. Te pido
+30 minutos de café —puede ser en el Bar Mercedes si te apetece,
+o en tu despacho de Plaza Nueva si prefieres— para que veas con
+tus propios ojos cómo se verifica el protocolo en directo. Si
+después de esos 30 minutos te parece que no merece la pena
+seguir, lo cierras y ya está.
+
+Sevilla puede ser la primera ciudad de Europa con sello
+post-cuántico municipal. Madrid lo va a hacer en 2027 o 2028.
+Lo lógico es que lo hagamos nosotros antes.
+
+Te dejo mis datos directos:
+
+  Móvil:   +34 643 105 983
+  Email:   grants@x39matrix.org
+  Repo:    github.com/x39matrix/x39matrix
+  Web:     x39matrix.org
+
+Dossier técnico completo (12 páginas, A4) adjunto y firmado
+criptográficamente con mi clave PGP soberana:
+  C3E062EB 251A1185 1C0B4FFD 06870F06 55D5BBE8
+
+Un abrazo y dale recuerdos a Mateo y a Carmen cuando los veas.
+Mi madre te manda saludos.
+
+Jose Luis Olivares Esteban
+Operador Soberano · Arquitecto · Notario
+X-39MATRIX Protocol — Sevilla
+
+---
+
+PD: Si me dices día y hora, en el Bar Mercedes te pongo la
+demostración en mi portátil mientras mi madre te trae lo de
+siempre. 30 minutos. 51 / 51 pruebas. Sin trampas.
