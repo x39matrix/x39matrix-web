@@ -222,7 +222,8 @@ async fn pq_keygen_random() -> Metric {
 fn pq_sign(msg: Vec<u8>) -> Metric {
     let start = performance_counter(0);
     let result = KP.with(|k| match k.borrow().as_ref() {
-        Some((_, sk)) => sk.try_sign(&msg, &[]).map_err(|e| format!("sign failed: {}", e)),
+        Some((_, sk)) => sk.try_sign_with_seed(&[0u8; 32], &msg, &[])
+            .map_err(|e| format!("sign failed: {}", e)),
         None => Err("no keypair; call pq_keygen_* first".to_string()),
     });
     match result {
