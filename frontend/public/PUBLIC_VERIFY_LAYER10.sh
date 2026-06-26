@@ -2,7 +2,7 @@
 #
 # ==============================================================================
 #  X-39MATRIX  ·  LAYER 10  ·  PUBLIC_VERIFY_LAYER10.sh
-#  Auditor reproducibility script  ·  v1.2  ·  2026-06-26 UTC
+#  Auditor reproducibility script  ·  v1.3  ·  2026-06-26 UTC
 # ==============================================================================
 #
 #  PROPOSITO:
@@ -99,7 +99,7 @@ hdr()       { echo; echo "${BOLD}${CYAN}=== $1 ===${RST}"; }
 
 cat <<'BANNER'
 
-        X - 3 9   M A T R I X        L A Y E R   1 0        v 1 . 2
+        X - 3 9   M A T R I X        L A Y E R   1 0        v 1 . 3
         ============================================================
         Verifica : SHA-256 pineado · cita cruzada · OpenTimestamps/BTC
                    · PGP del autor (opcional)
@@ -265,8 +265,8 @@ hdr "FASE 6c  ·  Firmas post-cuanticas (ML-DSA-87 + SLH-DSA-SHAKE-256s)  [CRITI
 # Mientras esten en "PLACEHOLDER_...", la FASE 6c saltara como skip_crit y el
 # veredicto sera PARCIAL como minimo. Esto es por diseno: sin pin real no hay
 # garantia de que la clave publica descargada sea la del autor.
-PIN_MLDSA_PUB="PLACEHOLDER_SHA256_DE_x39_mldsa87.pub"
-PIN_SLHDSA_PUB="PLACEHOLDER_SHA256_DE_x39_slhdsa.pub"
+PIN_MLDSA_PUB="59d03d5df2b41ab31f8551cd18ab6c2c7abb089129ec9390b926a905b97ed296"
+PIN_SLHDSA_PUB="c1620e70ffe10c60d56be9fde3e3c034300f462ab48cb3744dfce14b2ac2df0d"
 
 PQ_READY=1
 if ! command -v openssl >/dev/null 2>&1; then
