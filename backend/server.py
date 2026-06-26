@@ -496,6 +496,63 @@ async def download_dfinity_ots():
         raise HTTPException(404, "DFINITY OTS not found")
     return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_DFINITY_GRANT_APPLICATION.pdf.ots")
 
+# --- BRIEFING OPUS 4.8 + AUDIT INTERNO E1 + DOCKERFILE ---
+@app.get("/api/audit/briefing_opus.md")
+async def download_briefing_opus_md():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_BRIEFING_OPUS_4_8.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Briefing Opus MD not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_BRIEFING_OPUS_4_8.md")
+
+@app.get("/api/audit/briefing_opus.pdf")
+async def download_briefing_opus_pdf():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_BRIEFING_OPUS_4_8.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Briefing Opus PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_BRIEFING_OPUS_4_8.pdf")
+
+@app.get("/api/audit/briefing_opus.pdf.ots")
+async def download_briefing_opus_ots():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_BRIEFING_OPUS_4_8.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Briefing Opus OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_BRIEFING_OPUS_4_8.pdf.ots")
+
+@app.get("/api/audit/jurado.md")
+async def download_jurado_md():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_AUDIT_JURADO_E1.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Jurado audit MD not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_AUDIT_JURADO_E1.md")
+
+@app.get("/api/audit/jurado.pdf")
+async def download_jurado_pdf():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_AUDIT_JURADO_E1.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Jurado audit PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_AUDIT_JURADO_E1.pdf")
+
+@app.get("/api/audit/jurado.pdf.ots")
+async def download_jurado_ots():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_AUDIT_JURADO_E1.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Jurado audit OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_AUDIT_JURADO_E1.pdf.ots")
+
+@app.get("/api/verify/dockerfile")
+async def download_dockerfile_verifier():
+    path = os.path.join(_PITCH_DIR, "Dockerfile.verifier")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Dockerfile not found")
+    return FileResponse(path, media_type="text/plain; charset=utf-8", filename="Dockerfile.verifier")
+
+@app.get("/api/verify/dockerfile.ots")
+async def download_dockerfile_ots():
+    path = os.path.join(_PITCH_DIR, "Dockerfile.verifier.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Dockerfile OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="Dockerfile.verifier.ots")
+
 # --- OPENSATS REFERENCE LETTER TEMPLATE ---
 @app.get("/api/grants/opensats_reference_template.md")
 async def download_opensats_ref_md():

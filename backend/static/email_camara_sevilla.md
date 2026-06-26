@@ -27,7 +27,7 @@ Es la **primera infraestructura conocida del mundo, en producción y públicamen
 - **Anclaje universal en Bitcoin mainnet** vía OpenTimestamps — corpus público anclado en 8 bloques únicos (#955155–#955468); este documento específicamente en bloque #955467 del 26 de junio de 2026.
 - **Threshold-ECDSA distribuido sobre Internet Computer** (subred de 13 nodos sin custodios).
 - **Capa 10 — prueba cero post-cuántica** (diseño y especificación formal v1.0 publicada 24-06-2026; YAML/RFC/Whitepaper anclados en BTC; implementación Rust en hoja de ruta financiada).
-- **Reproducibilidad SLSA Level 4** y verificación CI 100% pública.
+- **Reproducibilidad SLSA L3 actual** (CI público + build determinístico); target SLSA L4 (rebuilder independiente automatizado) en hoja de ruta post-Sprint 1 Capa 10.
 
 Verificación independiente desde cualquier portátil en 30 segundos:
 

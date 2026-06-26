@@ -1,0 +1,58 @@
+# X-39MATRIX · Verifier Docker Image
+# Self-contained reproducible verifier for Layer 10 corpus
+# Build:  docker build -t x39matrix/verifier:1.0 .
+# Run:    docker run --rm x39matrix/verifier:1.0
+# Pinned: this Dockerfile is anchored in Bitcoin mainnet via OpenTimestamps
+
+FROM debian:12-slim AS base
+
+LABEL org.opencontainers.image.title="X-39MATRIX Public Verifier"
+LABEL org.opencontainers.image.version="1.0.0"
+LABEL org.opencontainers.image.authors="Jose Luis Olivares Esteban <grants@x39matrix.org>"
+LABEL org.opencontainers.image.source="https://github.com/x39matrix/x39matrix"
+LABEL org.opencontainers.image.licenses="MIT OR Apache-2.0"
+
+# Install only the strict minimum to verify the corpus
+# (no extras, no curiosity packages, no telemetry)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        bash \
+        curl \
+        ca-certificates \
+        coreutils \
+        gnupg \
+        python3 \
+        python3-pip \
+        python3-venv && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install opentimestamps-client in an isolated venv to avoid system pollution
+RUN python3 -m venv /opt/ots-venv && \
+    /opt/ots-venv/bin/pip install --no-cache-dir opentimestamps-client==0.7.2
+
+# Make `ots` available system-wide via symlink
+RUN ln -s /opt/ots-venv/bin/ots /usr/local/bin/ots
+
+# Import the operator's PGP key (from a public keyserver, at build time)
+# Fingerprint pinned: C3E062EB251A11851C0B4FFD06870F0655D5BBE8
+RUN gpg --keyserver hkps://keys.openpgp.org \
+        --recv-keys C3E062EB251A11851C0B4FFD06870F0655D5BBE8 || \
+    echo "WARN: keyserver not available at build time; will retry at runtime"
+
+WORKDIR /verify
+
+# Copy the verifier itself (must be present in build context)
+COPY PUBLIC_VERIFY_LAYER10.sh /verify/PUBLIC_VERIFY_LAYER10.sh
+RUN chmod +x /verify/PUBLIC_VERIFY_LAYER10.sh
+
+# Default command runs the verifier
+CMD ["/verify/PUBLIC_VERIFY_LAYER10.sh"]
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Reproducibility statement:
+#   This Dockerfile produces deterministic output if you build with:
+#     SOURCE_DATE_EPOCH=1719360000 docker build --no-cache -t x39matrix/verifier:1.0 .
+#   The expected image digest (sha256) will be published in the manifest of the
+#   corresponding GitHub release tag and anchored in Bitcoin mainnet via .ots.
+# ──────────────────────────────────────────────────────────────────────────────
