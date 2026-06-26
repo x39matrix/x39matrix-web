@@ -169,7 +169,7 @@
   <tr><td>Fuzz tests pasados</td><td>2,038/2,038</td><td>L9 fuzz_test</td></tr>
   <tr><td>Collapse tests pasados</td><td>10/10</td><td>L9 collapse_test</td></tr>
   <tr><td>Firmas Ed25519 activas</td><td>9/9</td><td>L8 aggregateSignature</td></tr>
-  <tr><td>Throughput bajo ataque</td><td>&gt; Soberanía verificable</td><td>L5 sharding</td></tr>
+  <tr><td>Throughput bajo ataque</td><td>&gt; 50,000 TPS</td><td>L5 sharding</td></tr>
 </table>
 
 <div class="footer">

@@ -430,6 +430,72 @@ async def download_patch_ots():
         raise HTTPException(404, "Patch OTS not found")
     return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_PARCHE_VERIFY_SH.md.ots")
 
+# --- SPRINT 2 LAYER 10 DESIGN ---
+@app.get("/api/layer10/sprint2.md")
+async def download_sprint2_md():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_LAYER10_SPRINT2_DESIGN.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Sprint 2 design not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_LAYER10_SPRINT2_DESIGN.md")
+
+@app.get("/api/layer10/sprint2.pdf")
+async def download_sprint2_pdf():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_LAYER10_SPRINT2_DESIGN.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Sprint 2 PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_LAYER10_SPRINT2_DESIGN.pdf")
+
+@app.get("/api/layer10/sprint2.pdf.ots")
+async def download_sprint2_ots():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_LAYER10_SPRINT2_DESIGN.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Sprint 2 OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_LAYER10_SPRINT2_DESIGN.pdf.ots")
+
+# --- OPENSATS GRANT APPLICATION ---
+@app.get("/api/grants/opensats.md")
+async def download_opensats_md():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_OPENSATS_APPLICATION.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "OpenSats application not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_OPENSATS_APPLICATION.md")
+
+@app.get("/api/grants/opensats.pdf")
+async def download_opensats_pdf():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_OPENSATS_APPLICATION.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "OpenSats PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_OPENSATS_APPLICATION.pdf")
+
+@app.get("/api/grants/opensats.pdf.ots")
+async def download_opensats_ots():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_OPENSATS_APPLICATION.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "OpenSats OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_OPENSATS_APPLICATION.pdf.ots")
+
+# --- DFINITY GRANT APPLICATION ---
+@app.get("/api/grants/dfinity.md")
+async def download_dfinity_md():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_DFINITY_GRANT_APPLICATION.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "DFINITY application not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_DFINITY_GRANT_APPLICATION.md")
+
+@app.get("/api/grants/dfinity.pdf")
+async def download_dfinity_pdf():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_DFINITY_GRANT_APPLICATION.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "DFINITY PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_DFINITY_GRANT_APPLICATION.pdf")
+
+@app.get("/api/grants/dfinity.pdf.ots")
+async def download_dfinity_ots():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_DFINITY_GRANT_APPLICATION.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "DFINITY OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_DFINITY_GRANT_APPLICATION.pdf.ots")
+
 # --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
 import json as _json
 import re as _re

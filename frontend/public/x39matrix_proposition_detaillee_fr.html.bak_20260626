@@ -66,7 +66,7 @@ des scenarios reels et des comparaisons techniques.
 <div class="sbox"><div class="sv">9</div><div class="sl">COUCHES</div></div>
 <div class="sbox"><div class="sv">45</div><div class="sl">BLOCS</div></div>
 <div class="sbox"><div class="sv">58</div><div class="sl">VECTEURS</div></div>
-<div class="sbox"><div class="sv">Verif.</div><div class="sl">TPS</div></div>
+<div class="sbox"><div class="sv">50K+</div><div class="sl">TPS</div></div>
 <div class="sbox"><div class="sv">0</div><div class="sl">EVASIONS</div></div>
 </div>
 <div class="cfooter">
@@ -100,7 +100,7 @@ PROPRIETE INTELLECTUELLE PROTEGEE — TOUS DROITS RESERVES
 <tr><th>METRIQUE</th><th>x39MATRIX</th><th>UNISWAP</th><th>AAVE</th><th>THORCHAIN</th></tr>
 <tr><td>Ponts</td><td class="hi">0</td><td>Wrapped tokens</td><td>Wrapped tokens</td><td>Cross-chain pools</td></tr>
 <tr><td>BTC natif</td><td class="ok">OUI (ECDSA)</td><td class="no">Non</td><td class="no">Non</td><td>Partiel</td></tr>
-<tr><td>TPS</td><td class="hi">Verif.</td><td>~30</td><td>~30</td><td>~5K</td></tr>
+<tr><td>TPS</td><td class="hi">50K+</td><td>~30</td><td>~30</td><td>~5K</td></tr>
 <tr><td>Detection fraude</td><td class="ok">IA L7 temps reel</td><td class="no">Non</td><td class="no">Non</td><td class="no">Non</td></tr>
 </table>
 
@@ -226,9 +226,9 @@ PROPRIETE INTELLECTUELLE PROTEGEE — TOUS DROITS RESERVES
 <!-- PAGE 7: GAMING + RECHERCHE + COMMERCE -->
 <div class="page">
 <div class="st">11 — GAMING, METAVERSE ET DIVERTISSEMENT</div>
-<div class="ss">Soberanía verificable — DAG CAUSAL POUR MMO — ANTI-TRICHE IA ON-CHAIN</div>
+<div class="ss">50K+ TPS — DAG CAUSAL POUR MMO — ANTI-TRICHE IA ON-CHAIN</div>
 
-<div class="ex"><b>MMO sans triche :</b> Les jeux en ligne massifs souffrent de triche, duplication d'items, et exploitation de bugs. x39Matrix offre un moteur de Soberanía verificable avec anti-triche IA integre.<br><br>
+<div class="ex"><b>MMO sans triche :</b> Les jeux en ligne massifs souffrent de triche, duplication d'items, et exploitation de bugs. x39Matrix offre un moteur de 50K+ TPS avec anti-triche IA integre.<br><br>
 <b>Exemple concret :</b> Un joueur dans un MMO tente de dupliquer une epee rare en exploitant un bug de concurrence. Le DAG Causal (L9) detecte le conflit d'etat via le Morphisme M: S → S'. Le doublon est rejete. Le joueur est signale. L'epee reste unique. Integrite du jeu preservee pour des millions de joueurs.</div>
 
 <div class="secteur-title">12 — RECHERCHE ACADEMIQUE ET SCIENCE</div>
@@ -263,7 +263,7 @@ PROPRIETE INTELLECTUELLE PROTEGEE — TOUS DROITS RESERVES
 <tr><td class="hi">L2 Identite</td><td>b3c6l-jaaaa-aaaao-baxrq-cai</td><td>WebAuthn, ZK-KYC, RBAC</td><td class="ok">RUNNING</td></tr>
 <tr><td class="hi">L3 Execution</td><td>akiau-riaaa-aaaao-baxua-cai</td><td>File TX deterministe, VDF</td><td class="ok">RUNNING</td></tr>
 <tr><td class="hi">L4 Consensus</td><td>anjga-4qaaa-aaaao-baxuq-cai</td><td>BFT, ECDSA/Schnorr, audit</td><td class="ok">RUNNING</td></tr>
-<tr><td class="hi">L5 Scalabilite</td><td>awm2f-giaaa-aaaao-baxwa-cai</td><td>Sharding, Soberanía verificable</td><td class="ok">RUNNING</td></tr>
+<tr><td class="hi">L5 Scalabilite</td><td>awm2f-giaaa-aaaao-baxwa-cai</td><td>Sharding, 50K+ TPS</td><td class="ok">RUNNING</td></tr>
 <tr><td class="hi">L6 Omnichain</td><td>adlli-haaaa-aaaao-baxvq-cai</td><td>BTC natif, Threshold ECDSA</td><td class="ok">RUNNING</td></tr>
 <tr><td class="hi">L7 IA Gouvernance</td><td>awm2f-giaaa-aaaao-baxwa-cai</td><td>Sentinelle IA, 47 schemas</td><td class="ok">RUNNING</td></tr>
 <tr><td class="hi">L8 Orchestrateur</td><td>bsbvx-7iaaa-aaaao-baxqa-cai</td><td>Pipeline securite central</td><td class="ok">RUNNING</td></tr>

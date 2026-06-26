@@ -67,7 +67,7 @@ Deteccion de ataques 51% en tiempo real. Zero puentes. Zero custodios.
 </div>
 <div class="srow">
 <div class="sbox"><div class="sv">10</div><div class="sl">CANISTERS</div></div>
-<div class="sbox"><div class="sv">Verif.</div><div class="sl">TPS</div></div>
+<div class="sbox"><div class="sv">50K+</div><div class="sl">TPS</div></div>
 <div class="sbox"><div class="sv">3</div><div class="sl">FIRMAS CRIPTO</div></div>
 <div class="sbox"><div class="sv">2.5s</div><div class="sl">FINALIDAD</div></div>
 </div>
@@ -161,7 +161,7 @@ Implementar x39Matrix como <b>capa soberana de defensa digital</b> para Marrueco
 <tr><td><b>Punto unico de fallo</b></td><td>Si (servidor central)</td><td class="hi">No. 9 shards distribuidos.</td></tr>
 <tr><td><b>Inyeccion prompt</b></td><td>Sin proteccion</td><td class="hi">47 esquemas bloqueados + fuzz 2038/2038</td></tr>
 <tr><td><b>IA integrada</b></td><td>Parcial (producto separado)</td><td class="hi">Nativa en L7: analisis riesgo + sanitizacion</td></tr>
-<tr><td><b>Rendimiento</b></td><td>~1,000 TPS</td><td class="hi">Soberanía verificable (verificado)</td></tr>
+<tr><td><b>Rendimiento</b></td><td>~1,000 TPS</td><td class="hi">50,000+ TPS (verificado)</td></tr>
 <tr><td><b>Coste falsificacion</b></td><td>Bajo (modificar base datos)</td><td class="hi">Imposible (romper 3 sistemas crypto a la vez)</td></tr>
 </table>
 

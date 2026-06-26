@@ -107,7 +107,7 @@ li { margin-bottom: 4px; }
     <tr><td class="g">L2 Identity</td><td>ZK-KYC — verificacion sin revelar datos</td><td>Motoko</td></tr>
     <tr><td class="g">L3 Smart Execution</td><td>Ejecucion determinista — mismo input = mismo output</td><td>Rust + Category Theory</td></tr>
     <tr><td class="g">L4 Consensus</td><td>Consenso multi-firma, auditoria de bloques</td><td>Rust</td></tr>
-    <tr><td class="g">L5 Scalability</td><td>Auto-scaling, absorcion DDoS, Soberanía verificable</td><td>Motoko</td></tr>
+    <tr><td class="g">L5 Scalability</td><td>Auto-scaling, absorcion DDoS, 50K+ TPS</td><td>Motoko</td></tr>
     <tr><td class="g">L6 Omnichain</td><td>Bridges nativos BTC/ETH sin custodios</td><td>Rust + Threshold ECDSA</td></tr>
     <tr><td class="g">L7 AI Governance</td><td>IA con 47 patrones de ataque (PTU-47)</td><td>Rust</td></tr>
     <tr><td class="g">L8 Orchestrator</td><td>Coordinacion de 9 capas + firma Ed25519 agregada</td><td>Motoko</td></tr>

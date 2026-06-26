@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>X-39MATRIX  ·  Security Hall of Fame</title>
+<meta name="description" content="Researchers who contributed to the security of X-39MATRIX Sovereign Topos Protocol">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #050507;
+    color: #C8CFD8;
+    font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+    min-height: 100vh;
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+  .container { max-width: 980px; margin: 0 auto; padding: 60px 0 80px; }
+  .header {
+    border-left: 4px solid #E63946;
+    padding: 20px 30px;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, rgba(230,57,70,0.08), transparent);
+  }
+  h1 {
+    font-size: 2.6rem;
+    color: #E63946;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    color: #00D9FF;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 30px 0 50px;
+    padding: 20px;
+    background: #0F141C;
+    border: 1px solid #1F2530;
+    border-radius: 8px;
+  }
+  .meta-item {
+    flex: 1 1 180px;
+  }
+  .meta-label {
+    color: #7A8290;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .meta-value {
+    color: #F5F7FA;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .meta-value.gold { color: #D4AF37; }
+  .meta-value.cyan { color: #00D9FF; }
+  .meta-value.green { color: #00E676; }
+  h2 {
+    color: #D4AF37;
+    font-size: 1.4rem;
+    margin: 40px 0 16px;
+    border-bottom: 1px solid #1F2530;
+    padding-bottom: 8px;
+  }
+  p { color: #C8CFD8; margin-bottom: 14px; }
+  .hof-empty {
+    text-align: center;
+    padding: 60px 30px;
+    background: linear-gradient(135deg, #0F141C, #050507);
+    border: 1px dashed #7A8290;
+    border-radius: 8px;
+    margin: 30px 0;
+  }
+  .hof-empty .icon {
+    font-size: 3rem;
+    color: #D4AF37;
+    margin-bottom: 16px;
+    font-family: serif;
+  }
+  .hof-empty h3 {
+    color: #F5F7FA;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  .hof-empty .quote {
+    color: #D4AF37;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-top: 20px;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: #E63946;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .cta:hover {
+    background: #FF3D52;
+    transform: translateY(-1px);
+  }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(0,217,255,0.1);
+    border: 1px solid #00D9FF;
+    color: #00D9FF;
+    font-size: 0.7rem;
+    border-radius: 3px;
+    margin-right: 6px;
+    letter-spacing: 0.05em;
+  }
+  code {
+    background: #0F141C;
+    color: #00E676;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 0.9em;
+  }
+  .footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #1F2530;
+    font-size: 0.85rem;
+    color: #7A8290;
+    text-align: center;
+  }
+  a { color: #00D9FF; text-decoration: none; }
+  a:hover { color: #D4AF37; }
+  ul { list-style: none; }
+  ul li { padding: 8px 0 8px 22px; position: relative; }
+  ul li::before {
+    content: '▸';
+    color: #E63946;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>Hall of Fame</h1>
+    <div class="subtitle">X-39MATRIX  ·  Sovereign Topos Protocol  ·  Security Researchers</div>
+  </div>
+
+  <div class="meta">
+    <div class="meta-item">
+      <div class="meta-label">Inaugurated</div>
+      <div class="meta-value gold">2026-06-22</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Bitcoin Anchor</div>
+      <div class="meta-value green">Block #95xxxx (pending)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Researchers</div>
+      <div class="meta-value cyan">0  ·  Be the first</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Max Reward</div>
+      <div class="meta-value gold">USD 50,000</div>
+    </div>
+  </div>
+
+  <h2>Our Commitment</h2>
+  <p>
+    We honor the security researchers who help X-39MATRIX become more sovereign by responsibly
+    disclosing vulnerabilities. Every confirmed finding earns:
+  </p>
+  <ul>
+    <li>Public recognition (or anonymized by request) on this page</li>
+    <li>A monetary bounty per the severity matrix (USD 100 - USD 50,000)</li>
+    <li>A coordinated advisory <strong>anchored in Bitcoin mainnet</strong> via OpenTimestamps —
+        the finding becomes part of the permanent historical record</li>
+    <li>Optional reference letter for future security positions</li>
+    <li>Invitation to a private Telegram/Signal group with the operator and other contributors</li>
+  </ul>
+
+  <h2>Current Hall of Fame</h2>
+
+  <div class="hof-empty">
+    <div class="icon">∅</div>
+    <h3>This page is intentionally empty.</h3>
+    <p>No confirmed findings yet. The challenge is open.</p>
+    <p>Our 11 canisters on ICP mainnet are signing real Bitcoin transactions
+       without human keys, under quadruple post-quantum protection. Show us what we missed.</p>
+    <p class="quote">
+      "The first researcher to find a confirmed Critical vulnerability earns up to USD 50,000
+      and a permanent place in Bitcoin's block history."
+    </p>
+    <a class="cta" href="https://hackenproof.com/programs/x39matrix">
+      Open the Bounty Program →
+    </a>
+  </div>
+
+  <h2>What We Look For</h2>
+  <p>
+    Vulnerabilities that demonstrate concrete compromise of the protocol's three sovereignty pillars:
+  </p>
+  <ul>
+    <li><strong>Pillar 1 — No human key:</strong> any path to unauthorized signing without consensus of the threshold-ECDSA subnet</li>
+    <li><strong>Pillar 2 — Quadruple PQ signature:</strong> any forgery of ML-DSA-87 or SLH-DSA, or bypass making either non-mandatory</li>
+    <li><strong>Pillar 3 — Cross-substrate anchor integrity:</strong> any rollback, replay or fork attack across BTC + Arbitrum + Solana</li>
+  </ul>
+  <p>
+    Plus: bypass of any of the 7 Sovereign Axioms <code>A1–A7</code>
+    (sealed in Bitcoin block <code>#948027</code>), corruption of stable memory,
+    successful execution of any of the 10 documented collapse attacks <code>ATK-01 → ATK-10</code>.
+  </p>
+
+  <h2>How to Submit</h2>
+  <p>Three channels, all equally accepted:</p>
+  <ul>
+    <li><strong>HackenProof:</strong>
+      <a href="https://hackenproof.com/programs/x39matrix">hackenproof.com/programs/x39matrix</a>
+    </li>
+    <li><strong>Email PGP-encrypted:</strong>
+      <code>security@x39matrix.org</code>
+      (fingerprint <code>C3E062EB 251A1185 1C0B4FFD 06870F06 55D5BBE8</code>)
+    </li>
+    <li><strong>GitHub Private Vulnerability Reporting:</strong>
+      <a href="https://github.com/x39matrix/x39matrix/security/advisories/new">github.com/x39matrix/x39matrix/security/advisories/new</a>
+    </li>
+  </ul>
+
+  <h2>Anchoring &amp; Verification</h2>
+  <p>
+    Every Hall of Fame update is sealed in Bitcoin mainnet via OpenTimestamps (.ots), so the
+    historical record of contributions is mathematically immutable. The current page hash is
+    anchored at <code>BTC block #95xxxx</code> (pending confirmation). To verify:
+  </p>
+  <p>
+    <code>curl -s https://x39matrix.org/hall-of-fame.html | sha256sum</code><br>
+    <code>ots verify https://x39matrix.org/hall-of-fame.html.ots</code>
+  </p>
+
+  <div class="footer">
+    <span class="badge">RFC 9116 SECURITY.TXT</span>
+    <span class="badge">CVE COORDINATED DISCLOSURE</span>
+    <span class="badge">BITCOIN ANCHORED</span>
+    <br><br>
+    X-39MATRIX Sovereign Topos Protocol  ·  Made from Sevilla, Andalucia<br>
+    <a href="https://x39matrix.org">x39matrix.org</a>  ·
+    <a href="https://github.com/x39matrix/x39matrix">github.com/x39matrix/x39matrix</a>  ·
+    <a href="https://x39matrix.org/X39MATRIX_BOUNTY_PROGRAM_v1.0.pdf">Bounty Program PDF</a>
+    <br><br>
+    <em>Document inaugurated 2026-06-22, anchored in Bitcoin mainnet.</em>
+  </div>
+
+</div>
+</body>
+</html>

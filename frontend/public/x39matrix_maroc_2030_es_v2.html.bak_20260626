@@ -341,7 +341,7 @@ li { margin-bottom: 4px; }
         <div class="metric-label">Evasiones Detectadas</div>
     </div>
     <div class="metric-card">
-        <div class="metric-value">Verif.</div>
+        <div class="metric-value">50K+</div>
         <div class="metric-label">TPS (Transacciones/s)</div>
     </div>
 </div>
@@ -817,7 +817,7 @@ li { margin-bottom: 4px; }
 
 <div class="metric-grid">
     <div class="metric-card">
-        <div class="metric-value">Verif.</div>
+        <div class="metric-value">50K+</div>
         <div class="metric-label">Transacciones/Segundo</div>
     </div>
     <div class="metric-card">
@@ -927,7 +927,7 @@ li { margin-bottom: 4px; }
     &bull; 5+ milliards de telespectadores<br>
     &bull; 32 dias de competicion<br>
     &bull; Estimacion: 8+ mil millones de intentos de ataque<br>
-    &bull; X-39MATRIX: Soberanía verificable, 0 evasiones, 99.99% disponibilidad
+    &bull; X-39MATRIX: 50,000+ TPS, 0 evasiones, 99.99% disponibilidad
 </div>
 
 <!-- RED TEAM -->

@@ -200,7 +200,7 @@ export default function Dashboard() {
     setPhase(PHASES.MINING_LEGIT);
     addLog("─── PHASE 1: Mining Legitimate Chain ───", "info");
     activateLayer("L4"); activateLayer("L5");
-    addLog("L4 Consensus + L5 Scalability: Monitoring BTC regtest (50K+ TPS capacity)...", "success");
+    addLog("L4 Consensus + L5 Scalability: Monitoring BTC mainnet (anclaje OpenTimestamps verificable)...", "success");
     await delay(300);
     for (let i = 0; i < data.legitimate_chain.length; i++) {
       setLegitBlocks(prev => [...prev, data.legitimate_chain[i]]);
@@ -308,12 +308,12 @@ export default function Dashboard() {
           <div className="text-[8px] font-mono tracking-[0.15em] text-[#52525B] uppercase">Canisters</div>
         </div>
         <div className="bg-[#0A0A0A] border border-white/10 py-2 px-3 text-center">
-          <div className="text-sm font-mono font-bold text-[#FF003C]">45</div>
-          <div className="text-[8px] font-mono tracking-[0.15em] text-[#52525B] uppercase">Blocks</div>
+          <div className="text-sm font-mono font-bold text-[#FF003C]">8</div>
+          <div className="text-[8px] font-mono tracking-[0.15em] text-[#52525B] uppercase">BTC Blocks</div>
         </div>
         <div className="bg-[#0A0A0A] border border-white/10 py-2 px-3 text-center">
-          <div className="text-sm font-mono font-bold text-[#FF003C]">50K+</div>
-          <div className="text-[8px] font-mono tracking-[0.15em] text-[#52525B] uppercase">TPS</div>
+          <div className="text-sm font-mono font-bold text-[#FF003C]">Verif.</div>
+          <div className="text-[8px] font-mono tracking-[0.15em] text-[#52525B] uppercase">Sovereign</div>
         </div>
         <div className="bg-[#0A0A0A] border border-white/10 py-2 px-3 text-center">
           <div className="text-sm font-mono font-bold text-[#FF003C]">2.5s</div>

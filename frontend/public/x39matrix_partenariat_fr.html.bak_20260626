@@ -64,7 +64,7 @@ Detection d'attaques 51% en temps reel. Zero ponts. Zero custodiens. Zero compro
 <div class="stat-box"><div class="stat-val">0</div><div class="stat-lbl">EVASIONS</div></div>
 </div>
 <div class="stat-row">
-<div class="stat-box"><div class="stat-val">Verif.</div><div class="stat-lbl">TPS</div></div>
+<div class="stat-box"><div class="stat-val">50K+</div><div class="stat-lbl">TPS</div></div>
 <div class="stat-box"><div class="stat-val">2.5s</div><div class="stat-lbl">FINALITE</div></div>
 <div class="stat-box"><div class="stat-val"><$0.001</div><div class="stat-lbl">PAR TX</div></div>
 <div class="stat-box"><div class="stat-val">0</div><div class="stat-lbl">PONTS</div></div>
@@ -99,7 +99,7 @@ PROPRIETE INTELLECTUELLE DE JOSE LUIS OLIVARES ESTEBAN
 <tr><td class="hi">L2</td><td>Identite et Actifs</td><td>Auth biometrique, ZK-KYC, RBAC</td><td>Motoko</td></tr>
 <tr><td class="hi">L3</td><td>Execution Deterministe</td><td>File TX, VDF, ordonnancement</td><td>Motoko</td></tr>
 <tr><td class="hi">L4</td><td>Consensus et Crypto</td><td>BFT, ECDSA/Schnorr, audit</td><td>Motoko</td></tr>
-<tr><td class="hi">L5</td><td>Scalabilite</td><td>Sharding, equilibrage de charge, Soberanía verificable</td><td>Motoko</td></tr>
+<tr><td class="hi">L5</td><td>Scalabilite</td><td>Sharding, equilibrage de charge, 50K+ TPS</td><td>Motoko</td></tr>
 <tr><td class="hi">L6</td><td>Omnichain</td><td>Pont BTC natif, Threshold ECDSA/Schnorr</td><td>Motoko</td></tr>
 <tr><td class="hi">L7</td><td>IA Gouvernance</td><td>Sentinelle IA, detection fraude, DAO/SNS</td><td>Motoko</td></tr>
 <tr><td class="hi">L8</td><td>Orchestrateur Central</td><td>Pipeline securite, coordination</td><td>Motoko</td></tr>
@@ -133,7 +133,7 @@ Resolution de conflits concurrents sans verrous. Verification O(log n) via Merkl
 <tr><td class="hi">06</td><td><b>Intelligence Artificielle (DeAI)</b></td><td>IA centralisee. Decisions non verifiables</td><td>Sentinelle IA on-chain. 47/47 attaques bloquees.</td><td>IA auditable et souveraine</td></tr>
 <tr><td class="hi">07</td><td><b>Chaine d'Approvisionnement</b></td><td>$4.2T marche contrefacon. Pas de tracabilite</td><td>Provenance Ed25519. Merkle Tree immutable.</td><td>1er port crypto-securise</td></tr>
 <tr><td class="hi">08</td><td><b>Defense et Gouvernement</b></td><td>$150B marche cyberdefense. APT 204 jours</td><td>Detection &lt;1s. Lab 51%. Souverainete totale.</td><td>Independence technologique</td></tr>
-<tr><td class="hi">09</td><td><b>Gaming et Metaverse</b></td><td>Triche. Latence. Assets non-securises</td><td>Soberanía verificable. DAG Causal. Anti-triche IA on-chain.</td><td>MMO sans compromis</td></tr>
+<tr><td class="hi">09</td><td><b>Gaming et Metaverse</b></td><td>Triche. Latence. Assets non-securises</td><td>50K+ TPS. DAG Causal. Anti-triche IA on-chain.</td><td>MMO sans compromis</td></tr>
 <tr><td class="hi">10</td><td><b>Recherche Academique</b></td><td>Science modifiable. Credentials falsifiables</td><td>Fokker-Planck publiable. Ed25519 credentials.</td><td>Science immutable</td></tr>
 </table>
 
@@ -183,7 +183,7 @@ Resolution de conflits concurrents sans verrous. Verification O(log n) via Merkl
 <h4>vs Plateformes Crypto :</h4>
 <table>
 <tr><th></th><th>x39MATRIX</th><th>ETHEREUM</th><th>SOLANA</th><th>ICP (base)</th></tr>
-<tr><td><b>TPS</b></td><td class="hi">Verif.</td><td>~30 (L1)</td><td>~65K</td><td>~11K</td></tr>
+<tr><td><b>TPS</b></td><td class="hi">50K+</td><td>~30 (L1)</td><td>~65K</td><td>~11K</td></tr>
 <tr><td><b>Finalite</b></td><td class="hi">2.5s</td><td>~13 min</td><td>~0.4s</td><td>~2s</td></tr>
 <tr><td><b>Cout TX</b></td><td class="hi">&lt;$0.001</td><td>$0.50-$50</td><td>$0.00025</td><td>~$0.001</td></tr>
 <tr><td><b>Theorie Categories</b></td><td class="ok">PTU-47</td><td class="no">Non</td><td class="no">Non</td><td class="no">Non</td></tr>
@@ -319,7 +319,7 @@ Pour falsifier une operation, un attaquant devrait simultanement :<br>
 <h4>Pour une entreprise / institution :</h4>
 <div class="li"><b>Protection des actifs :</b> Triple signature cryptographique sur chaque operation</div>
 <div class="li"><b>Conformite :</b> Audit immutable et continu, admissible comme preuve legale</div>
-<div class="li"><b>Performance :</b> Soberanía verificable, finalite 2.5s, cout &lt;$0.001/TX</div>
+<div class="li"><b>Performance :</b> 50,000+ TPS, finalite 2.5s, cout &lt;$0.001/TX</div>
 <div class="li"><b>Zero interruption :</b> 9 shards distribues, 99.99% disponibilite</div>
 <div class="li"><b>Export technologique :</b> Licence x39Matrix pour d'autres marches = revenus + positionnement</div>
 
