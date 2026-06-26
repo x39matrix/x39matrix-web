@@ -1,0 +1,33 @@
+[package]
+name = "x39_pq_probe"
+version = "0.1.0"
+edition = "2021"
+description = "X39MATRIX — ML-DSA-87 instruction-cost probe canister (NON-PRODUCTION)"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# IC SDK — pin contra la misma serie que x39_bases (0.17.x)
+ic-cdk        = "0.17"
+ic-cdk-macros = "0.17"
+candid        = "0.10"
+serde         = { version = "1", features = ["derive"] }
+
+# ML-DSA-87 (FIPS-204), pure Rust, no_std, wasm-friendly.
+# Si tu ~/ml_dsa_probe ya compila con otro crate (p.ej. ml-dsa de RustCrypto),
+# sustituye esta línea por la que uses, y ajusta los 3 puntos marcados con
+# CRATE-SPECIFIC en src/lib.rs.
+fips204 = "0.4"
+
+# RNG determinista para mediciones repetibles. NO production-grade.
+rand_chacha = { version = "0.3", default-features = false }
+rand_core   = { version = "0.6", default-features = false }
+
+[profile.release]
+opt-level     = "z"
+lto           = true
+codegen-units = 1
+strip         = "symbols"
+panic         = "abort"

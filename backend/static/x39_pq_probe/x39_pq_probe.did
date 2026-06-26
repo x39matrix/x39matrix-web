@@ -1,0 +1,28 @@
+type Metric = record {
+  instructions  : nat64;
+  msg_limit     : nat64;
+  pct_of_limit  : float32;
+  bytes         : nat32;
+  success       : bool;
+  error         : opt text;
+};
+
+type Info = record {
+  crate_version : text;
+  algorithm     : text;
+  pk_bytes      : nat32;
+  sk_bytes      : nat32;
+  sig_bytes     : nat32;
+  msg_limit     : nat64;
+};
+
+service : {
+  pq_info           : () -> (Info) query;
+  pq_has_keypair    : () -> (bool) query;
+  pq_reset          : () -> ();
+  pq_keygen_seeded  : (blob) -> (Metric);
+  pq_keygen_random  : () -> (Metric);
+  pq_sign           : (blob) -> (Metric);
+  pq_verify         : (blob, blob) -> (Metric);
+  pq_verify_last    : () -> (Metric);
+}

@@ -434,6 +434,49 @@ async def fixpack_sha256():
             h.update(chunk)
     return {"filename": "x39_fixes.tar.gz", "sha256": h.hexdigest(), "size_bytes": os.path.getsize(path)}
 
+# --- ML-DSA-87 PROBE CANISTER (sandbox to answer Opus question) ---
+@app.get("/api/probe/pack.tar.gz")
+async def download_pqprobe_targz():
+    path = os.path.join(_PITCH_DIR, "x39_pq_probe.tar.gz")
+    if not os.path.exists(path):
+        raise HTTPException(404, "PQ probe pack not found")
+    return FileResponse(path, media_type="application/gzip", filename="x39_pq_probe.tar.gz")
+
+@app.get("/api/probe/pack.sha256")
+async def pqprobe_sha256():
+    path = os.path.join(_PITCH_DIR, "x39_pq_probe.tar.gz")
+    if not os.path.exists(path):
+        raise HTTPException(404, "PQ probe pack not found")
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            h.update(chunk)
+    return {"filename": "x39_pq_probe.tar.gz", "sha256": h.hexdigest(), "size_bytes": os.path.getsize(path)}
+
+@app.get("/api/probe/{filename}")
+async def download_pqprobe_file(filename: str):
+    allowed = {
+        "DEPLOY_PROBE.md",
+        "Cargo.toml",
+        "dfx.json",
+        "x39_pq_probe.did",
+        "lib.rs",
+    }
+    if filename not in allowed:
+        raise HTTPException(404, "Not a public probe file")
+    if filename == "lib.rs":
+        path = os.path.join(_PITCH_DIR, "x39_pq_probe", "src", "lib.rs")
+    else:
+        path = os.path.join(_PITCH_DIR, "x39_pq_probe", filename)
+    if not os.path.exists(path):
+        raise HTTPException(404, "File not found in probe pack")
+    media = "text/plain; charset=utf-8"
+    if filename.endswith(".md"): media = "text/markdown; charset=utf-8"
+    elif filename.endswith(".json"): media = "application/json; charset=utf-8"
+    elif filename.endswith(".rs") or filename.endswith(".toml") or filename.endswith(".did"):
+        media = "text/plain; charset=utf-8"
+    return FileResponse(path, media_type=media, filename=filename)
+
 @app.get("/api/fixes/{filename}")
 async def download_fixpack_file(filename: str):
     # Whitelist exacta para evitar path traversal
