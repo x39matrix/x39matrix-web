@@ -368,6 +368,21 @@ async def download_camara_md():
         raise HTTPException(404, "Camara email MD not found")
     return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_Propuesta_Camara_Sevilla.md")
 
+# --- OPENTIMESTAMPS PROOFS (.ots) ---
+@app.get("/api/pitch/v4_1.pdf.ots")
+async def download_pitch_ots():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Pitch v4.1 .ots not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf.ots")
+
+@app.get("/api/camara/email.pdf.ots")
+async def download_camara_ots():
+    path = os.path.join(_PITCH_DIR, "email_camara_sevilla.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Camara email .ots not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_Propuesta_Camara_Sevilla.pdf.ots")
+
 # --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
 import json as _json
 import re as _re
