@@ -2,7 +2,7 @@
 #
 # ==============================================================================
 #  X-39MATRIX  ·  LAYER 10  ·  PUBLIC_VERIFY_LAYER10.sh
-#  Auditor reproducibility script  ·  v1.1  ·  2026-06-26 UTC
+#  Auditor reproducibility script  ·  v1.2  ·  2026-06-26 UTC
 # ==============================================================================
 #
 #  PROPOSITO:
@@ -99,11 +99,12 @@ hdr()       { echo; echo "${BOLD}${CYAN}=== $1 ===${RST}"; }
 
 cat <<'BANNER'
 
-        X - 3 9   M A T R I X        L A Y E R   1 0        v 1 . 1
+        X - 3 9   M A T R I X        L A Y E R   1 0        v 1 . 2
         ============================================================
         Verifica : SHA-256 pineado · cita cruzada · OpenTimestamps/BTC
                    · PGP del autor (opcional)
-        NO verifica: firmas ML-DSA/SLH-DSA · zk-STARK · rebuild bit-a-bit
+                   · ML-DSA-87 + SLH-DSA-256s (si OpenSSL 3.5+ y pins)
+        NO verifica: pruebas zk-STARK · rebuild bit-a-bit
         ============================================================
         PUBLIC_VERIFY_LAYER10.sh · auditor script · read-only
         "Don't trust. Verify. Always."
@@ -250,13 +251,84 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# FASE 6b · Firmas post-cuanticas  [NO VERIFICADO POR DISENO]
+# FASE 6c · Firmas post-cuanticas ML-DSA-87 + SLH-DSA-256s  [CRITICO]
+# Hibrido "exigir todas": el sello es infalsificable mientras sobreviva
+# al menos UNA familia. Por eso un .sig ausente o invalido => NO INTEGRO.
+#
+# REQUIERE: OpenSSL 3.5+ con soporte nativo PQC (ML-DSA-87 y SLH-DSA-SHAKE-256s).
+# Comprueba con: openssl list -signature-algorithms | grep -iE 'ML-DSA-87|SLH-DSA-SHAKE-256s'
 # ------------------------------------------------------------------------------
-hdr "FASE 6b  ·  Firmas post-cuanticas (ML-DSA-87 / SLH-DSA)  [NO VERIFICADO]"
-nv "ML-DSA-87 (FIPS-204): este script NO la comprueba."
-nv "SLH-DSA-SHAKE-256s (FIPS-205): este script NO la comprueba."
-info "Existen en los manifiestos PQ (/api/security/pq_genesis) pero requieren"
-info "liboqs/oqs-tool y los ficheros de firma. No contar como verificadas."
+hdr "FASE 6c  ·  Firmas post-cuanticas (ML-DSA-87 + SLH-DSA-SHAKE-256s)  [CRITICO]"
+
+# Pines de las claves publicas PQ.
+# RELLENAR con: sha256sum x39_mldsa87.pub x39_slhdsa.pub
+# Mientras esten en "PLACEHOLDER_...", la FASE 6c saltara como skip_crit y el
+# veredicto sera PARCIAL como minimo. Esto es por diseno: sin pin real no hay
+# garantia de que la clave publica descargada sea la del autor.
+PIN_MLDSA_PUB="PLACEHOLDER_SHA256_DE_x39_mldsa87.pub"
+PIN_SLHDSA_PUB="PLACEHOLDER_SHA256_DE_x39_slhdsa.pub"
+
+PQ_READY=1
+if ! command -v openssl >/dev/null 2>&1; then
+    skip_crit "openssl no instalado  ·  firmas PQ NO comprobadas (instala OpenSSL 3.5+)"
+    PQ_READY=0
+else
+    ossl_ver="$(openssl version | awk '{print $2}')"
+    if ! openssl list -signature-algorithms 2>/dev/null | grep -qi "ML-DSA-87"; then
+        skip_crit "OpenSSL ${ossl_ver} sin soporte ML-DSA-87 (necesitas 3.5+)  ·  firmas PQ NO comprobadas"
+        info "Comprueba: openssl list -signature-algorithms | grep -iE 'ML-DSA-87|SLH-DSA-SHAKE-256s'"
+        PQ_READY=0
+    fi
+fi
+
+if [ "$PQ_READY" -eq 1 ] && [ "$PIN_MLDSA_PUB" = "PLACEHOLDER_SHA256_DE_x39_mldsa87.pub" ]; then
+    skip_crit "pines de claves PQ aun no rellenados (PLACEHOLDER en el script)"
+    info "Tras generar x39_mldsa87.pub y x39_slhdsa.pub, calcula sus SHA-256 con sha256sum"
+    info "y sustituyelos en las constantes PIN_MLDSA_PUB y PIN_SLHDSA_PUB de este script."
+    PQ_READY=0
+fi
+
+dl_pq() {
+    local file="$1" base
+    for base in "$BASE_PRIMARY" "$BASE_FALLBACK"; do
+        if curl -sSfL --max-time 10 -o "$file" "${base}/${file}" 2>/dev/null; then
+            if _is_spa_html "$file"; then rm -f "$file"; else return 0; fi
+        fi
+    done
+    return 1
+}
+
+if [ "$PQ_READY" -eq 1 ]; then
+    for pub_pin in "x39_mldsa87.pub:$PIN_MLDSA_PUB" "x39_slhdsa.pub:$PIN_SLHDSA_PUB"; do
+        pub="${pub_pin%%:*}"; pin="${pub_pin##*:}"
+        if dl_pq "$pub"; then
+            actual="$(sha256sum "$pub" | awk '{print $1}')"
+            if [ "$actual" = "$pin" ]; then ok "clave publica $pub pineada OK"
+            else fail "clave publica $pub NO coincide con el pin (posible sustitucion)"; PQ_READY=0; fi
+        else fail "no se pudo descargar $pub"; PQ_READY=0; fi
+    done
+fi
+
+if [ "$PQ_READY" -eq 1 ]; then
+    for f in X39MATRIX_LAYER10_DECISIONS.yaml \
+             X39MATRIX_LAYER10_RFC_v1.0.pdf \
+             X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf; do
+        dl_pq "$f.mldsa87.sig" || skip_crit "firma ausente: $f.mldsa87.sig"
+        dl_pq "$f.slhdsa.sig"  || skip_crit "firma ausente: $f.slhdsa.sig"
+
+        if [ -f "$f" ] && [ -f "$f.mldsa87.sig" ]; then
+            if openssl pkeyutl -verify -pubin -inkey x39_mldsa87.pub -in "$f" -sigfile "$f.mldsa87.sig" >/dev/null 2>&1; then
+                ok "ML-DSA-87 OK  ·  $f"
+            else fail "ML-DSA-87 INVALIDA  ·  $f"; fi
+        else skip_crit "ML-DSA-87 no verificable (faltan archivos)  ·  $f"; fi
+
+        if [ -f "$f" ] && [ -f "$f.slhdsa.sig" ]; then
+            if openssl pkeyutl -verify -pubin -inkey x39_slhdsa.pub -in "$f" -sigfile "$f.slhdsa.sig" >/dev/null 2>&1; then
+                ok "SLH-DSA-256s OK  ·  $f"
+            else fail "SLH-DSA-256s INVALIDA  ·  $f"; fi
+        else skip_crit "SLH-DSA-256s no verificable (faltan archivos)  ·  $f"; fi
+    done
+fi
 
 # ------------------------------------------------------------------------------
 # FASE 7 · Reproducibilidad determinista  [OPCIONAL · solo prerequisitos]
