@@ -339,6 +339,35 @@ async def pitch_v4_1_sha256():
         "size_bytes": os.path.getsize(path),
     }
 
+# --- PROPUESTA TÉCNICA — CÁMARA DE SEVILLA ---
+@app.get("/api/camara/email.pdf")
+async def download_camara_pdf():
+    path = os.path.join(_PITCH_DIR, "email_camara_sevilla.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Camara email PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_Propuesta_Camara_Sevilla.pdf")
+
+@app.get("/api/camara/email.html")
+async def download_camara_html():
+    path = os.path.join(_PITCH_DIR, "email_camara_sevilla.html")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Camara email HTML not found")
+    return FileResponse(path, media_type="text/html; charset=utf-8", filename="X39MATRIX_Propuesta_Camara_Sevilla.html")
+
+@app.get("/api/camara/email.txt")
+async def download_camara_txt():
+    path = os.path.join(_PITCH_DIR, "email_camara_sevilla.txt")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Camara email TXT not found")
+    return FileResponse(path, media_type="text/plain; charset=utf-8", filename="X39MATRIX_Propuesta_Camara_Sevilla.txt")
+
+@app.get("/api/camara/email.md")
+async def download_camara_md():
+    path = os.path.join(_PITCH_DIR, "email_camara_sevilla.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Camara email MD not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_Propuesta_Camara_Sevilla.md")
+
 # --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
 import json as _json
 import re as _re

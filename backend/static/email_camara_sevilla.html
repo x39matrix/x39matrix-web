@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>X-39MATRIX :: Propuesta Técnica — Cámara de Sevilla</title>
+<style>
+@page {
+  size: A4;
+  margin: 22mm 20mm 18mm 20mm;
+  @bottom-center {
+    content: "X-39MATRIX :: Propuesta Técnica TIC Negocios Cámara de Sevilla :: " counter(page) " / " counter(pages);
+    color: #888;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 8pt;
+  }
+  @top-right {
+    content: "grants@x39matrix.org · +34 643 105 983";
+    color: #888;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 7pt;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #FFFFFF;
+  color: #1a1a1a;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 10pt;
+  line-height: 1.55;
+}
+h1 {
+  font-size: 18pt;
+  color: #B8860B;
+  border-bottom: 2px solid #B8860B;
+  padding-bottom: 3mm;
+  margin: 8mm 0 5mm 0;
+  font-weight: 700;
+}
+h1.title {
+  font-size: 22pt;
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+h2 {
+  font-size: 13pt;
+  color: #B8860B;
+  margin: 6mm 0 3mm 0;
+  border-left: 4px solid #B8860B;
+  padding-left: 3mm;
+  font-weight: 600;
+}
+h3 {
+  font-size: 11pt;
+  color: #1a1a1a;
+  margin: 4mm 0 2mm 0;
+  font-weight: 700;
+}
+p, li { margin: 2mm 0; text-align: justify; }
+strong { color: #1a1a1a; font-weight: 700; }
+em { color: #B8860B; font-style: italic; }
+.head {
+  border: 1px solid #B8860B;
+  background: #fdf6e3;
+  padding: 5mm;
+  margin-bottom: 6mm;
+  font-size: 9.5pt;
+}
+.head .row { margin: 1mm 0; }
+.head .lbl { display: inline-block; min-width: 32mm; color: #B8860B; font-weight: 700; }
+.code {
+  background: #1a1a1a;
+  border: 1px solid #B8860B;
+  color: #FFFFFF;
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+  border-radius: 2pt;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.code::before {
+  content: "$ ";
+  color: #FFD700;
+  font-weight: bold;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0 5mm 0;
+  font-size: 9pt;
+}
+th, td {
+  border: 1px solid #B8860B;
+  padding: 2mm 3mm;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: #B8860B;
+  color: white;
+  font-weight: 700;
+}
+.win { color: #1a1a1a; font-weight: 700; background: #fdf6e3; }
+.fp {
+  font-family: 'Courier New', monospace;
+  font-size: 8.5pt;
+  color: #555;
+  word-break: break-all;
+}
+ul { padding-left: 6mm; }
+ul li { margin: 1.5mm 0; }
+.firma {
+  margin-top: 8mm;
+  padding-top: 4mm;
+  border-top: 1px dashed #B8860B;
+}
+.firma .name { font-size: 12pt; font-weight: 700; color: #B8860B; }
+.firma .role { font-size: 9.5pt; color: #1a1a1a; }
+.coda {
+  margin-top: 8mm;
+  padding: 4mm;
+  border: 1px solid #B8860B;
+  background: #fdf6e3;
+  font-size: 9pt;
+  font-style: italic;
+  text-align: center;
+}
+.coda strong { color: #B8860B; font-style: normal; letter-spacing: 2px; }
+.section { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<h1 class="title">X-39MATRIX :: PROPUESTA TÉCNICA</h1>
+
+<div class="head">
+  <div class="row"><span class="lbl">A:</span> ticnegocios@camaradesevilla.com</div>
+  <div class="row"><span class="lbl">CC:</span> oficinadigital@camaradesevilla.com</div>
+  <div class="row"><span class="lbl">Atención:</span> D. Francisco Leal — Director de NNTT y Transformación Digital</div>
+  <div class="row"><span class="lbl">Asunto:</span> X-39MATRIX :: Protocolo soberano post-cuántico para Sevilla — solicitud de reunión técnica</div>
+  <div class="row"><span class="lbl">De:</span> Jose Luis Olivares Esteban · grants@x39matrix.org · +34 643 105 983</div>
+  <div class="row"><span class="lbl">Fecha:</span> Sevilla, 25 de junio de 2026</div>
+  <div class="row"><span class="lbl">Adjunto:</span> X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf (12 páginas, SHA-256 <span class="fp">9bf4f6ea...4123b4e</span>)</div>
+</div>
+
+<p>Estimado D. Francisco Leal,</p>
+
+<p>Soy Jose Luis Olivares Esteban, operador soberano y arquitecto del protocolo <strong>X-39MATRIX</strong> (github.com/x39matrix/x39matrix). Le escribo desde Sevilla con una propuesta que sitúa a la Cámara, y por extensión a la ciudad, en la vanguardia europea de la transición criptográfica post-cuántica que la Unión exigirá antes de 2028 bajo NIS2, DORA y eIDAS 2.0.</p>
+
+<p>Le acompaño una presentación técnica de 12 páginas en formato A4 (<em>X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf</em>). El presente documento es el resumen ejecutivo técnico para usted y su equipo de TIC Negocios.</p>
+
+<h1>1. Qué es X-39MATRIX (en una línea verificable)</h1>
+
+<p>Es la <strong>primera infraestructura conocida del mundo, en producción y públicamente auditable, que combina simultáneamente</strong>:</p>
+
+<ul>
+  <li><strong>10 capas de seguridad</strong> apiladas (de identidad soberana a prueba cero zk-STARK).</li>
+  <li><strong>4 firmas obligatorias por publicación</strong>: PGP-Ed25519 + ECDSA-secp256k1 + <strong>ML-DSA-87 (FIPS 204)</strong> + <strong>SLH-DSA-SHAKE-256s (FIPS 205)</strong>.</li>
+  <li><strong>Anclaje universal en Bitcoin mainnet</strong> vía OpenTimestamps — 21 bloques confirmados, los dos últimos #952718 y #952732 del 7 de junio de 2026.</li>
+  <li><strong>Threshold-ECDSA distribuido sobre Internet Computer</strong> (subred de 13 nodos sin custodios).</li>
+  <li><strong>Capa 10 — prueba cero post-cuántica</strong> (zk-STARK transparente Winterfell/Rust, v1.0 publicada el 24-06-2026).</li>
+  <li><strong>Reproducibilidad SLSA Level 4</strong> y verificación CI 100% pública.</li>
+</ul>
+
+<p>Verificación independiente desde cualquier portátil en 30 segundos:</p>
+<div class="code">curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash</div>
+<p>Resultado esperado: <strong>51 / 51 pruebas superadas</strong>, sin acceso privilegiado.</p>
+
+<h1>2. Por qué importa ahora — no en 2030</h1>
+
+<p><strong>El riesgo cuántico ya es cercano.</strong> Gidney y Ekerå (Quantum 5, 2021) demostraron que 20 millones de cúbits ruidosos rompen RSA-2048 en 8 horas. Google Quantum AI anunció en marzo de 2026 avances reales de corrección de errores con distancia superior a 17. El NIST ha publicado el mandato de migración PQC: ECDSA, RSA y BLS12-381 quedan fuera del catálogo de supervivencia.</p>
+
+<p><strong>«Cosecha hoy, descifra mañana» ya está ocurriendo.</strong> Estados-nación almacenan tráfico cifrado clásico para descifrarlo cuando llegue el CRQC. Toda firma eIDAS clásica emitida hoy es falsificable retroactivamente. Toda historia clínica, judicial, fiscal o notarial firmada con ECDSA queda comprometida.</p>
+
+<p><strong>El estado actual de la administración española es crítico.</strong> DNIe (RSA-2048 + SHA-256), FNMT-RCM eIDAS (RSA + ECDSA), Cl@ve PIN, EUDI Wallet en desarrollo (ECDSA + Ed25519): el 100% es criptografía clásica vulnerable. <strong>Sevilla puede ser la primera ciudad de la Unión que rompa esa dependencia.</strong></p>
+
+<p><strong>Existe una ventana regulatoria de 18-36 meses.</strong> NIS2 y DORA exigirán PQC en infraestructura crítica antes de 2028. eIDAS 2.0 abrirá hueco a sellos post-cuánticos a partir de 2027. Cloudflare y Google preparan sus propios sellos PQ con objetivo 2027. <strong>Quien defina el estándar abierto en este período gana el mercado UE.</strong></p>
+
+<h1>3. Capa 10 — la pieza técnica diferencial</h1>
+
+<p>L10 aporta lo que ninguna otra capa de seguridad pública aporta hoy: <strong>demostrar propiedades sobre datos sin revelar los datos</strong>.</p>
+
+<p>Ejemplos directos para servicios públicos sevillanos:</p>
+<ul>
+  <li>«Soy mayor de edad» sin enseñar fecha de nacimiento ni DNI.</li>
+  <li>«Tengo derecho a esta ayuda social» sin revelar los ingresos exactos.</li>
+  <li>«He votado en esta consulta» sin revelar el sentido del voto.</li>
+  <li>«Esta receta médica es válida» sin revelar el diagnóstico.</li>
+  <li>«Estoy empadronado en Sevilla» sin revelar la dirección exacta.</li>
+</ul>
+
+<h2>Las seis cualidades únicas de L10</h2>
+<table>
+  <tr><th>Cualidad</th><th>Aporte</th><th>Relevancia post-CRQC</th></tr>
+  <tr><td>Sin trusted setup</td><td>No hay ceremonia inicial vulnerable</td><td class="win">No existe «toxic waste» recuperable por un atacante cuántico</td></tr>
+  <tr><td>Sólo hash + AIR</td><td>Criptografía basada únicamente en SHA-256 / Rescue-Prime</td><td class="win">Post-cuánticamente seguro por construcción matemática</td></tr>
+  <tr><td>Prueba sucinta</td><td>Tamaño O(log² n) — ≈18 KB por prueba</td><td class="win">Anclable on-chain en una sola transacción Bitcoin</td></tr>
+  <tr><td>Verificación rápida</td><td>Verificador sub-segundo (&lt;120 ms) en navegador</td><td class="win">Cualquier ciudadano verifica desde móvil sin descargar todo</td></tr>
+  <tr><td>Composable</td><td>Se apila sobre L1-L9 (firmas, anclajes, CI)</td><td class="win">El zk demuestra propiedades SOBRE las firmas PQ ya existentes</td></tr>
+  <tr><td>Código 100% abierto</td><td>Winterfell MIT + Rescue-Prime (Sprint 2)</td><td class="win">Sin dependencia de Polygon, Adobe ni de ningún proveedor</td></tr>
+</table>
+
+<h2>Cumplimiento RGPD por diseño matemático</h2>
+<ul>
+  <li><strong>Art. 5.1.c RGPD — minimización de datos:</strong> L10 cumple automáticamente. No se procesan datos innecesarios porque no se revelan.</li>
+  <li><strong>Art. 25 RGPD — privacidad por diseño:</strong> garantizada al nivel matemático, no por política administrativa.</li>
+  <li><strong>Art. 32 RGPD — seguridad apropiada:</strong> L10 + L2 + L3 = post-cuántico al nivel NIST L5.</li>
+  <li>La AEPD <strong>no tiene precedentes sancionadores</strong> sobre sistemas zk-STARK transparentes → riesgo regulatorio cero para el organismo adoptante.</li>
+  <li>Coexistencia plena con NIS2, DORA y eIDAS 2.0.</li>
+</ul>
+
+<h2>Métricas actuales (junio 2026)</h2>
+<table>
+  <tr><th>Métrica</th><th>Valor</th></tr>
+  <tr><td>Versión publicada</td><td class="win">v1.0 · 2026-06-24</td></tr>
+  <tr><td>Lenguaje + framework</td><td>Rust + Winterfell 0.13</td></tr>
+  <tr><td>Pruebas E2E</td><td class="win">51 / 51 superadas</td></tr>
+  <tr><td>Tiempo de generación de prueba</td><td>&lt; 2,5 s (CPU estándar)</td></tr>
+  <tr><td>Tiempo de verificación</td><td class="win">&lt; 120 ms</td></tr>
+  <tr><td>Tamaño de prueba</td><td>≈18 KB</td></tr>
+</table>
+
+<h1>4. Sectores donde X-39MATRIX desplaza hoy al sistema actual</h1>
+
+<p>La Cámara de Sevilla agrupa socios de prácticamente todos los sectores económicos andaluces. Cada uno tiene una aplicación directa de X-39MATRIX.</p>
+
+<table>
+  <tr><th>Sector</th><th>Tecnología desplazada</th><th>Cómo X-39MATRIX mejora</th></tr>
+  <tr><td><strong>Administración pública local</strong></td><td>DocuSign, Adobe Sign, FNMT-RCM (€0,50 – €5,00/firma)</td><td class="win">€0,00/firma vía Bitcoin OTS, post-cuántico, sin lock-in</td></tr>
+  <tr><td><strong>Sanidad pública (SAS, AGS)</strong></td><td>Historias clínicas centralizadas sin anclaje temporal</td><td class="win">Divulgación selectiva zk-STARK + sello BTC + RGPD por diseño</td></tr>
+  <tr><td><strong>Justicia</strong></td><td>PDFs firmados ECDSA, fácilmente impugnables</td><td class="win">Cuádruple-firma PGP + ECDSA + ML-DSA + SLH-DSA con fecha cierta BTC</td></tr>
+  <tr><td><strong>Notariado y registros</strong></td><td>DocuSign Notarize (€20-25 por acta)</td><td class="win">€0 vía OpenTimestamps + canister ICP soberano</td></tr>
+  <tr><td><strong>Educación pública y universitaria</strong></td><td>Sellos académicos FNMT (€1-2 por título)</td><td class="win">Verificable en Bitcoin para siempre, sin renovación de coste</td></tr>
+  <tr><td><strong>Banca y compliance (DORA, MiCA, MiFID II)</strong></td><td>HashiCorp Vault Enterprise (€100K-500K/año)</td><td class="win">AGPL-3.0 abierto, sin licencias, PQ nativo</td></tr>
+  <tr><td><strong>Identidad digital (DNIe, EUDI Wallet)</strong></td><td>Algoritmos clásicos vulnerables retroactivamente</td><td class="win">DNI-PQ híbrido ML-DSA-87 + tECDSA + zk</td></tr>
+  <tr><td><strong>Personas sin documentación / refugiados</strong></td><td>No existe alternativa pública</td><td class="win">Identidad soberana sin Estado validador</td></tr>
+  <tr><td><strong>Voto consultivo y participación ciudadana</strong></td><td>No existe en Sevilla</td><td class="win">tECDSA + zk-STARK + anclaje BTC verificable</td></tr>
+  <tr><td><strong>Energía e infraestructura crítica (NIS2)</strong></td><td>Certificados clásicos en SCADA</td><td class="win">Sellos PQ + firma soberana por dispositivo</td></tr>
+  <tr><td><strong>Cadena de suministro y trazabilidad</strong></td><td>GS1, Adobe CAI propietario</td><td class="win">Anclaje multi-substrato BTC + ETH + SOL, abierto</td></tr>
+  <tr><td><strong>Trazabilidad de IA generativa</strong></td><td>Adobe C2PA propietario (vendor lock-in)</td><td class="win">C2PA-compatible pero abierto, sin Microsoft/Adobe</td></tr>
+  <tr><td><strong>Telecomunicaciones 5G/6G</strong></td><td>Certificados X.509 clásicos</td><td class="win">Identidades soberanas PQ por nodo</td></tr>
+  <tr><td><strong>Defensa y seguridad nacional</strong></td><td>PKI clásica vulnerable</td><td class="win">Canales cifrados PQ + firmas híbridas auditables</td></tr>
+  <tr><td><strong>Internet de las Cosas (IoT)</strong></td><td>Firmas RSA en dispositivos sin actualización posible</td><td class="win">Firmas ligeras post-cuánticas + anclaje BTC inmutable</td></tr>
+  <tr><td><strong>Propiedad intelectual / marcas (OEPM, WIPO/OMPI)</strong></td><td>Registro tradicional (€100-500 por marca)</td><td class="win">Prueba pública con fecha cierta a coste cero</td></tr>
+  <tr><td><strong>Auditoría y forensics empresarial</strong></td><td>Logs centralizados, manipulables</td><td class="win">CI público verificable + sellado BTC continuo</td></tr>
+  <tr><td><strong>Sector turístico y patrimonio</strong></td><td>Certificados de autenticidad manuales</td><td class="win">Sellos digitales PQ para artesanía, restauración y patrimonio sevillano</td></tr>
+  <tr><td><strong>Sector vitivinícola y agroalimentario (DOP/IGP)</strong></td><td>Trazabilidad documental papel/Excel</td><td class="win">Anclaje BTC de cada lote con divulgación selectiva</td></tr>
+  <tr><td><strong>Logística portuaria (Puerto de Sevilla)</strong></td><td>Conocimientos de embarque digitales clásicos</td><td class="win">Firmas PQ con fecha cierta + verificación en aduana en &lt; 1 s</td></tr>
+</table>
+
+<h1>5. Propuesta concreta para Sevilla — programa piloto 12 meses</h1>
+
+<h2>Hitos del programa</h2>
+<table>
+  <tr><th>Mes</th><th>Hito</th><th>KPI verificable</th></tr>
+  <tr><td>M0</td><td>Acuerdo marco + configuración técnica</td><td>5 canister IDs públicos + repositorio Sevilla bifurcado</td></tr>
+  <tr><td>M3</td><td>1.000 documentos del padrón firmados PQ</td><td>Anclaje BTC en 3+ bloques</td></tr>
+  <tr><td>M6</td><td>Verificador web público en sevilla.es/verifica</td><td>Cualquier ciudadano verifica un documento en 30 s</td></tr>
+  <tr><td>M9</td><td>Piloto barrios vulnerables (Polígono Sur, Sevilla Este, Torreblanca)</td><td>200 vecinos con identidad PQ activa</td></tr>
+  <tr><td>M12</td><td>Liberación total como código abierto + auditoría externa Cure53</td><td>Informe público + publicación Apache 2.0</td></tr>
+</table>
+
+<h2>Recursos solicitados</h2>
+<table>
+  <tr><th>Concepto</th><th>Importe</th><th>Cobertura</th></tr>
+  <tr><td>Co-financiación piloto Cámara / Ayuntamiento</td><td>€85.000</td><td>Configuración técnica + integración 2 sistemas</td></tr>
+  <tr><td>Recursos humanos (2 ingenieros 12 meses)</td><td>€95.000</td><td>Cubierto con grant NLnet PET (solicitud abierta)</td></tr>
+  <tr><td>Auditoría externa Cure53 / Quarkslab</td><td>€40.000</td><td>Cubierto con NLnet Security Audit track (gratuito)</td></tr>
+  <tr><td>Infraestructura ICP + dominio + cycles 18 meses</td><td>€8.000</td><td>Recursos del operador soberano</td></tr>
+  <tr><td><strong>Aportación neta solicitada</strong></td><td class="win"><strong>€85.000 únicos</strong></td><td><strong>Resto cubierto por grants UE en curso</strong></td></tr>
+</table>
+
+<h2>Garantías operativas</h2>
+<ul>
+  <li><strong>Cycles ICP pre-financiados 18 meses</strong> — el piloto no se interrumpe por falta de fondos.</li>
+  <li><strong>Latido de hombre muerto:</strong> si el operador soberano desaparece, el controlador pasa a 3 fideicomisarios institucionales designados (Universidad de Sevilla, Universidad Pablo de Olavide, IES Triana).</li>
+  <li><strong>Liberación Apache 2.0 al mes 12:</strong> cualquier desarrollador puede mantener la bifurcación sin nosotros.</li>
+  <li><strong>Especificación categórica sellada en Bitcoin:</strong> la matemática y la fecha cierta sobreviven a cualquier humano u organización.</li>
+</ul>
+
+<h1>6. Documentación y enlaces verificables</h1>
+
+<ul>
+  <li><strong>PDF adjunto:</strong> X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf (12 páginas A4)<br>SHA-256: <span class="fp">9bf4f6eacc2ada98e538352632ed3eae905604a29cef39771b14a07b4f123b4e</span></li>
+  <li><strong>Repositorio público:</strong> github.com/x39matrix/x39matrix</li>
+  <li><strong>Dominio operativo:</strong> x39matrix.org</li>
+  <li><strong>Manifiesto post-cuántico triple-firmado:</strong> SHA-256 <span class="fp">ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143</span></li>
+  <li><strong>Atestaciones BTC mainnet confirmadas:</strong> bloques #952718 y #952732</li>
+  <li><strong>Firma PGP del operador:</strong> <span class="fp">C3E062EB 251A1185 1C0B4FFD 06870F06 55D5BBE8</span></li>
+  <li><strong>Verificador público:</strong> PUBLIC_VERIFY_X39_FULL.sh — 51 / 51 pruebas</li>
+</ul>
+
+<h1>7. Próximo paso solicitado</h1>
+
+<p>Solicito una <strong>reunión técnica presencial de 45 minutos</strong> en la Sede de Innovación Tecnológica de la Cámara (Parque Empresarial Torneo, Edificio Vilamar 2, 3ª planta, Calle Biología 12). Agenda propuesta:</p>
+
+<ol style="padding-left: 6mm;">
+  <li>Demostración en vivo del verificador público — 51/51 pruebas reproducibles delante de su equipo.</li>
+  <li>Auditoría conjunta del repositorio público durante la sesión.</li>
+  <li>Identificación de 2-3 casos de uso prioritarios entre los socios de TIC Negocios.</li>
+  <li>Validación del encaje legal con el equipo jurídico de la Cámara (RGPD, NIS2, eIDAS 2.0, DORA).</li>
+  <li>Definición del cronograma del M0 si hay encaje.</li>
+</ol>
+
+<p>Quedo a su entera disposición. Puede contactarme directamente:</p>
+
+<ul>
+  <li><strong>Móvil:</strong> +34 643 105 983</li>
+  <li><strong>Email:</strong> grants@x39matrix.org</li>
+  <li><strong>PGP:</strong> <span class="fp">C3E062EB251A11851C0B4FFD06870F0655D5BBE8</span></li>
+</ul>
+
+<p>Agradezco de antemano su tiempo y la rigurosidad técnica con la que sé que su equipo evaluará esta propuesta.</p>
+
+<div class="firma">
+  <p>Reciba un cordial saludo,</p>
+  <p class="name">Jose Luis Olivares Esteban</p>
+  <p class="role">Operador Soberano · Arquitecto · Notario<br>X-39MATRIX Protocol — Sevilla<br>25 de junio de 2026</p>
+</div>
+
+<div class="coda">
+  <strong>NO CONFÍES. VERIFICA.</strong><br><br>
+  Este documento fue firmado con la clave PGP C3E062EB251A11851C0B4FFD06870F0655D5BBE8.<br>
+  Cualquier modificación posterior es matemáticamente detectable.<br>
+  El SHA-256 de este documento será anclado en Bitcoin tras envío.
+</div>
+
+</body>
+</html>
