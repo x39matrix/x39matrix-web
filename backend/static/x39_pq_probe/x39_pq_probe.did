@@ -8,21 +8,24 @@ type Metric = record {
 };
 
 type Info = record {
-  crate_version : text;
-  algorithm     : text;
-  pk_bytes      : nat32;
-  sk_bytes      : nat32;
-  sig_bytes     : nat32;
-  msg_limit     : nat64;
+  crate_version     : text;
+  algorithm         : text;
+  pk_bytes          : nat32;
+  sk_bytes          : nat32;
+  sig_bytes         : nat32;
+  msg_limit         : nat64;
+  has_keypair       : bool;
+  has_last_sig      : bool;
+  stable_size_pages : nat64;
 };
 
 service : {
-  pq_info           : () -> (Info) query;
-  pq_has_keypair    : () -> (bool) query;
-  pq_reset          : () -> ();
-  pq_keygen_seeded  : (blob) -> (Metric);
-  pq_keygen_random  : () -> (Metric);
-  pq_sign           : (blob) -> (Metric);
-  pq_verify         : (blob, blob) -> (Metric);
-  pq_verify_last    : () -> (Metric);
+  pq_info            : () -> (Info) query;
+  pq_pk_fingerprint  : () -> (opt text) query;
+  pq_reset           : () -> ();
+  pq_keygen_seeded   : (blob) -> (Metric);
+  pq_keygen_random   : () -> (Metric);
+  pq_sign            : (blob) -> (Metric);
+  pq_verify          : (blob, blob) -> (Metric);
+  pq_verify_last     : () -> (Metric);
 }
