@@ -415,6 +415,47 @@ async def download_alcalde_ots():
         raise HTTPException(404, "Alcalde mensaje .ots not found")
     return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_Mensaje_Alcalde_Sevilla.pdf.ots")
 
+# --- FIX-PACK COMPLETO (patches Rust + Dockerfile reproducible + migración + pitch honesto) ---
+@app.get("/api/fixes/pack.tar.gz")
+async def download_fixpack_targz():
+    path = os.path.join(_PITCH_DIR, "x39_fixes.tar.gz")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Fix pack not found")
+    return FileResponse(path, media_type="application/gzip", filename="x39_fixes.tar.gz")
+
+@app.get("/api/fixes/pack.sha256")
+async def fixpack_sha256():
+    path = os.path.join(_PITCH_DIR, "x39_fixes.tar.gz")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Fix pack not found")
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            h.update(chunk)
+    return {"filename": "x39_fixes.tar.gz", "sha256": h.hexdigest(), "size_bytes": os.path.getsize(path)}
+
+@app.get("/api/fixes/{filename}")
+async def download_fixpack_file(filename: str):
+    # Whitelist exacta para evitar path traversal
+    allowed = {
+        "README.md",
+        "x39_apply_security_patches.py",
+        "Dockerfile.builder",
+        "x39_fix_verify_sh.sh",
+        "x39_migrate_source_to_public_repo.sh",
+        "PITCH_LENGUAJE_HONESTO.md",
+    }
+    if filename not in allowed:
+        raise HTTPException(404, "Not a public fix-pack file")
+    path = os.path.join(_PITCH_DIR, "x39_fixes", filename)
+    if not os.path.exists(path):
+        raise HTTPException(404, "File not found in fix pack")
+    media = "text/plain; charset=utf-8"
+    if filename.endswith(".md"): media = "text/markdown; charset=utf-8"
+    elif filename.endswith(".py"): media = "text/x-python; charset=utf-8"
+    elif filename.endswith(".sh"): media = "text/x-shellscript; charset=utf-8"
+    return FileResponse(path, media_type=media, filename=filename)
+
 # --- PARCHE VERIFY.SH (instrucciones honestas para usuario) ---
 @app.get("/api/verify/patch.md")
 async def download_patch_md():
