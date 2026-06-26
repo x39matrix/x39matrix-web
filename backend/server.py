@@ -496,6 +496,28 @@ async def download_dfinity_ots():
         raise HTTPException(404, "DFINITY OTS not found")
     return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_DFINITY_GRANT_APPLICATION.pdf.ots")
 
+# --- OPENSATS REFERENCE LETTER TEMPLATE ---
+@app.get("/api/grants/opensats_reference_template.md")
+async def download_opensats_ref_md():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_OPENSATS_REFERENCE_TEMPLATE.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Reference template MD not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_OPENSATS_REFERENCE_TEMPLATE.md")
+
+@app.get("/api/grants/opensats_reference_template.pdf")
+async def download_opensats_ref_pdf():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_OPENSATS_REFERENCE_TEMPLATE.pdf")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Reference template PDF not found")
+    return FileResponse(path, media_type="application/pdf", filename="X39MATRIX_OPENSATS_REFERENCE_TEMPLATE.pdf")
+
+@app.get("/api/grants/opensats_reference_template.pdf.ots")
+async def download_opensats_ref_ots():
+    path = os.path.join(_PITCH_DIR, "X39MATRIX_OPENSATS_REFERENCE_TEMPLATE.pdf.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Reference template OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_OPENSATS_REFERENCE_TEMPLATE.pdf.ots")
+
 # --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
 import json as _json
 import re as _re
