@@ -4,19 +4,7 @@
     "x39_pq_probe": {
       "type": "rust",
       "package": "x39_pq_probe",
-      "candid": "x39_pq_probe.did",
-      "metadata": [
-        {
-          "name": "candid:service",
-          "visibility": "public"
-        }
-      ]
-    }
-  },
-  "networks": {
-    "ic": {
-      "providers": ["https://icp-api.io"],
-      "type": "persistent"
+      "candid": "x39_pq_probe.did"
     }
   }
 }
