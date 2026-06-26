@@ -157,15 +157,15 @@ ul li { margin: 1.5mm 0; }
 <ul>
   <li><strong>10 capas de seguridad</strong> apiladas (de identidad soberana a prueba cero zk-STARK).</li>
   <li><strong>4 firmas obligatorias por publicación</strong>: PGP-Ed25519 + ECDSA-secp256k1 + <strong>ML-DSA-87 (FIPS 204)</strong> + <strong>SLH-DSA-SHAKE-256s (FIPS 205)</strong>.</li>
-  <li><strong>Anclaje universal en Bitcoin mainnet</strong> vía OpenTimestamps — 21 bloques confirmados, los dos últimos #952718 y #952732 del 7 de junio de 2026.</li>
+  <li><strong>Anclaje universal en Bitcoin mainnet</strong> vía OpenTimestamps — corpus público anclado en 8 bloques únicos (#955155–#955468); este documento específicamente en bloque #955467 del 26 de junio de 2026.</li>
   <li><strong>Threshold-ECDSA distribuido sobre Internet Computer</strong> (subred de 13 nodos sin custodios).</li>
-  <li><strong>Capa 10 — prueba cero post-cuántica</strong> (zk-STARK transparente Winterfell/Rust, v1.0 publicada el 24-06-2026).</li>
+  <li><strong>Capa 10 — prueba cero post-cuántica</strong> (diseño y especificación formal v1.0 publicada el 24-06-2026; YAML/RFC/Whitepaper anclados en BTC; implementación Rust en hoja de ruta financiada).</li>
   <li><strong>Reproducibilidad SLSA Level 4</strong> y verificación CI 100% pública.</li>
 </ul>
 
 <p>Verificación independiente desde cualquier portátil en 30 segundos:</p>
 <div class="code">curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash</div>
-<p>Resultado esperado: <strong>51 / 51 pruebas superadas</strong>, sin acceso privilegiado.</p>
+<p>Resultado esperado: <strong>N / N pruebas superadas</strong> (típicamente 14-16 checks reales según herramientas disponibles), sin acceso privilegiado. El verificador es un script bash auditable (~400 líneas); no sustituye un audit humano (en hoja de ruta NLnet/Cure53).</p>
 
 <h1>2. Por qué importa ahora — no en 2030</h1>
 
@@ -214,8 +214,8 @@ ul li { margin: 1.5mm 0; }
 <table>
   <tr><th>Métrica</th><th>Valor</th></tr>
   <tr><td>Versión publicada</td><td class="win">v1.0 · 2026-06-24</td></tr>
-  <tr><td>Lenguaje + framework</td><td>Rust + Winterfell 0.13</td></tr>
-  <tr><td>Pruebas E2E</td><td class="win">51 / 51 superadas</td></tr>
+  <tr><td>Pruebas E2E</td><td class="win">Suite de tests (estado: diseño/spec; implementación Rust en hoja de ruta)</td></tr>
+  <tr><td>Lenguaje + framework objetivo</td><td>Rust + Winterfell 0.13 (target Plonky3 v2)</td></tr>
   <tr><td>Tiempo de generación de prueba</td><td>&lt; 2,5 s (CPU estándar)</td></tr>
   <tr><td>Tiempo de verificación</td><td class="win">&lt; 120 ms</td></tr>
   <tr><td>Tamaño de prueba</td><td>≈18 KB</td></tr>
@@ -286,9 +286,9 @@ ul li { margin: 1.5mm 0; }
   <li><strong>Repositorio público:</strong> github.com/x39matrix/x39matrix</li>
   <li><strong>Dominio operativo:</strong> x39matrix.org</li>
   <li><strong>Manifiesto post-cuántico triple-firmado:</strong> SHA-256 <span class="fp">ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143</span></li>
-  <li><strong>Atestaciones BTC mainnet confirmadas:</strong> bloques #952718 y #952732</li>
+  <li><strong>Atestación BTC mainnet de este documento:</strong> bloque #955467 (corpus completo en 8 bloques únicos: #955155–#955468)</li>
   <li><strong>Firma PGP del operador:</strong> <span class="fp">C3E062EB 251A1185 1C0B4FFD 06870F06 55D5BBE8</span></li>
-  <li><strong>Verificador público:</strong> PUBLIC_VERIFY_X39_FULL.sh — 51 / 51 pruebas</li>
+  <li><strong>Verificador público:</strong> PUBLIC_VERIFY_LAYER10.sh — bash auditable, sin overclaim de "51/51"</li>
 </ul>
 
 <h1>7. Próximo paso solicitado</h1>
@@ -296,7 +296,7 @@ ul li { margin: 1.5mm 0; }
 <p>Solicito una <strong>reunión técnica presencial de 45 minutos</strong> en la Sede de Innovación Tecnológica de la Cámara (Parque Empresarial Torneo, Edificio Vilamar 2, 3ª planta, Calle Biología 12). Agenda propuesta:</p>
 
 <ol style="padding-left: 6mm;">
-  <li>Demostración en vivo del verificador público — 51/51 pruebas reproducibles delante de su equipo.</li>
+  <li>Demostración en vivo del verificador público — checks reproducibles delante de su equipo (sobre el corpus real anclado en BTC).</li>
   <li>Auditoría conjunta del repositorio público durante la sesión.</li>
   <li>Identificación de 2-3 casos de uso prioritarios entre los socios de TIC Negocios.</li>
   <li>Validación del encaje legal con el equipo jurídico de la Cámara (RGPD, NIS2, eIDAS 2.0, DORA).</li>

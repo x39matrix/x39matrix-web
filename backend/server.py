@@ -204,17 +204,19 @@ async def get_alerts(nick: str = Depends(verify_token)):
 @app.get("/api/security/stats")
 async def get_stats(nick: str = Depends(verify_token)):
     return {
-        "layers_online": 11,
-        "layers_total": 11,
-        "blocks_verified": 45,
+        "layers_online": 10,
+        "layers_total": 10,
+        "blocks_verified": 8,
+        "blocks_verified_range": "#955155-#955468",
         "ed25519_signatures": "9/9",
-        "fuzz_tests": "2038/2038 PASSED",
-        "collapse_tests": "10/10 PASSED",
-        "audit_score_public": "51/51",
-        "throughput": "200,000 TPS logical",
-        "btc_anchored_blocks": 19,
+        "fuzz_tests": "2038/2038 PASSED (B27 stress suite)",
+        "collapse_tests": "10/10 PASSED (collapse_c1..c10)",
+        "verifier_status": "PUBLIC_VERIFY_LAYER10.sh · N/N reproducible (bash auditable, no human security audit yet)",
+        "throughput_axiom": "Soberanía verificable, NO throughput (Axioma A5)",
+        "btc_anchored_blocks": 8,
         "btc_first_sovereign_tx": "b5a881a28341ea562800cd4f532cb5f737b21d38e44293dbbe8d1d0a0aede023",
         "btc_first_sovereign_block": 952131,
+        "btc_corpus_v4_1_blocks": [955155, 955169, 955176, 955178, 955182, 955202, 955467, 955468],
         "pq_signatures": ["PGP-Ed25519", "ECDSA-secp256k1", "ML-DSA-87 (FIPS-204)", "SLH-DSA-SHAKE-256s (FIPS-205)"],
         "pq_genesis_utc": "2026-06-07T10:59:51Z",
         "pq_super_fortified_utc": "2026-06-08T20:37:26Z",
@@ -227,6 +229,7 @@ async def get_stats(nick: str = Depends(verify_token)):
         "fuzz_escapes": 0,
         "operator_pgp": "C3E062EB251A11851C0B4FFD06870F0655D5BBE8",
         "axioms_manifest_sha256": "e54960277e8933fdf1635e769d66c23622bfe6e5c2cb2dd3a39ac3e78184595e",
+        "layer10_status": "v1.0 spec (YAML + RFC + Whitepaper + bash verifier) anchored in BTC; Rust impl in roadmap (NLnet/DFINITY)",
         "quantum_clock": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -411,6 +414,21 @@ async def download_alcalde_ots():
     if not os.path.exists(path):
         raise HTTPException(404, "Alcalde mensaje .ots not found")
     return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_Mensaje_Alcalde_Sevilla.pdf.ots")
+
+# --- PARCHE VERIFY.SH (instrucciones honestas para usuario) ---
+@app.get("/api/verify/patch.md")
+async def download_patch_md():
+    path = os.path.join(_PITCH_DIR, "PARCHE_VERIFY_SH.md")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Patch instructions not found")
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename="X39MATRIX_PARCHE_VERIFY_SH.md")
+
+@app.get("/api/verify/patch.md.ots")
+async def download_patch_ots():
+    path = os.path.join(_PITCH_DIR, "PARCHE_VERIFY_SH.md.ots")
+    if not os.path.exists(path):
+        raise HTTPException(404, "Patch OTS not found")
+    return FileResponse(path, media_type="application/octet-stream", filename="X39MATRIX_PARCHE_VERIFY_SH.md.ots")
 
 # --- X39 i18n: bulk translation via Gemini (Emergent LLM Key) ---
 import json as _json

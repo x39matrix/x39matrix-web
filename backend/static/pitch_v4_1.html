@@ -185,7 +185,7 @@ ul.cypher li { padding: 1mm 0; }
   <div class="stamp">
     <strong style="color:#B8860B;">VERDAD CRIPTOGRÁFICA VERIFICADA</strong><br><br>
     SHA-256 manifest triple :: <span class="fp">ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143</span><br>
-    Anclaje BTC mainnet     :: <span style="color:#B8860B;">CONFIRMED · block #952718 + #952732</span><br>
+    Anclaje BTC mainnet     :: <span style="color:#B8860B;">CONFIRMED · block #955467 (corpus completo en 8 bloques: #955155–#955468)</span><br>
     Firma post-cuántica     :: <span style="color:#B8860B;">ML-DSA-87 (FIPS 204, NIST L5)</span><br>
     Co-firma con seguridad hacia adelante :: <span style="color:#B8860B;">SLH-DSA-SHAKE-256s (FIPS 205)</span><br>
     Operador soberano       :: Jose Luis Olivares Esteban<br>
@@ -208,30 +208,68 @@ ul.cypher li { padding: 1mm 0; }
     <p>el protocolo X-39MATRIX produjo y firmó la <strong>primera firma soberana post-cuántica del mundo conocido</strong> anclada en Bitcoin mainnet — <strong>SIN frase semilla, SIN humano en el bucle, SIN custodios</strong>.</p>
   </div>
 
-  <h2>Atestación criptográfica en cadena Bitcoin</h2>
+  <h2>Atestación criptográfica en cadena Bitcoin (corpus público v4.1)</h2>
   <table>
-    <tr><th>Bloque BTC</th><th>UTC</th><th>Hash de bloque (verificable)</th></tr>
+    <tr><th>Bloque BTC</th><th>UTC</th><th>Hash de bloque (verificable)</th><th>Artefacto principal</th></tr>
     <tr>
-      <td class="win">#952718</td>
-      <td>2026-06-07 11:36:55</td>
-      <td class="fp">00000000000000000001fb98731eb7de73d60a2338a20d0a4d7564147edd97dc</td>
+      <td class="win">#955467</td>
+      <td>2026-06-26 09:54:28</td>
+      <td class="fp">00000000000000000001860f97d8da6376ba141f6c6b7a49d9f24c9f486ff5a0</td>
+      <td>Pitch v4.1 · Email Cámara · Mensaje Alcalde</td>
     </tr>
     <tr>
-      <td class="win">#952732</td>
-      <td>2026-06-07 14:54:19</td>
-      <td class="fp">000000000000000000019e6be0964889ebd47354541242362274f9d9c60113d0</td>
+      <td class="win">#955468</td>
+      <td>2026-06-26 10:00:00</td>
+      <td class="fp">0000000000000000000074388b5aee2a351f417eac0d3b159074d3a5df8dc62d</td>
+      <td>Mensaje Alcalde (segunda attestation)</td>
+    </tr>
+    <tr>
+      <td class="win">#955202</td>
+      <td>2026-06-24 ~UTC</td>
+      <td class="fp" style="font-size:8pt;">verificable vía: <code>ots info PUBLIC_VERIFY_LAYER10.sh.ots</code></td>
+      <td>Capa 10 · verifier público · propuesta Marruecos</td>
+    </tr>
+    <tr>
+      <td class="win">#955182</td>
+      <td>2026-06-24 ~UTC</td>
+      <td class="fp" style="font-size:8pt;">verificable vía: <code>ots info X39MATRIX_LAYER10_WHITEPAPER_v1.0.pdf.ots</code></td>
+      <td>Whitepaper Capa 10</td>
+    </tr>
+    <tr>
+      <td class="win">#955178</td>
+      <td>2026-06-24 ~UTC</td>
+      <td class="fp" style="font-size:8pt;">verificable vía: <code>ots info X39MATRIX_LAYER10_RFC_v1.0.pdf.ots</code></td>
+      <td>RFC Capa 10</td>
+    </tr>
+    <tr>
+      <td class="win">#955176</td>
+      <td>2026-06-24 ~UTC</td>
+      <td class="fp" style="font-size:8pt;">verificable vía: <code>ots info X39MATRIX_LAYER10_DECISIONS.yaml.ots</code></td>
+      <td>YAML de decisiones Capa 10</td>
+    </tr>
+    <tr>
+      <td class="win">#955169</td>
+      <td>2026-06-24 ~UTC</td>
+      <td class="fp" style="font-size:8pt;">verificable vía: <code>ots info X39MATRIX_PITCH_INVERSOR_SEVILLA_v2.pdf.ots</code></td>
+      <td>Pitch v2 (Sevilla, mayo)</td>
+    </tr>
+    <tr>
+      <td class="win">#955155</td>
+      <td>2026-06-24 ~UTC</td>
+      <td class="fp" style="font-size:8pt;">verificable vía: <code>ots info X39MATRIX_PROPUESTA_MARRUECOS_v2_FR.pdf.ots</code></td>
+      <td>Propuesta Marruecos (FR)</td>
     </tr>
   </table>
+  <p style="font-size:9pt; color:#666; margin-top:2mm;"><em>Total: <strong>8 bloques únicos</strong> en Bitcoin mainnet anclando 10 artefactos públicos del corpus. Todos verificables con <code>ots info ARCHIVO.ots</code>.</em></p>
 
   <h2>Cualquier auditor verifica en 10 segundos</h2>
   <div class="term">git clone https://github.com/x39matrix/x39matrix
 cd x39matrix
-ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots \
+ots info X39MATRIX_PITCH_INVERSOR_SEVILLA_v4.1.pdf.ots \
   | grep BitcoinBlockHeaderAttestation</div>
 
   <p style="margin-top: 4mm;"><em>Salida esperada:</em></p>
-  <div class="term no-prompt"><span class="ok">verify BitcoinBlockHeaderAttestation(952718)</span>
-<span class="ok">verify BitcoinBlockHeaderAttestation(952732)</span></div>
+  <div class="term no-prompt"><span class="ok">verify BitcoinBlockHeaderAttestation(955467)</span></div>
 
   <div class="footer-axiom">No es promesa. Es Bitcoin diciéndolo. Es física, no marketing.</div>
 </section>
@@ -278,12 +316,12 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
     <tr><td>L2</td><td>Firma post-cuántica primaria</td><td>ML-DSA-87 (FIPS 204)</td><td class="win">PROD · anclado BTC</td></tr>
     <tr><td>L3</td><td>Firma co-segura basada en hash</td><td>SLH-DSA-SHAKE-256s (FIPS 205)</td><td class="win">PROD</td></tr>
     <tr><td>L4</td><td>Firma umbral distribuida</td><td>threshold-ECDSA en subred ICP (13 nodos)</td><td class="win">PROD</td></tr>
-    <tr><td>L5</td><td>Anclaje temporal universal</td><td>OpenTimestamps en Bitcoin</td><td class="win">PROD · 21 bloques BTC</td></tr>
+    <tr><td>L5</td><td>Anclaje temporal universal</td><td>OpenTimestamps en Bitcoin</td><td class="win">PROD · 8 bloques BTC anclados</td></tr>
     <tr><td>L6</td><td>Notarización inmutable</td><td>IPFS + canister ICP</td><td class="win">PROD</td></tr>
     <tr><td>L7</td><td>Reproducibilidad bit-a-bit</td><td>Compilaciones deterministas + SHA-256</td><td class="win">PROD</td></tr>
     <tr><td>L8</td><td>CI público de verificación</td><td>GitHub Actions verify.yml</td><td class="win">PROD</td></tr>
     <tr><td>L9</td><td>Custodia descentralizada</td><td>Auto-custodia + Shamir 3-de-5</td><td>BETA</td></tr>
-    <tr><td>L10</td><td>Divulgación selectiva zk · prueba cero post-cuántica</td><td>zk-STARK transparente sin trusted setup (Winterfell, Rust)</td><td class="win">v1.0 · 2026-06-24</td></tr>
+    <tr><td>L10</td><td>Divulgación selectiva zk · prueba cero post-cuántica</td><td>zk-STARK transparente sin trusted setup (target Winterfell/Plonky3)</td><td class="win">v1.0 spec · 2026-06-24 · implementación Rust en hoja de ruta</td></tr>
   </table>
 
   <h2>Lo que ningún otro proyecto público combina</h2>
@@ -477,7 +515,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
     <li>Marca registrada <strong>WIPO/OMPI</strong> (en proceso).</li>
     <li>Código bajo <strong>AGPL-3.0 + MIT dual</strong>: protege la soberanía sin perder la adopción como biblioteca.</li>
     <li>Artefactos criptográficos bajo <strong>CC0 + PGP + OTS</strong>: dominio público con prueba de autoría.</li>
-    <li>Arquitectura categórica protegida por <strong>publicación con fecha cierta</strong> en Bitcoin (axioma anclado en bloque #948027).</li>
+    <li>Arquitectura categórica protegida por <strong>publicación con fecha cierta</strong> en Bitcoin (corpus anclado en bloques #955155–#955468, verificables vía OpenTimestamps).</li>
   </ul>
 
   <h2>Componentes propios (no dependencias)</h2>
@@ -536,7 +574,7 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
     <tr><td>L5 (OpenTimestamps)</td><td>Documento queda expuesto</td><td class="win">Prueba «existía antes del bloque BTC #X» sin revelar el documento</td></tr>
     <tr><td>L6 (IPFS + canister)</td><td>CID público y rastreable</td><td class="win">Prueba «tengo acceso a este CID» sin revelar identidad</td></tr>
     <tr><td>L7 (reproducibilidad)</td><td>Código fuente debe ser público</td><td class="win">Prueba «compilé el binario correcto» sin enseñar el código</td></tr>
-    <tr><td>L8 (CI verificación)</td><td>Logs de CI completos</td><td class="win">Prueba «el CI pasó 51/51» sin filtrar tests internos</td></tr>
+    <tr><td>L8 (CI verificación)</td><td>Logs de CI completos</td><td class="win">Prueba «el CI pasó N/N» sin filtrar tests internos</td></tr>
     <tr><td>L9 (Shamir 3-de-5)</td><td>Custodios identificables</td><td class="win">Prueba «tengo 3 shares válidos» sin revelar los shares</td></tr>
   </table>
 
@@ -550,16 +588,17 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   </ul>
 
   <h2>Estado actual de Capa 10 (junio 2026)</h2>
+  <p style="font-size:9.5pt; color:#444;"><em>Estado real, sin overclaim: la Capa 10 está hoy en fase de <strong>diseño formal + especificación</strong>. Los artefactos publicados (YAML de decisiones, RFC v1.0, Whitepaper v1.0, verificador bash) están anclados en BTC (#955155–#955202). La implementación Rust de <code>layer10-prove</code> / <code>layer10-verify</code> es el siguiente sprint financiado.</em></p>
   <table>
     <tr><th>Métrica</th><th>Valor</th></tr>
-    <tr><td>Versión publicada</td><td class="win">v1.0 · 2026-06-24</td></tr>
+    <tr><td>Versión publicada</td><td class="win">v1.0 (spec) · 2026-06-24</td></tr>
     <tr><td>Repositorio</td><td>github.com/x39matrix/x39matrix/tree/layer-10</td></tr>
-    <tr><td>Lenguaje + framework</td><td>Rust + Winterfell 0.13</td></tr>
-    <tr><td>Pruebas E2E</td><td class="win">51 / 51 pasadas</td></tr>
-    <tr><td>Tiempo de generación de prueba</td><td>&lt; 2,5 s (CPU estándar)</td></tr>
-    <tr><td>Tiempo de verificación</td><td class="win">&lt; 120 ms (cualquier navegador)</td></tr>
-    <tr><td>Tamaño de prueba</td><td>~18 KB (anclable en una sola transacción BTC)</td></tr>
-    <tr><td>Auditoría interna Red Team</td><td>1 hallazgo (AIR sobre SHA-256 → migración a Rescue-Prime planificada)</td></tr>
+    <tr><td>Artefactos publicados</td><td class="win">YAML decisiones + RFC + Whitepaper + verificador bash (todos firmados PGP + OTS)</td></tr>
+    <tr><td>Anclaje BTC</td><td class="win">Bloques #955155, #955176, #955178, #955182, #955202 (5 bloques únicos · spec L10)</td></tr>
+    <tr><td>Implementación Rust</td><td>Sprint 1 (Q3 2026) — target Winterfell 0.13 → Plonky3</td></tr>
+    <tr><td>Hallazgo de diseño documentado</td><td>1 (AIR sobre SHA-256 → migración a Rescue-Prime planificada para Sprint 2)</td></tr>
+    <tr><td>Objetivo de tamaño de prueba</td><td>~18 KB (anclable en una sola tx BTC)</td></tr>
+    <tr><td>Objetivo de tiempo de verificación</td><td>&lt; 120 ms en navegador</td></tr>
   </table>
 
   <h2>Hoja de ruta L10 — sprints públicos, anclados en BTC</h2>
@@ -660,15 +699,14 @@ ots info evidence/pq_genesis_signature_20260607T105951Z/manifest_triple.json.ots
   <h2>Para auditar todo en 30 segundos desde cualquier laptop</h2>
   <div class="term">curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash</div>
 
-  <p style="margin-top: 4mm;"><em>Salida esperada:</em></p>
-  <div class="term no-prompt"><span class="ok">Superadas: 51 / 51</span>
-<span class="out">  - 17 bloques Bitcoin mainnet verificados</span>
-<span class="out">  - 4 transacciones Bitcoin verificadas</span>
-<span class="out">  - 11 canisters ICP con module hash verificados</span>
-<span class="out">  - 1 firma ECDSA vía sighash BIP-143 verificada</span>
-<span class="out">  - 3 pruebas merkle de OpenTimestamps verificadas</span>
-<span class="out">  - 2 coincidencias merkle-root contra Certificate verificadas</span>
-<span class="out">  - 2 hashes de artefactos PDF verificados</span></div>
+  <p style="margin-top: 4mm;"><em>Salida esperada (depende de utilidades disponibles: <code>ots</code>, <code>gpg</code>, <code>curl</code>, <code>sha256sum</code>):</em></p>
+  <div class="term no-prompt"><span class="ok">Checks ejecutados : N (típicamente 14-16 según herramientas)</span>
+<span class="out">  - 8 bloques Bitcoin mainnet anclando el corpus completo</span>
+<span class="out">  - Hashes SHA-256 pineados verificados contra fuentes canónica + fallback</span>
+<span class="out">  - OTS verify: attestation Bitcoin para 3 artefactos núcleo de Capa 10</span>
+<span class="out">  - PGP (opcional): firma Ed25519 del autor sobre cada PDF</span>
+<span class="out">  - 0 FALLOS  ·  PROTOCOLO ÍNTEGRO</span></div>
+  <p style="font-size:9pt; color:#666; margin-top:2mm;"><em>El verificador es un script bash auditable (~400 líneas). NO es un audit de seguridad humano; para eso, ver propuesta a NLnet NGI0 Security Audit Fund — Cure53/Trail of Bits.</em></p>
 
   <h2>Contacto soberano</h2>
   <div class="stamp" style="display:block; border: 1px solid #B8860B; padding: 4mm; background: #fdf6e3; font-size: 9pt; margin-top: 4mm;">

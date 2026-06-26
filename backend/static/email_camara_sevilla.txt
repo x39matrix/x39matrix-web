@@ -26,18 +26,18 @@ Es la primera infraestructura conocida del mundo, en producción y públicamente
 
 - 10 capas de seguridad apiladas (de identidad soberana a prueba cero zk-STARK).
 - 4 firmas obligatorias por publicación: PGP-Ed25519 + ECDSA-secp256k1 + ML-DSA-87 (FIPS 204) + SLH-DSA-SHAKE-256s (FIPS 205).
-- Anclaje universal en Bitcoin mainnet vía OpenTimestamps — 21 bloques confirmados; los dos últimos #952718 y #952732 del 7 de junio de 2026.
+- Anclaje universal en Bitcoin mainnet vía OpenTimestamps — corpus público anclado en 8 bloques únicos (#955155–#955468); este documento específicamente en bloque #955467 del 26 de junio de 2026.
 - Threshold-ECDSA distribuido sobre Internet Computer (subred de 13 nodos sin custodios).
-- Capa 10 — prueba cero post-cuántica (zk-STARK transparente Winterfell/Rust, v1.0 publicada el 24-06-2026).
+- Capa 10 — prueba cero post-cuántica (diseño y especificación formal v1.0 publicada 24-06-2026; YAML/RFC/Whitepaper anclados en BTC; implementación Rust en hoja de ruta financiada).
 - Reproducibilidad SLSA Level 4 y verificación CI 100% pública.
 
 Verificación independiente desde cualquier portátil en 30 segundos:
 
 ``
-curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_X39_FULL.sh | bash
+curl -fsSL https://x39matrix.org/PUBLIC_VERIFY_LAYER10.sh | bash
 `
 
-Resultado esperado: 51 / 51 pruebas superadas, sin acceso privilegiado.
+Resultado esperado: N / N pruebas superadas (típicamente 14-16 checks reales según herramientas disponibles), sin acceso privilegiado. El verificador es un script bash auditable; NO sustituye un audit de seguridad humano (en hoja de ruta NLnet/Cure53).
 
 ──────────────────────────────────────────────────────────────────────
 
@@ -86,14 +86,16 @@ CUMPLIMIENTO RGPD POR DISEÑO MATEMÁTICO
 - Coexistencia plena con NIS2, DORA y eIDAS 2.0.
 
 MÉTRICAS ACTUALES (JUNIO 2026)
+Estado real, sin overclaim: la Capa 10 está hoy en fase de DISEÑO FORMAL + ESPECIFICACIÓN. Los artefactos publicados (YAML de decisiones, RFC v1.0, Whitepaper v1.0, verificador bash) están anclados en BTC (#955155-#955202). La implementación Rust de layer10-prove / layer10-verify es el siguiente sprint financiado.
 
   Métrica  ·  Valor
-  Versión publicada  ·  v1.0 · 2026-06-24
-  Lenguaje + framework  ·  Rust + Winterfell 0.13
-  Pruebas E2E  ·  51 / 51 superadas
-  Tiempo de generación de prueba  ·  < 2,5 s (CPU estándar)
-  Tiempo de verificación  ·  < 120 ms
-  Tamaño de prueba  ·  ≈18 KB
+  Versión publicada  ·  v1.0 (spec) · 2026-06-24
+  Artefactos publicados  ·  YAML decisiones + RFC + Whitepaper + verificador bash (firmados PGP + OTS)
+  Anclaje BTC  ·  Bloques #955155, #955176, #955178, #955182, #955202 (5 bloques únicos)
+  Implementación Rust  ·  Sprint 1 (Q3 2026) — target Winterfell 0.13 → Plonky3
+  Hallazgo de diseño documentado  ·  1 (AIR sobre SHA-256 → migración a Rescue-Prime planificada Sprint 2)
+  Objetivo tamaño de prueba  ·  ~18 KB
+  Objetivo tiempo de verificación  ·  < 120 ms en navegador
 
 HOJA DE RUTA L10 (ANCLADA EN BTC)
 
@@ -169,9 +171,9 @@ GARANTÍAS OPERATIVAS
 - Repositorio público: github.com/x39matrix/x39matrix
 - Dominio operativo: x39matrix.org
 - Manifiesto post-cuántico triple-firmado: SHA-256 ea65e89980dafaad8b01328f2772d0b060ddf05533f69cee82584cb18b5f6143
-- Atestaciones BTC mainnet confirmadas: bloques #952718 y #952732
+- Atestación BTC mainnet de este documento: bloque #955467 (corpus completo en 8 bloques únicos: #955155–#955468)
 - Firma PGP del operador: C3E062EB 251A1185 1C0B4FFD 06870F06 55D5BBE8
-- Verificador público: PUBLIC_VERIFY_X39_FULL.sh (51 / 51 pruebas)
+- Verificador público: PUBLIC_VERIFY_LAYER10.sh (bash auditable, sin overclaim de "51/51")
 
 ──────────────────────────────────────────────────────────────────────
 
@@ -180,7 +182,7 @@ GARANTÍAS OPERATIVAS
 
 Solicito una reunión técnica presencial de 45 minutos en la Sede de Innovación Tecnológica de la Cámara (Parque Empresarial Torneo, Edificio Vilamar 2, 3ª planta, Calle Biología 12). Agenda propuesta:
 
-1. Demostración en vivo del verificador público — 51 / 51 pruebas reproducibles delante de su equipo.
+1. Demostración en vivo del verificador público — checks reproducibles delante de su equipo (sobre el corpus real anclado en BTC).
 2. Auditoría conjunta del repositorio público durante la sesión.
 3. Identificación de 2-3 casos de uso prioritarios entre los socios de TIC Negocios.
 4. Validación del encaje legal con el equipo jurídico de la Cámara (RGPD, NIS2, eIDAS 2.0, DORA).

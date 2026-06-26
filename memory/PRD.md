@@ -1,119 +1,88 @@
-# X-39MATRIX — Product Requirements Document
+# X-39MATRIX — Product Requirements & State
 
-## 0. Identidad
+## Original Problem Statement
+Mantener un repositorio público GitHub con artefactos reproducibles, firmados PGP, OpenTimestamped del protocolo X-39MATRIX (10 capas, soberano, sobre ICP).
+Entregables: Pitch Deck v4.1 (ES), propuesta Cámara de Sevilla, mensaje al Alcalde,
+solicitudes NLnet. Eliminar overclaims, garantizar Honestidad Cypherpunk absoluta.
 
-- **Proyecto:** X-39MATRIX
-- **Maintainer:** Jose Luis Olivares Esteban
-- **Email público:** grants@x39matrix.org
-- **Repo:** https://github.com/x39matrix/x39matrix
-- **Entidad legal futura:** X-39MATRIX S.L.U. (España, en proceso de incorporación)
-- **Idioma del proyecto:** ES (primario) + EN + JA + ZH + AR
-- **Licencias:** AGPL-3.0 (código) + MIT (libs) + CC-BY-SA (docs) + CC0 (artefactos firmados)
+## User Language
+ESPAÑOL únicamente. Tono técnico, directo, cypherpunk, honestidad brutal.
 
-## 1. Original problem statement
+## Tech Stack
+- Frontend: React + Tailwind + Shadcn UI
+- Backend: FastAPI + MongoDB + Socket.IO
+- 3rd party: weasyprint (PDF), opentimestamps-client (OTS), emergentintegrations (i18n vía Gemini)
 
-Construir un protocolo soberano de seguridad criptográfica de 10 capas sobre Internet Computer (ICP), post-cuántico, anclado a Bitcoin via OpenTimestamps, sin custodios, sin KYC, reproducible bit-a-bit, verificable públicamente por CI, con divulgación selectiva vía zk-STARK transparente (Winterfell).
+## Persona
+Operador soberano (Jose Luis Olivares Esteban). Cypherpunk. Auditará cada output del agente buscando overclaims.
 
-## 2. Personas
+## Core Requirements
+1. **Honestidad Cypherpunk absoluta** — ningún claim no verificable.
+2. **OpenTimestamps anclado en Bitcoin mainnet** para todo artefacto público.
+3. **Firmas PGP Ed25519** en todo artefacto público.
+4. **Reproducibilidad bit-a-bit** — SHA-256 pineados, verificable por cualquiera.
+5. **Layer 10 (zk-STARK)**: clasificada estrictamente como "diseño + spec" (NO Rust en producción).
 
-- **El soberano técnico** (Jose Luis): mantenedor único, opera bajo paranoia total, autosuficiencia operacional.
-- **El auditor independiente** (Cure53 / NLnet / academia): debe poder verificar la pila completa en <10 min sin trust.
-- **El committee de grants** (NLnet, OpenSats, DFINITY): evalúa apertura, gobernanza, bus factor, alineamiento misión.
-- **El ciudadano vulnerable** (caso uso Sevilla): debe poder verificar artefactos sin terminal, solo drag-and-drop.
+## Implementation Status (2026-06-26)
 
-## 3. Stack arquitectónico (10 capas)
+### ✅ Completado en esta sesión (2026-06-26)
+- **Pitch Deck v4.1 (ES)** corregido y servido vía HTTPS. SHA-256: `3c8ef3b4df1cd34b9a8f82ed0bd03730e66bbed7e9cd52f5e0b313c813868dc2`. Anclado en Bitcoin block #955467. Eliminadas todas las menciones a bloques falsos (#952718, #952732, #948027) y al overclaim "51/51 pruebas".
+- **Email Cámara de Sevilla** (HTML/TXT/MD/PDF) corregido. SHA-256: `a53b9aebd4b6f6d9a99ef5d5929b1fd76e1ea6eb1f60b34ec0b4322792837bf8`. Anclado en BTC #955467. L10 reclasificada como "diseño + spec".
+- **Mensaje Alcalde Sanz** (TXT/HTML/PDF) corregido. SHA-256: `5fb099bae044e58890f9aaf3abb7907a2af7a4e05e81c54ec934c6b62bae525b`. Anclado en BTC #955467 + #955468. PD honesta (sin "51/51 pruebas").
+- **`/api/security/stats`** corregido: ahora devuelve `blocks_verified: 8`, `throughput_axiom: "Soberanía verificable, NO throughput"`, `layer10_status: "v1.0 spec; Rust impl in roadmap"`. Eliminados `audit_score_public: "51/51"` y `throughput: "200,000 TPS logical"`.
+- **PARCHE_VERIFY_SH.md** generado — instrucciones concretas (3 opciones A/B/C) para el usuario para arreglar las 5 líneas `pass` incondicionales de su `verify.sh` local. Servido vía `/api/verify/patch.md` + `.ots`.
+- **Re-sellado OTS** de los 3 PDFs nuevos + del documento de parche. 4 calendarios OTS (alice, bob, finney, catallaxy). Anclaje BTC en ~1-6h.
 
-| Capa | Función | Tecnología | Estado |
-|---|---|---|---|
-| L1 | Identidad soberana | Principal ICP + PGP | ✅ Producción |
-| L2 | Firma PQC primaria | ML-DSA-87 (FIPS 204) | ✅ Producción |
-| L3 | Firma hash-based | SLH-DSA-SHAKE-256s (FIPS 205) | ✅ Producción |
-| L4 | Firma umbral | Threshold-ECDSA nativo ICP | ✅ Producción |
-| L5 | Anclaje temporal BTC | OpenTimestamps | ✅ Producción |
-| L6 | Notarización | IPFS + ICP canister | ✅ Producción |
-| L7 | Reproducibilidad | Builds deterministas + SHA-256 | ✅ Producción |
-| L8 | CI público | GitHub Actions `verify.yml` | ✅ Producción |
-| L9 | Custodia descentralizada | Self-custody + Shamir | ⚠️ Parcial |
-| L10 | Divulgación selectiva | zk-STARK Winterfell | ⚠️ Scaffold Rust v0.1 generado (pre-alpha) |
+### Hallazgos críticos (2026-06-26)
+- **Bloques reales del corpus público v4.1**: 8 bloques únicos en rango **#955155–#955468** (no 21, no 17, no 51).
+- **Los bloques históricos en `/api/security/btc_anchors`** (#948027, #952131, etc.) son artefactos de stamps anteriores en la máquina local del operador, NO corresponden al corpus v4.1 actual.
+- **`verify.sh` local del operador** (líneas 454-458): 5 `pass` incondicionales identificadas → patch enviado.
 
-## 4. Backlog priorizado
+### ✅ Sesiones previas (resumen)
+- 10-layer architecture publicada y anclada en BTC (capas L1-L10 + HUB ICP).
+- Capa 10 v1.0 spec publicada el 2026-06-24 (YAML/RFC/Whitepaper/bash verifier).
+- Frontend X-39MATRIX Messenger funcional (auth, WebRTC, Socket.IO).
+- Propuestas Marruecos (v2 ES + FR) ancladas en BTC #955155, #955202.
 
-### P0 — Activo
-- [ ] **Aplicar a NLnet NGI0 PET** (€100K) — borrador listo en `/app/memory/NLnet_NGI0_PET_APPLICATION.md`
-- [ ] **Aplicar a OpenSats** ($50K) — borrador listo en `/app/memory/OpenSats_APPLICATION.md`
-- [ ] **Aplicar a DFINITY Developer Grant** ($50K USD) — borrador listo en `/app/memory/DFINITY_DEVELOPER_GRANT.md`
-- [ ] **Incorporar S.L.U. en España** — dossier listo en `X39MATRIX_SL_INCORPORATION_DOSSIER.md`
+## Backlog Prioritized
 
-### P1 — Próximo
-- [ ] **Sprint 1 Rust zk-STARK verifier** — scaffold v0.1 generado, queda implementar SHA-256 round function real (Sprint 2, 6-8 semanas)
-- [ ] **Outreach técnico** — Show HN + DFINITY forum + IACR ePrint pre-print
-- [ ] **Reclutar 2 co-maintainers académicos** (UPV/UMA/UGR) → elimina bus factor = 1
-- [ ] **Auditoría externa Cure53/Quarkslab** (vía NLnet Security Audit track gratuito)
+### P0 (cypherpunk-blocker, pending USER action)
+- [ ] **Usuario debe aplicar parche `verify.sh`** (opciones A/B/C en `/api/verify/patch.md`) en su repo local.
+- [ ] **Usuario debe ejecutar `sed`** sobre README y docs locales para eliminar "51/51", "#952xxx", "21 bloques".
+- [ ] **Usuario debe decidir** qué hacer con los `.ots` locales que apuntan a #950408 (artefactos legacy).
 
-### P2 — Futuro
-- [ ] Frontend drag-and-drop verificación (scaffold listo)
-- [ ] i18n sitio ES/EN/JA/ZH/AR (scaffold listo, JA/ZH/AR como esqueletos `[TRADUCIR]`)
-- [ ] Automatizar `x39_daily_seal.sh` (anclaje BTC diario)
-- [ ] `/bounty/` landing page fondeada con 0.01 BTC
-- [ ] Internet-Draft a IETF CFRG
-- [ ] Whitepaper LaTeX 20-40 páginas para IACR ePrint
+### P1 (web)
+- [ ] Fix overclaims en `x39matrix.org` (frontend canister ICP): "50K+ TPS" → "Soberanía verificable", "✓ 51/51 AUDIT" → "✓ N/N ANCLAJES VERIFICADOS". Requiere `dfx deploy` o equivalente desde su máquina.
 
-### Backlog
-- [ ] Pilot institucional (1 ayuntamiento o universidad)
-- [ ] Ronda seed €500K-1.5M (opcional) o continuar bootstrapped via grants
-- [ ] SaaS notarización PQC en producción
-- [ ] Apertura canal Bank Frick / Liechtenstein para tesorería
+### P1 (institucional)
+- [ ] Resubmitir aplicación NLnet → **NGI0 PET** (no TALER_Fund) con narrativa truthful "L10 = Design/Roadmap".
+- [ ] Submit aplicación a **NLnet NGI0 Security Audit Fund** (Cure53 / Trail of Bits).
 
-## 5. Documentos clave en `/app/memory/`
+### P2 (técnico)
+- [ ] **Sprint 2 Layer 10**: migrar AIR de SHA-256 → Rescue-Prime (diseño, no Rust aún).
+- [ ] Submit aplicaciones **OpenSats** + **DFINITY Foundation**.
+- [ ] **Sprint 3**: REST API + JS SDK para Layer 10 (cuando hay financiación).
 
-### Análisis y estrategia
-- `X39MATRIX_VENICE_AI_ANALYSIS_v1.0.md` — Análisis honesto 91.2/100 con rúbrica peer-review
+### Backlog (futuro)
+- Migración Layer 10 de Winterfell → Plonky3 para producción escala.
+- Hardware token integration (YubiHSM 2 PQ / Nitrokey 3).
+- Audit humano Cure53 / Trail of Bits / SBA Research (post-financiación NLnet).
 
-### Aplicaciones de grants (FASE 1 — entregadas)
-- `NLnet_NGI0_PET_APPLICATION.md` — €100K
-- `OpenSats_APPLICATION.md` — $50K
-- `DFINITY_DEVELOPER_GRANT.md` — $50K USD
-- `COVER_LETTER.md` — Carta común firmable
+## Critical Operational Rules
+- **NUNCA** suger `git add .` — riesgo de exposición de `~/.x39matrix_vault/`.
+- **NUNCA** hallucinar checks, features o claims criptográficos.
+- **NUNCA** clasificar L10 como "Rust en producción" — es diseño + spec, no más.
+- **Verificar siempre con `ots info` real** antes de claim de anclaje BTC.
 
-### Sprints técnicos (FASES 2-4 — entregadas)
-- `sprint_outputs/PROMPT_1_RUST_ZK_VERIFIER.md` — Scaffold Rust zk-STARK
-- `sprint_outputs/PROMPT_2_FRONTEND_VERIFIER.md` — React + Vite verificador client-side
-- `sprint_outputs/PROMPT_3_I18N_SYSTEM.md` — i18next ES/EN/JA/ZH/AR + RTL
-- `sprint_outputs/PROMPT_4_RED_TEAM_AUDIT.md` — Auditoría adversarial (6 críticos, 11 altos)
-- `sprint_outputs/README.md` — Bundle README con orden de ejecución
+## Endpoints públicos (vía HTTPS preview)
+- `/api/pitch/v4_1.pdf` + `.html` + `.sha256` + `.pdf.ots`
+- `/api/camara/email.pdf` + `.html` + `.txt` + `.md` + `.pdf.ots`
+- `/api/alcalde/mensaje.pdf` + `.txt` + `.html` + `.pdf.ots`
+- `/api/verify/patch.md` + `.md.ots`  ← NUEVO (instrucciones para verify.sh)
+- `/api/security/stats` (auth required) — ahora con valores HONESTOS
+- `/api/security/btc_anchors` (auth required) — pendiente reconciliación con corpus v4.1
 
-### Documentos institucionales (entregados previamente)
-- `X39MATRIX_SL_INCORPORATION_DOSSIER.md` (+ PDF)
-- `X39MATRIX_BRIEFING_ASESORIA.md` (+ PDF)
-- `X39MATRIX_PITCH_SEVILLA.md` (+ PDF v3)
-- `VENICE_AI_SPRINT_PROMPTS.md` — 4 prompts para Venice AI
-
-## 6. Reglas operacionales fijas
-
-- **Idioma agente:** Español, tono cypherpunk técnico.
-- **Nunca asociar:** "Marruecos" y "Sevilla" en mismo contexto.
-- **Workflow:** usuario ejecuta todo localmente. Agente entrega scripts copy-paste.
-- **Tokens / claves:** usuario controla 100%. Agente nunca firma ni pushea.
-- **Reproducibilidad:** todo entregable debe ser firmable PGP + anclable OTS.
-- **Sandbox:** `/app/memory/` es el directorio canónico de artefactos generados.
-
-## 7. Métricas de éxito a 12 meses
-
-- ≥1 grant aprobado (NLnet, OpenSats o DFINITY)
-- 2+ co-maintainers académicos activos
-- Auditoría externa publicada
-- Rust zk-STARK verifier en alpha funcional (SHA-256 round real)
-- Frontend drag-and-drop deployado a GitHub Pages + IPFS
-- Whitepaper en IACR ePrint
-- S.L.U. incorporada
-
-## 8. Estado actual (Feb 2026)
-
-- ✅ Pila criptográfica L1-L8 en producción y verificable públicamente
-- ✅ L10 scaffold Rust v0.1 generado (pre-alpha, requiere Sprint 2)
-- ✅ 3 borradores de grant listos para enviar
-- ✅ Frontend + i18n scaffolds listos para integrar
-- ✅ Red Team audit completa con fixes documentados
-- ⚠️ Pendiente: envío real de grants (lo hace usuario)
-- ⚠️ Pendiente: Sprint 2 zk-STARK (SHA-256 round function real, 6-8 semanas)
-- ⚠️ Pendiente: incorporación S.L.U. real (lo gestiona asesoría jurídica del usuario)
+## Repo Local del Usuario (NO accesible desde sandbox)
+- Path: `/home/x39matrix/x39matrix/`
+- Vault: `~/.x39matrix_vault/` (NEVER TOUCH)
+- Verifier local: `verify.sh` / `PUBLIC_VERIFY_X39_FULL.sh` — DEBE arreglarse con uno de los 3 métodos del parche.

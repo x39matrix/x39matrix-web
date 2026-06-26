@@ -30,8 +30,9 @@ deberías conocer:
      Madrid y Barcelona aún no se han movido. Sevilla sí podría.
 
   3. Esto ya funciona. No es promesa. Es código público en
-     GitHub, anclado en bloques de Bitcoin reales (#952718 y
-     #952732), reproducible bit a bit, auditable por cualquier
+     GitHub, anclado en bloques reales de Bitcoin mainnet
+     (#955467 y #955468, del 26 de junio de 2026),
+     reproducible bit a bit, auditable por cualquier
      ciudadano en 30 segundos desde un portátil.
 
 La diferencia con cualquier otro proyecto «cripto» que te haya
@@ -79,4 +80,5 @@ X-39MATRIX Protocol — Sevilla
 
 PD: Si me dices día y hora, en el Bar Mercedes te pongo la
 demostración en mi portátil mientras mi madre te trae lo de
-siempre. 30 minutos. 51 / 51 pruebas. Sin trampas.
+siempre. 30 minutos. Verificación matemática reproducible
+en directo. Sin trampas.
