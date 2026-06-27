@@ -1,0 +1,24 @@
+[package]
+name = "x39_pq_probe"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+[dependencies]
+candid       = "0.10"
+ic-cdk       = "0.17"
+fips204      = { version = "0.4", default-features = false }
+rand_core    = { version = "0.6", default-features = false }
+rand_chacha  = { version = "0.3", default-features = false }
+sha2         = { version = "0.10", default-features = false }
+
+[profile.release]
+opt-level     = "z"
+lto           = "fat"
+codegen-units = 1
+strip         = "symbols"
+panic         = "abort"
+overflow-checks = true

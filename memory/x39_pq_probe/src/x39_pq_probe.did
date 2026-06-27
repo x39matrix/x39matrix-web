@@ -1,0 +1,17 @@
+type BenchReport = record {
+  keygen_instr : nat64;
+  sign_instr   : nat64;
+  verify_instr : nat64;
+  pk_len       : nat64;
+  sk_len       : nat64;
+  sig_len      : nat64;
+  verify_ok    : bool;
+};
+
+service : {
+  pq_keygen_seeded  : (blob)        -> (variant { Ok : text;        Err : text });
+  pq_sign           : (blob, blob)  -> (variant { Ok : nat64;       Err : text });
+  pq_verify_last    : ()            -> (variant { Ok : bool;        Err : text });
+  pq_pk_fingerprint : ()            -> (variant { Ok : text;        Err : text }) query;
+  pq_benchmark      : (blob, blob)  -> (variant { Ok : BenchReport; Err : text });
+}
