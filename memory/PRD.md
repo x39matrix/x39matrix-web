@@ -58,6 +58,24 @@ Igual que el reporte v1 de ML-DSA-87, pero documentando AMBOS hechos:
 
 Crear `REPORTE_SLH_BENCH_v1_<TS>.txt`, `sha256sum`, `gpg --armor --detach-sign`, `ots stamp`.
 
+### 🟠 P1.1 — Caveats técnicos a aplicar SIEMPRE en el reporte v1+
+1. **Anclar el techo de instrucciones a la doc oficial vigente con fecha**:
+   - NO escribir "40·10⁹" en seco.
+   - Escribir: "Per ICP docs consulted at <URL> on YYYY-MM-DD,
+     the update message instruction ceiling is X."
+   - DFINITY lo ha subido varias veces (5e9 -> 20e9 -> 40e9).
+
+2. **Para SLH-DSA-256f verificar DOS límites, no uno**:
+   - Cómputo (IC0522 si excede instrucciones).
+   - Tamaño de respuesta: `Signature = [u8; 49 856]` retornada en el
+     SlhBenchReport puede exceder payload límite de update response.
+     Si pasa, devolver SOLO el SHA-256 de la firma en el reporte y
+     guardar la sig completa en STATE para una query separada.
+
+3. **Tabla honesta de capas / custodia / estado** (ver más abajo).
+   Cualquier overclaim ("contra cualquier cómputo futuro", "5 firmas
+   del Juez", "Master Seal") va FUERA del reporte.
+
 ### 🔵 P2 — Tras tener ambos benchmarks, decidir el siguiente paso
 Opciones (elegir UNA):
 - **(B) HYBRID-ARN4R-v1**: añadir ML-DSA-87 obligatorio a cada endpoint crítico de `arn4r` (firma híbrida ECDSA + ML-DSA-87 en `~/x39_CAPSULE/source/x39_bases/src/lib.rs`). Esto es el salto real de "PQ-capable" a "PQ-hybrid app layer".
@@ -68,6 +86,30 @@ Opciones (elegir UNA):
 - Renombrar `bridge_btc` y `bridge_eth` en `arn4r` a `_simulate_bridge_*` o eliminarlos (estricta honestidad).
 - Recuperar `~/x39_hybrid/` desde backups (sólo queda `SHA256SUMS_FILES.txt`).
 - Completar inventario `.did` de todos los canisters X39.
+
+---
+
+## TABLA HONESTA DE CAPAS (referencia obligatoria para el reporte v1+)
+
+| Mecanismo | Capa | Custodia de la clave | Estado on-chain |
+|---|---|---|---|
+| IC canister signatures / certified data | Plataforma ICP, automática | No-llave; atestación de réplica firmada BLS del subnet | Vivo (todos los canisters X39) |
+| Threshold-ECDSA secp256k1 (arn4r) | On-chain nativo IC | DKG entre nodos, nunca reconstituida | Vivo (HUB arn4r) |
+| ML-DSA-87 (FIPS-204) | Cripto de aplicación dentro del canister | sk en memoria del canister (STATE) — NO threshold | Vivo (probe), bench publicado |
+| SLH-DSA-SHAKE-256s (FIPS-205) | Cripto de aplicación | sk en memoria del canister | NO entra (IC0522 medido) |
+| SLH-DSA-SHAKE-256f (FIPS-205) | Cripto de aplicación | sk en memoria del canister | Compilado, bench pendiente |
+| ECDSA secp256k1 de aplicación | Cripto de aplicación | sk en memoria del canister | NO implementado |
+| PGP (EdDSA Curve25519) | Off-chain, manual | Humano operador (C3E062EB...BBE8) | Vivo, manual |
+| OpenTimestamps | Off-chain, manual | No-llave; commit + ancla Bitcoin PoW | Vivo, ~24h confirmación |
+
+NUNCA mezclar PGP como "quinta firma del Juez". PGP es atestación humana
+off-chain, no es una clave del canister. Conflación de capas = overclaim.
+
+App-layer PQ (ML-DSA / SLH-DSA en STATE) NO es equivalente a chain-key
+threshold (tECDSA). Custodia mono-punto vs DKG.
+
+Merkle root sobre firmas = COMMITMENT, no AND-composition. Verificación
+híbrida real exige que cada firma valide por separado sobre el mismo msg.
 
 ---
 
