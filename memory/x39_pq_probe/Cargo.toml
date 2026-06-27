@@ -10,15 +10,17 @@ path = "src/lib.rs"
 [dependencies]
 candid       = "0.10"
 ic-cdk       = "0.17"
-fips204      = { version = "0.4", default-features = false }
-rand_core    = { version = "0.6", default-features = false }
-rand_chacha  = { version = "0.3", default-features = false }
+serde        = { version = "1",    default-features = false, features = ["derive"] }
+fips204      = { version = "0.4",  default-features = false, features = ["ml-dsa-87"] }
+fips205      = { version = "0.4",  default-features = false, features = ["slh_dsa_shake_256s"] }
+rand_core    = { version = "0.6",  default-features = false }
+rand_chacha  = { version = "0.3",  default-features = false }
 sha2         = { version = "0.10", default-features = false }
 
 [profile.release]
-opt-level     = "z"
-lto           = "fat"
-codegen-units = 1
-strip         = "symbols"
-panic         = "abort"
+opt-level       = "z"
+lto             = "fat"
+codegen-units   = 1
+strip           = "symbols"
+panic           = "abort"
 overflow-checks = true
