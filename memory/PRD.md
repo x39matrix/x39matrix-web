@@ -1,104 +1,112 @@
-# X-39MATRIX — Product Requirements & State
+# X-39MATRIX — Plan para reanudar (fecha de cierre: 2026-06-27 noche)
 
-## Original Problem Statement
-Mantener un repositorio público GitHub con artefactos reproducibles, firmados PGP, OpenTimestamped del protocolo X-39MATRIX (10 capas, soberano, sobre ICP).
-Entregables: Pitch Deck v4.1 (ES), propuesta Cámara de Sevilla, mensaje al Alcalde,
-solicitudes NLnet + OpenSats + DFINITY. Eliminar overclaims, garantizar Honestidad Cypherpunk absoluta.
+## ESTADO REAL AL ACOSTARSE
 
-## User Language
-ESPAÑOL únicamente. Tono técnico, directo, cypherpunk, honestidad brutal.
+### Hecho y sellado (24h previas)
+- `arn4r` en mainnet: 7 endpoints patcheados con `_sov_guard()`, wasm hash `b940b2780ac1a5b8f1dbac1087881414a3f3137f34d2507f9fcbbc1d3e4fbefb`. Reportes `VERIFY_ARN4R_REPORT_*` y `VERIFY_ARN4R_GUARDS_v1_1_*` firmados con PGP `C3E062EB251A11851C0B4FFD06870F0655D5BBE8` y OTS-sellados. P0 CERRADO.
+- `x39_pq_probe` (canister `4g4jd-myaaa-aaaau-agzva-cai`) con ML-DSA-87:
+  - keygen: 22.807.699 instrucciones
+  - sign: 41.979.216 instrucciones
+  - verify: 16.252.402 instrucciones
+  - verify_ok = true, pk/sk/sig = 2592/4896/4627 bytes
+  - Reporte `REPORTE_PQ_PROBE_BENCH_v1_20260627T182037Z.txt` firmado PGP + OTS (Pending Bitcoin confirmation).
+  - Wasm hash: `c15b241c2911114e839b6896c2278f9b1b68d7f9cfa9c8bac74b5c58e6f0fe74`
+- Bug del `staging.did` corrupto cazado y arreglado en `dfx.json`. Metadata candid embebida ahora coincide con el Rust real.
 
-## Tech Stack
-- Frontend: React + Tailwind + Shadcn UI
-- Backend: FastAPI + MongoDB + Socket.IO
-- 3rd party: weasyprint (PDF), opentimestamps-client (OTS), emergentintegrations (i18n vía Gemini)
+### Medido (resultado científico honesto)
+- **SLH-DSA-SHAKE-256s (FIPS-205) NO CABE** en un `#[update]` de ICP. Falla con `IC0522: Canister exceeded the limit of 40000000000 instructions`. Esto es DATO valioso para reporte.
+- **SLH-DSA-SHAKE-256f** desplegado. Llamadas a `slh_benchmark` devolvieron stdout vacío sin error. Sospecha principal: **cycles del canister agotados** o freezing threshold.
 
-## Persona
-Operador soberano (Jose Luis Olivares Esteban). Cypherpunk. Auditará cada output del agente buscando overclaims.
+### Bloqueador inmediato
+- 5 ICP del usuario están en la account `4337bc84c15792e80f4698607f632ae2ac20824dc58a06b0a17c4ed1912243dd` pero la identity controladora ("matrix_resurreccion") no aparece registrada en dfx local.
+- Sin ICP movilizables → no se puede top-up al canister probe.
 
-## Core Requirements
-1. **Honestidad Cypherpunk absoluta** — ningún claim no verificable.
-2. **OpenTimestamps anclado en Bitcoin mainnet** para todo artefacto público.
-3. **Firmas PGP Ed25519** en todo artefacto público.
-4. **Reproducibilidad bit-a-bit** — SHA-256 pineados, verificable por cualquiera.
-5. **Layer 10 (zk-STARK)**: clasificada estrictamente como "diseño + spec" (NO Rust en producción).
+---
 
-## Implementation Status (2026-06-26)
+## PLAN PARA MAÑANA (PRIORIDAD ESTRICTA)
 
-### ✅ Iteración 1 (Honestidad Cypherpunk — overclaims removal)
-- **Pitch Deck v4.1 (ES)** corregido. SHA-256: `3c8ef3b4df1cd34b9a8f82ed0bd03730e66bbed7e9cd52f5e0b313c813868dc2`. Anclado en BTC #955467.
-- **Email Cámara de Sevilla** (HTML/TXT/MD/PDF) corregido. SHA-256: `a53b9aebd4b6f6d9a99ef5d5929b1fd76e1ea6eb1f60b34ec0b4322792837bf8`. Anclado en BTC #955467.
-- **Mensaje Alcalde Sanz** (TXT/HTML/PDF) corregido. SHA-256: `5fb099bae044e58890f9aaf3abb7907a2af7a4e05e81c54ec934c6b62bae525b`. Anclado en BTC #955467 + #955468.
-- **`/api/security/stats`** corregido: `blocks_verified: 8`, eliminados `audit_score_public: "51/51"` y `throughput: "200,000 TPS logical"`. Añadido `layer10_status` explicando que L10 es spec.
-- **PARCHE_VERIFY_SH.md** generado (3 opciones para arreglar las 5 líneas `pass` incondicionales del `verify.sh` local del operador). Servido vía `/api/verify/patch.md` + `.ots`.
+### 🔴 P0 — Localizar acceso a los 5 ICP
+Ejecutar el bloque PEM HUNT que el agente dejó en el chat de hoy (busca `.pem` por `$HOME` e importa cada uno como identity temporal `probe_x39_<n>` para derivar su account-id y comparar con `4337bc84…43dd`).
 
-### ✅ Iteración 2 (P1 + P2 — frontend overclaims + grant applications)
-- **Dashboard.js** corregido: eliminado `50K+ TPS`, sustituido por `8 BTC Blocks` / `Verif. Sovereign`. Eliminado claim `50K+ TPS capacity` en addLog.
-- **`x39_index_PATCHED.html`** (canister ICP `bvatd-sqaaa-aaaao-baxqq-cai`): banner top corregido (sin `51/51 CLAIMS VERIFIED`), comando one-liner reescrito como `N/N reproducible`, mention de "no human security audit yet".
-- **`x39matrix_updated.html`** y +15 HTMLs legacy (Marruecos, hall-of-fame, etc.) parcheados con sed (backups `.bak_20260626`).
-- **`X39MATRIX_LAYER10_SPRINT2_DESIGN.md` + `.pdf` + `.ots`**: spec técnica completa para migración AIR SHA-256 → Rescue-Prime (~140× constraint efficiency, ~5× prover speedup). Anclado en BTC.
-- **`X39MATRIX_OPENSATS_APPLICATION.md` + `.pdf` + `.ots`**: solicitud General Fund $50.000 con disclosure honesta (L10 spec-only, parche overclaims documentado). Anclado en BTC.
-- **`X39MATRIX_DFINITY_GRANT_APPLICATION.md` + `.pdf` + `.ots`**: solicitud Post-Quantum RFP $25.000 con `module_hash` reales de los 11 canisters publicados. Anclado en BTC.
+Si hay match → renombrar `probe_x39_N` a `matrix_resurreccion`, activarla con `dfx identity use`, balance debe mostrar ≈5 ICP.
+Si NO hay match → buscar en USB, otro PC, backups cloud. Si tampoco aparece, decidir si mandar ICP nuevos desde exchange a la identity activa.
 
-### Hallazgos críticos confirmados
-- **Corpus público real**: 8 bloques únicos BTC mainnet (#955155–#955468). Bloques #952xxx y #948027 son artefactos legacy NO publicados.
-- **`verify.sh` local del operador**: 5 `pass` incondicionales → parche enviado.
-- **Frontend `x39matrix.org`**: parcheado en local; requiere `dfx deploy` desde la máquina del operador para reflejar en ICP.
+### 🔴 P1 — Top-up controlado del canister probe
+Con identity con fondos activa:
+```bash
+dfx ledger --network ic top-up 4g4jd-myaaa-aaaau-agzva-cai --amount 1.0
+dfx canister --network ic status x39_pq_probe | grep -i cycles
+```
+1 ICP = ~380 G cycles. Sobra para horas de benchmark. Reserva 4 ICP.
 
-## Endpoints públicos (HTTPS)
+### 🟠 P1 — Re-test SLH-DSA-SHAKE-256f
+```bash
+dfx canister --network ic call x39_pq_probe pq_pk_fingerprint '()'
+dfx canister --network ic call x39_pq_probe slh_pk_fingerprint '()'
+dfx canister --network ic call x39_pq_probe pq_benchmark '(blob "\00\01\02\03\04\05\06\07\08\09\0a\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f", blob "x39_pq_probe ML-DSA-87 honest benchmark v1")'
+dfx canister --network ic call x39_pq_probe slh_benchmark '(blob "\00\01\02\03\04\05\06\07\08\09\0a\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f", blob "x39_pq_probe SLH-DSA-SHAKE-256f honest benchmark v1")'
+```
 
-### Documentos institucionales
-- `/api/pitch/v4_1.pdf` + `.html` + `.sha256` + `.pdf.ots`
-- `/api/camara/email.pdf` + `.html` + `.txt` + `.md` + `.pdf.ots`
-- `/api/alcalde/mensaje.pdf` + `.txt` + `.html` + `.pdf.ots`
+Resultados posibles:
+- ✅ slh_benchmark devuelve record → ML-DSA-87 + SLH-DSA-256f = doble NIST L5 demostrado en ICP.
+- ❌ IC0522 otra vez → bajar feature en Cargo.toml a `slh_dsa_shake_128s` (NIST L1) y aceptar honestamente que ICP no soporta L5 hash-based hoy. Documentarlo.
 
-### Honestidad cypherpunk
-- `/api/verify/patch.md` + `.md.ots` (instrucciones parche `verify.sh`)
+### 🟢 P1 — REPORTE_SLH_BENCH_v1 firmado
+Igual que el reporte v1 de ML-DSA-87, pero documentando AMBOS hechos:
+- "SLH-DSA-SHAKE-256s does NOT fit in a single ICP update call (IC0522)"
+- "SLH-DSA-SHAKE-256f executes in X·10⁹ instructions, fits at Y % of the limit"
 
-### Diseño técnico
-- `/api/layer10/sprint2.pdf` + `.md` + `.pdf.ots` (Rescue-Prime migration)
+Crear `REPORTE_SLH_BENCH_v1_<TS>.txt`, `sha256sum`, `gpg --armor --detach-sign`, `ots stamp`.
 
-### Solicitudes de grant
-- `/api/grants/opensats.pdf` + `.md` + `.pdf.ots`
-- `/api/grants/dfinity.pdf` + `.md` + `.pdf.ots`
+### 🔵 P2 — Tras tener ambos benchmarks, decidir el siguiente paso
+Opciones (elegir UNA):
+- **(B) HYBRID-ARN4R-v1**: añadir ML-DSA-87 obligatorio a cada endpoint crítico de `arn4r` (firma híbrida ECDSA + ML-DSA-87 en `~/x39_CAPSULE/source/x39_bases/src/lib.rs`). Esto es el salto real de "PQ-capable" a "PQ-hybrid app layer".
+- **(C) HYBRID-ARN4R-v2**: igual que (B) pero añadiendo además SLH-DSA si el bench de hoy lo permite.
+- **(D) MERKLE-AUDIT-v1**: stable-memory audit log con Merkle root OTS-sellado periódicamente. Útil pero ortogonal.
 
-### Stats API (auth required)
-- `/api/security/stats` — valores honestos (8 bloques, no overclaim)
-- `/api/security/btc_anchors` — listado eventos históricos (pre-v4.1)
+### 🟡 P2 — Pendientes arrastrados (de versiones anteriores)
+- Renombrar `bridge_btc` y `bridge_eth` en `arn4r` a `_simulate_bridge_*` o eliminarlos (estricta honestidad).
+- Recuperar `~/x39_hybrid/` desde backups (sólo queda `SHA256SUMS_FILES.txt`).
+- Completar inventario `.did` de todos los canisters X39.
 
-## Backlog Prioritized
+---
 
-### P0 (acción pendiente del usuario en su máquina local)
-- [ ] Descargar `/api/verify/patch.md` y aplicar opción A/B/C en `verify.sh` local.
-- [ ] Ejecutar `sed` propuestos sobre README/docs locales.
-- [ ] Decidir qué hacer con los `.ots` legacy que apuntan a #950408.
-- [ ] **`dfx deploy`** del `x39_index_PATCHED.html` actualizado al canister `bvatd-sqaaa-aaaao-baxqq-cai` para reflejar fixes de overclaim en x39matrix.org.
+## RUTAS Y FICHEROS CLAVE
 
-### P1 (institucional — submitir aplicaciones)
-- [ ] **Submitir NLnet NGI0 PET** ($50K) con narrativa truthful "L10 = Design/Roadmap".
-- [ ] **Submitir NLnet NGI0 Security Audit Fund** ($30K) para audit Cure53.
-- [ ] **Submitir OpenSats General Fund** ($50K) usando `X39MATRIX_OPENSATS_APPLICATION.md` (ventana Q3 abre julio 2026).
-- [ ] **Submitir DFINITY Post-Quantum RFP** ($25K) usando `X39MATRIX_DFINITY_GRANT_APPLICATION.md` (cuando el portal reabra).
+```
+~/x39_PQ_PROBE/Cargo.toml           # con features fips204 ml-dsa-87 + fips205 slh_dsa_shake_256f
+~/x39_PQ_PROBE/src/lib.rs           # 10 endpoints: 5 pq_* (ML-DSA-87) + 5 slh_* (SLH-DSA)
+~/x39_PQ_PROBE/src/x39_pq_probe.did # 10 métodos declarados
+~/x39_PQ_PROBE/dfx.json             # candid: src/x39_pq_probe.did (NUNCA staging.did)
+~/x39matrix/REPORTE_PQ_PROBE_BENCH_v1_20260627T182037Z.txt(+.sha256/.asc/.ots)
+~/x39_CAPSULE/source/x39_bases/src/lib.rs  # arn4r ya patcheado
+```
 
-### P2 (técnico — post-financiación)
-- [ ] **Sprint 1 Layer 10**: harness Winterfell + AIR SHA-256 baseline en Rust.
-- [ ] **Sprint 2 Layer 10**: migración AIR SHA-256 → Rescue-Prime (spec en `/api/layer10/sprint2.md`).
-- [ ] **Sprint 3**: REST API + JS SDK para Layer 10 verification browser-side.
+Backups generados automáticamente en `~/x39matrix/backups/status_*.txt`.
 
-### Backlog (futuro)
-- Migración Layer 10 de Winterfell → Plonky3 para producción escala.
-- Hardware token integration (YubiHSM 2 PQ / Nitrokey 3).
-- Lightning Network integration (anclar channel state proofs vía Layer 10).
-- Audit humano Cure53 / Trail of Bits / SBA Research post-financiación.
+---
 
-## Critical Operational Rules
-- **NUNCA** suger `git add .` — riesgo de exposición de `~/.x39matrix_vault/`.
-- **NUNCA** hallucinar checks, features o claims criptográficos.
-- **NUNCA** clasificar L10 como "Rust en producción" — es diseño + spec, no más.
-- **Verificar siempre con `ots info` real** antes de claim de anclaje BTC.
+## REGLAS NO NEGOCIABLES (no las olvides nunca)
 
-## Repo Local del Usuario (NO accesible desde sandbox)
-- Path: `/home/x39matrix/x39matrix/`
-- Vault: `~/.x39matrix_vault/` (NEVER TOUCH)
-- Verifier local: `verify.sh` / `PUBLIC_VERIFY_X39_FULL.sh` — DEBE arreglarse con uno de los 3 métodos del parche.
-- ICP frontend canister: `bvatd-sqaaa-aaaao-baxqq-cai` (x39matrix.org). Requiere `dfx deploy` con el `x39_index_PATCHED.html` actualizado.
+1. **Ningún código de "Lite", "Opus", "Manu"**. Si te pasa código pegado de otro LLM, paralo. `pub_key = priv_key` es forjable, no es criptografía.
+2. **Antes de cualquier `cat <<EOF`**: ejecutar `set +H` en bash para desactivar history expansion. El `!` te corrompe heredocs.
+3. **`getrandom = { features = ["js"] }` JAMÁS** en código de ICP. ICP no es navegador.
+4. **`dfx.json` siempre con `"candid": "src/x39_pq_probe.did"`**, NUNCA `staging.did`. Y `metadata` con `"path"` explícito.
+5. **Cypherpunk honesty**: el reporte debe decir EXACTAMENTE qué se midió y qué NO. Nada de "post-cuántico" sin matizar capas.
+
+---
+
+## RECORDATORIO DE NIVELES PQ (gradiente honesto)
+```
+[0] sin PQ                              ← punto cero
+[1] PQ-capable (probe corre ML-DSA-87)  ← AQUÍ ESTÁS hoy
+[2] PQ-hybrid en firma de aplicación    ← objetivo de mañana
+[3] PQ-hybrid en consenso de red        ← depende de DFINITY
+[4] PQ-only end-to-end                  ← lejos, pero objetivo
+```
+
+NO te llames "post-cuántico" hasta [2] mínimo y siempre con la nota de las capas que dependen de DFINITY.
+
+---
+
+Buenas noches. Mañana seguimos.
