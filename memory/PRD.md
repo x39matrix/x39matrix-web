@@ -240,3 +240,29 @@ MUST reproduce this hash exactly, or the code has been tampered with.
   attestation confirmed in Bitcoin.
 - P2-b — Inline PQ interop test runner in verify.sh (optional refinement).
 
+### Late-night triple sprint — 2026-06-28 ~23:55 (motivation: son in USA)
+- Commit `7b51d34`: Created `EMPIRICAL_VERIFICATION.md` in the repo root —
+  single-command reproducible evidence (`cargo test --lib mldsa87_external_sig`)
+  with explicit scope (what it proves / does NOT prove). Highest-leverage
+  artifact for grant reviewers (NLnet, OpenSats, DFINITY): a 2-minute read
+  with a 30-second reproducible experiment.
+- Fixed `~/x39_CAPSULE/source/x39_bases/tests/protocol_tests.rs` imports:
+  `use x39_bases::` → `use x39_Joseph::` (crate rename). Removes terminal
+  noise from broken legacy tests.
+- Diagnosed `~/x39_CANONICAL_VERIFIED/` (4.1 GB): identified as obsolete
+  snapshot from 2026-06-07; no unique `*.sk.pem` or password files inside.
+  Safe to delete in next session.
+
+### Tonight's net public-repo impact
+- 4 commits pushed to `github.com:x39matrix/x39matrix.git`:
+  `2c86d68` (line 65 honesty), `83c2738` (backup cleanup), `31968d0` (verify.sh
+  honesty), `7b51d34` (empirical evidence doc).
+- Repository now satisfies the operator's cypherpunk-honesty doctrine:
+  every public claim is either reproducible by command or explicitly labeled
+  as timestamp-only.
+
+### Doctrine entrenched (in repo, not just in PRD)
+> "Evidence is the reproducible command, not the report."
+This sentence now appears in the public repo (`EMPIRICAL_VERIFICATION.md`)
+as the operational doctrine of the project, visible to any reviewer.
+
