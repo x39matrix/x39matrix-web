@@ -1,154 +1,160 @@
-# X-39MATRIX — Plan para reanudar (fecha de cierre: 2026-06-27 noche)
+# X39MATRIX — HYBRID-ARN4R-v1 — PRD
 
-## ESTADO REAL AL ACOSTARSE
+## Original Problem Statement
 
-### Hecho y sellado (24h previas)
-- `arn4r` en mainnet: 7 endpoints patcheados con `_sov_guard()`, wasm hash `b940b2780ac1a5b8f1dbac1087881414a3f3137f34d2507f9fcbbc1d3e4fbefb`. Reportes `VERIFY_ARN4R_REPORT_*` y `VERIFY_ARN4R_GUARDS_v1_1_*` firmados con PGP `C3E062EB251A11851C0B4FFD06870F0655D5BBE8` y OTS-sellados. P0 CERRADO.
-- `x39_pq_probe` (canister `4g4jd-myaaa-aaaau-agzva-cai`) con ML-DSA-87:
-  - keygen: 22.807.699 instrucciones
-  - sign: 41.979.216 instrucciones
-  - verify: 16.252.402 instrucciones
-  - verify_ok = true, pk/sk/sig = 2592/4896/4627 bytes
-  - Reporte `REPORTE_PQ_PROBE_BENCH_v1_20260627T182037Z.txt` firmado PGP + OTS (Pending Bitcoin confirmation).
-  - Wasm hash: `c15b241c2911114e839b6896c2278f9b1b68d7f9cfa9c8bac74b5c58e6f0fe74`
-- Bug del `staging.did` corrupto cazado y arreglado en `dfx.json`. Metadata candid embebida ahora coincide con el Rust real.
+Maintain a public GitHub repository with reproducible, PGP-signed,
+OpenTimestamped artifacts for X-39MATRIX, a sovereign security protocol on the
+Internet Computer (ICP).
 
-### Medido (resultado científico honesto)
-- **SLH-DSA-SHAKE-256s (FIPS-205) NO CABE** en un `#[update]` de ICP. Falla con `IC0522: Canister exceeded the limit of 40000000000 instructions`. Esto es DATO valioso para reporte.
-- **SLH-DSA-SHAKE-256f** desplegado. Llamadas a `slh_benchmark` devolvieron stdout vacío sin error. Sospecha principal: **cycles del canister agotados** o freezing threshold.
+Eliminate overclaims and ensure absolute "Cypherpunk Honesty". Upgrade the
+system to support Post-Quantum (PQ) signatures, specifically updating the
+HUB Canister (`arn4r`) to "HYBRID-ARN4R-v1" which enforces ML-DSA-87
+signatures verified against the operator's public key.
 
-### Bloqueador inmediato
-- 5 ICP del usuario están en la account `4337bc84c15792e80f4698607f632ae2ac20824dc58a06b0a17c4ed1912243dd` pero la identity controladora ("matrix_resurreccion") no aparece registrada en dfx local.
-- Sin ICP movilizables → no se puede top-up al canister probe.
+Operator language: Spanish. Persona: brutally honest, cypherpunk, FIPS-only,
+no marketing fluff.
 
----
+## Architecture
 
-## PLAN PARA MAÑANA (PRIORIDAD ESTRICTA)
+Local workstation development (user owns ICP mainnet canister).
+NOT a /app pod-hosted webapp. Code lives at `~/x39_CAPSULE/source/`.
 
-### 🔴 P0 — Localizar acceso a los 5 ICP
-Ejecutar el bloque PEM HUNT que el agente dejó en el chat de hoy (busca `.pem` por `$HOME` e importa cada uno como identity temporal `probe_x39_<n>` para derivar su account-id y comparar con `4337bc84…43dd`).
+**Canisters:**
+- `arn4r` (HUB) on ICP mainnet at `arn4r-lqaaa-aaaao-baxwq-cai`
+  - Controller: `dveae-h7ru2-l7w3z-gkvbq-kufol-wkye2-7njxz-73m2u-sysc2-v5ezt-vqe`
+  - Identity: `x39matrix-temp`
 
-Si hay match → renombrar `probe_x39_N` a `matrix_resurreccion`, activarla con `dfx identity use`, balance debe mostrar ≈5 ICP.
-Si NO hay match → buscar en USB, otro PC, backups cloud. Si tampoco aparece, decidir si mandar ICP nuevos desde exchange a la identity activa.
+**Crates (local):**
+- `~/x39_CAPSULE/source/x39_bases/`        — canister source (lib.rs, ml_dsa.rs)
+- `~/x39_CAPSULE/source/x39_hybrid_blob/`  — shared canonical serializer
+- `~/x39_CAPSULE/source/x39_pq_sign/`      — off-chain CLI signer (created D5)
 
-### 🔴 P1 — Top-up controlado del canister probe
-Con identity con fondos activa:
-```bash
-dfx ledger --network ic top-up 4g4jd-myaaa-aaaau-agzva-cai --amount 1.0
-dfx canister --network ic status x39_pq_probe | grep -i cycles
-```
-1 ICP = ~380 G cycles. Sobra para horas de benchmark. Reserva 4 ICP.
+**Operator keys:**
+- Canonical sovereign key: `~/x39matrix/x39matrix/x39matrix/X39_PQ_SOVEREIGN/x39_sovereign.mldsa87.sk.pem`
+  - SHA-256 of pub PEM: `97626a614002bbf28903e209e54b3b71f6a5ef42a48210b00af2d99eb2ba9c96`
+  - Cross-confirmed: `C_sovereign` = OMPI declared = match
+- GPG identity: `C3E062EB251A11851C0B4FFD06870F0655D5BBE8`
 
-### 🟠 P1 — Re-test SLH-DSA-SHAKE-256f
-```bash
-dfx canister --network ic call x39_pq_probe pq_pk_fingerprint '()'
-dfx canister --network ic call x39_pq_probe slh_pk_fingerprint '()'
-dfx canister --network ic call x39_pq_probe pq_benchmark '(blob "\00\01\02\03\04\05\06\07\08\09\0a\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f", blob "x39_pq_probe ML-DSA-87 honest benchmark v1")'
-dfx canister --network ic call x39_pq_probe slh_benchmark '(blob "\00\01\02\03\04\05\06\07\08\09\0a\0b\0c\0d\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f", blob "x39_pq_probe SLH-DSA-SHAKE-256f honest benchmark v1")'
-```
-
-Resultados posibles:
-- ✅ slh_benchmark devuelve record → ML-DSA-87 + SLH-DSA-256f = doble NIST L5 demostrado en ICP.
-- ❌ IC0522 otra vez → bajar feature en Cargo.toml a `slh_dsa_shake_128s` (NIST L1) y aceptar honestamente que ICP no soporta L5 hash-based hoy. Documentarlo.
-
-### 🟢 P1 — REPORTE_SLH_BENCH_v1 firmado
-Igual que el reporte v1 de ML-DSA-87, pero documentando AMBOS hechos:
-- "SLH-DSA-SHAKE-256s does NOT fit in a single ICP update call (IC0522)"
-- "SLH-DSA-SHAKE-256f executes in X·10⁹ instructions, fits at Y % of the limit"
-
-Crear `REPORTE_SLH_BENCH_v1_<TS>.txt`, `sha256sum`, `gpg --armor --detach-sign`, `ots stamp`.
-
-### 🟠 P1.1 — Caveats técnicos a aplicar SIEMPRE en el reporte v1+
-1. **Anclar el techo de instrucciones a la doc oficial vigente con fecha**:
-   - NO escribir "40·10⁹" en seco.
-   - Escribir: "Per ICP docs consulted at <URL> on YYYY-MM-DD,
-     the update message instruction ceiling is X."
-   - DFINITY lo ha subido varias veces (5e9 -> 20e9 -> 40e9).
-
-2. **Para SLH-DSA-256f verificar DOS límites, no uno**:
-   - Cómputo (IC0522 si excede instrucciones).
-   - Tamaño de respuesta: `Signature = [u8; 49 856]` retornada en el
-     SlhBenchReport puede exceder payload límite de update response.
-     Si pasa, devolver SOLO el SHA-256 de la firma en el reporte y
-     guardar la sig completa en STATE para una query separada.
-
-3. **Tabla honesta de capas / custodia / estado** (ver más abajo).
-   Cualquier overclaim ("contra cualquier cómputo futuro", "5 firmas
-   del Juez", "Master Seal") va FUERA del reporte.
-
-### 🔵 P2 — Tras tener ambos benchmarks, decidir el siguiente paso
-Opciones (elegir UNA):
-- **(B) HYBRID-ARN4R-v1**: añadir ML-DSA-87 obligatorio a cada endpoint crítico de `arn4r` (firma híbrida ECDSA + ML-DSA-87 en `~/x39_CAPSULE/source/x39_bases/src/lib.rs`). Esto es el salto real de "PQ-capable" a "PQ-hybrid app layer".
-- **(C) HYBRID-ARN4R-v2**: igual que (B) pero añadiendo además SLH-DSA si el bench de hoy lo permite.
-- **(D) MERKLE-AUDIT-v1**: stable-memory audit log con Merkle root OTS-sellado periódicamente. Útil pero ortogonal.
-
-### 🟡 P2 — Pendientes arrastrados (de versiones anteriores)
-- Renombrar `bridge_btc` y `bridge_eth` en `arn4r` a `_simulate_bridge_*` o eliminarlos (estricta honestidad).
-- Recuperar `~/x39_hybrid/` desde backups (sólo queda `SHA256SUMS_FILES.txt`).
-- Completar inventario `.did` de todos los canisters X39.
-
----
-
-## TABLA HONESTA DE CAPAS (referencia obligatoria para el reporte v1+)
-
-| Mecanismo | Capa | Custodia de la clave | Estado on-chain |
-|---|---|---|---|
-| IC canister signatures / certified data | Plataforma ICP, automática | No-llave; atestación de réplica firmada BLS del subnet | Vivo (todos los canisters X39) |
-| Threshold-ECDSA secp256k1 (arn4r) | On-chain nativo IC | DKG entre nodos, nunca reconstituida | Vivo (HUB arn4r) |
-| ML-DSA-87 (FIPS-204) | Cripto de aplicación dentro del canister | sk en memoria del canister (STATE) — NO threshold | Vivo (probe), bench publicado |
-| SLH-DSA-SHAKE-256s (FIPS-205) | Cripto de aplicación | sk en memoria del canister | NO entra (IC0522 medido) |
-| SLH-DSA-SHAKE-256f (FIPS-205) | Cripto de aplicación | sk en memoria del canister | Compilado, bench pendiente |
-| ECDSA secp256k1 de aplicación | Cripto de aplicación | sk en memoria del canister | NO implementado |
-| PGP (EdDSA Curve25519) | Off-chain, manual | Humano operador (C3E062EB...BBE8) | Vivo, manual |
-| OpenTimestamps | Off-chain, manual | No-llave; commit + ancla Bitcoin PoW | Vivo, ~24h confirmación |
-
-NUNCA mezclar PGP como "quinta firma del Juez". PGP es atestación humana
-off-chain, no es una clave del canister. Conflación de capas = overclaim.
-
-App-layer PQ (ML-DSA / SLH-DSA en STATE) NO es equivalente a chain-key
-threshold (tECDSA). Custodia mono-punto vs DKG.
-
-Merkle root sobre firmas = COMMITMENT, no AND-composition. Verificación
-híbrida real exige que cada firma valide por separado sobre el mismo msg.
-
----
-
-## RUTAS Y FICHEROS CLAVE
+## Cryptographic Contract (FROZEN)
 
 ```
-~/x39_PQ_PROBE/Cargo.toml           # con features fips204 ml-dsa-87 + fips205 slh_dsa_shake_256f
-~/x39_PQ_PROBE/src/lib.rs           # 10 endpoints: 5 pq_* (ML-DSA-87) + 5 slh_* (SLH-DSA)
-~/x39_PQ_PROBE/src/x39_pq_probe.did # 10 métodos declarados
-~/x39_PQ_PROBE/dfx.json             # candid: src/x39_pq_probe.did (NUNCA staging.did)
-~/x39matrix/REPORTE_PQ_PROBE_BENCH_v1_20260627T182037Z.txt(+.sha256/.asc/.ots)
-~/x39_CAPSULE/source/x39_bases/src/lib.rs  # arn4r ya patcheado
+DST = "X39MATRIX/HYBRID/ARN4R/v01__"   (28 bytes ASCII)
+ML_DSA_87_PUBKEY_LEN = 2592
+ML_DSA_87_SIG_LEN    = 4627
+MAX_TTL_NS           = 300_000_000_000  (5 min)
+
+canonical_message TLV big-endian:
+  u16(28)||DST
+  || u16(len(cid))||cid
+  || u16(len(caller))||caller
+  || u16(len(method))||method
+  || args_hash[32]
+  || expires_at_ns(u64-BE)
+  || nonce(u64-BE)
+
+PqEnvelope = record {
+  sig: blob;          // 4627 bytes
+  expires_at_ns: u64;
+  nonce: u64;
+}
 ```
 
-Backups generados automáticamente en `~/x39matrix/backups/status_*.txt`.
+## Status (Feb 2026 session)
 
----
+All seven planned blocks (D1..D7) complete locally. Mainnet deploy pending
+operator's 24h cool-off and Bitcoin attestation of OTS proof.
 
-## REGLAS NO NEGOCIABLES (no las olvides nunca)
+### Block D1 — `_pq_guard` wired ✅
+Defense-in-depth guard combining `_sov_guard()` (classical controller) with
+FIPS-204 ML-DSA-87 verify against `OPERATOR_PQ_PUBKEYS`. Replay protection
+via monotonic `LAST_PQ_NONCE`.
 
-1. **Ningún código de "Lite", "Opus", "Manu"**. Si te pasa código pegado de otro LLM, paralo. `pub_key = priv_key` es forjable, no es criptografía.
-2. **Antes de cualquier `cat <<EOF`**: ejecutar `set +H` en bash para desactivar history expansion. El `!` te corrompe heredocs.
-3. **`getrandom = { features = ["js"] }` JAMÁS** en código de ICP. ICP no es navegador.
-4. **`dfx.json` siempre con `"candid": "src/x39_pq_probe.did"`**, NUNCA `staging.did`. Y `metadata` con `"path"` explícito.
-5. **Cypherpunk honesty**: el reporte debe decir EXACTAMENTE qué se midió y qué NO. Nada de "post-cuántico" sin matizar capas.
+### Block D2 — `getrandom` WASM stub ✅
+Custom panic-on-call stub for `wasm32-unknown-unknown` so `ml-dsa 0.1.1`
+compiles for ICP. Real entropy comes from the operator's signing path,
+never from inside the canister.
 
----
+### Block D3 — 7 endpoints PQ-guarded ✅
+`reset`, `apply_morphism`, `apply_functor`, `delta`, `schedule`, `compose`,
+`cert_extend` all require a `PqEnvelope` argument and call `_pq_guard()`.
 
-## RECORDATORIO DE NIVELES PQ (gradiente honesto)
-```
-[0] sin PQ                              ← punto cero
-[1] PQ-capable (probe corre ML-DSA-87)  ← AQUÍ ESTÁS hoy
-[2] PQ-hybrid en firma de aplicación    ← objetivo de mañana
-[3] PQ-hybrid en consenso de red        ← depende de DFINITY
-[4] PQ-only end-to-end                  ← lejos, pero objetivo
-```
+### Block D4 — `UpgradeSnapshotV3` ✅
+New stable-memory schema: `V3 = V2 + operator_pq_pubkeys + last_pq_nonce`.
+`post_upgrade` chain: V3 → V2 → raw `Vec<CertCert>` (forward-only).
+WASM hash post-D4: `3ad027df402efb2fc0925a333bc850d07d1a2427c89512c16518b73aba962dfa`
 
-NO te llames "post-cuántico" hasta [2] mínimo y siempre con la nota de las capas que dependen de DFINITY.
+### Block D5 — `x39_pq_sign` CLI ✅
+New crate `~/x39_CAPSULE/source/x39_pq_sign/`. Links `x39_hybrid_blob` by
+path (bit-for-bit canonical guarantee). Signs via `openssl pkeyutl -sign
+-rawin` against OpenSSL 3.5+. Emits Candid `PqEnvelope` text ready for
+`dfx canister call`.
 
----
+### Block D6 — E2E local proof ✅
+`x39_pq_sign` produced an envelope for `reset` with `C_sovereign.mldsa87.sk.pem`.
+Preimage = 128 bytes, signature = 4627 bytes (FIPS-204 compliant).
+`openssl pkeyutl -verify -pubin -inkey pk.pem -rawin -in preimage -sigfile sig`
+returned `Signature Verified Successfully`. Round-trip proof complete.
 
-Buenas noches. Mañana seguimos.
+### Block D7 — Final report + PGP + OTS ✅
+File: `~/x39matrix/REPORTE_HYBRID_ARN4R_v1_FINAL_20260628T170102Z.txt`
+- TXT SHA-256: `d850180362ad20193a7a65d6d63e9c90fa8ac4dfcdc1ed868a515efbd1baee5c`
+- PGP sig (asc): `1637241a71fcfeb41caad122c233395971fe09f2ec6b2a67a0ef98044a65cb34`
+- OTS proof    : `8a44d73368bc20ffdc960ff34b61bd83c57981af177af2bb8b3e26a6ad239b35`
+- OTS calendars: a.pool.opentimestamps.org, b.pool.opentimestamps.org,
+                 a.pool.eternitywall.com, ots.btc.catallaxy.com
+- Bitcoin attestation pending: ~12-24h after next BTC block.
+
+## KAT Anchor (Reproducible)
+
+`KAT[reset, empty args] = 784a843c7130ef60e4662651e8bc49a139c52f7a1a20f8e5a81ce5ca5812a2de`
+
+Anyone who clones the repo and runs `cargo test --release -p x39_hybrid_blob`
+MUST reproduce this hash exactly, or the code has been tampered with.
+
+## Next Action Items (operator decides)
+
+1. **Cool-off 24h** before any mainnet action.
+2. **Wait for Bitcoin attestation** of OTS proof (~12-24h). Run
+   `ots upgrade $OUT.asc.ots` to fetch the Bitcoin merkle proof.
+3. **Push the 4 artifacts** (.txt, .sha256, .asc, .asc.ots) to public GitHub
+   repo for verifiability.
+4. **Mainnet deploy** (only after 1+2 above):
+   ```
+   dfx canister --network ic install --mode upgrade arn4r \
+     --wasm ~/x39_CAPSULE/source/x39_bases/target/wasm32-unknown-unknown/release/x39_Joseph.wasm
+   ```
+5. **Bootstrap operator pubkey** (idempotent, single-shot):
+   - Extract raw 2592 bytes from C_sovereign PEM (DER decode minus SPKI header)
+   - Call `register_operator_pq_pubkeys(blob "<raw 2592 bytes>")`
+6. **Test mainnet PQ-guarded call**: use `x39_pq_sign` to mint a `reset`
+   envelope, query `last_pq_nonce`, then
+   `dfx canister --network ic call arn4r reset '(...envelope...)'`
+
+## Backlog (declared tech debt)
+
+- **P1**: Migrate legacy `ml_dsa_sign` endpoint in `arn4r` to `ml-dsa 0.1.1`
+  without breaking the canister's internal seed.
+- **P2**: Fund `x39_pq_probe` canister with cycles, recover its identity, then
+  benchmark `SLH-DSA-SHAKE-256f`.
+- **P2**: Build `MERKLE-AUDIT-v1` canister.
+
+## Tech Stack
+
+- Rust 2021 edition (canister + CLI)
+- `ic-cdk 0.17`, `candid 0.10`
+- `ml-dsa 0.1.1` (CVE-2026-22705 patched)
+- `getrandom 0.4` (with custom WASM stub for ICP)
+- `sha2 0.10`
+- OpenSSL 3.5.0 (system, native ML-DSA-87 since 8 Apr 2025)
+- dfx (deprecated, migrating to icp-cli later)
+- GnuPG, OpenTimestamps CLI
+
+## Operator Comms Conventions
+
+- Spanish only.
+- Cypherpunk tone: brutal, FIPS-only, on-chain-verifiable.
+- No marketing language ("Capa 10", "Master Seal", "quantum-proof" — all banned).
+- Shell hardening: every block starts with `set +H` (user's shell expands `!`).
+- Terminal fragility: avoid base64 paste-blobs > ~5 KB; prefer small atomic
+  steps; heredocs OK if lines are short.
+- When in doubt about deploy timing: 24h cool-off is the default.
