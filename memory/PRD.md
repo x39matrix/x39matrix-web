@@ -216,3 +216,27 @@ MUST reproduce this hash exactly, or the code has been tampered with.
 - `~/.gnupg/` → required by GnuPG at that exact path; moving breaks PGP signing.
 - For these: harden perms (700/600) + offline encrypted backup. Never move.
 
+### P2 Honesty pass on verify.sh — 2026-06-28 (late night, commit 31968d0)
+- §X title `POST-QUANTUM NIZA WIPO FILING` had 5 `pass` calls that incremented
+  PASSED counter without performing any cryptographic verification — only
+  Bitcoin timestamp anchors. Replaced with `note "[TIMESTAMP-ONLY] ..."`.
+- §X title corrected to `POST-QUANTUM ARTIFACT TIMESTAMPS — 5 BITCOIN ANCHORS
+  (TIMESTAMP ONLY, NO SIG VERIFY)`.
+- Final verdict text `✓ ALL X39MATRIX SOVEREIGN CLAIMS VERIFIED.` replaced
+  with `✓ DOCUMENT INTEGRITY + ON-CHAIN TIMESTAMPS + ECDSA SIG VERIFIED.`
+  (matches what the script actually checks).
+- Commit message documents reproducible PQ interop command for reviewers:
+  `cargo test --lib mldsa87_external_sig -- --nocapture` expecting
+  `(valida=true, corrupta=false, msg_malo=false)`.
+- Deferred (P2-b): inlining the cargo test inside verify.sh — requires
+  graceful env detection (`X39_PQ_SOURCE_DIR`, `X39_INTEROP_DIR`, cargo
+  presence) for public clones without Rust toolchain. Not urgent.
+
+### Outstanding (post-beach)
+- P3 — Filesystem cleanup: 4 GB `~/x39_CANONICAL_VERIFIED/` diagnosis,
+  `tests/protocol_tests.rs` import path fix (`x39_bases` → `x39_Joseph`).
+- P4 — Mainnet upgrade of HYBRID-ARN4R-v1 (`dfx canister install --mode upgrade
+  arn4r` + `register_operator_pq_pubkeys`). Cool-off must be complete + OTS
+  attestation confirmed in Bitcoin.
+- P2-b — Inline PQ interop test runner in verify.sh (optional refinement).
+
