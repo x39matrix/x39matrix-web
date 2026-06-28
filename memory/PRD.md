@@ -200,3 +200,19 @@ MUST reproduce this hash exactly, or the code has been tampered with.
   `cargo test --lib mldsa87_external_sig` is what convinces a reviewer
   (DFINITY/NLnet/OpenSats); seals only prove existence-in-time.
 
+### P1 Security audit + cleanup — 2026-06-28 (late night)
+- Audit (read-only) across 46 git repos in $HOME: **0 real secrets tracked**.
+  All hits were either (a) `.pub.pem` evidence (public by design) or (b) upstream
+  test fixtures in `oqs-*` and clones of `dfinity/ic`.
+- Created `~/x39_vault_offline/` (`drwx------`, 954 MB consolidated):
+  - Moved dirs: `.secret`, `.secrets`, `.x39_vault`, `.x39matrix_vault`, `.ssh_keys`.
+  - Moved 14 loose encrypted files: `*.tar.gz.gpg`, `backup.enc`, `passwords_candidatas.txt`.
+- Hardened `~/.ssh` (700/600) and `~/.gnupg` (700/600) — left in place
+  (moving them would break SSH/GPG and git push).
+- Pending P1 hygiene (not urgent): encrypt vault to external offline media.
+
+### Convention added — system dirs that must NOT be relocated
+- `~/.ssh/` → required by OpenSSH at that exact path; moving breaks git push.
+- `~/.gnupg/` → required by GnuPG at that exact path; moving breaks PGP signing.
+- For these: harden perms (700/600) + offline encrypted backup. Never move.
+
