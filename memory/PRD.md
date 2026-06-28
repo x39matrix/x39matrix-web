@@ -158,3 +158,45 @@ MUST reproduce this hash exactly, or the code has been tampered with.
 - Terminal fragility: avoid base64 paste-blobs > ~5 KB; prefer small atomic
   steps; heredocs OK if lines are short.
 - When in doubt about deploy timing: 24h cool-off is the default.
+
+## Session Log — 2026-06-28 (evening, post-cooloff prep)
+
+### Empirical interop verification (in-session, today)
+- Regenerated Candid from compiled WASM via `candid-extractor` after adding
+  `ic_cdk::export_candid!()` to `lib.rs` → 7391 bytes, 25 endpoints, 7
+  mutating endpoints uniformly gated by `PqEnvelope`.
+- Generated ML-DSA-87 signature with **independent** signer (OpenSSL 3.5.0,
+  `openssl pkeyutl -sign -rawin`) over the 128-byte canonical preimage.
+- Test: `cargo test --lib mldsa87_external_sig -- --nocapture` against
+  `crate::ml_dsa::verify_external` with 3 cases:
+  - `valida_aceptada=true` ✓
+  - `corrupta_aceptada=false` ✓ (rules out stub)
+  - `msg_malo_aceptado=false` ✓
+- `_sov_guard` confirmed to `ic_cdk::trap()` on failure (returns `()`, no
+  `?` needed; defense-in-depth: classical first, ML-DSA-87 second).
+
+### Evidence corrections + republish (commits 2c86d68, 83c2738 on `main`)
+- Line 65 of `REPORTE_HYBRID_ARN4R_v1_FINAL_20260628T170102Z.txt` rewritten:
+  `(sesion previa)` → `(interop 2026-06-28: cargo test --lib mldsa87_external_sig => true,false,false)`
+- Re-hash SHA-256 (basename only, no path leak): `9af30506...393493`
+- Re-sign PGP detached with key `06870F0655D5BBE8` (Sovereign Operator).
+  `gpg --verify`: Good signature ✓
+- Re-stamp OTS over `.asc` (4 calendars: a.pool/b.pool/eternitywall/catallaxy).
+  Bitcoin attestation pending ~3-12h (normal).
+- MANIFEST regenerated: `812cc46c...1efcfd`.
+- Cleanup commit `83c2738` removed `*.pre-fix-*` and `*.bak` from tracking;
+  `.gitignore` updated.
+
+### Honesty notes
+- `REPORTE_INTEROP_X39.txt` remained tracked in the repo after the cleanup
+  pass (file existed on disk; `git rm --cached` was undone by the subsequent
+  `git add` of the directory). Not sensitive; flagged for user review.
+- Tech debt acknowledged in report §HONEST SCOPE: `x39_pq_probe` (no cycles),
+  legacy `ml_dsa_sign` not migrated to 0.1.1, MERKLE-AUDIT-v1 not built.
+- Mainnet deploy of HYBRID-ARN4R-v1: **NOT executed** — cool-off respected.
+
+### Operational lesson promoted to convention
+- Evidence is the **reproducible command**, not the PGP/OTS-sealed document.
+  `cargo test --lib mldsa87_external_sig` is what convinces a reviewer
+  (DFINITY/NLnet/OpenSats); seals only prove existence-in-time.
+
