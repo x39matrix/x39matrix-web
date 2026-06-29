@@ -266,3 +266,68 @@ MUST reproduce this hash exactly, or the code has been tampered with.
 This sentence now appears in the public repo (`EMPIRICAL_VERIFICATION.md`)
 as the operational doctrine of the project, visible to any reviewer.
 
+
+
+## 2026-06-29 Session — P0 + P1 closed
+
+### P0 closed — HUB `arn4r` candid:service published on mainnet
+- Canister: `arn4r-lqaaa-aaaao-baxwq-cai`
+- Module hash before:  `0xb940b2780ac1a5b8f1dbac1087881414a3f3137f34d2507f9fcbbc1d3e4fbefb`
+- Module hash after:   `0xee84503b0e63d0b16be598ead42aaf60b0bc7805eb5b1bc00e4c1a4a6bcd26ef`
+- Endpoints public via `candid:service` metadata: **78** (47 query, 31 update)
+- SHA-256 of published `.did`: `9fc4c40b9eac52c17d5412a0b313ac8b78ccfa94a1a88740a03b38cde0dedc99`
+- WASM final SHA-256: `ee84503b0e63d0b16be598ead42aaf60b0bc7805eb5b1bc00e4c1a4a6bcd26ef`
+- State preserved (verified: `cert_length=14`, `cert_merkle_root` unchanged, `ping="X39_BASES_OK"`)
+- Independent verification:
+  `dfx canister --network ic metadata arn4r-lqaaa-aaaao-baxwq-cai candid:service | sha256sum`
+  must return `9fc4c40b9eac52c17d5412a0b313ac8b78ccfa94a1a88740a03b38cde0dedc99`.
+- Upgrade cost: ~7M cycles. Balance after: 38.55 TC.
+- Tooling: `cargo build --release --target wasm32-unknown-unknown -p x39_Joseph` →
+  `ic-wasm metadata candid:service -f x39_bases.did -v public` →
+  `dfx canister --network ic install --mode upgrade`.
+- Local commit: `d70cd00` (not yet pushed, GPG signing pending).
+
+### P1 closed — 6 derived files re-stamped via OpenTimestamps
+- Files re-stamped (alice + bob calendars confirmed, btc.confirmation pending):
+  - `README.md.ots`
+  - `dossier/X39_LOGROS_PUBLICOS.pdf.ots`
+  - `evidence/pq_super_fortify_20260608T203726Z/SHA256SUMS.txt.ots`
+  - `evidence/x39matrix_audit_response_v1.md.ots`
+  - `evidence/x39matrix_internal_analysis_global_v1.md.ots`
+  - `x39matrix/evidence/pq_super_fortify_20260608T203726Z/SHA256SUMS.txt.ots`
+- Old broken proofs archived as `.ots.broken-20260629T0251*` (chain of custody preserved).
+- Local commit: `d639f2f` (not yet pushed).
+
+### Follow-ups for next session (sleep-rested operator only)
+
+1. **`operator_pq_pubkey_hashes` returned `vec {}` post-upgrade.**
+   - Pre-upgrade had one sovereign pubkey registered (SHA-256
+     `97626a614002bbf28903e209e54b3b71f6a5ef42a48210b00af2d99eb2ba9c96`).
+   - Either `OPERATOR_PQ_PUBKEYS` was not included in `UpgradeSnapshotV3` (lines
+     631–700 of `lib.rs`), or it was deliberately ephemeral. Investigate before
+     re-registering.
+   - Impact: PQ-guarded endpoints (`reset`, `apply_morphism`, `apply_functor`,
+     `delta`, `schedule`, `compose`, `cert_extend`) cannot be invoked until
+     `register_operator_pq_pubkeys` is called again. **Not a brick, a re-setup.**
+
+2. **Cross-canister ML-DSA verify returned `(false)`.**
+   - Root cause: bash bug in operator's `to_blob()` helper —
+     `sed 's/$$..$$/\\\1/g'` (`$$` expanded as PID, not as `\(..\)`).
+     Correct: `sed 's/\(..\)/\\\1/g'`.
+   - NOT a canister bug. ML-DSA sig (4627 B) and pubkey (2592 B) sizes confirmed
+     correct against FIPS-204 spec.
+   - Re-run with fixed bash after re-registering the pubkey.
+
+3. **Untracked `src/lib.rs` and `x39_joseph.did` in `~/x39matrix/repo-github/`.**
+   - `x39_joseph.did` is safe to commit (public Candid metadata).
+   - `src/lib.rs` UNKNOWN — must inspect for absolute paths, credentials,
+     references to `~/x39_vault_offline`, etc. before commit or `.gitignore`.
+
+4. **Fase 2 Joseph (Merkle Auditor / Layer 10)** — not started. Pure local code.
+
+### Operator state at session close
+- Two unpushed commits ready for GPG signing tomorrow.
+- No GPG signing, no OTS stamping performed today (operator fatigue;
+  enforced cool-off).
+- Project health: HUB and Joseph both running, mainnet hashes verifiable
+  on-chain by any third party.
