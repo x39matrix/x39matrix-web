@@ -331,3 +331,55 @@ as the operational doctrine of the project, visible to any reviewer.
   enforced cool-off).
 - Project health: HUB and Joseph both running, mainnet hashes verifiable
   on-chain by any third party.
+
+
+## 2026-06-29 Session — Full day closing summary
+
+### Final state of the day (after sustained ~12h session)
+
+**P0 closed in mainnet:**
+- HUB `arn4r-lqaaa-aaaao-baxwq-cai` module `0xee84503b...` with 78 endpoints public
+  via `candid:service` metadata. SHA-256 of published .did:
+  `9fc4c40b9eac52c17d5412a0b313ac8b78ccfa94a1a88740a03b38cde0dedc99`.
+- Sovereign ML-DSA-87 pubkey registered on HUB.
+  Hash via `operator_pq_pubkey_hashes`:
+  `90f6321a995d840b424eaf8fc4d02b25b4e6766e65032c51c785f29018c1f8b4`.
+
+**Cross-canister ML-DSA-87 handshake verified on mainnet:**
+- HUB signed its own current `cert_merkle_root` (`1bcd7f73...0488f7db`).
+- Joseph `2eig7-5qaaa-aaaai-axzkq-cai` returned `(true)` for verify.
+- Evidence committed under
+  `~/x39matrix/repo-github/evidence/cross_canister_handshake_v1/`:
+  `.md` + `.md.asc` (GPG sovereign `C3E062EB251A11851C0B4FFD06870F0655D5BBE8`)
+  + `.md.ots` + 3 binary artifacts + 3 `.bin.ots` (BTC pending confirmation).
+
+**Repo public push:**
+- Commits `d70cd00`, `d639f2f`, `835a88b` pushed to
+  `github.com:x39matrix/x39matrix.git` main branch.
+
+**Fase 2 Joseph scaffolded LOCAL (no mainnet deploy yet):**
+- Crate `x39_joseph` upgraded to v0.2.0.
+- New modules: `observation.rs`, `merkle.rs`, `storage.rs`.
+- `ic-stable-structures` v0.6.9 integrated for LEAVES / FROZEN_ROOTS / ALLOWLIST.
+- RFC-6962-bis Merkle tree, 6/6 unit tests green.
+- 15 endpoints (5 original verifier + 10 new auditor).
+- WASM SHA-256: `70ac7bed25cb28130297f7b7a36c9bd8475666af45e5f595b145c336972267c0`.
+- .did SHA-256:  `efe2ad147e89d64ab01ac5758e9d35aa833fa663e1f40deccba7274103fe68fc`.
+- NOT deployed to mainnet today. Snapshot pre-upgrade + deploy = tomorrow.
+
+### Next session (sleep-rested operator only)
+
+1. Pre-flight Joseph mainnet status + snapshot create.
+2. `dfx canister install --mode upgrade` of Joseph v0.2.0 to
+   `2eig7-5qaaa-aaaai-axzkq-cai` with WASM SHA-256 above.
+3. Verify candid:service metadata exposes 15 endpoints.
+4. `allowlist_add` the HUB principal `arn4r-lqaaa-aaaao-baxwq-cai`.
+5. Smoke test: HUB calls Joseph `snapshot_observe` cross-canister.
+6. Evidence `.md` + GPG sovereign + OTS + commit + push.
+
+### Operator observation
+- 8+ ignored prompts for sleep hours; operator skipped P0 protocol step
+  for snapshot pre-upgrade of HUB and succeeded anyway via pre/post_upgrade
+  hooks. Future mainnet operations: enforce snapshot pre-upgrade as
+  hard precondition.
+- Terminal showed garbage bytes on multiple pastes — fatigue artifact.
